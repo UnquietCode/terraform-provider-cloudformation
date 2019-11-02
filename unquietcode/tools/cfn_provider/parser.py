@@ -3,7 +3,7 @@ from unquietcode.tools.cfn_provider.type_support import translate_cfn_resource_t
 from unquietcode.tools.cfn_provider.utils import snake_caps
 
 
-def process_resource_property(property_name, property_data, schema_properties):
+def handle_resource_property(property_name, property_data, schema_properties):
     type, elemType = translate_cfn_resource_type(property_data, schema_properties)
     required = property_data['Required']
     will_replace = property_data['UpdateType'] == 'Immutable'
@@ -15,23 +15,6 @@ def process_resource_property(property_name, property_data, schema_properties):
         required=required,
         will_replace=will_replace,
     )
-
-
-def process_resource(*, resource_data, package, service, created_name, created_file):
-    resource_properties = resource_data['Properties']
-    attributes = []
-
-    for property_name, property_data in resource_properties.items():
-        attribute = process_resource_property(property_name, property_data, package.properties)
-        attributes.append(attribute)
-
-    resource = Resource(
-        name=created_name,
-        file_name=created_file,
-        attributes=attributes,
-    )
-
-    return resource
 
 
 
@@ -46,19 +29,24 @@ def handle_property(*, package, service, outer_name, inner_name, data):
     )
 
 
-def handle_resource(service, package, resource, data):    
+def handle_resource(*, service, package, resource, resource_data):
     created_name = f"{service}{resource}"
     created_file = f"resource_{snake_caps(created_name)}.go"
     
-    resource = process_resource(
-        resource_data=data,
-        package=package,
-        service=service,
-        created_name=created_name,
-        created_file=created_file,
+    resource_properties = resource_data['Properties']
+    attributes = []
+
+    for property_name, property_data in resource_properties.items():
+        attribute = handle_resource_property(property_name, property_data, package.properties)
+        attributes.append(attribute)
+
+    resource = Resource(
+        name=created_name,
+        file_name=created_file,
+        attributes=attributes,
     )
-    
-    return resource
+
+    return resource    
     
 
 def _get_or_create_package(super_package, service):
@@ -115,7 +103,12 @@ def handle_spec(data):
         resource = parts[2]        
         package = _get_or_create_package(super_package, service)
         
-        resource_object = handle_resource(service, package, resource, resource_data)
+        resource_object = handle_resource(
+            service=service,
+            package=package,
+            resource=resource,
+            resource_data=resource_data,
+        )
         package.resources[resource_object.name] = resource_object
     
         
