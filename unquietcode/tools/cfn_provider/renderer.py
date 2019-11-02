@@ -10,10 +10,10 @@ def _extract_imports(attributes):
     
     for attr in attributes:
         if not isinstance(attr.type, str):
-            imports.add(f'{attr.type.full_path}/property_{snake_caps(attr.type.name)}')
+            imports.add(f'{attr.type.package.full_path}/property_{snake_caps(attr.type.name)}')
 
         if attr.element is not None and not isinstance(attr.element, str):
-            imports.add(f'{attr.element.full_path}/property_{snake_caps(attr.element.name)}')
+            imports.add(f'{attr.element.package.full_path}/property_{snake_caps(attr.element.name)}')
 
     return imports
 
@@ -22,7 +22,7 @@ def render_resource(package, resource, output_path):
     imports = _extract_imports(resource.attributes)
     
     rendered = render_resource_template(
-        package_name=f"cfn/{package.name}",
+        package_name=package.full_path,
         resource_name=resource.name,
         attributes=resource.attributes,
         imports=imports,
@@ -32,11 +32,11 @@ def render_resource(package, resource, output_path):
         file_.write(rendered)
     
 
-def render_property(package, property, output_path):
+def render_property(property, output_path):
     imports = _extract_imports(property.attributes)
         
     rendered = render_property_template(
-        package_name=property.full_path,
+        package_name=property.package.full_path,
         property_name=property.name,
         attributes=property.attributes,
         imports=imports,
@@ -78,18 +78,22 @@ def render_package(package, output_path):
     for resource in package.resources.values():
         _patch_deferred_types(package, resource.attributes)
     
+    # render properties
     for property in package.properties.values():
         file_name = f"property_{snake_caps(property.name)}.go"
         file_path = f"{created_directory}/{file_name}"
         
-        render_property(package, property, file_path)
+        render_property(property, file_path)
     
+    # render resources
     for resource in package.resources.values():
         file_name = f"resource_{snake_caps(resource.name)}.go"
         file_path = f"{created_directory}/{file_name}"
         
         render_resource(package, resource, file_path)
+    
     # print(json.dumps(package.as_dict(), indent=2))
-        
+    
+    # traverse and render subpackages    
     for subpackage in package.subpackages.values():
         render_package(subpackage, created_directory)
