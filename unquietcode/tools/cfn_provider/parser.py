@@ -1,4 +1,4 @@
-from unquietcode.tools.cfn_provider.models import ResourceAttribute, Property, Resource
+from unquietcode.tools.cfn_provider.models import ResourceAttribute, Property, Resource, Package
 from unquietcode.tools.cfn_provider.type_support import translate_cfn_resource_type, translate_cfn_property_type
 from unquietcode.tools.cfn_provider.utils import snake_caps
 
@@ -36,7 +36,6 @@ def process_resource(*, resource_data, package, service, created_name, created_f
 
 
 def handle_property(*, package, service, outer_name, inner_name, data):
-    # print(f"-------- {outer_name} -------- {inner_name}")
     type, elemType = translate_cfn_property_type(inner_name, data, package.properties)
     
     return Property(
@@ -60,3 +59,64 @@ def handle_resource(service, package, resource, data):
     )
     
     return resource
+    
+
+def _get_or_create_package(super_package, service):
+    package_name = service.lower()
+
+    if package_name not in super_package.subpackages:
+        package = Package(name=package_name)
+        super_package.subpackages[package_name] = package
+    else:
+        package = super_package.subpackages[package_name]
+    
+    return package
+    
+
+def handle_spec(data):
+    super_package = Package(name='cfn')
+
+    # do properties
+    for property_name, property_data in data['PropertyTypes'].items():
+        parts = property_name.split('::')
+
+        if parts[0] != "AWS":
+            print(f"skipping non-aws property '{property_name}'")
+            continue
+
+        service = parts[1]
+        subparts = parts[2].split('.')
+
+        if len(subparts) != 2:
+            raise Exception('too many name parts')
+
+        outer_name, inner_name = subparts
+        package = _get_or_create_package(super_package, service)
+                    
+        # super_package.properties[service] = super_package.properties.get(service, {})
+        property = handle_property(
+            package=package,
+            service=service,
+            outer_name=outer_name,
+            inner_name=inner_name,
+            data=property_data,
+        )
+        package.properties[property.name] = property
+    
+    # do resources
+    for resource_name, resource_data in data['ResourceTypes'].items():
+        parts = resource_name.split("::")
+
+        if parts[0] != "AWS":
+            print(f"skipping non-aws resource '{resource_name}'")
+            continue
+
+        service = parts[1]
+        resource = parts[2]        
+        package = _get_or_create_package(super_package, service)
+        
+        resource_object = handle_resource(service, package, resource, resource_data)
+        package.resources[resource_object.name] = resource_object
+    
+        
+    return super_package
