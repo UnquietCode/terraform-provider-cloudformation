@@ -46,21 +46,23 @@ class ResourceAttribute:
     def as_dict(self):
         return asdict(self)
 
+
 @dataclass
 class Resource:
     name: str = ""
-    file_name: str = ""
     attributes: dict = field(default_factory=lambda: {})
     
     def as_dict(self):
         return asdict(self)
 
+
 @dataclass
 class Property:
     name: str
-    type: str
+    # type: str
     package_name: str
     resource_name: str
+    attributes: dict
 
     def as_dict(self):
         return asdict(self)

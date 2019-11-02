@@ -1,6 +1,5 @@
 from unquietcode.tools.cfn_provider.models import ResourceAttribute, Property, Resource, Package
 from unquietcode.tools.cfn_provider.type_support import translate_cfn_resource_type, translate_cfn_property_type
-from unquietcode.tools.cfn_provider.utils import snake_caps
 
 
 def handle_resource_property(property_name, property_data, schema_properties):
@@ -19,22 +18,32 @@ def handle_resource_property(property_name, property_data, schema_properties):
 
 
 def handle_property(*, package, service, outer_name, inner_name, data):
-    type, elemType = translate_cfn_property_type(inner_name, data, package.properties)
+    # type, elemType = translate_cfn_property_type(inner_name, data, package.properties)
+    property_properties = data.get('Properties', {})
+    attributes = []
+
+    # for property_name, property_data in property_properties.items():
+    #     translate_cfn_resource_type(property_data, package.properties)
     
+    for property_name, property_data in property_properties.items():
+        attribute = handle_resource_property(property_name, property_data, package.properties)
+        attributes.append(attribute)
+
     return Property(
         name=inner_name,
         package_name=service,
         resource_name=outer_name,
-        type=type,
+        attributes=attributes,
     )
 
 
 def handle_resource(*, service, package, resource, resource_data):
     created_name = f"{service}{resource}"
-    created_file = f"resource_{snake_caps(created_name)}.go"
-    
     resource_properties = resource_data['Properties']
     attributes = []
+
+    # for property_name, property_data in resource_properties.items():
+    #     translate_cfn_resource_type(property_data, package.properties)
 
     for property_name, property_data in resource_properties.items():
         attribute = handle_resource_property(property_name, property_data, package.properties)
@@ -42,7 +51,6 @@ def handle_resource(*, service, package, resource, resource_data):
 
     resource = Resource(
         name=created_name,
-        file_name=created_file,
         attributes=attributes,
     )
 

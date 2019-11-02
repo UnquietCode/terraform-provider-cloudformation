@@ -14,6 +14,19 @@ RESOURCE_ATTRIBUTE_TEMPLATE = Template(
 """[1:])
 
 
+def _remove_dead_lines(content):
+	lines = []
+
+	for line in content.split('\n'):
+		if DEAD_LINE in line:
+			continue
+
+		lines.append(line)
+
+	content = '\n'.join(lines)
+	return content
+
+
 def _render_attribute_template(*, attribute):
 	rendered = RESOURCE_ATTRIBUTE_TEMPLATE.substitute(dict(
 		name=attribute.name,
@@ -22,16 +35,8 @@ def _render_attribute_template(*, attribute):
 		required="true" if attribute.required else "false",
 		force_replace="true" if attribute.will_replace else DEAD_LINE,
 	))
-
-	lines = []
-
-	for line in rendered.splitlines():
-		if DEAD_LINE in line:
-			continue
-
-		lines.append(line)
-
-	rendered = '\n'.join(lines)
+	
+	rendered = _remove_dead_lines(rendered)
 	return rendered
 
 
@@ -42,6 +47,7 @@ package ${package}
 
 import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+${imports}
 )
 
 func resource${name}() *schema.Resource {
@@ -76,15 +82,57 @@ func resource${name}Delete(d *schema.ResourceData, meta interface{}) error {
 
 
 
-def render_resource_template(*, package_name, resource_name, attributes):
-    rendered_attributes = [
-        _render_attribute_template(attribute=attribute)
-        for attribute in attributes
-    ]
-    rendered_attributes = '\n'.join(rendered_attributes)
+def render_resource_template(*, imports, package_name, resource_name, attributes):
+	rendered_attributes = [
+		_render_attribute_template(attribute=attribute)
+		for attribute in attributes
+	]
+	rendered_attributes = '\n'.join(rendered_attributes)
+	
+	import_lines = [f'	"github.com/unquietcode/cfn-provider/{package_name}/{i}"' for i in imports]
+	import_lines = '\n'.join(import_lines)
+	
+	rendered = RESOURCE_TEMPLATE.substitute(dict(
+		package=package_name,
+		name=resource_name,
+		attributes=rendered_attributes,
+		imports=import_lines or DEAD_LINE,
+	))
+	
+	rendered = _remove_dead_lines(rendered)
+	return rendered
+	
 
-    return RESOURCE_TEMPLATE.substitute(dict(
-        package=package_name,
-        name=resource_name,
-        attributes=rendered_attributes,
-    ))
+
+PROPERTY_TEMPLATE = Template(
+"""
+package ${package}
+
+import (
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+)
+
+func property${name}() *schema.Resource {
+	return &schema.Resource{
+		Schema: map[string]*schema.Schema{
+${attributes}
+		},
+	}
+}
+"""[1:])
+
+
+def render_property_template(*, package_name, property_name, attributes):
+	rendered_attributes = [
+		_render_attribute_template(attribute=attribute)
+		for attribute in attributes
+	]
+	rendered_attributes = '\n'.join(rendered_attributes)
+	
+	rendered = PROPERTY_TEMPLATE.substitute(dict(
+		package=package_name,
+		name=property_name,
+		attributes=rendered_attributes,
+	))
+	
+	return rendered
