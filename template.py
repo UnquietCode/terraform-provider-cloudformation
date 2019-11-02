@@ -14,6 +14,28 @@ RESOURCE_ATTRIBUTE_TEMPLATE = Template(
 """[1:])
 
 
+def _render_attribute_template(*, attribute):
+	rendered = RESOURCE_ATTRIBUTE_TEMPLATE.substitute(dict(
+		name=attribute.name,
+		type=attribute.type,
+		elem=attribute.element or DEAD_LINE,
+		required="true" if attribute.required else "false",
+		force_replace="true" if attribute.will_replace else DEAD_LINE,
+	))
+
+	lines = []
+
+	for line in rendered.splitlines():
+		if DEAD_LINE in line:
+			continue
+
+		lines.append(line)
+
+	rendered = '\n'.join(lines)
+	return rendered
+
+
+
 RESOURCE_TEMPLATE = Template(
 """
 package ${package}
@@ -52,26 +74,6 @@ func resource${name}Delete(d *schema.ResourceData, meta interface{}) error {
 }
 """[1:])
 
-
-def _render_attribute_template(*, attribute):
-	rendered = RESOURCE_ATTRIBUTE_TEMPLATE.substitute(dict(
-		name=attribute.name,
-		type=attribute.type,
-		elem=attribute.element or DEAD_LINE,
-		required="true" if attribute.required else "false",
-		force_replace="true" if attribute.will_replace else DEAD_LINE,
-	))
-
-	lines = []
-
-	for line in rendered.splitlines():
-		if DEAD_LINE in line:
-			continue
-
-		lines.append(line)
-
-	rendered = '\n'.join(lines)
-	return rendered
 
 
 def render_resource_template(*, package_name, resource_name, attributes):
