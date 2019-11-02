@@ -19,6 +19,7 @@ COLLECTION_TYPES_MAP = {
 def translate_cfn_property_type(property_name, property_data, schema_properties):
     return property_name, None
 
+
 def translate_cfn_resource_type(property_data, schema_properties):
     prop_ptype = property_data.get('PrimitiveType')
     type = None
@@ -45,11 +46,7 @@ def translate_cfn_resource_type(property_data, schema_properties):
             # is a collection of some other type
             else:
                 item_type = property_data.get('ItemType')
-                
-                # if item_type is not None:
-                elemType = item_type
-                # else:
-                    # elemType = 'schema.TypeString'
+                elemType = translate_cfn_complex_type(schema_properties, item_type, property_data)
 
         # is some other type
         else:
@@ -64,8 +61,7 @@ def translate_cfn_complex_type(schema_properties, name, propData):
         raise Exception('name is empty')
         
     if name in schema_properties:
-        print(f"found {name}")
-    else:
-        print(f"need handling for type {name}")
+        return schema_properties[name]
     
-    return 'schema.TypeString'
+    # use deferred string
+    return f'DEFERRED|{name}'

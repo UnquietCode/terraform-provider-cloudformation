@@ -15,16 +15,12 @@ def handle_resource_property(property_name, property_data, schema_properties):
         will_replace=will_replace,
     )
 
-
+# TODO need to handle missing properties better
 
 def handle_property(*, package, service, outer_name, inner_name, data):
-    # type, elemType = translate_cfn_property_type(inner_name, data, package.properties)
     property_properties = data.get('Properties', {})
     attributes = []
 
-    # for property_name, property_data in property_properties.items():
-    #     translate_cfn_resource_type(property_data, package.properties)
-    
     for property_name, property_data in property_properties.items():
         attribute = handle_resource_property(property_name, property_data, package.properties)
         attributes.append(attribute)
@@ -42,9 +38,6 @@ def handle_resource(*, service, package, resource, resource_data):
     resource_properties = resource_data['Properties']
     attributes = []
 
-    # for property_name, property_data in resource_properties.items():
-    #     translate_cfn_resource_type(property_data, package.properties)
-
     for property_name, property_data in resource_properties.items():
         attribute = handle_resource_property(property_name, property_data, package.properties)
         attributes.append(attribute)
@@ -61,7 +54,7 @@ def _get_or_create_package(super_package, service):
     package_name = service.lower()
 
     if package_name not in super_package.subpackages:
-        package = Package(name=package_name)
+        package = Package(name=package_name, parent=super_package)
         super_package.subpackages[package_name] = package
     else:
         package = super_package.subpackages[package_name]
@@ -69,11 +62,28 @@ def _get_or_create_package(super_package, service):
     return package
     
 
+def handle_special_prop(package, name, data):
+    property = handle_property(
+        package=package,
+        service='',
+        outer_name='',
+        inner_name='',
+        data=data,
+    )
+    package.properties[name] = property
+
+
 def handle_spec(data):
     super_package = Package(name='cfn')
 
     # do properties
     for property_name, property_data in data['PropertyTypes'].items():
+        
+        # special props
+        if property_name in {'Tag'}:
+            handle_special_prop(super_package, property_name, property_data)
+            continue
+            
         parts = property_name.split('::')
 
         if parts[0] != "AWS":

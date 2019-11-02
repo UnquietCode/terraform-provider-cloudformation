@@ -28,10 +28,20 @@ def _remove_dead_lines(content):
 
 
 def _render_attribute_template(*, attribute):
+	attribute_type = attribute.type
+	
+	if not isinstance(attribute_type, str):
+		attribute_type = f'property{attribute_type.name}()'
+
+	attribute_elem = attribute.element
+	
+	if attribute_elem is not None and not isinstance(attribute_elem, str):
+		attribute_elem = f'property{attribute_elem.name}()'
+	
 	rendered = RESOURCE_ATTRIBUTE_TEMPLATE.substitute(dict(
 		name=attribute.name,
-		type=attribute.type,
-		elem=attribute.element or DEAD_LINE,
+		type=attribute_type,
+		elem=attribute_elem or DEAD_LINE,
 		required="true" if attribute.required else "false",
 		force_replace="true" if attribute.will_replace else DEAD_LINE,
 	))
@@ -110,6 +120,7 @@ package ${package}
 
 import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+${imports}
 )
 
 func property${name}() *schema.Resource {
@@ -122,7 +133,7 @@ ${attributes}
 """[1:])
 
 
-def render_property_template(*, package_name, property_name, attributes):
+def render_property_template(*, package_name, property_name, attributes, imports):
 	rendered_attributes = [
 		_render_attribute_template(attribute=attribute)
 		for attribute in attributes
@@ -133,6 +144,8 @@ def render_property_template(*, package_name, property_name, attributes):
 		package=package_name,
 		name=property_name,
 		attributes=rendered_attributes,
+		imports=imports,
 	))
 	
+	rendered = _remove_dead_lines(rendered)
 	return rendered

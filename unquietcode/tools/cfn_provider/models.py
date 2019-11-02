@@ -2,17 +2,6 @@ from collections import defaultdict
 from dataclasses import dataclass, asdict, field
 
 
-@dataclass(frozen=True)
-class ResourceAttribute:
-    name: str
-    type: str
-    element: str
-    required: bool
-    will_replace: bool
-
-    def as_dict(self):
-        return asdict(self)
-
 class DataDict(dict):
     
     def as_dict(self):
@@ -22,6 +11,7 @@ class DataDict(dict):
 @dataclass
 class Package:
     name: str = ""
+    parent: any = None
     resources: dict = field(default_factory=lambda: defaultdict(lambda: DataDict()))
     properties: dict = field(default_factory=lambda: defaultdict(lambda: DataDict()))
     subpackages: dict = field(default_factory=lambda: {})
@@ -35,7 +25,7 @@ class Package:
         }
     
     
-@dataclass(frozen=True)
+@dataclass
 class ResourceAttribute:
     name: str
     type: str
@@ -56,14 +46,13 @@ class Resource:
         return asdict(self)
 
 
-@dataclass
+@dataclass(frozen=True)
 class Property:
     name: str
-    # type: str
+    attributes: dict
+    
     package_name: str
     resource_name: str
-    attributes: dict
 
     def as_dict(self):
         return asdict(self)
-    

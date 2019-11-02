@@ -5,13 +5,21 @@ from .template import render_resource_template, render_property_template
 from unquietcode.tools.cfn_provider.utils import snake_caps
 
 
-def render_resource(package, resource, output_path):
+def _extract_imports(attributes):
     imports = set()
     
-    for attr in resource.attributes:
-        if attr.element in package.properties:
-            prop = package.properties[attr.element]
-            imports.add(prop.name)
+    for attr in attributes:
+        if not isinstance(attr.type, str):
+            imports.add(f'property_{snake_caps(attr.type.name)}')
+
+        if attr.element is not None and not isinstance(attr.element, str):
+            imports.add(f'property_{snake_caps(attr.element.name)}')
+
+    return imports
+
+
+def render_resource(package, resource, output_path):
+    imports = _extract_imports(resource.attributes)
     
     rendered = render_resource_template(
         package_name=f"cfn/{package.name}",
@@ -25,33 +33,62 @@ def render_resource(package, resource, output_path):
     
 
 def render_property(package, property, output_path):
+    imports = _extract_imports(property.attributes)
+        
     rendered = render_property_template(
         package_name=f"cfn/{package.name}",
         property_name=property.name,
         attributes=property.attributes,
+        imports=imports,
     )
 
     with open(output_path, 'w+') as file_:
         file_.write(rendered)
     
 
+def _handle_deferred_types(package, type):
+    if isinstance(type, str) and type.startswith('DEFERRED'):
+        deferred_prop = type.split('|')[1]
+        
+        if deferred_prop not in package.properties:
+            if package.parent is not None:
+                return _handle_deferred_types(package.parent, type)
+            else:
+                raise Exception('unable to handle deferred type '+deferred_prop)
+        else:
+            return package.properties[deferred_prop]
+    else:
+        return type
+
+
+def _patch_deferred_types(package, attributes):
+    for attr in attributes:
+        attr.type = _handle_deferred_types(package, attr.type)
+        attr.element = _handle_deferred_types(package, attr.element)
+
 
 def render_package(package, output_path):
     created_directory = f"{output_path}/{package.name}"
     os.makedirs(created_directory, exist_ok=True)
+    
+    # patch up deferred properties
+    for property in package.properties.values():
+        _patch_deferred_types(package, property.attributes)
 
     for resource in package.resources.values():
-        file_name = f"resource_{snake_caps(resource.name)}.go"
-        file_path = f"{created_directory}/{file_name}"
-        
-        render_resource(package, resource, file_path)
+        _patch_deferred_types(package, resource.attributes)
     
     for property in package.properties.values():
         file_name = f"property_{snake_caps(property.name)}.go"
         file_path = f"{created_directory}/{file_name}"
         
         render_property(package, property, file_path)
-
+    
+    for resource in package.resources.values():
+        file_name = f"resource_{snake_caps(resource.name)}.go"
+        file_path = f"{created_directory}/{file_name}"
+        
+        render_resource(package, resource, file_path)
     # print(json.dumps(package.as_dict(), indent=2))
         
     for subpackage in package.subpackages.values():
