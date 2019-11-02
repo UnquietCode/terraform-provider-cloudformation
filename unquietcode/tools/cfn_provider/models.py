@@ -13,7 +13,6 @@ class ResourceAttribute:
     def as_dict(self):
         return asdict(self)
 
-@dataclass
 class DataDict(dict):
     
     def as_dict(self):
@@ -50,6 +49,7 @@ class ResourceAttribute:
 @dataclass
 class Resource:
     name: str = ""
+    file_name: str = ""
     attributes: dict = field(default_factory=lambda: {})
     
     def as_dict(self):

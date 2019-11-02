@@ -1,9 +1,9 @@
 import os
 import json
 
-from template import render_resource_template
+from unquietcode.tools.cfn_provider.renderer import render_package
 from unquietcode.tools.cfn_provider.models import ResourceAttribute, Package, Property, Resource
-from unquietcode.tools.cfn_provider.type_support import translate_cfn_type
+from unquietcode.tools.cfn_provider.type_support import translate_cfn_resource_type, translate_cfn_property_type
 from unquietcode.tools.cfn_provider.utils import snake_caps
 
 THIS_DIR = os.path.dirname(os.path.realpath(__file__))
@@ -12,7 +12,7 @@ OUT_DIR = f"{THIS_DIR}/out"
 
 
 def process_resource_property(property_name, property_data, schema_properties):
-    type, elemType = translate_cfn_type(property_data, schema_properties)
+    type, elemType = translate_cfn_resource_type(property_data, schema_properties)
     required = property_data['Required']
     will_replace = property_data['UpdateType'] == 'Immutable'
 
@@ -25,7 +25,7 @@ def process_resource_property(property_name, property_data, schema_properties):
     )
 
 
-def process_resource(*, resource_data, package, service, created_name):
+def process_resource(*, resource_data, package, service, created_name, created_file):
     resource_properties = resource_data['Properties']
     attributes = []
 
@@ -33,24 +33,19 @@ def process_resource(*, resource_data, package, service, created_name):
         attribute = process_resource_property(property_name, property_data, package.properties)
         attributes.append(attribute)
 
-    rendered = render_resource_template(
-        package_name=package.name,
-        resource_name=created_name,
-        attributes=attributes,
-    )
-
     resource = Resource(
         name=created_name,
+        file_name=created_file,
         attributes=attributes,
     )
 
-    return resource, rendered
+    return resource
 
 
 
 def handle_property(*, package, service, outer_name, inner_name, data):
     # print(f"-------- {outer_name} -------- {inner_name}")
-    type, elemType = translate_cfn_type(data, package.properties)
+    type, elemType = translate_cfn_property_type(inner_name, data, package.properties)
     
     return Property(
         name=inner_name,
@@ -60,30 +55,25 @@ def handle_property(*, package, service, outer_name, inner_name, data):
     )
 
 
-def handle_resource(service, package, resource, data):
+def handle_resource(service, package, resource, data):    
     created_name = f"{service}{resource}"
     created_file = f"resource_{snake_caps(created_name)}.go"
-
-    created_directory = f"{OUT_DIR}/cfn/{service.lower()}"
-    os.makedirs(created_directory, exist_ok=True)
     
-    resource, rendered = process_resource(
+    resource = process_resource(
         resource_data=data,
         package=package,
         service=service,
         created_name=created_name,
+        created_file=created_file,
     )
-
-    with open(f"{created_directory}/{created_file}", 'w+') as file_:
-        file_.write(rendered)
-        
+    
     return resource
 
 
 
 def main():
     package = generate_package()
-    # print(json.dumps(package.as_dict(), indent=2))
+    render_package(package, OUT_DIR)
     
     
 def generate_package():
@@ -111,8 +101,7 @@ def generate_package():
         package_name = service.lower()
 
         if package_name not in super_package.subpackages:
-            created_package = f"cfn/{package_name}"
-            package = Package(name=created_package)
+            package = Package(name=package_name)
             super_package.subpackages[package_name] = package
         else:
             package = super_package.subpackages[package_name]
@@ -140,8 +129,7 @@ def generate_package():
         package_name = service.lower()
         
         if package_name not in super_package.subpackages:
-            created_package = f"cfn/{package_name}"
-            package = Package(name=created_package)
+            package = Package(name=package_name)
             super_package.subpackages[package_name] = package
         else:
             package = super_package.subpackages[package_name]
@@ -150,6 +138,7 @@ def generate_package():
         package.resources[resource_object.name] = resource_object
         
     return super_package
+
 
 if __name__ == '__main__':
     main()
