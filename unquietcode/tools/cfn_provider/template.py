@@ -50,6 +50,12 @@ def _render_attribute_template(*, attribute):
 	return rendered
 
 
+def _imports_stanza(imports):
+	import_lines = [f'	"github.com/unquietcode/cfn-provider/{i}"' for i in imports]
+	import_lines = '\n'.join(import_lines)
+	
+	return import_lines or DEAD_LINE
+
 
 RESOURCE_TEMPLATE = Template(
 """
@@ -99,14 +105,11 @@ def render_resource_template(*, imports, package_name, resource_name, attributes
 	]
 	rendered_attributes = '\n'.join(rendered_attributes)
 	
-	import_lines = [f'	"github.com/unquietcode/cfn-provider/{package_name}/{i}"' for i in imports]
-	import_lines = '\n'.join(import_lines)
-	
 	rendered = RESOURCE_TEMPLATE.substitute(dict(
 		package=package_name,
 		name=resource_name,
 		attributes=rendered_attributes,
-		imports=import_lines or DEAD_LINE,
+		imports=_imports_stanza(imports)
 	))
 	
 	rendered = _remove_dead_lines(rendered)
@@ -144,7 +147,7 @@ def render_property_template(*, package_name, property_name, attributes, imports
 		package=package_name,
 		name=property_name,
 		attributes=rendered_attributes,
-		imports=imports,
+		imports=_imports_stanza(imports),
 	))
 	
 	rendered = _remove_dead_lines(rendered)

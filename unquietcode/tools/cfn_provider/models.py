@@ -50,9 +50,19 @@ class Resource:
 class Property:
     name: str
     attributes: dict
-    
-    package_name: str
+    package: Package
     resource_name: str
+
+    @property
+    def full_path(self):
+        path = ""
+        p = self.package
+        
+        while (p is not None):
+            path = p.name + '/' + path
+            p = p.parent
+        
+        return path[0:-1]
 
     def as_dict(self):
         return asdict(self)

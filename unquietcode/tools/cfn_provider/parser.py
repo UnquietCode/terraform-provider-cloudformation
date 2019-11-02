@@ -27,7 +27,7 @@ def handle_property(*, package, service, outer_name, inner_name, data):
 
     return Property(
         name=inner_name,
-        package_name=service,
+        package=package,
         resource_name=outer_name,
         attributes=attributes,
     )
@@ -67,7 +67,7 @@ def handle_special_prop(package, name, data):
         package=package,
         service='',
         outer_name='',
-        inner_name='',
+        inner_name=name,
         data=data,
     )
     package.properties[name] = property
@@ -99,7 +99,6 @@ def handle_spec(data):
         outer_name, inner_name = subparts
         package = _get_or_create_package(super_package, service)
                     
-        # super_package.properties[service] = super_package.properties.get(service, {})
         property = handle_property(
             package=package,
             service=service,

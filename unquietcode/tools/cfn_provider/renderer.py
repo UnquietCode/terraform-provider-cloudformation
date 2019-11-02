@@ -10,10 +10,10 @@ def _extract_imports(attributes):
     
     for attr in attributes:
         if not isinstance(attr.type, str):
-            imports.add(f'property_{snake_caps(attr.type.name)}')
+            imports.add(f'{attr.type.full_path}/property_{snake_caps(attr.type.name)}')
 
         if attr.element is not None and not isinstance(attr.element, str):
-            imports.add(f'property_{snake_caps(attr.element.name)}')
+            imports.add(f'{attr.element.full_path}/property_{snake_caps(attr.element.name)}')
 
     return imports
 
@@ -36,7 +36,7 @@ def render_property(package, property, output_path):
     imports = _extract_imports(property.attributes)
         
     rendered = render_property_template(
-        package_name=f"cfn/{package.name}",
+        package_name=property.full_path,
         property_name=property.name,
         attributes=property.attributes,
         imports=imports,
