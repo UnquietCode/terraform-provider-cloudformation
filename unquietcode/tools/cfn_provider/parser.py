@@ -7,23 +7,29 @@ def handle_resource_property(property_name, property_data, schema_properties):
     required = property_data['Required']
     will_replace = property_data['UpdateType'] == 'Immutable'
 
+    if 'DuplicatesAllowed' in property_data:
+        repeatable = property_data['DuplicatesAllowed']
+    else:
+        repeatable = False
+    
     return ResourceAttribute(
         name=property_name,
         type=type,
         element=elemType,
         required=required,
         will_replace=will_replace,
+        repeatable=repeatable,
     )
 
 # TODO need to handle missing properties better
 
 def handle_property(*, package, service, outer_name, inner_name, data):
     property_properties = data.get('Properties', {})
-    attributes = []
+    attributes = {}
 
     for property_name, property_data in property_properties.items():
         attribute = handle_resource_property(property_name, property_data, package.properties)
-        attributes.append(attribute)
+        attributes[property_name] = attribute
 
     return Property(
         name=inner_name,
@@ -36,14 +42,15 @@ def handle_property(*, package, service, outer_name, inner_name, data):
 def handle_resource(*, service, package, resource, resource_data):
     created_name = f"{service}{resource}"
     resource_properties = resource_data['Properties']
-    attributes = []
+    attributes = {}
 
     for property_name, property_data in resource_properties.items():
         attribute = handle_resource_property(property_name, property_data, package.properties)
-        attributes.append(attribute)
+        attributes[property_name] = attribute
 
     resource = Resource(
         name=created_name,
+        package=package,
         attributes=attributes,
     )
 

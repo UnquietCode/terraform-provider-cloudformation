@@ -10,6 +10,7 @@ RESOURCE_ATTRIBUTE_TEMPLATE = Template(
 				Elem: ${elem},
 				Required: ${required},
 				ForceNew: ${force_replace},
+				MaxItems: ${max_items},
 			},
 """[1:])
 
@@ -24,6 +25,7 @@ def _remove_dead_lines(content):
 		lines.append(line)
 
 	content = '\n'.join(lines)
+	content = content[:-1] if len(lines) > 1 else content
 	return content
 
 
@@ -34,9 +36,11 @@ def _render_attribute_template(*, attribute):
 		attribute_type = f'property{attribute_type.name}()'
 
 	attribute_elem = attribute.element
+	max_items = DEAD_LINE
 	
 	if attribute_elem is not None and not isinstance(attribute_elem, str):
 		attribute_elem = f'property{attribute_elem.name}()'
+		max_items = '1' if attribute.repeatable is not True else DEAD_LINE
 	
 	rendered = RESOURCE_ATTRIBUTE_TEMPLATE.substitute(dict(
 		name=attribute.name,
@@ -44,6 +48,7 @@ def _render_attribute_template(*, attribute):
 		elem=attribute_elem or DEAD_LINE,
 		required="true" if attribute.required else "false",
 		force_replace="true" if attribute.will_replace else DEAD_LINE,
+		max_items=max_items,
 	))
 	
 	rendered = _remove_dead_lines(rendered)
@@ -51,7 +56,7 @@ def _render_attribute_template(*, attribute):
 
 
 def _imports_stanza(imports):
-	import_lines = [f'	"github.com/unquietcode/cfn-provider/{i}"' for i in imports]
+	import_lines = [f'	"github.com/unquietcode/cfn-provider/{i}"' for i in sorted(imports)]
 	import_lines = '\n'.join(import_lines)
 	
 	return import_lines or DEAD_LINE
@@ -152,3 +157,53 @@ def render_property_template(*, package_name, property_name, attributes, imports
 	
 	rendered = _remove_dead_lines(rendered)
 	return rendered
+
+
+def _resources_stanza(resources):
+	resource_lines = [f'			"{r.go_symbol}_resource": resource{r.name}(),' for r in resources]
+	resource_lines = '\n'.join(resource_lines)
+	return resource_lines or DEAD_LINE
+
+
+def _datasources_stanza(datasources):
+	datasource_lines = [f'			"{d.go_symbol}_data_source": datasource{d.name}(),' for d in datasources]
+	datasource_lines = '\n'.join(datasource_lines)
+	return datasource_lines or DEAD_LINE
+
+	
+
+
+PROVIDER_TEMPLATE = Template(
+"""
+package ${package}
+
+import (
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/terraform"
+${imports}
+)
+
+func Provider() terraform.ResourceProvider {
+	return &schema.Provider{
+		DataSourcesMap: map[string]*schema.Resource{
+${datasources}
+		},
+		ResourcesMap: map[string]*schema.Resource{
+${resources}
+		},
+	}
+}
+"""[1:])
+
+
+def render_provider_template(*, package_name, imports, datasources, resources):
+	rendered = PROVIDER_TEMPLATE.substitute(dict(
+		package=package_name,
+		imports=_imports_stanza(imports),
+		resources=_resources_stanza(resources),
+		datasources=_datasources_stanza(datasources),
+	))
+	
+	rendered = _remove_dead_lines(rendered)
+	return rendered
+

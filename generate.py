@@ -2,7 +2,7 @@ import os
 import json
 
 from unquietcode.tools.cfn_provider.parser import handle_spec
-from unquietcode.tools.cfn_provider.renderer import render_package
+from unquietcode.tools.cfn_provider.renderer import render_provider
 
 THIS_DIR = os.path.dirname(os.path.realpath(__file__))
 SPEC_FILE = f"{THIS_DIR}/CloudFormationResourceSpecification-us-east-1.json"
@@ -16,7 +16,7 @@ def main():
         data = json.load(file_)
     
     top_level_package = handle_spec(data)
-    render_package(top_level_package, OUT_DIR)
+    render_provider(top_level_package, OUT_DIR)
 
 
 if __name__ == '__main__':

@@ -1,6 +1,8 @@
 from collections import defaultdict
 from dataclasses import dataclass, asdict, field
 
+from unquietcode.tools.cfn_provider.utils import snake_caps
+
 
 class DataDict(dict):
     
@@ -13,6 +15,7 @@ class Package:
     name: str = ""
     parent: any = None
     resources: dict = field(default_factory=lambda: defaultdict(lambda: DataDict()))
+    datasources: dict = field(default_factory=lambda: defaultdict(lambda: DataDict()))
     properties: dict = field(default_factory=lambda: defaultdict(lambda: DataDict()))
     subpackages: dict = field(default_factory=lambda: {})
 
@@ -43,6 +46,7 @@ class ResourceAttribute:
     element: str
     required: bool
     will_replace: bool
+    repeatable: bool
 
     def as_dict(self):
         return asdict(self)
@@ -50,8 +54,13 @@ class ResourceAttribute:
 
 @dataclass
 class Resource:
+    package: Package = None
     name: str = ""
     attributes: dict = field(default_factory=lambda: {})
+
+    @property
+    def go_symbol(self):
+        return snake_caps(self.name)
     
     def as_dict(self):
         return asdict(self)
@@ -64,5 +73,9 @@ class Property:
     package: Package
     resource_name: str
 
+    @property
+    def go_symbol(self):
+        return snake_caps(self.name)
+    
     def as_dict(self):
         return asdict(self)
