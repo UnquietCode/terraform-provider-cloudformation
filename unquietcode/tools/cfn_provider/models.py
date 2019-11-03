@@ -56,6 +56,7 @@ class ResourceAttribute:
 class Resource:
     package: Package = None
     name: str = ""
+    cfn_type: str = ""
     attributes: dict = field(default_factory=lambda: {})
 
     @property

@@ -11,6 +11,7 @@ RESOURCE_ATTRIBUTE_TEMPLATE = Template(
 				Required: ${required},
 				ForceNew: ${force_replace},
 				MaxItems: ${max_items},
+				Set: ${set_function},
 			},
 """[1:])
 
@@ -36,11 +37,21 @@ def _render_attribute_template(*, attribute):
 		attribute_type = f'property{attribute_type.name}()'
 
 	attribute_elem = attribute.element
-	max_items = DEAD_LINE
+	max_items = None
+	set_function = None
 	
 	if attribute_elem is not None and not isinstance(attribute_elem, str):
 		attribute_elem = f'property{attribute_elem.name}()'
-		max_items = '1' if attribute.repeatable is not True else DEAD_LINE
+		
+		# TODO this is a hack until hashsets can be supported
+		# if attribute.repeatable is not True:
+		# max_items = '1'
+		
+	if attribute_type == 'schema.TypeSet':
+		if attribute_elem == '&schema.Schema{Type: schema.TypeString}':
+			set_function = 'schema.HashString'
+		elif attribute_elem == '&schema.Schema{Type: schema.TypeInt}':
+			set_function = 'schema.HashInt'
 	
 	rendered = RESOURCE_ATTRIBUTE_TEMPLATE.substitute(dict(
 		name=attribute.name,
@@ -48,7 +59,8 @@ def _render_attribute_template(*, attribute):
 		elem=attribute_elem or DEAD_LINE,
 		required="true" if attribute.required else "false",
 		force_replace="true" if attribute.will_replace else DEAD_LINE,
-		max_items=max_items,
+		max_items=max_items or DEAD_LINE,
+		set_function=set_function or DEAD_LINE,
 	))
 	
 	rendered = _remove_dead_lines(rendered)
@@ -85,25 +97,25 @@ ${attributes}
 }
 
 func resource${name}Create(d *schema.ResourceData, meta interface{}) error {
-	return nil
+	return cfn.resourceCreate("${cfn_type}", d, meta)
 }
 
 func resource${name}Read(d *schema.ResourceData, meta interface{}) error {
-	return nil
+	return cfn.resourceRead("${cfn_type}", d, meta)
 }
 
 func resource${name}Update(d *schema.ResourceData, meta interface{}) error {
-	return nil
+	return cfn.resourceUpdate("${cfn_type}", d, meta)
 }
 
 func resource${name}Delete(d *schema.ResourceData, meta interface{}) error {
-	return nil
+	return cfn.resourceDelete("${cfn_type}", d, meta)
 }
 """[1:])
 
 
 
-def render_resource_template(*, imports, package_name, resource_name, attributes):
+def render_resource_template(*, imports, package_name, resource_name, cfn_type, attributes):
 	rendered_attributes = [
 		_render_attribute_template(attribute=attribute)
 		for attribute in attributes
@@ -113,6 +125,7 @@ def render_resource_template(*, imports, package_name, resource_name, attributes
 	rendered = RESOURCE_TEMPLATE.substitute(dict(
 		package=package_name,
 		name=resource_name,
+		cfn_type=cfn_type,
 		attributes=rendered_attributes,
 		imports=_imports_stanza(imports)
 	))

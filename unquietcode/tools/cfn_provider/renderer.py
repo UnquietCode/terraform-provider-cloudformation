@@ -11,10 +11,10 @@ def _extract_imports(attributes):
     
     for attr in attributes:
         if not isinstance(attr.type, str):
-            imports.add(f'{attr.type.package.full_path}/property_{snake_caps(attr.type.name)}')
+            imports.add(attr.type.package.full_path)
 
         if attr.element is not None and not isinstance(attr.element, str):
-            imports.add(f'{attr.element.package.full_path}/property_{snake_caps(attr.element.name)}')
+            imports.add(attr.element.package.full_path)
 
     return imports
 
@@ -60,10 +60,12 @@ def render_provider(package, output_path):
 
 def render_resource(resource, output_path):
     imports = _extract_imports(resource.attributes.values())
+    imports.add('cfn')  # ensure top level package is imported
     
     rendered = render_resource_template(
         package_name=resource.package.full_path,
         resource_name=resource.name,
+        cfn_type=resource.cfn_type,
         attributes=resource.attributes.values(),
         imports=imports,
     )
@@ -74,7 +76,7 @@ def render_resource(resource, output_path):
 
 def render_property(property, output_path):
     imports = _extract_imports(property.attributes.values())
-        
+    
     rendered = render_property_template(
         package_name=property.package.full_path,
         property_name=property.name,

@@ -39,7 +39,7 @@ def handle_property(*, package, service, outer_name, inner_name, data):
     )
 
 
-def handle_resource(*, service, package, resource, resource_data):
+def handle_resource(*, service, package, resource, cfn_type, resource_data):
     created_name = f"{service}{resource}"
     resource_properties = resource_data['Properties']
     attributes = {}
@@ -50,6 +50,7 @@ def handle_resource(*, service, package, resource, resource_data):
 
     resource = Resource(
         name=created_name,
+        cfn_type=cfn_type,
         package=package,
         attributes=attributes,
     )
@@ -131,6 +132,7 @@ def handle_spec(data):
             service=service,
             package=package,
             resource=resource,
+            cfn_type=resource_name,
             resource_data=resource_data,
         )
         package.resources[resource_object.name] = resource_object

@@ -13,6 +13,7 @@ PRIMITIVE_TYPES_MAP = {
 COLLECTION_TYPES_MAP = {
     'Map': 'schema.TypeMap',
     'List': 'schema.TypeList',
+    'Set': 'schema.TypeSet',
 }
 
 
@@ -35,6 +36,14 @@ def translate_cfn_resource_type(property_data, schema_properties):
 
         # is a collection type
         if prop_type == 'List' or prop_type == 'Map':
+            allow_duplicates = property_data.get('DuplicatesAllowed')
+            
+            if allow_duplicates is False:
+                if prop_type == 'List':
+                    prop_type = 'Set'
+                elif prop_type == 'Map':
+                    pass  # maps just clobber the duplicates
+            
             type = COLLECTION_TYPES_MAP[prop_type]
             pitem_type = property_data.get('PrimitiveItemType')
 
@@ -46,17 +55,17 @@ def translate_cfn_resource_type(property_data, schema_properties):
             # is a collection of some other type
             else:
                 item_type = property_data.get('ItemType')
-                elemType = translate_cfn_complex_type(schema_properties, item_type, property_data)
+                elemType = translate_cfn_complex_type(schema_properties, item_type)
 
         # is some other type
         else:
-            type = translate_cfn_complex_type(schema_properties, prop_type, property_data)
+            type = translate_cfn_complex_type(schema_properties, prop_type)
 
     return type, elemType
 
 
 
-def translate_cfn_complex_type(schema_properties, name, propData):
+def translate_cfn_complex_type(schema_properties, name):
     if name is None:
         raise Exception('name is empty')
         
