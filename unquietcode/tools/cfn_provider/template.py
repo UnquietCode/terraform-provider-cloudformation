@@ -1,5 +1,10 @@
 import re
 from string import Template
+from datetime import date
+
+# TODO make these dynamic
+PROVIDER_VERSION = '0.0'
+SCHEMA_VERSION = '7.2.0'
 
 DEAD_LINE = '~x~x~x~x~x~x~x~'
 
@@ -67,6 +72,25 @@ def _render_attribute_template(*, attribute):
 	return rendered
 
 
+HEADER_TEMPLATE = Template(
+"""
+// This file is generated, and any modifications will be lost
+// when the file is next recreated.
+//
+// Generated on ${date}, using version ${provider_version} of the cfn
+// terraform provider, and version ${schema_version} of the CloudFormation
+// resource specification.
+"""[1:-1])
+
+
+def _header_stanza():
+	return HEADER_TEMPLATE.substitute(dict(
+		date=date.today().strftime("%Y-%m-%d"),
+		provider_version=PROVIDER_VERSION,
+		schema_version=SCHEMA_VERSION,
+	))
+	
+
 def _imports_stanza(imports):
 	import_lines = [f'	"github.com/unquietcode/cfn-provider/{i}"' for i in sorted(imports)]
 	import_lines = '\n'.join(import_lines)
@@ -76,6 +100,8 @@ def _imports_stanza(imports):
 
 RESOURCE_TEMPLATE = Template(
 """
+${header}
+
 package ${package}
 
 import (
@@ -123,6 +149,7 @@ def render_resource_template(*, imports, package_name, resource_name, cfn_type, 
 	rendered_attributes = '\n'.join(rendered_attributes)
 	
 	rendered = RESOURCE_TEMPLATE.substitute(dict(
+		header=_header_stanza(),
 		package=package_name,
 		name=resource_name,
 		cfn_type=cfn_type,
@@ -137,6 +164,8 @@ def render_resource_template(*, imports, package_name, resource_name, cfn_type, 
 
 PROPERTY_TEMPLATE = Template(
 """
+${header}
+
 package ${package}
 
 import (
@@ -151,7 +180,7 @@ ${attributes}
 		},
 	}
 }
-"""[1:])
+"""[1:-1])
 
 
 def render_property_template(*, package_name, property_name, attributes, imports):
@@ -162,6 +191,7 @@ def render_property_template(*, package_name, property_name, attributes, imports
 	rendered_attributes = '\n'.join(rendered_attributes)
 	
 	rendered = PROPERTY_TEMPLATE.substitute(dict(
+		header=_header_stanza(),
 		package=package_name,
 		name=property_name,
 		attributes=rendered_attributes,
@@ -188,6 +218,8 @@ def _datasources_stanza(datasources):
 
 PROVIDER_TEMPLATE = Template(
 """
+${header}
+
 package ${package}
 
 import (
@@ -211,6 +243,7 @@ ${resources}
 
 def render_provider_template(*, package_name, imports, datasources, resources):
 	rendered = PROVIDER_TEMPLATE.substitute(dict(
+		header=_header_stanza(),
 		package=package_name,
 		imports=_imports_stanza(imports),
 		resources=_resources_stanza(resources),
