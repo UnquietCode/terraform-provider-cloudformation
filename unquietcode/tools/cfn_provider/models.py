@@ -48,6 +48,10 @@ class ResourceAttribute:
     will_replace: bool
     repeatable: bool
 
+    @property
+    def go_symbol(self):
+        return snake_caps(self.name)
+        
     def as_dict(self):
         return asdict(self)
 

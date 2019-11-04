@@ -54,7 +54,7 @@ def _render_attribute_template(*, attribute):
 			set_function = 'schema.HashInt'
 	
 	rendered = RESOURCE_ATTRIBUTE_TEMPLATE.substitute(dict(
-		name=attribute.name,
+		name=attribute.go_symbol,
 		type=attribute_type,
 		elem=attribute_elem or DEAD_LINE,
 		required="true" if attribute.required else "false",
@@ -96,20 +96,20 @@ ${attributes}
 	}
 }
 
-func resource${name}Create(d *schema.ResourceData, meta interface{}) error {
-	return cfn.resourceCreate("${cfn_type}", d, meta)
+func resource${name}Create(data *schema.ResourceData, meta interface{}) error {
+	return cfn.resourceCreate("${cfn_type}", data, meta)
 }
 
-func resource${name}Read(d *schema.ResourceData, meta interface{}) error {
-	return cfn.resourceRead("${cfn_type}", d, meta)
+func resource${name}Read(data *schema.ResourceData, meta interface{}) error {
+	return cfn.resourceRead("${cfn_type}", data, meta)
 }
 
-func resource${name}Update(d *schema.ResourceData, meta interface{}) error {
-	return cfn.resourceUpdate("${cfn_type}", d, meta)
+func resource${name}Update(data *schema.ResourceData, meta interface{}) error {
+	return cfn.resourceUpdate("${cfn_type}", data, meta)
 }
 
-func resource${name}Delete(d *schema.ResourceData, meta interface{}) error {
-	return cfn.resourceDelete("${cfn_type}", d, meta)
+func resource${name}Delete(data *schema.ResourceData, meta interface{}) error {
+	return cfn.resourceDelete("${cfn_type}", data, meta)
 }
 """[1:])
 
