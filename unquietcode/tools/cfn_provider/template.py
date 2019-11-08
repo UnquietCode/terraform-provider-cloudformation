@@ -1,6 +1,7 @@
 import re
 from string import Template
 from datetime import date
+from unquietcode.tools.cfn_provider.models import ComplexType
 
 # TODO make these dynamic
 PROVIDER_VERSION = '0.0'
@@ -35,37 +36,40 @@ def _remove_dead_lines(content):
 	return content
 
 
-def _render_attribute_template(*, attribute):
-	attribute_type = attribute.type
+def _render_attribute_template(*, package_name, attribute):
+	attribute_type = attribute.type.type
 	
-	if not isinstance(attribute_type, str):
-		attribute_type = f'property{attribute_type.name}()'
+	if isinstance(attribute_type, ComplexType):
+		at_property_prefix = 'property'
+		
+		if attribute_type.package.full_path == 'cfn/misc':
+			at_property_prefix = 'Property'
+				
+		attribute_type = f'{at_property_prefix}{attribute_type.name}()'
 
-	attribute_elem = attribute.element
-	max_items = None
-	set_function = None
+	attribute_elem = attribute.type.element_type
 	
 	if attribute_elem is not None and not isinstance(attribute_elem, str):
-		attribute_elem = f'property{attribute_elem.name}()'
+		package_prefix = ""
 		
-		# TODO this is a hack until hashsets can be supported
-		# if attribute.repeatable is not True:
-		# max_items = '1'
+		if attribute_elem.package.name != package_name:
+			package_prefix = attribute_elem.package.name + "."
+			
+		ae_property_prefix = 'property'
 		
-	if attribute_type == 'schema.TypeSet':
-		if attribute_elem == '&schema.Schema{Type: schema.TypeString}':
-			set_function = 'schema.HashString'
-		elif attribute_elem == '&schema.Schema{Type: schema.TypeInt}':
-			set_function = 'schema.HashInt'
-	
+		if attribute_elem.package.full_path == 'cfn/misc':
+			ae_property_prefix = 'Property'
+		
+		attribute_elem = f'{package_prefix}{ae_property_prefix}{attribute_elem.name}()'
+		
 	rendered = RESOURCE_ATTRIBUTE_TEMPLATE.substitute(dict(
 		name=attribute.go_symbol,
 		type=attribute_type,
 		elem=attribute_elem or DEAD_LINE,
 		required="true" if attribute.required else "false",
 		force_replace="true" if attribute.will_replace else DEAD_LINE,
-		max_items=max_items or DEAD_LINE,
-		set_function=set_function or DEAD_LINE,
+		max_items=attribute.type.max_items or DEAD_LINE,
+		set_function=attribute.type.set_function or DEAD_LINE,
 	))
 	
 	rendered = _remove_dead_lines(rendered)
@@ -85,14 +89,14 @@ HEADER_TEMPLATE = Template(
 
 def _header_stanza():
 	return HEADER_TEMPLATE.substitute(dict(
-		date=date.today().strftime("%Y-%m-%d"),
+		date=date.today().strftime("%d-%m-%Y"),
 		provider_version=PROVIDER_VERSION,
 		schema_version=SCHEMA_VERSION,
 	))
 	
 
 def _imports_stanza(imports):
-	import_lines = [f'	"github.com/unquietcode/cfn-provider/{i}"' for i in sorted(imports)]
+	import_lines = [f'	"github.com/unquietcode/terraform-cfn-provider/{i}"' for i in sorted(imports)]
 	import_lines = '\n'.join(import_lines)
 	
 	return import_lines or DEAD_LINE
@@ -109,7 +113,7 @@ import (
 ${imports}
 )
 
-func resource${name}() *schema.Resource {
+func Resource${name}() *schema.Resource {
 	return &schema.Resource{
 		Create: resource${name}Create,
 		Read:   resource${name}Read,
@@ -123,19 +127,19 @@ ${attributes}
 }
 
 func resource${name}Create(data *schema.ResourceData, meta interface{}) error {
-	return cfn.resourceCreate("${cfn_type}", data, meta)
+	return plugin.ResourceCreate("${cfn_type}", data, meta)
 }
 
 func resource${name}Read(data *schema.ResourceData, meta interface{}) error {
-	return cfn.resourceRead("${cfn_type}", data, meta)
+	return plugin.ResourceRead("${cfn_type}", data, meta)
 }
 
 func resource${name}Update(data *schema.ResourceData, meta interface{}) error {
-	return cfn.resourceUpdate("${cfn_type}", data, meta)
+	return plugin.ResourceUpdate("${cfn_type}", data, meta)
 }
 
 func resource${name}Delete(data *schema.ResourceData, meta interface{}) error {
-	return cfn.resourceDelete("${cfn_type}", data, meta)
+	return plugin.ResourceDelete("${cfn_type}", data, meta)
 }
 """[1:])
 
@@ -143,7 +147,7 @@ func resource${name}Delete(data *schema.ResourceData, meta interface{}) error {
 
 def render_resource_template(*, imports, package_name, resource_name, cfn_type, attributes):
 	rendered_attributes = [
-		_render_attribute_template(attribute=attribute)
+		_render_attribute_template(package_name=package_name, attribute=attribute)
 		for attribute in attributes
 	]
 	rendered_attributes = '\n'.join(rendered_attributes)
@@ -173,19 +177,19 @@ import (
 ${imports}
 )
 
-func property${name}() *schema.Resource {
+func ${prefix}${name}() *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 ${attributes}
 		},
 	}
 }
-"""[1:-1])
+"""[1:])
 
 
 def render_property_template(*, package_name, property_name, attributes, imports):
 	rendered_attributes = [
-		_render_attribute_template(attribute=attribute)
+		_render_attribute_template(package_name=package_name, attribute=attribute)
 		for attribute in attributes
 	]
 	rendered_attributes = '\n'.join(rendered_attributes)
@@ -193,6 +197,7 @@ def render_property_template(*, package_name, property_name, attributes, imports
 	rendered = PROPERTY_TEMPLATE.substitute(dict(
 		header=_header_stanza(),
 		package=package_name,
+		prefix='property' if property_name != 'Tag' else 'Property',
 		name=property_name,
 		attributes=rendered_attributes,
 		imports=_imports_stanza(imports),
@@ -203,13 +208,13 @@ def render_property_template(*, package_name, property_name, attributes, imports
 
 
 def _resources_stanza(resources):
-	resource_lines = [f'			"{r.go_symbol}_resource": resource{r.name}(),' for r in resources]
+	resource_lines = [f'			"{r.go_symbol}_resource": {r.package.name}.Resource{r.name}(),' for r in resources]
 	resource_lines = '\n'.join(resource_lines)
 	return resource_lines or DEAD_LINE
 
 
 def _datasources_stanza(datasources):
-	datasource_lines = [f'			"{d.go_symbol}_data_source": datasource{d.name}(),' for d in datasources]
+	datasource_lines = [f'			"{d.go_symbol}_data_source": {d.package.name}.Datasource{d.name}(),' for d in datasources]
 	datasource_lines = '\n'.join(datasource_lines)
 	return datasource_lines or DEAD_LINE
 

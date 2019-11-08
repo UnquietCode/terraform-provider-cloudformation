@@ -6,7 +6,7 @@ from unquietcode.tools.cfn_provider.renderer import render_provider
 
 THIS_DIR = os.path.dirname(os.path.realpath(__file__))
 SPEC_FILE = f"{THIS_DIR}/CloudFormationResourceSpecification-us-east-1.json"
-OUT_DIR = f"{THIS_DIR}/out"
+OUT_DIR = f"{THIS_DIR}/go"
 
 
 

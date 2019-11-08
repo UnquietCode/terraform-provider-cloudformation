@@ -1,3 +1,4 @@
+from enum import Enum, auto, unique
 from collections import defaultdict
 from dataclasses import dataclass, asdict, field
 
@@ -37,16 +38,71 @@ class Package:
             'resources': {k:v.as_dict() for k,v in self.resources.items()},
             'subpackages': {k:v.as_dict() for k,v in self.subpackages.items()},
         }
+
+
+@unique
+class CF_Type(Enum):
+    def _generate_next_value_(name, start, count, last_values):
+        return name
     
+    # primitives
+    String     = auto()
+    Long       = auto()
+    Integer    = auto()
+    Double     = auto()
+    Boolean    = auto()
+    Timestamp  = auto()
+    Json       = auto()
+    
+    # collections
+    List       = auto()
+    Map        = auto()
+
+
+@unique
+class TF_Type(Enum):
+    def _generate_next_value_(name, start, count, last_values):
+        return f'schema.Type{name}'
+            
+    String  = auto()
+    Int     = auto()
+    Float   = auto()
+    Bool    = auto()
+    Map     = auto()
+    List    = auto()
+    Set     = auto()
+    
+    @property
+    def schema_type(self):
+        return "&schema.Schema{Type: "+self.value+"}"
+
+    def __repr__(self):
+        return self.value
+        
+    def __str__(self):
+        return self.value
+
+@dataclass
+class AttributeType:
+    type: str
+    element_type: str
+    min_items: int
+    max_items: int
+    set_function: str
+    
+    def as_dict(self):
+        return asdict(self)
+
     
 @dataclass
 class ResourceAttribute:
     name: str
-    type: str
-    element: str
+    type: AttributeType
+    # type: str
+    # element: str
     required: bool
     will_replace: bool
-    repeatable: bool
+    # repeatable: bool
 
     @property
     def go_symbol(self):
@@ -57,30 +113,30 @@ class ResourceAttribute:
 
 
 @dataclass
-class Resource:
-    package: Package = None
+class ComplexType:
     name: str = ""
-    cfn_type: str = ""
-    attributes: dict = field(default_factory=lambda: {})
+    package: Package = None
 
     @property
     def go_symbol(self):
         return snake_caps(self.name)
-    
+
+
+@dataclass
+class Resource(ComplexType):
+    cfn_type: str = ""
+    attributes: dict = field(default_factory=lambda: {})
+
     def as_dict(self):
         return asdict(self)
 
 
-@dataclass(frozen=True)
-class Property:
-    name: str
-    attributes: dict
-    package: Package
-    resource_name: str
-
-    @property
-    def go_symbol(self):
-        return snake_caps(self.name)
+@dataclass
+class Property(ComplexType):
+    attributes: dict = field(default_factory=lambda: {})
+    
+    # TODO deprecated?
+    resource_name: str = ""
     
     def as_dict(self):
         return asdict(self)
