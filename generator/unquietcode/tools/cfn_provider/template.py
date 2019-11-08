@@ -5,7 +5,6 @@ from unquietcode.tools.cfn_provider.models import ComplexType
 
 # TODO make these dynamic
 PROVIDER_VERSION = '0.0'
-SCHEMA_VERSION = '7.2.0'
 
 DEAD_LINE = '~x~x~x~x~x~x~x~'
 
@@ -87,11 +86,11 @@ HEADER_TEMPLATE = Template(
 """[1:-1])
 
 
-def _header_stanza():
+def _header_stanza(cfn_version):
 	return HEADER_TEMPLATE.substitute(dict(
 		date=date.today().strftime("%d-%m-%Y"),
 		provider_version=PROVIDER_VERSION,
-		schema_version=SCHEMA_VERSION,
+		schema_version=cfn_version,
 	))
 	
 
@@ -145,7 +144,7 @@ func resource${name}Delete(data *schema.ResourceData, meta interface{}) error {
 
 
 
-def render_resource_template(*, imports, package_name, resource_name, cfn_type, attributes):
+def render_resource_template(*, cfn_version, imports, package_name, resource_name, cfn_type, attributes):
 	rendered_attributes = [
 		_render_attribute_template(package_name=package_name, attribute=attribute)
 		for attribute in attributes
@@ -153,7 +152,7 @@ def render_resource_template(*, imports, package_name, resource_name, cfn_type, 
 	rendered_attributes = '\n'.join(rendered_attributes)
 	
 	rendered = RESOURCE_TEMPLATE.substitute(dict(
-		header=_header_stanza(),
+		header=_header_stanza(cfn_version),
 		package=package_name,
 		name=resource_name,
 		cfn_type=cfn_type,
@@ -187,7 +186,7 @@ ${attributes}
 """[1:])
 
 
-def render_property_template(*, package_name, property_name, attributes, imports):
+def render_property_template(*, cfn_version, package_name, property_name, attributes, imports):
 	rendered_attributes = [
 		_render_attribute_template(package_name=package_name, attribute=attribute)
 		for attribute in attributes
@@ -195,7 +194,7 @@ def render_property_template(*, package_name, property_name, attributes, imports
 	rendered_attributes = '\n'.join(rendered_attributes)
 	
 	rendered = PROPERTY_TEMPLATE.substitute(dict(
-		header=_header_stanza(),
+		header=_header_stanza(cfn_version),
 		package=package_name,
 		prefix='property' if property_name != 'Tag' else 'Property',
 		name=property_name,
@@ -246,9 +245,9 @@ ${resources}
 """[1:])
 
 
-def render_provider_template(*, package_name, imports, datasources, resources):
+def render_provider_template(*, cfn_version, package_name, imports, datasources, resources):
 	rendered = PROVIDER_TEMPLATE.substitute(dict(
-		header=_header_stanza(),
+		header=_header_stanza(cfn_version),
 		package=package_name,
 		imports=_imports_stanza(imports),
 		resources=_resources_stanza(resources),

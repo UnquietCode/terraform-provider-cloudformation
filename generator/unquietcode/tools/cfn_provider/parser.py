@@ -1,4 +1,4 @@
-from unquietcode.tools.cfn_provider.models import ResourceAttribute, Property, Resource, Package
+from unquietcode.tools.cfn_provider.models import ResourceAttribute, Property, Resource, Package, Provider
 from unquietcode.tools.cfn_provider.type_support import translate_cfn_resource_type#, translate_cfn_property_type
 
 
@@ -7,18 +7,11 @@ def handle_resource_property(property_name, property_data, schema_properties):
     required = property_data['Required']
     will_replace = property_data['UpdateType'] == 'Immutable'
 
-    # if 'DuplicatesAllowed' in property_data:
-        # repeatable = property_data['DuplicatesAllowed']
-    # else:
-        # repeatable = False
-    
     return ResourceAttribute(
         name=property_name,
         type=attribute_type,
-        # element=elemType,
         required=required,
         will_replace=will_replace,
-        # repeatable=repeatable,
     )
 
 # TODO need to handle missing properties better
@@ -81,7 +74,7 @@ def handle_special_prop(package, name, data):
     package.properties[name] = property
 
 
-def handle_spec(data):
+def handle_provider(data) -> Provider:
     super_package = Package(name='cfn')
     services_package = _get_or_create_package(super_package, 'services')
     misc_package = _get_or_create_package(super_package, 'misc')
@@ -139,5 +132,10 @@ def handle_spec(data):
         )
         package.resources[resource_object.name] = resource_object
     
-        
-    return super_package
+    # metadata
+    cfn_version = data['ResourceSpecificationVersion']
+    
+    return Provider(
+        top_level_package=super_package,
+        cfn_version=cfn_version,
+    )

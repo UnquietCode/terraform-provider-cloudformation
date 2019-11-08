@@ -20,10 +20,11 @@ def _extract_imports(attributes):
     return imports
 
 
-def render_provider(package, output_path):
-
+def render_provider(provider_data, output_path):
+    package = provider_data.top_level_package
+    
     # do the normal rendering first
-    render_package(package, output_path)
+    render_package(provider_data.cfn_version, package, output_path)
     
     # gather up all the imports, resources, etc
     imports = set()
@@ -51,6 +52,7 @@ def render_provider(package, output_path):
     imports.discard(package.full_path)
     
     rendered = render_provider_template(
+        cfn_version=provider_data.cfn_version,
         package_name=package.name,
         resources=resources,
         datasources=datasources,
@@ -61,13 +63,14 @@ def render_provider(package, output_path):
         file_.write(rendered)
 
 
-def render_resource(resource, output_path):
+def render_resource(cfn_version, resource, output_path):
     imports = _extract_imports(resource.attributes.values())
     # imports.add('cfn')  # ensure top level package is imported
     imports.add('plugin')
     imports.discard(resource.package.full_path)  # remove self
     
     rendered = render_resource_template(
+        cfn_version=cfn_version,
         package_name=resource.package.name,
         resource_name=resource.name,
         cfn_type=resource.cfn_type,
@@ -79,11 +82,12 @@ def render_resource(resource, output_path):
         file_.write(rendered)
     
 
-def render_property(property, output_path):
+def render_property(cfn_version, property, output_path):
     imports = _extract_imports(property.attributes.values())
     imports.discard(property.package.full_path)  # remove self
     
     rendered = render_property_template(
+        cfn_version=cfn_version,
         package_name=property.package.name,
         property_name=property.name,
         attributes=property.attributes.values(),
@@ -124,7 +128,7 @@ def _patch_deferred_types(package, attributes):
         attr.type.element_type = _handle_deferred_types(package, attr.type.element_type)
 
 
-def render_package(package, output_path):
+def render_package(cfn_version, package, output_path):
     created_directory = f"{output_path}/{package.name}"
     os.makedirs(created_directory, exist_ok=True)
     
@@ -139,14 +143,13 @@ def render_package(package, output_path):
     for property in package.properties.values():
         file_name = f"property_{property.go_symbol}.go"
         file_path = f"{created_directory}/{file_name}"
-        
-        render_property(property, file_path)
+        render_property(cfn_version, property, file_path)
     
     # render resources
     for resource in package.resources.values():
         file_name = f"resource_{resource.go_symbol}.go"
         file_path = f"{created_directory}/{file_name}"
-        render_resource(resource, file_path)
+        render_resource(cfn_version, resource, file_path)
     
     # print(json.dumps(package.as_dict(), indent=2))
     
@@ -154,4 +157,4 @@ def render_package(package, output_path):
     sorted_subpackages = sorted(package.subpackages.values(), key=lambda _: _.name)
     
     for subpackage in sorted_subpackages:
-        render_package(subpackage, created_directory)
+        render_package(cfn_version, subpackage, created_directory)

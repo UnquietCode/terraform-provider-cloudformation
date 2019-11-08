@@ -98,11 +98,8 @@ class AttributeType:
 class ResourceAttribute:
     name: str
     type: AttributeType
-    # type: str
-    # element: str
     required: bool
     will_replace: bool
-    # repeatable: bool
 
     @property
     def go_symbol(self):
@@ -140,3 +137,9 @@ class Property(ComplexType):
     
     def as_dict(self):
         return asdict(self)
+
+
+@dataclass
+class Provider:
+    top_level_package: Package
+    cfn_version: str
