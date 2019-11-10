@@ -25,7 +25,6 @@ func ResourceStepFunctionsActivity() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 				ForceNew: true,
 			},
 			"tags": {

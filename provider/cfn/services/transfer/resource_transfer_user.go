@@ -26,13 +26,11 @@ func ResourceTransferUser() *schema.Resource {
 			"server_id": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 				ForceNew: true,
 			},
 			"user_name": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 				ForceNew: true,
 			},
 			"arn": {

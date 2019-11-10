@@ -31,7 +31,6 @@ func ResourceRoute53ResolverResolverRule() *schema.Resource {
 			"domain_name": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 				ForceNew: true,
 			},
 			"resolver_rule_id": {

@@ -25,13 +25,11 @@ func ResourceIoT1ClickDevice() *schema.Resource {
 			"device_id": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 				ForceNew: true,
 			},
 			"enabled": {
 				Type: schema.TypeBool,
 				Required: true,
-				Computed: true,
 			},
 			"arn": {
 				Type: schema.TypeString,

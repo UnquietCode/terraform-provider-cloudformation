@@ -35,7 +35,6 @@ func ResourceEC2CapacityReservation() *schema.Resource {
 			"availability_zone": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 				ForceNew: true,
 			},
 			"total_instance_count": {
@@ -45,7 +44,6 @@ func ResourceEC2CapacityReservation() *schema.Resource {
 			"instance_type": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 				ForceNew: true,
 			},
 			"end_date_type": {

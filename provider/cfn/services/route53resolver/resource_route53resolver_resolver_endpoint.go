@@ -38,7 +38,6 @@ func ResourceRoute53ResolverResolverEndpoint() *schema.Resource {
 			"direction": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 				ForceNew: true,
 			},
 			"host_vpc_id": {

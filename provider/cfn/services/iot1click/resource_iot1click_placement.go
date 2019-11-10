@@ -31,7 +31,6 @@ func ResourceIoT1ClickPlacement() *schema.Resource {
 			"project_name": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 				ForceNew: true,
 			},
 			"associated_devices": {

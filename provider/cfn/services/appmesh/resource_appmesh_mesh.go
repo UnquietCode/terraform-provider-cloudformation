@@ -30,7 +30,6 @@ func ResourceAppMeshMesh() *schema.Resource {
 			"mesh_name": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 				ForceNew: true,
 			},
 			"arn": {

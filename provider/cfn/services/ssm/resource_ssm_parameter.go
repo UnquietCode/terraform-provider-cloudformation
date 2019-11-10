@@ -25,12 +25,10 @@ func ResourceSSMParameter() *schema.Resource {
 			"type": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 			},
 			"value": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 			},
 			"description": {
 				Type: schema.TypeString,

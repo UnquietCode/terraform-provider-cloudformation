@@ -26,7 +26,6 @@ func ResourceAmplifyBranch() *schema.Resource {
 			"branch_name": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 				ForceNew: true,
 			},
 			"arn": {

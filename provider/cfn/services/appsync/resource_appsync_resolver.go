@@ -25,7 +25,6 @@ func ResourceAppSyncResolver() *schema.Resource {
 			"type_name": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 				ForceNew: true,
 			},
 			"resolver_arn": {
@@ -35,7 +34,6 @@ func ResourceAppSyncResolver() *schema.Resource {
 			"field_name": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 				ForceNew: true,
 			},
 			"response_mapping_template_s3_location": {

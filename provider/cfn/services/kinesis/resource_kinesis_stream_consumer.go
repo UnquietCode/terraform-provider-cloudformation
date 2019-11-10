@@ -29,7 +29,6 @@ func ResourceKinesisStreamConsumer() *schema.Resource {
 			"consumer_name": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 				ForceNew: true,
 			},
 			"consumer_arn": {
@@ -43,7 +42,6 @@ func ResourceKinesisStreamConsumer() *schema.Resource {
 			"stream_arn": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 				ForceNew: true,
 			},
 		},

@@ -25,7 +25,6 @@ func ResourceBackupBackupVault() *schema.Resource {
 			"backup_vault_name": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 				ForceNew: true,
 			},
 			"backup_vault_arn": {

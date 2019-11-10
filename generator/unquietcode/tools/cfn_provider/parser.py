@@ -74,8 +74,9 @@ def handle_resource(*, service, package, resource_name, cfn_type, resource_data)
     
     for property_name, property_data in resource_properties.items():
         
-        # computable if an attribute exists
-        computed = property_name in resource_attributes
+        # computable if an attribute exists and it is not required
+        computed = property_name in resource_attributes \
+               and property_data.get('Required') is not True
         
         attribute = handle_resource_property(
             resource_name=resource_name,

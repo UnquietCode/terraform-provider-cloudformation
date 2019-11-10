@@ -25,13 +25,11 @@ func ResourceRoute53ResolverResolverRuleAssociation() *schema.Resource {
 			"vpc_id": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 				ForceNew: true,
 			},
 			"resolver_rule_id": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 				ForceNew: true,
 			},
 			"resolver_rule_association_id": {

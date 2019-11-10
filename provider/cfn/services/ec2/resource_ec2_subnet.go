@@ -41,7 +41,6 @@ func ResourceEC2Subnet() *schema.Resource {
 			"vpc_id": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 				ForceNew: true,
 			},
 			"assign_ipv6_address_on_creation": {

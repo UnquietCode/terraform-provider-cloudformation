@@ -29,7 +29,6 @@ func ResourceAppSyncDataSource() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 				ForceNew: true,
 			},
 			"type": {

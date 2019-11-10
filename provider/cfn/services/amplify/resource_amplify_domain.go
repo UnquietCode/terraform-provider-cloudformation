@@ -25,7 +25,6 @@ func ResourceAmplifyDomain() *schema.Resource {
 			"domain_name": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 				ForceNew: true,
 			},
 			"status_reason": {

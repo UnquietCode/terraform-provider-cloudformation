@@ -37,7 +37,6 @@ func ResourceGreengrassCoreDefinition() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 			},
 			"initial_version": {
 				Type: schema.TypeList,

@@ -26,7 +26,6 @@ func ResourceEC2VPC() *schema.Resource {
 			"cidr_block": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 				ForceNew: true,
 			},
 			"cidr_block_associations": {

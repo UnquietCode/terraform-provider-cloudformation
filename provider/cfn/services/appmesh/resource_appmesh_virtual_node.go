@@ -30,7 +30,6 @@ func ResourceAppMeshVirtualNode() *schema.Resource {
 			"mesh_name": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 				ForceNew: true,
 			},
 			"arn": {
@@ -40,7 +39,6 @@ func ResourceAppMeshVirtualNode() *schema.Resource {
 			"virtual_node_name": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 				ForceNew: true,
 			},
 			"spec": {

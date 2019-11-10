@@ -25,7 +25,6 @@ func ResourceBackupBackupSelection() *schema.Resource {
 			"backup_plan_id": {
 				Type: schema.TypeString,
 				Required: true,
-				Computed: true,
 				ForceNew: true,
 			},
 			"selection_id": {
