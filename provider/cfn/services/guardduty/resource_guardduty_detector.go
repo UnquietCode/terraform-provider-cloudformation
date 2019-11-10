@@ -35,15 +35,15 @@ func ResourceGuardDutyDetector() *schema.Resource {
 }
 
 func resourceGuardDutyDetectorCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::GuardDuty::Detector", data, meta)
+	return plugin.ResourceCreate("AWS::GuardDuty::Detector", ResourceGuardDutyDetector(), data, meta)
 }
 
 func resourceGuardDutyDetectorRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::GuardDuty::Detector", data, meta)
+	return plugin.ResourceRead("AWS::GuardDuty::Detector", ResourceGuardDutyDetector(), data, meta)
 }
 
 func resourceGuardDutyDetectorUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::GuardDuty::Detector", data, meta)
+	return plugin.ResourceUpdate("AWS::GuardDuty::Detector", ResourceGuardDutyDetector(), data, meta)
 }
 
 func resourceGuardDutyDetectorDelete(data *schema.ResourceData, meta interface{}) error {

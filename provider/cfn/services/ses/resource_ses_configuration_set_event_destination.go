@@ -38,15 +38,15 @@ func ResourceSESConfigurationSetEventDestination() *schema.Resource {
 }
 
 func resourceSESConfigurationSetEventDestinationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SES::ConfigurationSetEventDestination", data, meta)
+	return plugin.ResourceCreate("AWS::SES::ConfigurationSetEventDestination", ResourceSESConfigurationSetEventDestination(), data, meta)
 }
 
 func resourceSESConfigurationSetEventDestinationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SES::ConfigurationSetEventDestination", data, meta)
+	return plugin.ResourceRead("AWS::SES::ConfigurationSetEventDestination", ResourceSESConfigurationSetEventDestination(), data, meta)
 }
 
 func resourceSESConfigurationSetEventDestinationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SES::ConfigurationSetEventDestination", data, meta)
+	return plugin.ResourceUpdate("AWS::SES::ConfigurationSetEventDestination", ResourceSESConfigurationSetEventDestination(), data, meta)
 }
 
 func resourceSESConfigurationSetEventDestinationDelete(data *schema.ResourceData, meta interface{}) error {

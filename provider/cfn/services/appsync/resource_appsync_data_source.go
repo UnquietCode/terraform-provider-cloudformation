@@ -83,15 +83,15 @@ func ResourceAppSyncDataSource() *schema.Resource {
 }
 
 func resourceAppSyncDataSourceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppSync::DataSource", data, meta)
+	return plugin.ResourceCreate("AWS::AppSync::DataSource", ResourceAppSyncDataSource(), data, meta)
 }
 
 func resourceAppSyncDataSourceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppSync::DataSource", data, meta)
+	return plugin.ResourceRead("AWS::AppSync::DataSource", ResourceAppSyncDataSource(), data, meta)
 }
 
 func resourceAppSyncDataSourceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppSync::DataSource", data, meta)
+	return plugin.ResourceUpdate("AWS::AppSync::DataSource", ResourceAppSyncDataSource(), data, meta)
 }
 
 func resourceAppSyncDataSourceDelete(data *schema.ResourceData, meta interface{}) error {

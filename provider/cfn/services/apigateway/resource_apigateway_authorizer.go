@@ -70,15 +70,15 @@ func ResourceApiGatewayAuthorizer() *schema.Resource {
 }
 
 func resourceApiGatewayAuthorizerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::Authorizer", data, meta)
+	return plugin.ResourceCreate("AWS::ApiGateway::Authorizer", ResourceApiGatewayAuthorizer(), data, meta)
 }
 
 func resourceApiGatewayAuthorizerRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGateway::Authorizer", data, meta)
+	return plugin.ResourceRead("AWS::ApiGateway::Authorizer", ResourceApiGatewayAuthorizer(), data, meta)
 }
 
 func resourceApiGatewayAuthorizerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGateway::Authorizer", data, meta)
+	return plugin.ResourceUpdate("AWS::ApiGateway::Authorizer", ResourceApiGatewayAuthorizer(), data, meta)
 }
 
 func resourceApiGatewayAuthorizerDelete(data *schema.ResourceData, meta interface{}) error {

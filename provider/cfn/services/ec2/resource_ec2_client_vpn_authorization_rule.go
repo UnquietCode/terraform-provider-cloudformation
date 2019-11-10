@@ -51,15 +51,15 @@ func ResourceEC2ClientVpnAuthorizationRule() *schema.Resource {
 }
 
 func resourceEC2ClientVpnAuthorizationRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::ClientVpnAuthorizationRule", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::ClientVpnAuthorizationRule", ResourceEC2ClientVpnAuthorizationRule(), data, meta)
 }
 
 func resourceEC2ClientVpnAuthorizationRuleRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::ClientVpnAuthorizationRule", data, meta)
+	return plugin.ResourceRead("AWS::EC2::ClientVpnAuthorizationRule", ResourceEC2ClientVpnAuthorizationRule(), data, meta)
 }
 
 func resourceEC2ClientVpnAuthorizationRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::ClientVpnAuthorizationRule", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::ClientVpnAuthorizationRule", ResourceEC2ClientVpnAuthorizationRule(), data, meta)
 }
 
 func resourceEC2ClientVpnAuthorizationRuleDelete(data *schema.ResourceData, meta interface{}) error {

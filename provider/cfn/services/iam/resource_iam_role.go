@@ -78,15 +78,15 @@ func ResourceIAMRole() *schema.Resource {
 }
 
 func resourceIAMRoleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IAM::Role", data, meta)
+	return plugin.ResourceCreate("AWS::IAM::Role", ResourceIAMRole(), data, meta)
 }
 
 func resourceIAMRoleRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IAM::Role", data, meta)
+	return plugin.ResourceRead("AWS::IAM::Role", ResourceIAMRole(), data, meta)
 }
 
 func resourceIAMRoleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IAM::Role", data, meta)
+	return plugin.ResourceUpdate("AWS::IAM::Role", ResourceIAMRole(), data, meta)
 }
 
 func resourceIAMRoleDelete(data *schema.ResourceData, meta interface{}) error {

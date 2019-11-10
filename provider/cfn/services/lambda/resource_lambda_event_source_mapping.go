@@ -53,15 +53,15 @@ func ResourceLambdaEventSourceMapping() *schema.Resource {
 }
 
 func resourceLambdaEventSourceMappingCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Lambda::EventSourceMapping", data, meta)
+	return plugin.ResourceCreate("AWS::Lambda::EventSourceMapping", ResourceLambdaEventSourceMapping(), data, meta)
 }
 
 func resourceLambdaEventSourceMappingRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Lambda::EventSourceMapping", data, meta)
+	return plugin.ResourceRead("AWS::Lambda::EventSourceMapping", ResourceLambdaEventSourceMapping(), data, meta)
 }
 
 func resourceLambdaEventSourceMappingUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Lambda::EventSourceMapping", data, meta)
+	return plugin.ResourceUpdate("AWS::Lambda::EventSourceMapping", ResourceLambdaEventSourceMapping(), data, meta)
 }
 
 func resourceLambdaEventSourceMappingDelete(data *schema.ResourceData, meta interface{}) error {

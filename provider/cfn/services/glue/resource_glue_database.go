@@ -38,15 +38,15 @@ func ResourceGlueDatabase() *schema.Resource {
 }
 
 func resourceGlueDatabaseCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::Database", data, meta)
+	return plugin.ResourceCreate("AWS::Glue::Database", ResourceGlueDatabase(), data, meta)
 }
 
 func resourceGlueDatabaseRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Glue::Database", data, meta)
+	return plugin.ResourceRead("AWS::Glue::Database", ResourceGlueDatabase(), data, meta)
 }
 
 func resourceGlueDatabaseUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Glue::Database", data, meta)
+	return plugin.ResourceUpdate("AWS::Glue::Database", ResourceGlueDatabase(), data, meta)
 }
 
 func resourceGlueDatabaseDelete(data *schema.ResourceData, meta interface{}) error {

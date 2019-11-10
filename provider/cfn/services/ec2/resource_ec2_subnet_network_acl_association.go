@@ -41,15 +41,15 @@ func ResourceEC2SubnetNetworkAclAssociation() *schema.Resource {
 }
 
 func resourceEC2SubnetNetworkAclAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::SubnetNetworkAclAssociation", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::SubnetNetworkAclAssociation", ResourceEC2SubnetNetworkAclAssociation(), data, meta)
 }
 
 func resourceEC2SubnetNetworkAclAssociationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::SubnetNetworkAclAssociation", data, meta)
+	return plugin.ResourceRead("AWS::EC2::SubnetNetworkAclAssociation", ResourceEC2SubnetNetworkAclAssociation(), data, meta)
 }
 
 func resourceEC2SubnetNetworkAclAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::SubnetNetworkAclAssociation", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::SubnetNetworkAclAssociation", ResourceEC2SubnetNetworkAclAssociation(), data, meta)
 }
 
 func resourceEC2SubnetNetworkAclAssociationDelete(data *schema.ResourceData, meta interface{}) error {

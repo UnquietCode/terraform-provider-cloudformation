@@ -50,15 +50,15 @@ func ResourceIoTAnalyticsDatastore() *schema.Resource {
 }
 
 func resourceIoTAnalyticsDatastoreCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoTAnalytics::Datastore", data, meta)
+	return plugin.ResourceCreate("AWS::IoTAnalytics::Datastore", ResourceIoTAnalyticsDatastore(), data, meta)
 }
 
 func resourceIoTAnalyticsDatastoreRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoTAnalytics::Datastore", data, meta)
+	return plugin.ResourceRead("AWS::IoTAnalytics::Datastore", ResourceIoTAnalyticsDatastore(), data, meta)
 }
 
 func resourceIoTAnalyticsDatastoreUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoTAnalytics::Datastore", data, meta)
+	return plugin.ResourceUpdate("AWS::IoTAnalytics::Datastore", ResourceIoTAnalyticsDatastore(), data, meta)
 }
 
 func resourceIoTAnalyticsDatastoreDelete(data *schema.ResourceData, meta interface{}) error {

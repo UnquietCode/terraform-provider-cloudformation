@@ -36,15 +36,15 @@ func ResourceS3BucketPolicy() *schema.Resource {
 }
 
 func resourceS3BucketPolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::S3::BucketPolicy", data, meta)
+	return plugin.ResourceCreate("AWS::S3::BucketPolicy", ResourceS3BucketPolicy(), data, meta)
 }
 
 func resourceS3BucketPolicyRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::S3::BucketPolicy", data, meta)
+	return plugin.ResourceRead("AWS::S3::BucketPolicy", ResourceS3BucketPolicy(), data, meta)
 }
 
 func resourceS3BucketPolicyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::S3::BucketPolicy", data, meta)
+	return plugin.ResourceUpdate("AWS::S3::BucketPolicy", ResourceS3BucketPolicy(), data, meta)
 }
 
 func resourceS3BucketPolicyDelete(data *schema.ResourceData, meta interface{}) error {

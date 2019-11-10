@@ -45,15 +45,15 @@ func ResourceEventsEventBus() *schema.Resource {
 }
 
 func resourceEventsEventBusCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Events::EventBus", data, meta)
+	return plugin.ResourceCreate("AWS::Events::EventBus", ResourceEventsEventBus(), data, meta)
 }
 
 func resourceEventsEventBusRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Events::EventBus", data, meta)
+	return plugin.ResourceRead("AWS::Events::EventBus", ResourceEventsEventBus(), data, meta)
 }
 
 func resourceEventsEventBusUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Events::EventBus", data, meta)
+	return plugin.ResourceUpdate("AWS::Events::EventBus", ResourceEventsEventBus(), data, meta)
 }
 
 func resourceEventsEventBusDelete(data *schema.ResourceData, meta interface{}) error {

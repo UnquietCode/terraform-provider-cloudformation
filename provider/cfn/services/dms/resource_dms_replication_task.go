@@ -77,15 +77,15 @@ func ResourceDMSReplicationTask() *schema.Resource {
 }
 
 func resourceDMSReplicationTaskCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DMS::ReplicationTask", data, meta)
+	return plugin.ResourceCreate("AWS::DMS::ReplicationTask", ResourceDMSReplicationTask(), data, meta)
 }
 
 func resourceDMSReplicationTaskRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::DMS::ReplicationTask", data, meta)
+	return plugin.ResourceRead("AWS::DMS::ReplicationTask", ResourceDMSReplicationTask(), data, meta)
 }
 
 func resourceDMSReplicationTaskUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::DMS::ReplicationTask", data, meta)
+	return plugin.ResourceUpdate("AWS::DMS::ReplicationTask", ResourceDMSReplicationTask(), data, meta)
 }
 
 func resourceDMSReplicationTaskDelete(data *schema.ResourceData, meta interface{}) error {

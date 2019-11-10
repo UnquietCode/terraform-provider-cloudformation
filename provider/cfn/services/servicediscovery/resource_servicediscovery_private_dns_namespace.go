@@ -50,15 +50,15 @@ func ResourceServiceDiscoveryPrivateDnsNamespace() *schema.Resource {
 }
 
 func resourceServiceDiscoveryPrivateDnsNamespaceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceDiscovery::PrivateDnsNamespace", data, meta)
+	return plugin.ResourceCreate("AWS::ServiceDiscovery::PrivateDnsNamespace", ResourceServiceDiscoveryPrivateDnsNamespace(), data, meta)
 }
 
 func resourceServiceDiscoveryPrivateDnsNamespaceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ServiceDiscovery::PrivateDnsNamespace", data, meta)
+	return plugin.ResourceRead("AWS::ServiceDiscovery::PrivateDnsNamespace", ResourceServiceDiscoveryPrivateDnsNamespace(), data, meta)
 }
 
 func resourceServiceDiscoveryPrivateDnsNamespaceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ServiceDiscovery::PrivateDnsNamespace", data, meta)
+	return plugin.ResourceUpdate("AWS::ServiceDiscovery::PrivateDnsNamespace", ResourceServiceDiscoveryPrivateDnsNamespace(), data, meta)
 }
 
 func resourceServiceDiscoveryPrivateDnsNamespaceDelete(data *schema.ResourceData, meta interface{}) error {

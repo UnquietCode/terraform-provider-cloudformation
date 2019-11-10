@@ -42,15 +42,15 @@ func ResourceSESReceiptRule() *schema.Resource {
 }
 
 func resourceSESReceiptRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SES::ReceiptRule", data, meta)
+	return plugin.ResourceCreate("AWS::SES::ReceiptRule", ResourceSESReceiptRule(), data, meta)
 }
 
 func resourceSESReceiptRuleRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SES::ReceiptRule", data, meta)
+	return plugin.ResourceRead("AWS::SES::ReceiptRule", ResourceSESReceiptRule(), data, meta)
 }
 
 func resourceSESReceiptRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SES::ReceiptRule", data, meta)
+	return plugin.ResourceUpdate("AWS::SES::ReceiptRule", ResourceSESReceiptRule(), data, meta)
 }
 
 func resourceSESReceiptRuleDelete(data *schema.ResourceData, meta interface{}) error {

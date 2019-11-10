@@ -45,15 +45,15 @@ func ResourceOpsWorksUserProfile() *schema.Resource {
 }
 
 func resourceOpsWorksUserProfileCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::OpsWorks::UserProfile", data, meta)
+	return plugin.ResourceCreate("AWS::OpsWorks::UserProfile", ResourceOpsWorksUserProfile(), data, meta)
 }
 
 func resourceOpsWorksUserProfileRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::OpsWorks::UserProfile", data, meta)
+	return plugin.ResourceRead("AWS::OpsWorks::UserProfile", ResourceOpsWorksUserProfile(), data, meta)
 }
 
 func resourceOpsWorksUserProfileUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::OpsWorks::UserProfile", data, meta)
+	return plugin.ResourceUpdate("AWS::OpsWorks::UserProfile", ResourceOpsWorksUserProfile(), data, meta)
 }
 
 func resourceOpsWorksUserProfileDelete(data *schema.ResourceData, meta interface{}) error {

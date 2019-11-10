@@ -53,15 +53,15 @@ func ResourceMediaStoreContainer() *schema.Resource {
 }
 
 func resourceMediaStoreContainerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::MediaStore::Container", data, meta)
+	return plugin.ResourceCreate("AWS::MediaStore::Container", ResourceMediaStoreContainer(), data, meta)
 }
 
 func resourceMediaStoreContainerRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::MediaStore::Container", data, meta)
+	return plugin.ResourceRead("AWS::MediaStore::Container", ResourceMediaStoreContainer(), data, meta)
 }
 
 func resourceMediaStoreContainerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::MediaStore::Container", data, meta)
+	return plugin.ResourceUpdate("AWS::MediaStore::Container", ResourceMediaStoreContainer(), data, meta)
 }
 
 func resourceMediaStoreContainerDelete(data *schema.ResourceData, meta interface{}) error {

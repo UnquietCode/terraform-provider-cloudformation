@@ -37,15 +37,15 @@ func ResourceElasticLoadBalancingV2ListenerCertificate() *schema.Resource {
 }
 
 func resourceElasticLoadBalancingV2ListenerCertificateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElasticLoadBalancingV2::ListenerCertificate", data, meta)
+	return plugin.ResourceCreate("AWS::ElasticLoadBalancingV2::ListenerCertificate", ResourceElasticLoadBalancingV2ListenerCertificate(), data, meta)
 }
 
 func resourceElasticLoadBalancingV2ListenerCertificateRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ElasticLoadBalancingV2::ListenerCertificate", data, meta)
+	return plugin.ResourceRead("AWS::ElasticLoadBalancingV2::ListenerCertificate", ResourceElasticLoadBalancingV2ListenerCertificate(), data, meta)
 }
 
 func resourceElasticLoadBalancingV2ListenerCertificateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ElasticLoadBalancingV2::ListenerCertificate", data, meta)
+	return plugin.ResourceUpdate("AWS::ElasticLoadBalancingV2::ListenerCertificate", ResourceElasticLoadBalancingV2ListenerCertificate(), data, meta)
 }
 
 func resourceElasticLoadBalancingV2ListenerCertificateDelete(data *schema.ResourceData, meta interface{}) error {

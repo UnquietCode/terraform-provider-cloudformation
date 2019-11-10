@@ -39,15 +39,15 @@ func ResourceSecretsManagerSecretTargetAttachment() *schema.Resource {
 }
 
 func resourceSecretsManagerSecretTargetAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SecretsManager::SecretTargetAttachment", data, meta)
+	return plugin.ResourceCreate("AWS::SecretsManager::SecretTargetAttachment", ResourceSecretsManagerSecretTargetAttachment(), data, meta)
 }
 
 func resourceSecretsManagerSecretTargetAttachmentRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SecretsManager::SecretTargetAttachment", data, meta)
+	return plugin.ResourceRead("AWS::SecretsManager::SecretTargetAttachment", ResourceSecretsManagerSecretTargetAttachment(), data, meta)
 }
 
 func resourceSecretsManagerSecretTargetAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SecretsManager::SecretTargetAttachment", data, meta)
+	return plugin.ResourceUpdate("AWS::SecretsManager::SecretTargetAttachment", ResourceSecretsManagerSecretTargetAttachment(), data, meta)
 }
 
 func resourceSecretsManagerSecretTargetAttachmentDelete(data *schema.ResourceData, meta interface{}) error {

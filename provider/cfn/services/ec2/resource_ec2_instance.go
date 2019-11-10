@@ -217,15 +217,15 @@ func ResourceEC2Instance() *schema.Resource {
 }
 
 func resourceEC2InstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::Instance", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::Instance", ResourceEC2Instance(), data, meta)
 }
 
 func resourceEC2InstanceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::Instance", data, meta)
+	return plugin.ResourceRead("AWS::EC2::Instance", ResourceEC2Instance(), data, meta)
 }
 
 func resourceEC2InstanceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::Instance", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::Instance", ResourceEC2Instance(), data, meta)
 }
 
 func resourceEC2InstanceDelete(data *schema.ResourceData, meta interface{}) error {

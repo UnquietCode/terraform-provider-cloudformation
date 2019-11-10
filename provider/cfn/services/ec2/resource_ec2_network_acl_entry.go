@@ -70,15 +70,15 @@ func ResourceEC2NetworkAclEntry() *schema.Resource {
 }
 
 func resourceEC2NetworkAclEntryCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::NetworkAclEntry", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::NetworkAclEntry", ResourceEC2NetworkAclEntry(), data, meta)
 }
 
 func resourceEC2NetworkAclEntryRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::NetworkAclEntry", data, meta)
+	return plugin.ResourceRead("AWS::EC2::NetworkAclEntry", ResourceEC2NetworkAclEntry(), data, meta)
 }
 
 func resourceEC2NetworkAclEntryUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::NetworkAclEntry", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::NetworkAclEntry", ResourceEC2NetworkAclEntry(), data, meta)
 }
 
 func resourceEC2NetworkAclEntryDelete(data *schema.ResourceData, meta interface{}) error {

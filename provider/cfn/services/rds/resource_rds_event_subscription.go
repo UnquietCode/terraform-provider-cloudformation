@@ -51,15 +51,15 @@ func ResourceRDSEventSubscription() *schema.Resource {
 }
 
 func resourceRDSEventSubscriptionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RDS::EventSubscription", data, meta)
+	return plugin.ResourceCreate("AWS::RDS::EventSubscription", ResourceRDSEventSubscription(), data, meta)
 }
 
 func resourceRDSEventSubscriptionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::RDS::EventSubscription", data, meta)
+	return plugin.ResourceRead("AWS::RDS::EventSubscription", ResourceRDSEventSubscription(), data, meta)
 }
 
 func resourceRDSEventSubscriptionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::RDS::EventSubscription", data, meta)
+	return plugin.ResourceUpdate("AWS::RDS::EventSubscription", ResourceRDSEventSubscription(), data, meta)
 }
 
 func resourceRDSEventSubscriptionDelete(data *schema.ResourceData, meta interface{}) error {

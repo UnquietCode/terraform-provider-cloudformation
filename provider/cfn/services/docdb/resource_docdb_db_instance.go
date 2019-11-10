@@ -68,15 +68,15 @@ func ResourceDocDBDBInstance() *schema.Resource {
 }
 
 func resourceDocDBDBInstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DocDB::DBInstance", data, meta)
+	return plugin.ResourceCreate("AWS::DocDB::DBInstance", ResourceDocDBDBInstance(), data, meta)
 }
 
 func resourceDocDBDBInstanceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::DocDB::DBInstance", data, meta)
+	return plugin.ResourceRead("AWS::DocDB::DBInstance", ResourceDocDBDBInstance(), data, meta)
 }
 
 func resourceDocDBDBInstanceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::DocDB::DBInstance", data, meta)
+	return plugin.ResourceUpdate("AWS::DocDB::DBInstance", ResourceDocDBDBInstance(), data, meta)
 }
 
 func resourceDocDBDBInstanceDelete(data *schema.ResourceData, meta interface{}) error {

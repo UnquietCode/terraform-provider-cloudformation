@@ -39,15 +39,15 @@ func ResourceSageMakerCodeRepository() *schema.Resource {
 }
 
 func resourceSageMakerCodeRepositoryCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SageMaker::CodeRepository", data, meta)
+	return plugin.ResourceCreate("AWS::SageMaker::CodeRepository", ResourceSageMakerCodeRepository(), data, meta)
 }
 
 func resourceSageMakerCodeRepositoryRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SageMaker::CodeRepository", data, meta)
+	return plugin.ResourceRead("AWS::SageMaker::CodeRepository", ResourceSageMakerCodeRepository(), data, meta)
 }
 
 func resourceSageMakerCodeRepositoryUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SageMaker::CodeRepository", data, meta)
+	return plugin.ResourceUpdate("AWS::SageMaker::CodeRepository", ResourceSageMakerCodeRepository(), data, meta)
 }
 
 func resourceSageMakerCodeRepositoryDelete(data *schema.ResourceData, meta interface{}) error {

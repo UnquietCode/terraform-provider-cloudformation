@@ -77,15 +77,15 @@ func ResourceFSxFileSystem() *schema.Resource {
 }
 
 func resourceFSxFileSystemCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::FSx::FileSystem", data, meta)
+	return plugin.ResourceCreate("AWS::FSx::FileSystem", ResourceFSxFileSystem(), data, meta)
 }
 
 func resourceFSxFileSystemRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::FSx::FileSystem", data, meta)
+	return plugin.ResourceRead("AWS::FSx::FileSystem", ResourceFSxFileSystem(), data, meta)
 }
 
 func resourceFSxFileSystemUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::FSx::FileSystem", data, meta)
+	return plugin.ResourceUpdate("AWS::FSx::FileSystem", ResourceFSxFileSystem(), data, meta)
 }
 
 func resourceFSxFileSystemDelete(data *schema.ResourceData, meta interface{}) error {

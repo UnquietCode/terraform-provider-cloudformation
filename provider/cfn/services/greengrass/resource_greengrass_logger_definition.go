@@ -54,15 +54,15 @@ func ResourceGreengrassLoggerDefinition() *schema.Resource {
 }
 
 func resourceGreengrassLoggerDefinitionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Greengrass::LoggerDefinition", data, meta)
+	return plugin.ResourceCreate("AWS::Greengrass::LoggerDefinition", ResourceGreengrassLoggerDefinition(), data, meta)
 }
 
 func resourceGreengrassLoggerDefinitionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Greengrass::LoggerDefinition", data, meta)
+	return plugin.ResourceRead("AWS::Greengrass::LoggerDefinition", ResourceGreengrassLoggerDefinition(), data, meta)
 }
 
 func resourceGreengrassLoggerDefinitionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Greengrass::LoggerDefinition", data, meta)
+	return plugin.ResourceUpdate("AWS::Greengrass::LoggerDefinition", ResourceGreengrassLoggerDefinition(), data, meta)
 }
 
 func resourceGreengrassLoggerDefinitionDelete(data *schema.ResourceData, meta interface{}) error {

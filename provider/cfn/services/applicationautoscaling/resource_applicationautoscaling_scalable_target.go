@@ -65,15 +65,15 @@ func ResourceApplicationAutoScalingScalableTarget() *schema.Resource {
 }
 
 func resourceApplicationAutoScalingScalableTargetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApplicationAutoScaling::ScalableTarget", data, meta)
+	return plugin.ResourceCreate("AWS::ApplicationAutoScaling::ScalableTarget", ResourceApplicationAutoScalingScalableTarget(), data, meta)
 }
 
 func resourceApplicationAutoScalingScalableTargetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApplicationAutoScaling::ScalableTarget", data, meta)
+	return plugin.ResourceRead("AWS::ApplicationAutoScaling::ScalableTarget", ResourceApplicationAutoScalingScalableTarget(), data, meta)
 }
 
 func resourceApplicationAutoScalingScalableTargetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApplicationAutoScaling::ScalableTarget", data, meta)
+	return plugin.ResourceUpdate("AWS::ApplicationAutoScaling::ScalableTarget", ResourceApplicationAutoScalingScalableTarget(), data, meta)
 }
 
 func resourceApplicationAutoScalingScalableTargetDelete(data *schema.ResourceData, meta interface{}) error {

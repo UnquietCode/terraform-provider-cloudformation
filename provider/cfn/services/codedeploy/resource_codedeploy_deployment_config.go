@@ -38,15 +38,15 @@ func ResourceCodeDeployDeploymentConfig() *schema.Resource {
 }
 
 func resourceCodeDeployDeploymentConfigCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CodeDeploy::DeploymentConfig", data, meta)
+	return plugin.ResourceCreate("AWS::CodeDeploy::DeploymentConfig", ResourceCodeDeployDeploymentConfig(), data, meta)
 }
 
 func resourceCodeDeployDeploymentConfigRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CodeDeploy::DeploymentConfig", data, meta)
+	return plugin.ResourceRead("AWS::CodeDeploy::DeploymentConfig", ResourceCodeDeployDeploymentConfig(), data, meta)
 }
 
 func resourceCodeDeployDeploymentConfigUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CodeDeploy::DeploymentConfig", data, meta)
+	return plugin.ResourceUpdate("AWS::CodeDeploy::DeploymentConfig", ResourceCodeDeployDeploymentConfig(), data, meta)
 }
 
 func resourceCodeDeployDeploymentConfigDelete(data *schema.ResourceData, meta interface{}) error {

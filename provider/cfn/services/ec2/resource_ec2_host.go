@@ -45,15 +45,15 @@ func ResourceEC2Host() *schema.Resource {
 }
 
 func resourceEC2HostCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::Host", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::Host", ResourceEC2Host(), data, meta)
 }
 
 func resourceEC2HostRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::Host", data, meta)
+	return plugin.ResourceRead("AWS::EC2::Host", ResourceEC2Host(), data, meta)
 }
 
 func resourceEC2HostUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::Host", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::Host", ResourceEC2Host(), data, meta)
 }
 
 func resourceEC2HostDelete(data *schema.ResourceData, meta interface{}) error {

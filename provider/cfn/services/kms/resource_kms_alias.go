@@ -36,15 +36,15 @@ func ResourceKMSAlias() *schema.Resource {
 }
 
 func resourceKMSAliasCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::KMS::Alias", data, meta)
+	return plugin.ResourceCreate("AWS::KMS::Alias", ResourceKMSAlias(), data, meta)
 }
 
 func resourceKMSAliasRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::KMS::Alias", data, meta)
+	return plugin.ResourceRead("AWS::KMS::Alias", ResourceKMSAlias(), data, meta)
 }
 
 func resourceKMSAliasUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::KMS::Alias", data, meta)
+	return plugin.ResourceUpdate("AWS::KMS::Alias", ResourceKMSAlias(), data, meta)
 }
 
 func resourceKMSAliasDelete(data *schema.ResourceData, meta interface{}) error {

@@ -31,15 +31,15 @@ func ResourceSDBDomain() *schema.Resource {
 }
 
 func resourceSDBDomainCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SDB::Domain", data, meta)
+	return plugin.ResourceCreate("AWS::SDB::Domain", ResourceSDBDomain(), data, meta)
 }
 
 func resourceSDBDomainRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SDB::Domain", data, meta)
+	return plugin.ResourceRead("AWS::SDB::Domain", ResourceSDBDomain(), data, meta)
 }
 
 func resourceSDBDomainUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SDB::Domain", data, meta)
+	return plugin.ResourceUpdate("AWS::SDB::Domain", ResourceSDBDomain(), data, meta)
 }
 
 func resourceSDBDomainDelete(data *schema.ResourceData, meta interface{}) error {

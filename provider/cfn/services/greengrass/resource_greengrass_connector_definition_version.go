@@ -37,15 +37,15 @@ func ResourceGreengrassConnectorDefinitionVersion() *schema.Resource {
 }
 
 func resourceGreengrassConnectorDefinitionVersionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Greengrass::ConnectorDefinitionVersion", data, meta)
+	return plugin.ResourceCreate("AWS::Greengrass::ConnectorDefinitionVersion", ResourceGreengrassConnectorDefinitionVersion(), data, meta)
 }
 
 func resourceGreengrassConnectorDefinitionVersionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Greengrass::ConnectorDefinitionVersion", data, meta)
+	return plugin.ResourceRead("AWS::Greengrass::ConnectorDefinitionVersion", ResourceGreengrassConnectorDefinitionVersion(), data, meta)
 }
 
 func resourceGreengrassConnectorDefinitionVersionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Greengrass::ConnectorDefinitionVersion", data, meta)
+	return plugin.ResourceUpdate("AWS::Greengrass::ConnectorDefinitionVersion", ResourceGreengrassConnectorDefinitionVersion(), data, meta)
 }
 
 func resourceGreengrassConnectorDefinitionVersionDelete(data *schema.ResourceData, meta interface{}) error {

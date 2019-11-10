@@ -43,15 +43,15 @@ func ResourceCloudFrontStreamingDistribution() *schema.Resource {
 }
 
 func resourceCloudFrontStreamingDistributionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CloudFront::StreamingDistribution", data, meta)
+	return plugin.ResourceCreate("AWS::CloudFront::StreamingDistribution", ResourceCloudFrontStreamingDistribution(), data, meta)
 }
 
 func resourceCloudFrontStreamingDistributionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CloudFront::StreamingDistribution", data, meta)
+	return plugin.ResourceRead("AWS::CloudFront::StreamingDistribution", ResourceCloudFrontStreamingDistribution(), data, meta)
 }
 
 func resourceCloudFrontStreamingDistributionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CloudFront::StreamingDistribution", data, meta)
+	return plugin.ResourceUpdate("AWS::CloudFront::StreamingDistribution", ResourceCloudFrontStreamingDistribution(), data, meta)
 }
 
 func resourceCloudFrontStreamingDistributionDelete(data *schema.ResourceData, meta interface{}) error {

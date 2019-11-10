@@ -37,15 +37,15 @@ func ResourceGreengrassLoggerDefinitionVersion() *schema.Resource {
 }
 
 func resourceGreengrassLoggerDefinitionVersionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Greengrass::LoggerDefinitionVersion", data, meta)
+	return plugin.ResourceCreate("AWS::Greengrass::LoggerDefinitionVersion", ResourceGreengrassLoggerDefinitionVersion(), data, meta)
 }
 
 func resourceGreengrassLoggerDefinitionVersionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Greengrass::LoggerDefinitionVersion", data, meta)
+	return plugin.ResourceRead("AWS::Greengrass::LoggerDefinitionVersion", ResourceGreengrassLoggerDefinitionVersion(), data, meta)
 }
 
 func resourceGreengrassLoggerDefinitionVersionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Greengrass::LoggerDefinitionVersion", data, meta)
+	return plugin.ResourceUpdate("AWS::Greengrass::LoggerDefinitionVersion", ResourceGreengrassLoggerDefinitionVersion(), data, meta)
 }
 
 func resourceGreengrassLoggerDefinitionVersionDelete(data *schema.ResourceData, meta interface{}) error {

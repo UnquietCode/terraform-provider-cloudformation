@@ -84,15 +84,15 @@ func ResourceSQSQueue() *schema.Resource {
 }
 
 func resourceSQSQueueCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SQS::Queue", data, meta)
+	return plugin.ResourceCreate("AWS::SQS::Queue", ResourceSQSQueue(), data, meta)
 }
 
 func resourceSQSQueueRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SQS::Queue", data, meta)
+	return plugin.ResourceRead("AWS::SQS::Queue", ResourceSQSQueue(), data, meta)
 }
 
 func resourceSQSQueueUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SQS::Queue", data, meta)
+	return plugin.ResourceUpdate("AWS::SQS::Queue", ResourceSQSQueue(), data, meta)
 }
 
 func resourceSQSQueueDelete(data *schema.ResourceData, meta interface{}) error {

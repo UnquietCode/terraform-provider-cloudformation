@@ -51,15 +51,15 @@ func ResourceEventsEventBusPolicy() *schema.Resource {
 }
 
 func resourceEventsEventBusPolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Events::EventBusPolicy", data, meta)
+	return plugin.ResourceCreate("AWS::Events::EventBusPolicy", ResourceEventsEventBusPolicy(), data, meta)
 }
 
 func resourceEventsEventBusPolicyRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Events::EventBusPolicy", data, meta)
+	return plugin.ResourceRead("AWS::Events::EventBusPolicy", ResourceEventsEventBusPolicy(), data, meta)
 }
 
 func resourceEventsEventBusPolicyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Events::EventBusPolicy", data, meta)
+	return plugin.ResourceUpdate("AWS::Events::EventBusPolicy", ResourceEventsEventBusPolicy(), data, meta)
 }
 
 func resourceEventsEventBusPolicyDelete(data *schema.ResourceData, meta interface{}) error {

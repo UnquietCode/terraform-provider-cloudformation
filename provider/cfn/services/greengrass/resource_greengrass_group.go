@@ -63,15 +63,15 @@ func ResourceGreengrassGroup() *schema.Resource {
 }
 
 func resourceGreengrassGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Greengrass::Group", data, meta)
+	return plugin.ResourceCreate("AWS::Greengrass::Group", ResourceGreengrassGroup(), data, meta)
 }
 
 func resourceGreengrassGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Greengrass::Group", data, meta)
+	return plugin.ResourceRead("AWS::Greengrass::Group", ResourceGreengrassGroup(), data, meta)
 }
 
 func resourceGreengrassGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Greengrass::Group", data, meta)
+	return plugin.ResourceUpdate("AWS::Greengrass::Group", ResourceGreengrassGroup(), data, meta)
 }
 
 func resourceGreengrassGroupDelete(data *schema.ResourceData, meta interface{}) error {

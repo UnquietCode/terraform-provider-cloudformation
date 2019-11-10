@@ -99,15 +99,15 @@ func ResourceAmplifyApp() *schema.Resource {
 }
 
 func resourceAmplifyAppCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Amplify::App", data, meta)
+	return plugin.ResourceCreate("AWS::Amplify::App", ResourceAmplifyApp(), data, meta)
 }
 
 func resourceAmplifyAppRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Amplify::App", data, meta)
+	return plugin.ResourceRead("AWS::Amplify::App", ResourceAmplifyApp(), data, meta)
 }
 
 func resourceAmplifyAppUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Amplify::App", data, meta)
+	return plugin.ResourceUpdate("AWS::Amplify::App", ResourceAmplifyApp(), data, meta)
 }
 
 func resourceAmplifyAppDelete(data *schema.ResourceData, meta interface{}) error {

@@ -63,15 +63,15 @@ func ResourceEMRInstanceFleetConfig() *schema.Resource {
 }
 
 func resourceEMRInstanceFleetConfigCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EMR::InstanceFleetConfig", data, meta)
+	return plugin.ResourceCreate("AWS::EMR::InstanceFleetConfig", ResourceEMRInstanceFleetConfig(), data, meta)
 }
 
 func resourceEMRInstanceFleetConfigRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EMR::InstanceFleetConfig", data, meta)
+	return plugin.ResourceRead("AWS::EMR::InstanceFleetConfig", ResourceEMRInstanceFleetConfig(), data, meta)
 }
 
 func resourceEMRInstanceFleetConfigUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EMR::InstanceFleetConfig", data, meta)
+	return plugin.ResourceUpdate("AWS::EMR::InstanceFleetConfig", ResourceEMRInstanceFleetConfig(), data, meta)
 }
 
 func resourceEMRInstanceFleetConfigDelete(data *schema.ResourceData, meta interface{}) error {

@@ -43,15 +43,15 @@ func ResourceCognitoUserPoolDomain() *schema.Resource {
 }
 
 func resourceCognitoUserPoolDomainCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Cognito::UserPoolDomain", data, meta)
+	return plugin.ResourceCreate("AWS::Cognito::UserPoolDomain", ResourceCognitoUserPoolDomain(), data, meta)
 }
 
 func resourceCognitoUserPoolDomainRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Cognito::UserPoolDomain", data, meta)
+	return plugin.ResourceRead("AWS::Cognito::UserPoolDomain", ResourceCognitoUserPoolDomain(), data, meta)
 }
 
 func resourceCognitoUserPoolDomainUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Cognito::UserPoolDomain", data, meta)
+	return plugin.ResourceUpdate("AWS::Cognito::UserPoolDomain", ResourceCognitoUserPoolDomain(), data, meta)
 }
 
 func resourceCognitoUserPoolDomainDelete(data *schema.ResourceData, meta interface{}) error {

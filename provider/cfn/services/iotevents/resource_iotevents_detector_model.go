@@ -57,15 +57,15 @@ func ResourceIoTEventsDetectorModel() *schema.Resource {
 }
 
 func resourceIoTEventsDetectorModelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoTEvents::DetectorModel", data, meta)
+	return plugin.ResourceCreate("AWS::IoTEvents::DetectorModel", ResourceIoTEventsDetectorModel(), data, meta)
 }
 
 func resourceIoTEventsDetectorModelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoTEvents::DetectorModel", data, meta)
+	return plugin.ResourceRead("AWS::IoTEvents::DetectorModel", ResourceIoTEventsDetectorModel(), data, meta)
 }
 
 func resourceIoTEventsDetectorModelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoTEvents::DetectorModel", data, meta)
+	return plugin.ResourceUpdate("AWS::IoTEvents::DetectorModel", ResourceIoTEventsDetectorModel(), data, meta)
 }
 
 func resourceIoTEventsDetectorModelDelete(data *schema.ResourceData, meta interface{}) error {

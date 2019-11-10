@@ -36,15 +36,15 @@ func ResourceServiceCatalogAcceptedPortfolioShare() *schema.Resource {
 }
 
 func resourceServiceCatalogAcceptedPortfolioShareCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::AcceptedPortfolioShare", data, meta)
+	return plugin.ResourceCreate("AWS::ServiceCatalog::AcceptedPortfolioShare", ResourceServiceCatalogAcceptedPortfolioShare(), data, meta)
 }
 
 func resourceServiceCatalogAcceptedPortfolioShareRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ServiceCatalog::AcceptedPortfolioShare", data, meta)
+	return plugin.ResourceRead("AWS::ServiceCatalog::AcceptedPortfolioShare", ResourceServiceCatalogAcceptedPortfolioShare(), data, meta)
 }
 
 func resourceServiceCatalogAcceptedPortfolioShareUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ServiceCatalog::AcceptedPortfolioShare", data, meta)
+	return plugin.ResourceUpdate("AWS::ServiceCatalog::AcceptedPortfolioShare", ResourceServiceCatalogAcceptedPortfolioShare(), data, meta)
 }
 
 func resourceServiceCatalogAcceptedPortfolioShareDelete(data *schema.ResourceData, meta interface{}) error {

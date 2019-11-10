@@ -50,15 +50,15 @@ func ResourceConfigDeliveryChannel() *schema.Resource {
 }
 
 func resourceConfigDeliveryChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Config::DeliveryChannel", data, meta)
+	return plugin.ResourceCreate("AWS::Config::DeliveryChannel", ResourceConfigDeliveryChannel(), data, meta)
 }
 
 func resourceConfigDeliveryChannelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Config::DeliveryChannel", data, meta)
+	return plugin.ResourceRead("AWS::Config::DeliveryChannel", ResourceConfigDeliveryChannel(), data, meta)
 }
 
 func resourceConfigDeliveryChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Config::DeliveryChannel", data, meta)
+	return plugin.ResourceUpdate("AWS::Config::DeliveryChannel", ResourceConfigDeliveryChannel(), data, meta)
 }
 
 func resourceConfigDeliveryChannelDelete(data *schema.ResourceData, meta interface{}) error {

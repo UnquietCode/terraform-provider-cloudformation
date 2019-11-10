@@ -46,15 +46,15 @@ func ResourceSNSTopic() *schema.Resource {
 }
 
 func resourceSNSTopicCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SNS::Topic", data, meta)
+	return plugin.ResourceCreate("AWS::SNS::Topic", ResourceSNSTopic(), data, meta)
 }
 
 func resourceSNSTopicRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SNS::Topic", data, meta)
+	return plugin.ResourceRead("AWS::SNS::Topic", ResourceSNSTopic(), data, meta)
 }
 
 func resourceSNSTopicUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SNS::Topic", data, meta)
+	return plugin.ResourceUpdate("AWS::SNS::Topic", ResourceSNSTopic(), data, meta)
 }
 
 func resourceSNSTopicDelete(data *schema.ResourceData, meta interface{}) error {

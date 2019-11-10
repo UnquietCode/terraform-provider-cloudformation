@@ -33,15 +33,15 @@ func ResourceEC2InternetGateway() *schema.Resource {
 }
 
 func resourceEC2InternetGatewayCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::InternetGateway", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::InternetGateway", ResourceEC2InternetGateway(), data, meta)
 }
 
 func resourceEC2InternetGatewayRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::InternetGateway", data, meta)
+	return plugin.ResourceRead("AWS::EC2::InternetGateway", ResourceEC2InternetGateway(), data, meta)
 }
 
 func resourceEC2InternetGatewayUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::InternetGateway", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::InternetGateway", ResourceEC2InternetGateway(), data, meta)
 }
 
 func resourceEC2InternetGatewayDelete(data *schema.ResourceData, meta interface{}) error {

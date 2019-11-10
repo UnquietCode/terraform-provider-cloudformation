@@ -64,15 +64,15 @@ func ResourceTransferUser() *schema.Resource {
 }
 
 func resourceTransferUserCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Transfer::User", data, meta)
+	return plugin.ResourceCreate("AWS::Transfer::User", ResourceTransferUser(), data, meta)
 }
 
 func resourceTransferUserRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Transfer::User", data, meta)
+	return plugin.ResourceRead("AWS::Transfer::User", ResourceTransferUser(), data, meta)
 }
 
 func resourceTransferUserUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Transfer::User", data, meta)
+	return plugin.ResourceUpdate("AWS::Transfer::User", ResourceTransferUser(), data, meta)
 }
 
 func resourceTransferUserDelete(data *schema.ResourceData, meta interface{}) error {

@@ -42,15 +42,15 @@ func ResourceWAFRule() *schema.Resource {
 }
 
 func resourceWAFRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::WAF::Rule", data, meta)
+	return plugin.ResourceCreate("AWS::WAF::Rule", ResourceWAFRule(), data, meta)
 }
 
 func resourceWAFRuleRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::WAF::Rule", data, meta)
+	return plugin.ResourceRead("AWS::WAF::Rule", ResourceWAFRule(), data, meta)
 }
 
 func resourceWAFRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::WAF::Rule", data, meta)
+	return plugin.ResourceUpdate("AWS::WAF::Rule", ResourceWAFRule(), data, meta)
 }
 
 func resourceWAFRuleDelete(data *schema.ResourceData, meta interface{}) error {

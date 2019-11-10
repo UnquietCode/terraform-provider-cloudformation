@@ -52,15 +52,15 @@ func ResourceCloudFormationStack() *schema.Resource {
 }
 
 func resourceCloudFormationStackCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CloudFormation::Stack", data, meta)
+	return plugin.ResourceCreate("AWS::CloudFormation::Stack", ResourceCloudFormationStack(), data, meta)
 }
 
 func resourceCloudFormationStackRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CloudFormation::Stack", data, meta)
+	return plugin.ResourceRead("AWS::CloudFormation::Stack", ResourceCloudFormationStack(), data, meta)
 }
 
 func resourceCloudFormationStackUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CloudFormation::Stack", data, meta)
+	return plugin.ResourceUpdate("AWS::CloudFormation::Stack", ResourceCloudFormationStack(), data, meta)
 }
 
 func resourceCloudFormationStackDelete(data *schema.ResourceData, meta interface{}) error {

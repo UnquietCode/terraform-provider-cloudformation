@@ -52,15 +52,15 @@ func ResourceApiGatewayUsagePlan() *schema.Resource {
 }
 
 func resourceApiGatewayUsagePlanCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::UsagePlan", data, meta)
+	return plugin.ResourceCreate("AWS::ApiGateway::UsagePlan", ResourceApiGatewayUsagePlan(), data, meta)
 }
 
 func resourceApiGatewayUsagePlanRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGateway::UsagePlan", data, meta)
+	return plugin.ResourceRead("AWS::ApiGateway::UsagePlan", ResourceApiGatewayUsagePlan(), data, meta)
 }
 
 func resourceApiGatewayUsagePlanUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGateway::UsagePlan", data, meta)
+	return plugin.ResourceUpdate("AWS::ApiGateway::UsagePlan", ResourceApiGatewayUsagePlan(), data, meta)
 }
 
 func resourceApiGatewayUsagePlanDelete(data *schema.ResourceData, meta interface{}) error {

@@ -36,15 +36,15 @@ func ResourcePinpointVoiceChannel() *schema.Resource {
 }
 
 func resourcePinpointVoiceChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::VoiceChannel", data, meta)
+	return plugin.ResourceCreate("AWS::Pinpoint::VoiceChannel", ResourcePinpointVoiceChannel(), data, meta)
 }
 
 func resourcePinpointVoiceChannelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::VoiceChannel", data, meta)
+	return plugin.ResourceRead("AWS::Pinpoint::VoiceChannel", ResourcePinpointVoiceChannel(), data, meta)
 }
 
 func resourcePinpointVoiceChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::VoiceChannel", data, meta)
+	return plugin.ResourceUpdate("AWS::Pinpoint::VoiceChannel", ResourcePinpointVoiceChannel(), data, meta)
 }
 
 func resourcePinpointVoiceChannelDelete(data *schema.ResourceData, meta interface{}) error {

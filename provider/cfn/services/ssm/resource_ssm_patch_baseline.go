@@ -90,15 +90,15 @@ func ResourceSSMPatchBaseline() *schema.Resource {
 }
 
 func resourceSSMPatchBaselineCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SSM::PatchBaseline", data, meta)
+	return plugin.ResourceCreate("AWS::SSM::PatchBaseline", ResourceSSMPatchBaseline(), data, meta)
 }
 
 func resourceSSMPatchBaselineRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SSM::PatchBaseline", data, meta)
+	return plugin.ResourceRead("AWS::SSM::PatchBaseline", ResourceSSMPatchBaseline(), data, meta)
 }
 
 func resourceSSMPatchBaselineUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SSM::PatchBaseline", data, meta)
+	return plugin.ResourceUpdate("AWS::SSM::PatchBaseline", ResourceSSMPatchBaseline(), data, meta)
 }
 
 func resourceSSMPatchBaselineDelete(data *schema.ResourceData, meta interface{}) error {

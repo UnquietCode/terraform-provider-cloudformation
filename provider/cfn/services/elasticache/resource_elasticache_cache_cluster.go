@@ -141,15 +141,15 @@ func ResourceElastiCacheCacheCluster() *schema.Resource {
 }
 
 func resourceElastiCacheCacheClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElastiCache::CacheCluster", data, meta)
+	return plugin.ResourceCreate("AWS::ElastiCache::CacheCluster", ResourceElastiCacheCacheCluster(), data, meta)
 }
 
 func resourceElastiCacheCacheClusterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ElastiCache::CacheCluster", data, meta)
+	return plugin.ResourceRead("AWS::ElastiCache::CacheCluster", ResourceElastiCacheCacheCluster(), data, meta)
 }
 
 func resourceElastiCacheCacheClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ElastiCache::CacheCluster", data, meta)
+	return plugin.ResourceUpdate("AWS::ElastiCache::CacheCluster", ResourceElastiCacheCacheCluster(), data, meta)
 }
 
 func resourceElastiCacheCacheClusterDelete(data *schema.ResourceData, meta interface{}) error {

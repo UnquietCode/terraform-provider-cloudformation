@@ -65,15 +65,15 @@ func ResourceEC2Volume() *schema.Resource {
 }
 
 func resourceEC2VolumeCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::Volume", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::Volume", ResourceEC2Volume(), data, meta)
 }
 
 func resourceEC2VolumeRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::Volume", data, meta)
+	return plugin.ResourceRead("AWS::EC2::Volume", ResourceEC2Volume(), data, meta)
 }
 
 func resourceEC2VolumeUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::Volume", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::Volume", ResourceEC2Volume(), data, meta)
 }
 
 func resourceEC2VolumeDelete(data *schema.ResourceData, meta interface{}) error {

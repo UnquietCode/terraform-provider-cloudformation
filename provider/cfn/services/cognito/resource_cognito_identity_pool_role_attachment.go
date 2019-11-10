@@ -40,15 +40,15 @@ func ResourceCognitoIdentityPoolRoleAttachment() *schema.Resource {
 }
 
 func resourceCognitoIdentityPoolRoleAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Cognito::IdentityPoolRoleAttachment", data, meta)
+	return plugin.ResourceCreate("AWS::Cognito::IdentityPoolRoleAttachment", ResourceCognitoIdentityPoolRoleAttachment(), data, meta)
 }
 
 func resourceCognitoIdentityPoolRoleAttachmentRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Cognito::IdentityPoolRoleAttachment", data, meta)
+	return plugin.ResourceRead("AWS::Cognito::IdentityPoolRoleAttachment", ResourceCognitoIdentityPoolRoleAttachment(), data, meta)
 }
 
 func resourceCognitoIdentityPoolRoleAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Cognito::IdentityPoolRoleAttachment", data, meta)
+	return plugin.ResourceUpdate("AWS::Cognito::IdentityPoolRoleAttachment", ResourceCognitoIdentityPoolRoleAttachment(), data, meta)
 }
 
 func resourceCognitoIdentityPoolRoleAttachmentDelete(data *schema.ResourceData, meta interface{}) error {

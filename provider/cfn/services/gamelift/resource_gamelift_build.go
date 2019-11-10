@@ -42,15 +42,15 @@ func ResourceGameLiftBuild() *schema.Resource {
 }
 
 func resourceGameLiftBuildCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::GameLift::Build", data, meta)
+	return plugin.ResourceCreate("AWS::GameLift::Build", ResourceGameLiftBuild(), data, meta)
 }
 
 func resourceGameLiftBuildRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::GameLift::Build", data, meta)
+	return plugin.ResourceRead("AWS::GameLift::Build", ResourceGameLiftBuild(), data, meta)
 }
 
 func resourceGameLiftBuildUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::GameLift::Build", data, meta)
+	return plugin.ResourceUpdate("AWS::GameLift::Build", ResourceGameLiftBuild(), data, meta)
 }
 
 func resourceGameLiftBuildDelete(data *schema.ResourceData, meta interface{}) error {

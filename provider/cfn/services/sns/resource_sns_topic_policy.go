@@ -36,15 +36,15 @@ func ResourceSNSTopicPolicy() *schema.Resource {
 }
 
 func resourceSNSTopicPolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SNS::TopicPolicy", data, meta)
+	return plugin.ResourceCreate("AWS::SNS::TopicPolicy", ResourceSNSTopicPolicy(), data, meta)
 }
 
 func resourceSNSTopicPolicyRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SNS::TopicPolicy", data, meta)
+	return plugin.ResourceRead("AWS::SNS::TopicPolicy", ResourceSNSTopicPolicy(), data, meta)
 }
 
 func resourceSNSTopicPolicyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SNS::TopicPolicy", data, meta)
+	return plugin.ResourceUpdate("AWS::SNS::TopicPolicy", ResourceSNSTopicPolicy(), data, meta)
 }
 
 func resourceSNSTopicPolicyDelete(data *schema.ResourceData, meta interface{}) error {

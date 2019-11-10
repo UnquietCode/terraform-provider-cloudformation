@@ -48,15 +48,15 @@ func ResourceIoTEventsInput() *schema.Resource {
 }
 
 func resourceIoTEventsInputCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoTEvents::Input", data, meta)
+	return plugin.ResourceCreate("AWS::IoTEvents::Input", ResourceIoTEventsInput(), data, meta)
 }
 
 func resourceIoTEventsInputRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoTEvents::Input", data, meta)
+	return plugin.ResourceRead("AWS::IoTEvents::Input", ResourceIoTEventsInput(), data, meta)
 }
 
 func resourceIoTEventsInputUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoTEvents::Input", data, meta)
+	return plugin.ResourceUpdate("AWS::IoTEvents::Input", ResourceIoTEventsInput(), data, meta)
 }
 
 func resourceIoTEventsInputDelete(data *schema.ResourceData, meta interface{}) error {

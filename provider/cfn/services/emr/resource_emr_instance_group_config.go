@@ -80,15 +80,15 @@ func ResourceEMRInstanceGroupConfig() *schema.Resource {
 }
 
 func resourceEMRInstanceGroupConfigCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EMR::InstanceGroupConfig", data, meta)
+	return plugin.ResourceCreate("AWS::EMR::InstanceGroupConfig", ResourceEMRInstanceGroupConfig(), data, meta)
 }
 
 func resourceEMRInstanceGroupConfigRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EMR::InstanceGroupConfig", data, meta)
+	return plugin.ResourceRead("AWS::EMR::InstanceGroupConfig", ResourceEMRInstanceGroupConfig(), data, meta)
 }
 
 func resourceEMRInstanceGroupConfigUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EMR::InstanceGroupConfig", data, meta)
+	return plugin.ResourceUpdate("AWS::EMR::InstanceGroupConfig", ResourceEMRInstanceGroupConfig(), data, meta)
 }
 
 func resourceEMRInstanceGroupConfigDelete(data *schema.ResourceData, meta interface{}) error {

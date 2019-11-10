@@ -65,15 +65,15 @@ func ResourceIoTAnalyticsDataset() *schema.Resource {
 }
 
 func resourceIoTAnalyticsDatasetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoTAnalytics::Dataset", data, meta)
+	return plugin.ResourceCreate("AWS::IoTAnalytics::Dataset", ResourceIoTAnalyticsDataset(), data, meta)
 }
 
 func resourceIoTAnalyticsDatasetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoTAnalytics::Dataset", data, meta)
+	return plugin.ResourceRead("AWS::IoTAnalytics::Dataset", ResourceIoTAnalyticsDataset(), data, meta)
 }
 
 func resourceIoTAnalyticsDatasetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoTAnalytics::Dataset", data, meta)
+	return plugin.ResourceUpdate("AWS::IoTAnalytics::Dataset", ResourceIoTAnalyticsDataset(), data, meta)
 }
 
 func resourceIoTAnalyticsDatasetDelete(data *schema.ResourceData, meta interface{}) error {

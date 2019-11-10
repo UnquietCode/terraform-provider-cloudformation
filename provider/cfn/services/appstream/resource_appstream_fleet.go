@@ -97,15 +97,15 @@ func ResourceAppStreamFleet() *schema.Resource {
 }
 
 func resourceAppStreamFleetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppStream::Fleet", data, meta)
+	return plugin.ResourceCreate("AWS::AppStream::Fleet", ResourceAppStreamFleet(), data, meta)
 }
 
 func resourceAppStreamFleetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppStream::Fleet", data, meta)
+	return plugin.ResourceRead("AWS::AppStream::Fleet", ResourceAppStreamFleet(), data, meta)
 }
 
 func resourceAppStreamFleetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppStream::Fleet", data, meta)
+	return plugin.ResourceUpdate("AWS::AppStream::Fleet", ResourceAppStreamFleet(), data, meta)
 }
 
 func resourceAppStreamFleetDelete(data *schema.ResourceData, meta interface{}) error {

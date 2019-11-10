@@ -38,15 +38,15 @@ func ResourceGlueConnection() *schema.Resource {
 }
 
 func resourceGlueConnectionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::Connection", data, meta)
+	return plugin.ResourceCreate("AWS::Glue::Connection", ResourceGlueConnection(), data, meta)
 }
 
 func resourceGlueConnectionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Glue::Connection", data, meta)
+	return plugin.ResourceRead("AWS::Glue::Connection", ResourceGlueConnection(), data, meta)
 }
 
 func resourceGlueConnectionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Glue::Connection", data, meta)
+	return plugin.ResourceUpdate("AWS::Glue::Connection", ResourceGlueConnection(), data, meta)
 }
 
 func resourceGlueConnectionDelete(data *schema.ResourceData, meta interface{}) error {

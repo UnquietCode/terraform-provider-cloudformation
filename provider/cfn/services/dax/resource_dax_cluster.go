@@ -96,15 +96,15 @@ func ResourceDAXCluster() *schema.Resource {
 }
 
 func resourceDAXClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DAX::Cluster", data, meta)
+	return plugin.ResourceCreate("AWS::DAX::Cluster", ResourceDAXCluster(), data, meta)
 }
 
 func resourceDAXClusterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::DAX::Cluster", data, meta)
+	return plugin.ResourceRead("AWS::DAX::Cluster", ResourceDAXCluster(), data, meta)
 }
 
 func resourceDAXClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::DAX::Cluster", data, meta)
+	return plugin.ResourceUpdate("AWS::DAX::Cluster", ResourceDAXCluster(), data, meta)
 }
 
 func resourceDAXClusterDelete(data *schema.ResourceData, meta interface{}) error {

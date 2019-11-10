@@ -43,15 +43,15 @@ func ResourceCloudFrontDistribution() *schema.Resource {
 }
 
 func resourceCloudFrontDistributionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CloudFront::Distribution", data, meta)
+	return plugin.ResourceCreate("AWS::CloudFront::Distribution", ResourceCloudFrontDistribution(), data, meta)
 }
 
 func resourceCloudFrontDistributionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CloudFront::Distribution", data, meta)
+	return plugin.ResourceRead("AWS::CloudFront::Distribution", ResourceCloudFrontDistribution(), data, meta)
 }
 
 func resourceCloudFrontDistributionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CloudFront::Distribution", data, meta)
+	return plugin.ResourceUpdate("AWS::CloudFront::Distribution", ResourceCloudFrontDistribution(), data, meta)
 }
 
 func resourceCloudFrontDistributionDelete(data *schema.ResourceData, meta interface{}) error {

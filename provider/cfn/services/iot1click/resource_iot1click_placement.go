@@ -47,15 +47,15 @@ func ResourceIoT1ClickPlacement() *schema.Resource {
 }
 
 func resourceIoT1ClickPlacementCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoT1Click::Placement", data, meta)
+	return plugin.ResourceCreate("AWS::IoT1Click::Placement", ResourceIoT1ClickPlacement(), data, meta)
 }
 
 func resourceIoT1ClickPlacementRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoT1Click::Placement", data, meta)
+	return plugin.ResourceRead("AWS::IoT1Click::Placement", ResourceIoT1ClickPlacement(), data, meta)
 }
 
 func resourceIoT1ClickPlacementUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoT1Click::Placement", data, meta)
+	return plugin.ResourceUpdate("AWS::IoT1Click::Placement", ResourceIoT1ClickPlacement(), data, meta)
 }
 
 func resourceIoT1ClickPlacementDelete(data *schema.ResourceData, meta interface{}) error {

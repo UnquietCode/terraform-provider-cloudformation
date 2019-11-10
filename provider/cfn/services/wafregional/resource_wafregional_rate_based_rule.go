@@ -51,15 +51,15 @@ func ResourceWAFRegionalRateBasedRule() *schema.Resource {
 }
 
 func resourceWAFRegionalRateBasedRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::WAFRegional::RateBasedRule", data, meta)
+	return plugin.ResourceCreate("AWS::WAFRegional::RateBasedRule", ResourceWAFRegionalRateBasedRule(), data, meta)
 }
 
 func resourceWAFRegionalRateBasedRuleRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::WAFRegional::RateBasedRule", data, meta)
+	return plugin.ResourceRead("AWS::WAFRegional::RateBasedRule", ResourceWAFRegionalRateBasedRule(), data, meta)
 }
 
 func resourceWAFRegionalRateBasedRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::WAFRegional::RateBasedRule", data, meta)
+	return plugin.ResourceUpdate("AWS::WAFRegional::RateBasedRule", ResourceWAFRegionalRateBasedRule(), data, meta)
 }
 
 func resourceWAFRegionalRateBasedRuleDelete(data *schema.ResourceData, meta interface{}) error {

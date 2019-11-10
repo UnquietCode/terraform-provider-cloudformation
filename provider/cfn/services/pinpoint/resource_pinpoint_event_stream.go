@@ -40,15 +40,15 @@ func ResourcePinpointEventStream() *schema.Resource {
 }
 
 func resourcePinpointEventStreamCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::EventStream", data, meta)
+	return plugin.ResourceCreate("AWS::Pinpoint::EventStream", ResourcePinpointEventStream(), data, meta)
 }
 
 func resourcePinpointEventStreamRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::EventStream", data, meta)
+	return plugin.ResourceRead("AWS::Pinpoint::EventStream", ResourcePinpointEventStream(), data, meta)
 }
 
 func resourcePinpointEventStreamUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::EventStream", data, meta)
+	return plugin.ResourceUpdate("AWS::Pinpoint::EventStream", ResourcePinpointEventStream(), data, meta)
 }
 
 func resourcePinpointEventStreamDelete(data *schema.ResourceData, meta interface{}) error {

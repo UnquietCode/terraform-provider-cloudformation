@@ -36,15 +36,15 @@ func ResourceIoTThingPrincipalAttachment() *schema.Resource {
 }
 
 func resourceIoTThingPrincipalAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoT::ThingPrincipalAttachment", data, meta)
+	return plugin.ResourceCreate("AWS::IoT::ThingPrincipalAttachment", ResourceIoTThingPrincipalAttachment(), data, meta)
 }
 
 func resourceIoTThingPrincipalAttachmentRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoT::ThingPrincipalAttachment", data, meta)
+	return plugin.ResourceRead("AWS::IoT::ThingPrincipalAttachment", ResourceIoTThingPrincipalAttachment(), data, meta)
 }
 
 func resourceIoTThingPrincipalAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoT::ThingPrincipalAttachment", data, meta)
+	return plugin.ResourceUpdate("AWS::IoT::ThingPrincipalAttachment", ResourceIoTThingPrincipalAttachment(), data, meta)
 }
 
 func resourceIoTThingPrincipalAttachmentDelete(data *schema.ResourceData, meta interface{}) error {

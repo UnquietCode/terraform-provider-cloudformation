@@ -31,15 +31,15 @@ func ResourceEC2EgressOnlyInternetGateway() *schema.Resource {
 }
 
 func resourceEC2EgressOnlyInternetGatewayCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::EgressOnlyInternetGateway", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::EgressOnlyInternetGateway", ResourceEC2EgressOnlyInternetGateway(), data, meta)
 }
 
 func resourceEC2EgressOnlyInternetGatewayRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::EgressOnlyInternetGateway", data, meta)
+	return plugin.ResourceRead("AWS::EC2::EgressOnlyInternetGateway", ResourceEC2EgressOnlyInternetGateway(), data, meta)
 }
 
 func resourceEC2EgressOnlyInternetGatewayUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::EgressOnlyInternetGateway", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::EgressOnlyInternetGateway", ResourceEC2EgressOnlyInternetGateway(), data, meta)
 }
 
 func resourceEC2EgressOnlyInternetGatewayDelete(data *schema.ResourceData, meta interface{}) error {

@@ -33,15 +33,15 @@ func ResourceSESReceiptFilter() *schema.Resource {
 }
 
 func resourceSESReceiptFilterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SES::ReceiptFilter", data, meta)
+	return plugin.ResourceCreate("AWS::SES::ReceiptFilter", ResourceSESReceiptFilter(), data, meta)
 }
 
 func resourceSESReceiptFilterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SES::ReceiptFilter", data, meta)
+	return plugin.ResourceRead("AWS::SES::ReceiptFilter", ResourceSESReceiptFilter(), data, meta)
 }
 
 func resourceSESReceiptFilterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SES::ReceiptFilter", data, meta)
+	return plugin.ResourceUpdate("AWS::SES::ReceiptFilter", ResourceSESReceiptFilter(), data, meta)
 }
 
 func resourceSESReceiptFilterDelete(data *schema.ResourceData, meta interface{}) error {

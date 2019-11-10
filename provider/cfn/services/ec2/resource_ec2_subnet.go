@@ -70,15 +70,15 @@ func ResourceEC2Subnet() *schema.Resource {
 }
 
 func resourceEC2SubnetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::Subnet", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::Subnet", ResourceEC2Subnet(), data, meta)
 }
 
 func resourceEC2SubnetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::Subnet", data, meta)
+	return plugin.ResourceRead("AWS::EC2::Subnet", ResourceEC2Subnet(), data, meta)
 }
 
 func resourceEC2SubnetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::Subnet", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::Subnet", ResourceEC2Subnet(), data, meta)
 }
 
 func resourceEC2SubnetDelete(data *schema.ResourceData, meta interface{}) error {

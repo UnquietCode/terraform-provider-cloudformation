@@ -51,15 +51,15 @@ func ResourceIAMGroup() *schema.Resource {
 }
 
 func resourceIAMGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IAM::Group", data, meta)
+	return plugin.ResourceCreate("AWS::IAM::Group", ResourceIAMGroup(), data, meta)
 }
 
 func resourceIAMGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IAM::Group", data, meta)
+	return plugin.ResourceRead("AWS::IAM::Group", ResourceIAMGroup(), data, meta)
 }
 
 func resourceIAMGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IAM::Group", data, meta)
+	return plugin.ResourceUpdate("AWS::IAM::Group", ResourceIAMGroup(), data, meta)
 }
 
 func resourceIAMGroupDelete(data *schema.ResourceData, meta interface{}) error {

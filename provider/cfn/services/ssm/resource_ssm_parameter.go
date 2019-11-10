@@ -60,15 +60,15 @@ func ResourceSSMParameter() *schema.Resource {
 }
 
 func resourceSSMParameterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SSM::Parameter", data, meta)
+	return plugin.ResourceCreate("AWS::SSM::Parameter", ResourceSSMParameter(), data, meta)
 }
 
 func resourceSSMParameterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SSM::Parameter", data, meta)
+	return plugin.ResourceRead("AWS::SSM::Parameter", ResourceSSMParameter(), data, meta)
 }
 
 func resourceSSMParameterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SSM::Parameter", data, meta)
+	return plugin.ResourceUpdate("AWS::SSM::Parameter", ResourceSSMParameter(), data, meta)
 }
 
 func resourceSSMParameterDelete(data *schema.ResourceData, meta interface{}) error {

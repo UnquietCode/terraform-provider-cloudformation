@@ -42,15 +42,15 @@ func ResourceECSCluster() *schema.Resource {
 }
 
 func resourceECSClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ECS::Cluster", data, meta)
+	return plugin.ResourceCreate("AWS::ECS::Cluster", ResourceECSCluster(), data, meta)
 }
 
 func resourceECSClusterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ECS::Cluster", data, meta)
+	return plugin.ResourceRead("AWS::ECS::Cluster", ResourceECSCluster(), data, meta)
 }
 
 func resourceECSClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ECS::Cluster", data, meta)
+	return plugin.ResourceUpdate("AWS::ECS::Cluster", ResourceECSCluster(), data, meta)
 }
 
 func resourceECSClusterDelete(data *schema.ResourceData, meta interface{}) error {

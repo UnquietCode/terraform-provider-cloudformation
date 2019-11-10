@@ -70,15 +70,15 @@ func ResourcePinpointPushTemplate() *schema.Resource {
 }
 
 func resourcePinpointPushTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::PushTemplate", data, meta)
+	return plugin.ResourceCreate("AWS::Pinpoint::PushTemplate", ResourcePinpointPushTemplate(), data, meta)
 }
 
 func resourcePinpointPushTemplateRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::PushTemplate", data, meta)
+	return plugin.ResourceRead("AWS::Pinpoint::PushTemplate", ResourcePinpointPushTemplate(), data, meta)
 }
 
 func resourcePinpointPushTemplateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::PushTemplate", data, meta)
+	return plugin.ResourceUpdate("AWS::Pinpoint::PushTemplate", ResourcePinpointPushTemplate(), data, meta)
 }
 
 func resourcePinpointPushTemplateDelete(data *schema.ResourceData, meta interface{}) error {

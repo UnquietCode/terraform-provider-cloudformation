@@ -84,15 +84,15 @@ func ResourceElasticBeanstalkEnvironment() *schema.Resource {
 }
 
 func resourceElasticBeanstalkEnvironmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElasticBeanstalk::Environment", data, meta)
+	return plugin.ResourceCreate("AWS::ElasticBeanstalk::Environment", ResourceElasticBeanstalkEnvironment(), data, meta)
 }
 
 func resourceElasticBeanstalkEnvironmentRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ElasticBeanstalk::Environment", data, meta)
+	return plugin.ResourceRead("AWS::ElasticBeanstalk::Environment", ResourceElasticBeanstalkEnvironment(), data, meta)
 }
 
 func resourceElasticBeanstalkEnvironmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ElasticBeanstalk::Environment", data, meta)
+	return plugin.ResourceUpdate("AWS::ElasticBeanstalk::Environment", ResourceElasticBeanstalkEnvironment(), data, meta)
 }
 
 func resourceElasticBeanstalkEnvironmentDelete(data *schema.ResourceData, meta interface{}) error {

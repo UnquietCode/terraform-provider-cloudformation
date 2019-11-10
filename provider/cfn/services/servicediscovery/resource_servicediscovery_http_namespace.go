@@ -45,15 +45,15 @@ func ResourceServiceDiscoveryHttpNamespace() *schema.Resource {
 }
 
 func resourceServiceDiscoveryHttpNamespaceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceDiscovery::HttpNamespace", data, meta)
+	return plugin.ResourceCreate("AWS::ServiceDiscovery::HttpNamespace", ResourceServiceDiscoveryHttpNamespace(), data, meta)
 }
 
 func resourceServiceDiscoveryHttpNamespaceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ServiceDiscovery::HttpNamespace", data, meta)
+	return plugin.ResourceRead("AWS::ServiceDiscovery::HttpNamespace", ResourceServiceDiscoveryHttpNamespace(), data, meta)
 }
 
 func resourceServiceDiscoveryHttpNamespaceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ServiceDiscovery::HttpNamespace", data, meta)
+	return plugin.ResourceUpdate("AWS::ServiceDiscovery::HttpNamespace", ResourceServiceDiscoveryHttpNamespace(), data, meta)
 }
 
 func resourceServiceDiscoveryHttpNamespaceDelete(data *schema.ResourceData, meta interface{}) error {

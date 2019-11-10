@@ -41,15 +41,15 @@ func ResourceIAMServiceLinkedRole() *schema.Resource {
 }
 
 func resourceIAMServiceLinkedRoleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IAM::ServiceLinkedRole", data, meta)
+	return plugin.ResourceCreate("AWS::IAM::ServiceLinkedRole", ResourceIAMServiceLinkedRole(), data, meta)
 }
 
 func resourceIAMServiceLinkedRoleRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IAM::ServiceLinkedRole", data, meta)
+	return plugin.ResourceRead("AWS::IAM::ServiceLinkedRole", ResourceIAMServiceLinkedRole(), data, meta)
 }
 
 func resourceIAMServiceLinkedRoleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IAM::ServiceLinkedRole", data, meta)
+	return plugin.ResourceUpdate("AWS::IAM::ServiceLinkedRole", ResourceIAMServiceLinkedRole(), data, meta)
 }
 
 func resourceIAMServiceLinkedRoleDelete(data *schema.ResourceData, meta interface{}) error {

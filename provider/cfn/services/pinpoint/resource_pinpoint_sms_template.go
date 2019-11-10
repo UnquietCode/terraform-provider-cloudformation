@@ -44,15 +44,15 @@ func ResourcePinpointSmsTemplate() *schema.Resource {
 }
 
 func resourcePinpointSmsTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::SmsTemplate", data, meta)
+	return plugin.ResourceCreate("AWS::Pinpoint::SmsTemplate", ResourcePinpointSmsTemplate(), data, meta)
 }
 
 func resourcePinpointSmsTemplateRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::SmsTemplate", data, meta)
+	return plugin.ResourceRead("AWS::Pinpoint::SmsTemplate", ResourcePinpointSmsTemplate(), data, meta)
 }
 
 func resourcePinpointSmsTemplateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::SmsTemplate", data, meta)
+	return plugin.ResourceUpdate("AWS::Pinpoint::SmsTemplate", ResourcePinpointSmsTemplate(), data, meta)
 }
 
 func resourcePinpointSmsTemplateDelete(data *schema.ResourceData, meta interface{}) error {

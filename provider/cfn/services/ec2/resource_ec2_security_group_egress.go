@@ -71,15 +71,15 @@ func ResourceEC2SecurityGroupEgress() *schema.Resource {
 }
 
 func resourceEC2SecurityGroupEgressCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::SecurityGroupEgress", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::SecurityGroupEgress", ResourceEC2SecurityGroupEgress(), data, meta)
 }
 
 func resourceEC2SecurityGroupEgressRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::SecurityGroupEgress", data, meta)
+	return plugin.ResourceRead("AWS::EC2::SecurityGroupEgress", ResourceEC2SecurityGroupEgress(), data, meta)
 }
 
 func resourceEC2SecurityGroupEgressUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::SecurityGroupEgress", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::SecurityGroupEgress", ResourceEC2SecurityGroupEgress(), data, meta)
 }
 
 func resourceEC2SecurityGroupEgressDelete(data *schema.ResourceData, meta interface{}) error {

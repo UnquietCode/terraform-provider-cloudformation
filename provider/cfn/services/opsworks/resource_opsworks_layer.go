@@ -117,15 +117,15 @@ func ResourceOpsWorksLayer() *schema.Resource {
 }
 
 func resourceOpsWorksLayerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::OpsWorks::Layer", data, meta)
+	return plugin.ResourceCreate("AWS::OpsWorks::Layer", ResourceOpsWorksLayer(), data, meta)
 }
 
 func resourceOpsWorksLayerRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::OpsWorks::Layer", data, meta)
+	return plugin.ResourceRead("AWS::OpsWorks::Layer", ResourceOpsWorksLayer(), data, meta)
 }
 
 func resourceOpsWorksLayerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::OpsWorks::Layer", data, meta)
+	return plugin.ResourceUpdate("AWS::OpsWorks::Layer", ResourceOpsWorksLayer(), data, meta)
 }
 
 func resourceOpsWorksLayerDelete(data *schema.ResourceData, meta interface{}) error {

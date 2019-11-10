@@ -52,15 +52,15 @@ func ResourceAppMeshMesh() *schema.Resource {
 }
 
 func resourceAppMeshMeshCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppMesh::Mesh", data, meta)
+	return plugin.ResourceCreate("AWS::AppMesh::Mesh", ResourceAppMeshMesh(), data, meta)
 }
 
 func resourceAppMeshMeshRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppMesh::Mesh", data, meta)
+	return plugin.ResourceRead("AWS::AppMesh::Mesh", ResourceAppMeshMesh(), data, meta)
 }
 
 func resourceAppMeshMeshUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppMesh::Mesh", data, meta)
+	return plugin.ResourceUpdate("AWS::AppMesh::Mesh", ResourceAppMeshMesh(), data, meta)
 }
 
 func resourceAppMeshMeshDelete(data *schema.ResourceData, meta interface{}) error {

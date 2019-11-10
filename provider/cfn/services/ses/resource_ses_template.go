@@ -33,15 +33,15 @@ func ResourceSESTemplate() *schema.Resource {
 }
 
 func resourceSESTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SES::Template", data, meta)
+	return plugin.ResourceCreate("AWS::SES::Template", ResourceSESTemplate(), data, meta)
 }
 
 func resourceSESTemplateRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SES::Template", data, meta)
+	return plugin.ResourceRead("AWS::SES::Template", ResourceSESTemplate(), data, meta)
 }
 
 func resourceSESTemplateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SES::Template", data, meta)
+	return plugin.ResourceUpdate("AWS::SES::Template", ResourceSESTemplate(), data, meta)
 }
 
 func resourceSESTemplateDelete(data *schema.ResourceData, meta interface{}) error {

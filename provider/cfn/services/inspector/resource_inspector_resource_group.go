@@ -38,15 +38,15 @@ func ResourceInspectorResourceGroup() *schema.Resource {
 }
 
 func resourceInspectorResourceGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Inspector::ResourceGroup", data, meta)
+	return plugin.ResourceCreate("AWS::Inspector::ResourceGroup", ResourceInspectorResourceGroup(), data, meta)
 }
 
 func resourceInspectorResourceGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Inspector::ResourceGroup", data, meta)
+	return plugin.ResourceRead("AWS::Inspector::ResourceGroup", ResourceInspectorResourceGroup(), data, meta)
 }
 
 func resourceInspectorResourceGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Inspector::ResourceGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::Inspector::ResourceGroup", ResourceInspectorResourceGroup(), data, meta)
 }
 
 func resourceInspectorResourceGroupDelete(data *schema.ResourceData, meta interface{}) error {

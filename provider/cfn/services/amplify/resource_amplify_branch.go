@@ -82,15 +82,15 @@ func ResourceAmplifyBranch() *schema.Resource {
 }
 
 func resourceAmplifyBranchCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Amplify::Branch", data, meta)
+	return plugin.ResourceCreate("AWS::Amplify::Branch", ResourceAmplifyBranch(), data, meta)
 }
 
 func resourceAmplifyBranchRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Amplify::Branch", data, meta)
+	return plugin.ResourceRead("AWS::Amplify::Branch", ResourceAmplifyBranch(), data, meta)
 }
 
 func resourceAmplifyBranchUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Amplify::Branch", data, meta)
+	return plugin.ResourceUpdate("AWS::Amplify::Branch", ResourceAmplifyBranch(), data, meta)
 }
 
 func resourceAmplifyBranchDelete(data *schema.ResourceData, meta interface{}) error {

@@ -40,15 +40,15 @@ func ResourceApiGatewayV2Deployment() *schema.Resource {
 }
 
 func resourceApiGatewayV2DeploymentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGatewayV2::Deployment", data, meta)
+	return plugin.ResourceCreate("AWS::ApiGatewayV2::Deployment", ResourceApiGatewayV2Deployment(), data, meta)
 }
 
 func resourceApiGatewayV2DeploymentRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGatewayV2::Deployment", data, meta)
+	return plugin.ResourceRead("AWS::ApiGatewayV2::Deployment", ResourceApiGatewayV2Deployment(), data, meta)
 }
 
 func resourceApiGatewayV2DeploymentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGatewayV2::Deployment", data, meta)
+	return plugin.ResourceUpdate("AWS::ApiGatewayV2::Deployment", ResourceApiGatewayV2Deployment(), data, meta)
 }
 
 func resourceApiGatewayV2DeploymentDelete(data *schema.ResourceData, meta interface{}) error {

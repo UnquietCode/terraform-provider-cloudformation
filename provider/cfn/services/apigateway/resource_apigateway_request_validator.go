@@ -45,15 +45,15 @@ func ResourceApiGatewayRequestValidator() *schema.Resource {
 }
 
 func resourceApiGatewayRequestValidatorCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::RequestValidator", data, meta)
+	return plugin.ResourceCreate("AWS::ApiGateway::RequestValidator", ResourceApiGatewayRequestValidator(), data, meta)
 }
 
 func resourceApiGatewayRequestValidatorRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGateway::RequestValidator", data, meta)
+	return plugin.ResourceRead("AWS::ApiGateway::RequestValidator", ResourceApiGatewayRequestValidator(), data, meta)
 }
 
 func resourceApiGatewayRequestValidatorUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGateway::RequestValidator", data, meta)
+	return plugin.ResourceUpdate("AWS::ApiGateway::RequestValidator", ResourceApiGatewayRequestValidator(), data, meta)
 }
 
 func resourceApiGatewayRequestValidatorDelete(data *schema.ResourceData, meta interface{}) error {

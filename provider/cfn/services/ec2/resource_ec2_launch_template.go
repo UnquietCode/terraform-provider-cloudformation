@@ -46,15 +46,15 @@ func ResourceEC2LaunchTemplate() *schema.Resource {
 }
 
 func resourceEC2LaunchTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::LaunchTemplate", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::LaunchTemplate", ResourceEC2LaunchTemplate(), data, meta)
 }
 
 func resourceEC2LaunchTemplateRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::LaunchTemplate", data, meta)
+	return plugin.ResourceRead("AWS::EC2::LaunchTemplate", ResourceEC2LaunchTemplate(), data, meta)
 }
 
 func resourceEC2LaunchTemplateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::LaunchTemplate", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::LaunchTemplate", ResourceEC2LaunchTemplate(), data, meta)
 }
 
 func resourceEC2LaunchTemplateDelete(data *schema.ResourceData, meta interface{}) error {

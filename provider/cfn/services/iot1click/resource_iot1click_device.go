@@ -40,15 +40,15 @@ func ResourceIoT1ClickDevice() *schema.Resource {
 }
 
 func resourceIoT1ClickDeviceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoT1Click::Device", data, meta)
+	return plugin.ResourceCreate("AWS::IoT1Click::Device", ResourceIoT1ClickDevice(), data, meta)
 }
 
 func resourceIoT1ClickDeviceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoT1Click::Device", data, meta)
+	return plugin.ResourceRead("AWS::IoT1Click::Device", ResourceIoT1ClickDevice(), data, meta)
 }
 
 func resourceIoT1ClickDeviceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoT1Click::Device", data, meta)
+	return plugin.ResourceUpdate("AWS::IoT1Click::Device", ResourceIoT1ClickDevice(), data, meta)
 }
 
 func resourceIoT1ClickDeviceDelete(data *schema.ResourceData, meta interface{}) error {

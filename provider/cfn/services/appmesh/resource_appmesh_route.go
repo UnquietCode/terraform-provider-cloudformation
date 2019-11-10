@@ -62,15 +62,15 @@ func ResourceAppMeshRoute() *schema.Resource {
 }
 
 func resourceAppMeshRouteCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppMesh::Route", data, meta)
+	return plugin.ResourceCreate("AWS::AppMesh::Route", ResourceAppMeshRoute(), data, meta)
 }
 
 func resourceAppMeshRouteRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppMesh::Route", data, meta)
+	return plugin.ResourceRead("AWS::AppMesh::Route", ResourceAppMeshRoute(), data, meta)
 }
 
 func resourceAppMeshRouteUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppMesh::Route", data, meta)
+	return plugin.ResourceUpdate("AWS::AppMesh::Route", ResourceAppMeshRoute(), data, meta)
 }
 
 func resourceAppMeshRouteDelete(data *schema.ResourceData, meta interface{}) error {

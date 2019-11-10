@@ -37,15 +37,15 @@ func ResourceCloudFrontCloudFrontOriginAccessIdentity() *schema.Resource {
 }
 
 func resourceCloudFrontCloudFrontOriginAccessIdentityCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CloudFront::CloudFrontOriginAccessIdentity", data, meta)
+	return plugin.ResourceCreate("AWS::CloudFront::CloudFrontOriginAccessIdentity", ResourceCloudFrontCloudFrontOriginAccessIdentity(), data, meta)
 }
 
 func resourceCloudFrontCloudFrontOriginAccessIdentityRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CloudFront::CloudFrontOriginAccessIdentity", data, meta)
+	return plugin.ResourceRead("AWS::CloudFront::CloudFrontOriginAccessIdentity", ResourceCloudFrontCloudFrontOriginAccessIdentity(), data, meta)
 }
 
 func resourceCloudFrontCloudFrontOriginAccessIdentityUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CloudFront::CloudFrontOriginAccessIdentity", data, meta)
+	return plugin.ResourceUpdate("AWS::CloudFront::CloudFrontOriginAccessIdentity", ResourceCloudFrontCloudFrontOriginAccessIdentity(), data, meta)
 }
 
 func resourceCloudFrontCloudFrontOriginAccessIdentityDelete(data *schema.ResourceData, meta interface{}) error {

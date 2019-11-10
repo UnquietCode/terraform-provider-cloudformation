@@ -57,15 +57,15 @@ func ResourceAppMeshVirtualService() *schema.Resource {
 }
 
 func resourceAppMeshVirtualServiceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppMesh::VirtualService", data, meta)
+	return plugin.ResourceCreate("AWS::AppMesh::VirtualService", ResourceAppMeshVirtualService(), data, meta)
 }
 
 func resourceAppMeshVirtualServiceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppMesh::VirtualService", data, meta)
+	return plugin.ResourceRead("AWS::AppMesh::VirtualService", ResourceAppMeshVirtualService(), data, meta)
 }
 
 func resourceAppMeshVirtualServiceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppMesh::VirtualService", data, meta)
+	return plugin.ResourceUpdate("AWS::AppMesh::VirtualService", ResourceAppMeshVirtualService(), data, meta)
 }
 
 func resourceAppMeshVirtualServiceDelete(data *schema.ResourceData, meta interface{}) error {

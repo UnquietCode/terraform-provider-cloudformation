@@ -36,15 +36,15 @@ func ResourceEMRSecurityConfiguration() *schema.Resource {
 }
 
 func resourceEMRSecurityConfigurationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EMR::SecurityConfiguration", data, meta)
+	return plugin.ResourceCreate("AWS::EMR::SecurityConfiguration", ResourceEMRSecurityConfiguration(), data, meta)
 }
 
 func resourceEMRSecurityConfigurationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EMR::SecurityConfiguration", data, meta)
+	return plugin.ResourceRead("AWS::EMR::SecurityConfiguration", ResourceEMRSecurityConfiguration(), data, meta)
 }
 
 func resourceEMRSecurityConfigurationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EMR::SecurityConfiguration", data, meta)
+	return plugin.ResourceUpdate("AWS::EMR::SecurityConfiguration", ResourceEMRSecurityConfiguration(), data, meta)
 }
 
 func resourceEMRSecurityConfigurationDelete(data *schema.ResourceData, meta interface{}) error {

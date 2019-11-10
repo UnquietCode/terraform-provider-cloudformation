@@ -61,15 +61,15 @@ func ResourceEventsRule() *schema.Resource {
 }
 
 func resourceEventsRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Events::Rule", data, meta)
+	return plugin.ResourceCreate("AWS::Events::Rule", ResourceEventsRule(), data, meta)
 }
 
 func resourceEventsRuleRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Events::Rule", data, meta)
+	return plugin.ResourceRead("AWS::Events::Rule", ResourceEventsRule(), data, meta)
 }
 
 func resourceEventsRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Events::Rule", data, meta)
+	return plugin.ResourceUpdate("AWS::Events::Rule", ResourceEventsRule(), data, meta)
 }
 
 func resourceEventsRuleDelete(data *schema.ResourceData, meta interface{}) error {

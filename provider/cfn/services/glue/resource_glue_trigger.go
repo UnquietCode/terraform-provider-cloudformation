@@ -68,15 +68,15 @@ func ResourceGlueTrigger() *schema.Resource {
 }
 
 func resourceGlueTriggerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::Trigger", data, meta)
+	return plugin.ResourceCreate("AWS::Glue::Trigger", ResourceGlueTrigger(), data, meta)
 }
 
 func resourceGlueTriggerRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Glue::Trigger", data, meta)
+	return plugin.ResourceRead("AWS::Glue::Trigger", ResourceGlueTrigger(), data, meta)
 }
 
 func resourceGlueTriggerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Glue::Trigger", data, meta)
+	return plugin.ResourceUpdate("AWS::Glue::Trigger", ResourceGlueTrigger(), data, meta)
 }
 
 func resourceGlueTriggerDelete(data *schema.ResourceData, meta interface{}) error {

@@ -49,15 +49,15 @@ func ResourceEFSMountTarget() *schema.Resource {
 }
 
 func resourceEFSMountTargetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EFS::MountTarget", data, meta)
+	return plugin.ResourceCreate("AWS::EFS::MountTarget", ResourceEFSMountTarget(), data, meta)
 }
 
 func resourceEFSMountTargetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EFS::MountTarget", data, meta)
+	return plugin.ResourceRead("AWS::EFS::MountTarget", ResourceEFSMountTarget(), data, meta)
 }
 
 func resourceEFSMountTargetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EFS::MountTarget", data, meta)
+	return plugin.ResourceUpdate("AWS::EFS::MountTarget", ResourceEFSMountTarget(), data, meta)
 }
 
 func resourceEFSMountTargetDelete(data *schema.ResourceData, meta interface{}) error {

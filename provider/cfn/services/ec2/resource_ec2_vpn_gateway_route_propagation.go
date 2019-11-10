@@ -36,15 +36,15 @@ func ResourceEC2VPNGatewayRoutePropagation() *schema.Resource {
 }
 
 func resourceEC2VPNGatewayRoutePropagationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::VPNGatewayRoutePropagation", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::VPNGatewayRoutePropagation", ResourceEC2VPNGatewayRoutePropagation(), data, meta)
 }
 
 func resourceEC2VPNGatewayRoutePropagationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::VPNGatewayRoutePropagation", data, meta)
+	return plugin.ResourceRead("AWS::EC2::VPNGatewayRoutePropagation", ResourceEC2VPNGatewayRoutePropagation(), data, meta)
 }
 
 func resourceEC2VPNGatewayRoutePropagationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::VPNGatewayRoutePropagation", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::VPNGatewayRoutePropagation", ResourceEC2VPNGatewayRoutePropagation(), data, meta)
 }
 
 func resourceEC2VPNGatewayRoutePropagationDelete(data *schema.ResourceData, meta interface{}) error {

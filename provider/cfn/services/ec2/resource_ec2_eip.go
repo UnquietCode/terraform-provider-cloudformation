@@ -44,15 +44,15 @@ func ResourceEC2EIP() *schema.Resource {
 }
 
 func resourceEC2EIPCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::EIP", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::EIP", ResourceEC2EIP(), data, meta)
 }
 
 func resourceEC2EIPRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::EIP", data, meta)
+	return plugin.ResourceRead("AWS::EC2::EIP", ResourceEC2EIP(), data, meta)
 }
 
 func resourceEC2EIPUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::EIP", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::EIP", ResourceEC2EIP(), data, meta)
 }
 
 func resourceEC2EIPDelete(data *schema.ResourceData, meta interface{}) error {

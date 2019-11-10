@@ -41,15 +41,15 @@ func ResourceApiGatewayUsagePlanKey() *schema.Resource {
 }
 
 func resourceApiGatewayUsagePlanKeyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::UsagePlanKey", data, meta)
+	return plugin.ResourceCreate("AWS::ApiGateway::UsagePlanKey", ResourceApiGatewayUsagePlanKey(), data, meta)
 }
 
 func resourceApiGatewayUsagePlanKeyRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGateway::UsagePlanKey", data, meta)
+	return plugin.ResourceRead("AWS::ApiGateway::UsagePlanKey", ResourceApiGatewayUsagePlanKey(), data, meta)
 }
 
 func resourceApiGatewayUsagePlanKeyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGateway::UsagePlanKey", data, meta)
+	return plugin.ResourceUpdate("AWS::ApiGateway::UsagePlanKey", ResourceApiGatewayUsagePlanKey(), data, meta)
 }
 
 func resourceApiGatewayUsagePlanKeyDelete(data *schema.ResourceData, meta interface{}) error {

@@ -49,15 +49,15 @@ func ResourceLakeFormationPermissions() *schema.Resource {
 }
 
 func resourceLakeFormationPermissionsCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::LakeFormation::Permissions", data, meta)
+	return plugin.ResourceCreate("AWS::LakeFormation::Permissions", ResourceLakeFormationPermissions(), data, meta)
 }
 
 func resourceLakeFormationPermissionsRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::LakeFormation::Permissions", data, meta)
+	return plugin.ResourceRead("AWS::LakeFormation::Permissions", ResourceLakeFormationPermissions(), data, meta)
 }
 
 func resourceLakeFormationPermissionsUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::LakeFormation::Permissions", data, meta)
+	return plugin.ResourceUpdate("AWS::LakeFormation::Permissions", ResourceLakeFormationPermissions(), data, meta)
 }
 
 func resourceLakeFormationPermissionsDelete(data *schema.ResourceData, meta interface{}) error {

@@ -77,15 +77,15 @@ func ResourceKinesisFirehoseDeliveryStream() *schema.Resource {
 }
 
 func resourceKinesisFirehoseDeliveryStreamCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::KinesisFirehose::DeliveryStream", data, meta)
+	return plugin.ResourceCreate("AWS::KinesisFirehose::DeliveryStream", ResourceKinesisFirehoseDeliveryStream(), data, meta)
 }
 
 func resourceKinesisFirehoseDeliveryStreamRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::KinesisFirehose::DeliveryStream", data, meta)
+	return plugin.ResourceRead("AWS::KinesisFirehose::DeliveryStream", ResourceKinesisFirehoseDeliveryStream(), data, meta)
 }
 
 func resourceKinesisFirehoseDeliveryStreamUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::KinesisFirehose::DeliveryStream", data, meta)
+	return plugin.ResourceUpdate("AWS::KinesisFirehose::DeliveryStream", ResourceKinesisFirehoseDeliveryStream(), data, meta)
 }
 
 func resourceKinesisFirehoseDeliveryStreamDelete(data *schema.ResourceData, meta interface{}) error {

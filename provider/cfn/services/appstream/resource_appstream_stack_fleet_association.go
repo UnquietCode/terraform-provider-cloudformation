@@ -35,15 +35,15 @@ func ResourceAppStreamStackFleetAssociation() *schema.Resource {
 }
 
 func resourceAppStreamStackFleetAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppStream::StackFleetAssociation", data, meta)
+	return plugin.ResourceCreate("AWS::AppStream::StackFleetAssociation", ResourceAppStreamStackFleetAssociation(), data, meta)
 }
 
 func resourceAppStreamStackFleetAssociationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppStream::StackFleetAssociation", data, meta)
+	return plugin.ResourceRead("AWS::AppStream::StackFleetAssociation", ResourceAppStreamStackFleetAssociation(), data, meta)
 }
 
 func resourceAppStreamStackFleetAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppStream::StackFleetAssociation", data, meta)
+	return plugin.ResourceUpdate("AWS::AppStream::StackFleetAssociation", ResourceAppStreamStackFleetAssociation(), data, meta)
 }
 
 func resourceAppStreamStackFleetAssociationDelete(data *schema.ResourceData, meta interface{}) error {

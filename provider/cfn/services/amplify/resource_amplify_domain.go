@@ -58,15 +58,15 @@ func ResourceAmplifyDomain() *schema.Resource {
 }
 
 func resourceAmplifyDomainCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Amplify::Domain", data, meta)
+	return plugin.ResourceCreate("AWS::Amplify::Domain", ResourceAmplifyDomain(), data, meta)
 }
 
 func resourceAmplifyDomainRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Amplify::Domain", data, meta)
+	return plugin.ResourceRead("AWS::Amplify::Domain", ResourceAmplifyDomain(), data, meta)
 }
 
 func resourceAmplifyDomainUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Amplify::Domain", data, meta)
+	return plugin.ResourceUpdate("AWS::Amplify::Domain", ResourceAmplifyDomain(), data, meta)
 }
 
 func resourceAmplifyDomainDelete(data *schema.ResourceData, meta interface{}) error {

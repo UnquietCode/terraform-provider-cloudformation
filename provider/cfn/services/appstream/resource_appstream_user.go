@@ -51,15 +51,15 @@ func ResourceAppStreamUser() *schema.Resource {
 }
 
 func resourceAppStreamUserCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppStream::User", data, meta)
+	return plugin.ResourceCreate("AWS::AppStream::User", ResourceAppStreamUser(), data, meta)
 }
 
 func resourceAppStreamUserRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppStream::User", data, meta)
+	return plugin.ResourceRead("AWS::AppStream::User", ResourceAppStreamUser(), data, meta)
 }
 
 func resourceAppStreamUserUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppStream::User", data, meta)
+	return plugin.ResourceUpdate("AWS::AppStream::User", ResourceAppStreamUser(), data, meta)
 }
 
 func resourceAppStreamUserDelete(data *schema.ResourceData, meta interface{}) error {

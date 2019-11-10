@@ -54,15 +54,15 @@ func ResourceGuardDutyMember() *schema.Resource {
 }
 
 func resourceGuardDutyMemberCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::GuardDuty::Member", data, meta)
+	return plugin.ResourceCreate("AWS::GuardDuty::Member", ResourceGuardDutyMember(), data, meta)
 }
 
 func resourceGuardDutyMemberRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::GuardDuty::Member", data, meta)
+	return plugin.ResourceRead("AWS::GuardDuty::Member", ResourceGuardDutyMember(), data, meta)
 }
 
 func resourceGuardDutyMemberUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::GuardDuty::Member", data, meta)
+	return plugin.ResourceUpdate("AWS::GuardDuty::Member", ResourceGuardDutyMember(), data, meta)
 }
 
 func resourceGuardDutyMemberDelete(data *schema.ResourceData, meta interface{}) error {

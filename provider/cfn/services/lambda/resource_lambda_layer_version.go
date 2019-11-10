@@ -54,15 +54,15 @@ func ResourceLambdaLayerVersion() *schema.Resource {
 }
 
 func resourceLambdaLayerVersionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Lambda::LayerVersion", data, meta)
+	return plugin.ResourceCreate("AWS::Lambda::LayerVersion", ResourceLambdaLayerVersion(), data, meta)
 }
 
 func resourceLambdaLayerVersionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Lambda::LayerVersion", data, meta)
+	return plugin.ResourceRead("AWS::Lambda::LayerVersion", ResourceLambdaLayerVersion(), data, meta)
 }
 
 func resourceLambdaLayerVersionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Lambda::LayerVersion", data, meta)
+	return plugin.ResourceUpdate("AWS::Lambda::LayerVersion", ResourceLambdaLayerVersion(), data, meta)
 }
 
 func resourceLambdaLayerVersionDelete(data *schema.ResourceData, meta interface{}) error {

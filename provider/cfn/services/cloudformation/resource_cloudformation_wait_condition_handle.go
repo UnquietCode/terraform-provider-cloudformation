@@ -27,15 +27,15 @@ func ResourceCloudFormationWaitConditionHandle() *schema.Resource {
 }
 
 func resourceCloudFormationWaitConditionHandleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CloudFormation::WaitConditionHandle", data, meta)
+	return plugin.ResourceCreate("AWS::CloudFormation::WaitConditionHandle", ResourceCloudFormationWaitConditionHandle(), data, meta)
 }
 
 func resourceCloudFormationWaitConditionHandleRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CloudFormation::WaitConditionHandle", data, meta)
+	return plugin.ResourceRead("AWS::CloudFormation::WaitConditionHandle", ResourceCloudFormationWaitConditionHandle(), data, meta)
 }
 
 func resourceCloudFormationWaitConditionHandleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CloudFormation::WaitConditionHandle", data, meta)
+	return plugin.ResourceUpdate("AWS::CloudFormation::WaitConditionHandle", ResourceCloudFormationWaitConditionHandle(), data, meta)
 }
 
 func resourceCloudFormationWaitConditionHandleDelete(data *schema.ResourceData, meta interface{}) error {

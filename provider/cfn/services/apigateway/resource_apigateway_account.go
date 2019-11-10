@@ -31,15 +31,15 @@ func ResourceApiGatewayAccount() *schema.Resource {
 }
 
 func resourceApiGatewayAccountCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::Account", data, meta)
+	return plugin.ResourceCreate("AWS::ApiGateway::Account", ResourceApiGatewayAccount(), data, meta)
 }
 
 func resourceApiGatewayAccountRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGateway::Account", data, meta)
+	return plugin.ResourceRead("AWS::ApiGateway::Account", ResourceApiGatewayAccount(), data, meta)
 }
 
 func resourceApiGatewayAccountUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGateway::Account", data, meta)
+	return plugin.ResourceUpdate("AWS::ApiGateway::Account", ResourceApiGatewayAccount(), data, meta)
 }
 
 func resourceApiGatewayAccountDelete(data *schema.ResourceData, meta interface{}) error {

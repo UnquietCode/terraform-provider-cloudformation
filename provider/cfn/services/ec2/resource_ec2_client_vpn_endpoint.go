@@ -72,15 +72,15 @@ func ResourceEC2ClientVpnEndpoint() *schema.Resource {
 }
 
 func resourceEC2ClientVpnEndpointCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::ClientVpnEndpoint", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::ClientVpnEndpoint", ResourceEC2ClientVpnEndpoint(), data, meta)
 }
 
 func resourceEC2ClientVpnEndpointRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::ClientVpnEndpoint", data, meta)
+	return plugin.ResourceRead("AWS::EC2::ClientVpnEndpoint", ResourceEC2ClientVpnEndpoint(), data, meta)
 }
 
 func resourceEC2ClientVpnEndpointUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::ClientVpnEndpoint", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::ClientVpnEndpoint", ResourceEC2ClientVpnEndpoint(), data, meta)
 }
 
 func resourceEC2ClientVpnEndpointDelete(data *schema.ResourceData, meta interface{}) error {

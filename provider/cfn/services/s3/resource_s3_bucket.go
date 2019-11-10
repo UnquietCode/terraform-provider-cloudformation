@@ -148,15 +148,15 @@ func ResourceS3Bucket() *schema.Resource {
 }
 
 func resourceS3BucketCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::S3::Bucket", data, meta)
+	return plugin.ResourceCreate("AWS::S3::Bucket", ResourceS3Bucket(), data, meta)
 }
 
 func resourceS3BucketRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::S3::Bucket", data, meta)
+	return plugin.ResourceRead("AWS::S3::Bucket", ResourceS3Bucket(), data, meta)
 }
 
 func resourceS3BucketUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::S3::Bucket", data, meta)
+	return plugin.ResourceUpdate("AWS::S3::Bucket", ResourceS3Bucket(), data, meta)
 }
 
 func resourceS3BucketDelete(data *schema.ResourceData, meta interface{}) error {

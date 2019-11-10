@@ -37,15 +37,15 @@ func ResourceStepFunctionsActivity() *schema.Resource {
 }
 
 func resourceStepFunctionsActivityCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::StepFunctions::Activity", data, meta)
+	return plugin.ResourceCreate("AWS::StepFunctions::Activity", ResourceStepFunctionsActivity(), data, meta)
 }
 
 func resourceStepFunctionsActivityRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::StepFunctions::Activity", data, meta)
+	return plugin.ResourceRead("AWS::StepFunctions::Activity", ResourceStepFunctionsActivity(), data, meta)
 }
 
 func resourceStepFunctionsActivityUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::StepFunctions::Activity", data, meta)
+	return plugin.ResourceUpdate("AWS::StepFunctions::Activity", ResourceStepFunctionsActivity(), data, meta)
 }
 
 func resourceStepFunctionsActivityDelete(data *schema.ResourceData, meta interface{}) error {

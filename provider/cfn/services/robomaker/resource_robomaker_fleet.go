@@ -40,15 +40,15 @@ func ResourceRoboMakerFleet() *schema.Resource {
 }
 
 func resourceRoboMakerFleetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RoboMaker::Fleet", data, meta)
+	return plugin.ResourceCreate("AWS::RoboMaker::Fleet", ResourceRoboMakerFleet(), data, meta)
 }
 
 func resourceRoboMakerFleetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::RoboMaker::Fleet", data, meta)
+	return plugin.ResourceRead("AWS::RoboMaker::Fleet", ResourceRoboMakerFleet(), data, meta)
 }
 
 func resourceRoboMakerFleetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::RoboMaker::Fleet", data, meta)
+	return plugin.ResourceUpdate("AWS::RoboMaker::Fleet", ResourceRoboMakerFleet(), data, meta)
 }
 
 func resourceRoboMakerFleetDelete(data *schema.ResourceData, meta interface{}) error {

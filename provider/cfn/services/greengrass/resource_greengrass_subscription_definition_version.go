@@ -37,15 +37,15 @@ func ResourceGreengrassSubscriptionDefinitionVersion() *schema.Resource {
 }
 
 func resourceGreengrassSubscriptionDefinitionVersionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Greengrass::SubscriptionDefinitionVersion", data, meta)
+	return plugin.ResourceCreate("AWS::Greengrass::SubscriptionDefinitionVersion", ResourceGreengrassSubscriptionDefinitionVersion(), data, meta)
 }
 
 func resourceGreengrassSubscriptionDefinitionVersionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Greengrass::SubscriptionDefinitionVersion", data, meta)
+	return plugin.ResourceRead("AWS::Greengrass::SubscriptionDefinitionVersion", ResourceGreengrassSubscriptionDefinitionVersion(), data, meta)
 }
 
 func resourceGreengrassSubscriptionDefinitionVersionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Greengrass::SubscriptionDefinitionVersion", data, meta)
+	return plugin.ResourceUpdate("AWS::Greengrass::SubscriptionDefinitionVersion", ResourceGreengrassSubscriptionDefinitionVersion(), data, meta)
 }
 
 func resourceGreengrassSubscriptionDefinitionVersionDelete(data *schema.ResourceData, meta interface{}) error {

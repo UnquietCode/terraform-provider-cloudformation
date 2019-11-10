@@ -43,15 +43,15 @@ func ResourceIoTAnalyticsPipeline() *schema.Resource {
 }
 
 func resourceIoTAnalyticsPipelineCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoTAnalytics::Pipeline", data, meta)
+	return plugin.ResourceCreate("AWS::IoTAnalytics::Pipeline", ResourceIoTAnalyticsPipeline(), data, meta)
 }
 
 func resourceIoTAnalyticsPipelineRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoTAnalytics::Pipeline", data, meta)
+	return plugin.ResourceRead("AWS::IoTAnalytics::Pipeline", ResourceIoTAnalyticsPipeline(), data, meta)
 }
 
 func resourceIoTAnalyticsPipelineUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoTAnalytics::Pipeline", data, meta)
+	return plugin.ResourceUpdate("AWS::IoTAnalytics::Pipeline", ResourceIoTAnalyticsPipeline(), data, meta)
 }
 
 func resourceIoTAnalyticsPipelineDelete(data *schema.ResourceData, meta interface{}) error {

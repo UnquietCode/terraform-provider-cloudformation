@@ -41,15 +41,15 @@ func ResourceDAXSubnetGroup() *schema.Resource {
 }
 
 func resourceDAXSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DAX::SubnetGroup", data, meta)
+	return plugin.ResourceCreate("AWS::DAX::SubnetGroup", ResourceDAXSubnetGroup(), data, meta)
 }
 
 func resourceDAXSubnetGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::DAX::SubnetGroup", data, meta)
+	return plugin.ResourceRead("AWS::DAX::SubnetGroup", ResourceDAXSubnetGroup(), data, meta)
 }
 
 func resourceDAXSubnetGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::DAX::SubnetGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::DAX::SubnetGroup", ResourceDAXSubnetGroup(), data, meta)
 }
 
 func resourceDAXSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {

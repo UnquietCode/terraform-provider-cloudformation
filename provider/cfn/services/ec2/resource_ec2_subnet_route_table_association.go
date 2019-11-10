@@ -36,15 +36,15 @@ func ResourceEC2SubnetRouteTableAssociation() *schema.Resource {
 }
 
 func resourceEC2SubnetRouteTableAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::SubnetRouteTableAssociation", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::SubnetRouteTableAssociation", ResourceEC2SubnetRouteTableAssociation(), data, meta)
 }
 
 func resourceEC2SubnetRouteTableAssociationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::SubnetRouteTableAssociation", data, meta)
+	return plugin.ResourceRead("AWS::EC2::SubnetRouteTableAssociation", ResourceEC2SubnetRouteTableAssociation(), data, meta)
 }
 
 func resourceEC2SubnetRouteTableAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::SubnetRouteTableAssociation", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::SubnetRouteTableAssociation", ResourceEC2SubnetRouteTableAssociation(), data, meta)
 }
 
 func resourceEC2SubnetRouteTableAssociationDelete(data *schema.ResourceData, meta interface{}) error {

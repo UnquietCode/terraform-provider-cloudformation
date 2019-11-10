@@ -41,15 +41,15 @@ func ResourceElastiCacheSubnetGroup() *schema.Resource {
 }
 
 func resourceElastiCacheSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElastiCache::SubnetGroup", data, meta)
+	return plugin.ResourceCreate("AWS::ElastiCache::SubnetGroup", ResourceElastiCacheSubnetGroup(), data, meta)
 }
 
 func resourceElastiCacheSubnetGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ElastiCache::SubnetGroup", data, meta)
+	return plugin.ResourceRead("AWS::ElastiCache::SubnetGroup", ResourceElastiCacheSubnetGroup(), data, meta)
 }
 
 func resourceElastiCacheSubnetGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ElastiCache::SubnetGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::ElastiCache::SubnetGroup", ResourceElastiCacheSubnetGroup(), data, meta)
 }
 
 func resourceElastiCacheSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {

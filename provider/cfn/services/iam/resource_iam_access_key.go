@@ -45,15 +45,15 @@ func ResourceIAMAccessKey() *schema.Resource {
 }
 
 func resourceIAMAccessKeyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IAM::AccessKey", data, meta)
+	return plugin.ResourceCreate("AWS::IAM::AccessKey", ResourceIAMAccessKey(), data, meta)
 }
 
 func resourceIAMAccessKeyRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IAM::AccessKey", data, meta)
+	return plugin.ResourceRead("AWS::IAM::AccessKey", ResourceIAMAccessKey(), data, meta)
 }
 
 func resourceIAMAccessKeyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IAM::AccessKey", data, meta)
+	return plugin.ResourceUpdate("AWS::IAM::AccessKey", ResourceIAMAccessKey(), data, meta)
 }
 
 func resourceIAMAccessKeyDelete(data *schema.ResourceData, meta interface{}) error {

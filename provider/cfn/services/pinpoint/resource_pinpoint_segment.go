@@ -60,15 +60,15 @@ func ResourcePinpointSegment() *schema.Resource {
 }
 
 func resourcePinpointSegmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::Segment", data, meta)
+	return plugin.ResourceCreate("AWS::Pinpoint::Segment", ResourcePinpointSegment(), data, meta)
 }
 
 func resourcePinpointSegmentRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::Segment", data, meta)
+	return plugin.ResourceRead("AWS::Pinpoint::Segment", ResourcePinpointSegment(), data, meta)
 }
 
 func resourcePinpointSegmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::Segment", data, meta)
+	return plugin.ResourceUpdate("AWS::Pinpoint::Segment", ResourcePinpointSegment(), data, meta)
 }
 
 func resourcePinpointSegmentDelete(data *schema.ResourceData, meta interface{}) error {

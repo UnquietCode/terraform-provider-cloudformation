@@ -102,15 +102,15 @@ func ResourceDynamoDBTable() *schema.Resource {
 }
 
 func resourceDynamoDBTableCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DynamoDB::Table", data, meta)
+	return plugin.ResourceCreate("AWS::DynamoDB::Table", ResourceDynamoDBTable(), data, meta)
 }
 
 func resourceDynamoDBTableRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::DynamoDB::Table", data, meta)
+	return plugin.ResourceRead("AWS::DynamoDB::Table", ResourceDynamoDBTable(), data, meta)
 }
 
 func resourceDynamoDBTableUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::DynamoDB::Table", data, meta)
+	return plugin.ResourceUpdate("AWS::DynamoDB::Table", ResourceDynamoDBTable(), data, meta)
 }
 
 func resourceDynamoDBTableDelete(data *schema.ResourceData, meta interface{}) error {

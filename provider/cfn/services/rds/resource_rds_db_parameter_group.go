@@ -46,15 +46,15 @@ func ResourceRDSDBParameterGroup() *schema.Resource {
 }
 
 func resourceRDSDBParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RDS::DBParameterGroup", data, meta)
+	return plugin.ResourceCreate("AWS::RDS::DBParameterGroup", ResourceRDSDBParameterGroup(), data, meta)
 }
 
 func resourceRDSDBParameterGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::RDS::DBParameterGroup", data, meta)
+	return plugin.ResourceRead("AWS::RDS::DBParameterGroup", ResourceRDSDBParameterGroup(), data, meta)
 }
 
 func resourceRDSDBParameterGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::RDS::DBParameterGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::RDS::DBParameterGroup", ResourceRDSDBParameterGroup(), data, meta)
 }
 
 func resourceRDSDBParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {

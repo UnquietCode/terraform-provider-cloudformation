@@ -72,15 +72,15 @@ func ResourceGlueMLTransform() *schema.Resource {
 }
 
 func resourceGlueMLTransformCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::MLTransform", data, meta)
+	return plugin.ResourceCreate("AWS::Glue::MLTransform", ResourceGlueMLTransform(), data, meta)
 }
 
 func resourceGlueMLTransformRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Glue::MLTransform", data, meta)
+	return plugin.ResourceRead("AWS::Glue::MLTransform", ResourceGlueMLTransform(), data, meta)
 }
 
 func resourceGlueMLTransformUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Glue::MLTransform", data, meta)
+	return plugin.ResourceUpdate("AWS::Glue::MLTransform", ResourceGlueMLTransform(), data, meta)
 }
 
 func resourceGlueMLTransformDelete(data *schema.ResourceData, meta interface{}) error {

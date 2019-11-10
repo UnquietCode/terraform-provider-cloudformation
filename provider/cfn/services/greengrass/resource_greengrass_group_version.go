@@ -66,15 +66,15 @@ func ResourceGreengrassGroupVersion() *schema.Resource {
 }
 
 func resourceGreengrassGroupVersionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Greengrass::GroupVersion", data, meta)
+	return plugin.ResourceCreate("AWS::Greengrass::GroupVersion", ResourceGreengrassGroupVersion(), data, meta)
 }
 
 func resourceGreengrassGroupVersionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Greengrass::GroupVersion", data, meta)
+	return plugin.ResourceRead("AWS::Greengrass::GroupVersion", ResourceGreengrassGroupVersion(), data, meta)
 }
 
 func resourceGreengrassGroupVersionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Greengrass::GroupVersion", data, meta)
+	return plugin.ResourceUpdate("AWS::Greengrass::GroupVersion", ResourceGreengrassGroupVersion(), data, meta)
 }
 
 func resourceGreengrassGroupVersionDelete(data *schema.ResourceData, meta interface{}) error {

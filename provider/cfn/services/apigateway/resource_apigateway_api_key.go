@@ -59,15 +59,15 @@ func ResourceApiGatewayApiKey() *schema.Resource {
 }
 
 func resourceApiGatewayApiKeyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::ApiKey", data, meta)
+	return plugin.ResourceCreate("AWS::ApiGateway::ApiKey", ResourceApiGatewayApiKey(), data, meta)
 }
 
 func resourceApiGatewayApiKeyRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGateway::ApiKey", data, meta)
+	return plugin.ResourceRead("AWS::ApiGateway::ApiKey", ResourceApiGatewayApiKey(), data, meta)
 }
 
 func resourceApiGatewayApiKeyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGateway::ApiKey", data, meta)
+	return plugin.ResourceUpdate("AWS::ApiGateway::ApiKey", ResourceApiGatewayApiKey(), data, meta)
 }
 
 func resourceApiGatewayApiKeyDelete(data *schema.ResourceData, meta interface{}) error {

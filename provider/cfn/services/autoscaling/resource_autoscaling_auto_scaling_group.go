@@ -132,15 +132,15 @@ func ResourceAutoScalingAutoScalingGroup() *schema.Resource {
 }
 
 func resourceAutoScalingAutoScalingGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AutoScaling::AutoScalingGroup", data, meta)
+	return plugin.ResourceCreate("AWS::AutoScaling::AutoScalingGroup", ResourceAutoScalingAutoScalingGroup(), data, meta)
 }
 
 func resourceAutoScalingAutoScalingGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AutoScaling::AutoScalingGroup", data, meta)
+	return plugin.ResourceRead("AWS::AutoScaling::AutoScalingGroup", ResourceAutoScalingAutoScalingGroup(), data, meta)
 }
 
 func resourceAutoScalingAutoScalingGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AutoScaling::AutoScalingGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::AutoScaling::AutoScalingGroup", ResourceAutoScalingAutoScalingGroup(), data, meta)
 }
 
 func resourceAutoScalingAutoScalingGroupDelete(data *schema.ResourceData, meta interface{}) error {

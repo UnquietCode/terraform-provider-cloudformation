@@ -42,15 +42,15 @@ func ResourceSecretsManagerRotationSchedule() *schema.Resource {
 }
 
 func resourceSecretsManagerRotationScheduleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SecretsManager::RotationSchedule", data, meta)
+	return plugin.ResourceCreate("AWS::SecretsManager::RotationSchedule", ResourceSecretsManagerRotationSchedule(), data, meta)
 }
 
 func resourceSecretsManagerRotationScheduleRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SecretsManager::RotationSchedule", data, meta)
+	return plugin.ResourceRead("AWS::SecretsManager::RotationSchedule", ResourceSecretsManagerRotationSchedule(), data, meta)
 }
 
 func resourceSecretsManagerRotationScheduleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SecretsManager::RotationSchedule", data, meta)
+	return plugin.ResourceUpdate("AWS::SecretsManager::RotationSchedule", ResourceSecretsManagerRotationSchedule(), data, meta)
 }
 
 func resourceSecretsManagerRotationScheduleDelete(data *schema.ResourceData, meta interface{}) error {

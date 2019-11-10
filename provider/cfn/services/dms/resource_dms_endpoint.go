@@ -117,15 +117,15 @@ func ResourceDMSEndpoint() *schema.Resource {
 }
 
 func resourceDMSEndpointCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DMS::Endpoint", data, meta)
+	return plugin.ResourceCreate("AWS::DMS::Endpoint", ResourceDMSEndpoint(), data, meta)
 }
 
 func resourceDMSEndpointRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::DMS::Endpoint", data, meta)
+	return plugin.ResourceRead("AWS::DMS::Endpoint", ResourceDMSEndpoint(), data, meta)
 }
 
 func resourceDMSEndpointUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::DMS::Endpoint", data, meta)
+	return plugin.ResourceUpdate("AWS::DMS::Endpoint", ResourceDMSEndpoint(), data, meta)
 }
 
 func resourceDMSEndpointDelete(data *schema.ResourceData, meta interface{}) error {

@@ -55,15 +55,15 @@ func ResourceRAMResourceShare() *schema.Resource {
 }
 
 func resourceRAMResourceShareCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RAM::ResourceShare", data, meta)
+	return plugin.ResourceCreate("AWS::RAM::ResourceShare", ResourceRAMResourceShare(), data, meta)
 }
 
 func resourceRAMResourceShareRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::RAM::ResourceShare", data, meta)
+	return plugin.ResourceRead("AWS::RAM::ResourceShare", ResourceRAMResourceShare(), data, meta)
 }
 
 func resourceRAMResourceShareUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::RAM::ResourceShare", data, meta)
+	return plugin.ResourceUpdate("AWS::RAM::ResourceShare", ResourceRAMResourceShare(), data, meta)
 }
 
 func resourceRAMResourceShareDelete(data *schema.ResourceData, meta interface{}) error {

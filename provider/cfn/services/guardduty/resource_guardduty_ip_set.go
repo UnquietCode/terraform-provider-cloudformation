@@ -49,15 +49,15 @@ func ResourceGuardDutyIPSet() *schema.Resource {
 }
 
 func resourceGuardDutyIPSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::GuardDuty::IPSet", data, meta)
+	return plugin.ResourceCreate("AWS::GuardDuty::IPSet", ResourceGuardDutyIPSet(), data, meta)
 }
 
 func resourceGuardDutyIPSetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::GuardDuty::IPSet", data, meta)
+	return plugin.ResourceRead("AWS::GuardDuty::IPSet", ResourceGuardDutyIPSet(), data, meta)
 }
 
 func resourceGuardDutyIPSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::GuardDuty::IPSet", data, meta)
+	return plugin.ResourceUpdate("AWS::GuardDuty::IPSet", ResourceGuardDutyIPSet(), data, meta)
 }
 
 func resourceGuardDutyIPSetDelete(data *schema.ResourceData, meta interface{}) error {

@@ -36,15 +36,15 @@ func ResourceEC2TransitGatewayRouteTablePropagation() *schema.Resource {
 }
 
 func resourceEC2TransitGatewayRouteTablePropagationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::TransitGatewayRouteTablePropagation", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::TransitGatewayRouteTablePropagation", ResourceEC2TransitGatewayRouteTablePropagation(), data, meta)
 }
 
 func resourceEC2TransitGatewayRouteTablePropagationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::TransitGatewayRouteTablePropagation", data, meta)
+	return plugin.ResourceRead("AWS::EC2::TransitGatewayRouteTablePropagation", ResourceEC2TransitGatewayRouteTablePropagation(), data, meta)
 }
 
 func resourceEC2TransitGatewayRouteTablePropagationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::TransitGatewayRouteTablePropagation", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::TransitGatewayRouteTablePropagation", ResourceEC2TransitGatewayRouteTablePropagation(), data, meta)
 }
 
 func resourceEC2TransitGatewayRouteTablePropagationDelete(data *schema.ResourceData, meta interface{}) error {

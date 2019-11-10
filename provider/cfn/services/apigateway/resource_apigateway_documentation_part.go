@@ -43,15 +43,15 @@ func ResourceApiGatewayDocumentationPart() *schema.Resource {
 }
 
 func resourceApiGatewayDocumentationPartCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::DocumentationPart", data, meta)
+	return plugin.ResourceCreate("AWS::ApiGateway::DocumentationPart", ResourceApiGatewayDocumentationPart(), data, meta)
 }
 
 func resourceApiGatewayDocumentationPartRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGateway::DocumentationPart", data, meta)
+	return plugin.ResourceRead("AWS::ApiGateway::DocumentationPart", ResourceApiGatewayDocumentationPart(), data, meta)
 }
 
 func resourceApiGatewayDocumentationPartUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGateway::DocumentationPart", data, meta)
+	return plugin.ResourceUpdate("AWS::ApiGateway::DocumentationPart", ResourceApiGatewayDocumentationPart(), data, meta)
 }
 
 func resourceApiGatewayDocumentationPartDelete(data *schema.ResourceData, meta interface{}) error {

@@ -46,15 +46,15 @@ func ResourceServiceCatalogPortfolioProductAssociation() *schema.Resource {
 }
 
 func resourceServiceCatalogPortfolioProductAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::PortfolioProductAssociation", data, meta)
+	return plugin.ResourceCreate("AWS::ServiceCatalog::PortfolioProductAssociation", ResourceServiceCatalogPortfolioProductAssociation(), data, meta)
 }
 
 func resourceServiceCatalogPortfolioProductAssociationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ServiceCatalog::PortfolioProductAssociation", data, meta)
+	return plugin.ResourceRead("AWS::ServiceCatalog::PortfolioProductAssociation", ResourceServiceCatalogPortfolioProductAssociation(), data, meta)
 }
 
 func resourceServiceCatalogPortfolioProductAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ServiceCatalog::PortfolioProductAssociation", data, meta)
+	return plugin.ResourceUpdate("AWS::ServiceCatalog::PortfolioProductAssociation", ResourceServiceCatalogPortfolioProductAssociation(), data, meta)
 }
 
 func resourceServiceCatalogPortfolioProductAssociationDelete(data *schema.ResourceData, meta interface{}) error {

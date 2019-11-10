@@ -75,15 +75,15 @@ func ResourcePinpointEmailIdentity() *schema.Resource {
 }
 
 func resourcePinpointEmailIdentityCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::PinpointEmail::Identity", data, meta)
+	return plugin.ResourceCreate("AWS::PinpointEmail::Identity", ResourcePinpointEmailIdentity(), data, meta)
 }
 
 func resourcePinpointEmailIdentityRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::PinpointEmail::Identity", data, meta)
+	return plugin.ResourceRead("AWS::PinpointEmail::Identity", ResourcePinpointEmailIdentity(), data, meta)
 }
 
 func resourcePinpointEmailIdentityUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::PinpointEmail::Identity", data, meta)
+	return plugin.ResourceUpdate("AWS::PinpointEmail::Identity", ResourcePinpointEmailIdentity(), data, meta)
 }
 
 func resourcePinpointEmailIdentityDelete(data *schema.ResourceData, meta interface{}) error {

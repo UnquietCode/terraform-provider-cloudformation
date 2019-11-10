@@ -37,15 +37,15 @@ func ResourceWAFRegionalXssMatchSet() *schema.Resource {
 }
 
 func resourceWAFRegionalXssMatchSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::WAFRegional::XssMatchSet", data, meta)
+	return plugin.ResourceCreate("AWS::WAFRegional::XssMatchSet", ResourceWAFRegionalXssMatchSet(), data, meta)
 }
 
 func resourceWAFRegionalXssMatchSetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::WAFRegional::XssMatchSet", data, meta)
+	return plugin.ResourceRead("AWS::WAFRegional::XssMatchSet", ResourceWAFRegionalXssMatchSet(), data, meta)
 }
 
 func resourceWAFRegionalXssMatchSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::WAFRegional::XssMatchSet", data, meta)
+	return plugin.ResourceUpdate("AWS::WAFRegional::XssMatchSet", ResourceWAFRegionalXssMatchSet(), data, meta)
 }
 
 func resourceWAFRegionalXssMatchSetDelete(data *schema.ResourceData, meta interface{}) error {

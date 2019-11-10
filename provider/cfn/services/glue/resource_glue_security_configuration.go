@@ -38,15 +38,15 @@ func ResourceGlueSecurityConfiguration() *schema.Resource {
 }
 
 func resourceGlueSecurityConfigurationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::SecurityConfiguration", data, meta)
+	return plugin.ResourceCreate("AWS::Glue::SecurityConfiguration", ResourceGlueSecurityConfiguration(), data, meta)
 }
 
 func resourceGlueSecurityConfigurationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Glue::SecurityConfiguration", data, meta)
+	return plugin.ResourceRead("AWS::Glue::SecurityConfiguration", ResourceGlueSecurityConfiguration(), data, meta)
 }
 
 func resourceGlueSecurityConfigurationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Glue::SecurityConfiguration", data, meta)
+	return plugin.ResourceUpdate("AWS::Glue::SecurityConfiguration", ResourceGlueSecurityConfiguration(), data, meta)
 }
 
 func resourceGlueSecurityConfigurationDelete(data *schema.ResourceData, meta interface{}) error {

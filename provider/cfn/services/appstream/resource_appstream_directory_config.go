@@ -43,15 +43,15 @@ func ResourceAppStreamDirectoryConfig() *schema.Resource {
 }
 
 func resourceAppStreamDirectoryConfigCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppStream::DirectoryConfig", data, meta)
+	return plugin.ResourceCreate("AWS::AppStream::DirectoryConfig", ResourceAppStreamDirectoryConfig(), data, meta)
 }
 
 func resourceAppStreamDirectoryConfigRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppStream::DirectoryConfig", data, meta)
+	return plugin.ResourceRead("AWS::AppStream::DirectoryConfig", ResourceAppStreamDirectoryConfig(), data, meta)
 }
 
 func resourceAppStreamDirectoryConfigUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppStream::DirectoryConfig", data, meta)
+	return plugin.ResourceUpdate("AWS::AppStream::DirectoryConfig", ResourceAppStreamDirectoryConfig(), data, meta)
 }
 
 func resourceAppStreamDirectoryConfigDelete(data *schema.ResourceData, meta interface{}) error {

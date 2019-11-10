@@ -57,15 +57,15 @@ func ResourceAppMeshVirtualRouter() *schema.Resource {
 }
 
 func resourceAppMeshVirtualRouterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppMesh::VirtualRouter", data, meta)
+	return plugin.ResourceCreate("AWS::AppMesh::VirtualRouter", ResourceAppMeshVirtualRouter(), data, meta)
 }
 
 func resourceAppMeshVirtualRouterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppMesh::VirtualRouter", data, meta)
+	return plugin.ResourceRead("AWS::AppMesh::VirtualRouter", ResourceAppMeshVirtualRouter(), data, meta)
 }
 
 func resourceAppMeshVirtualRouterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppMesh::VirtualRouter", data, meta)
+	return plugin.ResourceUpdate("AWS::AppMesh::VirtualRouter", ResourceAppMeshVirtualRouter(), data, meta)
 }
 
 func resourceAppMeshVirtualRouterDelete(data *schema.ResourceData, meta interface{}) error {

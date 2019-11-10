@@ -46,15 +46,15 @@ func ResourceAthenaNamedQuery() *schema.Resource {
 }
 
 func resourceAthenaNamedQueryCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Athena::NamedQuery", data, meta)
+	return plugin.ResourceCreate("AWS::Athena::NamedQuery", ResourceAthenaNamedQuery(), data, meta)
 }
 
 func resourceAthenaNamedQueryRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Athena::NamedQuery", data, meta)
+	return plugin.ResourceRead("AWS::Athena::NamedQuery", ResourceAthenaNamedQuery(), data, meta)
 }
 
 func resourceAthenaNamedQueryUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Athena::NamedQuery", data, meta)
+	return plugin.ResourceUpdate("AWS::Athena::NamedQuery", ResourceAthenaNamedQuery(), data, meta)
 }
 
 func resourceAthenaNamedQueryDelete(data *schema.ResourceData, meta interface{}) error {

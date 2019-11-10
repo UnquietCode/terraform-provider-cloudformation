@@ -48,15 +48,15 @@ func ResourceRDSDBSecurityGroup() *schema.Resource {
 }
 
 func resourceRDSDBSecurityGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RDS::DBSecurityGroup", data, meta)
+	return plugin.ResourceCreate("AWS::RDS::DBSecurityGroup", ResourceRDSDBSecurityGroup(), data, meta)
 }
 
 func resourceRDSDBSecurityGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::RDS::DBSecurityGroup", data, meta)
+	return plugin.ResourceRead("AWS::RDS::DBSecurityGroup", ResourceRDSDBSecurityGroup(), data, meta)
 }
 
 func resourceRDSDBSecurityGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::RDS::DBSecurityGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::RDS::DBSecurityGroup", ResourceRDSDBSecurityGroup(), data, meta)
 }
 
 func resourceRDSDBSecurityGroupDelete(data *schema.ResourceData, meta interface{}) error {

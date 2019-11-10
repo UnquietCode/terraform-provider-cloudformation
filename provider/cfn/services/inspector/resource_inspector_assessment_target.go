@@ -40,15 +40,15 @@ func ResourceInspectorAssessmentTarget() *schema.Resource {
 }
 
 func resourceInspectorAssessmentTargetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Inspector::AssessmentTarget", data, meta)
+	return plugin.ResourceCreate("AWS::Inspector::AssessmentTarget", ResourceInspectorAssessmentTarget(), data, meta)
 }
 
 func resourceInspectorAssessmentTargetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Inspector::AssessmentTarget", data, meta)
+	return plugin.ResourceRead("AWS::Inspector::AssessmentTarget", ResourceInspectorAssessmentTarget(), data, meta)
 }
 
 func resourceInspectorAssessmentTargetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Inspector::AssessmentTarget", data, meta)
+	return plugin.ResourceUpdate("AWS::Inspector::AssessmentTarget", ResourceInspectorAssessmentTarget(), data, meta)
 }
 
 func resourceInspectorAssessmentTargetDelete(data *schema.ResourceData, meta interface{}) error {

@@ -81,15 +81,15 @@ func ResourceAppStreamImageBuilder() *schema.Resource {
 }
 
 func resourceAppStreamImageBuilderCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppStream::ImageBuilder", data, meta)
+	return plugin.ResourceCreate("AWS::AppStream::ImageBuilder", ResourceAppStreamImageBuilder(), data, meta)
 }
 
 func resourceAppStreamImageBuilderRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppStream::ImageBuilder", data, meta)
+	return plugin.ResourceRead("AWS::AppStream::ImageBuilder", ResourceAppStreamImageBuilder(), data, meta)
 }
 
 func resourceAppStreamImageBuilderUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppStream::ImageBuilder", data, meta)
+	return plugin.ResourceUpdate("AWS::AppStream::ImageBuilder", ResourceAppStreamImageBuilder(), data, meta)
 }
 
 func resourceAppStreamImageBuilderDelete(data *schema.ResourceData, meta interface{}) error {

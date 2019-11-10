@@ -42,15 +42,15 @@ func ResourceWAFRegionalRule() *schema.Resource {
 }
 
 func resourceWAFRegionalRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::WAFRegional::Rule", data, meta)
+	return plugin.ResourceCreate("AWS::WAFRegional::Rule", ResourceWAFRegionalRule(), data, meta)
 }
 
 func resourceWAFRegionalRuleRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::WAFRegional::Rule", data, meta)
+	return plugin.ResourceRead("AWS::WAFRegional::Rule", ResourceWAFRegionalRule(), data, meta)
 }
 
 func resourceWAFRegionalRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::WAFRegional::Rule", data, meta)
+	return plugin.ResourceUpdate("AWS::WAFRegional::Rule", ResourceWAFRegionalRule(), data, meta)
 }
 
 func resourceWAFRegionalRuleDelete(data *schema.ResourceData, meta interface{}) error {

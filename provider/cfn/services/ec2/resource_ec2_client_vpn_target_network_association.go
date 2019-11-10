@@ -36,15 +36,15 @@ func ResourceEC2ClientVpnTargetNetworkAssociation() *schema.Resource {
 }
 
 func resourceEC2ClientVpnTargetNetworkAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::ClientVpnTargetNetworkAssociation", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::ClientVpnTargetNetworkAssociation", ResourceEC2ClientVpnTargetNetworkAssociation(), data, meta)
 }
 
 func resourceEC2ClientVpnTargetNetworkAssociationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::ClientVpnTargetNetworkAssociation", data, meta)
+	return plugin.ResourceRead("AWS::EC2::ClientVpnTargetNetworkAssociation", ResourceEC2ClientVpnTargetNetworkAssociation(), data, meta)
 }
 
 func resourceEC2ClientVpnTargetNetworkAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::ClientVpnTargetNetworkAssociation", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::ClientVpnTargetNetworkAssociation", ResourceEC2ClientVpnTargetNetworkAssociation(), data, meta)
 }
 
 func resourceEC2ClientVpnTargetNetworkAssociationDelete(data *schema.ResourceData, meta interface{}) error {

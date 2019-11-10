@@ -36,15 +36,15 @@ func ResourceSecretsManagerResourcePolicy() *schema.Resource {
 }
 
 func resourceSecretsManagerResourcePolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SecretsManager::ResourcePolicy", data, meta)
+	return plugin.ResourceCreate("AWS::SecretsManager::ResourcePolicy", ResourceSecretsManagerResourcePolicy(), data, meta)
 }
 
 func resourceSecretsManagerResourcePolicyRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SecretsManager::ResourcePolicy", data, meta)
+	return plugin.ResourceRead("AWS::SecretsManager::ResourcePolicy", ResourceSecretsManagerResourcePolicy(), data, meta)
 }
 
 func resourceSecretsManagerResourcePolicyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SecretsManager::ResourcePolicy", data, meta)
+	return plugin.ResourceUpdate("AWS::SecretsManager::ResourcePolicy", ResourceSecretsManagerResourcePolicy(), data, meta)
 }
 
 func resourceSecretsManagerResourcePolicyDelete(data *schema.ResourceData, meta interface{}) error {

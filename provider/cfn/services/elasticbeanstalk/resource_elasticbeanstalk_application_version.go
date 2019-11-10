@@ -43,15 +43,15 @@ func ResourceElasticBeanstalkApplicationVersion() *schema.Resource {
 }
 
 func resourceElasticBeanstalkApplicationVersionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElasticBeanstalk::ApplicationVersion", data, meta)
+	return plugin.ResourceCreate("AWS::ElasticBeanstalk::ApplicationVersion", ResourceElasticBeanstalkApplicationVersion(), data, meta)
 }
 
 func resourceElasticBeanstalkApplicationVersionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ElasticBeanstalk::ApplicationVersion", data, meta)
+	return plugin.ResourceRead("AWS::ElasticBeanstalk::ApplicationVersion", ResourceElasticBeanstalkApplicationVersion(), data, meta)
 }
 
 func resourceElasticBeanstalkApplicationVersionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ElasticBeanstalk::ApplicationVersion", data, meta)
+	return plugin.ResourceUpdate("AWS::ElasticBeanstalk::ApplicationVersion", ResourceElasticBeanstalkApplicationVersion(), data, meta)
 }
 
 func resourceElasticBeanstalkApplicationVersionDelete(data *schema.ResourceData, meta interface{}) error {

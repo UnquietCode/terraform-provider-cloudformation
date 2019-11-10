@@ -78,15 +78,15 @@ func ResourceCognitoIdentityPool() *schema.Resource {
 }
 
 func resourceCognitoIdentityPoolCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Cognito::IdentityPool", data, meta)
+	return plugin.ResourceCreate("AWS::Cognito::IdentityPool", ResourceCognitoIdentityPool(), data, meta)
 }
 
 func resourceCognitoIdentityPoolRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Cognito::IdentityPool", data, meta)
+	return plugin.ResourceRead("AWS::Cognito::IdentityPool", ResourceCognitoIdentityPool(), data, meta)
 }
 
 func resourceCognitoIdentityPoolUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Cognito::IdentityPool", data, meta)
+	return plugin.ResourceUpdate("AWS::Cognito::IdentityPool", ResourceCognitoIdentityPool(), data, meta)
 }
 
 func resourceCognitoIdentityPoolDelete(data *schema.ResourceData, meta interface{}) error {

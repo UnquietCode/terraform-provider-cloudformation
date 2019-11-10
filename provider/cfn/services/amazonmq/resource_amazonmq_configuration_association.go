@@ -38,15 +38,15 @@ func ResourceAmazonMQConfigurationAssociation() *schema.Resource {
 }
 
 func resourceAmazonMQConfigurationAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AmazonMQ::ConfigurationAssociation", data, meta)
+	return plugin.ResourceCreate("AWS::AmazonMQ::ConfigurationAssociation", ResourceAmazonMQConfigurationAssociation(), data, meta)
 }
 
 func resourceAmazonMQConfigurationAssociationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AmazonMQ::ConfigurationAssociation", data, meta)
+	return plugin.ResourceRead("AWS::AmazonMQ::ConfigurationAssociation", ResourceAmazonMQConfigurationAssociation(), data, meta)
 }
 
 func resourceAmazonMQConfigurationAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AmazonMQ::ConfigurationAssociation", data, meta)
+	return plugin.ResourceUpdate("AWS::AmazonMQ::ConfigurationAssociation", ResourceAmazonMQConfigurationAssociation(), data, meta)
 }
 
 func resourceAmazonMQConfigurationAssociationDelete(data *schema.ResourceData, meta interface{}) error {

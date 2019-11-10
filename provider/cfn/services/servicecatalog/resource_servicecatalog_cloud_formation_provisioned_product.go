@@ -87,15 +87,15 @@ func ResourceServiceCatalogCloudFormationProvisionedProduct() *schema.Resource {
 }
 
 func resourceServiceCatalogCloudFormationProvisionedProductCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::CloudFormationProvisionedProduct", data, meta)
+	return plugin.ResourceCreate("AWS::ServiceCatalog::CloudFormationProvisionedProduct", ResourceServiceCatalogCloudFormationProvisionedProduct(), data, meta)
 }
 
 func resourceServiceCatalogCloudFormationProvisionedProductRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ServiceCatalog::CloudFormationProvisionedProduct", data, meta)
+	return plugin.ResourceRead("AWS::ServiceCatalog::CloudFormationProvisionedProduct", ResourceServiceCatalogCloudFormationProvisionedProduct(), data, meta)
 }
 
 func resourceServiceCatalogCloudFormationProvisionedProductUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ServiceCatalog::CloudFormationProvisionedProduct", data, meta)
+	return plugin.ResourceUpdate("AWS::ServiceCatalog::CloudFormationProvisionedProduct", ResourceServiceCatalogCloudFormationProvisionedProduct(), data, meta)
 }
 
 func resourceServiceCatalogCloudFormationProvisionedProductDelete(data *schema.ResourceData, meta interface{}) error {

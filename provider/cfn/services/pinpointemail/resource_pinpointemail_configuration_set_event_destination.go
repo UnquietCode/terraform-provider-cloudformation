@@ -43,15 +43,15 @@ func ResourcePinpointEmailConfigurationSetEventDestination() *schema.Resource {
 }
 
 func resourcePinpointEmailConfigurationSetEventDestinationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::PinpointEmail::ConfigurationSetEventDestination", data, meta)
+	return plugin.ResourceCreate("AWS::PinpointEmail::ConfigurationSetEventDestination", ResourcePinpointEmailConfigurationSetEventDestination(), data, meta)
 }
 
 func resourcePinpointEmailConfigurationSetEventDestinationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::PinpointEmail::ConfigurationSetEventDestination", data, meta)
+	return plugin.ResourceRead("AWS::PinpointEmail::ConfigurationSetEventDestination", ResourcePinpointEmailConfigurationSetEventDestination(), data, meta)
 }
 
 func resourcePinpointEmailConfigurationSetEventDestinationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::PinpointEmail::ConfigurationSetEventDestination", data, meta)
+	return plugin.ResourceUpdate("AWS::PinpointEmail::ConfigurationSetEventDestination", ResourcePinpointEmailConfigurationSetEventDestination(), data, meta)
 }
 
 func resourcePinpointEmailConfigurationSetEventDestinationDelete(data *schema.ResourceData, meta interface{}) error {

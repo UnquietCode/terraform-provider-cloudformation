@@ -72,15 +72,15 @@ func ResourceDirectoryServiceMicrosoftAD() *schema.Resource {
 }
 
 func resourceDirectoryServiceMicrosoftADCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DirectoryService::MicrosoftAD", data, meta)
+	return plugin.ResourceCreate("AWS::DirectoryService::MicrosoftAD", ResourceDirectoryServiceMicrosoftAD(), data, meta)
 }
 
 func resourceDirectoryServiceMicrosoftADRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::DirectoryService::MicrosoftAD", data, meta)
+	return plugin.ResourceRead("AWS::DirectoryService::MicrosoftAD", ResourceDirectoryServiceMicrosoftAD(), data, meta)
 }
 
 func resourceDirectoryServiceMicrosoftADUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::DirectoryService::MicrosoftAD", data, meta)
+	return plugin.ResourceUpdate("AWS::DirectoryService::MicrosoftAD", ResourceDirectoryServiceMicrosoftAD(), data, meta)
 }
 
 func resourceDirectoryServiceMicrosoftADDelete(data *schema.ResourceData, meta interface{}) error {

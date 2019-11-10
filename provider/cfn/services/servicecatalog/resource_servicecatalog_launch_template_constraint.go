@@ -49,15 +49,15 @@ func ResourceServiceCatalogLaunchTemplateConstraint() *schema.Resource {
 }
 
 func resourceServiceCatalogLaunchTemplateConstraintCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::LaunchTemplateConstraint", data, meta)
+	return plugin.ResourceCreate("AWS::ServiceCatalog::LaunchTemplateConstraint", ResourceServiceCatalogLaunchTemplateConstraint(), data, meta)
 }
 
 func resourceServiceCatalogLaunchTemplateConstraintRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ServiceCatalog::LaunchTemplateConstraint", data, meta)
+	return plugin.ResourceRead("AWS::ServiceCatalog::LaunchTemplateConstraint", ResourceServiceCatalogLaunchTemplateConstraint(), data, meta)
 }
 
 func resourceServiceCatalogLaunchTemplateConstraintUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ServiceCatalog::LaunchTemplateConstraint", data, meta)
+	return plugin.ResourceUpdate("AWS::ServiceCatalog::LaunchTemplateConstraint", ResourceServiceCatalogLaunchTemplateConstraint(), data, meta)
 }
 
 func resourceServiceCatalogLaunchTemplateConstraintDelete(data *schema.ResourceData, meta interface{}) error {

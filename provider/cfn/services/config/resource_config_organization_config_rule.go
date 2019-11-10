@@ -49,15 +49,15 @@ func ResourceConfigOrganizationConfigRule() *schema.Resource {
 }
 
 func resourceConfigOrganizationConfigRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Config::OrganizationConfigRule", data, meta)
+	return plugin.ResourceCreate("AWS::Config::OrganizationConfigRule", ResourceConfigOrganizationConfigRule(), data, meta)
 }
 
 func resourceConfigOrganizationConfigRuleRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Config::OrganizationConfigRule", data, meta)
+	return plugin.ResourceRead("AWS::Config::OrganizationConfigRule", ResourceConfigOrganizationConfigRule(), data, meta)
 }
 
 func resourceConfigOrganizationConfigRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Config::OrganizationConfigRule", data, meta)
+	return plugin.ResourceUpdate("AWS::Config::OrganizationConfigRule", ResourceConfigOrganizationConfigRule(), data, meta)
 }
 
 func resourceConfigOrganizationConfigRuleDelete(data *schema.ResourceData, meta interface{}) error {

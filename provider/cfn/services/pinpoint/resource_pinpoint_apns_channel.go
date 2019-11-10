@@ -64,15 +64,15 @@ func ResourcePinpointAPNSChannel() *schema.Resource {
 }
 
 func resourcePinpointAPNSChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::APNSChannel", data, meta)
+	return plugin.ResourceCreate("AWS::Pinpoint::APNSChannel", ResourcePinpointAPNSChannel(), data, meta)
 }
 
 func resourcePinpointAPNSChannelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::APNSChannel", data, meta)
+	return plugin.ResourceRead("AWS::Pinpoint::APNSChannel", ResourcePinpointAPNSChannel(), data, meta)
 }
 
 func resourcePinpointAPNSChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::APNSChannel", data, meta)
+	return plugin.ResourceUpdate("AWS::Pinpoint::APNSChannel", ResourcePinpointAPNSChannel(), data, meta)
 }
 
 func resourcePinpointAPNSChannelDelete(data *schema.ResourceData, meta interface{}) error {

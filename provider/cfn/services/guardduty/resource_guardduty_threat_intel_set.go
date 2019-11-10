@@ -49,15 +49,15 @@ func ResourceGuardDutyThreatIntelSet() *schema.Resource {
 }
 
 func resourceGuardDutyThreatIntelSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::GuardDuty::ThreatIntelSet", data, meta)
+	return plugin.ResourceCreate("AWS::GuardDuty::ThreatIntelSet", ResourceGuardDutyThreatIntelSet(), data, meta)
 }
 
 func resourceGuardDutyThreatIntelSetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::GuardDuty::ThreatIntelSet", data, meta)
+	return plugin.ResourceRead("AWS::GuardDuty::ThreatIntelSet", ResourceGuardDutyThreatIntelSet(), data, meta)
 }
 
 func resourceGuardDutyThreatIntelSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::GuardDuty::ThreatIntelSet", data, meta)
+	return plugin.ResourceUpdate("AWS::GuardDuty::ThreatIntelSet", ResourceGuardDutyThreatIntelSet(), data, meta)
 }
 
 func resourceGuardDutyThreatIntelSetDelete(data *schema.ResourceData, meta interface{}) error {

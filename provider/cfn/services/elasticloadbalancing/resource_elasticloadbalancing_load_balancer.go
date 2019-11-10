@@ -135,15 +135,15 @@ func ResourceElasticLoadBalancingLoadBalancer() *schema.Resource {
 }
 
 func resourceElasticLoadBalancingLoadBalancerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElasticLoadBalancing::LoadBalancer", data, meta)
+	return plugin.ResourceCreate("AWS::ElasticLoadBalancing::LoadBalancer", ResourceElasticLoadBalancingLoadBalancer(), data, meta)
 }
 
 func resourceElasticLoadBalancingLoadBalancerRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ElasticLoadBalancing::LoadBalancer", data, meta)
+	return plugin.ResourceRead("AWS::ElasticLoadBalancing::LoadBalancer", ResourceElasticLoadBalancingLoadBalancer(), data, meta)
 }
 
 func resourceElasticLoadBalancingLoadBalancerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ElasticLoadBalancing::LoadBalancer", data, meta)
+	return plugin.ResourceUpdate("AWS::ElasticLoadBalancing::LoadBalancer", ResourceElasticLoadBalancingLoadBalancer(), data, meta)
 }
 
 func resourceElasticLoadBalancingLoadBalancerDelete(data *schema.ResourceData, meta interface{}) error {

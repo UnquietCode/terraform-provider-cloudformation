@@ -53,15 +53,15 @@ func ResourceApiGatewayV2RouteResponse() *schema.Resource {
 }
 
 func resourceApiGatewayV2RouteResponseCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGatewayV2::RouteResponse", data, meta)
+	return plugin.ResourceCreate("AWS::ApiGatewayV2::RouteResponse", ResourceApiGatewayV2RouteResponse(), data, meta)
 }
 
 func resourceApiGatewayV2RouteResponseRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGatewayV2::RouteResponse", data, meta)
+	return plugin.ResourceRead("AWS::ApiGatewayV2::RouteResponse", ResourceApiGatewayV2RouteResponse(), data, meta)
 }
 
 func resourceApiGatewayV2RouteResponseUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGatewayV2::RouteResponse", data, meta)
+	return plugin.ResourceUpdate("AWS::ApiGatewayV2::RouteResponse", ResourceApiGatewayV2RouteResponse(), data, meta)
 }
 
 func resourceApiGatewayV2RouteResponseDelete(data *schema.ResourceData, meta interface{}) error {

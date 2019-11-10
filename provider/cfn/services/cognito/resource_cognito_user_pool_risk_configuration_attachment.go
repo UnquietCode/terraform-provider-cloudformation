@@ -55,15 +55,15 @@ func ResourceCognitoUserPoolRiskConfigurationAttachment() *schema.Resource {
 }
 
 func resourceCognitoUserPoolRiskConfigurationAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Cognito::UserPoolRiskConfigurationAttachment", data, meta)
+	return plugin.ResourceCreate("AWS::Cognito::UserPoolRiskConfigurationAttachment", ResourceCognitoUserPoolRiskConfigurationAttachment(), data, meta)
 }
 
 func resourceCognitoUserPoolRiskConfigurationAttachmentRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Cognito::UserPoolRiskConfigurationAttachment", data, meta)
+	return plugin.ResourceRead("AWS::Cognito::UserPoolRiskConfigurationAttachment", ResourceCognitoUserPoolRiskConfigurationAttachment(), data, meta)
 }
 
 func resourceCognitoUserPoolRiskConfigurationAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Cognito::UserPoolRiskConfigurationAttachment", data, meta)
+	return plugin.ResourceUpdate("AWS::Cognito::UserPoolRiskConfigurationAttachment", ResourceCognitoUserPoolRiskConfigurationAttachment(), data, meta)
 }
 
 func resourceCognitoUserPoolRiskConfigurationAttachmentDelete(data *schema.ResourceData, meta interface{}) error {

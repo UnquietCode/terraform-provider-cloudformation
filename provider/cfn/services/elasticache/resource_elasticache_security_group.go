@@ -31,15 +31,15 @@ func ResourceElastiCacheSecurityGroup() *schema.Resource {
 }
 
 func resourceElastiCacheSecurityGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElastiCache::SecurityGroup", data, meta)
+	return plugin.ResourceCreate("AWS::ElastiCache::SecurityGroup", ResourceElastiCacheSecurityGroup(), data, meta)
 }
 
 func resourceElastiCacheSecurityGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ElastiCache::SecurityGroup", data, meta)
+	return plugin.ResourceRead("AWS::ElastiCache::SecurityGroup", ResourceElastiCacheSecurityGroup(), data, meta)
 }
 
 func resourceElastiCacheSecurityGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ElastiCache::SecurityGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::ElastiCache::SecurityGroup", ResourceElastiCacheSecurityGroup(), data, meta)
 }
 
 func resourceElastiCacheSecurityGroupDelete(data *schema.ResourceData, meta interface{}) error {

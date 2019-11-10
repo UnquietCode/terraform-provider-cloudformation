@@ -37,15 +37,15 @@ func ResourcePinpointEmailDedicatedIpPool() *schema.Resource {
 }
 
 func resourcePinpointEmailDedicatedIpPoolCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::PinpointEmail::DedicatedIpPool", data, meta)
+	return plugin.ResourceCreate("AWS::PinpointEmail::DedicatedIpPool", ResourcePinpointEmailDedicatedIpPool(), data, meta)
 }
 
 func resourcePinpointEmailDedicatedIpPoolRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::PinpointEmail::DedicatedIpPool", data, meta)
+	return plugin.ResourceRead("AWS::PinpointEmail::DedicatedIpPool", ResourcePinpointEmailDedicatedIpPool(), data, meta)
 }
 
 func resourcePinpointEmailDedicatedIpPoolUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::PinpointEmail::DedicatedIpPool", data, meta)
+	return plugin.ResourceUpdate("AWS::PinpointEmail::DedicatedIpPool", ResourcePinpointEmailDedicatedIpPool(), data, meta)
 }
 
 func resourcePinpointEmailDedicatedIpPoolDelete(data *schema.ResourceData, meta interface{}) error {

@@ -64,15 +64,15 @@ func ResourceEC2VPNConnection() *schema.Resource {
 }
 
 func resourceEC2VPNConnectionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::VPNConnection", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::VPNConnection", ResourceEC2VPNConnection(), data, meta)
 }
 
 func resourceEC2VPNConnectionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::VPNConnection", data, meta)
+	return plugin.ResourceRead("AWS::EC2::VPNConnection", ResourceEC2VPNConnection(), data, meta)
 }
 
 func resourceEC2VPNConnectionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::VPNConnection", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::VPNConnection", ResourceEC2VPNConnection(), data, meta)
 }
 
 func resourceEC2VPNConnectionDelete(data *schema.ResourceData, meta interface{}) error {

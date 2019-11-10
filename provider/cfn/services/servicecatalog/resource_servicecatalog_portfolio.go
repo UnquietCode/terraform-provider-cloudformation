@@ -53,15 +53,15 @@ func ResourceServiceCatalogPortfolio() *schema.Resource {
 }
 
 func resourceServiceCatalogPortfolioCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::Portfolio", data, meta)
+	return plugin.ResourceCreate("AWS::ServiceCatalog::Portfolio", ResourceServiceCatalogPortfolio(), data, meta)
 }
 
 func resourceServiceCatalogPortfolioRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ServiceCatalog::Portfolio", data, meta)
+	return plugin.ResourceRead("AWS::ServiceCatalog::Portfolio", ResourceServiceCatalogPortfolio(), data, meta)
 }
 
 func resourceServiceCatalogPortfolioUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ServiceCatalog::Portfolio", data, meta)
+	return plugin.ResourceUpdate("AWS::ServiceCatalog::Portfolio", ResourceServiceCatalogPortfolio(), data, meta)
 }
 
 func resourceServiceCatalogPortfolioDelete(data *schema.ResourceData, meta interface{}) error {

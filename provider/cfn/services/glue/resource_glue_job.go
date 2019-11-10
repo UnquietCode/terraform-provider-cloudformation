@@ -108,15 +108,15 @@ func ResourceGlueJob() *schema.Resource {
 }
 
 func resourceGlueJobCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::Job", data, meta)
+	return plugin.ResourceCreate("AWS::Glue::Job", ResourceGlueJob(), data, meta)
 }
 
 func resourceGlueJobRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Glue::Job", data, meta)
+	return plugin.ResourceRead("AWS::Glue::Job", ResourceGlueJob(), data, meta)
 }
 
 func resourceGlueJobUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Glue::Job", data, meta)
+	return plugin.ResourceUpdate("AWS::Glue::Job", ResourceGlueJob(), data, meta)
 }
 
 func resourceGlueJobDelete(data *schema.ResourceData, meta interface{}) error {

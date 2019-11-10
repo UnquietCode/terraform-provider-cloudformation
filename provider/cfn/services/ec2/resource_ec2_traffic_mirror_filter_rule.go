@@ -72,15 +72,15 @@ func ResourceEC2TrafficMirrorFilterRule() *schema.Resource {
 }
 
 func resourceEC2TrafficMirrorFilterRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::TrafficMirrorFilterRule", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::TrafficMirrorFilterRule", ResourceEC2TrafficMirrorFilterRule(), data, meta)
 }
 
 func resourceEC2TrafficMirrorFilterRuleRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::TrafficMirrorFilterRule", data, meta)
+	return plugin.ResourceRead("AWS::EC2::TrafficMirrorFilterRule", ResourceEC2TrafficMirrorFilterRule(), data, meta)
 }
 
 func resourceEC2TrafficMirrorFilterRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::TrafficMirrorFilterRule", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::TrafficMirrorFilterRule", ResourceEC2TrafficMirrorFilterRule(), data, meta)
 }
 
 func resourceEC2TrafficMirrorFilterRuleDelete(data *schema.ResourceData, meta interface{}) error {

@@ -91,15 +91,15 @@ func ResourceCloudTrailTrail() *schema.Resource {
 }
 
 func resourceCloudTrailTrailCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CloudTrail::Trail", data, meta)
+	return plugin.ResourceCreate("AWS::CloudTrail::Trail", ResourceCloudTrailTrail(), data, meta)
 }
 
 func resourceCloudTrailTrailRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CloudTrail::Trail", data, meta)
+	return plugin.ResourceRead("AWS::CloudTrail::Trail", ResourceCloudTrailTrail(), data, meta)
 }
 
 func resourceCloudTrailTrailUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CloudTrail::Trail", data, meta)
+	return plugin.ResourceUpdate("AWS::CloudTrail::Trail", ResourceCloudTrailTrail(), data, meta)
 }
 
 func resourceCloudTrailTrailDelete(data *schema.ResourceData, meta interface{}) error {

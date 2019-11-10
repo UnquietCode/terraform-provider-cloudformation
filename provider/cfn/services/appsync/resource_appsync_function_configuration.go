@@ -72,15 +72,15 @@ func ResourceAppSyncFunctionConfiguration() *schema.Resource {
 }
 
 func resourceAppSyncFunctionConfigurationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppSync::FunctionConfiguration", data, meta)
+	return plugin.ResourceCreate("AWS::AppSync::FunctionConfiguration", ResourceAppSyncFunctionConfiguration(), data, meta)
 }
 
 func resourceAppSyncFunctionConfigurationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppSync::FunctionConfiguration", data, meta)
+	return plugin.ResourceRead("AWS::AppSync::FunctionConfiguration", ResourceAppSyncFunctionConfiguration(), data, meta)
 }
 
 func resourceAppSyncFunctionConfigurationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppSync::FunctionConfiguration", data, meta)
+	return plugin.ResourceUpdate("AWS::AppSync::FunctionConfiguration", ResourceAppSyncFunctionConfiguration(), data, meta)
 }
 
 func resourceAppSyncFunctionConfigurationDelete(data *schema.ResourceData, meta interface{}) error {

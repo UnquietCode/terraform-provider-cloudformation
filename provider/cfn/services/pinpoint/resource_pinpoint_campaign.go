@@ -105,15 +105,15 @@ func ResourcePinpointCampaign() *schema.Resource {
 }
 
 func resourcePinpointCampaignCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::Campaign", data, meta)
+	return plugin.ResourceCreate("AWS::Pinpoint::Campaign", ResourcePinpointCampaign(), data, meta)
 }
 
 func resourcePinpointCampaignRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::Campaign", data, meta)
+	return plugin.ResourceRead("AWS::Pinpoint::Campaign", ResourcePinpointCampaign(), data, meta)
 }
 
 func resourcePinpointCampaignUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::Campaign", data, meta)
+	return plugin.ResourceUpdate("AWS::Pinpoint::Campaign", ResourcePinpointCampaign(), data, meta)
 }
 
 func resourcePinpointCampaignDelete(data *schema.ResourceData, meta interface{}) error {

@@ -50,15 +50,15 @@ func ResourceApiGatewayModel() *schema.Resource {
 }
 
 func resourceApiGatewayModelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::Model", data, meta)
+	return plugin.ResourceCreate("AWS::ApiGateway::Model", ResourceApiGatewayModel(), data, meta)
 }
 
 func resourceApiGatewayModelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGateway::Model", data, meta)
+	return plugin.ResourceRead("AWS::ApiGateway::Model", ResourceApiGatewayModel(), data, meta)
 }
 
 func resourceApiGatewayModelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGateway::Model", data, meta)
+	return plugin.ResourceUpdate("AWS::ApiGateway::Model", ResourceApiGatewayModel(), data, meta)
 }
 
 func resourceApiGatewayModelDelete(data *schema.ResourceData, meta interface{}) error {

@@ -48,15 +48,15 @@ func ResourceAppSyncApiKey() *schema.Resource {
 }
 
 func resourceAppSyncApiKeyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppSync::ApiKey", data, meta)
+	return plugin.ResourceCreate("AWS::AppSync::ApiKey", ResourceAppSyncApiKey(), data, meta)
 }
 
 func resourceAppSyncApiKeyRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppSync::ApiKey", data, meta)
+	return plugin.ResourceRead("AWS::AppSync::ApiKey", ResourceAppSyncApiKey(), data, meta)
 }
 
 func resourceAppSyncApiKeyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppSync::ApiKey", data, meta)
+	return plugin.ResourceUpdate("AWS::AppSync::ApiKey", ResourceAppSyncApiKey(), data, meta)
 }
 
 func resourceAppSyncApiKeyDelete(data *schema.ResourceData, meta interface{}) error {

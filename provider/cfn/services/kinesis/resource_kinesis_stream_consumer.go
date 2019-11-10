@@ -49,15 +49,15 @@ func ResourceKinesisStreamConsumer() *schema.Resource {
 }
 
 func resourceKinesisStreamConsumerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Kinesis::StreamConsumer", data, meta)
+	return plugin.ResourceCreate("AWS::Kinesis::StreamConsumer", ResourceKinesisStreamConsumer(), data, meta)
 }
 
 func resourceKinesisStreamConsumerRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Kinesis::StreamConsumer", data, meta)
+	return plugin.ResourceRead("AWS::Kinesis::StreamConsumer", ResourceKinesisStreamConsumer(), data, meta)
 }
 
 func resourceKinesisStreamConsumerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Kinesis::StreamConsumer", data, meta)
+	return plugin.ResourceUpdate("AWS::Kinesis::StreamConsumer", ResourceKinesisStreamConsumer(), data, meta)
 }
 
 func resourceKinesisStreamConsumerDelete(data *schema.ResourceData, meta interface{}) error {

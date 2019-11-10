@@ -59,15 +59,15 @@ func ResourceRoute53HostedZone() *schema.Resource {
 }
 
 func resourceRoute53HostedZoneCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Route53::HostedZone", data, meta)
+	return plugin.ResourceCreate("AWS::Route53::HostedZone", ResourceRoute53HostedZone(), data, meta)
 }
 
 func resourceRoute53HostedZoneRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Route53::HostedZone", data, meta)
+	return plugin.ResourceRead("AWS::Route53::HostedZone", ResourceRoute53HostedZone(), data, meta)
 }
 
 func resourceRoute53HostedZoneUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Route53::HostedZone", data, meta)
+	return plugin.ResourceUpdate("AWS::Route53::HostedZone", ResourceRoute53HostedZone(), data, meta)
 }
 
 func resourceRoute53HostedZoneDelete(data *schema.ResourceData, meta interface{}) error {

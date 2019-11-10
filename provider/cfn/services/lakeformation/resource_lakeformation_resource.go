@@ -39,15 +39,15 @@ func ResourceLakeFormationResource() *schema.Resource {
 }
 
 func resourceLakeFormationResourceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::LakeFormation::Resource", data, meta)
+	return plugin.ResourceCreate("AWS::LakeFormation::Resource", ResourceLakeFormationResource(), data, meta)
 }
 
 func resourceLakeFormationResourceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::LakeFormation::Resource", data, meta)
+	return plugin.ResourceRead("AWS::LakeFormation::Resource", ResourceLakeFormationResource(), data, meta)
 }
 
 func resourceLakeFormationResourceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::LakeFormation::Resource", data, meta)
+	return plugin.ResourceUpdate("AWS::LakeFormation::Resource", ResourceLakeFormationResource(), data, meta)
 }
 
 func resourceLakeFormationResourceDelete(data *schema.ResourceData, meta interface{}) error {

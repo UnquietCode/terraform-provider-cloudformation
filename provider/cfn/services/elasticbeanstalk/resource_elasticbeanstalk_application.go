@@ -42,15 +42,15 @@ func ResourceElasticBeanstalkApplication() *schema.Resource {
 }
 
 func resourceElasticBeanstalkApplicationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElasticBeanstalk::Application", data, meta)
+	return plugin.ResourceCreate("AWS::ElasticBeanstalk::Application", ResourceElasticBeanstalkApplication(), data, meta)
 }
 
 func resourceElasticBeanstalkApplicationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ElasticBeanstalk::Application", data, meta)
+	return plugin.ResourceRead("AWS::ElasticBeanstalk::Application", ResourceElasticBeanstalkApplication(), data, meta)
 }
 
 func resourceElasticBeanstalkApplicationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ElasticBeanstalk::Application", data, meta)
+	return plugin.ResourceUpdate("AWS::ElasticBeanstalk::Application", ResourceElasticBeanstalkApplication(), data, meta)
 }
 
 func resourceElasticBeanstalkApplicationDelete(data *schema.ResourceData, meta interface{}) error {

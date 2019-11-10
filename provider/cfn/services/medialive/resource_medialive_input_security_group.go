@@ -40,15 +40,15 @@ func ResourceMediaLiveInputSecurityGroup() *schema.Resource {
 }
 
 func resourceMediaLiveInputSecurityGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::MediaLive::InputSecurityGroup", data, meta)
+	return plugin.ResourceCreate("AWS::MediaLive::InputSecurityGroup", ResourceMediaLiveInputSecurityGroup(), data, meta)
 }
 
 func resourceMediaLiveInputSecurityGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::MediaLive::InputSecurityGroup", data, meta)
+	return plugin.ResourceRead("AWS::MediaLive::InputSecurityGroup", ResourceMediaLiveInputSecurityGroup(), data, meta)
 }
 
 func resourceMediaLiveInputSecurityGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::MediaLive::InputSecurityGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::MediaLive::InputSecurityGroup", ResourceMediaLiveInputSecurityGroup(), data, meta)
 }
 
 func resourceMediaLiveInputSecurityGroupDelete(data *schema.ResourceData, meta interface{}) error {

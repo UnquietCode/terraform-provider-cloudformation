@@ -37,15 +37,15 @@ func ResourceWAFRegionalGeoMatchSet() *schema.Resource {
 }
 
 func resourceWAFRegionalGeoMatchSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::WAFRegional::GeoMatchSet", data, meta)
+	return plugin.ResourceCreate("AWS::WAFRegional::GeoMatchSet", ResourceWAFRegionalGeoMatchSet(), data, meta)
 }
 
 func resourceWAFRegionalGeoMatchSetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::WAFRegional::GeoMatchSet", data, meta)
+	return plugin.ResourceRead("AWS::WAFRegional::GeoMatchSet", ResourceWAFRegionalGeoMatchSet(), data, meta)
 }
 
 func resourceWAFRegionalGeoMatchSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::WAFRegional::GeoMatchSet", data, meta)
+	return plugin.ResourceUpdate("AWS::WAFRegional::GeoMatchSet", ResourceWAFRegionalGeoMatchSet(), data, meta)
 }
 
 func resourceWAFRegionalGeoMatchSetDelete(data *schema.ResourceData, meta interface{}) error {

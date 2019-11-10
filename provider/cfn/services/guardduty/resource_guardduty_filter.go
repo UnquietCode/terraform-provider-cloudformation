@@ -55,15 +55,15 @@ func ResourceGuardDutyFilter() *schema.Resource {
 }
 
 func resourceGuardDutyFilterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::GuardDuty::Filter", data, meta)
+	return plugin.ResourceCreate("AWS::GuardDuty::Filter", ResourceGuardDutyFilter(), data, meta)
 }
 
 func resourceGuardDutyFilterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::GuardDuty::Filter", data, meta)
+	return plugin.ResourceRead("AWS::GuardDuty::Filter", ResourceGuardDutyFilter(), data, meta)
 }
 
 func resourceGuardDutyFilterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::GuardDuty::Filter", data, meta)
+	return plugin.ResourceUpdate("AWS::GuardDuty::Filter", ResourceGuardDutyFilter(), data, meta)
 }
 
 func resourceGuardDutyFilterDelete(data *schema.ResourceData, meta interface{}) error {

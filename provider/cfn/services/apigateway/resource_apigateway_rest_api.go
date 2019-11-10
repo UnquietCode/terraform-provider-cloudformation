@@ -86,15 +86,15 @@ func ResourceApiGatewayRestApi() *schema.Resource {
 }
 
 func resourceApiGatewayRestApiCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::RestApi", data, meta)
+	return plugin.ResourceCreate("AWS::ApiGateway::RestApi", ResourceApiGatewayRestApi(), data, meta)
 }
 
 func resourceApiGatewayRestApiRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGateway::RestApi", data, meta)
+	return plugin.ResourceRead("AWS::ApiGateway::RestApi", ResourceApiGatewayRestApi(), data, meta)
 }
 
 func resourceApiGatewayRestApiUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGateway::RestApi", data, meta)
+	return plugin.ResourceUpdate("AWS::ApiGateway::RestApi", ResourceApiGatewayRestApi(), data, meta)
 }
 
 func resourceApiGatewayRestApiDelete(data *schema.ResourceData, meta interface{}) error {

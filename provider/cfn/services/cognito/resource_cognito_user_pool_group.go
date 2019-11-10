@@ -49,15 +49,15 @@ func ResourceCognitoUserPoolGroup() *schema.Resource {
 }
 
 func resourceCognitoUserPoolGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Cognito::UserPoolGroup", data, meta)
+	return plugin.ResourceCreate("AWS::Cognito::UserPoolGroup", ResourceCognitoUserPoolGroup(), data, meta)
 }
 
 func resourceCognitoUserPoolGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Cognito::UserPoolGroup", data, meta)
+	return plugin.ResourceRead("AWS::Cognito::UserPoolGroup", ResourceCognitoUserPoolGroup(), data, meta)
 }
 
 func resourceCognitoUserPoolGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Cognito::UserPoolGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::Cognito::UserPoolGroup", ResourceCognitoUserPoolGroup(), data, meta)
 }
 
 func resourceCognitoUserPoolGroupDelete(data *schema.ResourceData, meta interface{}) error {

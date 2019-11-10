@@ -148,15 +148,15 @@ func ResourceAmazonMQBroker() *schema.Resource {
 }
 
 func resourceAmazonMQBrokerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AmazonMQ::Broker", data, meta)
+	return plugin.ResourceCreate("AWS::AmazonMQ::Broker", ResourceAmazonMQBroker(), data, meta)
 }
 
 func resourceAmazonMQBrokerRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AmazonMQ::Broker", data, meta)
+	return plugin.ResourceRead("AWS::AmazonMQ::Broker", ResourceAmazonMQBroker(), data, meta)
 }
 
 func resourceAmazonMQBrokerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AmazonMQ::Broker", data, meta)
+	return plugin.ResourceUpdate("AWS::AmazonMQ::Broker", ResourceAmazonMQBroker(), data, meta)
 }
 
 func resourceAmazonMQBrokerDelete(data *schema.ResourceData, meta interface{}) error {

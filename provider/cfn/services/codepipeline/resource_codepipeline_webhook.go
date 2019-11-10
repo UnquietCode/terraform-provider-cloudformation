@@ -67,15 +67,15 @@ func ResourceCodePipelineWebhook() *schema.Resource {
 }
 
 func resourceCodePipelineWebhookCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CodePipeline::Webhook", data, meta)
+	return plugin.ResourceCreate("AWS::CodePipeline::Webhook", ResourceCodePipelineWebhook(), data, meta)
 }
 
 func resourceCodePipelineWebhookRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CodePipeline::Webhook", data, meta)
+	return plugin.ResourceRead("AWS::CodePipeline::Webhook", ResourceCodePipelineWebhook(), data, meta)
 }
 
 func resourceCodePipelineWebhookUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CodePipeline::Webhook", data, meta)
+	return plugin.ResourceUpdate("AWS::CodePipeline::Webhook", ResourceCodePipelineWebhook(), data, meta)
 }
 
 func resourceCodePipelineWebhookDelete(data *schema.ResourceData, meta interface{}) error {

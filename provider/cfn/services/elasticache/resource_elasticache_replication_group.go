@@ -204,15 +204,15 @@ func ResourceElastiCacheReplicationGroup() *schema.Resource {
 }
 
 func resourceElastiCacheReplicationGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElastiCache::ReplicationGroup", data, meta)
+	return plugin.ResourceCreate("AWS::ElastiCache::ReplicationGroup", ResourceElastiCacheReplicationGroup(), data, meta)
 }
 
 func resourceElastiCacheReplicationGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ElastiCache::ReplicationGroup", data, meta)
+	return plugin.ResourceRead("AWS::ElastiCache::ReplicationGroup", ResourceElastiCacheReplicationGroup(), data, meta)
 }
 
 func resourceElastiCacheReplicationGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ElastiCache::ReplicationGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::ElastiCache::ReplicationGroup", ResourceElastiCacheReplicationGroup(), data, meta)
 }
 
 func resourceElastiCacheReplicationGroupDelete(data *schema.ResourceData, meta interface{}) error {

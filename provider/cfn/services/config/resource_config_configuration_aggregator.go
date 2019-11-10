@@ -43,15 +43,15 @@ func ResourceConfigConfigurationAggregator() *schema.Resource {
 }
 
 func resourceConfigConfigurationAggregatorCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Config::ConfigurationAggregator", data, meta)
+	return plugin.ResourceCreate("AWS::Config::ConfigurationAggregator", ResourceConfigConfigurationAggregator(), data, meta)
 }
 
 func resourceConfigConfigurationAggregatorRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Config::ConfigurationAggregator", data, meta)
+	return plugin.ResourceRead("AWS::Config::ConfigurationAggregator", ResourceConfigConfigurationAggregator(), data, meta)
 }
 
 func resourceConfigConfigurationAggregatorUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Config::ConfigurationAggregator", data, meta)
+	return plugin.ResourceUpdate("AWS::Config::ConfigurationAggregator", ResourceConfigConfigurationAggregator(), data, meta)
 }
 
 func resourceConfigConfigurationAggregatorDelete(data *schema.ResourceData, meta interface{}) error {

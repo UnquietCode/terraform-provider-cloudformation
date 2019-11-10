@@ -88,15 +88,15 @@ func ResourceEC2EC2Fleet() *schema.Resource {
 }
 
 func resourceEC2EC2FleetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::EC2Fleet", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::EC2Fleet", ResourceEC2EC2Fleet(), data, meta)
 }
 
 func resourceEC2EC2FleetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::EC2Fleet", data, meta)
+	return plugin.ResourceRead("AWS::EC2::EC2Fleet", ResourceEC2EC2Fleet(), data, meta)
 }
 
 func resourceEC2EC2FleetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::EC2Fleet", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::EC2Fleet", ResourceEC2EC2Fleet(), data, meta)
 }
 
 func resourceEC2EC2FleetDelete(data *schema.ResourceData, meta interface{}) error {

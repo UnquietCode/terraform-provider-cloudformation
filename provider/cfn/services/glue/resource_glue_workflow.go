@@ -44,15 +44,15 @@ func ResourceGlueWorkflow() *schema.Resource {
 }
 
 func resourceGlueWorkflowCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::Workflow", data, meta)
+	return plugin.ResourceCreate("AWS::Glue::Workflow", ResourceGlueWorkflow(), data, meta)
 }
 
 func resourceGlueWorkflowRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Glue::Workflow", data, meta)
+	return plugin.ResourceRead("AWS::Glue::Workflow", ResourceGlueWorkflow(), data, meta)
 }
 
 func resourceGlueWorkflowUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Glue::Workflow", data, meta)
+	return plugin.ResourceUpdate("AWS::Glue::Workflow", ResourceGlueWorkflow(), data, meta)
 }
 
 func resourceGlueWorkflowDelete(data *schema.ResourceData, meta interface{}) error {

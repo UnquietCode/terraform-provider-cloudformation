@@ -68,15 +68,15 @@ func ResourceCodeCommitRepository() *schema.Resource {
 }
 
 func resourceCodeCommitRepositoryCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CodeCommit::Repository", data, meta)
+	return plugin.ResourceCreate("AWS::CodeCommit::Repository", ResourceCodeCommitRepository(), data, meta)
 }
 
 func resourceCodeCommitRepositoryRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CodeCommit::Repository", data, meta)
+	return plugin.ResourceRead("AWS::CodeCommit::Repository", ResourceCodeCommitRepository(), data, meta)
 }
 
 func resourceCodeCommitRepositoryUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CodeCommit::Repository", data, meta)
+	return plugin.ResourceUpdate("AWS::CodeCommit::Repository", ResourceCodeCommitRepository(), data, meta)
 }
 
 func resourceCodeCommitRepositoryDelete(data *schema.ResourceData, meta interface{}) error {

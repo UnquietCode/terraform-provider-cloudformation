@@ -40,15 +40,15 @@ func ResourceDAXParameterGroup() *schema.Resource {
 }
 
 func resourceDAXParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DAX::ParameterGroup", data, meta)
+	return plugin.ResourceCreate("AWS::DAX::ParameterGroup", ResourceDAXParameterGroup(), data, meta)
 }
 
 func resourceDAXParameterGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::DAX::ParameterGroup", data, meta)
+	return plugin.ResourceRead("AWS::DAX::ParameterGroup", ResourceDAXParameterGroup(), data, meta)
 }
 
 func resourceDAXParameterGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::DAX::ParameterGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::DAX::ParameterGroup", ResourceDAXParameterGroup(), data, meta)
 }
 
 func resourceDAXParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {

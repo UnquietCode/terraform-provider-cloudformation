@@ -49,15 +49,15 @@ func ResourceApiGatewayV2DomainName() *schema.Resource {
 }
 
 func resourceApiGatewayV2DomainNameCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGatewayV2::DomainName", data, meta)
+	return plugin.ResourceCreate("AWS::ApiGatewayV2::DomainName", ResourceApiGatewayV2DomainName(), data, meta)
 }
 
 func resourceApiGatewayV2DomainNameRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGatewayV2::DomainName", data, meta)
+	return plugin.ResourceRead("AWS::ApiGatewayV2::DomainName", ResourceApiGatewayV2DomainName(), data, meta)
 }
 
 func resourceApiGatewayV2DomainNameUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGatewayV2::DomainName", data, meta)
+	return plugin.ResourceUpdate("AWS::ApiGatewayV2::DomainName", ResourceApiGatewayV2DomainName(), data, meta)
 }
 
 func resourceApiGatewayV2DomainNameDelete(data *schema.ResourceData, meta interface{}) error {

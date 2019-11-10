@@ -95,15 +95,15 @@ func ResourceRoute53RecordSet() *schema.Resource {
 }
 
 func resourceRoute53RecordSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Route53::RecordSet", data, meta)
+	return plugin.ResourceCreate("AWS::Route53::RecordSet", ResourceRoute53RecordSet(), data, meta)
 }
 
 func resourceRoute53RecordSetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Route53::RecordSet", data, meta)
+	return plugin.ResourceRead("AWS::Route53::RecordSet", ResourceRoute53RecordSet(), data, meta)
 }
 
 func resourceRoute53RecordSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Route53::RecordSet", data, meta)
+	return plugin.ResourceUpdate("AWS::Route53::RecordSet", ResourceRoute53RecordSet(), data, meta)
 }
 
 func resourceRoute53RecordSetDelete(data *schema.ResourceData, meta interface{}) error {

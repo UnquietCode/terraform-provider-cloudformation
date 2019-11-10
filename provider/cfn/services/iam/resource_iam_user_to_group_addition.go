@@ -36,15 +36,15 @@ func ResourceIAMUserToGroupAddition() *schema.Resource {
 }
 
 func resourceIAMUserToGroupAdditionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IAM::UserToGroupAddition", data, meta)
+	return plugin.ResourceCreate("AWS::IAM::UserToGroupAddition", ResourceIAMUserToGroupAddition(), data, meta)
 }
 
 func resourceIAMUserToGroupAdditionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IAM::UserToGroupAddition", data, meta)
+	return plugin.ResourceRead("AWS::IAM::UserToGroupAddition", ResourceIAMUserToGroupAddition(), data, meta)
 }
 
 func resourceIAMUserToGroupAdditionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IAM::UserToGroupAddition", data, meta)
+	return plugin.ResourceUpdate("AWS::IAM::UserToGroupAddition", ResourceIAMUserToGroupAddition(), data, meta)
 }
 
 func resourceIAMUserToGroupAdditionDelete(data *schema.ResourceData, meta interface{}) error {

@@ -52,15 +52,15 @@ func ResourceNeptuneDBClusterParameterGroup() *schema.Resource {
 }
 
 func resourceNeptuneDBClusterParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Neptune::DBClusterParameterGroup", data, meta)
+	return plugin.ResourceCreate("AWS::Neptune::DBClusterParameterGroup", ResourceNeptuneDBClusterParameterGroup(), data, meta)
 }
 
 func resourceNeptuneDBClusterParameterGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Neptune::DBClusterParameterGroup", data, meta)
+	return plugin.ResourceRead("AWS::Neptune::DBClusterParameterGroup", ResourceNeptuneDBClusterParameterGroup(), data, meta)
 }
 
 func resourceNeptuneDBClusterParameterGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Neptune::DBClusterParameterGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::Neptune::DBClusterParameterGroup", ResourceNeptuneDBClusterParameterGroup(), data, meta)
 }
 
 func resourceNeptuneDBClusterParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {

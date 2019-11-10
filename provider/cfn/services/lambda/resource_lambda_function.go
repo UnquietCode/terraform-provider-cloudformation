@@ -110,15 +110,15 @@ func ResourceLambdaFunction() *schema.Resource {
 }
 
 func resourceLambdaFunctionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Lambda::Function", data, meta)
+	return plugin.ResourceCreate("AWS::Lambda::Function", ResourceLambdaFunction(), data, meta)
 }
 
 func resourceLambdaFunctionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Lambda::Function", data, meta)
+	return plugin.ResourceRead("AWS::Lambda::Function", ResourceLambdaFunction(), data, meta)
 }
 
 func resourceLambdaFunctionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Lambda::Function", data, meta)
+	return plugin.ResourceUpdate("AWS::Lambda::Function", ResourceLambdaFunction(), data, meta)
 }
 
 func resourceLambdaFunctionDelete(data *schema.ResourceData, meta interface{}) error {

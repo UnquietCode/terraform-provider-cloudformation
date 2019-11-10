@@ -37,15 +37,15 @@ func ResourceWAFRegionalSqlInjectionMatchSet() *schema.Resource {
 }
 
 func resourceWAFRegionalSqlInjectionMatchSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::WAFRegional::SqlInjectionMatchSet", data, meta)
+	return plugin.ResourceCreate("AWS::WAFRegional::SqlInjectionMatchSet", ResourceWAFRegionalSqlInjectionMatchSet(), data, meta)
 }
 
 func resourceWAFRegionalSqlInjectionMatchSetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::WAFRegional::SqlInjectionMatchSet", data, meta)
+	return plugin.ResourceRead("AWS::WAFRegional::SqlInjectionMatchSet", ResourceWAFRegionalSqlInjectionMatchSet(), data, meta)
 }
 
 func resourceWAFRegionalSqlInjectionMatchSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::WAFRegional::SqlInjectionMatchSet", data, meta)
+	return plugin.ResourceUpdate("AWS::WAFRegional::SqlInjectionMatchSet", ResourceWAFRegionalSqlInjectionMatchSet(), data, meta)
 }
 
 func resourceWAFRegionalSqlInjectionMatchSetDelete(data *schema.ResourceData, meta interface{}) error {

@@ -64,15 +64,15 @@ func ResourceSageMakerModel() *schema.Resource {
 }
 
 func resourceSageMakerModelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SageMaker::Model", data, meta)
+	return plugin.ResourceCreate("AWS::SageMaker::Model", ResourceSageMakerModel(), data, meta)
 }
 
 func resourceSageMakerModelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SageMaker::Model", data, meta)
+	return plugin.ResourceRead("AWS::SageMaker::Model", ResourceSageMakerModel(), data, meta)
 }
 
 func resourceSageMakerModelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SageMaker::Model", data, meta)
+	return plugin.ResourceUpdate("AWS::SageMaker::Model", ResourceSageMakerModel(), data, meta)
 }
 
 func resourceSageMakerModelDelete(data *schema.ResourceData, meta interface{}) error {

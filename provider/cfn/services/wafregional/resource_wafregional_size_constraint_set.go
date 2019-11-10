@@ -37,15 +37,15 @@ func ResourceWAFRegionalSizeConstraintSet() *schema.Resource {
 }
 
 func resourceWAFRegionalSizeConstraintSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::WAFRegional::SizeConstraintSet", data, meta)
+	return plugin.ResourceCreate("AWS::WAFRegional::SizeConstraintSet", ResourceWAFRegionalSizeConstraintSet(), data, meta)
 }
 
 func resourceWAFRegionalSizeConstraintSetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::WAFRegional::SizeConstraintSet", data, meta)
+	return plugin.ResourceRead("AWS::WAFRegional::SizeConstraintSet", ResourceWAFRegionalSizeConstraintSet(), data, meta)
 }
 
 func resourceWAFRegionalSizeConstraintSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::WAFRegional::SizeConstraintSet", data, meta)
+	return plugin.ResourceUpdate("AWS::WAFRegional::SizeConstraintSet", ResourceWAFRegionalSizeConstraintSet(), data, meta)
 }
 
 func resourceWAFRegionalSizeConstraintSetDelete(data *schema.ResourceData, meta interface{}) error {

@@ -64,15 +64,15 @@ func ResourceCognitoUserPoolUser() *schema.Resource {
 }
 
 func resourceCognitoUserPoolUserCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Cognito::UserPoolUser", data, meta)
+	return plugin.ResourceCreate("AWS::Cognito::UserPoolUser", ResourceCognitoUserPoolUser(), data, meta)
 }
 
 func resourceCognitoUserPoolUserRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Cognito::UserPoolUser", data, meta)
+	return plugin.ResourceRead("AWS::Cognito::UserPoolUser", ResourceCognitoUserPoolUser(), data, meta)
 }
 
 func resourceCognitoUserPoolUserUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Cognito::UserPoolUser", data, meta)
+	return plugin.ResourceUpdate("AWS::Cognito::UserPoolUser", ResourceCognitoUserPoolUser(), data, meta)
 }
 
 func resourceCognitoUserPoolUserDelete(data *schema.ResourceData, meta interface{}) error {

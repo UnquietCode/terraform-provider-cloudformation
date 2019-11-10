@@ -37,15 +37,15 @@ func ResourceIoTThingsGraphFlowTemplate() *schema.Resource {
 }
 
 func resourceIoTThingsGraphFlowTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoTThingsGraph::FlowTemplate", data, meta)
+	return plugin.ResourceCreate("AWS::IoTThingsGraph::FlowTemplate", ResourceIoTThingsGraphFlowTemplate(), data, meta)
 }
 
 func resourceIoTThingsGraphFlowTemplateRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoTThingsGraph::FlowTemplate", data, meta)
+	return plugin.ResourceRead("AWS::IoTThingsGraph::FlowTemplate", ResourceIoTThingsGraphFlowTemplate(), data, meta)
 }
 
 func resourceIoTThingsGraphFlowTemplateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoTThingsGraph::FlowTemplate", data, meta)
+	return plugin.ResourceUpdate("AWS::IoTThingsGraph::FlowTemplate", ResourceIoTThingsGraphFlowTemplate(), data, meta)
 }
 
 func resourceIoTThingsGraphFlowTemplateDelete(data *schema.ResourceData, meta interface{}) error {

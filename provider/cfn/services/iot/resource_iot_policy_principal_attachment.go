@@ -36,15 +36,15 @@ func ResourceIoTPolicyPrincipalAttachment() *schema.Resource {
 }
 
 func resourceIoTPolicyPrincipalAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoT::PolicyPrincipalAttachment", data, meta)
+	return plugin.ResourceCreate("AWS::IoT::PolicyPrincipalAttachment", ResourceIoTPolicyPrincipalAttachment(), data, meta)
 }
 
 func resourceIoTPolicyPrincipalAttachmentRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoT::PolicyPrincipalAttachment", data, meta)
+	return plugin.ResourceRead("AWS::IoT::PolicyPrincipalAttachment", ResourceIoTPolicyPrincipalAttachment(), data, meta)
 }
 
 func resourceIoTPolicyPrincipalAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoT::PolicyPrincipalAttachment", data, meta)
+	return plugin.ResourceUpdate("AWS::IoT::PolicyPrincipalAttachment", ResourceIoTPolicyPrincipalAttachment(), data, meta)
 }
 
 func resourceIoTPolicyPrincipalAttachmentDelete(data *schema.ResourceData, meta interface{}) error {

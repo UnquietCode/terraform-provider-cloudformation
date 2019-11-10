@@ -47,15 +47,15 @@ func ResourceRoute53ResolverResolverRuleAssociation() *schema.Resource {
 }
 
 func resourceRoute53ResolverResolverRuleAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Route53Resolver::ResolverRuleAssociation", data, meta)
+	return plugin.ResourceCreate("AWS::Route53Resolver::ResolverRuleAssociation", ResourceRoute53ResolverResolverRuleAssociation(), data, meta)
 }
 
 func resourceRoute53ResolverResolverRuleAssociationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Route53Resolver::ResolverRuleAssociation", data, meta)
+	return plugin.ResourceRead("AWS::Route53Resolver::ResolverRuleAssociation", ResourceRoute53ResolverResolverRuleAssociation(), data, meta)
 }
 
 func resourceRoute53ResolverResolverRuleAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Route53Resolver::ResolverRuleAssociation", data, meta)
+	return plugin.ResourceUpdate("AWS::Route53Resolver::ResolverRuleAssociation", ResourceRoute53ResolverResolverRuleAssociation(), data, meta)
 }
 
 func resourceRoute53ResolverResolverRuleAssociationDelete(data *schema.ResourceData, meta interface{}) error {

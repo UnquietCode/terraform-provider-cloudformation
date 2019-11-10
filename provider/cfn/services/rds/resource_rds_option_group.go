@@ -54,15 +54,15 @@ func ResourceRDSOptionGroup() *schema.Resource {
 }
 
 func resourceRDSOptionGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RDS::OptionGroup", data, meta)
+	return plugin.ResourceCreate("AWS::RDS::OptionGroup", ResourceRDSOptionGroup(), data, meta)
 }
 
 func resourceRDSOptionGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::RDS::OptionGroup", data, meta)
+	return plugin.ResourceRead("AWS::RDS::OptionGroup", ResourceRDSOptionGroup(), data, meta)
 }
 
 func resourceRDSOptionGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::RDS::OptionGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::RDS::OptionGroup", ResourceRDSOptionGroup(), data, meta)
 }
 
 func resourceRDSOptionGroupDelete(data *schema.ResourceData, meta interface{}) error {

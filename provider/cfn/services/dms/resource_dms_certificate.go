@@ -41,15 +41,15 @@ func ResourceDMSCertificate() *schema.Resource {
 }
 
 func resourceDMSCertificateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DMS::Certificate", data, meta)
+	return plugin.ResourceCreate("AWS::DMS::Certificate", ResourceDMSCertificate(), data, meta)
 }
 
 func resourceDMSCertificateRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::DMS::Certificate", data, meta)
+	return plugin.ResourceRead("AWS::DMS::Certificate", ResourceDMSCertificate(), data, meta)
 }
 
 func resourceDMSCertificateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::DMS::Certificate", data, meta)
+	return plugin.ResourceUpdate("AWS::DMS::Certificate", ResourceDMSCertificate(), data, meta)
 }
 
 func resourceDMSCertificateDelete(data *schema.ResourceData, meta interface{}) error {

@@ -49,15 +49,15 @@ func ResourceEC2TransitGatewayAttachment() *schema.Resource {
 }
 
 func resourceEC2TransitGatewayAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::TransitGatewayAttachment", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::TransitGatewayAttachment", ResourceEC2TransitGatewayAttachment(), data, meta)
 }
 
 func resourceEC2TransitGatewayAttachmentRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::TransitGatewayAttachment", data, meta)
+	return plugin.ResourceRead("AWS::EC2::TransitGatewayAttachment", ResourceEC2TransitGatewayAttachment(), data, meta)
 }
 
 func resourceEC2TransitGatewayAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::TransitGatewayAttachment", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::TransitGatewayAttachment", ResourceEC2TransitGatewayAttachment(), data, meta)
 }
 
 func resourceEC2TransitGatewayAttachmentDelete(data *schema.ResourceData, meta interface{}) error {

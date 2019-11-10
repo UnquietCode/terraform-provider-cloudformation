@@ -64,15 +64,15 @@ func ResourcePinpointAPNSVoipChannel() *schema.Resource {
 }
 
 func resourcePinpointAPNSVoipChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::APNSVoipChannel", data, meta)
+	return plugin.ResourceCreate("AWS::Pinpoint::APNSVoipChannel", ResourcePinpointAPNSVoipChannel(), data, meta)
 }
 
 func resourcePinpointAPNSVoipChannelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::APNSVoipChannel", data, meta)
+	return plugin.ResourceRead("AWS::Pinpoint::APNSVoipChannel", ResourcePinpointAPNSVoipChannel(), data, meta)
 }
 
 func resourcePinpointAPNSVoipChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::APNSVoipChannel", data, meta)
+	return plugin.ResourceUpdate("AWS::Pinpoint::APNSVoipChannel", ResourcePinpointAPNSVoipChannel(), data, meta)
 }
 
 func resourcePinpointAPNSVoipChannelDelete(data *schema.ResourceData, meta interface{}) error {

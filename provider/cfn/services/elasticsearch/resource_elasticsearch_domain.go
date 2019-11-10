@@ -102,15 +102,15 @@ func ResourceElasticsearchDomain() *schema.Resource {
 }
 
 func resourceElasticsearchDomainCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Elasticsearch::Domain", data, meta)
+	return plugin.ResourceCreate("AWS::Elasticsearch::Domain", ResourceElasticsearchDomain(), data, meta)
 }
 
 func resourceElasticsearchDomainRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Elasticsearch::Domain", data, meta)
+	return plugin.ResourceRead("AWS::Elasticsearch::Domain", ResourceElasticsearchDomain(), data, meta)
 }
 
 func resourceElasticsearchDomainUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Elasticsearch::Domain", data, meta)
+	return plugin.ResourceUpdate("AWS::Elasticsearch::Domain", ResourceElasticsearchDomain(), data, meta)
 }
 
 func resourceElasticsearchDomainDelete(data *schema.ResourceData, meta interface{}) error {

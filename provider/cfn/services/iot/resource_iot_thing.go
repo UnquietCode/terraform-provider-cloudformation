@@ -38,15 +38,15 @@ func ResourceIoTThing() *schema.Resource {
 }
 
 func resourceIoTThingCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoT::Thing", data, meta)
+	return plugin.ResourceCreate("AWS::IoT::Thing", ResourceIoTThing(), data, meta)
 }
 
 func resourceIoTThingRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoT::Thing", data, meta)
+	return plugin.ResourceRead("AWS::IoT::Thing", ResourceIoTThing(), data, meta)
 }
 
 func resourceIoTThingUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoT::Thing", data, meta)
+	return plugin.ResourceUpdate("AWS::IoT::Thing", ResourceIoTThing(), data, meta)
 }
 
 func resourceIoTThingDelete(data *schema.ResourceData, meta interface{}) error {

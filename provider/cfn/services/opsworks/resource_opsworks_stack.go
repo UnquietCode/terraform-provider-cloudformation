@@ -145,15 +145,15 @@ func ResourceOpsWorksStack() *schema.Resource {
 }
 
 func resourceOpsWorksStackCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::OpsWorks::Stack", data, meta)
+	return plugin.ResourceCreate("AWS::OpsWorks::Stack", ResourceOpsWorksStack(), data, meta)
 }
 
 func resourceOpsWorksStackRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::OpsWorks::Stack", data, meta)
+	return plugin.ResourceRead("AWS::OpsWorks::Stack", ResourceOpsWorksStack(), data, meta)
 }
 
 func resourceOpsWorksStackUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::OpsWorks::Stack", data, meta)
+	return plugin.ResourceUpdate("AWS::OpsWorks::Stack", ResourceOpsWorksStack(), data, meta)
 }
 
 func resourceOpsWorksStackDelete(data *schema.ResourceData, meta interface{}) error {

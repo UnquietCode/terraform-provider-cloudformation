@@ -52,15 +52,15 @@ func ResourceECRRepository() *schema.Resource {
 }
 
 func resourceECRRepositoryCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ECR::Repository", data, meta)
+	return plugin.ResourceCreate("AWS::ECR::Repository", ResourceECRRepository(), data, meta)
 }
 
 func resourceECRRepositoryRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ECR::Repository", data, meta)
+	return plugin.ResourceRead("AWS::ECR::Repository", ResourceECRRepository(), data, meta)
 }
 
 func resourceECRRepositoryUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ECR::Repository", data, meta)
+	return plugin.ResourceUpdate("AWS::ECR::Repository", ResourceECRRepository(), data, meta)
 }
 
 func resourceECRRepositoryDelete(data *schema.ResourceData, meta interface{}) error {

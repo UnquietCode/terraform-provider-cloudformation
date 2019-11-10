@@ -57,15 +57,15 @@ func ResourceCodeStarGitHubRepository() *schema.Resource {
 }
 
 func resourceCodeStarGitHubRepositoryCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CodeStar::GitHubRepository", data, meta)
+	return plugin.ResourceCreate("AWS::CodeStar::GitHubRepository", ResourceCodeStarGitHubRepository(), data, meta)
 }
 
 func resourceCodeStarGitHubRepositoryRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CodeStar::GitHubRepository", data, meta)
+	return plugin.ResourceRead("AWS::CodeStar::GitHubRepository", ResourceCodeStarGitHubRepository(), data, meta)
 }
 
 func resourceCodeStarGitHubRepositoryUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CodeStar::GitHubRepository", data, meta)
+	return plugin.ResourceUpdate("AWS::CodeStar::GitHubRepository", ResourceCodeStarGitHubRepository(), data, meta)
 }
 
 func resourceCodeStarGitHubRepositoryDelete(data *schema.ResourceData, meta interface{}) error {

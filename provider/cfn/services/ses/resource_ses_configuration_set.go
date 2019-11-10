@@ -31,15 +31,15 @@ func ResourceSESConfigurationSet() *schema.Resource {
 }
 
 func resourceSESConfigurationSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SES::ConfigurationSet", data, meta)
+	return plugin.ResourceCreate("AWS::SES::ConfigurationSet", ResourceSESConfigurationSet(), data, meta)
 }
 
 func resourceSESConfigurationSetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SES::ConfigurationSet", data, meta)
+	return plugin.ResourceRead("AWS::SES::ConfigurationSet", ResourceSESConfigurationSet(), data, meta)
 }
 
 func resourceSESConfigurationSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SES::ConfigurationSet", data, meta)
+	return plugin.ResourceUpdate("AWS::SES::ConfigurationSet", ResourceSESConfigurationSet(), data, meta)
 }
 
 func resourceSESConfigurationSetDelete(data *schema.ResourceData, meta interface{}) error {

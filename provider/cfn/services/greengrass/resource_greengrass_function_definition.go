@@ -54,15 +54,15 @@ func ResourceGreengrassFunctionDefinition() *schema.Resource {
 }
 
 func resourceGreengrassFunctionDefinitionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Greengrass::FunctionDefinition", data, meta)
+	return plugin.ResourceCreate("AWS::Greengrass::FunctionDefinition", ResourceGreengrassFunctionDefinition(), data, meta)
 }
 
 func resourceGreengrassFunctionDefinitionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Greengrass::FunctionDefinition", data, meta)
+	return plugin.ResourceRead("AWS::Greengrass::FunctionDefinition", ResourceGreengrassFunctionDefinition(), data, meta)
 }
 
 func resourceGreengrassFunctionDefinitionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Greengrass::FunctionDefinition", data, meta)
+	return plugin.ResourceUpdate("AWS::Greengrass::FunctionDefinition", ResourceGreengrassFunctionDefinition(), data, meta)
 }
 
 func resourceGreengrassFunctionDefinitionDelete(data *schema.ResourceData, meta interface{}) error {

@@ -65,15 +65,15 @@ func ResourceCodePipelinePipeline() *schema.Resource {
 }
 
 func resourceCodePipelinePipelineCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CodePipeline::Pipeline", data, meta)
+	return plugin.ResourceCreate("AWS::CodePipeline::Pipeline", ResourceCodePipelinePipeline(), data, meta)
 }
 
 func resourceCodePipelinePipelineRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CodePipeline::Pipeline", data, meta)
+	return plugin.ResourceRead("AWS::CodePipeline::Pipeline", ResourceCodePipelinePipeline(), data, meta)
 }
 
 func resourceCodePipelinePipelineUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CodePipeline::Pipeline", data, meta)
+	return plugin.ResourceUpdate("AWS::CodePipeline::Pipeline", ResourceCodePipelinePipeline(), data, meta)
 }
 
 func resourceCodePipelinePipelineDelete(data *schema.ResourceData, meta interface{}) error {

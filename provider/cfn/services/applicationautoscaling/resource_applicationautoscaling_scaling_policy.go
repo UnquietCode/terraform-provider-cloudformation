@@ -68,15 +68,15 @@ func ResourceApplicationAutoScalingScalingPolicy() *schema.Resource {
 }
 
 func resourceApplicationAutoScalingScalingPolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApplicationAutoScaling::ScalingPolicy", data, meta)
+	return plugin.ResourceCreate("AWS::ApplicationAutoScaling::ScalingPolicy", ResourceApplicationAutoScalingScalingPolicy(), data, meta)
 }
 
 func resourceApplicationAutoScalingScalingPolicyRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApplicationAutoScaling::ScalingPolicy", data, meta)
+	return plugin.ResourceRead("AWS::ApplicationAutoScaling::ScalingPolicy", ResourceApplicationAutoScalingScalingPolicy(), data, meta)
 }
 
 func resourceApplicationAutoScalingScalingPolicyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApplicationAutoScaling::ScalingPolicy", data, meta)
+	return plugin.ResourceUpdate("AWS::ApplicationAutoScaling::ScalingPolicy", ResourceApplicationAutoScalingScalingPolicy(), data, meta)
 }
 
 func resourceApplicationAutoScalingScalingPolicyDelete(data *schema.ResourceData, meta interface{}) error {

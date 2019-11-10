@@ -38,15 +38,15 @@ func ResourceGlueDataCatalogEncryptionSettings() *schema.Resource {
 }
 
 func resourceGlueDataCatalogEncryptionSettingsCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::DataCatalogEncryptionSettings", data, meta)
+	return plugin.ResourceCreate("AWS::Glue::DataCatalogEncryptionSettings", ResourceGlueDataCatalogEncryptionSettings(), data, meta)
 }
 
 func resourceGlueDataCatalogEncryptionSettingsRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Glue::DataCatalogEncryptionSettings", data, meta)
+	return plugin.ResourceRead("AWS::Glue::DataCatalogEncryptionSettings", ResourceGlueDataCatalogEncryptionSettings(), data, meta)
 }
 
 func resourceGlueDataCatalogEncryptionSettingsUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Glue::DataCatalogEncryptionSettings", data, meta)
+	return plugin.ResourceUpdate("AWS::Glue::DataCatalogEncryptionSettings", ResourceGlueDataCatalogEncryptionSettings(), data, meta)
 }
 
 func resourceGlueDataCatalogEncryptionSettingsDelete(data *schema.ResourceData, meta interface{}) error {

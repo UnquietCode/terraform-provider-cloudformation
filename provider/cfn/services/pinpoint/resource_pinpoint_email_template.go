@@ -52,15 +52,15 @@ func ResourcePinpointEmailTemplate() *schema.Resource {
 }
 
 func resourcePinpointEmailTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::EmailTemplate", data, meta)
+	return plugin.ResourceCreate("AWS::Pinpoint::EmailTemplate", ResourcePinpointEmailTemplate(), data, meta)
 }
 
 func resourcePinpointEmailTemplateRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::EmailTemplate", data, meta)
+	return plugin.ResourceRead("AWS::Pinpoint::EmailTemplate", ResourcePinpointEmailTemplate(), data, meta)
 }
 
 func resourcePinpointEmailTemplateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::EmailTemplate", data, meta)
+	return plugin.ResourceUpdate("AWS::Pinpoint::EmailTemplate", ResourcePinpointEmailTemplate(), data, meta)
 }
 
 func resourcePinpointEmailTemplateDelete(data *schema.ResourceData, meta interface{}) error {

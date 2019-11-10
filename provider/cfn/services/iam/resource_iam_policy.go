@@ -50,15 +50,15 @@ func ResourceIAMPolicy() *schema.Resource {
 }
 
 func resourceIAMPolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IAM::Policy", data, meta)
+	return plugin.ResourceCreate("AWS::IAM::Policy", ResourceIAMPolicy(), data, meta)
 }
 
 func resourceIAMPolicyRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IAM::Policy", data, meta)
+	return plugin.ResourceRead("AWS::IAM::Policy", ResourceIAMPolicy(), data, meta)
 }
 
 func resourceIAMPolicyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IAM::Policy", data, meta)
+	return plugin.ResourceUpdate("AWS::IAM::Policy", ResourceIAMPolicy(), data, meta)
 }
 
 func resourceIAMPolicyDelete(data *schema.ResourceData, meta interface{}) error {

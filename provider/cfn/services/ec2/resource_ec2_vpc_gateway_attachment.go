@@ -39,15 +39,15 @@ func ResourceEC2VPCGatewayAttachment() *schema.Resource {
 }
 
 func resourceEC2VPCGatewayAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::VPCGatewayAttachment", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::VPCGatewayAttachment", ResourceEC2VPCGatewayAttachment(), data, meta)
 }
 
 func resourceEC2VPCGatewayAttachmentRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::VPCGatewayAttachment", data, meta)
+	return plugin.ResourceRead("AWS::EC2::VPCGatewayAttachment", ResourceEC2VPCGatewayAttachment(), data, meta)
 }
 
 func resourceEC2VPCGatewayAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::VPCGatewayAttachment", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::VPCGatewayAttachment", ResourceEC2VPCGatewayAttachment(), data, meta)
 }
 
 func resourceEC2VPCGatewayAttachmentDelete(data *schema.ResourceData, meta interface{}) error {

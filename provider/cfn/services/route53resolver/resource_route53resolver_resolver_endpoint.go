@@ -70,15 +70,15 @@ func ResourceRoute53ResolverResolverEndpoint() *schema.Resource {
 }
 
 func resourceRoute53ResolverResolverEndpointCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Route53Resolver::ResolverEndpoint", data, meta)
+	return plugin.ResourceCreate("AWS::Route53Resolver::ResolverEndpoint", ResourceRoute53ResolverResolverEndpoint(), data, meta)
 }
 
 func resourceRoute53ResolverResolverEndpointRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Route53Resolver::ResolverEndpoint", data, meta)
+	return plugin.ResourceRead("AWS::Route53Resolver::ResolverEndpoint", ResourceRoute53ResolverResolverEndpoint(), data, meta)
 }
 
 func resourceRoute53ResolverResolverEndpointUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Route53Resolver::ResolverEndpoint", data, meta)
+	return plugin.ResourceUpdate("AWS::Route53Resolver::ResolverEndpoint", ResourceRoute53ResolverResolverEndpoint(), data, meta)
 }
 
 func resourceRoute53ResolverResolverEndpointDelete(data *schema.ResourceData, meta interface{}) error {

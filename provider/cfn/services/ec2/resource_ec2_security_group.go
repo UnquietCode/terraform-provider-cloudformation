@@ -63,15 +63,15 @@ func ResourceEC2SecurityGroup() *schema.Resource {
 }
 
 func resourceEC2SecurityGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::SecurityGroup", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::SecurityGroup", ResourceEC2SecurityGroup(), data, meta)
 }
 
 func resourceEC2SecurityGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::SecurityGroup", data, meta)
+	return plugin.ResourceRead("AWS::EC2::SecurityGroup", ResourceEC2SecurityGroup(), data, meta)
 }
 
 func resourceEC2SecurityGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::SecurityGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::SecurityGroup", ResourceEC2SecurityGroup(), data, meta)
 }
 
 func resourceEC2SecurityGroupDelete(data *schema.ResourceData, meta interface{}) error {

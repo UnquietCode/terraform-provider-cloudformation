@@ -42,15 +42,15 @@ func ResourceConfigConfigurationRecorder() *schema.Resource {
 }
 
 func resourceConfigConfigurationRecorderCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Config::ConfigurationRecorder", data, meta)
+	return plugin.ResourceCreate("AWS::Config::ConfigurationRecorder", ResourceConfigConfigurationRecorder(), data, meta)
 }
 
 func resourceConfigConfigurationRecorderRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Config::ConfigurationRecorder", data, meta)
+	return plugin.ResourceRead("AWS::Config::ConfigurationRecorder", ResourceConfigConfigurationRecorder(), data, meta)
 }
 
 func resourceConfigConfigurationRecorderUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Config::ConfigurationRecorder", data, meta)
+	return plugin.ResourceUpdate("AWS::Config::ConfigurationRecorder", ResourceConfigConfigurationRecorder(), data, meta)
 }
 
 func resourceConfigConfigurationRecorderDelete(data *schema.ResourceData, meta interface{}) error {

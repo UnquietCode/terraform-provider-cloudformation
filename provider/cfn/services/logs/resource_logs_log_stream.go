@@ -36,15 +36,15 @@ func ResourceLogsLogStream() *schema.Resource {
 }
 
 func resourceLogsLogStreamCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Logs::LogStream", data, meta)
+	return plugin.ResourceCreate("AWS::Logs::LogStream", ResourceLogsLogStream(), data, meta)
 }
 
 func resourceLogsLogStreamRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Logs::LogStream", data, meta)
+	return plugin.ResourceRead("AWS::Logs::LogStream", ResourceLogsLogStream(), data, meta)
 }
 
 func resourceLogsLogStreamUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Logs::LogStream", data, meta)
+	return plugin.ResourceUpdate("AWS::Logs::LogStream", ResourceLogsLogStream(), data, meta)
 }
 
 func resourceLogsLogStreamDelete(data *schema.ResourceData, meta interface{}) error {

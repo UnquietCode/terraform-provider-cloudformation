@@ -48,15 +48,15 @@ func ResourceRedshiftClusterParameterGroup() *schema.Resource {
 }
 
 func resourceRedshiftClusterParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Redshift::ClusterParameterGroup", data, meta)
+	return plugin.ResourceCreate("AWS::Redshift::ClusterParameterGroup", ResourceRedshiftClusterParameterGroup(), data, meta)
 }
 
 func resourceRedshiftClusterParameterGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Redshift::ClusterParameterGroup", data, meta)
+	return plugin.ResourceRead("AWS::Redshift::ClusterParameterGroup", ResourceRedshiftClusterParameterGroup(), data, meta)
 }
 
 func resourceRedshiftClusterParameterGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Redshift::ClusterParameterGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::Redshift::ClusterParameterGroup", ResourceRedshiftClusterParameterGroup(), data, meta)
 }
 
 func resourceRedshiftClusterParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {

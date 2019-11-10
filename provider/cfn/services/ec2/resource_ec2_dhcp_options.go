@@ -63,15 +63,15 @@ func ResourceEC2DHCPOptions() *schema.Resource {
 }
 
 func resourceEC2DHCPOptionsCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::DHCPOptions", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::DHCPOptions", ResourceEC2DHCPOptions(), data, meta)
 }
 
 func resourceEC2DHCPOptionsRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::DHCPOptions", data, meta)
+	return plugin.ResourceRead("AWS::EC2::DHCPOptions", ResourceEC2DHCPOptions(), data, meta)
 }
 
 func resourceEC2DHCPOptionsUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::DHCPOptions", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::DHCPOptions", ResourceEC2DHCPOptions(), data, meta)
 }
 
 func resourceEC2DHCPOptionsDelete(data *schema.ResourceData, meta interface{}) error {

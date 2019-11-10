@@ -133,15 +133,15 @@ func ResourceEMRCluster() *schema.Resource {
 }
 
 func resourceEMRClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EMR::Cluster", data, meta)
+	return plugin.ResourceCreate("AWS::EMR::Cluster", ResourceEMRCluster(), data, meta)
 }
 
 func resourceEMRClusterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EMR::Cluster", data, meta)
+	return plugin.ResourceRead("AWS::EMR::Cluster", ResourceEMRCluster(), data, meta)
 }
 
 func resourceEMRClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EMR::Cluster", data, meta)
+	return plugin.ResourceUpdate("AWS::EMR::Cluster", ResourceEMRCluster(), data, meta)
 }
 
 func resourceEMRClusterDelete(data *schema.ResourceData, meta interface{}) error {

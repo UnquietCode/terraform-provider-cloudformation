@@ -121,15 +121,15 @@ func ResourceDocDBDBCluster() *schema.Resource {
 }
 
 func resourceDocDBDBClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DocDB::DBCluster", data, meta)
+	return plugin.ResourceCreate("AWS::DocDB::DBCluster", ResourceDocDBDBCluster(), data, meta)
 }
 
 func resourceDocDBDBClusterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::DocDB::DBCluster", data, meta)
+	return plugin.ResourceRead("AWS::DocDB::DBCluster", ResourceDocDBDBCluster(), data, meta)
 }
 
 func resourceDocDBDBClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::DocDB::DBCluster", data, meta)
+	return plugin.ResourceUpdate("AWS::DocDB::DBCluster", ResourceDocDBDBCluster(), data, meta)
 }
 
 func resourceDocDBDBClusterDelete(data *schema.ResourceData, meta interface{}) error {

@@ -36,15 +36,15 @@ func ResourceEC2SubnetCidrBlock() *schema.Resource {
 }
 
 func resourceEC2SubnetCidrBlockCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::SubnetCidrBlock", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::SubnetCidrBlock", ResourceEC2SubnetCidrBlock(), data, meta)
 }
 
 func resourceEC2SubnetCidrBlockRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::SubnetCidrBlock", data, meta)
+	return plugin.ResourceRead("AWS::EC2::SubnetCidrBlock", ResourceEC2SubnetCidrBlock(), data, meta)
 }
 
 func resourceEC2SubnetCidrBlockUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::SubnetCidrBlock", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::SubnetCidrBlock", ResourceEC2SubnetCidrBlock(), data, meta)
 }
 
 func resourceEC2SubnetCidrBlockDelete(data *schema.ResourceData, meta interface{}) error {

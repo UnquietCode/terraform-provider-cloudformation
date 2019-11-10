@@ -38,15 +38,15 @@ func ResourceRoute53HealthCheck() *schema.Resource {
 }
 
 func resourceRoute53HealthCheckCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Route53::HealthCheck", data, meta)
+	return plugin.ResourceCreate("AWS::Route53::HealthCheck", ResourceRoute53HealthCheck(), data, meta)
 }
 
 func resourceRoute53HealthCheckRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Route53::HealthCheck", data, meta)
+	return plugin.ResourceRead("AWS::Route53::HealthCheck", ResourceRoute53HealthCheck(), data, meta)
 }
 
 func resourceRoute53HealthCheckUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Route53::HealthCheck", data, meta)
+	return plugin.ResourceUpdate("AWS::Route53::HealthCheck", ResourceRoute53HealthCheck(), data, meta)
 }
 
 func resourceRoute53HealthCheckDelete(data *schema.ResourceData, meta interface{}) error {

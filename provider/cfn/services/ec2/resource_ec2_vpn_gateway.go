@@ -43,15 +43,15 @@ func ResourceEC2VPNGateway() *schema.Resource {
 }
 
 func resourceEC2VPNGatewayCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::VPNGateway", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::VPNGateway", ResourceEC2VPNGateway(), data, meta)
 }
 
 func resourceEC2VPNGatewayRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::VPNGateway", data, meta)
+	return plugin.ResourceRead("AWS::EC2::VPNGateway", ResourceEC2VPNGateway(), data, meta)
 }
 
 func resourceEC2VPNGatewayUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::VPNGateway", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::VPNGateway", ResourceEC2VPNGateway(), data, meta)
 }
 
 func resourceEC2VPNGatewayDelete(data *schema.ResourceData, meta interface{}) error {

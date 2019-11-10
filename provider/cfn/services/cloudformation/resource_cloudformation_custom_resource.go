@@ -31,15 +31,15 @@ func ResourceCloudFormationCustomResource() *schema.Resource {
 }
 
 func resourceCloudFormationCustomResourceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CloudFormation::CustomResource", data, meta)
+	return plugin.ResourceCreate("AWS::CloudFormation::CustomResource", ResourceCloudFormationCustomResource(), data, meta)
 }
 
 func resourceCloudFormationCustomResourceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CloudFormation::CustomResource", data, meta)
+	return plugin.ResourceRead("AWS::CloudFormation::CustomResource", ResourceCloudFormationCustomResource(), data, meta)
 }
 
 func resourceCloudFormationCustomResourceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CloudFormation::CustomResource", data, meta)
+	return plugin.ResourceUpdate("AWS::CloudFormation::CustomResource", ResourceCloudFormationCustomResource(), data, meta)
 }
 
 func resourceCloudFormationCustomResourceDelete(data *schema.ResourceData, meta interface{}) error {

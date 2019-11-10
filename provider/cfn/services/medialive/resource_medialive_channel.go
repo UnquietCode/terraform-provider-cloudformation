@@ -76,15 +76,15 @@ func ResourceMediaLiveChannel() *schema.Resource {
 }
 
 func resourceMediaLiveChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::MediaLive::Channel", data, meta)
+	return plugin.ResourceCreate("AWS::MediaLive::Channel", ResourceMediaLiveChannel(), data, meta)
 }
 
 func resourceMediaLiveChannelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::MediaLive::Channel", data, meta)
+	return plugin.ResourceRead("AWS::MediaLive::Channel", ResourceMediaLiveChannel(), data, meta)
 }
 
 func resourceMediaLiveChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::MediaLive::Channel", data, meta)
+	return plugin.ResourceUpdate("AWS::MediaLive::Channel", ResourceMediaLiveChannel(), data, meta)
 }
 
 func resourceMediaLiveChannelDelete(data *schema.ResourceData, meta interface{}) error {

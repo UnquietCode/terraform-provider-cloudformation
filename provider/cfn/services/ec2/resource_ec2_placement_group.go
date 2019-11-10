@@ -31,15 +31,15 @@ func ResourceEC2PlacementGroup() *schema.Resource {
 }
 
 func resourceEC2PlacementGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::PlacementGroup", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::PlacementGroup", ResourceEC2PlacementGroup(), data, meta)
 }
 
 func resourceEC2PlacementGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::PlacementGroup", data, meta)
+	return plugin.ResourceRead("AWS::EC2::PlacementGroup", ResourceEC2PlacementGroup(), data, meta)
 }
 
 func resourceEC2PlacementGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::PlacementGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::PlacementGroup", ResourceEC2PlacementGroup(), data, meta)
 }
 
 func resourceEC2PlacementGroupDelete(data *schema.ResourceData, meta interface{}) error {

@@ -40,15 +40,15 @@ func ResourcePinpointApp() *schema.Resource {
 }
 
 func resourcePinpointAppCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::App", data, meta)
+	return plugin.ResourceCreate("AWS::Pinpoint::App", ResourcePinpointApp(), data, meta)
 }
 
 func resourcePinpointAppRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::App", data, meta)
+	return plugin.ResourceRead("AWS::Pinpoint::App", ResourcePinpointApp(), data, meta)
 }
 
 func resourcePinpointAppUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::App", data, meta)
+	return plugin.ResourceUpdate("AWS::Pinpoint::App", ResourcePinpointApp(), data, meta)
 }
 
 func resourcePinpointAppDelete(data *schema.ResourceData, meta interface{}) error {

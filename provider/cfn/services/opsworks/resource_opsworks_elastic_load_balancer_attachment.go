@@ -35,15 +35,15 @@ func ResourceOpsWorksElasticLoadBalancerAttachment() *schema.Resource {
 }
 
 func resourceOpsWorksElasticLoadBalancerAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::OpsWorks::ElasticLoadBalancerAttachment", data, meta)
+	return plugin.ResourceCreate("AWS::OpsWorks::ElasticLoadBalancerAttachment", ResourceOpsWorksElasticLoadBalancerAttachment(), data, meta)
 }
 
 func resourceOpsWorksElasticLoadBalancerAttachmentRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::OpsWorks::ElasticLoadBalancerAttachment", data, meta)
+	return plugin.ResourceRead("AWS::OpsWorks::ElasticLoadBalancerAttachment", ResourceOpsWorksElasticLoadBalancerAttachment(), data, meta)
 }
 
 func resourceOpsWorksElasticLoadBalancerAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::OpsWorks::ElasticLoadBalancerAttachment", data, meta)
+	return plugin.ResourceUpdate("AWS::OpsWorks::ElasticLoadBalancerAttachment", ResourceOpsWorksElasticLoadBalancerAttachment(), data, meta)
 }
 
 func resourceOpsWorksElasticLoadBalancerAttachmentDelete(data *schema.ResourceData, meta interface{}) error {

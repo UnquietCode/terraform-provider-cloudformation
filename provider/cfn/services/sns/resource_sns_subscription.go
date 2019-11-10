@@ -58,15 +58,15 @@ func ResourceSNSSubscription() *schema.Resource {
 }
 
 func resourceSNSSubscriptionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SNS::Subscription", data, meta)
+	return plugin.ResourceCreate("AWS::SNS::Subscription", ResourceSNSSubscription(), data, meta)
 }
 
 func resourceSNSSubscriptionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SNS::Subscription", data, meta)
+	return plugin.ResourceRead("AWS::SNS::Subscription", ResourceSNSSubscription(), data, meta)
 }
 
 func resourceSNSSubscriptionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SNS::Subscription", data, meta)
+	return plugin.ResourceUpdate("AWS::SNS::Subscription", ResourceSNSSubscription(), data, meta)
 }
 
 func resourceSNSSubscriptionDelete(data *schema.ResourceData, meta interface{}) error {

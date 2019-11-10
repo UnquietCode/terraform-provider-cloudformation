@@ -61,15 +61,15 @@ func ResourceAutoScalingLifecycleHook() *schema.Resource {
 }
 
 func resourceAutoScalingLifecycleHookCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AutoScaling::LifecycleHook", data, meta)
+	return plugin.ResourceCreate("AWS::AutoScaling::LifecycleHook", ResourceAutoScalingLifecycleHook(), data, meta)
 }
 
 func resourceAutoScalingLifecycleHookRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AutoScaling::LifecycleHook", data, meta)
+	return plugin.ResourceRead("AWS::AutoScaling::LifecycleHook", ResourceAutoScalingLifecycleHook(), data, meta)
 }
 
 func resourceAutoScalingLifecycleHookUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AutoScaling::LifecycleHook", data, meta)
+	return plugin.ResourceUpdate("AWS::AutoScaling::LifecycleHook", ResourceAutoScalingLifecycleHook(), data, meta)
 }
 
 func resourceAutoScalingLifecycleHookDelete(data *schema.ResourceData, meta interface{}) error {

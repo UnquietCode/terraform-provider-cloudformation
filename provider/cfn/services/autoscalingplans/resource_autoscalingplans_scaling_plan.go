@@ -46,15 +46,15 @@ func ResourceAutoScalingPlansScalingPlan() *schema.Resource {
 }
 
 func resourceAutoScalingPlansScalingPlanCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AutoScalingPlans::ScalingPlan", data, meta)
+	return plugin.ResourceCreate("AWS::AutoScalingPlans::ScalingPlan", ResourceAutoScalingPlansScalingPlan(), data, meta)
 }
 
 func resourceAutoScalingPlansScalingPlanRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AutoScalingPlans::ScalingPlan", data, meta)
+	return plugin.ResourceRead("AWS::AutoScalingPlans::ScalingPlan", ResourceAutoScalingPlansScalingPlan(), data, meta)
 }
 
 func resourceAutoScalingPlansScalingPlanUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AutoScalingPlans::ScalingPlan", data, meta)
+	return plugin.ResourceUpdate("AWS::AutoScalingPlans::ScalingPlan", ResourceAutoScalingPlansScalingPlan(), data, meta)
 }
 
 func resourceAutoScalingPlansScalingPlanDelete(data *schema.ResourceData, meta interface{}) error {

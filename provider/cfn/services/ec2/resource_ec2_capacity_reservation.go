@@ -89,15 +89,15 @@ func ResourceEC2CapacityReservation() *schema.Resource {
 }
 
 func resourceEC2CapacityReservationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::CapacityReservation", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::CapacityReservation", ResourceEC2CapacityReservation(), data, meta)
 }
 
 func resourceEC2CapacityReservationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::CapacityReservation", data, meta)
+	return plugin.ResourceRead("AWS::EC2::CapacityReservation", ResourceEC2CapacityReservation(), data, meta)
 }
 
 func resourceEC2CapacityReservationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::CapacityReservation", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::CapacityReservation", ResourceEC2CapacityReservation(), data, meta)
 }
 
 func resourceEC2CapacityReservationDelete(data *schema.ResourceData, meta interface{}) error {

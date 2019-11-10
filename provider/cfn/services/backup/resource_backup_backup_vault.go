@@ -55,15 +55,15 @@ func ResourceBackupBackupVault() *schema.Resource {
 }
 
 func resourceBackupBackupVaultCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Backup::BackupVault", data, meta)
+	return plugin.ResourceCreate("AWS::Backup::BackupVault", ResourceBackupBackupVault(), data, meta)
 }
 
 func resourceBackupBackupVaultRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Backup::BackupVault", data, meta)
+	return plugin.ResourceRead("AWS::Backup::BackupVault", ResourceBackupBackupVault(), data, meta)
 }
 
 func resourceBackupBackupVaultUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Backup::BackupVault", data, meta)
+	return plugin.ResourceUpdate("AWS::Backup::BackupVault", ResourceBackupBackupVault(), data, meta)
 }
 
 func resourceBackupBackupVaultDelete(data *schema.ResourceData, meta interface{}) error {

@@ -39,15 +39,15 @@ func ResourceBudgetsBudget() *schema.Resource {
 }
 
 func resourceBudgetsBudgetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Budgets::Budget", data, meta)
+	return plugin.ResourceCreate("AWS::Budgets::Budget", ResourceBudgetsBudget(), data, meta)
 }
 
 func resourceBudgetsBudgetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Budgets::Budget", data, meta)
+	return plugin.ResourceRead("AWS::Budgets::Budget", ResourceBudgetsBudget(), data, meta)
 }
 
 func resourceBudgetsBudgetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Budgets::Budget", data, meta)
+	return plugin.ResourceUpdate("AWS::Budgets::Budget", ResourceBudgetsBudget(), data, meta)
 }
 
 func resourceBudgetsBudgetDelete(data *schema.ResourceData, meta interface{}) error {

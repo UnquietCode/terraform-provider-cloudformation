@@ -46,15 +46,15 @@ func ResourceRedshiftClusterSecurityGroupIngress() *schema.Resource {
 }
 
 func resourceRedshiftClusterSecurityGroupIngressCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Redshift::ClusterSecurityGroupIngress", data, meta)
+	return plugin.ResourceCreate("AWS::Redshift::ClusterSecurityGroupIngress", ResourceRedshiftClusterSecurityGroupIngress(), data, meta)
 }
 
 func resourceRedshiftClusterSecurityGroupIngressRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Redshift::ClusterSecurityGroupIngress", data, meta)
+	return plugin.ResourceRead("AWS::Redshift::ClusterSecurityGroupIngress", ResourceRedshiftClusterSecurityGroupIngress(), data, meta)
 }
 
 func resourceRedshiftClusterSecurityGroupIngressUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Redshift::ClusterSecurityGroupIngress", data, meta)
+	return plugin.ResourceUpdate("AWS::Redshift::ClusterSecurityGroupIngress", ResourceRedshiftClusterSecurityGroupIngress(), data, meta)
 }
 
 func resourceRedshiftClusterSecurityGroupIngressDelete(data *schema.ResourceData, meta interface{}) error {

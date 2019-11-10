@@ -45,15 +45,15 @@ func ResourceApiGatewayBasePathMapping() *schema.Resource {
 }
 
 func resourceApiGatewayBasePathMappingCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::BasePathMapping", data, meta)
+	return plugin.ResourceCreate("AWS::ApiGateway::BasePathMapping", ResourceApiGatewayBasePathMapping(), data, meta)
 }
 
 func resourceApiGatewayBasePathMappingRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGateway::BasePathMapping", data, meta)
+	return plugin.ResourceRead("AWS::ApiGateway::BasePathMapping", ResourceApiGatewayBasePathMapping(), data, meta)
 }
 
 func resourceApiGatewayBasePathMappingUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGateway::BasePathMapping", data, meta)
+	return plugin.ResourceUpdate("AWS::ApiGateway::BasePathMapping", ResourceApiGatewayBasePathMapping(), data, meta)
 }
 
 func resourceApiGatewayBasePathMappingDelete(data *schema.ResourceData, meta interface{}) error {

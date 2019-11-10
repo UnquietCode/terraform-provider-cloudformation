@@ -121,15 +121,15 @@ func ResourceAutoScalingLaunchConfiguration() *schema.Resource {
 }
 
 func resourceAutoScalingLaunchConfigurationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AutoScaling::LaunchConfiguration", data, meta)
+	return plugin.ResourceCreate("AWS::AutoScaling::LaunchConfiguration", ResourceAutoScalingLaunchConfiguration(), data, meta)
 }
 
 func resourceAutoScalingLaunchConfigurationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AutoScaling::LaunchConfiguration", data, meta)
+	return plugin.ResourceRead("AWS::AutoScaling::LaunchConfiguration", ResourceAutoScalingLaunchConfiguration(), data, meta)
 }
 
 func resourceAutoScalingLaunchConfigurationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AutoScaling::LaunchConfiguration", data, meta)
+	return plugin.ResourceUpdate("AWS::AutoScaling::LaunchConfiguration", ResourceAutoScalingLaunchConfiguration(), data, meta)
 }
 
 func resourceAutoScalingLaunchConfigurationDelete(data *schema.ResourceData, meta interface{}) error {

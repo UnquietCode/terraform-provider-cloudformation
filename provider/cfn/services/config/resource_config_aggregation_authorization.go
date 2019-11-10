@@ -36,15 +36,15 @@ func ResourceConfigAggregationAuthorization() *schema.Resource {
 }
 
 func resourceConfigAggregationAuthorizationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Config::AggregationAuthorization", data, meta)
+	return plugin.ResourceCreate("AWS::Config::AggregationAuthorization", ResourceConfigAggregationAuthorization(), data, meta)
 }
 
 func resourceConfigAggregationAuthorizationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Config::AggregationAuthorization", data, meta)
+	return plugin.ResourceRead("AWS::Config::AggregationAuthorization", ResourceConfigAggregationAuthorization(), data, meta)
 }
 
 func resourceConfigAggregationAuthorizationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Config::AggregationAuthorization", data, meta)
+	return plugin.ResourceUpdate("AWS::Config::AggregationAuthorization", ResourceConfigAggregationAuthorization(), data, meta)
 }
 
 func resourceConfigAggregationAuthorizationDelete(data *schema.ResourceData, meta interface{}) error {

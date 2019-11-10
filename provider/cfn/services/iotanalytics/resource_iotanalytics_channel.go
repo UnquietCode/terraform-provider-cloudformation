@@ -50,15 +50,15 @@ func ResourceIoTAnalyticsChannel() *schema.Resource {
 }
 
 func resourceIoTAnalyticsChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoTAnalytics::Channel", data, meta)
+	return plugin.ResourceCreate("AWS::IoTAnalytics::Channel", ResourceIoTAnalyticsChannel(), data, meta)
 }
 
 func resourceIoTAnalyticsChannelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoTAnalytics::Channel", data, meta)
+	return plugin.ResourceRead("AWS::IoTAnalytics::Channel", ResourceIoTAnalyticsChannel(), data, meta)
 }
 
 func resourceIoTAnalyticsChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoTAnalytics::Channel", data, meta)
+	return plugin.ResourceUpdate("AWS::IoTAnalytics::Channel", ResourceIoTAnalyticsChannel(), data, meta)
 }
 
 func resourceIoTAnalyticsChannelDelete(data *schema.ResourceData, meta interface{}) error {

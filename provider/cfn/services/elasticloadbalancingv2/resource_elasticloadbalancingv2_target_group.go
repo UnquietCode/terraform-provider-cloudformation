@@ -119,15 +119,15 @@ func ResourceElasticLoadBalancingV2TargetGroup() *schema.Resource {
 }
 
 func resourceElasticLoadBalancingV2TargetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElasticLoadBalancingV2::TargetGroup", data, meta)
+	return plugin.ResourceCreate("AWS::ElasticLoadBalancingV2::TargetGroup", ResourceElasticLoadBalancingV2TargetGroup(), data, meta)
 }
 
 func resourceElasticLoadBalancingV2TargetGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ElasticLoadBalancingV2::TargetGroup", data, meta)
+	return plugin.ResourceRead("AWS::ElasticLoadBalancingV2::TargetGroup", ResourceElasticLoadBalancingV2TargetGroup(), data, meta)
 }
 
 func resourceElasticLoadBalancingV2TargetGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ElasticLoadBalancingV2::TargetGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::ElasticLoadBalancingV2::TargetGroup", ResourceElasticLoadBalancingV2TargetGroup(), data, meta)
 }
 
 func resourceElasticLoadBalancingV2TargetGroupDelete(data *schema.ResourceData, meta interface{}) error {

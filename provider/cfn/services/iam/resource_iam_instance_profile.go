@@ -46,15 +46,15 @@ func ResourceIAMInstanceProfile() *schema.Resource {
 }
 
 func resourceIAMInstanceProfileCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IAM::InstanceProfile", data, meta)
+	return plugin.ResourceCreate("AWS::IAM::InstanceProfile", ResourceIAMInstanceProfile(), data, meta)
 }
 
 func resourceIAMInstanceProfileRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IAM::InstanceProfile", data, meta)
+	return plugin.ResourceRead("AWS::IAM::InstanceProfile", ResourceIAMInstanceProfile(), data, meta)
 }
 
 func resourceIAMInstanceProfileUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IAM::InstanceProfile", data, meta)
+	return plugin.ResourceUpdate("AWS::IAM::InstanceProfile", ResourceIAMInstanceProfile(), data, meta)
 }
 
 func resourceIAMInstanceProfileDelete(data *schema.ResourceData, meta interface{}) error {

@@ -71,15 +71,15 @@ func ResourceRoboMakerSimulationApplication() *schema.Resource {
 }
 
 func resourceRoboMakerSimulationApplicationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RoboMaker::SimulationApplication", data, meta)
+	return plugin.ResourceCreate("AWS::RoboMaker::SimulationApplication", ResourceRoboMakerSimulationApplication(), data, meta)
 }
 
 func resourceRoboMakerSimulationApplicationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::RoboMaker::SimulationApplication", data, meta)
+	return plugin.ResourceRead("AWS::RoboMaker::SimulationApplication", ResourceRoboMakerSimulationApplication(), data, meta)
 }
 
 func resourceRoboMakerSimulationApplicationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::RoboMaker::SimulationApplication", data, meta)
+	return plugin.ResourceUpdate("AWS::RoboMaker::SimulationApplication", ResourceRoboMakerSimulationApplication(), data, meta)
 }
 
 func resourceRoboMakerSimulationApplicationDelete(data *schema.ResourceData, meta interface{}) error {

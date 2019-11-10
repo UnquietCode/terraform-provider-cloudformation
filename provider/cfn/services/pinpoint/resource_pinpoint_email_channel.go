@@ -52,15 +52,15 @@ func ResourcePinpointEmailChannel() *schema.Resource {
 }
 
 func resourcePinpointEmailChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::EmailChannel", data, meta)
+	return plugin.ResourceCreate("AWS::Pinpoint::EmailChannel", ResourcePinpointEmailChannel(), data, meta)
 }
 
 func resourcePinpointEmailChannelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::EmailChannel", data, meta)
+	return plugin.ResourceRead("AWS::Pinpoint::EmailChannel", ResourcePinpointEmailChannel(), data, meta)
 }
 
 func resourcePinpointEmailChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::EmailChannel", data, meta)
+	return plugin.ResourceUpdate("AWS::Pinpoint::EmailChannel", ResourcePinpointEmailChannel(), data, meta)
 }
 
 func resourcePinpointEmailChannelDelete(data *schema.ResourceData, meta interface{}) error {

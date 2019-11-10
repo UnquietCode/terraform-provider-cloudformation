@@ -46,15 +46,15 @@ func ResourceAppStreamStackUserAssociation() *schema.Resource {
 }
 
 func resourceAppStreamStackUserAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppStream::StackUserAssociation", data, meta)
+	return plugin.ResourceCreate("AWS::AppStream::StackUserAssociation", ResourceAppStreamStackUserAssociation(), data, meta)
 }
 
 func resourceAppStreamStackUserAssociationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppStream::StackUserAssociation", data, meta)
+	return plugin.ResourceRead("AWS::AppStream::StackUserAssociation", ResourceAppStreamStackUserAssociation(), data, meta)
 }
 
 func resourceAppStreamStackUserAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppStream::StackUserAssociation", data, meta)
+	return plugin.ResourceUpdate("AWS::AppStream::StackUserAssociation", ResourceAppStreamStackUserAssociation(), data, meta)
 }
 
 func resourceAppStreamStackUserAssociationDelete(data *schema.ResourceData, meta interface{}) error {

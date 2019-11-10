@@ -47,15 +47,15 @@ func ResourceDocDBDBSubnetGroup() *schema.Resource {
 }
 
 func resourceDocDBDBSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DocDB::DBSubnetGroup", data, meta)
+	return plugin.ResourceCreate("AWS::DocDB::DBSubnetGroup", ResourceDocDBDBSubnetGroup(), data, meta)
 }
 
 func resourceDocDBDBSubnetGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::DocDB::DBSubnetGroup", data, meta)
+	return plugin.ResourceRead("AWS::DocDB::DBSubnetGroup", ResourceDocDBDBSubnetGroup(), data, meta)
 }
 
 func resourceDocDBDBSubnetGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::DocDB::DBSubnetGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::DocDB::DBSubnetGroup", ResourceDocDBDBSubnetGroup(), data, meta)
 }
 
 func resourceDocDBDBSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {

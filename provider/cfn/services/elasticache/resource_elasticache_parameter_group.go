@@ -40,15 +40,15 @@ func ResourceElastiCacheParameterGroup() *schema.Resource {
 }
 
 func resourceElastiCacheParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElastiCache::ParameterGroup", data, meta)
+	return plugin.ResourceCreate("AWS::ElastiCache::ParameterGroup", ResourceElastiCacheParameterGroup(), data, meta)
 }
 
 func resourceElastiCacheParameterGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ElastiCache::ParameterGroup", data, meta)
+	return plugin.ResourceRead("AWS::ElastiCache::ParameterGroup", ResourceElastiCacheParameterGroup(), data, meta)
 }
 
 func resourceElastiCacheParameterGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ElastiCache::ParameterGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::ElastiCache::ParameterGroup", ResourceElastiCacheParameterGroup(), data, meta)
 }
 
 func resourceElastiCacheParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {

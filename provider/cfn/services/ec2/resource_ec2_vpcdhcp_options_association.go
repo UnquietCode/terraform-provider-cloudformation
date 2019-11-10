@@ -36,15 +36,15 @@ func ResourceEC2VPCDHCPOptionsAssociation() *schema.Resource {
 }
 
 func resourceEC2VPCDHCPOptionsAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::VPCDHCPOptionsAssociation", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::VPCDHCPOptionsAssociation", ResourceEC2VPCDHCPOptionsAssociation(), data, meta)
 }
 
 func resourceEC2VPCDHCPOptionsAssociationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::VPCDHCPOptionsAssociation", data, meta)
+	return plugin.ResourceRead("AWS::EC2::VPCDHCPOptionsAssociation", ResourceEC2VPCDHCPOptionsAssociation(), data, meta)
 }
 
 func resourceEC2VPCDHCPOptionsAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::VPCDHCPOptionsAssociation", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::VPCDHCPOptionsAssociation", ResourceEC2VPCDHCPOptionsAssociation(), data, meta)
 }
 
 func resourceEC2VPCDHCPOptionsAssociationDelete(data *schema.ResourceData, meta interface{}) error {

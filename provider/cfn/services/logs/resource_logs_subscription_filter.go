@@ -46,15 +46,15 @@ func ResourceLogsSubscriptionFilter() *schema.Resource {
 }
 
 func resourceLogsSubscriptionFilterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Logs::SubscriptionFilter", data, meta)
+	return plugin.ResourceCreate("AWS::Logs::SubscriptionFilter", ResourceLogsSubscriptionFilter(), data, meta)
 }
 
 func resourceLogsSubscriptionFilterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Logs::SubscriptionFilter", data, meta)
+	return plugin.ResourceRead("AWS::Logs::SubscriptionFilter", ResourceLogsSubscriptionFilter(), data, meta)
 }
 
 func resourceLogsSubscriptionFilterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Logs::SubscriptionFilter", data, meta)
+	return plugin.ResourceUpdate("AWS::Logs::SubscriptionFilter", ResourceLogsSubscriptionFilter(), data, meta)
 }
 
 func resourceLogsSubscriptionFilterDelete(data *schema.ResourceData, meta interface{}) error {

@@ -42,15 +42,15 @@ func ResourceIoTTopicRule() *schema.Resource {
 }
 
 func resourceIoTTopicRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoT::TopicRule", data, meta)
+	return plugin.ResourceCreate("AWS::IoT::TopicRule", ResourceIoTTopicRule(), data, meta)
 }
 
 func resourceIoTTopicRuleRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoT::TopicRule", data, meta)
+	return plugin.ResourceRead("AWS::IoT::TopicRule", ResourceIoTTopicRule(), data, meta)
 }
 
 func resourceIoTTopicRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoT::TopicRule", data, meta)
+	return plugin.ResourceUpdate("AWS::IoT::TopicRule", ResourceIoTTopicRule(), data, meta)
 }
 
 func resourceIoTTopicRuleDelete(data *schema.ResourceData, meta interface{}) error {

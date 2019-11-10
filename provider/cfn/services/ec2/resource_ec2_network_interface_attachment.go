@@ -43,15 +43,15 @@ func ResourceEC2NetworkInterfaceAttachment() *schema.Resource {
 }
 
 func resourceEC2NetworkInterfaceAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::NetworkInterfaceAttachment", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::NetworkInterfaceAttachment", ResourceEC2NetworkInterfaceAttachment(), data, meta)
 }
 
 func resourceEC2NetworkInterfaceAttachmentRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::NetworkInterfaceAttachment", data, meta)
+	return plugin.ResourceRead("AWS::EC2::NetworkInterfaceAttachment", ResourceEC2NetworkInterfaceAttachment(), data, meta)
 }
 
 func resourceEC2NetworkInterfaceAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::NetworkInterfaceAttachment", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::NetworkInterfaceAttachment", ResourceEC2NetworkInterfaceAttachment(), data, meta)
 }
 
 func resourceEC2NetworkInterfaceAttachmentDelete(data *schema.ResourceData, meta interface{}) error {

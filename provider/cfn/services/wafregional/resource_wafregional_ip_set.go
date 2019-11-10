@@ -37,15 +37,15 @@ func ResourceWAFRegionalIPSet() *schema.Resource {
 }
 
 func resourceWAFRegionalIPSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::WAFRegional::IPSet", data, meta)
+	return plugin.ResourceCreate("AWS::WAFRegional::IPSet", ResourceWAFRegionalIPSet(), data, meta)
 }
 
 func resourceWAFRegionalIPSetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::WAFRegional::IPSet", data, meta)
+	return plugin.ResourceRead("AWS::WAFRegional::IPSet", ResourceWAFRegionalIPSet(), data, meta)
 }
 
 func resourceWAFRegionalIPSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::WAFRegional::IPSet", data, meta)
+	return plugin.ResourceUpdate("AWS::WAFRegional::IPSet", ResourceWAFRegionalIPSet(), data, meta)
 }
 
 func resourceWAFRegionalIPSetDelete(data *schema.ResourceData, meta interface{}) error {

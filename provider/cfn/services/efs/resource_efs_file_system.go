@@ -60,15 +60,15 @@ func ResourceEFSFileSystem() *schema.Resource {
 }
 
 func resourceEFSFileSystemCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EFS::FileSystem", data, meta)
+	return plugin.ResourceCreate("AWS::EFS::FileSystem", ResourceEFSFileSystem(), data, meta)
 }
 
 func resourceEFSFileSystemRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EFS::FileSystem", data, meta)
+	return plugin.ResourceRead("AWS::EFS::FileSystem", ResourceEFSFileSystem(), data, meta)
 }
 
 func resourceEFSFileSystemUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EFS::FileSystem", data, meta)
+	return plugin.ResourceUpdate("AWS::EFS::FileSystem", ResourceEFSFileSystem(), data, meta)
 }
 
 func resourceEFSFileSystemDelete(data *schema.ResourceData, meta interface{}) error {

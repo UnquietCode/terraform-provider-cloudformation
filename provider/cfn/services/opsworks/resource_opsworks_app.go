@@ -85,15 +85,15 @@ func ResourceOpsWorksApp() *schema.Resource {
 }
 
 func resourceOpsWorksAppCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::OpsWorks::App", data, meta)
+	return plugin.ResourceCreate("AWS::OpsWorks::App", ResourceOpsWorksApp(), data, meta)
 }
 
 func resourceOpsWorksAppRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::OpsWorks::App", data, meta)
+	return plugin.ResourceRead("AWS::OpsWorks::App", ResourceOpsWorksApp(), data, meta)
 }
 
 func resourceOpsWorksAppUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::OpsWorks::App", data, meta)
+	return plugin.ResourceUpdate("AWS::OpsWorks::App", ResourceOpsWorksApp(), data, meta)
 }
 
 func resourceOpsWorksAppDelete(data *schema.ResourceData, meta interface{}) error {

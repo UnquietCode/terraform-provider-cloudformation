@@ -42,15 +42,15 @@ func ResourceRedshiftClusterSubnetGroup() *schema.Resource {
 }
 
 func resourceRedshiftClusterSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Redshift::ClusterSubnetGroup", data, meta)
+	return plugin.ResourceCreate("AWS::Redshift::ClusterSubnetGroup", ResourceRedshiftClusterSubnetGroup(), data, meta)
 }
 
 func resourceRedshiftClusterSubnetGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Redshift::ClusterSubnetGroup", data, meta)
+	return plugin.ResourceRead("AWS::Redshift::ClusterSubnetGroup", ResourceRedshiftClusterSubnetGroup(), data, meta)
 }
 
 func resourceRedshiftClusterSubnetGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Redshift::ClusterSubnetGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::Redshift::ClusterSubnetGroup", ResourceRedshiftClusterSubnetGroup(), data, meta)
 }
 
 func resourceRedshiftClusterSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {

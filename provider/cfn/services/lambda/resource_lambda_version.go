@@ -44,15 +44,15 @@ func ResourceLambdaVersion() *schema.Resource {
 }
 
 func resourceLambdaVersionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Lambda::Version", data, meta)
+	return plugin.ResourceCreate("AWS::Lambda::Version", ResourceLambdaVersion(), data, meta)
 }
 
 func resourceLambdaVersionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Lambda::Version", data, meta)
+	return plugin.ResourceRead("AWS::Lambda::Version", ResourceLambdaVersion(), data, meta)
 }
 
 func resourceLambdaVersionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Lambda::Version", data, meta)
+	return plugin.ResourceUpdate("AWS::Lambda::Version", ResourceLambdaVersion(), data, meta)
 }
 
 func resourceLambdaVersionDelete(data *schema.ResourceData, meta interface{}) error {

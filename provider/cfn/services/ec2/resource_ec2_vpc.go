@@ -68,15 +68,15 @@ func ResourceEC2VPC() *schema.Resource {
 }
 
 func resourceEC2VPCCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::VPC", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::VPC", ResourceEC2VPC(), data, meta)
 }
 
 func resourceEC2VPCRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::VPC", data, meta)
+	return plugin.ResourceRead("AWS::EC2::VPC", ResourceEC2VPC(), data, meta)
 }
 
 func resourceEC2VPCUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::VPC", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::VPC", ResourceEC2VPC(), data, meta)
 }
 
 func resourceEC2VPCDelete(data *schema.ResourceData, meta interface{}) error {

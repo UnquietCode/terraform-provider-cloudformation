@@ -56,15 +56,15 @@ func ResourceCertificateManagerCertificate() *schema.Resource {
 }
 
 func resourceCertificateManagerCertificateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CertificateManager::Certificate", data, meta)
+	return plugin.ResourceCreate("AWS::CertificateManager::Certificate", ResourceCertificateManagerCertificate(), data, meta)
 }
 
 func resourceCertificateManagerCertificateRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CertificateManager::Certificate", data, meta)
+	return plugin.ResourceRead("AWS::CertificateManager::Certificate", ResourceCertificateManagerCertificate(), data, meta)
 }
 
 func resourceCertificateManagerCertificateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CertificateManager::Certificate", data, meta)
+	return plugin.ResourceUpdate("AWS::CertificateManager::Certificate", ResourceCertificateManagerCertificate(), data, meta)
 }
 
 func resourceCertificateManagerCertificateDelete(data *schema.ResourceData, meta interface{}) error {

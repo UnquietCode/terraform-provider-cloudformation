@@ -51,15 +51,15 @@ func ResourceRoboMakerRobot() *schema.Resource {
 }
 
 func resourceRoboMakerRobotCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RoboMaker::Robot", data, meta)
+	return plugin.ResourceCreate("AWS::RoboMaker::Robot", ResourceRoboMakerRobot(), data, meta)
 }
 
 func resourceRoboMakerRobotRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::RoboMaker::Robot", data, meta)
+	return plugin.ResourceRead("AWS::RoboMaker::Robot", ResourceRoboMakerRobot(), data, meta)
 }
 
 func resourceRoboMakerRobotUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::RoboMaker::Robot", data, meta)
+	return plugin.ResourceUpdate("AWS::RoboMaker::Robot", ResourceRoboMakerRobot(), data, meta)
 }
 
 func resourceRoboMakerRobotDelete(data *schema.ResourceData, meta interface{}) error {

@@ -64,15 +64,15 @@ func ResourceWorkSpacesWorkspace() *schema.Resource {
 }
 
 func resourceWorkSpacesWorkspaceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::WorkSpaces::Workspace", data, meta)
+	return plugin.ResourceCreate("AWS::WorkSpaces::Workspace", ResourceWorkSpacesWorkspace(), data, meta)
 }
 
 func resourceWorkSpacesWorkspaceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::WorkSpaces::Workspace", data, meta)
+	return plugin.ResourceRead("AWS::WorkSpaces::Workspace", ResourceWorkSpacesWorkspace(), data, meta)
 }
 
 func resourceWorkSpacesWorkspaceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::WorkSpaces::Workspace", data, meta)
+	return plugin.ResourceUpdate("AWS::WorkSpaces::Workspace", ResourceWorkSpacesWorkspace(), data, meta)
 }
 
 func resourceWorkSpacesWorkspaceDelete(data *schema.ResourceData, meta interface{}) error {

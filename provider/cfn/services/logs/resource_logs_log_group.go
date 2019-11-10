@@ -40,15 +40,15 @@ func ResourceLogsLogGroup() *schema.Resource {
 }
 
 func resourceLogsLogGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Logs::LogGroup", data, meta)
+	return plugin.ResourceCreate("AWS::Logs::LogGroup", ResourceLogsLogGroup(), data, meta)
 }
 
 func resourceLogsLogGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Logs::LogGroup", data, meta)
+	return plugin.ResourceRead("AWS::Logs::LogGroup", ResourceLogsLogGroup(), data, meta)
 }
 
 func resourceLogsLogGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Logs::LogGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::Logs::LogGroup", ResourceLogsLogGroup(), data, meta)
 }
 
 func resourceLogsLogGroupDelete(data *schema.ResourceData, meta interface{}) error {

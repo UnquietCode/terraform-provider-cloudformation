@@ -69,15 +69,15 @@ func ResourceServiceDiscoveryService() *schema.Resource {
 }
 
 func resourceServiceDiscoveryServiceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceDiscovery::Service", data, meta)
+	return plugin.ResourceCreate("AWS::ServiceDiscovery::Service", ResourceServiceDiscoveryService(), data, meta)
 }
 
 func resourceServiceDiscoveryServiceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ServiceDiscovery::Service", data, meta)
+	return plugin.ResourceRead("AWS::ServiceDiscovery::Service", ResourceServiceDiscoveryService(), data, meta)
 }
 
 func resourceServiceDiscoveryServiceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ServiceDiscovery::Service", data, meta)
+	return plugin.ResourceUpdate("AWS::ServiceDiscovery::Service", ResourceServiceDiscoveryService(), data, meta)
 }
 
 func resourceServiceDiscoveryServiceDelete(data *schema.ResourceData, meta interface{}) error {

@@ -90,15 +90,15 @@ func ResourceEC2NetworkInterface() *schema.Resource {
 }
 
 func resourceEC2NetworkInterfaceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::NetworkInterface", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::NetworkInterface", ResourceEC2NetworkInterface(), data, meta)
 }
 
 func resourceEC2NetworkInterfaceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::NetworkInterface", data, meta)
+	return plugin.ResourceRead("AWS::EC2::NetworkInterface", ResourceEC2NetworkInterface(), data, meta)
 }
 
 func resourceEC2NetworkInterfaceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::NetworkInterface", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::NetworkInterface", ResourceEC2NetworkInterface(), data, meta)
 }
 
 func resourceEC2NetworkInterfaceDelete(data *schema.ResourceData, meta interface{}) error {

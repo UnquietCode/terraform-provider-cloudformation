@@ -53,15 +53,15 @@ func ResourceSSMMaintenanceWindowTarget() *schema.Resource {
 }
 
 func resourceSSMMaintenanceWindowTargetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SSM::MaintenanceWindowTarget", data, meta)
+	return plugin.ResourceCreate("AWS::SSM::MaintenanceWindowTarget", ResourceSSMMaintenanceWindowTarget(), data, meta)
 }
 
 func resourceSSMMaintenanceWindowTargetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SSM::MaintenanceWindowTarget", data, meta)
+	return plugin.ResourceRead("AWS::SSM::MaintenanceWindowTarget", ResourceSSMMaintenanceWindowTarget(), data, meta)
 }
 
 func resourceSSMMaintenanceWindowTargetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SSM::MaintenanceWindowTarget", data, meta)
+	return plugin.ResourceUpdate("AWS::SSM::MaintenanceWindowTarget", ResourceSSMMaintenanceWindowTarget(), data, meta)
 }
 
 func resourceSSMMaintenanceWindowTargetDelete(data *schema.ResourceData, meta interface{}) error {

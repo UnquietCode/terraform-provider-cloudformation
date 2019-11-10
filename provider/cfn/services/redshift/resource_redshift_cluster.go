@@ -171,15 +171,15 @@ func ResourceRedshiftCluster() *schema.Resource {
 }
 
 func resourceRedshiftClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Redshift::Cluster", data, meta)
+	return plugin.ResourceCreate("AWS::Redshift::Cluster", ResourceRedshiftCluster(), data, meta)
 }
 
 func resourceRedshiftClusterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Redshift::Cluster", data, meta)
+	return plugin.ResourceRead("AWS::Redshift::Cluster", ResourceRedshiftCluster(), data, meta)
 }
 
 func resourceRedshiftClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Redshift::Cluster", data, meta)
+	return plugin.ResourceUpdate("AWS::Redshift::Cluster", ResourceRedshiftCluster(), data, meta)
 }
 
 func resourceRedshiftClusterDelete(data *schema.ResourceData, meta interface{}) error {

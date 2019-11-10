@@ -37,15 +37,15 @@ func ResourceWAFRegionalRegexPatternSet() *schema.Resource {
 }
 
 func resourceWAFRegionalRegexPatternSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::WAFRegional::RegexPatternSet", data, meta)
+	return plugin.ResourceCreate("AWS::WAFRegional::RegexPatternSet", ResourceWAFRegionalRegexPatternSet(), data, meta)
 }
 
 func resourceWAFRegionalRegexPatternSetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::WAFRegional::RegexPatternSet", data, meta)
+	return plugin.ResourceRead("AWS::WAFRegional::RegexPatternSet", ResourceWAFRegionalRegexPatternSet(), data, meta)
 }
 
 func resourceWAFRegionalRegexPatternSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::WAFRegional::RegexPatternSet", data, meta)
+	return plugin.ResourceUpdate("AWS::WAFRegional::RegexPatternSet", ResourceWAFRegionalRegexPatternSet(), data, meta)
 }
 
 func resourceWAFRegionalRegexPatternSetDelete(data *schema.ResourceData, meta interface{}) error {

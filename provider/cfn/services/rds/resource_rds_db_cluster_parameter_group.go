@@ -47,15 +47,15 @@ func ResourceRDSDBClusterParameterGroup() *schema.Resource {
 }
 
 func resourceRDSDBClusterParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RDS::DBClusterParameterGroup", data, meta)
+	return plugin.ResourceCreate("AWS::RDS::DBClusterParameterGroup", ResourceRDSDBClusterParameterGroup(), data, meta)
 }
 
 func resourceRDSDBClusterParameterGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::RDS::DBClusterParameterGroup", data, meta)
+	return plugin.ResourceRead("AWS::RDS::DBClusterParameterGroup", ResourceRDSDBClusterParameterGroup(), data, meta)
 }
 
 func resourceRDSDBClusterParameterGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::RDS::DBClusterParameterGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::RDS::DBClusterParameterGroup", ResourceRDSDBClusterParameterGroup(), data, meta)
 }
 
 func resourceRDSDBClusterParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {

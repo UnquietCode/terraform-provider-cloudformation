@@ -48,15 +48,15 @@ func ResourceLogsDestination() *schema.Resource {
 }
 
 func resourceLogsDestinationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Logs::Destination", data, meta)
+	return plugin.ResourceCreate("AWS::Logs::Destination", ResourceLogsDestination(), data, meta)
 }
 
 func resourceLogsDestinationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Logs::Destination", data, meta)
+	return plugin.ResourceRead("AWS::Logs::Destination", ResourceLogsDestination(), data, meta)
 }
 
 func resourceLogsDestinationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Logs::Destination", data, meta)
+	return plugin.ResourceUpdate("AWS::Logs::Destination", ResourceLogsDestination(), data, meta)
 }
 
 func resourceLogsDestinationDelete(data *schema.ResourceData, meta interface{}) error {

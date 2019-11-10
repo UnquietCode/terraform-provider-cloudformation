@@ -66,15 +66,15 @@ func ResourceIAMUser() *schema.Resource {
 }
 
 func resourceIAMUserCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IAM::User", data, meta)
+	return plugin.ResourceCreate("AWS::IAM::User", ResourceIAMUser(), data, meta)
 }
 
 func resourceIAMUserRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IAM::User", data, meta)
+	return plugin.ResourceRead("AWS::IAM::User", ResourceIAMUser(), data, meta)
 }
 
 func resourceIAMUserUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IAM::User", data, meta)
+	return plugin.ResourceUpdate("AWS::IAM::User", ResourceIAMUser(), data, meta)
 }
 
 func resourceIAMUserDelete(data *schema.ResourceData, meta interface{}) error {

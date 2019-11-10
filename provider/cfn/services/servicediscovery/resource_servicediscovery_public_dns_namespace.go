@@ -45,15 +45,15 @@ func ResourceServiceDiscoveryPublicDnsNamespace() *schema.Resource {
 }
 
 func resourceServiceDiscoveryPublicDnsNamespaceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceDiscovery::PublicDnsNamespace", data, meta)
+	return plugin.ResourceCreate("AWS::ServiceDiscovery::PublicDnsNamespace", ResourceServiceDiscoveryPublicDnsNamespace(), data, meta)
 }
 
 func resourceServiceDiscoveryPublicDnsNamespaceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ServiceDiscovery::PublicDnsNamespace", data, meta)
+	return plugin.ResourceRead("AWS::ServiceDiscovery::PublicDnsNamespace", ResourceServiceDiscoveryPublicDnsNamespace(), data, meta)
 }
 
 func resourceServiceDiscoveryPublicDnsNamespaceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ServiceDiscovery::PublicDnsNamespace", data, meta)
+	return plugin.ResourceUpdate("AWS::ServiceDiscovery::PublicDnsNamespace", ResourceServiceDiscoveryPublicDnsNamespace(), data, meta)
 }
 
 func resourceServiceDiscoveryPublicDnsNamespaceDelete(data *schema.ResourceData, meta interface{}) error {

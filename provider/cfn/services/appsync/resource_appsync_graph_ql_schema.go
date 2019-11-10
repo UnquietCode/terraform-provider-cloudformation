@@ -40,15 +40,15 @@ func ResourceAppSyncGraphQLSchema() *schema.Resource {
 }
 
 func resourceAppSyncGraphQLSchemaCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppSync::GraphQLSchema", data, meta)
+	return plugin.ResourceCreate("AWS::AppSync::GraphQLSchema", ResourceAppSyncGraphQLSchema(), data, meta)
 }
 
 func resourceAppSyncGraphQLSchemaRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppSync::GraphQLSchema", data, meta)
+	return plugin.ResourceRead("AWS::AppSync::GraphQLSchema", ResourceAppSyncGraphQLSchema(), data, meta)
 }
 
 func resourceAppSyncGraphQLSchemaUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppSync::GraphQLSchema", data, meta)
+	return plugin.ResourceUpdate("AWS::AppSync::GraphQLSchema", ResourceAppSyncGraphQLSchema(), data, meta)
 }
 
 func resourceAppSyncGraphQLSchemaDelete(data *schema.ResourceData, meta interface{}) error {

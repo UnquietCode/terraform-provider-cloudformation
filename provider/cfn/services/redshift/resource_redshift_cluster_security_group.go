@@ -38,15 +38,15 @@ func ResourceRedshiftClusterSecurityGroup() *schema.Resource {
 }
 
 func resourceRedshiftClusterSecurityGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Redshift::ClusterSecurityGroup", data, meta)
+	return plugin.ResourceCreate("AWS::Redshift::ClusterSecurityGroup", ResourceRedshiftClusterSecurityGroup(), data, meta)
 }
 
 func resourceRedshiftClusterSecurityGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Redshift::ClusterSecurityGroup", data, meta)
+	return plugin.ResourceRead("AWS::Redshift::ClusterSecurityGroup", ResourceRedshiftClusterSecurityGroup(), data, meta)
 }
 
 func resourceRedshiftClusterSecurityGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Redshift::ClusterSecurityGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::Redshift::ClusterSecurityGroup", ResourceRedshiftClusterSecurityGroup(), data, meta)
 }
 
 func resourceRedshiftClusterSecurityGroupDelete(data *schema.ResourceData, meta interface{}) error {

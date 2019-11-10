@@ -43,15 +43,15 @@ func ResourceEC2NatGateway() *schema.Resource {
 }
 
 func resourceEC2NatGatewayCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::NatGateway", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::NatGateway", ResourceEC2NatGateway(), data, meta)
 }
 
 func resourceEC2NatGatewayRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::NatGateway", data, meta)
+	return plugin.ResourceRead("AWS::EC2::NatGateway", ResourceEC2NatGateway(), data, meta)
 }
 
 func resourceEC2NatGatewayUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::NatGateway", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::NatGateway", ResourceEC2NatGateway(), data, meta)
 }
 
 func resourceEC2NatGatewayDelete(data *schema.ResourceData, meta interface{}) error {

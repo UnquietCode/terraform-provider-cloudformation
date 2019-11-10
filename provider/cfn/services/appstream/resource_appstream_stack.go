@@ -79,15 +79,15 @@ func ResourceAppStreamStack() *schema.Resource {
 }
 
 func resourceAppStreamStackCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppStream::Stack", data, meta)
+	return plugin.ResourceCreate("AWS::AppStream::Stack", ResourceAppStreamStack(), data, meta)
 }
 
 func resourceAppStreamStackRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppStream::Stack", data, meta)
+	return plugin.ResourceRead("AWS::AppStream::Stack", ResourceAppStreamStack(), data, meta)
 }
 
 func resourceAppStreamStackUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppStream::Stack", data, meta)
+	return plugin.ResourceUpdate("AWS::AppStream::Stack", ResourceAppStreamStack(), data, meta)
 }
 
 func resourceAppStreamStackDelete(data *schema.ResourceData, meta interface{}) error {

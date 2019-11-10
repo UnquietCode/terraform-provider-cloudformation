@@ -49,15 +49,15 @@ func ResourceDLMLifecyclePolicy() *schema.Resource {
 }
 
 func resourceDLMLifecyclePolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DLM::LifecyclePolicy", data, meta)
+	return plugin.ResourceCreate("AWS::DLM::LifecyclePolicy", ResourceDLMLifecyclePolicy(), data, meta)
 }
 
 func resourceDLMLifecyclePolicyRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::DLM::LifecyclePolicy", data, meta)
+	return plugin.ResourceRead("AWS::DLM::LifecyclePolicy", ResourceDLMLifecyclePolicy(), data, meta)
 }
 
 func resourceDLMLifecyclePolicyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::DLM::LifecyclePolicy", data, meta)
+	return plugin.ResourceUpdate("AWS::DLM::LifecyclePolicy", ResourceDLMLifecyclePolicy(), data, meta)
 }
 
 func resourceDLMLifecyclePolicyDelete(data *schema.ResourceData, meta interface{}) error {

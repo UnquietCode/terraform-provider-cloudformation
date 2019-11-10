@@ -41,15 +41,15 @@ func ResourceGuardDutyMaster() *schema.Resource {
 }
 
 func resourceGuardDutyMasterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::GuardDuty::Master", data, meta)
+	return plugin.ResourceCreate("AWS::GuardDuty::Master", ResourceGuardDutyMaster(), data, meta)
 }
 
 func resourceGuardDutyMasterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::GuardDuty::Master", data, meta)
+	return plugin.ResourceRead("AWS::GuardDuty::Master", ResourceGuardDutyMaster(), data, meta)
 }
 
 func resourceGuardDutyMasterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::GuardDuty::Master", data, meta)
+	return plugin.ResourceUpdate("AWS::GuardDuty::Master", ResourceGuardDutyMaster(), data, meta)
 }
 
 func resourceGuardDutyMasterDelete(data *schema.ResourceData, meta interface{}) error {

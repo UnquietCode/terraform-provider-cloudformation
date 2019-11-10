@@ -49,15 +49,15 @@ func ResourceStepFunctionsStateMachine() *schema.Resource {
 }
 
 func resourceStepFunctionsStateMachineCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::StepFunctions::StateMachine", data, meta)
+	return plugin.ResourceCreate("AWS::StepFunctions::StateMachine", ResourceStepFunctionsStateMachine(), data, meta)
 }
 
 func resourceStepFunctionsStateMachineRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::StepFunctions::StateMachine", data, meta)
+	return plugin.ResourceRead("AWS::StepFunctions::StateMachine", ResourceStepFunctionsStateMachine(), data, meta)
 }
 
 func resourceStepFunctionsStateMachineUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::StepFunctions::StateMachine", data, meta)
+	return plugin.ResourceUpdate("AWS::StepFunctions::StateMachine", ResourceStepFunctionsStateMachine(), data, meta)
 }
 
 func resourceStepFunctionsStateMachineDelete(data *schema.ResourceData, meta interface{}) error {

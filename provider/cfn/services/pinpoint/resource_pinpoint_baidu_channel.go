@@ -44,15 +44,15 @@ func ResourcePinpointBaiduChannel() *schema.Resource {
 }
 
 func resourcePinpointBaiduChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::BaiduChannel", data, meta)
+	return plugin.ResourceCreate("AWS::Pinpoint::BaiduChannel", ResourcePinpointBaiduChannel(), data, meta)
 }
 
 func resourcePinpointBaiduChannelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::BaiduChannel", data, meta)
+	return plugin.ResourceRead("AWS::Pinpoint::BaiduChannel", ResourcePinpointBaiduChannel(), data, meta)
 }
 
 func resourcePinpointBaiduChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::BaiduChannel", data, meta)
+	return plugin.ResourceUpdate("AWS::Pinpoint::BaiduChannel", ResourcePinpointBaiduChannel(), data, meta)
 }
 
 func resourcePinpointBaiduChannelDelete(data *schema.ResourceData, meta interface{}) error {

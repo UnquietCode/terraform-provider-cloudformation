@@ -36,15 +36,15 @@ func ResourceRoboMakerSimulationApplicationVersion() *schema.Resource {
 }
 
 func resourceRoboMakerSimulationApplicationVersionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RoboMaker::SimulationApplicationVersion", data, meta)
+	return plugin.ResourceCreate("AWS::RoboMaker::SimulationApplicationVersion", ResourceRoboMakerSimulationApplicationVersion(), data, meta)
 }
 
 func resourceRoboMakerSimulationApplicationVersionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::RoboMaker::SimulationApplicationVersion", data, meta)
+	return plugin.ResourceRead("AWS::RoboMaker::SimulationApplicationVersion", ResourceRoboMakerSimulationApplicationVersion(), data, meta)
 }
 
 func resourceRoboMakerSimulationApplicationVersionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::RoboMaker::SimulationApplicationVersion", data, meta)
+	return plugin.ResourceUpdate("AWS::RoboMaker::SimulationApplicationVersion", ResourceRoboMakerSimulationApplicationVersion(), data, meta)
 }
 
 func resourceRoboMakerSimulationApplicationVersionDelete(data *schema.ResourceData, meta interface{}) error {

@@ -51,15 +51,15 @@ func ResourceLambdaAlias() *schema.Resource {
 }
 
 func resourceLambdaAliasCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Lambda::Alias", data, meta)
+	return plugin.ResourceCreate("AWS::Lambda::Alias", ResourceLambdaAlias(), data, meta)
 }
 
 func resourceLambdaAliasRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Lambda::Alias", data, meta)
+	return plugin.ResourceRead("AWS::Lambda::Alias", ResourceLambdaAlias(), data, meta)
 }
 
 func resourceLambdaAliasUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Lambda::Alias", data, meta)
+	return plugin.ResourceUpdate("AWS::Lambda::Alias", ResourceLambdaAlias(), data, meta)
 }
 
 func resourceLambdaAliasDelete(data *schema.ResourceData, meta interface{}) error {

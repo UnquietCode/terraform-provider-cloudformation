@@ -125,15 +125,15 @@ func ResourceECSService() *schema.Resource {
 }
 
 func resourceECSServiceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ECS::Service", data, meta)
+	return plugin.ResourceCreate("AWS::ECS::Service", ResourceECSService(), data, meta)
 }
 
 func resourceECSServiceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ECS::Service", data, meta)
+	return plugin.ResourceRead("AWS::ECS::Service", ResourceECSService(), data, meta)
 }
 
 func resourceECSServiceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ECS::Service", data, meta)
+	return plugin.ResourceUpdate("AWS::ECS::Service", ResourceECSService(), data, meta)
 }
 
 func resourceECSServiceDelete(data *schema.ResourceData, meta interface{}) error {

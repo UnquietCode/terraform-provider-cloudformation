@@ -36,15 +36,15 @@ func ResourceWAFRegionalWebACLAssociation() *schema.Resource {
 }
 
 func resourceWAFRegionalWebACLAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::WAFRegional::WebACLAssociation", data, meta)
+	return plugin.ResourceCreate("AWS::WAFRegional::WebACLAssociation", ResourceWAFRegionalWebACLAssociation(), data, meta)
 }
 
 func resourceWAFRegionalWebACLAssociationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::WAFRegional::WebACLAssociation", data, meta)
+	return plugin.ResourceRead("AWS::WAFRegional::WebACLAssociation", ResourceWAFRegionalWebACLAssociation(), data, meta)
 }
 
 func resourceWAFRegionalWebACLAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::WAFRegional::WebACLAssociation", data, meta)
+	return plugin.ResourceUpdate("AWS::WAFRegional::WebACLAssociation", ResourceWAFRegionalWebACLAssociation(), data, meta)
 }
 
 func resourceWAFRegionalWebACLAssociationDelete(data *schema.ResourceData, meta interface{}) error {

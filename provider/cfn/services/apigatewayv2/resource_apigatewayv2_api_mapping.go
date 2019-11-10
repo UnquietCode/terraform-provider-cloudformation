@@ -45,15 +45,15 @@ func ResourceApiGatewayV2ApiMapping() *schema.Resource {
 }
 
 func resourceApiGatewayV2ApiMappingCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGatewayV2::ApiMapping", data, meta)
+	return plugin.ResourceCreate("AWS::ApiGatewayV2::ApiMapping", ResourceApiGatewayV2ApiMapping(), data, meta)
 }
 
 func resourceApiGatewayV2ApiMappingRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGatewayV2::ApiMapping", data, meta)
+	return plugin.ResourceRead("AWS::ApiGatewayV2::ApiMapping", ResourceApiGatewayV2ApiMapping(), data, meta)
 }
 
 func resourceApiGatewayV2ApiMappingUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGatewayV2::ApiMapping", data, meta)
+	return plugin.ResourceUpdate("AWS::ApiGatewayV2::ApiMapping", ResourceApiGatewayV2ApiMapping(), data, meta)
 }
 
 func resourceApiGatewayV2ApiMappingDelete(data *schema.ResourceData, meta interface{}) error {

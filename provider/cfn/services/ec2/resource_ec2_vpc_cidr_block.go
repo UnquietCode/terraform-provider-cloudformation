@@ -41,15 +41,15 @@ func ResourceEC2VPCCidrBlock() *schema.Resource {
 }
 
 func resourceEC2VPCCidrBlockCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::VPCCidrBlock", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::VPCCidrBlock", ResourceEC2VPCCidrBlock(), data, meta)
 }
 
 func resourceEC2VPCCidrBlockRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::VPCCidrBlock", data, meta)
+	return plugin.ResourceRead("AWS::EC2::VPCCidrBlock", ResourceEC2VPCCidrBlock(), data, meta)
 }
 
 func resourceEC2VPCCidrBlockUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::VPCCidrBlock", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::VPCCidrBlock", ResourceEC2VPCCidrBlock(), data, meta)
 }
 
 func resourceEC2VPCCidrBlockDelete(data *schema.ResourceData, meta interface{}) error {

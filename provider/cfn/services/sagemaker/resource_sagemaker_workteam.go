@@ -54,15 +54,15 @@ func ResourceSageMakerWorkteam() *schema.Resource {
 }
 
 func resourceSageMakerWorkteamCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SageMaker::Workteam", data, meta)
+	return plugin.ResourceCreate("AWS::SageMaker::Workteam", ResourceSageMakerWorkteam(), data, meta)
 }
 
 func resourceSageMakerWorkteamRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SageMaker::Workteam", data, meta)
+	return plugin.ResourceRead("AWS::SageMaker::Workteam", ResourceSageMakerWorkteam(), data, meta)
 }
 
 func resourceSageMakerWorkteamUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SageMaker::Workteam", data, meta)
+	return plugin.ResourceUpdate("AWS::SageMaker::Workteam", ResourceSageMakerWorkteam(), data, meta)
 }
 
 func resourceSageMakerWorkteamDelete(data *schema.ResourceData, meta interface{}) error {

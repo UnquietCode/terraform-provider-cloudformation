@@ -41,15 +41,15 @@ func ResourceLogsMetricFilter() *schema.Resource {
 }
 
 func resourceLogsMetricFilterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Logs::MetricFilter", data, meta)
+	return plugin.ResourceCreate("AWS::Logs::MetricFilter", ResourceLogsMetricFilter(), data, meta)
 }
 
 func resourceLogsMetricFilterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Logs::MetricFilter", data, meta)
+	return plugin.ResourceRead("AWS::Logs::MetricFilter", ResourceLogsMetricFilter(), data, meta)
 }
 
 func resourceLogsMetricFilterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Logs::MetricFilter", data, meta)
+	return plugin.ResourceUpdate("AWS::Logs::MetricFilter", ResourceLogsMetricFilter(), data, meta)
 }
 
 func resourceLogsMetricFilterDelete(data *schema.ResourceData, meta interface{}) error {

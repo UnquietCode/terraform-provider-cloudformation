@@ -41,15 +41,15 @@ func ResourceServiceCatalogPortfolioShare() *schema.Resource {
 }
 
 func resourceServiceCatalogPortfolioShareCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::PortfolioShare", data, meta)
+	return plugin.ResourceCreate("AWS::ServiceCatalog::PortfolioShare", ResourceServiceCatalogPortfolioShare(), data, meta)
 }
 
 func resourceServiceCatalogPortfolioShareRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ServiceCatalog::PortfolioShare", data, meta)
+	return plugin.ResourceRead("AWS::ServiceCatalog::PortfolioShare", ResourceServiceCatalogPortfolioShare(), data, meta)
 }
 
 func resourceServiceCatalogPortfolioShareUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ServiceCatalog::PortfolioShare", data, meta)
+	return plugin.ResourceUpdate("AWS::ServiceCatalog::PortfolioShare", ResourceServiceCatalogPortfolioShare(), data, meta)
 }
 
 func resourceServiceCatalogPortfolioShareDelete(data *schema.ResourceData, meta interface{}) error {

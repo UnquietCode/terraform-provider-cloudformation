@@ -36,15 +36,15 @@ func ResourceCloudWatchDashboard() *schema.Resource {
 }
 
 func resourceCloudWatchDashboardCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CloudWatch::Dashboard", data, meta)
+	return plugin.ResourceCreate("AWS::CloudWatch::Dashboard", ResourceCloudWatchDashboard(), data, meta)
 }
 
 func resourceCloudWatchDashboardRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CloudWatch::Dashboard", data, meta)
+	return plugin.ResourceRead("AWS::CloudWatch::Dashboard", ResourceCloudWatchDashboard(), data, meta)
 }
 
 func resourceCloudWatchDashboardUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CloudWatch::Dashboard", data, meta)
+	return plugin.ResourceUpdate("AWS::CloudWatch::Dashboard", ResourceCloudWatchDashboard(), data, meta)
 }
 
 func resourceCloudWatchDashboardDelete(data *schema.ResourceData, meta interface{}) error {

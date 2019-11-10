@@ -58,15 +58,15 @@ func ResourceEC2VPCPeeringConnection() *schema.Resource {
 }
 
 func resourceEC2VPCPeeringConnectionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::VPCPeeringConnection", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::VPCPeeringConnection", ResourceEC2VPCPeeringConnection(), data, meta)
 }
 
 func resourceEC2VPCPeeringConnectionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::VPCPeeringConnection", data, meta)
+	return plugin.ResourceRead("AWS::EC2::VPCPeeringConnection", ResourceEC2VPCPeeringConnection(), data, meta)
 }
 
 func resourceEC2VPCPeeringConnectionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::VPCPeeringConnection", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::VPCPeeringConnection", ResourceEC2VPCPeeringConnection(), data, meta)
 }
 
 func resourceEC2VPCPeeringConnectionDelete(data *schema.ResourceData, meta interface{}) error {

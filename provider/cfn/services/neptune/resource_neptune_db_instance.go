@@ -86,15 +86,15 @@ func ResourceNeptuneDBInstance() *schema.Resource {
 }
 
 func resourceNeptuneDBInstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Neptune::DBInstance", data, meta)
+	return plugin.ResourceCreate("AWS::Neptune::DBInstance", ResourceNeptuneDBInstance(), data, meta)
 }
 
 func resourceNeptuneDBInstanceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Neptune::DBInstance", data, meta)
+	return plugin.ResourceRead("AWS::Neptune::DBInstance", ResourceNeptuneDBInstance(), data, meta)
 }
 
 func resourceNeptuneDBInstanceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Neptune::DBInstance", data, meta)
+	return plugin.ResourceUpdate("AWS::Neptune::DBInstance", ResourceNeptuneDBInstance(), data, meta)
 }
 
 func resourceNeptuneDBInstanceDelete(data *schema.ResourceData, meta interface{}) error {

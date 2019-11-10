@@ -185,15 +185,15 @@ func ResourceRDSDBCluster() *schema.Resource {
 }
 
 func resourceRDSDBClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RDS::DBCluster", data, meta)
+	return plugin.ResourceCreate("AWS::RDS::DBCluster", ResourceRDSDBCluster(), data, meta)
 }
 
 func resourceRDSDBClusterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::RDS::DBCluster", data, meta)
+	return plugin.ResourceRead("AWS::RDS::DBCluster", ResourceRDSDBCluster(), data, meta)
 }
 
 func resourceRDSDBClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::RDS::DBCluster", data, meta)
+	return plugin.ResourceUpdate("AWS::RDS::DBCluster", ResourceRDSDBCluster(), data, meta)
 }
 
 func resourceRDSDBClusterDelete(data *schema.ResourceData, meta interface{}) error {

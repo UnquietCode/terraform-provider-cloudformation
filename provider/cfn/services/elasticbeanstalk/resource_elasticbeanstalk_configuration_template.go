@@ -63,15 +63,15 @@ func ResourceElasticBeanstalkConfigurationTemplate() *schema.Resource {
 }
 
 func resourceElasticBeanstalkConfigurationTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElasticBeanstalk::ConfigurationTemplate", data, meta)
+	return plugin.ResourceCreate("AWS::ElasticBeanstalk::ConfigurationTemplate", ResourceElasticBeanstalkConfigurationTemplate(), data, meta)
 }
 
 func resourceElasticBeanstalkConfigurationTemplateRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ElasticBeanstalk::ConfigurationTemplate", data, meta)
+	return plugin.ResourceRead("AWS::ElasticBeanstalk::ConfigurationTemplate", ResourceElasticBeanstalkConfigurationTemplate(), data, meta)
 }
 
 func resourceElasticBeanstalkConfigurationTemplateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ElasticBeanstalk::ConfigurationTemplate", data, meta)
+	return plugin.ResourceUpdate("AWS::ElasticBeanstalk::ConfigurationTemplate", ResourceElasticBeanstalkConfigurationTemplate(), data, meta)
 }
 
 func resourceElasticBeanstalkConfigurationTemplateDelete(data *schema.ResourceData, meta interface{}) error {

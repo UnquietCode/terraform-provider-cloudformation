@@ -41,15 +41,15 @@ func ResourceApiGatewayVpcLink() *schema.Resource {
 }
 
 func resourceApiGatewayVpcLinkCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::VpcLink", data, meta)
+	return plugin.ResourceCreate("AWS::ApiGateway::VpcLink", ResourceApiGatewayVpcLink(), data, meta)
 }
 
 func resourceApiGatewayVpcLinkRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGateway::VpcLink", data, meta)
+	return plugin.ResourceRead("AWS::ApiGateway::VpcLink", ResourceApiGatewayVpcLink(), data, meta)
 }
 
 func resourceApiGatewayVpcLinkUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGateway::VpcLink", data, meta)
+	return plugin.ResourceUpdate("AWS::ApiGateway::VpcLink", ResourceApiGatewayVpcLink(), data, meta)
 }
 
 func resourceApiGatewayVpcLinkDelete(data *schema.ResourceData, meta interface{}) error {

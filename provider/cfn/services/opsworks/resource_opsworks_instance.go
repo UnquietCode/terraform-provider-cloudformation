@@ -146,15 +146,15 @@ func ResourceOpsWorksInstance() *schema.Resource {
 }
 
 func resourceOpsWorksInstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::OpsWorks::Instance", data, meta)
+	return plugin.ResourceCreate("AWS::OpsWorks::Instance", ResourceOpsWorksInstance(), data, meta)
 }
 
 func resourceOpsWorksInstanceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::OpsWorks::Instance", data, meta)
+	return plugin.ResourceRead("AWS::OpsWorks::Instance", ResourceOpsWorksInstance(), data, meta)
 }
 
 func resourceOpsWorksInstanceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::OpsWorks::Instance", data, meta)
+	return plugin.ResourceUpdate("AWS::OpsWorks::Instance", ResourceOpsWorksInstance(), data, meta)
 }
 
 func resourceOpsWorksInstanceDelete(data *schema.ResourceData, meta interface{}) error {

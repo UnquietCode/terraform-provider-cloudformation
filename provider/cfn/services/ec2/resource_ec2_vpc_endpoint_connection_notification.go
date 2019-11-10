@@ -46,15 +46,15 @@ func ResourceEC2VPCEndpointConnectionNotification() *schema.Resource {
 }
 
 func resourceEC2VPCEndpointConnectionNotificationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::VPCEndpointConnectionNotification", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::VPCEndpointConnectionNotification", ResourceEC2VPCEndpointConnectionNotification(), data, meta)
 }
 
 func resourceEC2VPCEndpointConnectionNotificationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::VPCEndpointConnectionNotification", data, meta)
+	return plugin.ResourceRead("AWS::EC2::VPCEndpointConnectionNotification", ResourceEC2VPCEndpointConnectionNotification(), data, meta)
 }
 
 func resourceEC2VPCEndpointConnectionNotificationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::VPCEndpointConnectionNotification", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::VPCEndpointConnectionNotification", ResourceEC2VPCEndpointConnectionNotification(), data, meta)
 }
 
 func resourceEC2VPCEndpointConnectionNotificationDelete(data *schema.ResourceData, meta interface{}) error {

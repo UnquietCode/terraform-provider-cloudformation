@@ -36,15 +36,15 @@ func ResourceCodeDeployApplication() *schema.Resource {
 }
 
 func resourceCodeDeployApplicationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CodeDeploy::Application", data, meta)
+	return plugin.ResourceCreate("AWS::CodeDeploy::Application", ResourceCodeDeployApplication(), data, meta)
 }
 
 func resourceCodeDeployApplicationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CodeDeploy::Application", data, meta)
+	return plugin.ResourceRead("AWS::CodeDeploy::Application", ResourceCodeDeployApplication(), data, meta)
 }
 
 func resourceCodeDeployApplicationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CodeDeploy::Application", data, meta)
+	return plugin.ResourceUpdate("AWS::CodeDeploy::Application", ResourceCodeDeployApplication(), data, meta)
 }
 
 func resourceCodeDeployApplicationDelete(data *schema.ResourceData, meta interface{}) error {

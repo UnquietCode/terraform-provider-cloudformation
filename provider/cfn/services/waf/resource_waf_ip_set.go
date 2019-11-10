@@ -37,15 +37,15 @@ func ResourceWAFIPSet() *schema.Resource {
 }
 
 func resourceWAFIPSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::WAF::IPSet", data, meta)
+	return plugin.ResourceCreate("AWS::WAF::IPSet", ResourceWAFIPSet(), data, meta)
 }
 
 func resourceWAFIPSetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::WAF::IPSet", data, meta)
+	return plugin.ResourceRead("AWS::WAF::IPSet", ResourceWAFIPSet(), data, meta)
 }
 
 func resourceWAFIPSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::WAF::IPSet", data, meta)
+	return plugin.ResourceUpdate("AWS::WAF::IPSet", ResourceWAFIPSet(), data, meta)
 }
 
 func resourceWAFIPSetDelete(data *schema.ResourceData, meta interface{}) error {

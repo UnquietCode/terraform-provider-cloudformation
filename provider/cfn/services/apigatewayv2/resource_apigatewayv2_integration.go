@@ -80,15 +80,15 @@ func ResourceApiGatewayV2Integration() *schema.Resource {
 }
 
 func resourceApiGatewayV2IntegrationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGatewayV2::Integration", data, meta)
+	return plugin.ResourceCreate("AWS::ApiGatewayV2::Integration", ResourceApiGatewayV2Integration(), data, meta)
 }
 
 func resourceApiGatewayV2IntegrationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGatewayV2::Integration", data, meta)
+	return plugin.ResourceRead("AWS::ApiGatewayV2::Integration", ResourceApiGatewayV2Integration(), data, meta)
 }
 
 func resourceApiGatewayV2IntegrationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGatewayV2::Integration", data, meta)
+	return plugin.ResourceUpdate("AWS::ApiGatewayV2::Integration", ResourceApiGatewayV2Integration(), data, meta)
 }
 
 func resourceApiGatewayV2IntegrationDelete(data *schema.ResourceData, meta interface{}) error {

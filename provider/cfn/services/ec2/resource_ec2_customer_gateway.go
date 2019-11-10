@@ -48,15 +48,15 @@ func ResourceEC2CustomerGateway() *schema.Resource {
 }
 
 func resourceEC2CustomerGatewayCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::CustomerGateway", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::CustomerGateway", ResourceEC2CustomerGateway(), data, meta)
 }
 
 func resourceEC2CustomerGatewayRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::CustomerGateway", data, meta)
+	return plugin.ResourceRead("AWS::EC2::CustomerGateway", ResourceEC2CustomerGateway(), data, meta)
 }
 
 func resourceEC2CustomerGatewayUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::CustomerGateway", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::CustomerGateway", ResourceEC2CustomerGateway(), data, meta)
 }
 
 func resourceEC2CustomerGatewayDelete(data *schema.ResourceData, meta interface{}) error {

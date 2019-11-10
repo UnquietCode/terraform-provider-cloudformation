@@ -47,15 +47,15 @@ func ResourceQLDBLedger() *schema.Resource {
 }
 
 func resourceQLDBLedgerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::QLDB::Ledger", data, meta)
+	return plugin.ResourceCreate("AWS::QLDB::Ledger", ResourceQLDBLedger(), data, meta)
 }
 
 func resourceQLDBLedgerRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::QLDB::Ledger", data, meta)
+	return plugin.ResourceRead("AWS::QLDB::Ledger", ResourceQLDBLedger(), data, meta)
 }
 
 func resourceQLDBLedgerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::QLDB::Ledger", data, meta)
+	return plugin.ResourceUpdate("AWS::QLDB::Ledger", ResourceQLDBLedger(), data, meta)
 }
 
 func resourceQLDBLedgerDelete(data *schema.ResourceData, meta interface{}) error {

@@ -61,15 +61,15 @@ func ResourcePinpointEmailConfigurationSet() *schema.Resource {
 }
 
 func resourcePinpointEmailConfigurationSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::PinpointEmail::ConfigurationSet", data, meta)
+	return plugin.ResourceCreate("AWS::PinpointEmail::ConfigurationSet", ResourcePinpointEmailConfigurationSet(), data, meta)
 }
 
 func resourcePinpointEmailConfigurationSetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::PinpointEmail::ConfigurationSet", data, meta)
+	return plugin.ResourceRead("AWS::PinpointEmail::ConfigurationSet", ResourcePinpointEmailConfigurationSet(), data, meta)
 }
 
 func resourcePinpointEmailConfigurationSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::PinpointEmail::ConfigurationSet", data, meta)
+	return plugin.ResourceUpdate("AWS::PinpointEmail::ConfigurationSet", ResourcePinpointEmailConfigurationSet(), data, meta)
 }
 
 func resourcePinpointEmailConfigurationSetDelete(data *schema.ResourceData, meta interface{}) error {

@@ -37,15 +37,15 @@ func ResourceWAFByteMatchSet() *schema.Resource {
 }
 
 func resourceWAFByteMatchSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::WAF::ByteMatchSet", data, meta)
+	return plugin.ResourceCreate("AWS::WAF::ByteMatchSet", ResourceWAFByteMatchSet(), data, meta)
 }
 
 func resourceWAFByteMatchSetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::WAF::ByteMatchSet", data, meta)
+	return plugin.ResourceRead("AWS::WAF::ByteMatchSet", ResourceWAFByteMatchSet(), data, meta)
 }
 
 func resourceWAFByteMatchSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::WAF::ByteMatchSet", data, meta)
+	return plugin.ResourceUpdate("AWS::WAF::ByteMatchSet", ResourceWAFByteMatchSet(), data, meta)
 }
 
 func resourceWAFByteMatchSetDelete(data *schema.ResourceData, meta interface{}) error {

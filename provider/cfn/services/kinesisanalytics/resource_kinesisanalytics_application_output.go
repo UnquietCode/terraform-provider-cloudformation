@@ -38,15 +38,15 @@ func ResourceKinesisAnalyticsApplicationOutput() *schema.Resource {
 }
 
 func resourceKinesisAnalyticsApplicationOutputCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::KinesisAnalytics::ApplicationOutput", data, meta)
+	return plugin.ResourceCreate("AWS::KinesisAnalytics::ApplicationOutput", ResourceKinesisAnalyticsApplicationOutput(), data, meta)
 }
 
 func resourceKinesisAnalyticsApplicationOutputRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::KinesisAnalytics::ApplicationOutput", data, meta)
+	return plugin.ResourceRead("AWS::KinesisAnalytics::ApplicationOutput", ResourceKinesisAnalyticsApplicationOutput(), data, meta)
 }
 
 func resourceKinesisAnalyticsApplicationOutputUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::KinesisAnalytics::ApplicationOutput", data, meta)
+	return plugin.ResourceUpdate("AWS::KinesisAnalytics::ApplicationOutput", ResourceKinesisAnalyticsApplicationOutput(), data, meta)
 }
 
 func resourceKinesisAnalyticsApplicationOutputDelete(data *schema.ResourceData, meta interface{}) error {

@@ -56,15 +56,15 @@ func ResourceAutoScalingScheduledAction() *schema.Resource {
 }
 
 func resourceAutoScalingScheduledActionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AutoScaling::ScheduledAction", data, meta)
+	return plugin.ResourceCreate("AWS::AutoScaling::ScheduledAction", ResourceAutoScalingScheduledAction(), data, meta)
 }
 
 func resourceAutoScalingScheduledActionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AutoScaling::ScheduledAction", data, meta)
+	return plugin.ResourceRead("AWS::AutoScaling::ScheduledAction", ResourceAutoScalingScheduledAction(), data, meta)
 }
 
 func resourceAutoScalingScheduledActionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AutoScaling::ScheduledAction", data, meta)
+	return plugin.ResourceUpdate("AWS::AutoScaling::ScheduledAction", ResourceAutoScalingScheduledAction(), data, meta)
 }
 
 func resourceAutoScalingScheduledActionDelete(data *schema.ResourceData, meta interface{}) error {

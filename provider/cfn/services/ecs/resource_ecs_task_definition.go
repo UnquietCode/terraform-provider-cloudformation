@@ -105,15 +105,15 @@ func ResourceECSTaskDefinition() *schema.Resource {
 }
 
 func resourceECSTaskDefinitionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ECS::TaskDefinition", data, meta)
+	return plugin.ResourceCreate("AWS::ECS::TaskDefinition", ResourceECSTaskDefinition(), data, meta)
 }
 
 func resourceECSTaskDefinitionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ECS::TaskDefinition", data, meta)
+	return plugin.ResourceRead("AWS::ECS::TaskDefinition", ResourceECSTaskDefinition(), data, meta)
 }
 
 func resourceECSTaskDefinitionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ECS::TaskDefinition", data, meta)
+	return plugin.ResourceUpdate("AWS::ECS::TaskDefinition", ResourceECSTaskDefinition(), data, meta)
 }
 
 func resourceECSTaskDefinitionDelete(data *schema.ResourceData, meta interface{}) error {

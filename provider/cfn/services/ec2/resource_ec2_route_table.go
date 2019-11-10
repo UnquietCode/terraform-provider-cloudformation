@@ -38,15 +38,15 @@ func ResourceEC2RouteTable() *schema.Resource {
 }
 
 func resourceEC2RouteTableCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::RouteTable", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::RouteTable", ResourceEC2RouteTable(), data, meta)
 }
 
 func resourceEC2RouteTableRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::RouteTable", data, meta)
+	return plugin.ResourceRead("AWS::EC2::RouteTable", ResourceEC2RouteTable(), data, meta)
 }
 
 func resourceEC2RouteTableUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::RouteTable", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::RouteTable", ResourceEC2RouteTable(), data, meta)
 }
 
 func resourceEC2RouteTableDelete(data *schema.ResourceData, meta interface{}) error {

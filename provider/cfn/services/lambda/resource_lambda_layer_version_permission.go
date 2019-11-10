@@ -46,15 +46,15 @@ func ResourceLambdaLayerVersionPermission() *schema.Resource {
 }
 
 func resourceLambdaLayerVersionPermissionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Lambda::LayerVersionPermission", data, meta)
+	return plugin.ResourceCreate("AWS::Lambda::LayerVersionPermission", ResourceLambdaLayerVersionPermission(), data, meta)
 }
 
 func resourceLambdaLayerVersionPermissionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Lambda::LayerVersionPermission", data, meta)
+	return plugin.ResourceRead("AWS::Lambda::LayerVersionPermission", ResourceLambdaLayerVersionPermission(), data, meta)
 }
 
 func resourceLambdaLayerVersionPermissionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Lambda::LayerVersionPermission", data, meta)
+	return plugin.ResourceUpdate("AWS::Lambda::LayerVersionPermission", ResourceLambdaLayerVersionPermission(), data, meta)
 }
 
 func resourceLambdaLayerVersionPermissionDelete(data *schema.ResourceData, meta interface{}) error {

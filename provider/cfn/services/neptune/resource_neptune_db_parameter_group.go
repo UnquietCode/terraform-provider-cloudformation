@@ -52,15 +52,15 @@ func ResourceNeptuneDBParameterGroup() *schema.Resource {
 }
 
 func resourceNeptuneDBParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Neptune::DBParameterGroup", data, meta)
+	return plugin.ResourceCreate("AWS::Neptune::DBParameterGroup", ResourceNeptuneDBParameterGroup(), data, meta)
 }
 
 func resourceNeptuneDBParameterGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Neptune::DBParameterGroup", data, meta)
+	return plugin.ResourceRead("AWS::Neptune::DBParameterGroup", ResourceNeptuneDBParameterGroup(), data, meta)
 }
 
 func resourceNeptuneDBParameterGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Neptune::DBParameterGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::Neptune::DBParameterGroup", ResourceNeptuneDBParameterGroup(), data, meta)
 }
 
 func resourceNeptuneDBParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {

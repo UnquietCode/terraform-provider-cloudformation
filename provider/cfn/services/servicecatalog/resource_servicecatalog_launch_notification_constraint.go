@@ -50,15 +50,15 @@ func ResourceServiceCatalogLaunchNotificationConstraint() *schema.Resource {
 }
 
 func resourceServiceCatalogLaunchNotificationConstraintCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::LaunchNotificationConstraint", data, meta)
+	return plugin.ResourceCreate("AWS::ServiceCatalog::LaunchNotificationConstraint", ResourceServiceCatalogLaunchNotificationConstraint(), data, meta)
 }
 
 func resourceServiceCatalogLaunchNotificationConstraintRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ServiceCatalog::LaunchNotificationConstraint", data, meta)
+	return plugin.ResourceRead("AWS::ServiceCatalog::LaunchNotificationConstraint", ResourceServiceCatalogLaunchNotificationConstraint(), data, meta)
 }
 
 func resourceServiceCatalogLaunchNotificationConstraintUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ServiceCatalog::LaunchNotificationConstraint", data, meta)
+	return plugin.ResourceUpdate("AWS::ServiceCatalog::LaunchNotificationConstraint", ResourceServiceCatalogLaunchNotificationConstraint(), data, meta)
 }
 
 func resourceServiceCatalogLaunchNotificationConstraintDelete(data *schema.ResourceData, meta interface{}) error {

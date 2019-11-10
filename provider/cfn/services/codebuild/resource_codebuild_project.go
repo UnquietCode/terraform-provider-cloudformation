@@ -127,15 +127,15 @@ func ResourceCodeBuildProject() *schema.Resource {
 }
 
 func resourceCodeBuildProjectCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CodeBuild::Project", data, meta)
+	return plugin.ResourceCreate("AWS::CodeBuild::Project", ResourceCodeBuildProject(), data, meta)
 }
 
 func resourceCodeBuildProjectRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CodeBuild::Project", data, meta)
+	return plugin.ResourceRead("AWS::CodeBuild::Project", ResourceCodeBuildProject(), data, meta)
 }
 
 func resourceCodeBuildProjectUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CodeBuild::Project", data, meta)
+	return plugin.ResourceUpdate("AWS::CodeBuild::Project", ResourceCodeBuildProject(), data, meta)
 }
 
 func resourceCodeBuildProjectDelete(data *schema.ResourceData, meta interface{}) error {

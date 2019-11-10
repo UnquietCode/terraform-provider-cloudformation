@@ -56,15 +56,15 @@ func ResourceSecretsManagerSecret() *schema.Resource {
 }
 
 func resourceSecretsManagerSecretCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SecretsManager::Secret", data, meta)
+	return plugin.ResourceCreate("AWS::SecretsManager::Secret", ResourceSecretsManagerSecret(), data, meta)
 }
 
 func resourceSecretsManagerSecretRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SecretsManager::Secret", data, meta)
+	return plugin.ResourceRead("AWS::SecretsManager::Secret", ResourceSecretsManagerSecret(), data, meta)
 }
 
 func resourceSecretsManagerSecretUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SecretsManager::Secret", data, meta)
+	return plugin.ResourceUpdate("AWS::SecretsManager::Secret", ResourceSecretsManagerSecret(), data, meta)
 }
 
 func resourceSecretsManagerSecretDelete(data *schema.ResourceData, meta interface{}) error {

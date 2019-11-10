@@ -46,15 +46,15 @@ func ResourceElasticLoadBalancingV2ListenerRule() *schema.Resource {
 }
 
 func resourceElasticLoadBalancingV2ListenerRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElasticLoadBalancingV2::ListenerRule", data, meta)
+	return plugin.ResourceCreate("AWS::ElasticLoadBalancingV2::ListenerRule", ResourceElasticLoadBalancingV2ListenerRule(), data, meta)
 }
 
 func resourceElasticLoadBalancingV2ListenerRuleRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ElasticLoadBalancingV2::ListenerRule", data, meta)
+	return plugin.ResourceRead("AWS::ElasticLoadBalancingV2::ListenerRule", ResourceElasticLoadBalancingV2ListenerRule(), data, meta)
 }
 
 func resourceElasticLoadBalancingV2ListenerRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ElasticLoadBalancingV2::ListenerRule", data, meta)
+	return plugin.ResourceUpdate("AWS::ElasticLoadBalancingV2::ListenerRule", ResourceElasticLoadBalancingV2ListenerRule(), data, meta)
 }
 
 func resourceElasticLoadBalancingV2ListenerRuleDelete(data *schema.ResourceData, meta interface{}) error {

@@ -52,15 +52,15 @@ func ResourceManagedBlockchainMember() *schema.Resource {
 }
 
 func resourceManagedBlockchainMemberCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ManagedBlockchain::Member", data, meta)
+	return plugin.ResourceCreate("AWS::ManagedBlockchain::Member", ResourceManagedBlockchainMember(), data, meta)
 }
 
 func resourceManagedBlockchainMemberRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ManagedBlockchain::Member", data, meta)
+	return plugin.ResourceRead("AWS::ManagedBlockchain::Member", ResourceManagedBlockchainMember(), data, meta)
 }
 
 func resourceManagedBlockchainMemberUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ManagedBlockchain::Member", data, meta)
+	return plugin.ResourceUpdate("AWS::ManagedBlockchain::Member", ResourceManagedBlockchainMember(), data, meta)
 }
 
 func resourceManagedBlockchainMemberDelete(data *schema.ResourceData, meta interface{}) error {

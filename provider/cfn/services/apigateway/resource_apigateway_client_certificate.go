@@ -31,15 +31,15 @@ func ResourceApiGatewayClientCertificate() *schema.Resource {
 }
 
 func resourceApiGatewayClientCertificateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::ClientCertificate", data, meta)
+	return plugin.ResourceCreate("AWS::ApiGateway::ClientCertificate", ResourceApiGatewayClientCertificate(), data, meta)
 }
 
 func resourceApiGatewayClientCertificateRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGateway::ClientCertificate", data, meta)
+	return plugin.ResourceRead("AWS::ApiGateway::ClientCertificate", ResourceApiGatewayClientCertificate(), data, meta)
 }
 
 func resourceApiGatewayClientCertificateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGateway::ClientCertificate", data, meta)
+	return plugin.ResourceUpdate("AWS::ApiGateway::ClientCertificate", ResourceApiGatewayClientCertificate(), data, meta)
 }
 
 func resourceApiGatewayClientCertificateDelete(data *schema.ResourceData, meta interface{}) error {

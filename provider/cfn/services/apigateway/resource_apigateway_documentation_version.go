@@ -41,15 +41,15 @@ func ResourceApiGatewayDocumentationVersion() *schema.Resource {
 }
 
 func resourceApiGatewayDocumentationVersionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::DocumentationVersion", data, meta)
+	return plugin.ResourceCreate("AWS::ApiGateway::DocumentationVersion", ResourceApiGatewayDocumentationVersion(), data, meta)
 }
 
 func resourceApiGatewayDocumentationVersionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGateway::DocumentationVersion", data, meta)
+	return plugin.ResourceRead("AWS::ApiGateway::DocumentationVersion", ResourceApiGatewayDocumentationVersion(), data, meta)
 }
 
 func resourceApiGatewayDocumentationVersionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGateway::DocumentationVersion", data, meta)
+	return plugin.ResourceUpdate("AWS::ApiGateway::DocumentationVersion", ResourceApiGatewayDocumentationVersion(), data, meta)
 }
 
 func resourceApiGatewayDocumentationVersionDelete(data *schema.ResourceData, meta interface{}) error {

@@ -37,15 +37,15 @@ func ResourceEC2VPCEndpointServicePermissions() *schema.Resource {
 }
 
 func resourceEC2VPCEndpointServicePermissionsCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::VPCEndpointServicePermissions", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::VPCEndpointServicePermissions", ResourceEC2VPCEndpointServicePermissions(), data, meta)
 }
 
 func resourceEC2VPCEndpointServicePermissionsRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::VPCEndpointServicePermissions", data, meta)
+	return plugin.ResourceRead("AWS::EC2::VPCEndpointServicePermissions", ResourceEC2VPCEndpointServicePermissions(), data, meta)
 }
 
 func resourceEC2VPCEndpointServicePermissionsUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::VPCEndpointServicePermissions", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::VPCEndpointServicePermissions", ResourceEC2VPCEndpointServicePermissions(), data, meta)
 }
 
 func resourceEC2VPCEndpointServicePermissionsDelete(data *schema.ResourceData, meta interface{}) error {

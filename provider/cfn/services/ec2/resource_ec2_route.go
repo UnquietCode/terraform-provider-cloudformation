@@ -69,15 +69,15 @@ func ResourceEC2Route() *schema.Resource {
 }
 
 func resourceEC2RouteCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::Route", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::Route", ResourceEC2Route(), data, meta)
 }
 
 func resourceEC2RouteRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::Route", data, meta)
+	return plugin.ResourceRead("AWS::EC2::Route", ResourceEC2Route(), data, meta)
 }
 
 func resourceEC2RouteUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::Route", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::Route", ResourceEC2Route(), data, meta)
 }
 
 func resourceEC2RouteDelete(data *schema.ResourceData, meta interface{}) error {

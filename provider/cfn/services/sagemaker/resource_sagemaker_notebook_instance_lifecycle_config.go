@@ -43,15 +43,15 @@ func ResourceSageMakerNotebookInstanceLifecycleConfig() *schema.Resource {
 }
 
 func resourceSageMakerNotebookInstanceLifecycleConfigCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SageMaker::NotebookInstanceLifecycleConfig", data, meta)
+	return plugin.ResourceCreate("AWS::SageMaker::NotebookInstanceLifecycleConfig", ResourceSageMakerNotebookInstanceLifecycleConfig(), data, meta)
 }
 
 func resourceSageMakerNotebookInstanceLifecycleConfigRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SageMaker::NotebookInstanceLifecycleConfig", data, meta)
+	return plugin.ResourceRead("AWS::SageMaker::NotebookInstanceLifecycleConfig", ResourceSageMakerNotebookInstanceLifecycleConfig(), data, meta)
 }
 
 func resourceSageMakerNotebookInstanceLifecycleConfigUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SageMaker::NotebookInstanceLifecycleConfig", data, meta)
+	return plugin.ResourceUpdate("AWS::SageMaker::NotebookInstanceLifecycleConfig", ResourceSageMakerNotebookInstanceLifecycleConfig(), data, meta)
 }
 
 func resourceSageMakerNotebookInstanceLifecycleConfigDelete(data *schema.ResourceData, meta interface{}) error {

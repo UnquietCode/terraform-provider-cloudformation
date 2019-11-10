@@ -60,15 +60,15 @@ func ResourceEKSCluster() *schema.Resource {
 }
 
 func resourceEKSClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EKS::Cluster", data, meta)
+	return plugin.ResourceCreate("AWS::EKS::Cluster", ResourceEKSCluster(), data, meta)
 }
 
 func resourceEKSClusterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EKS::Cluster", data, meta)
+	return plugin.ResourceRead("AWS::EKS::Cluster", ResourceEKSCluster(), data, meta)
 }
 
 func resourceEKSClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EKS::Cluster", data, meta)
+	return plugin.ResourceUpdate("AWS::EKS::Cluster", ResourceEKSCluster(), data, meta)
 }
 
 func resourceEKSClusterDelete(data *schema.ResourceData, meta interface{}) error {

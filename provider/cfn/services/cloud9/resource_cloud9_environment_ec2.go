@@ -68,15 +68,15 @@ func ResourceCloud9EnvironmentEC2() *schema.Resource {
 }
 
 func resourceCloud9EnvironmentEC2Create(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Cloud9::EnvironmentEC2", data, meta)
+	return plugin.ResourceCreate("AWS::Cloud9::EnvironmentEC2", ResourceCloud9EnvironmentEC2(), data, meta)
 }
 
 func resourceCloud9EnvironmentEC2Read(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Cloud9::EnvironmentEC2", data, meta)
+	return plugin.ResourceRead("AWS::Cloud9::EnvironmentEC2", ResourceCloud9EnvironmentEC2(), data, meta)
 }
 
 func resourceCloud9EnvironmentEC2Update(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Cloud9::EnvironmentEC2", data, meta)
+	return plugin.ResourceUpdate("AWS::Cloud9::EnvironmentEC2", ResourceCloud9EnvironmentEC2(), data, meta)
 }
 
 func resourceCloud9EnvironmentEC2Delete(data *schema.ResourceData, meta interface{}) error {

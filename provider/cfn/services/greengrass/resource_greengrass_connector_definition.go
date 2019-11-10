@@ -54,15 +54,15 @@ func ResourceGreengrassConnectorDefinition() *schema.Resource {
 }
 
 func resourceGreengrassConnectorDefinitionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Greengrass::ConnectorDefinition", data, meta)
+	return plugin.ResourceCreate("AWS::Greengrass::ConnectorDefinition", ResourceGreengrassConnectorDefinition(), data, meta)
 }
 
 func resourceGreengrassConnectorDefinitionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Greengrass::ConnectorDefinition", data, meta)
+	return plugin.ResourceRead("AWS::Greengrass::ConnectorDefinition", ResourceGreengrassConnectorDefinition(), data, meta)
 }
 
 func resourceGreengrassConnectorDefinitionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Greengrass::ConnectorDefinition", data, meta)
+	return plugin.ResourceUpdate("AWS::Greengrass::ConnectorDefinition", ResourceGreengrassConnectorDefinition(), data, meta)
 }
 
 func resourceGreengrassConnectorDefinitionDelete(data *schema.ResourceData, meta interface{}) error {

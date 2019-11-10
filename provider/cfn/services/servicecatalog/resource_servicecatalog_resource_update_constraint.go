@@ -49,15 +49,15 @@ func ResourceServiceCatalogResourceUpdateConstraint() *schema.Resource {
 }
 
 func resourceServiceCatalogResourceUpdateConstraintCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::ResourceUpdateConstraint", data, meta)
+	return plugin.ResourceCreate("AWS::ServiceCatalog::ResourceUpdateConstraint", ResourceServiceCatalogResourceUpdateConstraint(), data, meta)
 }
 
 func resourceServiceCatalogResourceUpdateConstraintRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ServiceCatalog::ResourceUpdateConstraint", data, meta)
+	return plugin.ResourceRead("AWS::ServiceCatalog::ResourceUpdateConstraint", ResourceServiceCatalogResourceUpdateConstraint(), data, meta)
 }
 
 func resourceServiceCatalogResourceUpdateConstraintUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ServiceCatalog::ResourceUpdateConstraint", data, meta)
+	return plugin.ResourceUpdate("AWS::ServiceCatalog::ResourceUpdateConstraint", ResourceServiceCatalogResourceUpdateConstraint(), data, meta)
 }
 
 func resourceServiceCatalogResourceUpdateConstraintDelete(data *schema.ResourceData, meta interface{}) error {

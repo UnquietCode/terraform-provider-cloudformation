@@ -118,15 +118,15 @@ func ResourceOpsWorksCMServer() *schema.Resource {
 }
 
 func resourceOpsWorksCMServerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::OpsWorksCM::Server", data, meta)
+	return plugin.ResourceCreate("AWS::OpsWorksCM::Server", ResourceOpsWorksCMServer(), data, meta)
 }
 
 func resourceOpsWorksCMServerRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::OpsWorksCM::Server", data, meta)
+	return plugin.ResourceRead("AWS::OpsWorksCM::Server", ResourceOpsWorksCMServer(), data, meta)
 }
 
 func resourceOpsWorksCMServerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::OpsWorksCM::Server", data, meta)
+	return plugin.ResourceUpdate("AWS::OpsWorksCM::Server", ResourceOpsWorksCMServer(), data, meta)
 }
 
 func resourceOpsWorksCMServerDelete(data *schema.ResourceData, meta interface{}) error {

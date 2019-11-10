@@ -66,15 +66,15 @@ func ResourceSSMAssociation() *schema.Resource {
 }
 
 func resourceSSMAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SSM::Association", data, meta)
+	return plugin.ResourceCreate("AWS::SSM::Association", ResourceSSMAssociation(), data, meta)
 }
 
 func resourceSSMAssociationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SSM::Association", data, meta)
+	return plugin.ResourceRead("AWS::SSM::Association", ResourceSSMAssociation(), data, meta)
 }
 
 func resourceSSMAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SSM::Association", data, meta)
+	return plugin.ResourceUpdate("AWS::SSM::Association", ResourceSSMAssociation(), data, meta)
 }
 
 func resourceSSMAssociationDelete(data *schema.ResourceData, meta interface{}) error {

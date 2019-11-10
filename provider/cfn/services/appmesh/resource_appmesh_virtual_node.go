@@ -57,15 +57,15 @@ func ResourceAppMeshVirtualNode() *schema.Resource {
 }
 
 func resourceAppMeshVirtualNodeCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppMesh::VirtualNode", data, meta)
+	return plugin.ResourceCreate("AWS::AppMesh::VirtualNode", ResourceAppMeshVirtualNode(), data, meta)
 }
 
 func resourceAppMeshVirtualNodeRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppMesh::VirtualNode", data, meta)
+	return plugin.ResourceRead("AWS::AppMesh::VirtualNode", ResourceAppMeshVirtualNode(), data, meta)
 }
 
 func resourceAppMeshVirtualNodeUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppMesh::VirtualNode", data, meta)
+	return plugin.ResourceUpdate("AWS::AppMesh::VirtualNode", ResourceAppMeshVirtualNode(), data, meta)
 }
 
 func resourceAppMeshVirtualNodeDelete(data *schema.ResourceData, meta interface{}) error {

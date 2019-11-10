@@ -31,15 +31,15 @@ func ResourceSecurityHubHub() *schema.Resource {
 }
 
 func resourceSecurityHubHubCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SecurityHub::Hub", data, meta)
+	return plugin.ResourceCreate("AWS::SecurityHub::Hub", ResourceSecurityHubHub(), data, meta)
 }
 
 func resourceSecurityHubHubRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SecurityHub::Hub", data, meta)
+	return plugin.ResourceRead("AWS::SecurityHub::Hub", ResourceSecurityHubHub(), data, meta)
 }
 
 func resourceSecurityHubHubUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SecurityHub::Hub", data, meta)
+	return plugin.ResourceUpdate("AWS::SecurityHub::Hub", ResourceSecurityHubHub(), data, meta)
 }
 
 func resourceSecurityHubHubDelete(data *schema.ResourceData, meta interface{}) error {

@@ -45,15 +45,15 @@ func ResourceBatchJobQueue() *schema.Resource {
 }
 
 func resourceBatchJobQueueCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Batch::JobQueue", data, meta)
+	return plugin.ResourceCreate("AWS::Batch::JobQueue", ResourceBatchJobQueue(), data, meta)
 }
 
 func resourceBatchJobQueueRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Batch::JobQueue", data, meta)
+	return plugin.ResourceRead("AWS::Batch::JobQueue", ResourceBatchJobQueue(), data, meta)
 }
 
 func resourceBatchJobQueueUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Batch::JobQueue", data, meta)
+	return plugin.ResourceUpdate("AWS::Batch::JobQueue", ResourceBatchJobQueue(), data, meta)
 }
 
 func resourceBatchJobQueueDelete(data *schema.ResourceData, meta interface{}) error {

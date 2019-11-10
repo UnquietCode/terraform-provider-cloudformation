@@ -77,15 +77,15 @@ func ResourceDirectoryServiceSimpleAD() *schema.Resource {
 }
 
 func resourceDirectoryServiceSimpleADCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DirectoryService::SimpleAD", data, meta)
+	return plugin.ResourceCreate("AWS::DirectoryService::SimpleAD", ResourceDirectoryServiceSimpleAD(), data, meta)
 }
 
 func resourceDirectoryServiceSimpleADRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::DirectoryService::SimpleAD", data, meta)
+	return plugin.ResourceRead("AWS::DirectoryService::SimpleAD", ResourceDirectoryServiceSimpleAD(), data, meta)
 }
 
 func resourceDirectoryServiceSimpleADUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::DirectoryService::SimpleAD", data, meta)
+	return plugin.ResourceUpdate("AWS::DirectoryService::SimpleAD", ResourceDirectoryServiceSimpleAD(), data, meta)
 }
 
 func resourceDirectoryServiceSimpleADDelete(data *schema.ResourceData, meta interface{}) error {

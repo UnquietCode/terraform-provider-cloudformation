@@ -48,15 +48,15 @@ func ResourceCloudFormationMacro() *schema.Resource {
 }
 
 func resourceCloudFormationMacroCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CloudFormation::Macro", data, meta)
+	return plugin.ResourceCreate("AWS::CloudFormation::Macro", ResourceCloudFormationMacro(), data, meta)
 }
 
 func resourceCloudFormationMacroRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CloudFormation::Macro", data, meta)
+	return plugin.ResourceRead("AWS::CloudFormation::Macro", ResourceCloudFormationMacro(), data, meta)
 }
 
 func resourceCloudFormationMacroUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CloudFormation::Macro", data, meta)
+	return plugin.ResourceUpdate("AWS::CloudFormation::Macro", ResourceCloudFormationMacro(), data, meta)
 }
 
 func resourceCloudFormationMacroDelete(data *schema.ResourceData, meta interface{}) error {

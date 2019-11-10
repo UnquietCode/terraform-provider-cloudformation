@@ -48,15 +48,15 @@ func ResourceEMRStep() *schema.Resource {
 }
 
 func resourceEMRStepCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EMR::Step", data, meta)
+	return plugin.ResourceCreate("AWS::EMR::Step", ResourceEMRStep(), data, meta)
 }
 
 func resourceEMRStepRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EMR::Step", data, meta)
+	return plugin.ResourceRead("AWS::EMR::Step", ResourceEMRStep(), data, meta)
 }
 
 func resourceEMRStepUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EMR::Step", data, meta)
+	return plugin.ResourceUpdate("AWS::EMR::Step", ResourceEMRStep(), data, meta)
 }
 
 func resourceEMRStepDelete(data *schema.ResourceData, meta interface{}) error {

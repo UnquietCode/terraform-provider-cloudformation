@@ -49,15 +49,15 @@ func ResourceBackupBackupPlan() *schema.Resource {
 }
 
 func resourceBackupBackupPlanCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Backup::BackupPlan", data, meta)
+	return plugin.ResourceCreate("AWS::Backup::BackupPlan", ResourceBackupBackupPlan(), data, meta)
 }
 
 func resourceBackupBackupPlanRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Backup::BackupPlan", data, meta)
+	return plugin.ResourceRead("AWS::Backup::BackupPlan", ResourceBackupBackupPlan(), data, meta)
 }
 
 func resourceBackupBackupPlanUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Backup::BackupPlan", data, meta)
+	return plugin.ResourceUpdate("AWS::Backup::BackupPlan", ResourceBackupBackupPlan(), data, meta)
 }
 
 func resourceBackupBackupPlanDelete(data *schema.ResourceData, meta interface{}) error {

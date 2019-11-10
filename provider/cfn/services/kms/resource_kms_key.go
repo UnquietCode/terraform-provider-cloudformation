@@ -62,15 +62,15 @@ func ResourceKMSKey() *schema.Resource {
 }
 
 func resourceKMSKeyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::KMS::Key", data, meta)
+	return plugin.ResourceCreate("AWS::KMS::Key", ResourceKMSKey(), data, meta)
 }
 
 func resourceKMSKeyRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::KMS::Key", data, meta)
+	return plugin.ResourceRead("AWS::KMS::Key", ResourceKMSKey(), data, meta)
 }
 
 func resourceKMSKeyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::KMS::Key", data, meta)
+	return plugin.ResourceUpdate("AWS::KMS::Key", ResourceKMSKey(), data, meta)
 }
 
 func resourceKMSKeyDelete(data *schema.ResourceData, meta interface{}) error {

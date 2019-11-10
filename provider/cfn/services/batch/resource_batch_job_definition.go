@@ -64,15 +64,15 @@ func ResourceBatchJobDefinition() *schema.Resource {
 }
 
 func resourceBatchJobDefinitionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Batch::JobDefinition", data, meta)
+	return plugin.ResourceCreate("AWS::Batch::JobDefinition", ResourceBatchJobDefinition(), data, meta)
 }
 
 func resourceBatchJobDefinitionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Batch::JobDefinition", data, meta)
+	return plugin.ResourceRead("AWS::Batch::JobDefinition", ResourceBatchJobDefinition(), data, meta)
 }
 
 func resourceBatchJobDefinitionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Batch::JobDefinition", data, meta)
+	return plugin.ResourceUpdate("AWS::Batch::JobDefinition", ResourceBatchJobDefinition(), data, meta)
 }
 
 func resourceBatchJobDefinitionDelete(data *schema.ResourceData, meta interface{}) error {

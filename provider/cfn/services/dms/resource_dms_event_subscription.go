@@ -62,15 +62,15 @@ func ResourceDMSEventSubscription() *schema.Resource {
 }
 
 func resourceDMSEventSubscriptionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DMS::EventSubscription", data, meta)
+	return plugin.ResourceCreate("AWS::DMS::EventSubscription", ResourceDMSEventSubscription(), data, meta)
 }
 
 func resourceDMSEventSubscriptionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::DMS::EventSubscription", data, meta)
+	return plugin.ResourceRead("AWS::DMS::EventSubscription", ResourceDMSEventSubscription(), data, meta)
 }
 
 func resourceDMSEventSubscriptionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::DMS::EventSubscription", data, meta)
+	return plugin.ResourceUpdate("AWS::DMS::EventSubscription", ResourceDMSEventSubscription(), data, meta)
 }
 
 func resourceDMSEventSubscriptionDelete(data *schema.ResourceData, meta interface{}) error {

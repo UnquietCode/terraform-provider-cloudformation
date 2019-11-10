@@ -41,15 +41,15 @@ func ResourceServiceCatalogTagOption() *schema.Resource {
 }
 
 func resourceServiceCatalogTagOptionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::TagOption", data, meta)
+	return plugin.ResourceCreate("AWS::ServiceCatalog::TagOption", ResourceServiceCatalogTagOption(), data, meta)
 }
 
 func resourceServiceCatalogTagOptionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ServiceCatalog::TagOption", data, meta)
+	return plugin.ResourceRead("AWS::ServiceCatalog::TagOption", ResourceServiceCatalogTagOption(), data, meta)
 }
 
 func resourceServiceCatalogTagOptionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ServiceCatalog::TagOption", data, meta)
+	return plugin.ResourceUpdate("AWS::ServiceCatalog::TagOption", ResourceServiceCatalogTagOption(), data, meta)
 }
 
 func resourceServiceCatalogTagOptionDelete(data *schema.ResourceData, meta interface{}) error {

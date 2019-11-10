@@ -79,15 +79,15 @@ func ResourceGameLiftFleet() *schema.Resource {
 }
 
 func resourceGameLiftFleetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::GameLift::Fleet", data, meta)
+	return plugin.ResourceCreate("AWS::GameLift::Fleet", ResourceGameLiftFleet(), data, meta)
 }
 
 func resourceGameLiftFleetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::GameLift::Fleet", data, meta)
+	return plugin.ResourceRead("AWS::GameLift::Fleet", ResourceGameLiftFleet(), data, meta)
 }
 
 func resourceGameLiftFleetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::GameLift::Fleet", data, meta)
+	return plugin.ResourceUpdate("AWS::GameLift::Fleet", ResourceGameLiftFleet(), data, meta)
 }
 
 func resourceGameLiftFleetDelete(data *schema.ResourceData, meta interface{}) error {

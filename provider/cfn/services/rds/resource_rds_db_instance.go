@@ -259,15 +259,15 @@ func ResourceRDSDBInstance() *schema.Resource {
 }
 
 func resourceRDSDBInstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RDS::DBInstance", data, meta)
+	return plugin.ResourceCreate("AWS::RDS::DBInstance", ResourceRDSDBInstance(), data, meta)
 }
 
 func resourceRDSDBInstanceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::RDS::DBInstance", data, meta)
+	return plugin.ResourceRead("AWS::RDS::DBInstance", ResourceRDSDBInstance(), data, meta)
 }
 
 func resourceRDSDBInstanceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::RDS::DBInstance", data, meta)
+	return plugin.ResourceUpdate("AWS::RDS::DBInstance", ResourceRDSDBInstance(), data, meta)
 }
 
 func resourceRDSDBInstanceDelete(data *schema.ResourceData, meta interface{}) error {

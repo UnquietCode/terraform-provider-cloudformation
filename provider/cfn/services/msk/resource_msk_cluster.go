@@ -79,15 +79,15 @@ func ResourceMSKCluster() *schema.Resource {
 }
 
 func resourceMSKClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::MSK::Cluster", data, meta)
+	return plugin.ResourceCreate("AWS::MSK::Cluster", ResourceMSKCluster(), data, meta)
 }
 
 func resourceMSKClusterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::MSK::Cluster", data, meta)
+	return plugin.ResourceRead("AWS::MSK::Cluster", ResourceMSKCluster(), data, meta)
 }
 
 func resourceMSKClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::MSK::Cluster", data, meta)
+	return plugin.ResourceUpdate("AWS::MSK::Cluster", ResourceMSKCluster(), data, meta)
 }
 
 func resourceMSKClusterDelete(data *schema.ResourceData, meta interface{}) error {

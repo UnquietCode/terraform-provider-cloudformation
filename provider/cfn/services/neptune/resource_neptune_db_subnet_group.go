@@ -47,15 +47,15 @@ func ResourceNeptuneDBSubnetGroup() *schema.Resource {
 }
 
 func resourceNeptuneDBSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Neptune::DBSubnetGroup", data, meta)
+	return plugin.ResourceCreate("AWS::Neptune::DBSubnetGroup", ResourceNeptuneDBSubnetGroup(), data, meta)
 }
 
 func resourceNeptuneDBSubnetGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Neptune::DBSubnetGroup", data, meta)
+	return plugin.ResourceRead("AWS::Neptune::DBSubnetGroup", ResourceNeptuneDBSubnetGroup(), data, meta)
 }
 
 func resourceNeptuneDBSubnetGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Neptune::DBSubnetGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::Neptune::DBSubnetGroup", ResourceNeptuneDBSubnetGroup(), data, meta)
 }
 
 func resourceNeptuneDBSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {

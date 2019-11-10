@@ -33,15 +33,15 @@ func ResourceLakeFormationDataLakeSettings() *schema.Resource {
 }
 
 func resourceLakeFormationDataLakeSettingsCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::LakeFormation::DataLakeSettings", data, meta)
+	return plugin.ResourceCreate("AWS::LakeFormation::DataLakeSettings", ResourceLakeFormationDataLakeSettings(), data, meta)
 }
 
 func resourceLakeFormationDataLakeSettingsRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::LakeFormation::DataLakeSettings", data, meta)
+	return plugin.ResourceRead("AWS::LakeFormation::DataLakeSettings", ResourceLakeFormationDataLakeSettings(), data, meta)
 }
 
 func resourceLakeFormationDataLakeSettingsUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::LakeFormation::DataLakeSettings", data, meta)
+	return plugin.ResourceUpdate("AWS::LakeFormation::DataLakeSettings", ResourceLakeFormationDataLakeSettings(), data, meta)
 }
 
 func resourceLakeFormationDataLakeSettingsDelete(data *schema.ResourceData, meta interface{}) error {

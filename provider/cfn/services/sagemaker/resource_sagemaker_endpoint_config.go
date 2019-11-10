@@ -50,15 +50,15 @@ func ResourceSageMakerEndpointConfig() *schema.Resource {
 }
 
 func resourceSageMakerEndpointConfigCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SageMaker::EndpointConfig", data, meta)
+	return plugin.ResourceCreate("AWS::SageMaker::EndpointConfig", ResourceSageMakerEndpointConfig(), data, meta)
 }
 
 func resourceSageMakerEndpointConfigRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SageMaker::EndpointConfig", data, meta)
+	return plugin.ResourceRead("AWS::SageMaker::EndpointConfig", ResourceSageMakerEndpointConfig(), data, meta)
 }
 
 func resourceSageMakerEndpointConfigUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SageMaker::EndpointConfig", data, meta)
+	return plugin.ResourceUpdate("AWS::SageMaker::EndpointConfig", ResourceSageMakerEndpointConfig(), data, meta)
 }
 
 func resourceSageMakerEndpointConfigDelete(data *schema.ResourceData, meta interface{}) error {

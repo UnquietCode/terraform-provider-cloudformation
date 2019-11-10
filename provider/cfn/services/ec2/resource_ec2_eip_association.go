@@ -47,15 +47,15 @@ func ResourceEC2EIPAssociation() *schema.Resource {
 }
 
 func resourceEC2EIPAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::EIPAssociation", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::EIPAssociation", ResourceEC2EIPAssociation(), data, meta)
 }
 
 func resourceEC2EIPAssociationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::EIPAssociation", data, meta)
+	return plugin.ResourceRead("AWS::EC2::EIPAssociation", ResourceEC2EIPAssociation(), data, meta)
 }
 
 func resourceEC2EIPAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::EIPAssociation", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::EIPAssociation", ResourceEC2EIPAssociation(), data, meta)
 }
 
 func resourceEC2EIPAssociationDelete(data *schema.ResourceData, meta interface{}) error {

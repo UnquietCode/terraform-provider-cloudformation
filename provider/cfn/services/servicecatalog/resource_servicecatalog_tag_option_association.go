@@ -36,15 +36,15 @@ func ResourceServiceCatalogTagOptionAssociation() *schema.Resource {
 }
 
 func resourceServiceCatalogTagOptionAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::TagOptionAssociation", data, meta)
+	return plugin.ResourceCreate("AWS::ServiceCatalog::TagOptionAssociation", ResourceServiceCatalogTagOptionAssociation(), data, meta)
 }
 
 func resourceServiceCatalogTagOptionAssociationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ServiceCatalog::TagOptionAssociation", data, meta)
+	return plugin.ResourceRead("AWS::ServiceCatalog::TagOptionAssociation", ResourceServiceCatalogTagOptionAssociation(), data, meta)
 }
 
 func resourceServiceCatalogTagOptionAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ServiceCatalog::TagOptionAssociation", data, meta)
+	return plugin.ResourceUpdate("AWS::ServiceCatalog::TagOptionAssociation", ResourceServiceCatalogTagOptionAssociation(), data, meta)
 }
 
 func resourceServiceCatalogTagOptionAssociationDelete(data *schema.ResourceData, meta interface{}) error {

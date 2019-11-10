@@ -39,15 +39,15 @@ func ResourceElastiCacheSecurityGroupIngress() *schema.Resource {
 }
 
 func resourceElastiCacheSecurityGroupIngressCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElastiCache::SecurityGroupIngress", data, meta)
+	return plugin.ResourceCreate("AWS::ElastiCache::SecurityGroupIngress", ResourceElastiCacheSecurityGroupIngress(), data, meta)
 }
 
 func resourceElastiCacheSecurityGroupIngressRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ElastiCache::SecurityGroupIngress", data, meta)
+	return plugin.ResourceRead("AWS::ElastiCache::SecurityGroupIngress", ResourceElastiCacheSecurityGroupIngress(), data, meta)
 }
 
 func resourceElastiCacheSecurityGroupIngressUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ElastiCache::SecurityGroupIngress", data, meta)
+	return plugin.ResourceUpdate("AWS::ElastiCache::SecurityGroupIngress", ResourceElastiCacheSecurityGroupIngress(), data, meta)
 }
 
 func resourceElastiCacheSecurityGroupIngressDelete(data *schema.ResourceData, meta interface{}) error {

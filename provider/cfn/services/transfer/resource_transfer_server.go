@@ -66,15 +66,15 @@ func ResourceTransferServer() *schema.Resource {
 }
 
 func resourceTransferServerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Transfer::Server", data, meta)
+	return plugin.ResourceCreate("AWS::Transfer::Server", ResourceTransferServer(), data, meta)
 }
 
 func resourceTransferServerRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Transfer::Server", data, meta)
+	return plugin.ResourceRead("AWS::Transfer::Server", ResourceTransferServer(), data, meta)
 }
 
 func resourceTransferServerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Transfer::Server", data, meta)
+	return plugin.ResourceUpdate("AWS::Transfer::Server", ResourceTransferServer(), data, meta)
 }
 
 func resourceTransferServerDelete(data *schema.ResourceData, meta interface{}) error {

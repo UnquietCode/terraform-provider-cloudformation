@@ -45,15 +45,15 @@ func ResourceOpsWorksVolume() *schema.Resource {
 }
 
 func resourceOpsWorksVolumeCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::OpsWorks::Volume", data, meta)
+	return plugin.ResourceCreate("AWS::OpsWorks::Volume", ResourceOpsWorksVolume(), data, meta)
 }
 
 func resourceOpsWorksVolumeRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::OpsWorks::Volume", data, meta)
+	return plugin.ResourceRead("AWS::OpsWorks::Volume", ResourceOpsWorksVolume(), data, meta)
 }
 
 func resourceOpsWorksVolumeUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::OpsWorks::Volume", data, meta)
+	return plugin.ResourceUpdate("AWS::OpsWorks::Volume", ResourceOpsWorksVolume(), data, meta)
 }
 
 func resourceOpsWorksVolumeDelete(data *schema.ResourceData, meta interface{}) error {

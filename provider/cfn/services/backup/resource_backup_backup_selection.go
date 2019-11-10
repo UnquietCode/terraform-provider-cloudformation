@@ -43,15 +43,15 @@ func ResourceBackupBackupSelection() *schema.Resource {
 }
 
 func resourceBackupBackupSelectionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Backup::BackupSelection", data, meta)
+	return plugin.ResourceCreate("AWS::Backup::BackupSelection", ResourceBackupBackupSelection(), data, meta)
 }
 
 func resourceBackupBackupSelectionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Backup::BackupSelection", data, meta)
+	return plugin.ResourceRead("AWS::Backup::BackupSelection", ResourceBackupBackupSelection(), data, meta)
 }
 
 func resourceBackupBackupSelectionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Backup::BackupSelection", data, meta)
+	return plugin.ResourceUpdate("AWS::Backup::BackupSelection", ResourceBackupBackupSelection(), data, meta)
 }
 
 func resourceBackupBackupSelectionDelete(data *schema.ResourceData, meta interface{}) error {

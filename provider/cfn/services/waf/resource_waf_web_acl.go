@@ -48,15 +48,15 @@ func ResourceWAFWebACL() *schema.Resource {
 }
 
 func resourceWAFWebACLCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::WAF::WebACL", data, meta)
+	return plugin.ResourceCreate("AWS::WAF::WebACL", ResourceWAFWebACL(), data, meta)
 }
 
 func resourceWAFWebACLRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::WAF::WebACL", data, meta)
+	return plugin.ResourceRead("AWS::WAF::WebACL", ResourceWAFWebACL(), data, meta)
 }
 
 func resourceWAFWebACLUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::WAF::WebACL", data, meta)
+	return plugin.ResourceUpdate("AWS::WAF::WebACL", ResourceWAFWebACL(), data, meta)
 }
 
 func resourceWAFWebACLDelete(data *schema.ResourceData, meta interface{}) error {

@@ -59,15 +59,15 @@ func ResourceInspectorAssessmentTemplate() *schema.Resource {
 }
 
 func resourceInspectorAssessmentTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Inspector::AssessmentTemplate", data, meta)
+	return plugin.ResourceCreate("AWS::Inspector::AssessmentTemplate", ResourceInspectorAssessmentTemplate(), data, meta)
 }
 
 func resourceInspectorAssessmentTemplateRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Inspector::AssessmentTemplate", data, meta)
+	return plugin.ResourceRead("AWS::Inspector::AssessmentTemplate", ResourceInspectorAssessmentTemplate(), data, meta)
 }
 
 func resourceInspectorAssessmentTemplateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Inspector::AssessmentTemplate", data, meta)
+	return plugin.ResourceUpdate("AWS::Inspector::AssessmentTemplate", ResourceInspectorAssessmentTemplate(), data, meta)
 }
 
 func resourceInspectorAssessmentTemplateDelete(data *schema.ResourceData, meta interface{}) error {

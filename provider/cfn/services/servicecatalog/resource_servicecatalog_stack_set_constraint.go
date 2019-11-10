@@ -67,15 +67,15 @@ func ResourceServiceCatalogStackSetConstraint() *schema.Resource {
 }
 
 func resourceServiceCatalogStackSetConstraintCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::StackSetConstraint", data, meta)
+	return plugin.ResourceCreate("AWS::ServiceCatalog::StackSetConstraint", ResourceServiceCatalogStackSetConstraint(), data, meta)
 }
 
 func resourceServiceCatalogStackSetConstraintRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ServiceCatalog::StackSetConstraint", data, meta)
+	return plugin.ResourceRead("AWS::ServiceCatalog::StackSetConstraint", ResourceServiceCatalogStackSetConstraint(), data, meta)
 }
 
 func resourceServiceCatalogStackSetConstraintUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ServiceCatalog::StackSetConstraint", data, meta)
+	return plugin.ResourceUpdate("AWS::ServiceCatalog::StackSetConstraint", ResourceServiceCatalogStackSetConstraint(), data, meta)
 }
 
 func resourceServiceCatalogStackSetConstraintDelete(data *schema.ResourceData, meta interface{}) error {

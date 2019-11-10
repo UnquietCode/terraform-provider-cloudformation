@@ -56,15 +56,15 @@ func ResourceSSMResourceDataSync() *schema.Resource {
 }
 
 func resourceSSMResourceDataSyncCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SSM::ResourceDataSync", data, meta)
+	return plugin.ResourceCreate("AWS::SSM::ResourceDataSync", ResourceSSMResourceDataSync(), data, meta)
 }
 
 func resourceSSMResourceDataSyncRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SSM::ResourceDataSync", data, meta)
+	return plugin.ResourceRead("AWS::SSM::ResourceDataSync", ResourceSSMResourceDataSync(), data, meta)
 }
 
 func resourceSSMResourceDataSyncUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SSM::ResourceDataSync", data, meta)
+	return plugin.ResourceUpdate("AWS::SSM::ResourceDataSync", ResourceSSMResourceDataSync(), data, meta)
 }
 
 func resourceSSMResourceDataSyncDelete(data *schema.ResourceData, meta interface{}) error {

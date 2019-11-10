@@ -48,15 +48,15 @@ func ResourceDMSReplicationSubnetGroup() *schema.Resource {
 }
 
 func resourceDMSReplicationSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DMS::ReplicationSubnetGroup", data, meta)
+	return plugin.ResourceCreate("AWS::DMS::ReplicationSubnetGroup", ResourceDMSReplicationSubnetGroup(), data, meta)
 }
 
 func resourceDMSReplicationSubnetGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::DMS::ReplicationSubnetGroup", data, meta)
+	return plugin.ResourceRead("AWS::DMS::ReplicationSubnetGroup", ResourceDMSReplicationSubnetGroup(), data, meta)
 }
 
 func resourceDMSReplicationSubnetGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::DMS::ReplicationSubnetGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::DMS::ReplicationSubnetGroup", ResourceDMSReplicationSubnetGroup(), data, meta)
 }
 
 func resourceDMSReplicationSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {

@@ -44,15 +44,15 @@ func ResourceCodeBuildSourceCredential() *schema.Resource {
 }
 
 func resourceCodeBuildSourceCredentialCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CodeBuild::SourceCredential", data, meta)
+	return plugin.ResourceCreate("AWS::CodeBuild::SourceCredential", ResourceCodeBuildSourceCredential(), data, meta)
 }
 
 func resourceCodeBuildSourceCredentialRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CodeBuild::SourceCredential", data, meta)
+	return plugin.ResourceRead("AWS::CodeBuild::SourceCredential", ResourceCodeBuildSourceCredential(), data, meta)
 }
 
 func resourceCodeBuildSourceCredentialUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CodeBuild::SourceCredential", data, meta)
+	return plugin.ResourceUpdate("AWS::CodeBuild::SourceCredential", ResourceCodeBuildSourceCredential(), data, meta)
 }
 
 func resourceCodeBuildSourceCredentialDelete(data *schema.ResourceData, meta interface{}) error {

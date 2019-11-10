@@ -46,15 +46,15 @@ func ResourceRoute53RecordSetGroup() *schema.Resource {
 }
 
 func resourceRoute53RecordSetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Route53::RecordSetGroup", data, meta)
+	return plugin.ResourceCreate("AWS::Route53::RecordSetGroup", ResourceRoute53RecordSetGroup(), data, meta)
 }
 
 func resourceRoute53RecordSetGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Route53::RecordSetGroup", data, meta)
+	return plugin.ResourceRead("AWS::Route53::RecordSetGroup", ResourceRoute53RecordSetGroup(), data, meta)
 }
 
 func resourceRoute53RecordSetGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Route53::RecordSetGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::Route53::RecordSetGroup", ResourceRoute53RecordSetGroup(), data, meta)
 }
 
 func resourceRoute53RecordSetGroupDelete(data *schema.ResourceData, meta interface{}) error {

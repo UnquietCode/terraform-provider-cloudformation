@@ -43,15 +43,15 @@ func ResourceGlueTable() *schema.Resource {
 }
 
 func resourceGlueTableCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::Table", data, meta)
+	return plugin.ResourceCreate("AWS::Glue::Table", ResourceGlueTable(), data, meta)
 }
 
 func resourceGlueTableRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Glue::Table", data, meta)
+	return plugin.ResourceRead("AWS::Glue::Table", ResourceGlueTable(), data, meta)
 }
 
 func resourceGlueTableUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Glue::Table", data, meta)
+	return plugin.ResourceUpdate("AWS::Glue::Table", ResourceGlueTable(), data, meta)
 }
 
 func resourceGlueTableDelete(data *schema.ResourceData, meta interface{}) error {

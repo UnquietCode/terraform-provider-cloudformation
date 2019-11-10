@@ -51,15 +51,15 @@ func ResourceGlueClassifier() *schema.Resource {
 }
 
 func resourceGlueClassifierCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::Classifier", data, meta)
+	return plugin.ResourceCreate("AWS::Glue::Classifier", ResourceGlueClassifier(), data, meta)
 }
 
 func resourceGlueClassifierRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Glue::Classifier", data, meta)
+	return plugin.ResourceRead("AWS::Glue::Classifier", ResourceGlueClassifier(), data, meta)
 }
 
 func resourceGlueClassifierUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Glue::Classifier", data, meta)
+	return plugin.ResourceUpdate("AWS::Glue::Classifier", ResourceGlueClassifier(), data, meta)
 }
 
 func resourceGlueClassifierDelete(data *schema.ResourceData, meta interface{}) error {

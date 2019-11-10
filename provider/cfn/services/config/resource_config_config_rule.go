@@ -68,15 +68,15 @@ func ResourceConfigConfigRule() *schema.Resource {
 }
 
 func resourceConfigConfigRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Config::ConfigRule", data, meta)
+	return plugin.ResourceCreate("AWS::Config::ConfigRule", ResourceConfigConfigRule(), data, meta)
 }
 
 func resourceConfigConfigRuleRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Config::ConfigRule", data, meta)
+	return plugin.ResourceRead("AWS::Config::ConfigRule", ResourceConfigConfigRule(), data, meta)
 }
 
 func resourceConfigConfigRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Config::ConfigRule", data, meta)
+	return plugin.ResourceUpdate("AWS::Config::ConfigRule", ResourceConfigConfigRule(), data, meta)
 }
 
 func resourceConfigConfigRuleDelete(data *schema.ResourceData, meta interface{}) error {

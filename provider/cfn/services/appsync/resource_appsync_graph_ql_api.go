@@ -77,15 +77,15 @@ func ResourceAppSyncGraphQLApi() *schema.Resource {
 }
 
 func resourceAppSyncGraphQLApiCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppSync::GraphQLApi", data, meta)
+	return plugin.ResourceCreate("AWS::AppSync::GraphQLApi", ResourceAppSyncGraphQLApi(), data, meta)
 }
 
 func resourceAppSyncGraphQLApiRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppSync::GraphQLApi", data, meta)
+	return plugin.ResourceRead("AWS::AppSync::GraphQLApi", ResourceAppSyncGraphQLApi(), data, meta)
 }
 
 func resourceAppSyncGraphQLApiUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppSync::GraphQLApi", data, meta)
+	return plugin.ResourceUpdate("AWS::AppSync::GraphQLApi", ResourceAppSyncGraphQLApi(), data, meta)
 }
 
 func resourceAppSyncGraphQLApiDelete(data *schema.ResourceData, meta interface{}) error {

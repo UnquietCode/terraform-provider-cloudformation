@@ -48,15 +48,15 @@ func ResourceGluePartition() *schema.Resource {
 }
 
 func resourceGluePartitionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::Partition", data, meta)
+	return plugin.ResourceCreate("AWS::Glue::Partition", ResourceGluePartition(), data, meta)
 }
 
 func resourceGluePartitionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Glue::Partition", data, meta)
+	return plugin.ResourceRead("AWS::Glue::Partition", ResourceGluePartition(), data, meta)
 }
 
 func resourceGluePartitionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Glue::Partition", data, meta)
+	return plugin.ResourceUpdate("AWS::Glue::Partition", ResourceGluePartition(), data, meta)
 }
 
 func resourceGluePartitionDelete(data *schema.ResourceData, meta interface{}) error {

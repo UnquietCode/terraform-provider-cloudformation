@@ -43,15 +43,15 @@ func ResourceSSMDocument() *schema.Resource {
 }
 
 func resourceSSMDocumentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SSM::Document", data, meta)
+	return plugin.ResourceCreate("AWS::SSM::Document", ResourceSSMDocument(), data, meta)
 }
 
 func resourceSSMDocumentRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SSM::Document", data, meta)
+	return plugin.ResourceRead("AWS::SSM::Document", ResourceSSMDocument(), data, meta)
 }
 
 func resourceSSMDocumentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SSM::Document", data, meta)
+	return plugin.ResourceUpdate("AWS::SSM::Document", ResourceSSMDocument(), data, meta)
 }
 
 func resourceSSMDocumentDelete(data *schema.ResourceData, meta interface{}) error {

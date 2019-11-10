@@ -68,15 +68,15 @@ func ResourceCodePipelineCustomActionType() *schema.Resource {
 }
 
 func resourceCodePipelineCustomActionTypeCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CodePipeline::CustomActionType", data, meta)
+	return plugin.ResourceCreate("AWS::CodePipeline::CustomActionType", ResourceCodePipelineCustomActionType(), data, meta)
 }
 
 func resourceCodePipelineCustomActionTypeRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CodePipeline::CustomActionType", data, meta)
+	return plugin.ResourceRead("AWS::CodePipeline::CustomActionType", ResourceCodePipelineCustomActionType(), data, meta)
 }
 
 func resourceCodePipelineCustomActionTypeUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CodePipeline::CustomActionType", data, meta)
+	return plugin.ResourceUpdate("AWS::CodePipeline::CustomActionType", ResourceCodePipelineCustomActionType(), data, meta)
 }
 
 func resourceCodePipelineCustomActionTypeDelete(data *schema.ResourceData, meta interface{}) error {

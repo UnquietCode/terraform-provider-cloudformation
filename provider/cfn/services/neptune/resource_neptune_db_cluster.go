@@ -111,15 +111,15 @@ func ResourceNeptuneDBCluster() *schema.Resource {
 }
 
 func resourceNeptuneDBClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Neptune::DBCluster", data, meta)
+	return plugin.ResourceCreate("AWS::Neptune::DBCluster", ResourceNeptuneDBCluster(), data, meta)
 }
 
 func resourceNeptuneDBClusterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Neptune::DBCluster", data, meta)
+	return plugin.ResourceRead("AWS::Neptune::DBCluster", ResourceNeptuneDBCluster(), data, meta)
 }
 
 func resourceNeptuneDBClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Neptune::DBCluster", data, meta)
+	return plugin.ResourceUpdate("AWS::Neptune::DBCluster", ResourceNeptuneDBCluster(), data, meta)
 }
 
 func resourceNeptuneDBClusterDelete(data *schema.ResourceData, meta interface{}) error {

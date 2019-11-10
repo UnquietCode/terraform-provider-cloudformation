@@ -38,15 +38,15 @@ func ResourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOption() *schema.Reso
 }
 
 func resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::KinesisAnalyticsV2::ApplicationCloudWatchLoggingOption", data, meta)
+	return plugin.ResourceCreate("AWS::KinesisAnalyticsV2::ApplicationCloudWatchLoggingOption", ResourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOption(), data, meta)
 }
 
 func resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::KinesisAnalyticsV2::ApplicationCloudWatchLoggingOption", data, meta)
+	return plugin.ResourceRead("AWS::KinesisAnalyticsV2::ApplicationCloudWatchLoggingOption", ResourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOption(), data, meta)
 }
 
 func resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::KinesisAnalyticsV2::ApplicationCloudWatchLoggingOption", data, meta)
+	return plugin.ResourceUpdate("AWS::KinesisAnalyticsV2::ApplicationCloudWatchLoggingOption", ResourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOption(), data, meta)
 }
 
 func resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionDelete(data *schema.ResourceData, meta interface{}) error {

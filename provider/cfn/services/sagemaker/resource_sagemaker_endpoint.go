@@ -43,15 +43,15 @@ func ResourceSageMakerEndpoint() *schema.Resource {
 }
 
 func resourceSageMakerEndpointCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SageMaker::Endpoint", data, meta)
+	return plugin.ResourceCreate("AWS::SageMaker::Endpoint", ResourceSageMakerEndpoint(), data, meta)
 }
 
 func resourceSageMakerEndpointRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SageMaker::Endpoint", data, meta)
+	return plugin.ResourceRead("AWS::SageMaker::Endpoint", ResourceSageMakerEndpoint(), data, meta)
 }
 
 func resourceSageMakerEndpointUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SageMaker::Endpoint", data, meta)
+	return plugin.ResourceUpdate("AWS::SageMaker::Endpoint", ResourceSageMakerEndpoint(), data, meta)
 }
 
 func resourceSageMakerEndpointDelete(data *schema.ResourceData, meta interface{}) error {

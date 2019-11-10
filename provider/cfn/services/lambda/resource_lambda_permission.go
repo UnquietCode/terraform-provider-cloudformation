@@ -56,15 +56,15 @@ func ResourceLambdaPermission() *schema.Resource {
 }
 
 func resourceLambdaPermissionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Lambda::Permission", data, meta)
+	return plugin.ResourceCreate("AWS::Lambda::Permission", ResourceLambdaPermission(), data, meta)
 }
 
 func resourceLambdaPermissionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Lambda::Permission", data, meta)
+	return plugin.ResourceRead("AWS::Lambda::Permission", ResourceLambdaPermission(), data, meta)
 }
 
 func resourceLambdaPermissionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Lambda::Permission", data, meta)
+	return plugin.ResourceUpdate("AWS::Lambda::Permission", ResourceLambdaPermission(), data, meta)
 }
 
 func resourceLambdaPermissionDelete(data *schema.ResourceData, meta interface{}) error {

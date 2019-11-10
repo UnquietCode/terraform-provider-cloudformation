@@ -56,15 +56,15 @@ func ResourceKinesisStream() *schema.Resource {
 }
 
 func resourceKinesisStreamCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Kinesis::Stream", data, meta)
+	return plugin.ResourceCreate("AWS::Kinesis::Stream", ResourceKinesisStream(), data, meta)
 }
 
 func resourceKinesisStreamRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Kinesis::Stream", data, meta)
+	return plugin.ResourceRead("AWS::Kinesis::Stream", ResourceKinesisStream(), data, meta)
 }
 
 func resourceKinesisStreamUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Kinesis::Stream", data, meta)
+	return plugin.ResourceUpdate("AWS::Kinesis::Stream", ResourceKinesisStream(), data, meta)
 }
 
 func resourceKinesisStreamDelete(data *schema.ResourceData, meta interface{}) error {

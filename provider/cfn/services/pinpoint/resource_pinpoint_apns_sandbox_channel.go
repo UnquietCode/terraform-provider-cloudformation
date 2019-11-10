@@ -64,15 +64,15 @@ func ResourcePinpointAPNSSandboxChannel() *schema.Resource {
 }
 
 func resourcePinpointAPNSSandboxChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::APNSSandboxChannel", data, meta)
+	return plugin.ResourceCreate("AWS::Pinpoint::APNSSandboxChannel", ResourcePinpointAPNSSandboxChannel(), data, meta)
 }
 
 func resourcePinpointAPNSSandboxChannelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::APNSSandboxChannel", data, meta)
+	return plugin.ResourceRead("AWS::Pinpoint::APNSSandboxChannel", ResourcePinpointAPNSSandboxChannel(), data, meta)
 }
 
 func resourcePinpointAPNSSandboxChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::APNSSandboxChannel", data, meta)
+	return plugin.ResourceUpdate("AWS::Pinpoint::APNSSandboxChannel", ResourcePinpointAPNSSandboxChannel(), data, meta)
 }
 
 func resourcePinpointAPNSSandboxChannelDelete(data *schema.ResourceData, meta interface{}) error {

@@ -52,15 +52,15 @@ func ResourceDocDBDBClusterParameterGroup() *schema.Resource {
 }
 
 func resourceDocDBDBClusterParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DocDB::DBClusterParameterGroup", data, meta)
+	return plugin.ResourceCreate("AWS::DocDB::DBClusterParameterGroup", ResourceDocDBDBClusterParameterGroup(), data, meta)
 }
 
 func resourceDocDBDBClusterParameterGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::DocDB::DBClusterParameterGroup", data, meta)
+	return plugin.ResourceRead("AWS::DocDB::DBClusterParameterGroup", ResourceDocDBDBClusterParameterGroup(), data, meta)
 }
 
 func resourceDocDBDBClusterParameterGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::DocDB::DBClusterParameterGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::DocDB::DBClusterParameterGroup", ResourceDocDBDBClusterParameterGroup(), data, meta)
 }
 
 func resourceDocDBDBClusterParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {

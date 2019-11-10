@@ -44,15 +44,15 @@ func ResourcePinpointSMSChannel() *schema.Resource {
 }
 
 func resourcePinpointSMSChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::SMSChannel", data, meta)
+	return plugin.ResourceCreate("AWS::Pinpoint::SMSChannel", ResourcePinpointSMSChannel(), data, meta)
 }
 
 func resourcePinpointSMSChannelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::SMSChannel", data, meta)
+	return plugin.ResourceRead("AWS::Pinpoint::SMSChannel", ResourcePinpointSMSChannel(), data, meta)
 }
 
 func resourcePinpointSMSChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::SMSChannel", data, meta)
+	return plugin.ResourceUpdate("AWS::Pinpoint::SMSChannel", ResourcePinpointSMSChannel(), data, meta)
 }
 
 func resourcePinpointSMSChannelDelete(data *schema.ResourceData, meta interface{}) error {

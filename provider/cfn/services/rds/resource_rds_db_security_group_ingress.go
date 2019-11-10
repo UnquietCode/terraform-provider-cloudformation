@@ -47,15 +47,15 @@ func ResourceRDSDBSecurityGroupIngress() *schema.Resource {
 }
 
 func resourceRDSDBSecurityGroupIngressCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RDS::DBSecurityGroupIngress", data, meta)
+	return plugin.ResourceCreate("AWS::RDS::DBSecurityGroupIngress", ResourceRDSDBSecurityGroupIngress(), data, meta)
 }
 
 func resourceRDSDBSecurityGroupIngressRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::RDS::DBSecurityGroupIngress", data, meta)
+	return plugin.ResourceRead("AWS::RDS::DBSecurityGroupIngress", ResourceRDSDBSecurityGroupIngress(), data, meta)
 }
 
 func resourceRDSDBSecurityGroupIngressUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::RDS::DBSecurityGroupIngress", data, meta)
+	return plugin.ResourceUpdate("AWS::RDS::DBSecurityGroupIngress", ResourceRDSDBSecurityGroupIngress(), data, meta)
 }
 
 func resourceRDSDBSecurityGroupIngressDelete(data *schema.ResourceData, meta interface{}) error {

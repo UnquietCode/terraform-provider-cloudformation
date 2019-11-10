@@ -41,15 +41,15 @@ func ResourceCognitoUserPoolUICustomizationAttachment() *schema.Resource {
 }
 
 func resourceCognitoUserPoolUICustomizationAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Cognito::UserPoolUICustomizationAttachment", data, meta)
+	return plugin.ResourceCreate("AWS::Cognito::UserPoolUICustomizationAttachment", ResourceCognitoUserPoolUICustomizationAttachment(), data, meta)
 }
 
 func resourceCognitoUserPoolUICustomizationAttachmentRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Cognito::UserPoolUICustomizationAttachment", data, meta)
+	return plugin.ResourceRead("AWS::Cognito::UserPoolUICustomizationAttachment", ResourceCognitoUserPoolUICustomizationAttachment(), data, meta)
 }
 
 func resourceCognitoUserPoolUICustomizationAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Cognito::UserPoolUICustomizationAttachment", data, meta)
+	return plugin.ResourceUpdate("AWS::Cognito::UserPoolUICustomizationAttachment", ResourceCognitoUserPoolUICustomizationAttachment(), data, meta)
 }
 
 func resourceCognitoUserPoolUICustomizationAttachmentDelete(data *schema.ResourceData, meta interface{}) error {

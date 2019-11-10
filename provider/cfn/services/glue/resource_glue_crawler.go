@@ -83,15 +83,15 @@ func ResourceGlueCrawler() *schema.Resource {
 }
 
 func resourceGlueCrawlerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::Crawler", data, meta)
+	return plugin.ResourceCreate("AWS::Glue::Crawler", ResourceGlueCrawler(), data, meta)
 }
 
 func resourceGlueCrawlerRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Glue::Crawler", data, meta)
+	return plugin.ResourceRead("AWS::Glue::Crawler", ResourceGlueCrawler(), data, meta)
 }
 
 func resourceGlueCrawlerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Glue::Crawler", data, meta)
+	return plugin.ResourceUpdate("AWS::Glue::Crawler", ResourceGlueCrawler(), data, meta)
 }
 
 func resourceGlueCrawlerDelete(data *schema.ResourceData, meta interface{}) error {

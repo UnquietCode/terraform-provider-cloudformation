@@ -47,15 +47,15 @@ func ResourceIoT1ClickProject() *schema.Resource {
 }
 
 func resourceIoT1ClickProjectCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoT1Click::Project", data, meta)
+	return plugin.ResourceCreate("AWS::IoT1Click::Project", ResourceIoT1ClickProject(), data, meta)
 }
 
 func resourceIoT1ClickProjectRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoT1Click::Project", data, meta)
+	return plugin.ResourceRead("AWS::IoT1Click::Project", ResourceIoT1ClickProject(), data, meta)
 }
 
 func resourceIoT1ClickProjectUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoT1Click::Project", data, meta)
+	return plugin.ResourceUpdate("AWS::IoT1Click::Project", ResourceIoT1ClickProject(), data, meta)
 }
 
 func resourceIoT1ClickProjectDelete(data *schema.ResourceData, meta interface{}) error {

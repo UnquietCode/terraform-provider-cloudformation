@@ -51,15 +51,15 @@ func ResourceBatchComputeEnvironment() *schema.Resource {
 }
 
 func resourceBatchComputeEnvironmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Batch::ComputeEnvironment", data, meta)
+	return plugin.ResourceCreate("AWS::Batch::ComputeEnvironment", ResourceBatchComputeEnvironment(), data, meta)
 }
 
 func resourceBatchComputeEnvironmentRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Batch::ComputeEnvironment", data, meta)
+	return plugin.ResourceRead("AWS::Batch::ComputeEnvironment", ResourceBatchComputeEnvironment(), data, meta)
 }
 
 func resourceBatchComputeEnvironmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Batch::ComputeEnvironment", data, meta)
+	return plugin.ResourceUpdate("AWS::Batch::ComputeEnvironment", ResourceBatchComputeEnvironment(), data, meta)
 }
 
 func resourceBatchComputeEnvironmentDelete(data *schema.ResourceData, meta interface{}) error {

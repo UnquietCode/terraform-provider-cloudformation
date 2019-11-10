@@ -108,15 +108,15 @@ func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 }
 
 func resourceCodeDeployDeploymentGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CodeDeploy::DeploymentGroup", data, meta)
+	return plugin.ResourceCreate("AWS::CodeDeploy::DeploymentGroup", ResourceCodeDeployDeploymentGroup(), data, meta)
 }
 
 func resourceCodeDeployDeploymentGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CodeDeploy::DeploymentGroup", data, meta)
+	return plugin.ResourceRead("AWS::CodeDeploy::DeploymentGroup", ResourceCodeDeployDeploymentGroup(), data, meta)
 }
 
 func resourceCodeDeployDeploymentGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CodeDeploy::DeploymentGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::CodeDeploy::DeploymentGroup", ResourceCodeDeployDeploymentGroup(), data, meta)
 }
 
 func resourceCodeDeployDeploymentGroupDelete(data *schema.ResourceData, meta interface{}) error {

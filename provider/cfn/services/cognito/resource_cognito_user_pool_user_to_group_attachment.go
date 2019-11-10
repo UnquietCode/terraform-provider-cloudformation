@@ -41,15 +41,15 @@ func ResourceCognitoUserPoolUserToGroupAttachment() *schema.Resource {
 }
 
 func resourceCognitoUserPoolUserToGroupAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Cognito::UserPoolUserToGroupAttachment", data, meta)
+	return plugin.ResourceCreate("AWS::Cognito::UserPoolUserToGroupAttachment", ResourceCognitoUserPoolUserToGroupAttachment(), data, meta)
 }
 
 func resourceCognitoUserPoolUserToGroupAttachmentRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Cognito::UserPoolUserToGroupAttachment", data, meta)
+	return plugin.ResourceRead("AWS::Cognito::UserPoolUserToGroupAttachment", ResourceCognitoUserPoolUserToGroupAttachment(), data, meta)
 }
 
 func resourceCognitoUserPoolUserToGroupAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Cognito::UserPoolUserToGroupAttachment", data, meta)
+	return plugin.ResourceUpdate("AWS::Cognito::UserPoolUserToGroupAttachment", ResourceCognitoUserPoolUserToGroupAttachment(), data, meta)
 }
 
 func resourceCognitoUserPoolUserToGroupAttachmentDelete(data *schema.ResourceData, meta interface{}) error {

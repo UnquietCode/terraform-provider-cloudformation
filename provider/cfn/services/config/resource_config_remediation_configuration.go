@@ -70,15 +70,15 @@ func ResourceConfigRemediationConfiguration() *schema.Resource {
 }
 
 func resourceConfigRemediationConfigurationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Config::RemediationConfiguration", data, meta)
+	return plugin.ResourceCreate("AWS::Config::RemediationConfiguration", ResourceConfigRemediationConfiguration(), data, meta)
 }
 
 func resourceConfigRemediationConfigurationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Config::RemediationConfiguration", data, meta)
+	return plugin.ResourceRead("AWS::Config::RemediationConfiguration", ResourceConfigRemediationConfiguration(), data, meta)
 }
 
 func resourceConfigRemediationConfigurationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Config::RemediationConfiguration", data, meta)
+	return plugin.ResourceUpdate("AWS::Config::RemediationConfiguration", ResourceConfigRemediationConfiguration(), data, meta)
 }
 
 func resourceConfigRemediationConfigurationDelete(data *schema.ResourceData, meta interface{}) error {

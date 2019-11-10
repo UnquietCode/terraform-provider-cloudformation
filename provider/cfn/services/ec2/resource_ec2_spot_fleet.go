@@ -33,15 +33,15 @@ func ResourceEC2SpotFleet() *schema.Resource {
 }
 
 func resourceEC2SpotFleetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::SpotFleet", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::SpotFleet", ResourceEC2SpotFleet(), data, meta)
 }
 
 func resourceEC2SpotFleetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::SpotFleet", data, meta)
+	return plugin.ResourceRead("AWS::EC2::SpotFleet", ResourceEC2SpotFleet(), data, meta)
 }
 
 func resourceEC2SpotFleetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::SpotFleet", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::SpotFleet", ResourceEC2SpotFleet(), data, meta)
 }
 
 func resourceEC2SpotFleetDelete(data *schema.ResourceData, meta interface{}) error {

@@ -41,15 +41,15 @@ func ResourceIoTPolicy() *schema.Resource {
 }
 
 func resourceIoTPolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoT::Policy", data, meta)
+	return plugin.ResourceCreate("AWS::IoT::Policy", ResourceIoTPolicy(), data, meta)
 }
 
 func resourceIoTPolicyRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoT::Policy", data, meta)
+	return plugin.ResourceRead("AWS::IoT::Policy", ResourceIoTPolicy(), data, meta)
 }
 
 func resourceIoTPolicyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoT::Policy", data, meta)
+	return plugin.ResourceUpdate("AWS::IoT::Policy", ResourceIoTPolicy(), data, meta)
 }
 
 func resourceIoTPolicyDelete(data *schema.ResourceData, meta interface{}) error {

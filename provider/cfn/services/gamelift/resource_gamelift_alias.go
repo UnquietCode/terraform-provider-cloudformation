@@ -41,15 +41,15 @@ func ResourceGameLiftAlias() *schema.Resource {
 }
 
 func resourceGameLiftAliasCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::GameLift::Alias", data, meta)
+	return plugin.ResourceCreate("AWS::GameLift::Alias", ResourceGameLiftAlias(), data, meta)
 }
 
 func resourceGameLiftAliasRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::GameLift::Alias", data, meta)
+	return plugin.ResourceRead("AWS::GameLift::Alias", ResourceGameLiftAlias(), data, meta)
 }
 
 func resourceGameLiftAliasUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::GameLift::Alias", data, meta)
+	return plugin.ResourceUpdate("AWS::GameLift::Alias", ResourceGameLiftAlias(), data, meta)
 }
 
 func resourceGameLiftAliasDelete(data *schema.ResourceData, meta interface{}) error {

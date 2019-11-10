@@ -40,15 +40,15 @@ func ResourceIoTCertificate() *schema.Resource {
 }
 
 func resourceIoTCertificateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoT::Certificate", data, meta)
+	return plugin.ResourceCreate("AWS::IoT::Certificate", ResourceIoTCertificate(), data, meta)
 }
 
 func resourceIoTCertificateRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoT::Certificate", data, meta)
+	return plugin.ResourceRead("AWS::IoT::Certificate", ResourceIoTCertificate(), data, meta)
 }
 
 func resourceIoTCertificateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoT::Certificate", data, meta)
+	return plugin.ResourceUpdate("AWS::IoT::Certificate", ResourceIoTCertificate(), data, meta)
 }
 
 func resourceIoTCertificateDelete(data *schema.ResourceData, meta interface{}) error {

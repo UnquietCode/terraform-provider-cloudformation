@@ -77,15 +77,15 @@ func ResourceMediaLiveInput() *schema.Resource {
 }
 
 func resourceMediaLiveInputCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::MediaLive::Input", data, meta)
+	return plugin.ResourceCreate("AWS::MediaLive::Input", ResourceMediaLiveInput(), data, meta)
 }
 
 func resourceMediaLiveInputRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::MediaLive::Input", data, meta)
+	return plugin.ResourceRead("AWS::MediaLive::Input", ResourceMediaLiveInput(), data, meta)
 }
 
 func resourceMediaLiveInputUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::MediaLive::Input", data, meta)
+	return plugin.ResourceUpdate("AWS::MediaLive::Input", ResourceMediaLiveInput(), data, meta)
 }
 
 func resourceMediaLiveInputDelete(data *schema.ResourceData, meta interface{}) error {

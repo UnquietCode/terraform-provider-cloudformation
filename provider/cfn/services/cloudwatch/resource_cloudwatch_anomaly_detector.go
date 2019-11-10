@@ -54,15 +54,15 @@ func ResourceCloudWatchAnomalyDetector() *schema.Resource {
 }
 
 func resourceCloudWatchAnomalyDetectorCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CloudWatch::AnomalyDetector", data, meta)
+	return plugin.ResourceCreate("AWS::CloudWatch::AnomalyDetector", ResourceCloudWatchAnomalyDetector(), data, meta)
 }
 
 func resourceCloudWatchAnomalyDetectorRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CloudWatch::AnomalyDetector", data, meta)
+	return plugin.ResourceRead("AWS::CloudWatch::AnomalyDetector", ResourceCloudWatchAnomalyDetector(), data, meta)
 }
 
 func resourceCloudWatchAnomalyDetectorUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CloudWatch::AnomalyDetector", data, meta)
+	return plugin.ResourceUpdate("AWS::CloudWatch::AnomalyDetector", ResourceCloudWatchAnomalyDetector(), data, meta)
 }
 
 func resourceCloudWatchAnomalyDetectorDelete(data *schema.ResourceData, meta interface{}) error {

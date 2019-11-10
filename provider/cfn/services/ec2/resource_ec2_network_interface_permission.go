@@ -41,15 +41,15 @@ func ResourceEC2NetworkInterfacePermission() *schema.Resource {
 }
 
 func resourceEC2NetworkInterfacePermissionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::NetworkInterfacePermission", data, meta)
+	return plugin.ResourceCreate("AWS::EC2::NetworkInterfacePermission", ResourceEC2NetworkInterfacePermission(), data, meta)
 }
 
 func resourceEC2NetworkInterfacePermissionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::NetworkInterfacePermission", data, meta)
+	return plugin.ResourceRead("AWS::EC2::NetworkInterfacePermission", ResourceEC2NetworkInterfacePermission(), data, meta)
 }
 
 func resourceEC2NetworkInterfacePermissionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::NetworkInterfacePermission", data, meta)
+	return plugin.ResourceUpdate("AWS::EC2::NetworkInterfacePermission", ResourceEC2NetworkInterfacePermission(), data, meta)
 }
 
 func resourceEC2NetworkInterfacePermissionDelete(data *schema.ResourceData, meta interface{}) error {

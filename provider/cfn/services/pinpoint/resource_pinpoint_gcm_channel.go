@@ -40,15 +40,15 @@ func ResourcePinpointGCMChannel() *schema.Resource {
 }
 
 func resourcePinpointGCMChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::GCMChannel", data, meta)
+	return plugin.ResourceCreate("AWS::Pinpoint::GCMChannel", ResourcePinpointGCMChannel(), data, meta)
 }
 
 func resourcePinpointGCMChannelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::GCMChannel", data, meta)
+	return plugin.ResourceRead("AWS::Pinpoint::GCMChannel", ResourcePinpointGCMChannel(), data, meta)
 }
 
 func resourcePinpointGCMChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::GCMChannel", data, meta)
+	return plugin.ResourceUpdate("AWS::Pinpoint::GCMChannel", ResourcePinpointGCMChannel(), data, meta)
 }
 
 func resourcePinpointGCMChannelDelete(data *schema.ResourceData, meta interface{}) error {

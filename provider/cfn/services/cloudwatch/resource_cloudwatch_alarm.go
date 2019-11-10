@@ -121,15 +121,15 @@ func ResourceCloudWatchAlarm() *schema.Resource {
 }
 
 func resourceCloudWatchAlarmCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CloudWatch::Alarm", data, meta)
+	return plugin.ResourceCreate("AWS::CloudWatch::Alarm", ResourceCloudWatchAlarm(), data, meta)
 }
 
 func resourceCloudWatchAlarmRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CloudWatch::Alarm", data, meta)
+	return plugin.ResourceRead("AWS::CloudWatch::Alarm", ResourceCloudWatchAlarm(), data, meta)
 }
 
 func resourceCloudWatchAlarmUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CloudWatch::Alarm", data, meta)
+	return plugin.ResourceUpdate("AWS::CloudWatch::Alarm", ResourceCloudWatchAlarm(), data, meta)
 }
 
 func resourceCloudWatchAlarmDelete(data *schema.ResourceData, meta interface{}) error {

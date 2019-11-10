@@ -48,15 +48,15 @@ func ResourceRDSDBSubnetGroup() *schema.Resource {
 }
 
 func resourceRDSDBSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RDS::DBSubnetGroup", data, meta)
+	return plugin.ResourceCreate("AWS::RDS::DBSubnetGroup", ResourceRDSDBSubnetGroup(), data, meta)
 }
 
 func resourceRDSDBSubnetGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::RDS::DBSubnetGroup", data, meta)
+	return plugin.ResourceRead("AWS::RDS::DBSubnetGroup", ResourceRDSDBSubnetGroup(), data, meta)
 }
 
 func resourceRDSDBSubnetGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::RDS::DBSubnetGroup", data, meta)
+	return plugin.ResourceUpdate("AWS::RDS::DBSubnetGroup", ResourceRDSDBSubnetGroup(), data, meta)
 }
 
 func resourceRDSDBSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {

@@ -44,15 +44,15 @@ func ResourcePinpointADMChannel() *schema.Resource {
 }
 
 func resourcePinpointADMChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::ADMChannel", data, meta)
+	return plugin.ResourceCreate("AWS::Pinpoint::ADMChannel", ResourcePinpointADMChannel(), data, meta)
 }
 
 func resourcePinpointADMChannelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::ADMChannel", data, meta)
+	return plugin.ResourceRead("AWS::Pinpoint::ADMChannel", ResourcePinpointADMChannel(), data, meta)
 }
 
 func resourcePinpointADMChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::ADMChannel", data, meta)
+	return plugin.ResourceUpdate("AWS::Pinpoint::ADMChannel", ResourcePinpointADMChannel(), data, meta)
 }
 
 func resourcePinpointADMChannelDelete(data *schema.ResourceData, meta interface{}) error {

@@ -76,15 +76,15 @@ func ResourceAppSyncResolver() *schema.Resource {
 }
 
 func resourceAppSyncResolverCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppSync::Resolver", data, meta)
+	return plugin.ResourceCreate("AWS::AppSync::Resolver", ResourceAppSyncResolver(), data, meta)
 }
 
 func resourceAppSyncResolverRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppSync::Resolver", data, meta)
+	return plugin.ResourceRead("AWS::AppSync::Resolver", ResourceAppSyncResolver(), data, meta)
 }
 
 func resourceAppSyncResolverUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppSync::Resolver", data, meta)
+	return plugin.ResourceUpdate("AWS::AppSync::Resolver", ResourceAppSyncResolver(), data, meta)
 }
 
 func resourceAppSyncResolverDelete(data *schema.ResourceData, meta interface{}) error {

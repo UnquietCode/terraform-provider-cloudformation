@@ -49,15 +49,15 @@ func ResourceServiceCatalogLaunchRoleConstraint() *schema.Resource {
 }
 
 func resourceServiceCatalogLaunchRoleConstraintCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::LaunchRoleConstraint", data, meta)
+	return plugin.ResourceCreate("AWS::ServiceCatalog::LaunchRoleConstraint", ResourceServiceCatalogLaunchRoleConstraint(), data, meta)
 }
 
 func resourceServiceCatalogLaunchRoleConstraintRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ServiceCatalog::LaunchRoleConstraint", data, meta)
+	return plugin.ResourceRead("AWS::ServiceCatalog::LaunchRoleConstraint", ResourceServiceCatalogLaunchRoleConstraint(), data, meta)
 }
 
 func resourceServiceCatalogLaunchRoleConstraintUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ServiceCatalog::LaunchRoleConstraint", data, meta)
+	return plugin.ResourceUpdate("AWS::ServiceCatalog::LaunchRoleConstraint", ResourceServiceCatalogLaunchRoleConstraint(), data, meta)
 }
 
 func resourceServiceCatalogLaunchRoleConstraintDelete(data *schema.ResourceData, meta interface{}) error {
