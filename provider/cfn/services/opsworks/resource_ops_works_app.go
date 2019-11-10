@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package opsworks
 
@@ -22,7 +21,7 @@ func ResourceOpsWorksApp() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"app_source": {
 				Type: schema.TypeList,
-				Elem: propertySource(),
+				Elem: propertyAppSource(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -33,7 +32,7 @@ func ResourceOpsWorksApp() *schema.Resource {
 			},
 			"data_sources": {
 				Type: schema.TypeSet,
-				Elem: propertyDataSource(),
+				Elem: propertyAppDataSource(),
 				Required: false,
 			},
 			"description": {
@@ -51,7 +50,7 @@ func ResourceOpsWorksApp() *schema.Resource {
 			},
 			"environment": {
 				Type: schema.TypeList,
-				Elem: propertyEnvironmentVariable(),
+				Elem: propertyAppEnvironmentVariable(),
 				Required: false,
 			},
 			"name": {
@@ -65,7 +64,7 @@ func ResourceOpsWorksApp() *schema.Resource {
 			},
 			"ssl_configuration": {
 				Type: schema.TypeList,
-				Elem: propertySslConfiguration(),
+				Elem: propertyAppSslConfiguration(),
 				Required: false,
 				MaxItems: 1,
 			},

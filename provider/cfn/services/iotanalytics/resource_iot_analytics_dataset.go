@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package iotanalytics
 
@@ -23,7 +22,7 @@ func ResourceIoTAnalyticsDataset() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"actions": {
 				Type: schema.TypeList,
-				Elem: propertyAction(),
+				Elem: propertyDatasetAction(),
 				Required: true,
 			},
 			"dataset_name": {
@@ -33,23 +32,23 @@ func ResourceIoTAnalyticsDataset() *schema.Resource {
 			},
 			"content_delivery_rules": {
 				Type: schema.TypeList,
-				Elem: propertyDatasetContentDeliveryRule(),
+				Elem: propertyDatasetDatasetContentDeliveryRule(),
 				Required: false,
 			},
 			"triggers": {
 				Type: schema.TypeList,
-				Elem: propertyTrigger(),
+				Elem: propertyDatasetTrigger(),
 				Required: false,
 			},
 			"versioning_configuration": {
 				Type: schema.TypeList,
-				Elem: propertyVersioningConfiguration(),
+				Elem: propertyDatasetVersioningConfiguration(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"retention_period": {
 				Type: schema.TypeList,
-				Elem: propertyRetentionPeriod(),
+				Elem: propertyDatasetRetentionPeriod(),
 				Required: false,
 				MaxItems: 1,
 			},

@@ -1,0 +1,38 @@
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
+//
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
+
+package greengrass
+
+import (
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+)
+
+func propertySubscriptionDefinitionVersionSubscription() *schema.Resource {
+	return &schema.Resource{
+		Schema: map[string]*schema.Schema{
+			"target": {
+				Type: schema.TypeString,
+				Required: true,
+				ForceNew: true,
+			},
+			"id": {
+				Type: schema.TypeString,
+				Required: true,
+				ForceNew: true,
+			},
+			"source": {
+				Type: schema.TypeString,
+				Required: true,
+				ForceNew: true,
+			},
+			"subject": {
+				Type: schema.TypeString,
+				Required: true,
+				ForceNew: true,
+			},
+		},
+	}
+}

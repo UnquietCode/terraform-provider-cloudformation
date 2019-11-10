@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package transfer
 
@@ -27,7 +26,7 @@ func ResourceTransferServer() *schema.Resource {
 			},
 			"identity_provider_details": {
 				Type: schema.TypeList,
-				Elem: propertyIdentityProviderDetails(),
+				Elem: propertyServerIdentityProviderDetails(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -37,7 +36,7 @@ func ResourceTransferServer() *schema.Resource {
 			},
 			"endpoint_details": {
 				Type: schema.TypeList,
-				Elem: propertyEndpointDetails(),
+				Elem: propertyServerEndpointDetails(),
 				Required: false,
 				MaxItems: 1,
 			},

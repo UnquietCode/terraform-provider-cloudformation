@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package emr
 
@@ -22,7 +21,7 @@ func ResourceEMRInstanceGroupConfig() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"auto_scaling_policy": {
 				Type: schema.TypeList,
-				Elem: propertyAutoScalingPolicy(),
+				Elem: propertyInstanceGroupConfigAutoScalingPolicy(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -33,13 +32,13 @@ func ResourceEMRInstanceGroupConfig() *schema.Resource {
 			},
 			"configurations": {
 				Type: schema.TypeSet,
-				Elem: propertyConfiguration(),
+				Elem: propertyInstanceGroupConfigConfiguration(),
 				Required: false,
 				ForceNew: true,
 			},
 			"ebs_configuration": {
 				Type: schema.TypeList,
-				Elem: propertyEbsConfiguration(),
+				Elem: propertyInstanceGroupConfigEbsConfiguration(),
 				Required: false,
 				ForceNew: true,
 				MaxItems: 1,

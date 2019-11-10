@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package cognito
 
@@ -22,13 +21,13 @@ func ResourceCognitoIdentityPool() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"push_sync": {
 				Type: schema.TypeList,
-				Elem: propertyPushSync(),
+				Elem: propertyIdentityPoolPushSync(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"cognito_identity_providers": {
 				Type: schema.TypeList,
-				Elem: propertyCognitoIdentityProvider(),
+				Elem: propertyIdentityPoolCognitoIdentityProvider(),
 				Required: false,
 			},
 			"cognito_events": {
@@ -41,7 +40,7 @@ func ResourceCognitoIdentityPool() *schema.Resource {
 			},
 			"cognito_streams": {
 				Type: schema.TypeList,
-				Elem: propertyCognitoStreams(),
+				Elem: propertyIdentityPoolCognitoStreams(),
 				Required: false,
 				MaxItems: 1,
 			},

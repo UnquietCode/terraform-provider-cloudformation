@@ -1,0 +1,98 @@
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
+//
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
+
+package ssm
+
+import (
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/unquietcode/terraform-cfn-provider/plugin"
+)
+
+func ResourceMaintenanceWindowTask() *schema.Resource {
+	return &schema.Resource{
+		Create: resourceMaintenanceWindowTaskCreate,
+		Read:   resourceMaintenanceWindowTaskRead,
+		Update: resourceMaintenanceWindowTaskUpdate,
+		Delete: resourceMaintenanceWindowTaskDelete,
+
+		Schema: map[string]*schema.Schema{
+			"max_errors": {
+				Type: schema.TypeString,
+				Required: true,
+			},
+			"description": {
+				Type: schema.TypeString,
+				Required: false,
+			},
+			"service_role_arn": {
+				Type: schema.TypeString,
+				Required: false,
+			},
+			"priority": {
+				Type: schema.TypeInt,
+				Required: true,
+			},
+			"max_concurrency": {
+				Type: schema.TypeString,
+				Required: true,
+			},
+			"targets": {
+				Type: schema.TypeList,
+				Elem: propertyMaintenanceWindowTaskTarget(),
+				Required: true,
+			},
+			"name": {
+				Type: schema.TypeString,
+				Required: false,
+			},
+			"task_arn": {
+				Type: schema.TypeString,
+				Required: true,
+			},
+			"task_invocation_parameters": {
+				Type: schema.TypeList,
+				Elem: propertyMaintenanceWindowTaskTaskInvocationParameters(),
+				Required: false,
+				MaxItems: 1,
+			},
+			"window_id": {
+				Type: schema.TypeString,
+				Required: true,
+				ForceNew: true,
+			},
+			"task_parameters": {
+				Type: schema.TypeMap,
+				Required: false,
+			},
+			"task_type": {
+				Type: schema.TypeString,
+				Required: true,
+			},
+			"logging_info": {
+				Type: schema.TypeList,
+				Elem: propertyMaintenanceWindowTaskLoggingInfo(),
+				Required: false,
+				MaxItems: 1,
+			},
+		},
+	}
+}
+
+func resourceMaintenanceWindowTaskCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::SSM::MaintenanceWindowTask", data, meta)
+}
+
+func resourceMaintenanceWindowTaskRead(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceRead("AWS::SSM::MaintenanceWindowTask", data, meta)
+}
+
+func resourceMaintenanceWindowTaskUpdate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceUpdate("AWS::SSM::MaintenanceWindowTask", data, meta)
+}
+
+func resourceMaintenanceWindowTaskDelete(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceDelete("AWS::SSM::MaintenanceWindowTask", data, meta)
+}

@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package ssm
 
@@ -42,7 +41,7 @@ func ResourceSSMMaintenanceWindowTask() *schema.Resource {
 			},
 			"targets": {
 				Type: schema.TypeList,
-				Elem: propertyTarget(),
+				Elem: propertyMaintenanceWindowTaskTarget(),
 				Required: true,
 			},
 			"name": {
@@ -55,7 +54,7 @@ func ResourceSSMMaintenanceWindowTask() *schema.Resource {
 			},
 			"task_invocation_parameters": {
 				Type: schema.TypeList,
-				Elem: propertyTaskInvocationParameters(),
+				Elem: propertyMaintenanceWindowTaskTaskInvocationParameters(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -74,7 +73,7 @@ func ResourceSSMMaintenanceWindowTask() *schema.Resource {
 			},
 			"logging_info": {
 				Type: schema.TypeList,
-				Elem: propertyLoggingInfo(),
+				Elem: propertyMaintenanceWindowTaskLoggingInfo(),
 				Required: false,
 				MaxItems: 1,
 			},

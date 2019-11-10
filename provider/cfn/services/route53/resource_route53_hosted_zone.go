@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package route53
 
@@ -22,13 +21,13 @@ func ResourceRoute53HostedZone() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"hosted_zone_config": {
 				Type: schema.TypeList,
-				Elem: propertyHostedZoneConfig(),
+				Elem: propertyHostedZoneHostedZoneConfig(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"hosted_zone_tags": {
 				Type: schema.TypeList,
-				Elem: propertyHostedZoneTag(),
+				Elem: propertyHostedZoneHostedZoneTag(),
 				Required: false,
 			},
 			"name": {
@@ -38,13 +37,13 @@ func ResourceRoute53HostedZone() *schema.Resource {
 			},
 			"query_logging_config": {
 				Type: schema.TypeList,
-				Elem: propertyQueryLoggingConfig(),
+				Elem: propertyHostedZoneQueryLoggingConfig(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"vp_cs": {
 				Type: schema.TypeList,
-				Elem: propertyVPC(),
+				Elem: propertyHostedZoneVPC(),
 				Required: false,
 			},
 		},

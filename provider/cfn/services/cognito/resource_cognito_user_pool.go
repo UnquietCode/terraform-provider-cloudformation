@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package cognito
 
@@ -26,13 +25,13 @@ func ResourceCognitoUserPool() *schema.Resource {
 			},
 			"policies": {
 				Type: schema.TypeList,
-				Elem: propertyPolicies(),
+				Elem: propertyUserPoolPolicies(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"verification_message_template": {
 				Type: schema.TypeList,
-				Elem: propertyVerificationMessageTemplate(),
+				Elem: propertyUserPoolVerificationMessageTemplate(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -42,12 +41,12 @@ func ResourceCognitoUserPool() *schema.Resource {
 			},
 			"schema": {
 				Type: schema.TypeList,
-				Elem: propertySchemaAttribute(),
+				Elem: propertyUserPoolSchemaAttribute(),
 				Required: false,
 			},
 			"admin_create_user_config": {
 				Type: schema.TypeList,
-				Elem: propertyAdminCreateUserConfig(),
+				Elem: propertyUserPoolAdminCreateUserConfig(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -65,19 +64,19 @@ func ResourceCognitoUserPool() *schema.Resource {
 			},
 			"user_pool_add_ons": {
 				Type: schema.TypeList,
-				Elem: propertyUserPoolAddOns(),
+				Elem: propertyUserPoolUserPoolAddOns(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"email_configuration": {
 				Type: schema.TypeList,
-				Elem: propertyEmailConfiguration(),
+				Elem: propertyUserPoolEmailConfiguration(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"sms_configuration": {
 				Type: schema.TypeList,
-				Elem: propertySmsConfiguration(),
+				Elem: propertyUserPoolSmsConfiguration(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -97,7 +96,7 @@ func ResourceCognitoUserPool() *schema.Resource {
 			},
 			"lambda_config": {
 				Type: schema.TypeList,
-				Elem: propertyLambdaConfig(),
+				Elem: propertyUserPoolLambdaConfig(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -113,7 +112,7 @@ func ResourceCognitoUserPool() *schema.Resource {
 			},
 			"device_configuration": {
 				Type: schema.TypeList,
-				Elem: propertyDeviceConfiguration(),
+				Elem: propertyUserPoolDeviceConfiguration(),
 				Required: false,
 				MaxItems: 1,
 			},

@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package glue
 
@@ -22,25 +21,25 @@ func ResourceGlueClassifier() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"xml_classifier": {
 				Type: schema.TypeList,
-				Elem: propertyXMLClassifier(),
+				Elem: propertyClassifierXMLClassifier(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"json_classifier": {
 				Type: schema.TypeList,
-				Elem: propertyJsonClassifier(),
+				Elem: propertyClassifierJsonClassifier(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"csv_classifier": {
 				Type: schema.TypeList,
-				Elem: propertyCsvClassifier(),
+				Elem: propertyClassifierCsvClassifier(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"grok_classifier": {
 				Type: schema.TypeList,
-				Elem: propertyGrokClassifier(),
+				Elem: propertyClassifierGrokClassifier(),
 				Required: false,
 				MaxItems: 1,
 			},

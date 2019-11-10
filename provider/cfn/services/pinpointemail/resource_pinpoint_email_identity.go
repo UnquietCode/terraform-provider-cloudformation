@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package pinpointemail
 
@@ -30,7 +29,7 @@ func ResourcePinpointEmailIdentity() *schema.Resource {
 			},
 			"tags": {
 				Type: schema.TypeList,
-				Elem: propertyTags(),
+				Elem: propertyIdentityTags(),
 				Required: false,
 			},
 			"name": {
@@ -40,7 +39,7 @@ func ResourcePinpointEmailIdentity() *schema.Resource {
 			},
 			"mail_from_attributes": {
 				Type: schema.TypeList,
-				Elem: propertyMailFromAttributes(),
+				Elem: propertyIdentityMailFromAttributes(),
 				Required: false,
 				MaxItems: 1,
 			},

@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package ec2
 
@@ -31,7 +30,7 @@ func ResourceEC2NetworkAclEntry() *schema.Resource {
 			},
 			"icmp": {
 				Type: schema.TypeList,
-				Elem: propertyIcmp(),
+				Elem: propertyNetworkAclEntryIcmp(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -46,7 +45,7 @@ func ResourceEC2NetworkAclEntry() *schema.Resource {
 			},
 			"port_range": {
 				Type: schema.TypeList,
-				Elem: propertyPortRange(),
+				Elem: propertyNetworkAclEntryPortRange(),
 				Required: false,
 				MaxItems: 1,
 			},

@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package codedeploy
 
@@ -22,7 +21,7 @@ func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"alarm_configuration": {
 				Type: schema.TypeList,
-				Elem: propertyAlarmConfiguration(),
+				Elem: propertyDeploymentGroupAlarmConfiguration(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -33,7 +32,7 @@ func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 			},
 			"auto_rollback_configuration": {
 				Type: schema.TypeList,
-				Elem: propertyAutoRollbackConfiguration(),
+				Elem: propertyDeploymentGroupAutoRollbackConfiguration(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -45,7 +44,7 @@ func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 			},
 			"deployment": {
 				Type: schema.TypeList,
-				Elem: propertyDeployment(),
+				Elem: propertyDeploymentGroupDeployment(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -60,35 +59,35 @@ func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 			},
 			"deployment_style": {
 				Type: schema.TypeList,
-				Elem: propertyDeploymentStyle(),
+				Elem: propertyDeploymentGroupDeploymentStyle(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"ec2_tag_filters": {
 				Type: schema.TypeSet,
-				Elem: propertyEC2TagFilter(),
+				Elem: propertyDeploymentGroupEC2TagFilter(),
 				Required: false,
 			},
 			"ec2_tag_set": {
 				Type: schema.TypeList,
-				Elem: propertyEC2TagSet(),
+				Elem: propertyDeploymentGroupEC2TagSet(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"load_balancer_info": {
 				Type: schema.TypeList,
-				Elem: propertyLoadBalancerInfo(),
+				Elem: propertyDeploymentGroupLoadBalancerInfo(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"on_premises_instance_tag_filters": {
 				Type: schema.TypeSet,
-				Elem: propertyTagFilter(),
+				Elem: propertyDeploymentGroupTagFilter(),
 				Required: false,
 			},
 			"on_premises_tag_set": {
 				Type: schema.TypeList,
-				Elem: propertyOnPremisesTagSet(),
+				Elem: propertyDeploymentGroupOnPremisesTagSet(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -98,7 +97,7 @@ func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 			},
 			"trigger_configurations": {
 				Type: schema.TypeSet,
-				Elem: propertyTriggerConfig(),
+				Elem: propertyDeploymentGroupTriggerConfig(),
 				Required: false,
 			},
 		},

@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package appsync
 
@@ -34,19 +33,19 @@ func ResourceAppSyncDataSource() *schema.Resource {
 			},
 			"http_config": {
 				Type: schema.TypeList,
-				Elem: propertyHttpConfig(),
+				Elem: propertyDataSourceHttpConfig(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"relational_database_config": {
 				Type: schema.TypeList,
-				Elem: propertyRelationalDatabaseConfig(),
+				Elem: propertyDataSourceRelationalDatabaseConfig(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"lambda_config": {
 				Type: schema.TypeList,
-				Elem: propertyLambdaConfig(),
+				Elem: propertyDataSourceLambdaConfig(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -62,13 +61,13 @@ func ResourceAppSyncDataSource() *schema.Resource {
 			},
 			"dynamo_db_config": {
 				Type: schema.TypeList,
-				Elem: propertyDynamoDBConfig(),
+				Elem: propertyDataSourceDynamoDBConfig(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"elasticsearch_config": {
 				Type: schema.TypeList,
-				Elem: propertyElasticsearchConfig(),
+				Elem: propertyDataSourceElasticsearchConfig(),
 				Required: false,
 				MaxItems: 1,
 			},

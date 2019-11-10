@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package apigateway
 
@@ -23,7 +22,7 @@ func ResourceApiGatewayStage() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"access_log_setting": {
 				Type: schema.TypeList,
-				Elem: propertyAccessLogSetting(),
+				Elem: propertyStageAccessLogSetting(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -37,7 +36,7 @@ func ResourceApiGatewayStage() *schema.Resource {
 			},
 			"canary_setting": {
 				Type: schema.TypeList,
-				Elem: propertyCanarySetting(),
+				Elem: propertyStageCanarySetting(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -59,7 +58,7 @@ func ResourceApiGatewayStage() *schema.Resource {
 			},
 			"method_settings": {
 				Type: schema.TypeSet,
-				Elem: propertyMethodSetting(),
+				Elem: propertyStageMethodSetting(),
 				Required: false,
 			},
 			"rest_api_id": {

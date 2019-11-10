@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package opsworks
 
@@ -32,7 +31,7 @@ func ResourceOpsWorksStack() *schema.Resource {
 			},
 			"chef_configuration": {
 				Type: schema.TypeList,
-				Elem: propertyChefConfiguration(),
+				Elem: propertyStackChefConfiguration(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -50,13 +49,13 @@ func ResourceOpsWorksStack() *schema.Resource {
 			},
 			"configuration_manager": {
 				Type: schema.TypeList,
-				Elem: propertyStackConfigurationManager(),
+				Elem: propertyStackStackConfigurationManager(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"custom_cookbooks_source": {
 				Type: schema.TypeList,
-				Elem: propertySource(),
+				Elem: propertyStackSource(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -94,7 +93,7 @@ func ResourceOpsWorksStack() *schema.Resource {
 			},
 			"elastic_ips": {
 				Type: schema.TypeSet,
-				Elem: propertyElasticIp(),
+				Elem: propertyStackElasticIp(),
 				Required: false,
 			},
 			"hostname_theme": {
@@ -107,7 +106,7 @@ func ResourceOpsWorksStack() *schema.Resource {
 			},
 			"rds_db_instances": {
 				Type: schema.TypeSet,
-				Elem: propertyRdsDbInstance(),
+				Elem: propertyStackRdsDbInstance(),
 				Required: false,
 			},
 			"service_role_arn": {

@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package medialive
 
@@ -27,19 +26,19 @@ func ResourceMediaLiveInput() *schema.Resource {
 			},
 			"destinations": {
 				Type: schema.TypeList,
-				Elem: propertyInputDestinationRequest(),
+				Elem: propertyInputInputDestinationRequest(),
 				Required: false,
 			},
 			"vpc": {
 				Type: schema.TypeList,
-				Elem: propertyInputVpcRequest(),
+				Elem: propertyInputInputVpcRequest(),
 				Required: false,
 				ForceNew: true,
 				MaxItems: 1,
 			},
 			"media_connect_flows": {
 				Type: schema.TypeList,
-				Elem: propertyMediaConnectFlowRequest(),
+				Elem: propertyInputMediaConnectFlowRequest(),
 				Required: false,
 			},
 			"input_security_groups": {
@@ -49,7 +48,7 @@ func ResourceMediaLiveInput() *schema.Resource {
 			},
 			"sources": {
 				Type: schema.TypeList,
-				Elem: propertyInputSourceRequest(),
+				Elem: propertyInputInputSourceRequest(),
 				Required: false,
 			},
 			"role_arn": {

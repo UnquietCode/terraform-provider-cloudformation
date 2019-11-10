@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package emr
 
@@ -28,7 +27,7 @@ func ResourceEMRCluster() *schema.Resource {
 			},
 			"applications": {
 				Type: schema.TypeSet,
-				Elem: propertyApplication(),
+				Elem: propertyClusterApplication(),
 				Required: false,
 				ForceNew: true,
 			},
@@ -39,13 +38,13 @@ func ResourceEMRCluster() *schema.Resource {
 			},
 			"bootstrap_actions": {
 				Type: schema.TypeSet,
-				Elem: propertyBootstrapActionConfig(),
+				Elem: propertyClusterBootstrapActionConfig(),
 				Required: false,
 				ForceNew: true,
 			},
 			"configurations": {
 				Type: schema.TypeSet,
-				Elem: propertyConfiguration(),
+				Elem: propertyClusterConfiguration(),
 				Required: false,
 				ForceNew: true,
 			},
@@ -61,7 +60,7 @@ func ResourceEMRCluster() *schema.Resource {
 			},
 			"instances": {
 				Type: schema.TypeList,
-				Elem: propertyJobFlowInstancesConfig(),
+				Elem: propertyClusterJobFlowInstancesConfig(),
 				Required: true,
 				MaxItems: 1,
 			},
@@ -72,7 +71,7 @@ func ResourceEMRCluster() *schema.Resource {
 			},
 			"kerberos_attributes": {
 				Type: schema.TypeList,
-				Elem: propertyKerberosAttributes(),
+				Elem: propertyClusterKerberosAttributes(),
 				Required: false,
 				ForceNew: true,
 				MaxItems: 1,
@@ -109,7 +108,7 @@ func ResourceEMRCluster() *schema.Resource {
 			},
 			"steps": {
 				Type: schema.TypeSet,
-				Elem: propertyStepConfig(),
+				Elem: propertyClusterStepConfig(),
 				Required: false,
 				ForceNew: true,
 			},

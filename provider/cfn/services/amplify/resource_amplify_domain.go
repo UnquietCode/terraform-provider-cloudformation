@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package amplify
 
@@ -22,7 +21,7 @@ func ResourceAmplifyDomain() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"sub_domain_settings": {
 				Type: schema.TypeList,
-				Elem: propertySubDomainSetting(),
+				Elem: propertyDomainSubDomainSetting(),
 				Required: true,
 			},
 			"app_id": {

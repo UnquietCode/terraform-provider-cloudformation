@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package msk
 
@@ -22,7 +21,7 @@ func ResourceMSKCluster() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"broker_node_group_info": {
 				Type: schema.TypeList,
-				Elem: propertyBrokerNodeGroupInfo(),
+				Elem: propertyClusterBrokerNodeGroupInfo(),
 				Required: true,
 				ForceNew: true,
 				MaxItems: 1,
@@ -43,7 +42,7 @@ func ResourceMSKCluster() *schema.Resource {
 			},
 			"encryption_info": {
 				Type: schema.TypeList,
-				Elem: propertyEncryptionInfo(),
+				Elem: propertyClusterEncryptionInfo(),
 				Required: false,
 				ForceNew: true,
 				MaxItems: 1,
@@ -55,7 +54,7 @@ func ResourceMSKCluster() *schema.Resource {
 			},
 			"client_authentication": {
 				Type: schema.TypeList,
-				Elem: propertyClientAuthentication(),
+				Elem: propertyClusterClientAuthentication(),
 				Required: false,
 				ForceNew: true,
 				MaxItems: 1,
@@ -67,7 +66,7 @@ func ResourceMSKCluster() *schema.Resource {
 			},
 			"configuration_info": {
 				Type: schema.TypeList,
-				Elem: propertyConfigurationInfo(),
+				Elem: propertyClusterConfigurationInfo(),
 				Required: false,
 				ForceNew: true,
 				MaxItems: 1,

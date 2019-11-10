@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package datapipeline
 
@@ -36,22 +35,22 @@ func ResourceDataPipelinePipeline() *schema.Resource {
 			},
 			"parameter_objects": {
 				Type: schema.TypeList,
-				Elem: propertyParameterObject(),
+				Elem: propertyPipelineParameterObject(),
 				Required: true,
 			},
 			"parameter_values": {
 				Type: schema.TypeList,
-				Elem: propertyParameterValue(),
+				Elem: propertyPipelineParameterValue(),
 				Required: false,
 			},
 			"pipeline_objects": {
 				Type: schema.TypeList,
-				Elem: propertyPipelineObject(),
+				Elem: propertyPipelinePipelineObject(),
 				Required: false,
 			},
 			"pipeline_tags": {
 				Type: schema.TypeList,
-				Elem: propertyPipelineTag(),
+				Elem: propertyPipelinePipelineTag(),
 				Required: false,
 			},
 		},

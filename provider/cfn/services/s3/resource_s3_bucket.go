@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package s3
 
@@ -23,7 +22,7 @@ func ResourceS3Bucket() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"accelerate_configuration": {
 				Type: schema.TypeList,
-				Elem: propertyAccelerateConfiguration(),
+				Elem: propertyBucketAccelerateConfiguration(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -33,12 +32,12 @@ func ResourceS3Bucket() *schema.Resource {
 			},
 			"analytics_configurations": {
 				Type: schema.TypeSet,
-				Elem: propertyAnalyticsConfiguration(),
+				Elem: propertyBucketAnalyticsConfiguration(),
 				Required: false,
 			},
 			"bucket_encryption": {
 				Type: schema.TypeList,
-				Elem: propertyBucketEncryption(),
+				Elem: propertyBucketBucketEncryption(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -49,41 +48,41 @@ func ResourceS3Bucket() *schema.Resource {
 			},
 			"cors_configuration": {
 				Type: schema.TypeList,
-				Elem: propertyCorsConfiguration(),
+				Elem: propertyBucketCorsConfiguration(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"inventory_configurations": {
 				Type: schema.TypeSet,
-				Elem: propertyInventoryConfiguration(),
+				Elem: propertyBucketInventoryConfiguration(),
 				Required: false,
 			},
 			"lifecycle_configuration": {
 				Type: schema.TypeList,
-				Elem: propertyLifecycleConfiguration(),
+				Elem: propertyBucketLifecycleConfiguration(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"logging_configuration": {
 				Type: schema.TypeList,
-				Elem: propertyLoggingConfiguration(),
+				Elem: propertyBucketLoggingConfiguration(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"metrics_configurations": {
 				Type: schema.TypeSet,
-				Elem: propertyMetricsConfiguration(),
+				Elem: propertyBucketMetricsConfiguration(),
 				Required: false,
 			},
 			"notification_configuration": {
 				Type: schema.TypeList,
-				Elem: propertyNotificationConfiguration(),
+				Elem: propertyBucketNotificationConfiguration(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"object_lock_configuration": {
 				Type: schema.TypeList,
-				Elem: propertyObjectLockConfiguration(),
+				Elem: propertyBucketObjectLockConfiguration(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -94,13 +93,13 @@ func ResourceS3Bucket() *schema.Resource {
 			},
 			"public_access_block_configuration": {
 				Type: schema.TypeList,
-				Elem: propertyPublicAccessBlockConfiguration(),
+				Elem: propertyBucketPublicAccessBlockConfiguration(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"replication_configuration": {
 				Type: schema.TypeList,
-				Elem: propertyReplicationConfiguration(),
+				Elem: propertyBucketReplicationConfiguration(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -111,13 +110,13 @@ func ResourceS3Bucket() *schema.Resource {
 			},
 			"versioning_configuration": {
 				Type: schema.TypeList,
-				Elem: propertyVersioningConfiguration(),
+				Elem: propertyBucketVersioningConfiguration(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"website_configuration": {
 				Type: schema.TypeList,
-				Elem: propertyWebsiteConfiguration(),
+				Elem: propertyBucketWebsiteConfiguration(),
 				Required: false,
 				MaxItems: 1,
 			},

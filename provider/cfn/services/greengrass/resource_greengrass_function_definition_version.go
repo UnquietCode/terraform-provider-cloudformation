@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package greengrass
 
@@ -22,14 +21,14 @@ func ResourceGreengrassFunctionDefinitionVersion() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"default_config": {
 				Type: schema.TypeList,
-				Elem: propertyDefaultConfig(),
+				Elem: propertyFunctionDefinitionVersionDefaultConfig(),
 				Required: false,
 				ForceNew: true,
 				MaxItems: 1,
 			},
 			"functions": {
 				Type: schema.TypeList,
-				Elem: propertyFunction(),
+				Elem: propertyFunctionDefinitionVersionFunction(),
 				Required: true,
 				ForceNew: true,
 			},

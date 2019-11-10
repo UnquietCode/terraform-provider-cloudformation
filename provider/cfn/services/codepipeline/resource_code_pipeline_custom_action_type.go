@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package codepipeline
 
@@ -27,20 +26,20 @@ func ResourceCodePipelineCustomActionType() *schema.Resource {
 			},
 			"configuration_properties": {
 				Type: schema.TypeSet,
-				Elem: propertyConfigurationProperties(),
+				Elem: propertyCustomActionTypeConfigurationProperties(),
 				Required: false,
 				ForceNew: true,
 			},
 			"input_artifact_details": {
 				Type: schema.TypeList,
-				Elem: propertyArtifactDetails(),
+				Elem: propertyCustomActionTypeArtifactDetails(),
 				Required: true,
 				ForceNew: true,
 				MaxItems: 1,
 			},
 			"output_artifact_details": {
 				Type: schema.TypeList,
-				Elem: propertyArtifactDetails(),
+				Elem: propertyCustomActionTypeArtifactDetails(),
 				Required: true,
 				ForceNew: true,
 				MaxItems: 1,
@@ -52,7 +51,7 @@ func ResourceCodePipelineCustomActionType() *schema.Resource {
 			},
 			"settings": {
 				Type: schema.TypeList,
-				Elem: propertySettings(),
+				Elem: propertyCustomActionTypeSettings(),
 				Required: false,
 				ForceNew: true,
 				MaxItems: 1,

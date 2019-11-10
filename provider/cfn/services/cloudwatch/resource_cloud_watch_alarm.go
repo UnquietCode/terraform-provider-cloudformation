@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package cloudwatch
 
@@ -48,7 +47,7 @@ func ResourceCloudWatchAlarm() *schema.Resource {
 			},
 			"dimensions": {
 				Type: schema.TypeList,
-				Elem: propertyDimension(),
+				Elem: propertyAlarmDimension(),
 				Required: false,
 			},
 			"evaluate_low_sample_count_percentile": {
@@ -74,7 +73,7 @@ func ResourceCloudWatchAlarm() *schema.Resource {
 			},
 			"metrics": {
 				Type: schema.TypeSet,
-				Elem: propertyMetricDataQuery(),
+				Elem: propertyAlarmMetricDataQuery(),
 				Required: false,
 			},
 			"namespace": {

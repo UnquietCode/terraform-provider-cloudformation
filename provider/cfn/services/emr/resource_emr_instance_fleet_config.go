@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package emr
 
@@ -32,13 +31,13 @@ func ResourceEMRInstanceFleetConfig() *schema.Resource {
 			},
 			"instance_type_configs": {
 				Type: schema.TypeSet,
-				Elem: propertyInstanceTypeConfig(),
+				Elem: propertyInstanceFleetConfigInstanceTypeConfig(),
 				Required: false,
 				ForceNew: true,
 			},
 			"launch_specifications": {
 				Type: schema.TypeList,
-				Elem: propertyInstanceFleetProvisioningSpecifications(),
+				Elem: propertyInstanceFleetConfigInstanceFleetProvisioningSpecifications(),
 				Required: false,
 				ForceNew: true,
 				MaxItems: 1,

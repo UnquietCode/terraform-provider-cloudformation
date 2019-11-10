@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package ec2
 
@@ -36,19 +35,19 @@ func ResourceEC2Instance() *schema.Resource {
 			},
 			"block_device_mappings": {
 				Type: schema.TypeList,
-				Elem: propertyBlockDeviceMapping(),
+				Elem: propertyInstanceBlockDeviceMapping(),
 				Required: false,
 			},
 			"cpu_options": {
 				Type: schema.TypeList,
-				Elem: propertyCpuOptions(),
+				Elem: propertyInstanceCpuOptions(),
 				Required: false,
 				ForceNew: true,
 				MaxItems: 1,
 			},
 			"credit_specification": {
 				Type: schema.TypeList,
-				Elem: propertyCreditSpecification(),
+				Elem: propertyInstanceCreditSpecification(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -62,13 +61,13 @@ func ResourceEC2Instance() *schema.Resource {
 			},
 			"elastic_gpu_specifications": {
 				Type: schema.TypeSet,
-				Elem: propertyElasticGpuSpecification(),
+				Elem: propertyInstanceElasticGpuSpecification(),
 				Required: false,
 				ForceNew: true,
 			},
 			"elastic_inference_accelerators": {
 				Type: schema.TypeSet,
-				Elem: propertyElasticInferenceAccelerator(),
+				Elem: propertyInstanceElasticInferenceAccelerator(),
 				Required: false,
 				ForceNew: true,
 			},
@@ -100,7 +99,7 @@ func ResourceEC2Instance() *schema.Resource {
 			},
 			"ipv6_addresses": {
 				Type: schema.TypeList,
-				Elem: propertyInstanceIpv6Address(),
+				Elem: propertyInstanceInstanceIpv6Address(),
 				Required: false,
 				ForceNew: true,
 			},
@@ -115,14 +114,14 @@ func ResourceEC2Instance() *schema.Resource {
 			},
 			"launch_template": {
 				Type: schema.TypeList,
-				Elem: propertyLaunchTemplateSpecification(),
+				Elem: propertyInstanceLaunchTemplateSpecification(),
 				Required: false,
 				ForceNew: true,
 				MaxItems: 1,
 			},
 			"license_specifications": {
 				Type: schema.TypeSet,
-				Elem: propertyLicenseSpecification(),
+				Elem: propertyInstanceLicenseSpecification(),
 				Required: false,
 				ForceNew: true,
 			},
@@ -132,7 +131,7 @@ func ResourceEC2Instance() *schema.Resource {
 			},
 			"network_interfaces": {
 				Type: schema.TypeList,
-				Elem: propertyNetworkInterface(),
+				Elem: propertyInstanceNetworkInterface(),
 				Required: false,
 				ForceNew: true,
 			},
@@ -167,7 +166,7 @@ func ResourceEC2Instance() *schema.Resource {
 			},
 			"ssm_associations": {
 				Type: schema.TypeList,
-				Elem: propertySsmAssociation(),
+				Elem: propertyInstanceSsmAssociation(),
 				Required: false,
 			},
 			"subnet_id": {
@@ -190,7 +189,7 @@ func ResourceEC2Instance() *schema.Resource {
 			},
 			"volumes": {
 				Type: schema.TypeList,
-				Elem: propertyVolume(),
+				Elem: propertyInstanceVolume(),
 				Required: false,
 			},
 		},

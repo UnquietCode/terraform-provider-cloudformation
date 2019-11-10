@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package efs
 
@@ -27,7 +26,7 @@ func ResourceEFSFileSystem() *schema.Resource {
 			},
 			"file_system_tags": {
 				Type: schema.TypeSet,
-				Elem: propertyElasticFileSystemTag(),
+				Elem: propertyFileSystemElasticFileSystemTag(),
 				Required: false,
 			},
 			"kms_key_id": {
@@ -37,7 +36,7 @@ func ResourceEFSFileSystem() *schema.Resource {
 			},
 			"lifecycle_policies": {
 				Type: schema.TypeSet,
-				Elem: propertyLifecyclePolicy(),
+				Elem: propertyFileSystemLifecyclePolicy(),
 				Required: false,
 			},
 			"performance_mode": {

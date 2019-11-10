@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package codepipeline
 
@@ -22,18 +21,18 @@ func ResourceCodePipelinePipeline() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"artifact_store": {
 				Type: schema.TypeList,
-				Elem: propertyArtifactStore(),
+				Elem: propertyPipelineArtifactStore(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"artifact_stores": {
 				Type: schema.TypeSet,
-				Elem: propertyArtifactStoreMap(),
+				Elem: propertyPipelineArtifactStoreMap(),
 				Required: false,
 			},
 			"disable_inbound_stage_transitions": {
 				Type: schema.TypeSet,
-				Elem: propertyStageTransition(),
+				Elem: propertyPipelineStageTransition(),
 				Required: false,
 			},
 			"name": {
@@ -51,7 +50,7 @@ func ResourceCodePipelinePipeline() *schema.Resource {
 			},
 			"stages": {
 				Type: schema.TypeSet,
-				Elem: propertyStageDeclaration(),
+				Elem: propertyPipelineStageDeclaration(),
 				Required: true,
 			},
 		},

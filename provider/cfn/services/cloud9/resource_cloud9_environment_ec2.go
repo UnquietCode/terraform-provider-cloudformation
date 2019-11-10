@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package cloud9
 
@@ -22,7 +21,7 @@ func ResourceCloud9EnvironmentEC2() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"repositories": {
 				Type: schema.TypeList,
-				Elem: propertyRepository(),
+				Elem: propertyEnvironmentEC2Repository(),
 				Required: false,
 				ForceNew: true,
 			},

@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package ecs
 
@@ -28,7 +27,7 @@ func ResourceECSService() *schema.Resource {
 			},
 			"deployment_configuration": {
 				Type: schema.TypeList,
-				Elem: propertyDeploymentConfiguration(),
+				Elem: propertyServiceDeploymentConfiguration(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -52,25 +51,25 @@ func ResourceECSService() *schema.Resource {
 			},
 			"load_balancers": {
 				Type: schema.TypeSet,
-				Elem: propertyLoadBalancer(),
+				Elem: propertyServiceLoadBalancer(),
 				Required: false,
 				ForceNew: true,
 			},
 			"network_configuration": {
 				Type: schema.TypeList,
-				Elem: propertyNetworkConfiguration(),
+				Elem: propertyServiceNetworkConfiguration(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"placement_constraints": {
 				Type: schema.TypeSet,
-				Elem: propertyPlacementConstraint(),
+				Elem: propertyServicePlacementConstraint(),
 				Required: false,
 				ForceNew: true,
 			},
 			"placement_strategies": {
 				Type: schema.TypeSet,
-				Elem: propertyPlacementStrategy(),
+				Elem: propertyServicePlacementStrategy(),
 				Required: false,
 				ForceNew: true,
 			},
@@ -101,7 +100,7 @@ func ResourceECSService() *schema.Resource {
 			},
 			"service_registries": {
 				Type: schema.TypeSet,
-				Elem: propertyServiceRegistry(),
+				Elem: propertyServiceServiceRegistry(),
 				Required: false,
 				ForceNew: true,
 			},

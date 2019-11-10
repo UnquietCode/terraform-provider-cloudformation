@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package autoscaling
 
@@ -57,13 +56,13 @@ func ResourceAutoScalingAutoScalingGroup() *schema.Resource {
 			},
 			"launch_template": {
 				Type: schema.TypeList,
-				Elem: propertyLaunchTemplateSpecification(),
+				Elem: propertyAutoScalingGroupLaunchTemplateSpecification(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"lifecycle_hook_specification_list": {
 				Type: schema.TypeList,
-				Elem: propertyLifecycleHookSpecification(),
+				Elem: propertyAutoScalingGroupLifecycleHookSpecification(),
 				Required: false,
 			},
 			"load_balancer_names": {
@@ -77,7 +76,7 @@ func ResourceAutoScalingAutoScalingGroup() *schema.Resource {
 			},
 			"metrics_collection": {
 				Type: schema.TypeList,
-				Elem: propertyMetricsCollection(),
+				Elem: propertyAutoScalingGroupMetricsCollection(),
 				Required: false,
 			},
 			"min_size": {
@@ -86,13 +85,13 @@ func ResourceAutoScalingAutoScalingGroup() *schema.Resource {
 			},
 			"mixed_instances_policy": {
 				Type: schema.TypeList,
-				Elem: propertyMixedInstancesPolicy(),
+				Elem: propertyAutoScalingGroupMixedInstancesPolicy(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"notification_configurations": {
 				Type: schema.TypeList,
-				Elem: propertyNotificationConfiguration(),
+				Elem: propertyAutoScalingGroupNotificationConfiguration(),
 				Required: false,
 			},
 			"placement_group": {
@@ -105,7 +104,7 @@ func ResourceAutoScalingAutoScalingGroup() *schema.Resource {
 			},
 			"tags": {
 				Type: schema.TypeList,
-				Elem: propertyTagProperty(),
+				Elem: propertyAutoScalingGroupTagProperty(),
 				Required: false,
 			},
 			"target_group_ar_ns": {

@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package dynamodb
 
@@ -23,7 +22,7 @@ func ResourceDynamoDBTable() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"attribute_definitions": {
 				Type: schema.TypeList,
-				Elem: propertyAttributeDefinition(),
+				Elem: propertyTableAttributeDefinition(),
 				Required: false,
 			},
 			"billing_mode": {
@@ -32,42 +31,42 @@ func ResourceDynamoDBTable() *schema.Resource {
 			},
 			"global_secondary_indexes": {
 				Type: schema.TypeList,
-				Elem: propertyGlobalSecondaryIndex(),
+				Elem: propertyTableGlobalSecondaryIndex(),
 				Required: false,
 			},
 			"key_schema": {
 				Type: schema.TypeSet,
-				Elem: propertyKeySchema(),
+				Elem: propertyTableKeySchema(),
 				Required: true,
 				ForceNew: true,
 			},
 			"local_secondary_indexes": {
 				Type: schema.TypeList,
-				Elem: propertyLocalSecondaryIndex(),
+				Elem: propertyTableLocalSecondaryIndex(),
 				Required: false,
 				ForceNew: true,
 			},
 			"point_in_time_recovery_specification": {
 				Type: schema.TypeList,
-				Elem: propertyPointInTimeRecoverySpecification(),
+				Elem: propertyTablePointInTimeRecoverySpecification(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"provisioned_throughput": {
 				Type: schema.TypeList,
-				Elem: propertyProvisionedThroughput(),
+				Elem: propertyTableProvisionedThroughput(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"sse_specification": {
 				Type: schema.TypeList,
-				Elem: propertySSESpecification(),
+				Elem: propertyTableSSESpecification(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"stream_specification": {
 				Type: schema.TypeList,
-				Elem: propertyStreamSpecification(),
+				Elem: propertyTableStreamSpecification(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -83,7 +82,7 @@ func ResourceDynamoDBTable() *schema.Resource {
 			},
 			"time_to_live_specification": {
 				Type: schema.TypeList,
-				Elem: propertyTimeToLiveSpecification(),
+				Elem: propertyTableTimeToLiveSpecification(),
 				Required: false,
 				MaxItems: 1,
 			},

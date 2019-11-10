@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package cognito
 
@@ -22,7 +21,7 @@ func ResourceCognitoUserPoolRiskConfigurationAttachment() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"compromised_credentials_risk_configuration": {
 				Type: schema.TypeList,
-				Elem: propertyCompromisedCredentialsRiskConfigurationType(),
+				Elem: propertyUserPoolRiskConfigurationAttachmentCompromisedCredentialsRiskConfigurationType(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -38,13 +37,13 @@ func ResourceCognitoUserPoolRiskConfigurationAttachment() *schema.Resource {
 			},
 			"account_takeover_risk_configuration": {
 				Type: schema.TypeList,
-				Elem: propertyAccountTakeoverRiskConfigurationType(),
+				Elem: propertyUserPoolRiskConfigurationAttachmentAccountTakeoverRiskConfigurationType(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"risk_exception_configuration": {
 				Type: schema.TypeList,
-				Elem: propertyRiskExceptionConfigurationType(),
+				Elem: propertyUserPoolRiskConfigurationAttachmentRiskExceptionConfigurationType(),
 				Required: false,
 				MaxItems: 1,
 			},

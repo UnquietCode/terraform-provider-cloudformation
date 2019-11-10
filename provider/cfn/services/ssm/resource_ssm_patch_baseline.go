@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package ssm
 
@@ -32,13 +31,13 @@ func ResourceSSMPatchBaseline() *schema.Resource {
 			},
 			"approval_rules": {
 				Type: schema.TypeList,
-				Elem: propertyRuleGroup(),
+				Elem: propertyPatchBaselineRuleGroup(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"sources": {
 				Type: schema.TypeList,
-				Elem: propertyPatchSource(),
+				Elem: propertyPatchBaselinePatchSource(),
 				Required: false,
 			},
 			"name": {
@@ -74,7 +73,7 @@ func ResourceSSMPatchBaseline() *schema.Resource {
 			},
 			"global_filters": {
 				Type: schema.TypeList,
-				Elem: propertyPatchFilterGroup(),
+				Elem: propertyPatchBaselinePatchFilterGroup(),
 				Required: false,
 				MaxItems: 1,
 			},

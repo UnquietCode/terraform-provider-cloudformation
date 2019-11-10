@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package amazonmq
 
@@ -31,13 +30,13 @@ func ResourceAmazonMQBroker() *schema.Resource {
 			},
 			"configuration": {
 				Type: schema.TypeList,
-				Elem: propertyConfigurationId(),
+				Elem: propertyBrokerConfigurationId(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"maintenance_window_start_time": {
 				Type: schema.TypeList,
-				Elem: propertyMaintenanceWindow(),
+				Elem: propertyBrokerMaintenanceWindow(),
 				Required: false,
 				ForceNew: true,
 				MaxItems: 1,
@@ -52,12 +51,12 @@ func ResourceAmazonMQBroker() *schema.Resource {
 			},
 			"users": {
 				Type: schema.TypeList,
-				Elem: propertyUser(),
+				Elem: propertyBrokerUser(),
 				Required: true,
 			},
 			"logs": {
 				Type: schema.TypeList,
-				Elem: propertyLogList(),
+				Elem: propertyBrokerLogList(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -89,14 +88,14 @@ func ResourceAmazonMQBroker() *schema.Resource {
 			},
 			"encryption_options": {
 				Type: schema.TypeList,
-				Elem: propertyEncryptionOptions(),
+				Elem: propertyBrokerEncryptionOptions(),
 				Required: false,
 				ForceNew: true,
 				MaxItems: 1,
 			},
 			"tags": {
 				Type: schema.TypeList,
-				Elem: propertyTagsEntry(),
+				Elem: propertyBrokerTagsEntry(),
 				Required: false,
 			},
 		},

@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package lambda
 
@@ -23,13 +22,13 @@ func ResourceLambdaFunction() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"code": {
 				Type: schema.TypeList,
-				Elem: propertyCode(),
+				Elem: propertyFunctionCode(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"dead_letter_config": {
 				Type: schema.TypeList,
-				Elem: propertyDeadLetterConfig(),
+				Elem: propertyFunctionDeadLetterConfig(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -39,7 +38,7 @@ func ResourceLambdaFunction() *schema.Resource {
 			},
 			"environment": {
 				Type: schema.TypeList,
-				Elem: propertyEnvironment(),
+				Elem: propertyFunctionEnvironment(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -89,13 +88,13 @@ func ResourceLambdaFunction() *schema.Resource {
 			},
 			"tracing_config": {
 				Type: schema.TypeList,
-				Elem: propertyTracingConfig(),
+				Elem: propertyFunctionTracingConfig(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"vpc_config": {
 				Type: schema.TypeList,
-				Elem: propertyVpcConfig(),
+				Elem: propertyFunctionVpcConfig(),
 				Required: false,
 				MaxItems: 1,
 			},

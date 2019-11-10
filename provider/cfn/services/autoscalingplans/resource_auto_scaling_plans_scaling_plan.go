@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package autoscalingplans
 
@@ -22,13 +21,13 @@ func ResourceAutoScalingPlansScalingPlan() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"application_source": {
 				Type: schema.TypeList,
-				Elem: propertyApplicationSource(),
+				Elem: propertyScalingPlanApplicationSource(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"scaling_instructions": {
 				Type: schema.TypeList,
-				Elem: propertyScalingInstruction(),
+				Elem: propertyScalingPlanScalingInstruction(),
 				Required: true,
 			},
 		},

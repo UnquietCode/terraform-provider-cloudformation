@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package ec2
 
@@ -22,13 +21,13 @@ func ResourceEC2EC2Fleet() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"target_capacity_specification": {
 				Type: schema.TypeList,
-				Elem: propertyTargetCapacitySpecificationRequest(),
+				Elem: propertyEC2FleetTargetCapacitySpecificationRequest(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"on_demand_options": {
 				Type: schema.TypeList,
-				Elem: propertyOnDemandOptionsRequest(),
+				Elem: propertyEC2FleetOnDemandOptionsRequest(),
 				Required: false,
 				ForceNew: true,
 				MaxItems: 1,
@@ -44,13 +43,13 @@ func ResourceEC2EC2Fleet() *schema.Resource {
 			},
 			"tag_specifications": {
 				Type: schema.TypeList,
-				Elem: propertyTagSpecification(),
+				Elem: propertyEC2FleetTagSpecification(),
 				Required: false,
 				ForceNew: true,
 			},
 			"spot_options": {
 				Type: schema.TypeList,
-				Elem: propertySpotOptionsRequest(),
+				Elem: propertyEC2FleetSpotOptionsRequest(),
 				Required: false,
 				ForceNew: true,
 				MaxItems: 1,
@@ -67,7 +66,7 @@ func ResourceEC2EC2Fleet() *schema.Resource {
 			},
 			"launch_template_configs": {
 				Type: schema.TypeList,
-				Elem: propertyFleetLaunchTemplateConfigRequest(),
+				Elem: propertyEC2FleetFleetLaunchTemplateConfigRequest(),
 				Required: true,
 				ForceNew: true,
 			},

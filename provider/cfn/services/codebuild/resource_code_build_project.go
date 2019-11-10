@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package codebuild
 
@@ -27,13 +26,13 @@ func ResourceCodeBuildProject() *schema.Resource {
 			},
 			"vpc_config": {
 				Type: schema.TypeList,
-				Elem: propertyVpcConfig(),
+				Elem: propertyProjectVpcConfig(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"secondary_sources": {
 				Type: schema.TypeList,
-				Elem: propertySource(),
+				Elem: propertyProjectSource(),
 				Required: false,
 			},
 			"encryption_key": {
@@ -46,18 +45,18 @@ func ResourceCodeBuildProject() *schema.Resource {
 			},
 			"triggers": {
 				Type: schema.TypeList,
-				Elem: propertyProjectTriggers(),
+				Elem: propertyProjectProjectTriggers(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"secondary_artifacts": {
 				Type: schema.TypeList,
-				Elem: propertyArtifacts(),
+				Elem: propertyProjectArtifacts(),
 				Required: false,
 			},
 			"source": {
 				Type: schema.TypeList,
-				Elem: propertySource(),
+				Elem: propertyProjectSource(),
 				Required: true,
 				MaxItems: 1,
 			},
@@ -68,7 +67,7 @@ func ResourceCodeBuildProject() *schema.Resource {
 			},
 			"artifacts": {
 				Type: schema.TypeList,
-				Elem: propertyArtifacts(),
+				Elem: propertyProjectArtifacts(),
 				Required: true,
 				MaxItems: 1,
 			},
@@ -78,7 +77,7 @@ func ResourceCodeBuildProject() *schema.Resource {
 			},
 			"logs_config": {
 				Type: schema.TypeList,
-				Elem: propertyLogsConfig(),
+				Elem: propertyProjectLogsConfig(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -92,13 +91,13 @@ func ResourceCodeBuildProject() *schema.Resource {
 			},
 			"environment": {
 				Type: schema.TypeList,
-				Elem: propertyEnvironment(),
+				Elem: propertyProjectEnvironment(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"secondary_source_versions": {
 				Type: schema.TypeList,
-				Elem: propertyProjectSourceVersion(),
+				Elem: propertyProjectProjectSourceVersion(),
 				Required: false,
 			},
 			"tags": {
@@ -112,7 +111,7 @@ func ResourceCodeBuildProject() *schema.Resource {
 			},
 			"cache": {
 				Type: schema.TypeList,
-				Elem: propertyProjectCache(),
+				Elem: propertyProjectProjectCache(),
 				Required: false,
 				MaxItems: 1,
 			},

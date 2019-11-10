@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package appsync
 
@@ -22,19 +21,19 @@ func ResourceAppSyncGraphQLApi() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"open_id_connect_config": {
 				Type: schema.TypeList,
-				Elem: propertyOpenIDConnectConfig(),
+				Elem: propertyGraphQLApiOpenIDConnectConfig(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"user_pool_config": {
 				Type: schema.TypeList,
-				Elem: propertyUserPoolConfig(),
+				Elem: propertyGraphQLApiUserPoolConfig(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"tags": {
 				Type: schema.TypeList,
-				Elem: propertyTags(),
+				Elem: propertyGraphQLApiTags(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -48,13 +47,13 @@ func ResourceAppSyncGraphQLApi() *schema.Resource {
 			},
 			"log_config": {
 				Type: schema.TypeList,
-				Elem: propertyLogConfig(),
+				Elem: propertyGraphQLApiLogConfig(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"additional_authentication_providers": {
 				Type: schema.TypeList,
-				Elem: propertyAdditionalAuthenticationProviders(),
+				Elem: propertyGraphQLApiAdditionalAuthenticationProviders(),
 				Required: false,
 				MaxItems: 1,
 			},

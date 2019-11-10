@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package pinpoint
 
@@ -34,7 +33,7 @@ func ResourcePinpointCampaign() *schema.Resource {
 			},
 			"additional_treatments": {
 				Type: schema.TypeList,
-				Elem: propertyWriteTreatmentResource(),
+				Elem: propertyCampaignWriteTreatmentResource(),
 				Required: false,
 			},
 			"name": {
@@ -51,13 +50,13 @@ func ResourcePinpointCampaign() *schema.Resource {
 			},
 			"message_configuration": {
 				Type: schema.TypeList,
-				Elem: propertyMessageConfiguration(),
+				Elem: propertyCampaignMessageConfiguration(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"limits": {
 				Type: schema.TypeList,
-				Elem: propertyLimits(),
+				Elem: propertyCampaignLimits(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -67,7 +66,7 @@ func ResourcePinpointCampaign() *schema.Resource {
 			},
 			"schedule": {
 				Type: schema.TypeList,
-				Elem: propertySchedule(),
+				Elem: propertyCampaignSchedule(),
 				Required: true,
 				MaxItems: 1,
 			},
@@ -78,7 +77,7 @@ func ResourcePinpointCampaign() *schema.Resource {
 			},
 			"campaign_hook": {
 				Type: schema.TypeList,
-				Elem: propertyCampaignHook(),
+				Elem: propertyCampaignCampaignHook(),
 				Required: false,
 				MaxItems: 1,
 			},

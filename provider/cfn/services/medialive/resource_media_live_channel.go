@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package medialive
 
@@ -22,12 +21,12 @@ func ResourceMediaLiveChannel() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"input_attachments": {
 				Type: schema.TypeList,
-				Elem: propertyInputAttachment(),
+				Elem: propertyChannelInputAttachment(),
 				Required: false,
 			},
 			"input_specification": {
 				Type: schema.TypeList,
-				Elem: propertyInputSpecification(),
+				Elem: propertyChannelInputSpecification(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -41,7 +40,7 @@ func ResourceMediaLiveChannel() *schema.Resource {
 			},
 			"destinations": {
 				Type: schema.TypeList,
-				Elem: propertyOutputDestination(),
+				Elem: propertyChannelOutputDestination(),
 				Required: false,
 			},
 			"log_level": {

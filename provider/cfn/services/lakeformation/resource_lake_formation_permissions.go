@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package lakeformation
 
@@ -22,13 +21,13 @@ func ResourceLakeFormationPermissions() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"data_lake_principal": {
 				Type: schema.TypeList,
-				Elem: propertyDataLakePrincipal(),
+				Elem: propertyPermissionsDataLakePrincipal(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"resource": {
 				Type: schema.TypeList,
-				Elem: propertyResource(),
+				Elem: propertyPermissionsResource(),
 				Required: true,
 				MaxItems: 1,
 			},

@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package elasticloadbalancingv2
 
@@ -51,7 +50,7 @@ func ResourceElasticLoadBalancingV2TargetGroup() *schema.Resource {
 			},
 			"matcher": {
 				Type: schema.TypeList,
-				Elem: propertyMatcher(),
+				Elem: propertyTargetGroupMatcher(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -77,7 +76,7 @@ func ResourceElasticLoadBalancingV2TargetGroup() *schema.Resource {
 			},
 			"target_group_attributes": {
 				Type: schema.TypeSet,
-				Elem: propertyTargetGroupAttribute(),
+				Elem: propertyTargetGroupTargetGroupAttribute(),
 				Required: false,
 			},
 			"target_type": {
@@ -87,7 +86,7 @@ func ResourceElasticLoadBalancingV2TargetGroup() *schema.Resource {
 			},
 			"targets": {
 				Type: schema.TypeSet,
-				Elem: propertyTargetDescription(),
+				Elem: propertyTargetGroupTargetDescription(),
 				Required: false,
 			},
 			"unhealthy_threshold_count": {

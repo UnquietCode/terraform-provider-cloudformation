@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package opsworks
 
@@ -44,7 +43,7 @@ func ResourceOpsWorksLayer() *schema.Resource {
 			},
 			"custom_recipes": {
 				Type: schema.TypeList,
-				Elem: propertyRecipes(),
+				Elem: propertyLayerRecipes(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -63,13 +62,13 @@ func ResourceOpsWorksLayer() *schema.Resource {
 			},
 			"lifecycle_event_configuration": {
 				Type: schema.TypeList,
-				Elem: propertyLifecycleEventConfiguration(),
+				Elem: propertyLayerLifecycleEventConfiguration(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"load_based_auto_scaling": {
 				Type: schema.TypeList,
-				Elem: propertyLoadBasedAutoScaling(),
+				Elem: propertyLayerLoadBasedAutoScaling(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -107,7 +106,7 @@ func ResourceOpsWorksLayer() *schema.Resource {
 			},
 			"volume_configurations": {
 				Type: schema.TypeList,
-				Elem: propertyVolumeConfiguration(),
+				Elem: propertyLayerVolumeConfiguration(),
 				Required: false,
 			},
 		},

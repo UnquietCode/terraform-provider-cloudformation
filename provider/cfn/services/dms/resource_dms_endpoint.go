@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package dms
 
@@ -36,13 +35,13 @@ func ResourceDMSEndpoint() *schema.Resource {
 			},
 			"elasticsearch_settings": {
 				Type: schema.TypeList,
-				Elem: propertyElasticsearchSettings(),
+				Elem: propertyEndpointElasticsearchSettings(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"s3_settings": {
 				Type: schema.TypeList,
-				Elem: propertyS3Settings(),
+				Elem: propertyEndpointS3Settings(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -52,13 +51,13 @@ func ResourceDMSEndpoint() *schema.Resource {
 			},
 			"dynamo_db_settings": {
 				Type: schema.TypeList,
-				Elem: propertyDynamoDbSettings(),
+				Elem: propertyEndpointDynamoDbSettings(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"kinesis_settings": {
 				Type: schema.TypeList,
-				Elem: propertyKinesisSettings(),
+				Elem: propertyEndpointKinesisSettings(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -102,7 +101,7 @@ func ResourceDMSEndpoint() *schema.Resource {
 			},
 			"mongo_db_settings": {
 				Type: schema.TypeList,
-				Elem: propertyMongoDbSettings(),
+				Elem: propertyEndpointMongoDbSettings(),
 				Required: false,
 				MaxItems: 1,
 			},

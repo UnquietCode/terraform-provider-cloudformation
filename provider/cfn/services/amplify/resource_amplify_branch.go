@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package amplify
 
@@ -27,7 +26,7 @@ func ResourceAmplifyBranch() *schema.Resource {
 			},
 			"environment_variables": {
 				Type: schema.TypeList,
-				Elem: propertyEnvironmentVariable(),
+				Elem: propertyBranchEnvironmentVariable(),
 				Required: false,
 			},
 			"app_id": {
@@ -62,7 +61,7 @@ func ResourceAmplifyBranch() *schema.Resource {
 			},
 			"basic_auth_config": {
 				Type: schema.TypeList,
-				Elem: propertyBasicAuthConfig(),
+				Elem: propertyBranchBasicAuthConfig(),
 				Required: false,
 				MaxItems: 1,
 			},

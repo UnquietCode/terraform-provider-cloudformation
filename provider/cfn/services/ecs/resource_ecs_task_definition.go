@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package ecs
 
@@ -23,7 +22,7 @@ func ResourceECSTaskDefinition() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"container_definitions": {
 				Type: schema.TypeSet,
-				Elem: propertyContainerDefinition(),
+				Elem: propertyTaskDefinitionContainerDefinition(),
 				Required: false,
 				ForceNew: true,
 			},
@@ -64,13 +63,13 @@ func ResourceECSTaskDefinition() *schema.Resource {
 			},
 			"placement_constraints": {
 				Type: schema.TypeSet,
-				Elem: propertyTaskDefinitionPlacementConstraint(),
+				Elem: propertyTaskDefinitionTaskDefinitionPlacementConstraint(),
 				Required: false,
 				ForceNew: true,
 			},
 			"proxy_configuration": {
 				Type: schema.TypeList,
-				Elem: propertyProxyConfiguration(),
+				Elem: propertyTaskDefinitionProxyConfiguration(),
 				Required: false,
 				ForceNew: true,
 				MaxItems: 1,
@@ -94,7 +93,7 @@ func ResourceECSTaskDefinition() *schema.Resource {
 			},
 			"volumes": {
 				Type: schema.TypeSet,
-				Elem: propertyVolume(),
+				Elem: propertyTaskDefinitionVolume(),
 				Required: false,
 				ForceNew: true,
 			},

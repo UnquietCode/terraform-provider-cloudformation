@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package pinpointemail
 
@@ -22,31 +21,31 @@ func ResourcePinpointEmailConfigurationSet() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"sending_options": {
 				Type: schema.TypeList,
-				Elem: propertySendingOptions(),
+				Elem: propertyConfigurationSetSendingOptions(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"tracking_options": {
 				Type: schema.TypeList,
-				Elem: propertyTrackingOptions(),
+				Elem: propertyConfigurationSetTrackingOptions(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"reputation_options": {
 				Type: schema.TypeList,
-				Elem: propertyReputationOptions(),
+				Elem: propertyConfigurationSetReputationOptions(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"delivery_options": {
 				Type: schema.TypeList,
-				Elem: propertyDeliveryOptions(),
+				Elem: propertyConfigurationSetDeliveryOptions(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"tags": {
 				Type: schema.TypeList,
-				Elem: propertyTags(),
+				Elem: propertyConfigurationSetTags(),
 				Required: false,
 			},
 			"name": {

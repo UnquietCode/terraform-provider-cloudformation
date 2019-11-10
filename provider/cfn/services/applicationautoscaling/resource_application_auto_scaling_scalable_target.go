@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package applicationautoscaling
 
@@ -44,7 +43,7 @@ func ResourceApplicationAutoScalingScalableTarget() *schema.Resource {
 			},
 			"scheduled_actions": {
 				Type: schema.TypeSet,
-				Elem: propertyScheduledAction(),
+				Elem: propertyScalableTargetScheduledAction(),
 				Required: false,
 			},
 			"service_namespace": {
@@ -54,7 +53,7 @@ func ResourceApplicationAutoScalingScalableTarget() *schema.Resource {
 			},
 			"suspended_state": {
 				Type: schema.TypeList,
-				Elem: propertySuspendedState(),
+				Elem: propertyScalableTargetSuspendedState(),
 				Required: false,
 				MaxItems: 1,
 			},

@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package elasticloadbalancing
 
@@ -23,13 +22,13 @@ func ResourceElasticLoadBalancingLoadBalancer() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"access_logging_policy": {
 				Type: schema.TypeList,
-				Elem: propertyAccessLoggingPolicy(),
+				Elem: propertyLoadBalancerAccessLoggingPolicy(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"app_cookie_stickiness_policy": {
 				Type: schema.TypeSet,
-				Elem: propertyAppCookieStickinessPolicy(),
+				Elem: propertyLoadBalancerAppCookieStickinessPolicy(),
 				Required: false,
 			},
 			"availability_zones": {
@@ -40,13 +39,13 @@ func ResourceElasticLoadBalancingLoadBalancer() *schema.Resource {
 			},
 			"connection_draining_policy": {
 				Type: schema.TypeList,
-				Elem: propertyConnectionDrainingPolicy(),
+				Elem: propertyLoadBalancerConnectionDrainingPolicy(),
 				Required: false,
 				MaxItems: 1,
 			},
 			"connection_settings": {
 				Type: schema.TypeList,
-				Elem: propertyConnectionSettings(),
+				Elem: propertyLoadBalancerConnectionSettings(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -56,7 +55,7 @@ func ResourceElasticLoadBalancingLoadBalancer() *schema.Resource {
 			},
 			"health_check": {
 				Type: schema.TypeList,
-				Elem: propertyHealthCheck(),
+				Elem: propertyLoadBalancerHealthCheck(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -68,12 +67,12 @@ func ResourceElasticLoadBalancingLoadBalancer() *schema.Resource {
 			},
 			"lb_cookie_stickiness_policy": {
 				Type: schema.TypeSet,
-				Elem: propertyLBCookieStickinessPolicy(),
+				Elem: propertyLoadBalancerLBCookieStickinessPolicy(),
 				Required: false,
 			},
 			"listeners": {
 				Type: schema.TypeSet,
-				Elem: propertyListeners(),
+				Elem: propertyLoadBalancerListeners(),
 				Required: true,
 			},
 			"load_balancer_name": {
@@ -83,7 +82,7 @@ func ResourceElasticLoadBalancingLoadBalancer() *schema.Resource {
 			},
 			"policies": {
 				Type: schema.TypeSet,
-				Elem: propertyPolicies(),
+				Elem: propertyLoadBalancerPolicies(),
 				Required: false,
 			},
 			"scheme": {

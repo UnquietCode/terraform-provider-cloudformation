@@ -1,9 +1,8 @@
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on 07-11-2019, using version 0.0 of the cfn
-// terraform provider, and version 7.2.0 of the CloudFormation
-// resource specification.
+// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// and version 7.2.0 of the CloudFormation resource specification.
 
 package glue
 
@@ -35,7 +34,7 @@ func ResourceGlueCrawler() *schema.Resource {
 			},
 			"schema_change_policy": {
 				Type: schema.TypeList,
-				Elem: propertySchemaChangePolicy(),
+				Elem: propertyCrawlerSchemaChangePolicy(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -45,7 +44,7 @@ func ResourceGlueCrawler() *schema.Resource {
 			},
 			"schedule": {
 				Type: schema.TypeList,
-				Elem: propertySchedule(),
+				Elem: propertyCrawlerSchedule(),
 				Required: false,
 				MaxItems: 1,
 			},
@@ -55,7 +54,7 @@ func ResourceGlueCrawler() *schema.Resource {
 			},
 			"targets": {
 				Type: schema.TypeList,
-				Elem: propertyTargets(),
+				Elem: propertyCrawlerTargets(),
 				Required: true,
 				MaxItems: 1,
 			},
