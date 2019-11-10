@@ -9,6 +9,8 @@ PROVIDER_VERSION = '0.0'
 
 DEAD_LINE = '~x~x~x~x~x~x~x~'
 
+MAX_PROPERTY_RECURSION = 5
+
 RESOURCE_ATTRIBUTE_TEMPLATE = Template(
 """
 			"${name}": {
@@ -36,7 +38,7 @@ def _remove_dead_lines(content):
 	return content
 
 
-def _render_attribute_template(*, package_name, attribute):
+def _render_attribute_template(*, package_name, schema_name, attribute):
 	attribute_type = attribute.type.type
 	
 	if isinstance(attribute_type, ComplexType):
@@ -44,24 +46,32 @@ def _render_attribute_template(*, package_name, attribute):
 		
 		if attribute_type.package.full_path == 'cfn/misc':
 			at_property_prefix = 'Property'
-				
+		
+		if attribute_type == f"property{schema_name}":
+			print("recursion")
+		
 		attribute_type = f'{at_property_prefix}{attribute_type.name}()'
 
 	attribute_elem = attribute.type.element_type
 	
 	if attribute_elem is not None and not isinstance(attribute_elem, str):
 		package_prefix = ""
+		recursive = False
 		
 		if attribute_elem.package.name != package_name:
 			package_prefix = attribute_elem.package.name + "."
-			
+		else:
+			if attribute_elem.name == schema_name:
+				recursive = True
+	
 		ae_property_prefix = 'property'
 		
 		if attribute_elem.package.full_path == 'cfn/misc':
 			ae_property_prefix = 'Property'
 		
-		attribute_elem = f'{package_prefix}{ae_property_prefix}{attribute_elem.name}()'
-		
+		call = '()' if recursive is not True else '(strconv.Itoa(int(count + 1)))'
+		attribute_elem = f'{package_prefix}{ae_property_prefix}{attribute_elem.name}{call}'
+	
 	rendered = RESOURCE_ATTRIBUTE_TEMPLATE.substitute(dict(
 		name=snake_caps(attribute.name),
 		type=attribute_type,
@@ -146,7 +156,7 @@ func resource${name}Delete(data *schema.ResourceData, meta interface{}) error {
 
 def render_resource_template(*, cfn_version, imports, package_name, resource_name, cfn_type, attributes):
 	rendered_attributes = [
-		_render_attribute_template(package_name=package_name, attribute=attribute)
+		_render_attribute_template(package_name=package_name, schema_name=None, attribute=attribute)
 		for attribute in attributes
 	]
 	rendered_attributes = '\n'.join(rendered_attributes)
@@ -172,11 +182,24 @@ ${header}
 package ${package}
 
 import (
+	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 ${imports}
 )
 
-func ${prefix}${name}() *schema.Resource {
+func ${prefix}${name}(extras...string) *schema.Resource {
+	var count int64 = 0
+	
+	if len(extras) > 0 {
+		if i, err := strconv.ParseInt(extras[0], 10, 32); err == nil {
+			count = i
+		}
+	}
+	
+	if count >= ${max_recursion} {
+		return nil
+	}
+	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 ${attributes}
@@ -188,7 +211,7 @@ ${attributes}
 
 def render_property_template(*, cfn_version, package_name, property_name, attributes, imports):
 	rendered_attributes = [
-		_render_attribute_template(package_name=package_name, attribute=attribute)
+		_render_attribute_template(package_name=package_name, schema_name=property_name, attribute=attribute)
 		for attribute in attributes
 	]
 	rendered_attributes = '\n'.join(rendered_attributes)
@@ -200,6 +223,7 @@ def render_property_template(*, cfn_version, package_name, property_name, attrib
 		name=property_name,
 		attributes=rendered_attributes,
 		imports=_imports_stanza(imports),
+		max_recursion=MAX_PROPERTY_RECURSION,
 	))
 	
 	rendered = _remove_dead_lines(rendered)
