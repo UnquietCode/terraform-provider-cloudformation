@@ -4,7 +4,7 @@ from unquietcode.tools.cfn_provider.type_support import translate_cfn_type
 RESERVED_ATTRIBUTES = {'Count', 'Provider'}
 
 
-def handle_resource_property(resource_name, property_name, property_data, schema_properties):
+def handle_resource_property(resource_name, property_name, property_data, schema_properties, computed):
     attribute_type = translate_cfn_type(resource_name, property_data, schema_properties)
     
     if property_name in RESERVED_ATTRIBUTES:
@@ -14,6 +14,7 @@ def handle_resource_property(resource_name, property_name, property_data, schema
         name=property_name,
         type=attribute_type,
         required=property_data['Required'],
+        computed=computed,
         will_replace=property_data['UpdateType'] == 'Immutable',
         documentation_link=property_data['Documentation'],
     )
@@ -42,7 +43,7 @@ def handle_property(*, package, service, outer_name, inner_name, data):
     attributes = {}
     
     for property_name, property_data in property_properties.items():
-        attribute = handle_resource_property(outer_name, property_name, property_data, package.properties)
+        attribute = handle_resource_property(outer_name, property_name, property_data, package.properties, False)
         attributes[attribute.name] = attribute
 
     return Property(
@@ -54,15 +55,8 @@ def handle_property(*, package, service, outer_name, inner_name, data):
 
 
 def handle_resource(*, service, package, resource_name, cfn_type, resource_data):
-    
-    # resource properties
-    resource_properties = resource_data['Properties']
     attributes = {}
-    
-    for property_name, property_data in resource_properties.items():
-        attribute = handle_resource_property(resource_name, property_name, property_data, package.properties)
-        attributes[attribute.name] = attribute
-    
+        
     # resource attributes
     resource_attributes = resource_data.get("Attributes", {})
     
@@ -72,6 +66,23 @@ def handle_resource(*, service, package, resource_name, cfn_type, resource_data)
             documentation_link=resource_data['Documentation'],
             attribute_name=attribute_name,
             attribute_data=attribute_data,
+        )
+        attributes[attribute.name] = attribute
+    
+    # resource properties (clobbers attributes with same name)
+    resource_properties = resource_data['Properties']
+    
+    for property_name, property_data in resource_properties.items():
+        
+        # computable if an attribute exists
+        computed = property_name in resource_attributes
+        
+        attribute = handle_resource_property(
+            resource_name=resource_name,
+            property_name=property_name,
+            property_data=property_data,
+            schema_properties=package.properties,
+            computed=computed, 
         )
         attributes[attribute.name] = attribute
     

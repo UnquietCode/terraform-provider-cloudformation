@@ -80,9 +80,9 @@ def _render_attribute_template(*, package_name, schema_name, attribute):
 		type=attribute_type,
 		elem=attribute_elem or DEAD_LINE,
 		computed="true" if attribute.computed is True else DEAD_LINE,
-		required="true" if attribute.computed is not True and attribute.required is True else DEAD_LINE,
-		optional="true" if attribute.computed is not True and attribute.required is not True else DEAD_LINE,
-		force_replace="true" if attribute.computed is not True and attribute.will_replace is True else DEAD_LINE,
+		required="true" if attribute.required is True else DEAD_LINE,
+		optional="true" if attribute.required is not True and attribute.required is not None else DEAD_LINE,
+		force_replace="true" if attribute.will_replace is True else DEAD_LINE,
 		max_items=attribute.type.max_items or DEAD_LINE,
 		set_function=attribute.type.set_function or DEAD_LINE,
 	))
