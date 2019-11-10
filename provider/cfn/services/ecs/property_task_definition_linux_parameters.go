@@ -3,6 +3,9 @@
 //
 // Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
+//
+// For more information, visit:
+//   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-taskdefinition-linuxparameters.html
 
 package ecs
 

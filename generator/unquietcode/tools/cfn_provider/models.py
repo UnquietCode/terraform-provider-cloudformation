@@ -98,6 +98,7 @@ class ResourceAttribute:
     type: AttributeType
     required: bool
     will_replace: bool
+    documentation_link: str
         
     def as_dict(self):
         return asdict(self)
@@ -107,15 +108,15 @@ class ResourceAttribute:
 class ComplexType:
     name: str = ""
     package: Package = None
+    documentation_link: str = ""
 
 
 @dataclass
 class Resource(ComplexType):
+    service_name: str = ""
+    resource_name: str = ""    
     cfn_type: str = ""
     attributes: dict = field(default_factory=lambda: {})
-    
-    service_name: str = ""
-    resource_name: str = ""
     
     def as_dict(self):
         return asdict(self)
@@ -125,7 +126,7 @@ class Resource(ComplexType):
 class Property(ComplexType):
     namespace: str = ""
     attributes: dict = field(default_factory=lambda: {})
-                
+
     def as_dict(self):
         return asdict(self)
 

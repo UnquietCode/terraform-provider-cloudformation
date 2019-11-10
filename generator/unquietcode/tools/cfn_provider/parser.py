@@ -4,14 +4,13 @@ from unquietcode.tools.cfn_provider.type_support import translate_cfn_type
 
 def handle_resource_property(resource_name, property_name, property_data, schema_properties):
     attribute_type = translate_cfn_type(resource_name, property_data, schema_properties)
-    required = property_data['Required']
-    will_replace = property_data['UpdateType'] == 'Immutable'
 
     return ResourceAttribute(
         name=property_name,
         type=attribute_type,
-        required=required,
-        will_replace=will_replace,
+        required=property_data['Required'],
+        will_replace=property_data['UpdateType'] == 'Immutable',
+        documentation_link=property_data['Documentation'],
     )
 
 # TODO need to handle missing properties better
@@ -27,6 +26,7 @@ def handle_property(*, package, service, outer_name, inner_name, data):
     return Property(
         name=f"{outer_name}{inner_name}",
         package=package,
+        documentation_link=data.get('Documentation'),
         attributes=attributes,
     )
 
@@ -43,6 +43,7 @@ def handle_resource(*, service, package, resource_name, cfn_type, resource_data)
         name=f"{service}{resource_name}",
         service_name=service,
         resource_name=resource_name,
+        documentation_link=resource_data['Documentation'],
         cfn_type=cfn_type,
         package=package,
         attributes=attributes,

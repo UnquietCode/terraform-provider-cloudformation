@@ -75,6 +75,7 @@ def render_resource(cfn_version, resource, output_path):
         resource_name=resource.name,
         cfn_type=resource.cfn_type,
         attributes=resource.attributes.values(),
+        documentation_link=resource.documentation_link,
         imports=imports,
     )
 
@@ -91,6 +92,7 @@ def render_property(cfn_version, property, output_path):
         package_name=property.package.name,
         property_name=property.name,
         attributes=property.attributes.values(),
+        documentation_link=property.documentation_link,
         imports=imports,
     )
 

@@ -4,12 +4,13 @@ from datetime import date
 from unquietcode.tools.cfn_provider.models import ComplexType
 from unquietcode.tools.cfn_provider.utils import snake_caps
 
-# TODO make these dynamic
+# TODO make this dynamic
 PROVIDER_VERSION = '0.0'
 
 DEAD_LINE = '~x~x~x~x~x~x~x~'
-
 MAX_PROPERTY_RECURSION = 5
+PROJECT_URL = "https://github.com/UnquietCode/terraform-provider-cloudformation"
+
 
 RESOURCE_ATTRIBUTE_TEMPLATE = Template(
 """
@@ -93,14 +94,18 @@ HEADER_TEMPLATE = Template(
 //
 // Generated on ${date}, using version ${provider_version} of the cfn terraform provider,
 // and version ${schema_version} of the CloudFormation resource specification.
+//
+// For more information, visit:
+//   ${documentation_link}
 """[1:-1])
 
 
-def _header_stanza(cfn_version):
+def _header_stanza(cfn_version, documentation_link):
 	return HEADER_TEMPLATE.substitute(dict(
 		date=date.today().strftime("%d-%m-%Y"),
 		provider_version=PROVIDER_VERSION,
 		schema_version=cfn_version,
+		documentation_link=documentation_link or PROJECT_URL,
 	))
 	
 
@@ -154,7 +159,7 @@ func resource${name}Delete(data *schema.ResourceData, meta interface{}) error {
 
 
 
-def render_resource_template(*, cfn_version, imports, package_name, resource_name, cfn_type, attributes):
+def render_resource_template(*, cfn_version, imports, package_name, resource_name, cfn_type, attributes, documentation_link):
 	rendered_attributes = [
 		_render_attribute_template(package_name=package_name, schema_name=None, attribute=attribute)
 		for attribute in attributes
@@ -162,7 +167,7 @@ def render_resource_template(*, cfn_version, imports, package_name, resource_nam
 	rendered_attributes = '\n'.join(rendered_attributes)
 	
 	rendered = RESOURCE_TEMPLATE.substitute(dict(
-		header=_header_stanza(cfn_version),
+		header=_header_stanza(cfn_version, documentation_link),
 		package=package_name,
 		name=resource_name,
 		cfn_type=cfn_type,
@@ -209,7 +214,7 @@ ${attributes}
 """[1:])
 
 
-def render_property_template(*, cfn_version, package_name, property_name, attributes, imports):
+def render_property_template(*, cfn_version, package_name, property_name, attributes, imports, documentation_link):
 	rendered_attributes = [
 		_render_attribute_template(package_name=package_name, schema_name=property_name, attribute=attribute)
 		for attribute in attributes
@@ -217,7 +222,7 @@ def render_property_template(*, cfn_version, package_name, property_name, attrib
 	rendered_attributes = '\n'.join(rendered_attributes)
 	
 	rendered = PROPERTY_TEMPLATE.substitute(dict(
-		header=_header_stanza(cfn_version),
+		header=_header_stanza(cfn_version, documentation_link),
 		package=package_name,
 		prefix='property' if property_name != 'Tag' else 'Property',
 		name=property_name,
@@ -271,7 +276,7 @@ ${resources}
 
 def render_provider_template(*, cfn_version, package_name, imports, datasources, resources):
 	rendered = PROVIDER_TEMPLATE.substitute(dict(
-		header=_header_stanza(cfn_version),
+		header=_header_stanza(cfn_version, None),
 		package=package_name,
 		imports=_imports_stanza(imports),
 		resources=_resources_stanza(resources),
