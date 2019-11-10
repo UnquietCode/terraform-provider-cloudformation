@@ -1,9 +1,14 @@
 from unquietcode.tools.cfn_provider.models import ResourceAttribute, Property, Resource, Package, Provider
 from unquietcode.tools.cfn_provider.type_support import translate_cfn_type
 
+RESERVED_ATTRIBUTES = {'Count', 'Provider'}
+
 
 def handle_resource_property(resource_name, property_name, property_data, schema_properties):
     attribute_type = translate_cfn_type(resource_name, property_data, schema_properties)
+    
+    if property_name in RESERVED_ATTRIBUTES:
+        property_name = f"The{property_name}"
 
     return ResourceAttribute(
         name=property_name,
@@ -21,7 +26,7 @@ def handle_property(*, package, service, outer_name, inner_name, data):
     
     for property_name, property_data in property_properties.items():
         attribute = handle_resource_property(outer_name, property_name, property_data, package.properties)
-        attributes[property_name] = attribute
+        attributes[attribute.name] = attribute
 
     return Property(
         name=f"{outer_name}{inner_name}",
@@ -37,7 +42,7 @@ def handle_resource(*, service, package, resource_name, cfn_type, resource_data)
 
     for property_name, property_data in resource_properties.items():
         attribute = handle_resource_property(resource_name, property_name, property_data, package.properties)
-        attributes[property_name] = attribute
+        attributes[attribute.name] = attribute
 
     resource = Resource(
         name=f"{service}{resource_name}",

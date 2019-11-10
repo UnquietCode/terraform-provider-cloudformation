@@ -18,6 +18,7 @@ RESOURCE_ATTRIBUTE_TEMPLATE = Template(
 				Type: ${type},
 				Elem: ${elem},
 				Required: ${required},
+				Optional: ${optional},
 				ForceNew: ${force_replace},
 				MaxItems: ${max_items},
 				Set: ${set_function},
@@ -77,7 +78,8 @@ def _render_attribute_template(*, package_name, schema_name, attribute):
 		name=snake_caps(attribute.name),
 		type=attribute_type,
 		elem=attribute_elem or DEAD_LINE,
-		required="true" if attribute.required else "false",
+		required="true" if attribute.required is True else DEAD_LINE,
+		optional="true" if attribute.required is not True else DEAD_LINE,
 		force_replace="true" if attribute.will_replace else DEAD_LINE,
 		max_items=attribute.type.max_items or DEAD_LINE,
 		set_function=attribute.type.set_function or DEAD_LINE,
@@ -131,7 +133,7 @@ func Resource${name}() *schema.Resource {
 	return &schema.Resource{
 		Create: resource${name}Create,
 		Read:   resource${name}Read,
-		Update: resource${name}Update,
+		Update: ${update_line},
 		Delete: resource${name}Delete,
 
 		Schema: map[string]*schema.Schema{
@@ -166,12 +168,23 @@ def render_resource_template(*, cfn_version, imports, package_name, resource_nam
 	]
 	rendered_attributes = '\n'.join(rendered_attributes)
 	
+	# Terraform requires that we check for the case of non-updatable resources
+	# TODO computable
+	updatable = False
+	
+	# at least one attribute will not force a replacement
+	for attribute in attributes:
+		if attribute.will_replace is not True:
+			updatable = True
+			break
+			
 	rendered = RESOURCE_TEMPLATE.substitute(dict(
 		header=_header_stanza(cfn_version, documentation_link),
 		package=package_name,
 		name=resource_name,
 		cfn_type=cfn_type,
 		attributes=rendered_attributes,
+		update_line=f"resource{resource_name}Update" if updatable else DEAD_LINE,
 		imports=_imports_stanza(imports)
 	))
 	
@@ -202,7 +215,7 @@ func ${prefix}${name}(extras...string) *schema.Resource {
 	}
 	
 	if count >= ${max_recursion} {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -236,13 +249,13 @@ def render_property_template(*, cfn_version, package_name, property_name, attrib
 
 
 def _resources_stanza(resources):
-	resource_lines = [f'			"{snake_caps(r.name)}_resource": {r.package.name}.Resource{r.name}(),' for r in resources]
+	resource_lines = [f'			"cfn_{snake_caps(r.name)}": {r.package.name}.Resource{r.name}(),' for r in resources]
 	resource_lines = '\n'.join(resource_lines)
 	return resource_lines or DEAD_LINE
 
 
 def _datasources_stanza(datasources):
-	datasource_lines = [f'			"{snake_caps(d.name)}_data_source": {d.package.name}.Datasource{d.name}(),' for d in datasources]
+	datasource_lines = [f'			"cfn_{snake_caps(d.name)}": {d.package.name}.Datasource{d.name}(),' for d in datasources]
 	datasource_lines = '\n'.join(datasource_lines)
 	return datasource_lines or DEAD_LINE
 
