@@ -7,10 +7,23 @@
 package pinpoint
 
 import (
+	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-func propertyCampaignQuietTime() *schema.Resource {
+func propertyCampaignQuietTime(extras...string) *schema.Resource {
+	var count int64 = 0
+	
+	if len(extras) > 0 {
+		if i, err := strconv.ParseInt(extras[0], 10, 32); err == nil {
+			count = i
+		}
+	}
+	
+	if count >= 5 {
+		return nil
+	}
+	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"start": {

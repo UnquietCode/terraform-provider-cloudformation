@@ -7,10 +7,23 @@
 package emr
 
 import (
+	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-func propertyInstanceGroupConfigConfiguration() *schema.Resource {
+func propertyInstanceGroupConfigConfiguration(extras...string) *schema.Resource {
+	var count int64 = 0
+	
+	if len(extras) > 0 {
+		if i, err := strconv.ParseInt(extras[0], 10, 32); err == nil {
+			count = i
+		}
+	}
+	
+	if count >= 5 {
+		return nil
+	}
+	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"classification": {
@@ -26,7 +39,7 @@ func propertyInstanceGroupConfigConfiguration() *schema.Resource {
 			},
 			"configurations": {
 				Type: schema.TypeSet,
-				Elem: propertyInstanceGroupConfigConfiguration(),
+				Elem: propertyInstanceGroupConfigConfiguration(strconv.Itoa(int(count + 1))),
 				Required: false,
 				ForceNew: true,
 			},

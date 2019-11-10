@@ -7,10 +7,23 @@
 package elasticloadbalancingv2
 
 import (
+	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-func propertyListenerRuleAuthenticateCognitoConfig() *schema.Resource {
+func propertyListenerRuleAuthenticateCognitoConfig(extras...string) *schema.Resource {
+	var count int64 = 0
+	
+	if len(extras) > 0 {
+		if i, err := strconv.ParseInt(extras[0], 10, 32); err == nil {
+			count = i
+		}
+	}
+	
+	if count >= 5 {
+		return nil
+	}
+	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"authentication_request_extra_params": {

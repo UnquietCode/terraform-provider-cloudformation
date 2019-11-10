@@ -7,10 +7,23 @@
 package cloudfront
 
 import (
+	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-func propertyDistributionS3OriginConfig() *schema.Resource {
+func propertyDistributionS3OriginConfig(extras...string) *schema.Resource {
+	var count int64 = 0
+	
+	if len(extras) > 0 {
+		if i, err := strconv.ParseInt(extras[0], 10, 32); err == nil {
+			count = i
+		}
+	}
+	
+	if count >= 5 {
+		return nil
+	}
+	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"origin_access_identity": {

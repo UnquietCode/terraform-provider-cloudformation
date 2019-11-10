@@ -7,11 +7,24 @@
 package dlm
 
 import (
+	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 )
 
-func propertyLifecyclePolicyPolicyDetails() *schema.Resource {
+func propertyLifecyclePolicyPolicyDetails(extras...string) *schema.Resource {
+	var count int64 = 0
+	
+	if len(extras) > 0 {
+		if i, err := strconv.ParseInt(extras[0], 10, 32); err == nil {
+			count = i
+		}
+	}
+	
+	if count >= 5 {
+		return nil
+	}
+	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"resource_types": {
