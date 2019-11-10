@@ -271,11 +271,35 @@ package ${package}
 import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/terraform"
+	"github.com/unquietcode/terraform-cfn-provider/plugin"
 ${imports}
 )
 
 func Provider() terraform.ResourceProvider {
 	return &schema.Provider{
+		ConfigureFunc: plugin.ProviderConfigure,
+		Schema: map[string]*schema.Schema{
+			"bucket_name": {
+				Type:        schema.TypeString,
+				Required:    true,
+				Description: "name of an S3 bucket where we can store template files",
+			},
+			"bucket_prefix": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				Description: "path in the bucket under which CFN can store data",
+			},
+			"stack_name": {
+				Type:        schema.TypeString,
+				Required:    true,
+				Description: "exact name to use for the CloudFormation stack",
+			},
+			"role_arn": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				Description: "ARN of a role to be used for interacting with CloudFormation",
+			},
+		},
 		DataSourcesMap: map[string]*schema.Resource{
 ${datasources}
 		},
