@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,83 +25,83 @@ func ResourceDocDBDBCluster() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"storage_encrypted": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"engine_version": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"kms_key_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"availability_zones": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"snapshot_identifier": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"port": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"db_cluster_identifier": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"preferred_maintenance_window": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"db_subnet_group_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"preferred_backup_window": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"master_user_password": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"vpc_security_group_ids": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"master_username": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"db_cluster_parameter_group_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"backup_retention_period": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"enable_cloudwatch_logs_exports": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

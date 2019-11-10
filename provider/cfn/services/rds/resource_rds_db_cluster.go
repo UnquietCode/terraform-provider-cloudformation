@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -26,55 +26,55 @@ func ResourceRDSDBCluster() *schema.Resource {
 			"associated_roles": {
 				Type: schema.TypeSet,
 				Elem: propertyDBClusterDBClusterRole(),
-				Required: false,
+				Optional: true,
 			},
 			"availability_zones": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 				Set: schema.HashString,
 			},
 			"backtrack_window": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"backup_retention_period": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"db_cluster_identifier": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"db_cluster_parameter_group_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"db_subnet_group_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"database_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"deletion_protection": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"enable_cloudwatch_logs_exports": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				Set: schema.HashString,
 			},
 			"enable_iam_database_authentication": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"engine": {
 				Type: schema.TypeString,
@@ -83,89 +83,89 @@ func ResourceRDSDBCluster() *schema.Resource {
 			},
 			"engine_mode": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"engine_version": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"kms_key_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"master_user_password": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"master_username": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"port": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"preferred_backup_window": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"preferred_maintenance_window": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"replication_source_identifier": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"restore_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"scaling_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyDBClusterScalingConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"snapshot_identifier": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"source_db_cluster_identifier": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"source_region": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"storage_encrypted": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"use_latest_restorable_time": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"vpc_security_group_ids": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				Set: schema.HashString,
 			},
 		},

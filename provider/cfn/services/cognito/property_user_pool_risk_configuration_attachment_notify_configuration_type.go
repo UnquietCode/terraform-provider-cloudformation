@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertyUserPoolRiskConfigurationAttachmentNotifyConfigurationType(extras..
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -32,12 +32,12 @@ func propertyUserPoolRiskConfigurationAttachmentNotifyConfigurationType(extras..
 			"block_email": {
 				Type: schema.TypeList,
 				Elem: propertyUserPoolRiskConfigurationAttachmentNotifyEmailType(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"reply_to": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"source_arn": {
 				Type: schema.TypeString,
@@ -46,17 +46,17 @@ func propertyUserPoolRiskConfigurationAttachmentNotifyConfigurationType(extras..
 			"no_action_email": {
 				Type: schema.TypeList,
 				Elem: propertyUserPoolRiskConfigurationAttachmentNotifyEmailType(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"from": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"mfa_email": {
 				Type: schema.TypeList,
 				Elem: propertyUserPoolRiskConfigurationAttachmentNotifyEmailType(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

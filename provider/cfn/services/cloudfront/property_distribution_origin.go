@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertyDistributionOrigin(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -32,7 +32,7 @@ func propertyDistributionOrigin(extras...string) *schema.Resource {
 			"origin_custom_headers": {
 				Type: schema.TypeList,
 				Elem: propertyDistributionOriginCustomHeader(),
-				Required: false,
+				Optional: true,
 			},
 			"domain_name": {
 				Type: schema.TypeString,
@@ -41,12 +41,12 @@ func propertyDistributionOrigin(extras...string) *schema.Resource {
 			"s3_origin_config": {
 				Type: schema.TypeList,
 				Elem: propertyDistributionS3OriginConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"origin_path": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"id": {
 				Type: schema.TypeString,
@@ -55,7 +55,7 @@ func propertyDistributionOrigin(extras...string) *schema.Resource {
 			"custom_origin_config": {
 				Type: schema.TypeList,
 				Elem: propertyDistributionCustomOriginConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

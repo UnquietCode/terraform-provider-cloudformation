@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,21 +24,21 @@ func ResourceApiGatewayMethod() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"api_key_required": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"authorization_scopes": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				Set: schema.HashString,
 			},
 			"authorization_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"authorizer_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"http_method": {
 				Type: schema.TypeString,
@@ -47,31 +47,31 @@ func ResourceApiGatewayMethod() *schema.Resource {
 			"integration": {
 				Type: schema.TypeList,
 				Elem: propertyMethodIntegration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"method_responses": {
 				Type: schema.TypeSet,
 				Elem: propertyMethodMethodResponse(),
-				Required: false,
+				Optional: true,
 			},
 			"operation_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"request_models": {
 				Type: schema.TypeMap,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"request_parameters": {
 				Type: schema.TypeMap,
 				Elem: &schema.Schema{Type: schema.TypeBool},
-				Required: false,
+				Optional: true,
 			},
 			"request_validator_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"resource_id": {
 				Type: schema.TypeString,

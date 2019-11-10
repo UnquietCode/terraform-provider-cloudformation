@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,40 +25,40 @@ func ResourceEMRCluster() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"additional_info": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"applications": {
 				Type: schema.TypeSet,
 				Elem: propertyClusterApplication(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"auto_scaling_role": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"bootstrap_actions": {
 				Type: schema.TypeSet,
 				Elem: propertyClusterBootstrapActionConfig(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"configurations": {
 				Type: schema.TypeSet,
 				Elem: propertyClusterConfiguration(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"custom_ami_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"ebs_root_volume_size": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"instances": {
@@ -75,13 +75,13 @@ func ResourceEMRCluster() *schema.Resource {
 			"kerberos_attributes": {
 				Type: schema.TypeList,
 				Elem: propertyClusterKerberosAttributes(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 				MaxItems: 1,
 			},
 			"log_uri": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"name": {
@@ -91,17 +91,17 @@ func ResourceEMRCluster() *schema.Resource {
 			},
 			"release_label": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"scale_down_behavior": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"security_configuration": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"service_role": {
@@ -112,17 +112,17 @@ func ResourceEMRCluster() *schema.Resource {
 			"steps": {
 				Type: schema.TypeSet,
 				Elem: propertyClusterStepConfig(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"visible_to_all_users": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

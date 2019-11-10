@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,11 +24,11 @@ func ResourceLambdaEventSourceMapping() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"batch_size": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"enabled": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"event_source_arn": {
 				Type: schema.TypeString,
@@ -41,11 +41,11 @@ func ResourceLambdaEventSourceMapping() *schema.Resource {
 			},
 			"maximum_batching_window_in_seconds": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"starting_position": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 		},

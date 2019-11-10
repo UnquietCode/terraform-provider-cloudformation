@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,175 +25,175 @@ func ResourceEC2Instance() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"additional_info": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"affinity": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"availability_zone": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"block_device_mappings": {
 				Type: schema.TypeList,
 				Elem: propertyInstanceBlockDeviceMapping(),
-				Required: false,
+				Optional: true,
 			},
 			"cpu_options": {
 				Type: schema.TypeList,
 				Elem: propertyInstanceCpuOptions(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 				MaxItems: 1,
 			},
 			"credit_specification": {
 				Type: schema.TypeList,
 				Elem: propertyInstanceCreditSpecification(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"disable_api_termination": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"ebs_optimized": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"elastic_gpu_specifications": {
 				Type: schema.TypeSet,
 				Elem: propertyInstanceElasticGpuSpecification(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"elastic_inference_accelerators": {
 				Type: schema.TypeSet,
 				Elem: propertyInstanceElasticInferenceAccelerator(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"host_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"iam_instance_profile": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"image_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"instance_initiated_shutdown_behavior": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"instance_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"ipv6_address_count": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"ipv6_addresses": {
 				Type: schema.TypeList,
 				Elem: propertyInstanceInstanceIpv6Address(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"kernel_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"key_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"launch_template": {
 				Type: schema.TypeList,
 				Elem: propertyInstanceLaunchTemplateSpecification(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 				MaxItems: 1,
 			},
 			"license_specifications": {
 				Type: schema.TypeSet,
 				Elem: propertyInstanceLicenseSpecification(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"monitoring": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"network_interfaces": {
 				Type: schema.TypeList,
 				Elem: propertyInstanceNetworkInterface(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"placement_group_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"private_ip_address": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"ramdisk_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"security_group_ids": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"security_groups": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"source_dest_check": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"ssm_associations": {
 				Type: schema.TypeList,
 				Elem: propertyInstanceSsmAssociation(),
-				Required: false,
+				Optional: true,
 			},
 			"subnet_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"tenancy": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"user_data": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"volumes": {
 				Type: schema.TypeList,
 				Elem: propertyInstanceVolume(),
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

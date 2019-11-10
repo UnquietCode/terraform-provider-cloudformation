@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,27 +25,27 @@ func ResourceDMSEndpoint() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"kms_key_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"port": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"database_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"elasticsearch_settings": {
 				Type: schema.TypeList,
 				Elem: propertyEndpointElasticsearchSettings(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"s3_settings": {
 				Type: schema.TypeList,
 				Elem: propertyEndpointS3Settings(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"engine_name": {
@@ -55,30 +55,30 @@ func ResourceDMSEndpoint() *schema.Resource {
 			"dynamo_db_settings": {
 				Type: schema.TypeList,
 				Elem: propertyEndpointDynamoDbSettings(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"kinesis_settings": {
 				Type: schema.TypeList,
 				Elem: propertyEndpointKinesisSettings(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"username": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"ssl_mode": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"server_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"extra_connection_attributes": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"endpoint_type": {
 				Type: schema.TypeString,
@@ -87,25 +87,25 @@ func ResourceDMSEndpoint() *schema.Resource {
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"endpoint_identifier": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"password": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"certificate_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"mongo_db_settings": {
 				Type: schema.TypeList,
 				Elem: propertyEndpointMongoDbSettings(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

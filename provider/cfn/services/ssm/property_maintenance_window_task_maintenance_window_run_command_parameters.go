@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,48 +24,48 @@ func propertyMaintenanceWindowTaskMaintenanceWindowRunCommandParameters(extras..
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"timeout_seconds": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"comment": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"output_s3_key_prefix": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"parameters": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"document_hash_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"service_role_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"notification_config": {
 				Type: schema.TypeList,
 				Elem: propertyMaintenanceWindowTaskNotificationConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"output_s3_bucket_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"document_hash": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

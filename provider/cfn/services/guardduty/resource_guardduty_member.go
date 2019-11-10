@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func ResourceGuardDutyMember() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"status": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"member_id": {
 				Type: schema.TypeString,
@@ -38,11 +38,11 @@ func ResourceGuardDutyMember() *schema.Resource {
 			},
 			"message": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"disable_email_notification": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"detector_id": {
 				Type: schema.TypeString,

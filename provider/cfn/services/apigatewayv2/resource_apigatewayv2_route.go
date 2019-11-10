@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,32 +24,32 @@ func ResourceApiGatewayV2Route() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"target": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"route_response_selection_expression": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"authorizer_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"request_models": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"operation_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"authorization_scopes": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"api_key_required": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"route_key": {
 				Type: schema.TypeString,
@@ -57,11 +57,11 @@ func ResourceApiGatewayV2Route() *schema.Resource {
 			},
 			"authorization_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"model_selection_expression": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"api_id": {
 				Type: schema.TypeString,
@@ -70,7 +70,7 @@ func ResourceApiGatewayV2Route() *schema.Resource {
 			},
 			"request_parameters": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

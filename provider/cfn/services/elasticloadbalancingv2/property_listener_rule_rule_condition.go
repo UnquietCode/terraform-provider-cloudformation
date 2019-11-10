@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,55 +24,55 @@ func propertyListenerRuleRuleCondition(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"field": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"host_header_config": {
 				Type: schema.TypeList,
 				Elem: propertyListenerRuleHostHeaderConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"http_header_config": {
 				Type: schema.TypeList,
 				Elem: propertyListenerRuleHttpHeaderConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"http_request_method_config": {
 				Type: schema.TypeList,
 				Elem: propertyListenerRuleHttpRequestMethodConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"path_pattern_config": {
 				Type: schema.TypeList,
 				Elem: propertyListenerRulePathPatternConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"query_string_config": {
 				Type: schema.TypeList,
 				Elem: propertyListenerRuleQueryStringConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"source_ip_config": {
 				Type: schema.TypeList,
 				Elem: propertyListenerRuleSourceIpConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"values": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				Set: schema.HashString,
 			},
 		},

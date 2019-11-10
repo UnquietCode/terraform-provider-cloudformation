@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,13 +25,13 @@ func ResourceApiGatewayDeployment() *schema.Resource {
 			"deployment_canary_settings": {
 				Type: schema.TypeList,
 				Elem: propertyDeploymentDeploymentCanarySettings(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 				MaxItems: 1,
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"rest_api_id": {
 				Type: schema.TypeString,
@@ -41,12 +41,12 @@ func ResourceApiGatewayDeployment() *schema.Resource {
 			"stage_description": {
 				Type: schema.TypeList,
 				Elem: propertyDeploymentStageDescription(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"stage_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

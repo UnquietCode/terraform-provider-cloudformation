@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,25 +25,25 @@ func ResourceGlueClassifier() *schema.Resource {
 			"xml_classifier": {
 				Type: schema.TypeList,
 				Elem: propertyClassifierXMLClassifier(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"json_classifier": {
 				Type: schema.TypeList,
 				Elem: propertyClassifierJsonClassifier(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"csv_classifier": {
 				Type: schema.TypeList,
 				Elem: propertyClassifierCsvClassifier(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"grok_classifier": {
 				Type: schema.TypeList,
 				Elem: propertyClassifierGrokClassifier(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

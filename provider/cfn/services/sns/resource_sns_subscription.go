@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,16 +24,16 @@ func ResourceSNSSubscription() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"delivery_policy": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"endpoint": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"filter_policy": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"protocol": {
 				Type: schema.TypeString,
@@ -42,11 +42,11 @@ func ResourceSNSSubscription() *schema.Resource {
 			},
 			"raw_message_delivery": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"region": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"topic_arn": {
 				Type: schema.TypeString,

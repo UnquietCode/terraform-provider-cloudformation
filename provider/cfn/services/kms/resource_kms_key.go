@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,15 +25,15 @@ func ResourceKMSKey() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"enable_key_rotation": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"enabled": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"key_policy": {
 				Type: schema.TypeMap,
@@ -41,17 +41,17 @@ func ResourceKMSKey() *schema.Resource {
 			},
 			"key_usage": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"pending_window_in_days": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

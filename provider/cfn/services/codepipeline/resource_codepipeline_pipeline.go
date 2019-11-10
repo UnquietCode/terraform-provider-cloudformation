@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,27 +25,27 @@ func ResourceCodePipelinePipeline() *schema.Resource {
 			"artifact_store": {
 				Type: schema.TypeList,
 				Elem: propertyPipelineArtifactStore(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"artifact_stores": {
 				Type: schema.TypeSet,
 				Elem: propertyPipelineArtifactStoreMap(),
-				Required: false,
+				Optional: true,
 			},
 			"disable_inbound_stage_transitions": {
 				Type: schema.TypeSet,
 				Elem: propertyPipelineStageTransition(),
-				Required: false,
+				Optional: true,
 			},
 			"name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"restart_execution_on_update": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"role_arn": {
 				Type: schema.TypeString,

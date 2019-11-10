@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ func ResourceEC2TransitGatewayRoute() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceEC2TransitGatewayRouteCreate,
 		Read:   resourceEC2TransitGatewayRouteRead,
-		Update: resourceEC2TransitGatewayRouteUpdate,
 		Delete: resourceEC2TransitGatewayRouteDelete,
 
 		Schema: map[string]*schema.Schema{
@@ -29,17 +28,17 @@ func ResourceEC2TransitGatewayRoute() *schema.Resource {
 			},
 			"destination_cidr_block": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"blackhole": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"transit_gateway_attachment_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 		},

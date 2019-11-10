@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertyDistributionDistributionConfig(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -32,42 +32,42 @@ func propertyDistributionDistributionConfig(extras...string) *schema.Resource {
 			"logging": {
 				Type: schema.TypeList,
 				Elem: propertyDistributionLogging(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"comment": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"default_root_object": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"origins": {
 				Type: schema.TypeList,
 				Elem: propertyDistributionOrigin(),
-				Required: false,
+				Optional: true,
 			},
 			"viewer_certificate": {
 				Type: schema.TypeList,
 				Elem: propertyDistributionViewerCertificate(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"price_class": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"default_cache_behavior": {
 				Type: schema.TypeList,
 				Elem: propertyDistributionDefaultCacheBehavior(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"custom_error_responses": {
 				Type: schema.TypeList,
 				Elem: propertyDistributionCustomErrorResponse(),
-				Required: false,
+				Optional: true,
 			},
 			"enabled": {
 				Type: schema.TypeBool,
@@ -76,30 +76,30 @@ func propertyDistributionDistributionConfig(extras...string) *schema.Resource {
 			"aliases": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"ipv6_enabled": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"web_acl_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"http_version": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"restrictions": {
 				Type: schema.TypeList,
 				Elem: propertyDistributionRestrictions(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"cache_behaviors": {
 				Type: schema.TypeList,
 				Elem: propertyDistributionCacheBehavior(),
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

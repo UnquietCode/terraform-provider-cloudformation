@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertyDistributionForwardedValues(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -32,13 +32,13 @@ func propertyDistributionForwardedValues(extras...string) *schema.Resource {
 			"cookies": {
 				Type: schema.TypeList,
 				Elem: propertyDistributionCookies(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"headers": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"query_string": {
 				Type: schema.TypeBool,
@@ -47,7 +47,7 @@ func propertyDistributionForwardedValues(extras...string) *schema.Resource {
 			"query_string_cache_keys": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

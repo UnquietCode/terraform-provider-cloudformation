@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -26,7 +26,7 @@ func ResourceOpsWorksLayer() *schema.Resource {
 			"attributes": {
 				Type: schema.TypeMap,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"auto_assign_elastic_ips": {
 				Type: schema.TypeBool,
@@ -38,22 +38,22 @@ func ResourceOpsWorksLayer() *schema.Resource {
 			},
 			"custom_instance_profile_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"custom_json": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"custom_recipes": {
 				Type: schema.TypeList,
 				Elem: propertyLayerRecipes(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"custom_security_group_ids": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"enable_auto_healing": {
 				Type: schema.TypeBool,
@@ -61,18 +61,18 @@ func ResourceOpsWorksLayer() *schema.Resource {
 			},
 			"install_updates_on_boot": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"lifecycle_event_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyLayerLifecycleEventConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"load_based_auto_scaling": {
 				Type: schema.TypeList,
 				Elem: propertyLayerLoadBasedAutoScaling(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"name": {
@@ -82,7 +82,7 @@ func ResourceOpsWorksLayer() *schema.Resource {
 			"packages": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"shortname": {
 				Type: schema.TypeString,
@@ -96,7 +96,7 @@ func ResourceOpsWorksLayer() *schema.Resource {
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"type": {
 				Type: schema.TypeString,
@@ -105,12 +105,12 @@ func ResourceOpsWorksLayer() *schema.Resource {
 			},
 			"use_ebs_optimized_instances": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"volume_configurations": {
 				Type: schema.TypeList,
 				Elem: propertyLayerVolumeConfiguration(),
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

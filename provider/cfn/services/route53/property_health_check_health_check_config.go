@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertyHealthCheckHealthCheckConfig(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -32,70 +32,70 @@ func propertyHealthCheckHealthCheckConfig(extras...string) *schema.Resource {
 			"alarm_identifier": {
 				Type: schema.TypeList,
 				Elem: propertyHealthCheckAlarmIdentifier(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"child_health_checks": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				Set: schema.HashString,
 			},
 			"enable_sni": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"failure_threshold": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"fully_qualified_domain_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"health_threshold": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"ip_address": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"insufficient_data_health_status": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"inverted": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"measure_latency": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"port": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"regions": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				Set: schema.HashString,
 			},
 			"request_interval": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"resource_path": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"search_string": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"type": {
 				Type: schema.TypeString,

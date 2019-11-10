@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,24 +25,24 @@ func ResourceCloudTrailTrail() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"cloud_watch_logs_log_group_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"cloud_watch_logs_role_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"enable_log_file_validation": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"event_selectors": {
 				Type: schema.TypeSet,
 				Elem: propertyTrailEventSelector(),
-				Required: false,
+				Optional: true,
 			},
 			"include_global_service_events": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"is_logging": {
 				Type: schema.TypeBool,
@@ -50,11 +50,11 @@ func ResourceCloudTrailTrail() *schema.Resource {
 			},
 			"is_multi_region_trail": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"kms_key_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"s3_bucket_name": {
 				Type: schema.TypeString,
@@ -62,20 +62,20 @@ func ResourceCloudTrailTrail() *schema.Resource {
 			},
 			"s3_key_prefix": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"sns_topic_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"trail_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 		},

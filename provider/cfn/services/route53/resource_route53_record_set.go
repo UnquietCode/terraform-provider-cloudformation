@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,40 +25,40 @@ func ResourceRoute53RecordSet() *schema.Resource {
 			"alias_target": {
 				Type: schema.TypeList,
 				Elem: propertyRecordSetAliasTarget(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"comment": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"failover": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"geo_location": {
 				Type: schema.TypeList,
 				Elem: propertyRecordSetGeoLocation(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"health_check_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"hosted_zone_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"hosted_zone_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"multi_value_answer": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"name": {
 				Type: schema.TypeString,
@@ -67,20 +67,20 @@ func ResourceRoute53RecordSet() *schema.Resource {
 			},
 			"region": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"resource_records": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"set_identifier": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"ttl": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"type": {
 				Type: schema.TypeString,
@@ -88,7 +88,7 @@ func ResourceRoute53RecordSet() *schema.Resource {
 			},
 			"weight": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

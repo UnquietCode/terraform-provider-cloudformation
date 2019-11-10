@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,50 +24,50 @@ func propertyUserPoolLambdaConfig(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"create_auth_challenge": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"pre_authentication": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"define_auth_challenge": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"pre_sign_up": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"pre_token_generation": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"user_migration": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"post_authentication": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"post_confirmation": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"custom_message": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"verify_auth_challenge_response": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

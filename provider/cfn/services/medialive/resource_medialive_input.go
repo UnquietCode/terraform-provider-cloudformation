@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,47 +24,47 @@ func ResourceMediaLiveInput() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"destinations": {
 				Type: schema.TypeList,
 				Elem: propertyInputInputDestinationRequest(),
-				Required: false,
+				Optional: true,
 			},
 			"vpc": {
 				Type: schema.TypeList,
 				Elem: propertyInputInputVpcRequest(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 				MaxItems: 1,
 			},
 			"media_connect_flows": {
 				Type: schema.TypeList,
 				Elem: propertyInputMediaConnectFlowRequest(),
-				Required: false,
+				Optional: true,
 			},
 			"input_security_groups": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"sources": {
 				Type: schema.TypeList,
 				Elem: propertyInputInputSourceRequest(),
-				Required: false,
+				Optional: true,
 			},
 			"role_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"tags": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

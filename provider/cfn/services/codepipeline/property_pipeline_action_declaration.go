@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertyPipelineActionDeclaration(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -37,12 +37,12 @@ func propertyPipelineActionDeclaration(extras...string) *schema.Resource {
 			},
 			"configuration": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"input_artifacts": {
 				Type: schema.TypeSet,
 				Elem: propertyPipelineInputArtifact(),
-				Required: false,
+				Optional: true,
 			},
 			"name": {
 				Type: schema.TypeString,
@@ -51,19 +51,19 @@ func propertyPipelineActionDeclaration(extras...string) *schema.Resource {
 			"output_artifacts": {
 				Type: schema.TypeSet,
 				Elem: propertyPipelineOutputArtifact(),
-				Required: false,
+				Optional: true,
 			},
 			"region": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"role_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"run_order": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

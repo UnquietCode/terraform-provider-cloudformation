@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,28 +24,28 @@ func ResourceGlueDevEndpoint() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"extra_jars_s3_path": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"public_key": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"number_of_nodes": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"arguments": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"subnet_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"security_group_ids": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"role_arn": {
 				Type: schema.TypeString,
@@ -53,32 +53,32 @@ func ResourceGlueDevEndpoint() *schema.Resource {
 			},
 			"worker_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"endpoint_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"glue_version": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"extra_python_libs_s3_path": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"security_configuration": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"number_of_workers": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"tags": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

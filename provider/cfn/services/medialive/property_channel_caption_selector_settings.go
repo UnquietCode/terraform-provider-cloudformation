@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertyChannelCaptionSelectorSettings(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -32,37 +32,37 @@ func propertyChannelCaptionSelectorSettings(extras...string) *schema.Resource {
 			"dvb_sub_source_settings": {
 				Type: schema.TypeList,
 				Elem: propertyChannelDvbSubSourceSettings(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"scte27_source_settings": {
 				Type: schema.TypeList,
 				Elem: propertyChannelScte27SourceSettings(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"arib_source_settings": {
 				Type: schema.TypeList,
 				Elem: propertyChannelAribSourceSettings(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"embedded_source_settings": {
 				Type: schema.TypeList,
 				Elem: propertyChannelEmbeddedSourceSettings(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"scte20_source_settings": {
 				Type: schema.TypeList,
 				Elem: propertyChannelScte20SourceSettings(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"teletext_source_settings": {
 				Type: schema.TypeList,
 				Elem: propertyChannelTeletextSourceSettings(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertyLaunchConfigurationBlockDeviceMapping(extras...string) *schema.Reso
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -36,16 +36,16 @@ func propertyLaunchConfigurationBlockDeviceMapping(extras...string) *schema.Reso
 			"ebs": {
 				Type: schema.TypeList,
 				Elem: propertyLaunchConfigurationBlockDevice(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"no_device": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"virtual_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

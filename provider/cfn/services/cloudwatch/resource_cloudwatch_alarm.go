@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,20 +24,20 @@ func ResourceCloudWatchAlarm() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"actions_enabled": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"alarm_actions": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"alarm_description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"alarm_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"comparison_operator": {
@@ -46,16 +46,16 @@ func ResourceCloudWatchAlarm() *schema.Resource {
 			},
 			"datapoints_to_alarm": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"dimensions": {
 				Type: schema.TypeList,
 				Elem: propertyAlarmDimension(),
-				Required: false,
+				Optional: true,
 			},
 			"evaluate_low_sample_count_percentile": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"evaluation_periods": {
 				Type: schema.TypeInt,
@@ -63,54 +63,54 @@ func ResourceCloudWatchAlarm() *schema.Resource {
 			},
 			"extended_statistic": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"insufficient_data_actions": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"metric_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"metrics": {
 				Type: schema.TypeSet,
 				Elem: propertyAlarmMetricDataQuery(),
-				Required: false,
+				Optional: true,
 			},
 			"namespace": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"ok_actions": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"period": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"statistic": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"threshold": {
 				Type: schema.TypeFloat,
-				Required: false,
+				Optional: true,
 			},
 			"threshold_metric_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"treat_missing_data": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"unit": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

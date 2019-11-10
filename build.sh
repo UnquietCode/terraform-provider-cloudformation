@@ -10,5 +10,5 @@ pushd "generator"
 popd
 
 pushd "provider"
-  go build
+  go build -o ../terraform-provider-cfn
 popd

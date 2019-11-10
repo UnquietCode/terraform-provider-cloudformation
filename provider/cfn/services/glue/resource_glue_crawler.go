@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -29,31 +29,31 @@ func ResourceGlueCrawler() *schema.Resource {
 			"classifiers": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"schema_change_policy": {
 				Type: schema.TypeList,
 				Elem: propertyCrawlerSchemaChangePolicy(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"configuration": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"schedule": {
 				Type: schema.TypeList,
 				Elem: propertyCrawlerSchedule(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"database_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"targets": {
 				Type: schema.TypeList,
@@ -63,19 +63,19 @@ func ResourceGlueCrawler() *schema.Resource {
 			},
 			"crawler_security_configuration": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"table_prefix": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"tags": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 		},

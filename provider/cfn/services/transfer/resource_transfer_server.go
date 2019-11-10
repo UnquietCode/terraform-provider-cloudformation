@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,33 +25,33 @@ func ResourceTransferServer() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"logging_role": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"identity_provider_details": {
 				Type: schema.TypeList,
 				Elem: propertyServerIdentityProviderDetails(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"endpoint_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"endpoint_details": {
 				Type: schema.TypeList,
 				Elem: propertyServerEndpointDetails(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"identity_provider_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

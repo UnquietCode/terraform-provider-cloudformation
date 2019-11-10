@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,40 +24,40 @@ func propertyDomainElasticsearchClusterConfig(extras...string) *schema.Resource 
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"dedicated_master_count": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"dedicated_master_enabled": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"dedicated_master_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"instance_count": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"instance_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"zone_awareness_config": {
 				Type: schema.TypeList,
 				Elem: propertyDomainZoneAwarenessConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"zone_awareness_enabled": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

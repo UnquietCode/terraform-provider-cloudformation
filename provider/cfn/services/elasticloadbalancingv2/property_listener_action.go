@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertyListenerAction(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -32,34 +32,34 @@ func propertyListenerAction(extras...string) *schema.Resource {
 			"authenticate_cognito_config": {
 				Type: schema.TypeList,
 				Elem: propertyListenerAuthenticateCognitoConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"authenticate_oidc_config": {
 				Type: schema.TypeList,
 				Elem: propertyListenerAuthenticateOidcConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"fixed_response_config": {
 				Type: schema.TypeList,
 				Elem: propertyListenerFixedResponseConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"order": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"redirect_config": {
 				Type: schema.TypeList,
 				Elem: propertyListenerRedirectConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"target_group_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"type": {
 				Type: schema.TypeString,

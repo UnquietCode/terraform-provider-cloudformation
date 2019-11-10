@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,32 +24,32 @@ func ResourceEC2Route() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"destination_cidr_block": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"destination_ipv6_cidr_block": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"egress_only_internet_gateway_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"gateway_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"instance_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"nat_gateway_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"network_interface_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"route_table_id": {
 				Type: schema.TypeString,
@@ -58,11 +58,11 @@ func ResourceEC2Route() *schema.Resource {
 			},
 			"transit_gateway_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"vpc_peering_connection_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

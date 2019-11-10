@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,7 +25,7 @@ func ResourceAmazonMQBroker() *schema.Resource {
 			"security_groups": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"engine_version": {
 				Type: schema.TypeString,
@@ -34,13 +34,13 @@ func ResourceAmazonMQBroker() *schema.Resource {
 			"configuration": {
 				Type: schema.TypeList,
 				Elem: propertyBrokerConfigurationId(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"maintenance_window_start_time": {
 				Type: schema.TypeList,
 				Elem: propertyBrokerMaintenanceWindow(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 				MaxItems: 1,
 			},
@@ -60,13 +60,13 @@ func ResourceAmazonMQBroker() *schema.Resource {
 			"logs": {
 				Type: schema.TypeList,
 				Elem: propertyBrokerLogList(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"subnet_ids": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"broker_name": {
@@ -92,14 +92,14 @@ func ResourceAmazonMQBroker() *schema.Resource {
 			"encryption_options": {
 				Type: schema.TypeList,
 				Elem: propertyBrokerEncryptionOptions(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 				MaxItems: 1,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: propertyBrokerTagsEntry(),
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

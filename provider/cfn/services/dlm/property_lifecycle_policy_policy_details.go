@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,7 +25,7 @@ func propertyLifecyclePolicyPolicyDetails(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -33,27 +33,27 @@ func propertyLifecyclePolicyPolicyDetails(extras...string) *schema.Resource {
 			"resource_types": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"schedules": {
 				Type: schema.TypeList,
 				Elem: propertyLifecyclePolicySchedule(),
-				Required: false,
+				Optional: true,
 			},
 			"policy_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"parameters": {
 				Type: schema.TypeList,
 				Elem: propertyLifecyclePolicyParameters(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"target_tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

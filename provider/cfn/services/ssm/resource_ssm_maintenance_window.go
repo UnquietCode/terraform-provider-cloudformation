@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,11 +25,11 @@ func ResourceSSMMaintenanceWindow() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"start_date": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"allow_unassociated_targets": {
 				Type: schema.TypeBool,
@@ -49,12 +49,12 @@ func ResourceSSMMaintenanceWindow() *schema.Resource {
 			},
 			"end_date": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"name": {
 				Type: schema.TypeString,
@@ -62,7 +62,7 @@ func ResourceSSMMaintenanceWindow() *schema.Resource {
 			},
 			"schedule_timezone": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

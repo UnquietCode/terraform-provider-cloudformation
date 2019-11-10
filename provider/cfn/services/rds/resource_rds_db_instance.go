@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,42 +25,42 @@ func ResourceRDSDBInstance() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"allocated_storage": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"allow_major_version_upgrade": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"associated_roles": {
 				Type: schema.TypeSet,
 				Elem: propertyDBInstanceDBInstanceRole(),
-				Required: false,
+				Optional: true,
 			},
 			"auto_minor_version_upgrade": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"availability_zone": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"backup_retention_period": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"character_set_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"copy_tags_to_snapshot": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"db_cluster_identifier": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"db_instance_class": {
@@ -69,182 +69,182 @@ func ResourceRDSDBInstance() *schema.Resource {
 			},
 			"db_instance_identifier": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"db_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"db_parameter_group_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"db_security_groups": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"db_snapshot_identifier": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"db_subnet_group_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"delete_automated_backups": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"deletion_protection": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"domain": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"domain_iam_role_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"enable_cloudwatch_logs_exports": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				Set: schema.HashString,
 			},
 			"enable_iam_database_authentication": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"enable_performance_insights": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"engine": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"engine_version": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"iops": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"kms_key_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"license_model": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"master_user_password": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"master_username": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"monitoring_interval": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"monitoring_role_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"multi_az": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"option_group_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"performance_insights_kms_key_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"performance_insights_retention_period": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"port": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"preferred_backup_window": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"preferred_maintenance_window": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"processor_features": {
 				Type: schema.TypeSet,
 				Elem: propertyDBInstanceProcessorFeature(),
-				Required: false,
+				Optional: true,
 			},
 			"promotion_tier": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"publicly_accessible": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"source_db_instance_identifier": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"source_region": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"storage_encrypted": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"storage_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"timezone": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"use_default_processor_features": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"vpc_security_groups": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,54 +25,54 @@ func ResourceServiceCatalogCloudFormationProvisionedProduct() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"path_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"provisioning_parameters": {
 				Type: schema.TypeList,
 				Elem: propertyCloudFormationProvisionedProductProvisioningParameter(),
-				Required: false,
+				Optional: true,
 			},
 			"provisioning_preferences": {
 				Type: schema.TypeList,
 				Elem: propertyCloudFormationProvisionedProductProvisioningPreferences(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"product_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"provisioning_artifact_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"notification_arns": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"accept_language": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"product_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"provisioned_product_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"provisioning_artifact_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

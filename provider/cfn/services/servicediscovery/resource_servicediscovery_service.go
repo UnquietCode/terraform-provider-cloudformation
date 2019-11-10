@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,35 +24,35 @@ func ResourceServiceDiscoveryService() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"health_check_custom_config": {
 				Type: schema.TypeList,
 				Elem: propertyServiceHealthCheckCustomConfig(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 				MaxItems: 1,
 			},
 			"dns_config": {
 				Type: schema.TypeList,
 				Elem: propertyServiceDnsConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"namespace_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"health_check_config": {
 				Type: schema.TypeList,
 				Elem: propertyServiceHealthCheckConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 		},

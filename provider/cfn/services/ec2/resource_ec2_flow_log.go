@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,28 +18,27 @@ func ResourceEC2FlowLog() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceEC2FlowLogCreate,
 		Read:   resourceEC2FlowLogRead,
-		Update: resourceEC2FlowLogUpdate,
 		Delete: resourceEC2FlowLogDelete,
 
 		Schema: map[string]*schema.Schema{
 			"deliver_logs_permission_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"log_destination": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"log_destination_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"log_group_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"resource_id": {

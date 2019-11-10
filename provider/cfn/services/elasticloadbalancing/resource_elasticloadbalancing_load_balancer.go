@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -26,52 +26,52 @@ func ResourceElasticLoadBalancingLoadBalancer() *schema.Resource {
 			"access_logging_policy": {
 				Type: schema.TypeList,
 				Elem: propertyLoadBalancerAccessLoggingPolicy(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"app_cookie_stickiness_policy": {
 				Type: schema.TypeSet,
 				Elem: propertyLoadBalancerAppCookieStickinessPolicy(),
-				Required: false,
+				Optional: true,
 			},
 			"availability_zones": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				Set: schema.HashString,
 			},
 			"connection_draining_policy": {
 				Type: schema.TypeList,
 				Elem: propertyLoadBalancerConnectionDrainingPolicy(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"connection_settings": {
 				Type: schema.TypeList,
 				Elem: propertyLoadBalancerConnectionSettings(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"cross_zone": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"health_check": {
 				Type: schema.TypeList,
 				Elem: propertyLoadBalancerHealthCheck(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"instances": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				Set: schema.HashString,
 			},
 			"lb_cookie_stickiness_policy": {
 				Type: schema.TypeSet,
 				Elem: propertyLoadBalancerLBCookieStickinessPolicy(),
-				Required: false,
+				Optional: true,
 			},
 			"listeners": {
 				Type: schema.TypeSet,
@@ -80,35 +80,35 @@ func ResourceElasticLoadBalancingLoadBalancer() *schema.Resource {
 			},
 			"load_balancer_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"policies": {
 				Type: schema.TypeSet,
 				Elem: propertyLoadBalancerPolicies(),
-				Required: false,
+				Optional: true,
 			},
 			"scheme": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"security_groups": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				Set: schema.HashString,
 			},
 			"subnets": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				Set: schema.HashString,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

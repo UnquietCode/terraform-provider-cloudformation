@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,12 +24,12 @@ func ResourceOpsWorksCMServer() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"key_pair": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"engine_version": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"service_role_arn": {
@@ -39,25 +39,25 @@ func ResourceOpsWorksCMServer() *schema.Resource {
 			},
 			"disable_automated_backup": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"backup_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"engine_model": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"preferred_maintenance_window": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"associate_public_ip_address": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"instance_profile_arn": {
@@ -67,33 +67,33 @@ func ResourceOpsWorksCMServer() *schema.Resource {
 			},
 			"preferred_backup_window": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"security_group_ids": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"subnet_ids": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"server_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"engine_attributes": {
 				Type: schema.TypeList,
 				Elem: propertyServerEngineAttribute(),
-				Required: false,
+				Optional: true,
 			},
 			"backup_retention_count": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"instance_type": {
 				Type: schema.TypeString,
@@ -102,7 +102,7 @@ func ResourceOpsWorksCMServer() *schema.Resource {
 			},
 			"engine": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 		},

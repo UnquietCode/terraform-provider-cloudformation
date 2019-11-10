@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,24 +25,24 @@ func ResourceEMRInstanceGroupConfig() *schema.Resource {
 			"auto_scaling_policy": {
 				Type: schema.TypeList,
 				Elem: propertyInstanceGroupConfigAutoScalingPolicy(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"bid_price": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"configurations": {
 				Type: schema.TypeSet,
 				Elem: propertyInstanceGroupConfigConfiguration(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"ebs_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyInstanceGroupConfigEbsConfiguration(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 				MaxItems: 1,
 			},
@@ -67,12 +67,12 @@ func ResourceEMRInstanceGroupConfig() *schema.Resource {
 			},
 			"market": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 		},

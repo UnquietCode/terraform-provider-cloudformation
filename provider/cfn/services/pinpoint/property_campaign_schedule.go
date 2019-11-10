@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,42 +24,42 @@ func propertyCampaignSchedule(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"time_zone": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"quiet_time": {
 				Type: schema.TypeList,
 				Elem: propertyCampaignQuietTime(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"end_time": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"start_time": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"frequency": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"event_filter": {
 				Type: schema.TypeList,
 				Elem: propertyCampaignCampaignEventFilter(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"is_local_time": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,7 +25,7 @@ func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 			"alarm_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyDeploymentGroupAlarmConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"application_name": {
@@ -36,62 +36,62 @@ func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 			"auto_rollback_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyDeploymentGroupAutoRollbackConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"auto_scaling_groups": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				Set: schema.HashString,
 			},
 			"deployment": {
 				Type: schema.TypeList,
 				Elem: propertyDeploymentGroupDeployment(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"deployment_config_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"deployment_group_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"deployment_style": {
 				Type: schema.TypeList,
 				Elem: propertyDeploymentGroupDeploymentStyle(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"ec2_tag_filters": {
 				Type: schema.TypeSet,
 				Elem: propertyDeploymentGroupEC2TagFilter(),
-				Required: false,
+				Optional: true,
 			},
 			"ec2_tag_set": {
 				Type: schema.TypeList,
 				Elem: propertyDeploymentGroupEC2TagSet(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"load_balancer_info": {
 				Type: schema.TypeList,
 				Elem: propertyDeploymentGroupLoadBalancerInfo(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"on_premises_instance_tag_filters": {
 				Type: schema.TypeSet,
 				Elem: propertyDeploymentGroupTagFilter(),
-				Required: false,
+				Optional: true,
 			},
 			"on_premises_tag_set": {
 				Type: schema.TypeList,
 				Elem: propertyDeploymentGroupOnPremisesTagSet(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"service_role_arn": {
@@ -101,7 +101,7 @@ func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 			"trigger_configurations": {
 				Type: schema.TypeSet,
 				Elem: propertyDeploymentGroupTriggerConfig(),
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

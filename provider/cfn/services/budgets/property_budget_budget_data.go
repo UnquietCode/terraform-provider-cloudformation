@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertyBudgetBudgetData(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -32,13 +32,13 @@ func propertyBudgetBudgetData(extras...string) *schema.Resource {
 			"budget_limit": {
 				Type: schema.TypeList,
 				Elem: propertyBudgetSpend(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"time_period": {
 				Type: schema.TypeList,
 				Elem: propertyBudgetTimePeriod(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"time_unit": {
@@ -47,22 +47,22 @@ func propertyBudgetBudgetData(extras...string) *schema.Resource {
 			},
 			"planned_budget_limits": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"cost_filters": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"budget_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"cost_types": {
 				Type: schema.TypeList,
 				Elem: propertyBudgetCostTypes(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"budget_type": {

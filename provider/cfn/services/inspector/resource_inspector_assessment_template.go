@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -19,7 +19,6 @@ func ResourceInspectorAssessmentTemplate() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceInspectorAssessmentTemplateCreate,
 		Read:   resourceInspectorAssessmentTemplateRead,
-		Update: resourceInspectorAssessmentTemplateUpdate,
 		Delete: resourceInspectorAssessmentTemplateDelete,
 
 		Schema: map[string]*schema.Schema{
@@ -35,7 +34,7 @@ func ResourceInspectorAssessmentTemplate() *schema.Resource {
 			},
 			"assessment_template_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"rules_package_arns": {
@@ -47,7 +46,7 @@ func ResourceInspectorAssessmentTemplate() *schema.Resource {
 			"user_attributes_for_findings": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 		},

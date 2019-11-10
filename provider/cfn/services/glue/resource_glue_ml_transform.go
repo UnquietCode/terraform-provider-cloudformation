@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -28,19 +28,19 @@ func ResourceGlueMLTransform() *schema.Resource {
 			},
 			"max_retries": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"worker_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"timeout": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"transform_parameters": {
 				Type: schema.TypeList,
@@ -57,15 +57,15 @@ func ResourceGlueMLTransform() *schema.Resource {
 			},
 			"number_of_workers": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"max_capacity": {
 				Type: schema.TypeFloat,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

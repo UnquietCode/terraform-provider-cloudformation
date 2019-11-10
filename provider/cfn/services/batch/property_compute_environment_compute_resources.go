@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,14 +24,14 @@ func propertyComputeEnvironmentComputeResources(extras...string) *schema.Resourc
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"spot_iam_fleet_role": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"maxv_cpus": {
@@ -40,13 +40,13 @@ func propertyComputeEnvironmentComputeResources(extras...string) *schema.Resourc
 			},
 			"bid_percentage": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"security_group_ids": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"subnets": {
@@ -62,7 +62,7 @@ func propertyComputeEnvironmentComputeResources(extras...string) *schema.Resourc
 			},
 			"allocation_strategy": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"minv_cpus": {
@@ -72,13 +72,13 @@ func propertyComputeEnvironmentComputeResources(extras...string) *schema.Resourc
 			"launch_template": {
 				Type: schema.TypeList,
 				Elem: propertyComputeEnvironmentLaunchTemplateSpecification(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 				MaxItems: 1,
 			},
 			"image_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"instance_role": {
@@ -94,22 +94,22 @@ func propertyComputeEnvironmentComputeResources(extras...string) *schema.Resourc
 			},
 			"ec2_key_pair": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"placement_group": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"desiredv_cpus": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -28,11 +28,11 @@ func ResourceSSMMaintenanceWindowTask() *schema.Resource {
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"service_role_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"priority": {
 				Type: schema.TypeInt,
@@ -49,7 +49,7 @@ func ResourceSSMMaintenanceWindowTask() *schema.Resource {
 			},
 			"name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"task_arn": {
 				Type: schema.TypeString,
@@ -58,7 +58,7 @@ func ResourceSSMMaintenanceWindowTask() *schema.Resource {
 			"task_invocation_parameters": {
 				Type: schema.TypeList,
 				Elem: propertyMaintenanceWindowTaskTaskInvocationParameters(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"window_id": {
@@ -68,7 +68,7 @@ func ResourceSSMMaintenanceWindowTask() *schema.Resource {
 			},
 			"task_parameters": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"task_type": {
 				Type: schema.TypeString,
@@ -77,7 +77,7 @@ func ResourceSSMMaintenanceWindowTask() *schema.Resource {
 			"logging_info": {
 				Type: schema.TypeList,
 				Elem: propertyMaintenanceWindowTaskLoggingInfo(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

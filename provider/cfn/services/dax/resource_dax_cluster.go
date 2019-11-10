@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,13 +25,13 @@ func ResourceDAXCluster() *schema.Resource {
 			"sse_specification": {
 				Type: schema.TypeList,
 				Elem: propertyClusterSSESpecification(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 				MaxItems: 1,
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"replication_factor": {
 				Type: schema.TypeInt,
@@ -39,12 +39,12 @@ func ResourceDAXCluster() *schema.Resource {
 			},
 			"parameter_group_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"availability_zones": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"iam_role_arn": {
 				Type: schema.TypeString,
@@ -53,21 +53,21 @@ func ResourceDAXCluster() *schema.Resource {
 			},
 			"subnet_group_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"preferred_maintenance_window": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"notification_topic_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"security_group_ids": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"node_type": {
 				Type: schema.TypeString,
@@ -76,12 +76,12 @@ func ResourceDAXCluster() *schema.Resource {
 			},
 			"cluster_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,104 +24,104 @@ func ResourceCognitoUserPool() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"user_pool_tags": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"policies": {
 				Type: schema.TypeList,
 				Elem: propertyUserPoolPolicies(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"verification_message_template": {
 				Type: schema.TypeList,
 				Elem: propertyUserPoolVerificationMessageTemplate(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"mfa_configuration": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"schema": {
 				Type: schema.TypeList,
 				Elem: propertyUserPoolSchemaAttribute(),
-				Required: false,
+				Optional: true,
 			},
 			"admin_create_user_config": {
 				Type: schema.TypeList,
 				Elem: propertyUserPoolAdminCreateUserConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"sms_authentication_message": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"user_pool_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"sms_verification_message": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"user_pool_add_ons": {
 				Type: schema.TypeList,
 				Elem: propertyUserPoolUserPoolAddOns(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"email_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyUserPoolEmailConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"sms_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyUserPoolSmsConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"alias_attributes": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"enabled_mfas": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"email_verification_subject": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"lambda_config": {
 				Type: schema.TypeList,
 				Elem: propertyUserPoolLambdaConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"username_attributes": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"auto_verified_attributes": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"device_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyUserPoolDeviceConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"email_verification_message": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

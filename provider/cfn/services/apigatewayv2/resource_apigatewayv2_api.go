@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -28,11 +28,11 @@ func ResourceApiGatewayV2Api() *schema.Resource {
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"version": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"protocol_type": {
 				Type: schema.TypeString,
@@ -41,11 +41,11 @@ func ResourceApiGatewayV2Api() *schema.Resource {
 			},
 			"disable_schema_validation": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"tags": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"name": {
 				Type: schema.TypeString,
@@ -53,7 +53,7 @@ func ResourceApiGatewayV2Api() *schema.Resource {
 			},
 			"api_key_selection_expression": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

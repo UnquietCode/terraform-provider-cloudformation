@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,34 +24,34 @@ func propertyAutoScalingGroupInstancesDistribution(extras...string) *schema.Reso
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"on_demand_allocation_strategy": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"on_demand_base_capacity": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"on_demand_percentage_above_base_capacity": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"spot_allocation_strategy": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"spot_instance_pools": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"spot_max_price": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

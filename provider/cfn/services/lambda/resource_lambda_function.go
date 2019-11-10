@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -32,22 +32,22 @@ func ResourceLambdaFunction() *schema.Resource {
 			"dead_letter_config": {
 				Type: schema.TypeList,
 				Elem: propertyFunctionDeadLetterConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"environment": {
 				Type: schema.TypeList,
 				Elem: propertyFunctionEnvironment(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"function_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"handler": {
@@ -56,21 +56,21 @@ func ResourceLambdaFunction() *schema.Resource {
 			},
 			"kms_key_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"layers": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				Set: schema.HashString,
 			},
 			"memory_size": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"reserved_concurrent_executions": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"role": {
 				Type: schema.TypeString,
@@ -83,22 +83,22 @@ func ResourceLambdaFunction() *schema.Resource {
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"timeout": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"tracing_config": {
 				Type: schema.TypeList,
 				Elem: propertyFunctionTracingConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"vpc_config": {
 				Type: schema.TypeList,
 				Elem: propertyFunctionVpcConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

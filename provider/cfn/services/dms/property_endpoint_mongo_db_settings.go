@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,54 +24,54 @@ func propertyEndpointMongoDbSettings(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"auth_source": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"auth_mechanism": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"username": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"docs_to_investigate": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"server_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"port": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"extract_doc_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"database_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"auth_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"password": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"nesting_level": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

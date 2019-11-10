@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertyDeliveryStreamExtendedS3DestinationConfiguration(extras...string) *
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -42,7 +42,7 @@ func propertyDeliveryStreamExtendedS3DestinationConfiguration(extras...string) *
 			"cloud_watch_logging_options": {
 				Type: schema.TypeList,
 				Elem: propertyDeliveryStreamCloudWatchLoggingOptions(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"compression_format": {
@@ -52,27 +52,27 @@ func propertyDeliveryStreamExtendedS3DestinationConfiguration(extras...string) *
 			"data_format_conversion_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyDeliveryStreamDataFormatConversionConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"encryption_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyDeliveryStreamEncryptionConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"error_output_prefix": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"prefix": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"processing_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyDeliveryStreamProcessingConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"role_arn": {
@@ -82,12 +82,12 @@ func propertyDeliveryStreamExtendedS3DestinationConfiguration(extras...string) *
 			"s3_backup_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyDeliveryStreamS3DestinationConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"s3_backup_mode": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

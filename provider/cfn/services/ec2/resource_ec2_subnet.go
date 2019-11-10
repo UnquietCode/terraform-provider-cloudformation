@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,11 +25,11 @@ func ResourceEC2Subnet() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"assign_ipv6_address_on_creation": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"availability_zone": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"cidr_block": {
@@ -39,16 +39,16 @@ func ResourceEC2Subnet() *schema.Resource {
 			},
 			"ipv6_cidr_block": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"map_public_ip_on_launch": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"vpc_id": {
 				Type: schema.TypeString,

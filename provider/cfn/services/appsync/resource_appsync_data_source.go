@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -28,28 +28,28 @@ func ResourceAppSyncDataSource() *schema.Resource {
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"service_role_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"http_config": {
 				Type: schema.TypeList,
 				Elem: propertyDataSourceHttpConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"relational_database_config": {
 				Type: schema.TypeList,
 				Elem: propertyDataSourceRelationalDatabaseConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"lambda_config": {
 				Type: schema.TypeList,
 				Elem: propertyDataSourceLambdaConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"api_id": {
@@ -65,13 +65,13 @@ func ResourceAppSyncDataSource() *schema.Resource {
 			"dynamo_db_config": {
 				Type: schema.TypeList,
 				Elem: propertyDataSourceDynamoDBConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"elasticsearch_config": {
 				Type: schema.TypeList,
 				Elem: propertyDataSourceElasticsearchConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

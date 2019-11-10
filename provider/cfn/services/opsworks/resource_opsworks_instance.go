@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,50 +24,50 @@ func ResourceOpsWorksInstance() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"agent_version": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"ami_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"architecture": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"auto_scaling_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"availability_zone": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"block_device_mappings": {
 				Type: schema.TypeSet,
 				Elem: propertyInstanceBlockDeviceMapping(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"ebs_optimized": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"elastic_ips": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				Set: schema.HashString,
 			},
 			"hostname": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"install_updates_on_boot": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"instance_type": {
 				Type: schema.TypeString,
@@ -80,16 +80,16 @@ func ResourceOpsWorksInstance() *schema.Resource {
 			},
 			"os": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"root_device_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"ssh_key_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"stack_id": {
 				Type: schema.TypeString,
@@ -98,30 +98,30 @@ func ResourceOpsWorksInstance() *schema.Resource {
 			},
 			"subnet_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"tenancy": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"time_based_auto_scaling": {
 				Type: schema.TypeList,
 				Elem: propertyInstanceTimeBasedAutoScaling(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 				MaxItems: 1,
 			},
 			"virtualization_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"volumes": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				Set: schema.HashString,
 			},
 		},

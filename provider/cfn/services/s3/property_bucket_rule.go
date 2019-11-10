@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertyBucketRule(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -32,39 +32,39 @@ func propertyBucketRule(extras...string) *schema.Resource {
 			"abort_incomplete_multipart_upload": {
 				Type: schema.TypeList,
 				Elem: propertyBucketAbortIncompleteMultipartUpload(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"expiration_date": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"expiration_in_days": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"noncurrent_version_expiration_in_days": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"noncurrent_version_transition": {
 				Type: schema.TypeList,
 				Elem: propertyBucketNoncurrentVersionTransition(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"noncurrent_version_transitions": {
 				Type: schema.TypeSet,
 				Elem: propertyBucketNoncurrentVersionTransition(),
-				Required: false,
+				Optional: true,
 			},
 			"prefix": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"status": {
 				Type: schema.TypeString,
@@ -73,18 +73,18 @@ func propertyBucketRule(extras...string) *schema.Resource {
 			"tag_filters": {
 				Type: schema.TypeSet,
 				Elem: propertyBucketTagFilter(),
-				Required: false,
+				Optional: true,
 			},
 			"transition": {
 				Type: schema.TypeList,
 				Elem: propertyBucketTransition(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"transitions": {
 				Type: schema.TypeSet,
 				Elem: propertyBucketTransition(),
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

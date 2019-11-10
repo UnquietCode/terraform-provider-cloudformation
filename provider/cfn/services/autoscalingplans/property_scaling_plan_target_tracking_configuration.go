@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,14 +24,14 @@ func propertyScalingPlanTargetTrackingConfiguration(extras...string) *schema.Res
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"scale_out_cooldown": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"target_value": {
 				Type: schema.TypeFloat,
@@ -40,25 +40,25 @@ func propertyScalingPlanTargetTrackingConfiguration(extras...string) *schema.Res
 			"predefined_scaling_metric_specification": {
 				Type: schema.TypeList,
 				Elem: propertyScalingPlanPredefinedScalingMetricSpecification(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"disable_scale_in": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"scale_in_cooldown": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"estimated_instance_warmup": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"customized_scaling_metric_specification": {
 				Type: schema.TypeList,
 				Elem: propertyScalingPlanCustomizedScalingMetricSpecification(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

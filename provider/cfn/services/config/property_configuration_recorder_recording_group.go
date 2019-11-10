@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,23 +24,23 @@ func propertyConfigurationRecorderRecordingGroup(extras...string) *schema.Resour
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"all_supported": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"include_global_resource_types": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"resource_types": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				Set: schema.HashString,
 			},
 		},

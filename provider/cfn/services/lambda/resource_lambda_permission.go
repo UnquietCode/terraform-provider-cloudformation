@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ func ResourceLambdaPermission() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceLambdaPermissionCreate,
 		Read:   resourceLambdaPermissionRead,
-		Update: resourceLambdaPermissionUpdate,
 		Delete: resourceLambdaPermissionDelete,
 
 		Schema: map[string]*schema.Schema{
@@ -29,7 +28,7 @@ func ResourceLambdaPermission() *schema.Resource {
 			},
 			"event_source_token": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"function_name": {
@@ -44,12 +43,12 @@ func ResourceLambdaPermission() *schema.Resource {
 			},
 			"source_account": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"source_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 		},

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func ResourceApiGatewayV2Authorizer() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"identity_validation_expression": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"authorizer_uri": {
 				Type: schema.TypeString,
@@ -32,7 +32,7 @@ func ResourceApiGatewayV2Authorizer() *schema.Resource {
 			},
 			"authorizer_credentials_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"authorizer_type": {
 				Type: schema.TypeString,
@@ -40,7 +40,7 @@ func ResourceApiGatewayV2Authorizer() *schema.Resource {
 			},
 			"authorizer_result_ttl_in_seconds": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"identity_source": {
 				Type: schema.TypeList,

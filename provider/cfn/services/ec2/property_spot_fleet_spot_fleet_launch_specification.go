@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertySpotFleetSpotFleetLaunchSpecification(extras...string) *schema.Reso
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -32,16 +32,16 @@ func propertySpotFleetSpotFleetLaunchSpecification(extras...string) *schema.Reso
 			"block_device_mappings": {
 				Type: schema.TypeSet,
 				Elem: propertySpotFleetBlockDeviceMapping(),
-				Required: false,
+				Optional: true,
 			},
 			"ebs_optimized": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"iam_instance_profile": {
 				Type: schema.TypeList,
 				Elem: propertySpotFleetIamInstanceProfileSpecification(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"image_id": {
@@ -54,58 +54,58 @@ func propertySpotFleetSpotFleetLaunchSpecification(extras...string) *schema.Reso
 			},
 			"kernel_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"key_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"monitoring": {
 				Type: schema.TypeList,
 				Elem: propertySpotFleetSpotFleetMonitoring(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"network_interfaces": {
 				Type: schema.TypeSet,
 				Elem: propertySpotFleetInstanceNetworkInterfaceSpecification(),
-				Required: false,
+				Optional: true,
 			},
 			"placement": {
 				Type: schema.TypeList,
 				Elem: propertySpotFleetSpotPlacement(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"ramdisk_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"security_groups": {
 				Type: schema.TypeSet,
 				Elem: propertySpotFleetGroupIdentifier(),
-				Required: false,
+				Optional: true,
 			},
 			"spot_price": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"subnet_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"tag_specifications": {
 				Type: schema.TypeSet,
 				Elem: propertySpotFleetSpotFleetTagSpecification(),
-				Required: false,
+				Optional: true,
 			},
 			"user_data": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"weighted_capacity": {
 				Type: schema.TypeFloat,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

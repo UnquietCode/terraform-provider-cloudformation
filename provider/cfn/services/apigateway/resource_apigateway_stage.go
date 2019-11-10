@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -26,43 +26,43 @@ func ResourceApiGatewayStage() *schema.Resource {
 			"access_log_setting": {
 				Type: schema.TypeList,
 				Elem: propertyStageAccessLogSetting(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"cache_cluster_enabled": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"cache_cluster_size": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"canary_setting": {
 				Type: schema.TypeList,
 				Elem: propertyStageCanarySetting(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"client_certificate_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"deployment_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"documentation_version": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"method_settings": {
 				Type: schema.TypeSet,
 				Elem: propertyStageMethodSetting(),
-				Required: false,
+				Optional: true,
 			},
 			"rest_api_id": {
 				Type: schema.TypeString,
@@ -71,22 +71,22 @@ func ResourceApiGatewayStage() *schema.Resource {
 			},
 			"stage_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"tracing_enabled": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"variables": {
 				Type: schema.TypeMap,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

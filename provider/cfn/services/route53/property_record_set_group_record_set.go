@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertyRecordSetGroupRecordSet(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -32,38 +32,38 @@ func propertyRecordSetGroupRecordSet(extras...string) *schema.Resource {
 			"alias_target": {
 				Type: schema.TypeList,
 				Elem: propertyRecordSetGroupAliasTarget(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"comment": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"failover": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"geo_location": {
 				Type: schema.TypeList,
 				Elem: propertyRecordSetGroupGeoLocation(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"health_check_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"hosted_zone_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"hosted_zone_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"multi_value_answer": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"name": {
 				Type: schema.TypeString,
@@ -71,21 +71,21 @@ func propertyRecordSetGroupRecordSet(extras...string) *schema.Resource {
 			},
 			"region": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"resource_records": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				Set: schema.HashString,
 			},
 			"set_identifier": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"ttl": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"type": {
 				Type: schema.TypeString,
@@ -93,7 +93,7 @@ func propertyRecordSetGroupRecordSet(extras...string) *schema.Resource {
 			},
 			"weight": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

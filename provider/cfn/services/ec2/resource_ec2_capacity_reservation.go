@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,12 +24,12 @@ func ResourceEC2CapacityReservation() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"tenancy": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"end_date_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"instance_count": {
 				Type: schema.TypeInt,
@@ -38,7 +38,7 @@ func ResourceEC2CapacityReservation() *schema.Resource {
 			"tag_specifications": {
 				Type: schema.TypeList,
 				Elem: propertyCapacityReservationTagSpecification(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"availability_zone": {
@@ -58,21 +58,21 @@ func ResourceEC2CapacityReservation() *schema.Resource {
 			},
 			"ephemeral_storage": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"instance_match_criteria": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"end_date": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"ebs_optimized": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 		},

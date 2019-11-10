@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,65 +24,65 @@ func propertyPartitionStorageDescriptor(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"stored_as_sub_directories": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"parameters": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"bucket_columns": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"skewed_info": {
 				Type: schema.TypeList,
 				Elem: propertyPartitionSkewedInfo(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"input_format": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"number_of_buckets": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"output_format": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"columns": {
 				Type: schema.TypeList,
 				Elem: propertyPartitionColumn(),
-				Required: false,
+				Optional: true,
 			},
 			"serde_info": {
 				Type: schema.TypeList,
 				Elem: propertyPartitionSerdeInfo(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"sort_columns": {
 				Type: schema.TypeList,
 				Elem: propertyPartitionOrder(),
-				Required: false,
+				Optional: true,
 			},
 			"compressed": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"location": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,7 +25,7 @@ func ResourceConfigOrganizationConfigRule() *schema.Resource {
 			"organization_managed_rule_metadata": {
 				Type: schema.TypeList,
 				Elem: propertyOrganizationConfigRuleOrganizationManagedRuleMetadata(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"organization_config_rule_name": {
@@ -36,13 +36,13 @@ func ResourceConfigOrganizationConfigRule() *schema.Resource {
 			"organization_custom_rule_metadata": {
 				Type: schema.TypeList,
 				Elem: propertyOrganizationConfigRuleOrganizationCustomRuleMetadata(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"excluded_accounts": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

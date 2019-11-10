@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,11 +24,11 @@ func ResourceDataPipelinePipeline() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"activate": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"name": {
@@ -44,17 +44,17 @@ func ResourceDataPipelinePipeline() *schema.Resource {
 			"parameter_values": {
 				Type: schema.TypeList,
 				Elem: propertyPipelineParameterValue(),
-				Required: false,
+				Optional: true,
 			},
 			"pipeline_objects": {
 				Type: schema.TypeList,
 				Elem: propertyPipelinePipelineObject(),
-				Required: false,
+				Optional: true,
 			},
 			"pipeline_tags": {
 				Type: schema.TypeList,
 				Elem: propertyPipelinePipelineTag(),
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

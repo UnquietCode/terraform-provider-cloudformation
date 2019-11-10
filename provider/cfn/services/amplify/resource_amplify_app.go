@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -26,49 +26,49 @@ func ResourceAmplifyApp() *schema.Resource {
 			"auto_branch_creation_config": {
 				Type: schema.TypeList,
 				Elem: propertyAppAutoBranchCreationConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"oauth_token": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"repository": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"environment_variables": {
 				Type: schema.TypeList,
 				Elem: propertyAppEnvironmentVariable(),
-				Required: false,
+				Optional: true,
 			},
 			"access_token": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"build_spec": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"custom_rules": {
 				Type: schema.TypeList,
 				Elem: propertyAppCustomRule(),
-				Required: false,
+				Optional: true,
 			},
 			"basic_auth_config": {
 				Type: schema.TypeList,
 				Elem: propertyAppBasicAuthConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"name": {
 				Type: schema.TypeString,
@@ -76,7 +76,7 @@ func ResourceAmplifyApp() *schema.Resource {
 			},
 			"iam_service_role": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

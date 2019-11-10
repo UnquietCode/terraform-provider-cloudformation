@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,15 +24,15 @@ func ResourceSSMAssociation() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"association_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"document_version": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"instance_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"name": {
@@ -43,22 +43,22 @@ func ResourceSSMAssociation() *schema.Resource {
 			"output_location": {
 				Type: schema.TypeList,
 				Elem: propertyAssociationInstanceAssociationOutputLocation(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"parameters": {
 				Type: schema.TypeMap,
 				Elem: propertyAssociationParameterValues(),
-				Required: false,
+				Optional: true,
 			},
 			"schedule_expression": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"targets": {
 				Type: schema.TypeSet,
 				Elem: propertyAssociationTarget(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 		},

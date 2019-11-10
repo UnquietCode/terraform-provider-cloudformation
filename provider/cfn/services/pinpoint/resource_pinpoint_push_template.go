@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,13 +25,13 @@ func ResourcePinpointPushTemplate() *schema.Resource {
 			"gcm": {
 				Type: schema.TypeList,
 				Elem: propertyPushTemplateAndroidPushNotificationTemplate(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"baidu": {
 				Type: schema.TypeList,
 				Elem: propertyPushTemplateAndroidPushNotificationTemplate(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"template_name": {
@@ -42,24 +42,24 @@ func ResourcePinpointPushTemplate() *schema.Resource {
 			"adm": {
 				Type: schema.TypeList,
 				Elem: propertyPushTemplateAndroidPushNotificationTemplate(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"apns": {
 				Type: schema.TypeList,
 				Elem: propertyPushTemplateAPNSPushNotificationTemplate(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"default": {
 				Type: schema.TypeList,
 				Elem: propertyPushTemplateDefaultPushNotificationTemplate(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"tags": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

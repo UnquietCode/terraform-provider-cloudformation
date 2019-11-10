@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -35,28 +35,28 @@ func ResourceEMRInstanceFleetConfig() *schema.Resource {
 			"instance_type_configs": {
 				Type: schema.TypeSet,
 				Elem: propertyInstanceFleetConfigInstanceTypeConfig(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"launch_specifications": {
 				Type: schema.TypeList,
 				Elem: propertyInstanceFleetConfigInstanceFleetProvisioningSpecifications(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 				MaxItems: 1,
 			},
 			"name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"target_on_demand_capacity": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"target_spot_capacity": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,26 +24,26 @@ func propertySecurityGroupIngress(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"cidr_ip": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"cidr_ipv6": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"from_port": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"ip_protocol": {
 				Type: schema.TypeString,
@@ -51,23 +51,23 @@ func propertySecurityGroupIngress(extras...string) *schema.Resource {
 			},
 			"source_prefix_list_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"source_security_group_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"source_security_group_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"source_security_group_owner_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"to_port": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

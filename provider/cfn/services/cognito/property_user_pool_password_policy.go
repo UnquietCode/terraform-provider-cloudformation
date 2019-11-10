@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,34 +24,34 @@ func propertyUserPoolPasswordPolicy(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"require_numbers": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"minimum_length": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"temporary_password_validity_days": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"require_uppercase": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"require_lowercase": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"require_symbols": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

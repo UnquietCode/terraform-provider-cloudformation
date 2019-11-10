@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,31 +24,31 @@ func propertyDistributionCustomOriginConfig(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"origin_read_timeout": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"https_port": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"origin_keepalive_timeout": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"origin_ssl_protocols": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"http_port": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"origin_protocol_policy": {
 				Type: schema.TypeString,

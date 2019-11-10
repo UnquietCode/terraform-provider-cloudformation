@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertyInstanceGroupConfigCloudWatchAlarmDefinition(extras...string) *sche
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -36,11 +36,11 @@ func propertyInstanceGroupConfigCloudWatchAlarmDefinition(extras...string) *sche
 			"dimensions": {
 				Type: schema.TypeSet,
 				Elem: propertyInstanceGroupConfigMetricDimension(),
-				Required: false,
+				Optional: true,
 			},
 			"evaluation_periods": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"metric_name": {
 				Type: schema.TypeString,
@@ -48,7 +48,7 @@ func propertyInstanceGroupConfigCloudWatchAlarmDefinition(extras...string) *sche
 			},
 			"namespace": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"period": {
 				Type: schema.TypeInt,
@@ -56,7 +56,7 @@ func propertyInstanceGroupConfigCloudWatchAlarmDefinition(extras...string) *sche
 			},
 			"statistic": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"threshold": {
 				Type: schema.TypeFloat,
@@ -64,7 +64,7 @@ func propertyInstanceGroupConfigCloudWatchAlarmDefinition(extras...string) *sche
 			},
 			"unit": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,54 +25,54 @@ func ResourceSQSQueue() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"content_based_deduplication": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"delay_seconds": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"fifo_queue": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"kms_data_key_reuse_period_seconds": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"kms_master_key_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"maximum_message_size": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"message_retention_period": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"queue_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"receive_message_wait_time_seconds": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"redrive_policy": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"visibility_timeout": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

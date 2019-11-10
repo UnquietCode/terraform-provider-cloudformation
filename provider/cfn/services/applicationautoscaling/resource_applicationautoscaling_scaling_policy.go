@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -33,34 +33,34 @@ func ResourceApplicationAutoScalingScalingPolicy() *schema.Resource {
 			},
 			"resource_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"scalable_dimension": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"scaling_target_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"service_namespace": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"step_scaling_policy_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyScalingPolicyStepScalingPolicyConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"target_tracking_scaling_policy_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyScalingPolicyTargetTrackingScalingPolicyConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

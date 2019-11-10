@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,11 +25,11 @@ func ResourceElastiCacheCacheCluster() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"az_mode": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"auto_minor_version_upgrade": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"cache_node_type": {
 				Type: schema.TypeString,
@@ -37,21 +37,21 @@ func ResourceElastiCacheCacheCluster() *schema.Resource {
 			},
 			"cache_parameter_group_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"cache_security_group_names": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"cache_subnet_group_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"cluster_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"engine": {
@@ -61,11 +61,11 @@ func ResourceElastiCacheCacheCluster() *schema.Resource {
 			},
 			"engine_version": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"notification_topic_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"num_cache_nodes": {
 				Type: schema.TypeInt,
@@ -73,52 +73,52 @@ func ResourceElastiCacheCacheCluster() *schema.Resource {
 			},
 			"port": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"preferred_availability_zone": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"preferred_availability_zones": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				Set: schema.HashString,
 			},
 			"preferred_maintenance_window": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"snapshot_arns": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 				Set: schema.HashString,
 			},
 			"snapshot_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"snapshot_retention_limit": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"snapshot_window": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"vpc_security_group_ids": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,36 +24,36 @@ func ResourceApiGatewayAuthorizer() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"auth_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"authorizer_credentials": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"authorizer_result_ttl_in_seconds": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"authorizer_uri": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"identity_source": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"identity_validation_expression": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"provider_ar_ns": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				Set: schema.HashString,
 			},
 			"rest_api_id": {

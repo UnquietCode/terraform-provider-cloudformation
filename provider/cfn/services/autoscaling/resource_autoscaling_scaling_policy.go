@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func ResourceAutoScalingScalingPolicy() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"adjustment_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"auto_scaling_group_name": {
 				Type: schema.TypeString,
@@ -32,37 +32,37 @@ func ResourceAutoScalingScalingPolicy() *schema.Resource {
 			},
 			"cooldown": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"estimated_instance_warmup": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"metric_aggregation_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"min_adjustment_magnitude": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"policy_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"scaling_adjustment": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"step_adjustments": {
 				Type: schema.TypeSet,
 				Elem: propertyScalingPolicyStepAdjustment(),
-				Required: false,
+				Optional: true,
 			},
 			"target_tracking_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyScalingPolicyTargetTrackingConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

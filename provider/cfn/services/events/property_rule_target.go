@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertyRuleTarget(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -36,7 +36,7 @@ func propertyRuleTarget(extras...string) *schema.Resource {
 			"ecs_parameters": {
 				Type: schema.TypeList,
 				Elem: propertyRuleEcsParameters(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"id": {
@@ -45,38 +45,38 @@ func propertyRuleTarget(extras...string) *schema.Resource {
 			},
 			"input": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"input_path": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"input_transformer": {
 				Type: schema.TypeList,
 				Elem: propertyRuleInputTransformer(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"kinesis_parameters": {
 				Type: schema.TypeList,
 				Elem: propertyRuleKinesisParameters(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"role_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"run_command_parameters": {
 				Type: schema.TypeList,
 				Elem: propertyRuleRunCommandParameters(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"sqs_parameters": {
 				Type: schema.TypeList,
 				Elem: propertyRuleSqsParameters(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,23 +25,23 @@ func ResourceSSMPatchBaseline() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"operating_system": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"approval_rules": {
 				Type: schema.TypeList,
 				Elem: propertyPatchBaselineRuleGroup(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"sources": {
 				Type: schema.TypeList,
 				Elem: propertyPatchBaselinePatchSource(),
-				Required: false,
+				Optional: true,
 			},
 			"name": {
 				Type: schema.TypeString,
@@ -50,40 +50,40 @@ func ResourceSSMPatchBaseline() *schema.Resource {
 			"rejected_patches": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"approved_patches": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"rejected_patches_action": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"patch_groups": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"approved_patches_compliance_level": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"approved_patches_enable_non_security": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"global_filters": {
 				Type: schema.TypeList,
 				Elem: propertyPatchBaselinePatchFilterGroup(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

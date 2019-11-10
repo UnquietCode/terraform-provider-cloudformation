@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,14 +24,14 @@ func propertyAlarmMetricDataQuery(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"expression": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"id": {
 				Type: schema.TypeString,
@@ -39,17 +39,17 @@ func propertyAlarmMetricDataQuery(extras...string) *schema.Resource {
 			},
 			"label": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"metric_stat": {
 				Type: schema.TypeList,
 				Elem: propertyAlarmMetricStat(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"return_data": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

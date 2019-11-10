@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func ResourceIoTThingsGraphFlowTemplate() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"compatible_namespace_version": {
 				Type: schema.TypeFloat,
-				Required: false,
+				Optional: true,
 			},
 			"definition": {
 				Type: schema.TypeList,

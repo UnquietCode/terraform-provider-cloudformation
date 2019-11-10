@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertySegmentSegmentDimensions(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -32,31 +32,31 @@ func propertySegmentSegmentDimensions(extras...string) *schema.Resource {
 			"demographic": {
 				Type: schema.TypeList,
 				Elem: propertySegmentDemographic(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"metrics": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"attributes": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"behavior": {
 				Type: schema.TypeList,
 				Elem: propertySegmentBehavior(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"user_attributes": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"location": {
 				Type: schema.TypeList,
 				Elem: propertySegmentLocation(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertyClientVpnEndpointClientAuthenticationRequest(extras...string) *sche
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -32,7 +32,7 @@ func propertyClientVpnEndpointClientAuthenticationRequest(extras...string) *sche
 			"mutual_authentication": {
 				Type: schema.TypeList,
 				Elem: propertyClientVpnEndpointCertificateAuthenticationRequest(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"type": {
@@ -42,7 +42,7 @@ func propertyClientVpnEndpointClientAuthenticationRequest(extras...string) *sche
 			"active_directory": {
 				Type: schema.TypeList,
 				Elem: propertyClientVpnEndpointDirectoryServiceAuthenticationRequest(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

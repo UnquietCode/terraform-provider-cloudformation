@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,53 +24,53 @@ func propertyTableTableInput(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"owner": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"view_original_text": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"table_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"parameters": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"view_expanded_text": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"storage_descriptor": {
 				Type: schema.TypeList,
 				Elem: propertyTableStorageDescriptor(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"partition_keys": {
 				Type: schema.TypeList,
 				Elem: propertyTableColumn(),
-				Required: false,
+				Optional: true,
 			},
 			"retention": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 		},

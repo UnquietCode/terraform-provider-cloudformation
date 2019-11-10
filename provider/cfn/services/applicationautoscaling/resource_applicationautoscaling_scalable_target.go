@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -47,7 +47,7 @@ func ResourceApplicationAutoScalingScalableTarget() *schema.Resource {
 			"scheduled_actions": {
 				Type: schema.TypeSet,
 				Elem: propertyScalableTargetScheduledAction(),
-				Required: false,
+				Optional: true,
 			},
 			"service_namespace": {
 				Type: schema.TypeString,
@@ -57,7 +57,7 @@ func ResourceApplicationAutoScalingScalableTarget() *schema.Resource {
 			"suspended_state": {
 				Type: schema.TypeList,
 				Elem: propertyScalableTargetSuspendedState(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

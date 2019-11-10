@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,17 +24,17 @@ func ResourceConfigRemediationConfiguration() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"target_version": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"execution_controls": {
 				Type: schema.TypeList,
 				Elem: propertyRemediationConfigurationExecutionControls(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"parameters": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"target_type": {
 				Type: schema.TypeString,
@@ -47,15 +47,15 @@ func ResourceConfigRemediationConfiguration() *schema.Resource {
 			},
 			"resource_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"retry_attempt_seconds": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"maximum_automatic_attempts": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"target_id": {
 				Type: schema.TypeString,
@@ -63,7 +63,7 @@ func ResourceConfigRemediationConfiguration() *schema.Resource {
 			},
 			"automatic": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

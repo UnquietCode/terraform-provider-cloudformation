@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,29 +24,29 @@ func propertyBucketWebsiteConfiguration(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"error_document": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"index_document": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"redirect_all_requests_to": {
 				Type: schema.TypeList,
 				Elem: propertyBucketRedirectAllRequestsTo(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"routing_rules": {
 				Type: schema.TypeSet,
 				Elem: propertyBucketRoutingRule(),
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

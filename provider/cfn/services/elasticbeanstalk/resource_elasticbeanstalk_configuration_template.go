@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -29,32 +29,32 @@ func ResourceElasticBeanstalkConfigurationTemplate() *schema.Resource {
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"environment_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"option_settings": {
 				Type: schema.TypeList,
 				Elem: propertyConfigurationTemplateConfigurationOptionSetting(),
-				Required: false,
+				Optional: true,
 			},
 			"platform_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"solution_stack_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"source_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyConfigurationTemplateSourceConfiguration(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 				MaxItems: 1,
 			},

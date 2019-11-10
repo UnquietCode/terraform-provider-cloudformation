@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func ResourceBackupBackupVault() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"backup_vault_tags": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"backup_vault_name": {
 				Type: schema.TypeString,
@@ -33,18 +33,18 @@ func ResourceBackupBackupVault() *schema.Resource {
 			},
 			"encryption_key_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"notifications": {
 				Type: schema.TypeList,
 				Elem: propertyBackupVaultNotificationObjectType(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"access_policy": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

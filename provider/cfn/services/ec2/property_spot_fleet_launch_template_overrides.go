@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,30 +24,30 @@ func propertySpotFleetLaunchTemplateOverrides(extras...string) *schema.Resource 
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"availability_zone": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"instance_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"spot_price": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"subnet_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"weighted_capacity": {
 				Type: schema.TypeFloat,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

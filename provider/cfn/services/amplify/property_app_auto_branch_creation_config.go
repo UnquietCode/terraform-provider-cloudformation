@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertyAppAutoBranchCreationConfig(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -32,41 +32,41 @@ func propertyAppAutoBranchCreationConfig(extras...string) *schema.Resource {
 			"environment_variables": {
 				Type: schema.TypeList,
 				Elem: propertyAppEnvironmentVariable(),
-				Required: false,
+				Optional: true,
 			},
 			"enable_auto_branch_creation": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"pull_request_environment_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"auto_branch_creation_patterns": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"enable_pull_request_preview": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"enable_auto_build": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"build_spec": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"stage": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"basic_auth_config": {
 				Type: schema.TypeList,
 				Elem: propertyAppBasicAuthConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

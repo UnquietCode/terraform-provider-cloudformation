@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,54 +24,54 @@ func ResourceAutoScalingAutoScalingGroup() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"auto_scaling_group_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"availability_zones": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"cooldown": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"desired_capacity": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"health_check_grace_period": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"health_check_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"instance_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"launch_configuration_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"launch_template": {
 				Type: schema.TypeList,
 				Elem: propertyAutoScalingGroupLaunchTemplateSpecification(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"lifecycle_hook_specification_list": {
 				Type: schema.TypeList,
 				Elem: propertyAutoScalingGroupLifecycleHookSpecification(),
-				Required: false,
+				Optional: true,
 			},
 			"load_balancer_names": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"max_size": {
 				Type: schema.TypeString,
@@ -80,7 +80,7 @@ func ResourceAutoScalingAutoScalingGroup() *schema.Resource {
 			"metrics_collection": {
 				Type: schema.TypeList,
 				Elem: propertyAutoScalingGroupMetricsCollection(),
-				Required: false,
+				Optional: true,
 			},
 			"min_size": {
 				Type: schema.TypeString,
@@ -89,43 +89,43 @@ func ResourceAutoScalingAutoScalingGroup() *schema.Resource {
 			"mixed_instances_policy": {
 				Type: schema.TypeList,
 				Elem: propertyAutoScalingGroupMixedInstancesPolicy(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"notification_configurations": {
 				Type: schema.TypeList,
 				Elem: propertyAutoScalingGroupNotificationConfiguration(),
-				Required: false,
+				Optional: true,
 			},
 			"placement_group": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"service_linked_role_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: propertyAutoScalingGroupTagProperty(),
-				Required: false,
+				Optional: true,
 			},
 			"target_group_ar_ns": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				Set: schema.HashString,
 			},
 			"termination_policies": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				Set: schema.HashString,
 			},
 			"vpc_zone_identifier": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,31 +25,31 @@ func ResourcePinpointEmailConfigurationSet() *schema.Resource {
 			"sending_options": {
 				Type: schema.TypeList,
 				Elem: propertyConfigurationSetSendingOptions(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"tracking_options": {
 				Type: schema.TypeList,
 				Elem: propertyConfigurationSetTrackingOptions(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"reputation_options": {
 				Type: schema.TypeList,
 				Elem: propertyConfigurationSetReputationOptions(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"delivery_options": {
 				Type: schema.TypeList,
 				Elem: propertyConfigurationSetDeliveryOptions(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: propertyConfigurationSetTags(),
-				Required: false,
+				Optional: true,
 			},
 			"name": {
 				Type: schema.TypeString,

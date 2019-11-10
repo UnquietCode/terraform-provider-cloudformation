@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,41 +25,41 @@ func ResourceSageMakerNotebookInstance() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"kms_key_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"volume_size_in_gb": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"additional_code_repositories": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"default_code_repository": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"direct_internet_access": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"accelerator_types": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"subnet_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"security_group_ids": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"role_arn": {
@@ -68,11 +68,11 @@ func ResourceSageMakerNotebookInstance() *schema.Resource {
 			},
 			"root_access": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"notebook_instance_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"instance_type": {
@@ -81,12 +81,12 @@ func ResourceSageMakerNotebookInstance() *schema.Resource {
 			},
 			"lifecycle_config_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

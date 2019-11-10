@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,52 +24,52 @@ func propertyDeliveryStreamOrcSerDe(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"block_size_bytes": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"bloom_filter_columns": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				Set: schema.HashString,
 			},
 			"bloom_filter_false_positive_probability": {
 				Type: schema.TypeFloat,
-				Required: false,
+				Optional: true,
 			},
 			"compression": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"dictionary_key_threshold": {
 				Type: schema.TypeFloat,
-				Required: false,
+				Optional: true,
 			},
 			"enable_padding": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"format_version": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"padding_tolerance": {
 				Type: schema.TypeFloat,
-				Required: false,
+				Optional: true,
 			},
 			"row_index_stride": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"stripe_size_bytes": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

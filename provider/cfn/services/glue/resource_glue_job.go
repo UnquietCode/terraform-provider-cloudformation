@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,28 +25,28 @@ func ResourceGlueJob() *schema.Resource {
 			"connections": {
 				Type: schema.TypeList,
 				Elem: propertyJobConnectionsList(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"max_retries": {
 				Type: schema.TypeFloat,
-				Required: false,
+				Optional: true,
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"timeout": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"allocated_capacity": {
 				Type: schema.TypeFloat,
-				Required: false,
+				Optional: true,
 			},
 			"name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"role": {
@@ -55,21 +55,21 @@ func ResourceGlueJob() *schema.Resource {
 			},
 			"default_arguments": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"notification_property": {
 				Type: schema.TypeList,
 				Elem: propertyJobNotificationProperty(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"worker_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"log_uri": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"command": {
 				Type: schema.TypeList,
@@ -79,29 +79,29 @@ func ResourceGlueJob() *schema.Resource {
 			},
 			"glue_version": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"execution_property": {
 				Type: schema.TypeList,
 				Elem: propertyJobExecutionProperty(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"security_configuration": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"number_of_workers": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"tags": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"max_capacity": {
 				Type: schema.TypeFloat,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

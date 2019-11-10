@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,33 +24,33 @@ func ResourceEventsRule() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"event_pattern": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"role_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"schedule_expression": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"state": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"targets": {
 				Type: schema.TypeSet,
 				Elem: propertyRuleTarget(),
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

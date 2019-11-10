@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,7 +25,7 @@ func ResourceCognitoUserPoolRiskConfigurationAttachment() *schema.Resource {
 			"compromised_credentials_risk_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyUserPoolRiskConfigurationAttachmentCompromisedCredentialsRiskConfigurationType(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"user_pool_id": {
@@ -41,13 +41,13 @@ func ResourceCognitoUserPoolRiskConfigurationAttachment() *schema.Resource {
 			"account_takeover_risk_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyUserPoolRiskConfigurationAttachmentAccountTakeoverRiskConfigurationType(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"risk_exception_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyUserPoolRiskConfigurationAttachmentRiskExceptionConfigurationType(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertyTriggerAction(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -32,28 +32,28 @@ func propertyTriggerAction(extras...string) *schema.Resource {
 			"notification_property": {
 				Type: schema.TypeList,
 				Elem: propertyTriggerNotificationProperty(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"crawler_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"timeout": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"job_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"arguments": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"security_configuration": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

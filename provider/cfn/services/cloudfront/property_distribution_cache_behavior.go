@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,19 +24,19 @@ func propertyDistributionCacheBehavior(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"compress": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"lambda_function_associations": {
 				Type: schema.TypeList,
 				Elem: propertyDistributionLambdaFunctionAssociation(),
-				Required: false,
+				Optional: true,
 			},
 			"target_origin_id": {
 				Type: schema.TypeString,
@@ -49,20 +49,20 @@ func propertyDistributionCacheBehavior(extras...string) *schema.Resource {
 			"trusted_signers": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"default_ttl": {
 				Type: schema.TypeFloat,
-				Required: false,
+				Optional: true,
 			},
 			"field_level_encryption_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"allowed_methods": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"path_pattern": {
 				Type: schema.TypeString,
@@ -71,11 +71,11 @@ func propertyDistributionCacheBehavior(extras...string) *schema.Resource {
 			"cached_methods": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"smooth_streaming": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"forwarded_values": {
 				Type: schema.TypeList,
@@ -85,11 +85,11 @@ func propertyDistributionCacheBehavior(extras...string) *schema.Resource {
 			},
 			"min_ttl": {
 				Type: schema.TypeFloat,
-				Required: false,
+				Optional: true,
 			},
 			"max_ttl": {
 				Type: schema.TypeFloat,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

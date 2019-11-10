@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertySecurityConfigurationEncryptionConfiguration(extras...string) *sche
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -32,19 +32,19 @@ func propertySecurityConfigurationEncryptionConfiguration(extras...string) *sche
 			"s3_encryptions": {
 				Type: schema.TypeList,
 				Elem: propertySecurityConfigurationS3Encryptions(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"cloud_watch_encryption": {
 				Type: schema.TypeList,
 				Elem: propertySecurityConfigurationCloudWatchEncryption(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"job_bookmarks_encryption": {
 				Type: schema.TypeList,
 				Elem: propertySecurityConfigurationJobBookmarksEncryption(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

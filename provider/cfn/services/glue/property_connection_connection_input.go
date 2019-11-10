@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,14 +24,14 @@ func propertyConnectionConnectionInput(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"connection_type": {
 				Type: schema.TypeString,
@@ -40,12 +40,12 @@ func propertyConnectionConnectionInput(extras...string) *schema.Resource {
 			"match_criteria": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"physical_connection_requirements": {
 				Type: schema.TypeList,
 				Elem: propertyConnectionPhysicalConnectionRequirements(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"connection_properties": {
@@ -54,7 +54,7 @@ func propertyConnectionConnectionInput(extras...string) *schema.Resource {
 			},
 			"name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 		},

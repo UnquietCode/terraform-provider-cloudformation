@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,34 +18,33 @@ func ResourceCloud9EnvironmentEC2() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceCloud9EnvironmentEC2Create,
 		Read:   resourceCloud9EnvironmentEC2Read,
-		Update: resourceCloud9EnvironmentEC2Update,
 		Delete: resourceCloud9EnvironmentEC2Delete,
 
 		Schema: map[string]*schema.Schema{
 			"repositories": {
 				Type: schema.TypeList,
 				Elem: propertyEnvironmentEC2Repository(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"owner_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"automatic_stop_time_minutes": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"subnet_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"instance_type": {
@@ -55,7 +54,7 @@ func ResourceCloud9EnvironmentEC2() *schema.Resource {
 			},
 			"name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 		},

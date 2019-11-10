@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -26,101 +26,101 @@ func ResourceS3Bucket() *schema.Resource {
 			"accelerate_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyBucketAccelerateConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"access_control": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"analytics_configurations": {
 				Type: schema.TypeSet,
 				Elem: propertyBucketAnalyticsConfiguration(),
-				Required: false,
+				Optional: true,
 			},
 			"bucket_encryption": {
 				Type: schema.TypeList,
 				Elem: propertyBucketBucketEncryption(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"bucket_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"cors_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyBucketCorsConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"inventory_configurations": {
 				Type: schema.TypeSet,
 				Elem: propertyBucketInventoryConfiguration(),
-				Required: false,
+				Optional: true,
 			},
 			"lifecycle_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyBucketLifecycleConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"logging_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyBucketLoggingConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"metrics_configurations": {
 				Type: schema.TypeSet,
 				Elem: propertyBucketMetricsConfiguration(),
-				Required: false,
+				Optional: true,
 			},
 			"notification_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyBucketNotificationConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"object_lock_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyBucketObjectLockConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"object_lock_enabled": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"public_access_block_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyBucketPublicAccessBlockConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"replication_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyBucketReplicationConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"versioning_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyBucketVersioningConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"website_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyBucketWebsiteConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

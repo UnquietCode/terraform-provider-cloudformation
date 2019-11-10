@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -29,7 +29,7 @@ func ResourceGameLiftFleet() *schema.Resource {
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"desired_ec2_instances": {
 				Type: schema.TypeInt,
@@ -38,7 +38,7 @@ func ResourceGameLiftFleet() *schema.Resource {
 			"ec2_inbound_permissions": {
 				Type: schema.TypeSet,
 				Elem: propertyFleetIpPermission(),
-				Required: false,
+				Optional: true,
 			},
 			"ec2_instance_type": {
 				Type: schema.TypeString,
@@ -48,17 +48,17 @@ func ResourceGameLiftFleet() *schema.Resource {
 			"log_paths": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 				Set: schema.HashString,
 			},
 			"max_size": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"min_size": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"name": {
 				Type: schema.TypeString,
@@ -66,7 +66,7 @@ func ResourceGameLiftFleet() *schema.Resource {
 			},
 			"server_launch_parameters": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"server_launch_path": {

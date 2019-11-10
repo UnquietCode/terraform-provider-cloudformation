@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -26,16 +26,16 @@ func ResourceDynamoDBTable() *schema.Resource {
 			"attribute_definitions": {
 				Type: schema.TypeList,
 				Elem: propertyTableAttributeDefinition(),
-				Required: false,
+				Optional: true,
 			},
 			"billing_mode": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"global_secondary_indexes": {
 				Type: schema.TypeList,
 				Elem: propertyTableGlobalSecondaryIndex(),
-				Required: false,
+				Optional: true,
 			},
 			"key_schema": {
 				Type: schema.TypeSet,
@@ -46,47 +46,47 @@ func ResourceDynamoDBTable() *schema.Resource {
 			"local_secondary_indexes": {
 				Type: schema.TypeList,
 				Elem: propertyTableLocalSecondaryIndex(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"point_in_time_recovery_specification": {
 				Type: schema.TypeList,
 				Elem: propertyTablePointInTimeRecoverySpecification(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"provisioned_throughput": {
 				Type: schema.TypeList,
 				Elem: propertyTableProvisionedThroughput(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"sse_specification": {
 				Type: schema.TypeList,
 				Elem: propertyTableSSESpecification(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"stream_specification": {
 				Type: schema.TypeList,
 				Elem: propertyTableStreamSpecification(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"table_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"time_to_live_specification": {
 				Type: schema.TypeList,
 				Elem: propertyTableTimeToLiveSpecification(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

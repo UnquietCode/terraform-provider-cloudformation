@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,47 +25,47 @@ func ResourceDMSReplicationInstance() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"replication_instance_identifier": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"engine_version": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"kms_key_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"availability_zone": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"preferred_maintenance_window": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"auto_minor_version_upgrade": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"replication_subnet_group_identifier": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"allocated_storage": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"vpc_security_group_ids": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"allow_major_version_upgrade": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"replication_instance_class": {
 				Type: schema.TypeString,
@@ -73,17 +73,17 @@ func ResourceDMSReplicationInstance() *schema.Resource {
 			},
 			"publicly_accessible": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"multi_az": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 		},

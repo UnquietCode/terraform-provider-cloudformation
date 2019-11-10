@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,14 +24,14 @@ func propertyProjectArtifacts(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"path": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"type": {
 				Type: schema.TypeString,
@@ -39,31 +39,31 @@ func propertyProjectArtifacts(extras...string) *schema.Resource {
 			},
 			"artifact_identifier": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"override_artifact_name": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"packaging": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"encryption_disabled": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"location": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"namespace_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

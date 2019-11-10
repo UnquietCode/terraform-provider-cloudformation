@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func ResourcePinpointEmailChannel() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"configuration_set": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"from_address": {
 				Type: schema.TypeString,
@@ -32,7 +32,7 @@ func ResourcePinpointEmailChannel() *schema.Resource {
 			},
 			"enabled": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"application_id": {
 				Type: schema.TypeString,
@@ -45,7 +45,7 @@ func ResourcePinpointEmailChannel() *schema.Resource {
 			},
 			"role_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,27 +25,27 @@ func ResourceApiGatewayUsagePlan() *schema.Resource {
 			"api_stages": {
 				Type: schema.TypeSet,
 				Elem: propertyUsagePlanApiStage(),
-				Required: false,
+				Optional: true,
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"quota": {
 				Type: schema.TypeList,
 				Elem: propertyUsagePlanQuotaSettings(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"throttle": {
 				Type: schema.TypeList,
 				Elem: propertyUsagePlanThrottleSettings(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"usage_plan_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

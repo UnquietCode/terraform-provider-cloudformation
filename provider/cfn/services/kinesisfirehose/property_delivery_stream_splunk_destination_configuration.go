@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertyDeliveryStreamSplunkDestinationConfiguration(extras...string) *sche
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -32,12 +32,12 @@ func propertyDeliveryStreamSplunkDestinationConfiguration(extras...string) *sche
 			"cloud_watch_logging_options": {
 				Type: schema.TypeList,
 				Elem: propertyDeliveryStreamCloudWatchLoggingOptions(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"hec_acknowledgment_timeout_in_seconds": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"hec_endpoint": {
 				Type: schema.TypeString,
@@ -54,18 +54,18 @@ func propertyDeliveryStreamSplunkDestinationConfiguration(extras...string) *sche
 			"processing_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyDeliveryStreamProcessingConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"retry_options": {
 				Type: schema.TypeList,
 				Elem: propertyDeliveryStreamSplunkRetryOptions(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"s3_backup_mode": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"s3_configuration": {
 				Type: schema.TypeList,

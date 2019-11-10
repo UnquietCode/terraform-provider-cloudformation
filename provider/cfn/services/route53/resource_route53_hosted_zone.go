@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,13 +25,13 @@ func ResourceRoute53HostedZone() *schema.Resource {
 			"hosted_zone_config": {
 				Type: schema.TypeList,
 				Elem: propertyHostedZoneHostedZoneConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"hosted_zone_tags": {
 				Type: schema.TypeList,
 				Elem: propertyHostedZoneHostedZoneTag(),
-				Required: false,
+				Optional: true,
 			},
 			"name": {
 				Type: schema.TypeString,
@@ -41,13 +41,13 @@ func ResourceRoute53HostedZone() *schema.Resource {
 			"query_logging_config": {
 				Type: schema.TypeList,
 				Elem: propertyHostedZoneQueryLoggingConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"vp_cs": {
 				Type: schema.TypeList,
 				Elem: propertyHostedZoneVPC(),
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

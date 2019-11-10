@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,14 +24,14 @@ func propertyJobDefinitionContainerProperties(extras...string) *schema.Resource 
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"user": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"memory": {
 				Type: schema.TypeInt,
@@ -39,21 +39,21 @@ func propertyJobDefinitionContainerProperties(extras...string) *schema.Resource 
 			},
 			"privileged": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"linux_parameters": {
 				Type: schema.TypeList,
 				Elem: propertyJobDefinitionLinuxParameters(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"job_role_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"readonly_root_filesystem": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"vcpus": {
 				Type: schema.TypeInt,
@@ -66,36 +66,36 @@ func propertyJobDefinitionContainerProperties(extras...string) *schema.Resource 
 			"resource_requirements": {
 				Type: schema.TypeList,
 				Elem: propertyJobDefinitionResourceRequirement(),
-				Required: false,
+				Optional: true,
 			},
 			"mount_points": {
 				Type: schema.TypeList,
 				Elem: propertyJobDefinitionMountPoints(),
-				Required: false,
+				Optional: true,
 			},
 			"volumes": {
 				Type: schema.TypeList,
 				Elem: propertyJobDefinitionVolumes(),
-				Required: false,
+				Optional: true,
 			},
 			"command": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"environment": {
 				Type: schema.TypeList,
 				Elem: propertyJobDefinitionEnvironment(),
-				Required: false,
+				Optional: true,
 			},
 			"ulimits": {
 				Type: schema.TypeList,
 				Elem: propertyJobDefinitionUlimit(),
-				Required: false,
+				Optional: true,
 			},
 			"instance_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

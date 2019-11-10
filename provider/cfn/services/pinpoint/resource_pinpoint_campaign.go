@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func ResourcePinpointCampaign() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"segment_id": {
 				Type: schema.TypeString,
@@ -32,12 +32,12 @@ func ResourcePinpointCampaign() *schema.Resource {
 			},
 			"is_paused": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"additional_treatments": {
 				Type: schema.TypeList,
 				Elem: propertyCampaignWriteTreatmentResource(),
-				Required: false,
+				Optional: true,
 			},
 			"name": {
 				Type: schema.TypeString,
@@ -45,11 +45,11 @@ func ResourcePinpointCampaign() *schema.Resource {
 			},
 			"segment_version": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"treatment_description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"message_configuration": {
 				Type: schema.TypeList,
@@ -60,12 +60,12 @@ func ResourcePinpointCampaign() *schema.Resource {
 			"limits": {
 				Type: schema.TypeList,
 				Elem: propertyCampaignLimits(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"holdout_percent": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"schedule": {
 				Type: schema.TypeList,
@@ -81,16 +81,16 @@ func ResourcePinpointCampaign() *schema.Resource {
 			"campaign_hook": {
 				Type: schema.TypeList,
 				Elem: propertyCampaignCampaignHook(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"tags": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"treatment_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

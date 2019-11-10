@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertyListenerRuleAuthenticateCognitoConfig(extras...string) *schema.Reso
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -32,23 +32,23 @@ func propertyListenerRuleAuthenticateCognitoConfig(extras...string) *schema.Reso
 			"authentication_request_extra_params": {
 				Type: schema.TypeMap,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"on_unauthenticated_request": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"scope": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"session_cookie_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"session_timeout": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"user_pool_arn": {
 				Type: schema.TypeString,

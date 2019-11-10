@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertyGraphQLApiAdditionalAuthenticationProvider(extras...string) *schema
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -32,13 +32,13 @@ func propertyGraphQLApiAdditionalAuthenticationProvider(extras...string) *schema
 			"open_id_connect_config": {
 				Type: schema.TypeList,
 				Elem: propertyGraphQLApiOpenIDConnectConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"user_pool_config": {
 				Type: schema.TypeList,
 				Elem: propertyGraphQLApiCognitoUserPoolConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"authentication_type": {

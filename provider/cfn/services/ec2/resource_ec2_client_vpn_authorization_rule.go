@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ func ResourceEC2ClientVpnAuthorizationRule() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceEC2ClientVpnAuthorizationRuleCreate,
 		Read:   resourceEC2ClientVpnAuthorizationRuleRead,
-		Update: resourceEC2ClientVpnAuthorizationRuleUpdate,
 		Delete: resourceEC2ClientVpnAuthorizationRuleDelete,
 
 		Schema: map[string]*schema.Schema{
@@ -29,12 +28,12 @@ func ResourceEC2ClientVpnAuthorizationRule() *schema.Resource {
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"access_group_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"target_network_cidr": {
@@ -44,7 +43,7 @@ func ResourceEC2ClientVpnAuthorizationRule() *schema.Resource {
 			},
 			"authorize_all_groups": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 		},

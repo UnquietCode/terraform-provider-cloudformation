@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,7 +25,7 @@ func propertyDeploymentStageDescription(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -33,85 +33,85 @@ func propertyDeploymentStageDescription(extras...string) *schema.Resource {
 			"access_log_setting": {
 				Type: schema.TypeList,
 				Elem: propertyDeploymentAccessLogSetting(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"cache_cluster_enabled": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"cache_cluster_size": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"cache_data_encrypted": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"cache_ttl_in_seconds": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"caching_enabled": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"canary_setting": {
 				Type: schema.TypeList,
 				Elem: propertyDeploymentCanarySetting(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"client_certificate_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"data_trace_enabled": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"documentation_version": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"logging_level": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"method_settings": {
 				Type: schema.TypeSet,
 				Elem: propertyDeploymentMethodSetting(),
-				Required: false,
+				Optional: true,
 			},
 			"metrics_enabled": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"throttling_burst_limit": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"throttling_rate_limit": {
 				Type: schema.TypeFloat,
-				Required: false,
+				Optional: true,
 			},
 			"tracing_enabled": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"variables": {
 				Type: schema.TypeMap,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,46 +25,46 @@ func ResourceEC2NetworkInterface() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"group_set": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				Set: schema.HashString,
 			},
 			"interface_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"ipv6_address_count": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"ipv6_addresses": {
 				Type: schema.TypeList,
 				Elem: propertyNetworkInterfaceInstanceIpv6Address(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"private_ip_address": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"private_ip_addresses": {
 				Type: schema.TypeSet,
 				Elem: propertyNetworkInterfacePrivateIpAddressSpecification(),
-				Required: false,
+				Optional: true,
 			},
 			"secondary_private_ip_address_count": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"source_dest_check": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"subnet_id": {
 				Type: schema.TypeString,
@@ -74,7 +74,7 @@ func ResourceEC2NetworkInterface() *schema.Resource {
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -31,40 +31,40 @@ func ResourceEC2EC2Fleet() *schema.Resource {
 			"on_demand_options": {
 				Type: schema.TypeList,
 				Elem: propertyEC2FleetOnDemandOptionsRequest(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 				MaxItems: 1,
 			},
 			"type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"excess_capacity_termination_policy": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"tag_specifications": {
 				Type: schema.TypeList,
 				Elem: propertyEC2FleetTagSpecification(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"spot_options": {
 				Type: schema.TypeList,
 				Elem: propertyEC2FleetSpotOptionsRequest(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 				MaxItems: 1,
 			},
 			"valid_from": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"replace_unhealthy_instances": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"launch_template_configs": {
@@ -75,12 +75,12 @@ func ResourceEC2EC2Fleet() *schema.Resource {
 			},
 			"terminate_instances_with_expiration": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"valid_until": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 		},

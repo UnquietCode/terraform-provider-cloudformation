@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,14 +18,13 @@ func ResourceCognitoUserPoolUser() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceCognitoUserPoolUserCreate,
 		Read:   resourceCognitoUserPoolUserRead,
-		Update: resourceCognitoUserPoolUserUpdate,
 		Delete: resourceCognitoUserPoolUserDelete,
 
 		Schema: map[string]*schema.Schema{
 			"validation_data": {
 				Type: schema.TypeList,
 				Elem: propertyUserPoolUserAttributeType(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"user_pool_id": {
@@ -35,29 +34,29 @@ func ResourceCognitoUserPoolUser() *schema.Resource {
 			},
 			"username": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"message_action": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"desired_delivery_mediums": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"force_alias_creation": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"user_attributes": {
 				Type: schema.TypeList,
 				Elem: propertyUserPoolUserAttributeType(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 		},

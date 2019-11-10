@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func ResourceApiGatewayV2Stage() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"client_certificate_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"deployment_id": {
 				Type: schema.TypeString,
@@ -32,17 +32,17 @@ func ResourceApiGatewayV2Stage() *schema.Resource {
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"access_log_settings": {
 				Type: schema.TypeList,
 				Elem: propertyStageAccessLogSettings(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"route_settings": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"stage_name": {
 				Type: schema.TypeString,
@@ -51,7 +51,7 @@ func ResourceApiGatewayV2Stage() *schema.Resource {
 			},
 			"stage_variables": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"api_id": {
 				Type: schema.TypeString,
@@ -61,12 +61,12 @@ func ResourceApiGatewayV2Stage() *schema.Resource {
 			"default_route_settings": {
 				Type: schema.TypeList,
 				Elem: propertyStageRouteSettings(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"tags": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

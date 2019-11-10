@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,34 +24,34 @@ func propertyUserPoolVerificationMessageTemplate(extras...string) *schema.Resour
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"email_message_by_link": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"email_message": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"sms_message": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"email_subject": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"default_email_option": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"email_subject_by_link": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

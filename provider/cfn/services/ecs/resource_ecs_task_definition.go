@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -26,78 +26,78 @@ func ResourceECSTaskDefinition() *schema.Resource {
 			"container_definitions": {
 				Type: schema.TypeSet,
 				Elem: propertyTaskDefinitionContainerDefinition(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"cpu": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"execution_role_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"family": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"ipc_mode": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"memory": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"network_mode": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"pid_mode": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"placement_constraints": {
 				Type: schema.TypeSet,
 				Elem: propertyTaskDefinitionTaskDefinitionPlacementConstraint(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"proxy_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyTaskDefinitionProxyConfiguration(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 				MaxItems: 1,
 			},
 			"requires_compatibilities": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 				Set: schema.HashString,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"task_role_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"volumes": {
 				Type: schema.TypeSet,
 				Elem: propertyTaskDefinitionVolume(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 		},

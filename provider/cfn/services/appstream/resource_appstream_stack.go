@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -26,53 +26,53 @@ func ResourceAppStreamStack() *schema.Resource {
 			"application_settings": {
 				Type: schema.TypeList,
 				Elem: propertyStackApplicationSettings(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"storage_connectors": {
 				Type: schema.TypeList,
 				Elem: propertyStackStorageConnector(),
-				Required: false,
+				Optional: true,
 			},
 			"delete_storage_connectors": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"user_settings": {
 				Type: schema.TypeList,
 				Elem: propertyStackUserSetting(),
-				Required: false,
+				Optional: true,
 			},
 			"attributes_to_delete": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"display_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"redirect_url": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"feedback_url": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

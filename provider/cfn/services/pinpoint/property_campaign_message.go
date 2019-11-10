@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,58 +24,58 @@ func propertyCampaignMessage(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"json_body": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"action": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"media_url": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"time_to_live": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"image_small_icon_url": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"image_url": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"title": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"image_icon_url": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"silent_push": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"body": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"raw_content": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"url": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

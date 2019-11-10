@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func ResourceCodeStarGitHubRepository() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"enable_issues": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"repository_name": {
 				Type: schema.TypeString,
@@ -40,17 +40,17 @@ func ResourceCodeStarGitHubRepository() *schema.Resource {
 			},
 			"is_private": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"code": {
 				Type: schema.TypeList,
 				Elem: propertyGitHubRepositoryCode(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"repository_description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

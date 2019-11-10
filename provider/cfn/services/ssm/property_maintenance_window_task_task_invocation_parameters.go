@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertyMaintenanceWindowTaskTaskInvocationParameters(extras...string) *sch
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -32,25 +32,25 @@ func propertyMaintenanceWindowTaskTaskInvocationParameters(extras...string) *sch
 			"maintenance_window_run_command_parameters": {
 				Type: schema.TypeList,
 				Elem: propertyMaintenanceWindowTaskMaintenanceWindowRunCommandParameters(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"maintenance_window_automation_parameters": {
 				Type: schema.TypeList,
 				Elem: propertyMaintenanceWindowTaskMaintenanceWindowAutomationParameters(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"maintenance_window_step_functions_parameters": {
 				Type: schema.TypeList,
 				Elem: propertyMaintenanceWindowTaskMaintenanceWindowStepFunctionsParameters(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"maintenance_window_lambda_parameters": {
 				Type: schema.TypeList,
 				Elem: propertyMaintenanceWindowTaskMaintenanceWindowLambdaParameters(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

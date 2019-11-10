@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertyLaunchTemplateLaunchTemplateData(extras...string) *schema.Resource 
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -32,125 +32,125 @@ func propertyLaunchTemplateLaunchTemplateData(extras...string) *schema.Resource 
 			"security_groups": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"tag_specifications": {
 				Type: schema.TypeList,
 				Elem: propertyLaunchTemplateTagSpecification(),
-				Required: false,
+				Optional: true,
 			},
 			"user_data": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"block_device_mappings": {
 				Type: schema.TypeList,
 				Elem: propertyLaunchTemplateBlockDeviceMapping(),
-				Required: false,
+				Optional: true,
 			},
 			"iam_instance_profile": {
 				Type: schema.TypeList,
 				Elem: propertyLaunchTemplateIamInstanceProfile(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"kernel_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"ebs_optimized": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"elastic_gpu_specifications": {
 				Type: schema.TypeList,
 				Elem: propertyLaunchTemplateElasticGpuSpecification(),
-				Required: false,
+				Optional: true,
 			},
 			"elastic_inference_accelerators": {
 				Type: schema.TypeList,
 				Elem: propertyLaunchTemplateLaunchTemplateElasticInferenceAccelerator(),
-				Required: false,
+				Optional: true,
 			},
 			"placement": {
 				Type: schema.TypeList,
 				Elem: propertyLaunchTemplatePlacement(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"network_interfaces": {
 				Type: schema.TypeList,
 				Elem: propertyLaunchTemplateNetworkInterface(),
-				Required: false,
+				Optional: true,
 			},
 			"image_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"instance_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"monitoring": {
 				Type: schema.TypeList,
 				Elem: propertyLaunchTemplateMonitoring(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"hibernation_options": {
 				Type: schema.TypeList,
 				Elem: propertyLaunchTemplateHibernationOptions(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"license_specifications": {
 				Type: schema.TypeList,
 				Elem: propertyLaunchTemplateLicenseSpecification(),
-				Required: false,
+				Optional: true,
 			},
 			"instance_initiated_shutdown_behavior": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"cpu_options": {
 				Type: schema.TypeList,
 				Elem: propertyLaunchTemplateCpuOptions(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"security_group_ids": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"key_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"disable_api_termination": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"instance_market_options": {
 				Type: schema.TypeList,
 				Elem: propertyLaunchTemplateInstanceMarketOptions(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"ram_disk_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"capacity_reservation_specification": {
 				Type: schema.TypeList,
 				Elem: propertyLaunchTemplateCapacityReservationSpecification(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"credit_specification": {
 				Type: schema.TypeList,
 				Elem: propertyLaunchTemplateCreditSpecification(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

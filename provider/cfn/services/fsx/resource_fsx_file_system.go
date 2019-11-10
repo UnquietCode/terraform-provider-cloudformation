@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,12 +25,12 @@ func ResourceFSxFileSystem() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"kms_key_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"storage_capacity": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"file_system_type": {
@@ -41,12 +41,12 @@ func ResourceFSxFileSystem() *schema.Resource {
 			"lustre_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyFileSystemLustreConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"backup_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"subnet_ids": {
@@ -58,18 +58,18 @@ func ResourceFSxFileSystem() *schema.Resource {
 			"security_group_ids": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"windows_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyFileSystemWindowsConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

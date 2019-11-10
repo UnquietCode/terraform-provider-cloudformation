@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,58 +24,58 @@ func propertySpotFleetInstanceNetworkInterfaceSpecification(extras...string) *sc
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"associate_public_ip_address": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"delete_on_termination": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"device_index": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"groups": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				Set: schema.HashString,
 			},
 			"ipv6_address_count": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"ipv6_addresses": {
 				Type: schema.TypeSet,
 				Elem: propertySpotFleetInstanceIpv6Address(),
-				Required: false,
+				Optional: true,
 			},
 			"network_interface_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"private_ip_addresses": {
 				Type: schema.TypeSet,
 				Elem: propertySpotFleetPrivateIpAddressSpecification(),
-				Required: false,
+				Optional: true,
 			},
 			"secondary_private_ip_address_count": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"subnet_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

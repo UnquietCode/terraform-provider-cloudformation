@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,34 +25,34 @@ func ResourceRedshiftCluster() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"allow_version_upgrade": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"automated_snapshot_retention_period": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"availability_zone": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"cluster_identifier": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"cluster_parameter_group_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"cluster_security_groups": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"cluster_subnet_group_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"cluster_type": {
@@ -61,7 +61,7 @@ func ResourceRedshiftCluster() *schema.Resource {
 			},
 			"cluster_version": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"db_name": {
 				Type: schema.TypeString,
@@ -70,37 +70,37 @@ func ResourceRedshiftCluster() *schema.Resource {
 			},
 			"elastic_ip": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"encrypted": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"hsm_client_certificate_identifier": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"hsm_configuration_identifier": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"iam_roles": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 				Set: schema.HashString,
 			},
 			"kms_key_id": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"logging_properties": {
 				Type: schema.TypeList,
 				Elem: propertyClusterLoggingProperties(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"master_user_password": {
@@ -118,45 +118,45 @@ func ResourceRedshiftCluster() *schema.Resource {
 			},
 			"number_of_nodes": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"owner_account": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"port": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"preferred_maintenance_window": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"publicly_accessible": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"snapshot_cluster_identifier": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"snapshot_identifier": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"vpc_security_group_ids": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

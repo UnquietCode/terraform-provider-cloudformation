@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,64 +25,64 @@ func ResourceElasticsearchDomain() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"access_policies": {
 				Type: schema.TypeMap,
-				Required: false,
+				Optional: true,
 			},
 			"advanced_options": {
 				Type: schema.TypeMap,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"domain_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"ebs_options": {
 				Type: schema.TypeList,
 				Elem: propertyDomainEBSOptions(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"elasticsearch_cluster_config": {
 				Type: schema.TypeList,
 				Elem: propertyDomainElasticsearchClusterConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"elasticsearch_version": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"encryption_at_rest_options": {
 				Type: schema.TypeList,
 				Elem: propertyDomainEncryptionAtRestOptions(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 				MaxItems: 1,
 			},
 			"node_to_node_encryption_options": {
 				Type: schema.TypeList,
 				Elem: propertyDomainNodeToNodeEncryptionOptions(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 				MaxItems: 1,
 			},
 			"snapshot_options": {
 				Type: schema.TypeList,
 				Elem: propertyDomainSnapshotOptions(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"vpc_options": {
 				Type: schema.TypeList,
 				Elem: propertyDomainVPCOptions(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

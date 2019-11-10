@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,37 +25,37 @@ func ResourceCodeBuildProject() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"vpc_config": {
 				Type: schema.TypeList,
 				Elem: propertyProjectVpcConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"secondary_sources": {
 				Type: schema.TypeList,
 				Elem: propertyProjectSource(),
-				Required: false,
+				Optional: true,
 			},
 			"encryption_key": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"source_version": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"triggers": {
 				Type: schema.TypeList,
 				Elem: propertyProjectProjectTriggers(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"secondary_artifacts": {
 				Type: schema.TypeList,
 				Elem: propertyProjectArtifacts(),
-				Required: false,
+				Optional: true,
 			},
 			"source": {
 				Type: schema.TypeList,
@@ -65,7 +65,7 @@ func ResourceCodeBuildProject() *schema.Resource {
 			},
 			"name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"artifacts": {
@@ -76,12 +76,12 @@ func ResourceCodeBuildProject() *schema.Resource {
 			},
 			"badge_enabled": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"logs_config": {
 				Type: schema.TypeList,
 				Elem: propertyProjectLogsConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"service_role": {
@@ -90,7 +90,7 @@ func ResourceCodeBuildProject() *schema.Resource {
 			},
 			"queued_timeout_in_minutes": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"environment": {
 				Type: schema.TypeList,
@@ -101,21 +101,21 @@ func ResourceCodeBuildProject() *schema.Resource {
 			"secondary_source_versions": {
 				Type: schema.TypeList,
 				Elem: propertyProjectProjectSourceVersion(),
-				Required: false,
+				Optional: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"timeout_in_minutes": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"cache": {
 				Type: schema.TypeList,
 				Elem: propertyProjectProjectCache(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,35 +25,35 @@ func ResourceAppStreamImageBuilder() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"image_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"vpc_config": {
 				Type: schema.TypeList,
 				Elem: propertyImageBuilderVpcConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"enable_default_internet_access": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"display_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"domain_join_info": {
 				Type: schema.TypeList,
 				Elem: propertyImageBuilderDomainJoinInfo(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"appstream_agent_version": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"instance_type": {
 				Type: schema.TypeString,
@@ -62,15 +62,15 @@ func ResourceAppStreamImageBuilder() *schema.Resource {
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"image_arn": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

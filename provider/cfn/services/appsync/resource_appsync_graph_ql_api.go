@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,19 +25,19 @@ func ResourceAppSyncGraphQLApi() *schema.Resource {
 			"open_id_connect_config": {
 				Type: schema.TypeList,
 				Elem: propertyGraphQLApiOpenIDConnectConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"user_pool_config": {
 				Type: schema.TypeList,
 				Elem: propertyGraphQLApiUserPoolConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: propertyGraphQLApiTags(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"name": {
@@ -51,13 +51,13 @@ func ResourceAppSyncGraphQLApi() *schema.Resource {
 			"log_config": {
 				Type: schema.TypeList,
 				Elem: propertyGraphQLApiLogConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"additional_authentication_providers": {
 				Type: schema.TypeList,
 				Elem: propertyGraphQLApiAdditionalAuthenticationProviders(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},

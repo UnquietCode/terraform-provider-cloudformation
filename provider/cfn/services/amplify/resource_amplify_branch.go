@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,12 +25,12 @@ func ResourceAmplifyBranch() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"environment_variables": {
 				Type: schema.TypeList,
 				Elem: propertyBranchEnvironmentVariable(),
-				Required: false,
+				Optional: true,
 			},
 			"app_id": {
 				Type: schema.TypeString,
@@ -39,23 +39,23 @@ func ResourceAmplifyBranch() *schema.Resource {
 			},
 			"pull_request_environment_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"enable_pull_request_preview": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"enable_auto_build": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"build_spec": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"stage": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"branch_name": {
 				Type: schema.TypeString,
@@ -65,13 +65,13 @@ func ResourceAmplifyBranch() *schema.Resource {
 			"basic_auth_config": {
 				Type: schema.TypeList,
 				Elem: propertyBranchBasicAuthConfig(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

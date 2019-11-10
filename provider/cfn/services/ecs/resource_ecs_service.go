@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,92 +25,92 @@ func ResourceECSService() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"cluster": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"deployment_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyServiceDeploymentConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"desired_count": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"enable_ecs_managed_tags": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"health_check_grace_period_seconds": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"launch_type": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"load_balancers": {
 				Type: schema.TypeSet,
 				Elem: propertyServiceLoadBalancer(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"network_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyServiceNetworkConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"placement_constraints": {
 				Type: schema.TypeSet,
 				Elem: propertyServicePlacementConstraint(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"placement_strategies": {
 				Type: schema.TypeSet,
 				Elem: propertyServicePlacementStrategy(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"platform_version": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"propagate_tags": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"role": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"scheduling_strategy": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"service_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"service_registries": {
 				Type: schema.TypeSet,
 				Elem: propertyServiceServiceRegistry(),
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Required: false,
+				Optional: true,
 			},
 			"task_definition": {
 				Type: schema.TypeString,

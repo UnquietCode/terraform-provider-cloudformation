@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -25,46 +25,46 @@ func ResourceCognitoUserPoolClient() *schema.Resource {
 			"analytics_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyUserPoolClientAnalyticsConfiguration(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"generate_secret": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"callback_ur_ls": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"allowed_o_auth_scopes": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"read_attributes": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"allowed_o_auth_flows_user_pool_client": {
 				Type: schema.TypeBool,
-				Required: false,
+				Optional: true,
 				ForceNew: true,
 			},
 			"default_redirect_uri": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"supported_identity_providers": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"client_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"user_pool_id": {
 				Type: schema.TypeString,
@@ -74,26 +74,26 @@ func ResourceCognitoUserPoolClient() *schema.Resource {
 			"allowed_o_auth_flows": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"explicit_auth_flows": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"logout_ur_ls": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 			"refresh_token_validity": {
 				Type: schema.TypeInt,
-				Required: false,
+				Optional: true,
 			},
 			"write_attributes": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Required: false,
+				Optional: true,
 			},
 		},
 	}

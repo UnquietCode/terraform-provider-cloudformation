@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 09-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -24,7 +24,7 @@ func propertyDetectorModelState(extras...string) *schema.Resource {
 	}
 	
 	if count >= 5 {
-		return nil
+		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
 	
 	return &schema.Resource{
@@ -32,23 +32,23 @@ func propertyDetectorModelState(extras...string) *schema.Resource {
 			"on_input": {
 				Type: schema.TypeList,
 				Elem: propertyDetectorModelOnInput(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"on_exit": {
 				Type: schema.TypeList,
 				Elem: propertyDetectorModelOnExit(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 			"state_name": {
 				Type: schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"on_enter": {
 				Type: schema.TypeList,
 				Elem: propertyDetectorModelOnEnter(),
-				Required: false,
+				Optional: true,
 				MaxItems: 1,
 			},
 		},
