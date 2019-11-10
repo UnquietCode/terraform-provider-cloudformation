@@ -1,6 +1,7 @@
 package plugin
 
 import (
+	"errors"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
@@ -38,6 +39,14 @@ func getResource(id string, template TemplateData) map[string]interface{} {
 	}
 }
 
+func convertFromTerraform(data interface{}) interface{} {
+	return nil
+}
+
+func convertToTerraform(data interface{}) interface{} {
+	return nil
+}
+
 func deSnake(name string) string {
 		return name
 		
@@ -62,57 +71,64 @@ func deSnake(name string) string {
 }
 
 
-func ResourceCreate(resourceName string, resourceData *schema.ResourceData, meta interface{}) error {
-	// var logicalId string = deSnake(resourceName)
-	// var template TemplateData = getTemplate(meta)
-	// var resource = getResource(logicalId, template)
+func ResourceCreate(resourceName string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
+	var logicalId string = deSnake(resourceName)
+	var template TemplateData = getTemplate(meta)
   
-  // if _, ok := template.resources[resourceName]; !ok {
-  //   return nil
-  // }
-  // template.resources[resourceName] = resourceData
+  if _, ok := template.resources[logicalId]; ok {
+    return errors.New("already exists?")
+  } else {
+		var resource = make(map[string]interface{})
+  	template.resources[resourceName] = resource
+		
+		for name := range resourceSchema.Schema {
+	  	resource[name] = convertFromTerraform(resourceData.Get(name))
+		}
+	}
 
   return nil
 }
 
-func ResourceRead(resourceName string, resourceData *schema.ResourceData, meta interface{}) error {
+func ResourceRead(resourceName string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
 	var logicalId string = deSnake(resourceName)
 	var template TemplateData = getTemplate(meta)
 	var resource = getResource(logicalId, template)
 	
-	if resource != nil {
-		
+	for name := range resourceSchema.Schema {
+  	resourceData.Set(name, convertToTerraform(resource[name]))
 	}
 	
-  // if !template.resources[resourceName] {
-  //   return "Err"
-  // }
-  // 
-  // return template[resourceName]
-
   return nil
 }
 
-func ResourceUpdate(resourceName string, resourceData *schema.ResourceData, meta interface{}) error {
-	//var logicalId string = deSnake(resourceName)
+func ResourceUpdate(resourceName string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
+	var logicalId string = deSnake(resourceName)
+	var template TemplateData = getTemplate(meta)
+	var resource = getResource(logicalId, template)
 	
-	// template := getTemplate()
-  
-  // if !template.resources[resourceName] {
-  //   return "Err"
-  // }
+	resourceData.Partial(true)
+	
+	for name := range resourceSchema.Schema {
+		if resourceData.HasChange(name) {
+			_, value := resourceData.GetChange(name)
+			resource[name] = convertFromTerraform(value)
+		}
+	}
+
+	resourceData.Partial(false)
+	
   return nil
 }
 
 func ResourceDelete(resourceName string, resourceData *schema.ResourceData, meta interface{}) error {
-	//var logicalId string = deSnake(resourceName)
+	var logicalId string = deSnake(resourceName)
+	var template TemplateData = getTemplate(meta)
 	
-	// template := getTemplate()
-
-  // if !template.resources[resourceName] {
-  //   return "Err"
-  // }
-  // delete(template.resources, resourceName)
+	if _, ok := template.resources[logicalId]; ok {
+  	delete(template.resources, logicalId)
+	} else {
+		return errors.New("resource does not exist?")
+	}
 
   return nil
 }

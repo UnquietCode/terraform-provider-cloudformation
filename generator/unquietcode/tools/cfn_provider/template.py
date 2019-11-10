@@ -145,15 +145,15 @@ ${attributes}
 }
 
 func resource${name}Create(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("${cfn_type}", data, meta)
+	return plugin.ResourceCreate("${cfn_type}", Resource${name}(), data, meta)
 }
 
 func resource${name}Read(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("${cfn_type}", data, meta)
+	return plugin.ResourceRead("${cfn_type}", Resource${name}(), data, meta)
 }
 
 func resource${name}Update(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("${cfn_type}", data, meta)
+	return plugin.ResourceUpdate("${cfn_type}", Resource${name}(), data, meta)
 }
 
 func resource${name}Delete(data *schema.ResourceData, meta interface{}) error {
