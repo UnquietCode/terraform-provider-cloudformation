@@ -99,6 +99,7 @@ class ResourceAttribute:
     required: bool
     will_replace: bool
     documentation_link: str
+    computed: bool = False
         
     def as_dict(self):
         return asdict(self)

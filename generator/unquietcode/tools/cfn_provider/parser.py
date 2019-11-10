@@ -18,6 +18,23 @@ def handle_resource_property(resource_name, property_name, property_data, schema
         documentation_link=property_data['Documentation'],
     )
 
+
+def handle_resource_attribute(resource_name, documentation_link, attribute_name, attribute_data):
+    attribute_type = translate_cfn_type(resource_name, attribute_data, {})
+    
+    if attribute_name in RESERVED_ATTRIBUTES:
+        attribute_name = f"The{attribute_name}"
+
+    return ResourceAttribute(
+        name=attribute_name,
+        type=attribute_type,
+        computed=True,
+        required=None,
+        will_replace=None,
+        documentation_link=documentation_link,
+    )
+
+
 # TODO need to handle missing properties better
 
 def handle_property(*, package, service, outer_name, inner_name, data):
@@ -37,13 +54,27 @@ def handle_property(*, package, service, outer_name, inner_name, data):
 
 
 def handle_resource(*, service, package, resource_name, cfn_type, resource_data):
+    
+    # resource properties
     resource_properties = resource_data['Properties']
     attributes = {}
-
+    
     for property_name, property_data in resource_properties.items():
         attribute = handle_resource_property(resource_name, property_name, property_data, package.properties)
         attributes[attribute.name] = attribute
-
+    
+    # resource attributes
+    resource_attributes = resource_data.get("Attributes", {})
+    
+    for attribute_name, attribute_data in resource_attributes.items():
+        attribute = handle_resource_attribute(
+            resource_name=resource_name,
+            documentation_link=resource_data['Documentation'],
+            attribute_name=attribute_name,
+            attribute_data=attribute_data,
+        )
+        attributes[attribute.name] = attribute
+    
     resource = Resource(
         name=f"{service}{resource_name}",
         service_name=service,
