@@ -22,14 +22,25 @@ func ResourceAppSyncResolver() *schema.Resource {
 		Delete: resourceAppSyncResolverDelete,
 
 		Schema: map[string]*schema.Schema{
-			"response_mapping_template_s3_location": {
-				Type: schema.TypeString,
-				Optional: true,
-			},
 			"type_name": {
 				Type: schema.TypeString,
 				Required: true,
+				Computed: true,
 				ForceNew: true,
+			},
+			"resolver_arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"field_name": {
+				Type: schema.TypeString,
+				Required: true,
+				Computed: true,
+				ForceNew: true,
+			},
+			"response_mapping_template_s3_location": {
+				Type: schema.TypeString,
+				Optional: true,
 			},
 			"pipeline_config": {
 				Type: schema.TypeList,
@@ -58,11 +69,6 @@ func ResourceAppSyncResolver() *schema.Resource {
 				Optional: true,
 			},
 			"api_id": {
-				Type: schema.TypeString,
-				Required: true,
-				ForceNew: true,
-			},
-			"field_name": {
 				Type: schema.TypeString,
 				Required: true,
 				ForceNew: true,

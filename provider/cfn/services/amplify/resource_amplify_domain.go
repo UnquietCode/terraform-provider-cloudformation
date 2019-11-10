@@ -22,17 +22,34 @@ func ResourceAmplifyDomain() *schema.Resource {
 		Delete: resourceAmplifyDomainDelete,
 
 		Schema: map[string]*schema.Schema{
+			"domain_name": {
+				Type: schema.TypeString,
+				Required: true,
+				Computed: true,
+				ForceNew: true,
+			},
+			"status_reason": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"domain_status": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"certificate_record": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"sub_domain_settings": {
 				Type: schema.TypeList,
 				Elem: propertyDomainSubDomainSetting(),
 				Required: true,
 			},
 			"app_id": {
-				Type: schema.TypeString,
-				Required: true,
-				ForceNew: true,
-			},
-			"domain_name": {
 				Type: schema.TypeString,
 				Required: true,
 				ForceNew: true,

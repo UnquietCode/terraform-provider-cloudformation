@@ -22,6 +22,11 @@ func ResourceRoute53HostedZone() *schema.Resource {
 		Delete: resourceRoute53HostedZoneDelete,
 
 		Schema: map[string]*schema.Schema{
+			"name_servers": {
+				Type: schema.TypeList,
+				Elem: &schema.Schema{Type: schema.TypeString},
+				Computed: true,
+			},
 			"hosted_zone_config": {
 				Type: schema.TypeList,
 				Elem: propertyHostedZoneHostedZoneConfig(),

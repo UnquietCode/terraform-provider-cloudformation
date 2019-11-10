@@ -22,6 +22,10 @@ func ResourceLogsDestination() *schema.Resource {
 		Delete: resourceLogsDestinationDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"destination_name": {
 				Type: schema.TypeString,
 				Required: true,

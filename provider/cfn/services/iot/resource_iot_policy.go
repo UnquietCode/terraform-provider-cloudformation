@@ -18,9 +18,14 @@ func ResourceIoTPolicy() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceIoTPolicyCreate,
 		Read:   resourceIoTPolicyRead,
+		Update: resourceIoTPolicyUpdate,
 		Delete: resourceIoTPolicyDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"policy_document": {
 				Type: schema.TypeMap,
 				Required: true,

@@ -22,6 +22,20 @@ func ResourceEC2VPCEndpoint() *schema.Resource {
 		Delete: resourceEC2VPCEndpointDelete,
 
 		Schema: map[string]*schema.Schema{
+			"creation_timestamp": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"dns_entries": {
+				Type: schema.TypeList,
+				Elem: &schema.Schema{Type: schema.TypeString},
+				Computed: true,
+			},
+			"network_interface_ids": {
+				Type: schema.TypeList,
+				Elem: &schema.Schema{Type: schema.TypeString},
+				Computed: true,
+			},
 			"policy_document": {
 				Type: schema.TypeMap,
 				Optional: true,

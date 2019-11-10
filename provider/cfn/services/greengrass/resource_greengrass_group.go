@@ -22,6 +22,32 @@ func ResourceGreengrassGroup() *schema.Resource {
 		Delete: resourceGreengrassGroupDelete,
 
 		Schema: map[string]*schema.Schema{
+			"role_attached_at": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"latest_version_arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"role_arn": {
+				Type: schema.TypeString,
+				Optional: true,
+				Computed: true,
+			},
+			"name": {
+				Type: schema.TypeString,
+				Required: true,
+				Computed: true,
+			},
 			"initial_version": {
 				Type: schema.TypeList,
 				Elem: propertyGroupGroupVersion(),
@@ -29,17 +55,9 @@ func ResourceGreengrassGroup() *schema.Resource {
 				ForceNew: true,
 				MaxItems: 1,
 			},
-			"role_arn": {
-				Type: schema.TypeString,
-				Optional: true,
-			},
 			"tags": {
 				Type: schema.TypeMap,
 				Optional: true,
-			},
-			"name": {
-				Type: schema.TypeString,
-				Required: true,
 			},
 		},
 	}

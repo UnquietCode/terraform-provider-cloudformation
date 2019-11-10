@@ -22,6 +22,10 @@ func ResourceDLMLifecyclePolicy() *schema.Resource {
 		Delete: resourceDLMLifecyclePolicyDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"execution_role_arn": {
 				Type: schema.TypeString,
 				Optional: true,

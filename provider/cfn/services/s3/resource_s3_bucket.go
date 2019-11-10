@@ -23,6 +23,26 @@ func ResourceS3Bucket() *schema.Resource {
 		Delete: resourceS3BucketDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"domain_name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"dual_stack_domain_name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"regional_domain_name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"website_url": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"accelerate_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyBucketAccelerateConfiguration(),

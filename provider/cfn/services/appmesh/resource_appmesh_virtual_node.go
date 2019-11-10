@@ -23,9 +23,24 @@ func ResourceAppMeshVirtualNode() *schema.Resource {
 		Delete: resourceAppMeshVirtualNodeDelete,
 
 		Schema: map[string]*schema.Schema{
+			"uid": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"mesh_name": {
 				Type: schema.TypeString,
 				Required: true,
+				Computed: true,
+				ForceNew: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"virtual_node_name": {
+				Type: schema.TypeString,
+				Required: true,
+				Computed: true,
 				ForceNew: true,
 			},
 			"spec": {
@@ -33,11 +48,6 @@ func ResourceAppMeshVirtualNode() *schema.Resource {
 				Elem: propertyVirtualNodeVirtualNodeSpec(),
 				Required: true,
 				MaxItems: 1,
-			},
-			"virtual_node_name": {
-				Type: schema.TypeString,
-				Required: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,

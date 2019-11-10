@@ -23,6 +23,15 @@ func ResourceEC2NetworkInterface() *schema.Resource {
 		Delete: resourceEC2NetworkInterfaceDelete,
 
 		Schema: map[string]*schema.Schema{
+			"primary_private_ip_address": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"secondary_private_ip_addresses": {
+				Type: schema.TypeList,
+				Elem: &schema.Schema{Type: schema.TypeString},
+				Computed: true,
+			},
 			"description": {
 				Type: schema.TypeString,
 				Optional: true,

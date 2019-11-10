@@ -22,6 +22,18 @@ func ResourceCognitoUserPool() *schema.Resource {
 		Delete: resourceCognitoUserPoolDelete,
 
 		Schema: map[string]*schema.Schema{
+			"provider_name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"provider_url": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"user_pool_tags": {
 				Type: schema.TypeMap,
 				Optional: true,

@@ -23,6 +23,10 @@ func ResourceRAMResourceShare() *schema.Resource {
 		Delete: resourceRAMResourceShareDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"principals": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},

@@ -22,6 +22,10 @@ func ResourceKinesisFirehoseDeliveryStream() *schema.Resource {
 		Delete: resourceKinesisFirehoseDeliveryStreamDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"delivery_stream_name": {
 				Type: schema.TypeString,
 				Optional: true,

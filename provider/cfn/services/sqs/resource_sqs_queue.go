@@ -23,6 +23,16 @@ func ResourceSQSQueue() *schema.Resource {
 		Delete: resourceSQSQueueDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"queue_name": {
+				Type: schema.TypeString,
+				Optional: true,
+				Computed: true,
+				ForceNew: true,
+			},
 			"content_based_deduplication": {
 				Type: schema.TypeBool,
 				Optional: true,
@@ -51,11 +61,6 @@ func ResourceSQSQueue() *schema.Resource {
 			"message_retention_period": {
 				Type: schema.TypeInt,
 				Optional: true,
-			},
-			"queue_name": {
-				Type: schema.TypeString,
-				Optional: true,
-				ForceNew: true,
 			},
 			"receive_message_wait_time_seconds": {
 				Type: schema.TypeInt,

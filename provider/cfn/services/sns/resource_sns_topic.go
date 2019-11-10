@@ -22,6 +22,12 @@ func ResourceSNSTopic() *schema.Resource {
 		Delete: resourceSNSTopicDelete,
 
 		Schema: map[string]*schema.Schema{
+			"topic_name": {
+				Type: schema.TypeString,
+				Optional: true,
+				Computed: true,
+				ForceNew: true,
+			},
 			"display_name": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -34,11 +40,6 @@ func ResourceSNSTopic() *schema.Resource {
 				Type: schema.TypeList,
 				Elem: propertyTopicSubscription(),
 				Optional: true,
-			},
-			"topic_name": {
-				Type: schema.TypeString,
-				Optional: true,
-				ForceNew: true,
 			},
 		},
 	}

@@ -23,6 +23,14 @@ func ResourceIAMRole() *schema.Resource {
 		Delete: resourceIAMRoleDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"role_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"assume_role_policy_document": {
 				Type: schema.TypeMap,
 				Required: true,

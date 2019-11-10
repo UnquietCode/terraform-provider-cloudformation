@@ -25,11 +25,13 @@ func ResourceIoT1ClickPlacement() *schema.Resource {
 			"placement_name": {
 				Type: schema.TypeString,
 				Optional: true,
+				Computed: true,
 				ForceNew: true,
 			},
 			"project_name": {
 				Type: schema.TypeString,
 				Required: true,
+				Computed: true,
 				ForceNew: true,
 			},
 			"associated_devices": {

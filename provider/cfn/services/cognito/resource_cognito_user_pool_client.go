@@ -22,6 +22,14 @@ func ResourceCognitoUserPoolClient() *schema.Resource {
 		Delete: resourceCognitoUserPoolClientDelete,
 
 		Schema: map[string]*schema.Schema{
+			"client_secret": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"analytics_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyUserPoolClientAnalyticsConfiguration(),

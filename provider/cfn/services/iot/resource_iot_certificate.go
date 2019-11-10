@@ -22,6 +22,10 @@ func ResourceIoTCertificate() *schema.Resource {
 		Delete: resourceIoTCertificateDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"certificate_signing_request": {
 				Type: schema.TypeString,
 				Required: true,

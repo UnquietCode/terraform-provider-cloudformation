@@ -23,10 +23,19 @@ func ResourceAppMeshMesh() *schema.Resource {
 		Delete: resourceAppMeshMeshDelete,
 
 		Schema: map[string]*schema.Schema{
+			"uid": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"mesh_name": {
 				Type: schema.TypeString,
 				Required: true,
+				Computed: true,
 				ForceNew: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
 			},
 			"spec": {
 				Type: schema.TypeList,

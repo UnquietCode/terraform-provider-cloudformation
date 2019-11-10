@@ -23,6 +23,40 @@ func ResourceElastiCacheReplicationGroup() *schema.Resource {
 		Delete: resourceElastiCacheReplicationGroupDelete,
 
 		Schema: map[string]*schema.Schema{
+			"configuration_end_point._address": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"configuration_end_point._port": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"primary_end_point._address": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"primary_end_point._port": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"read_end_point._addresses": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"read_end_point._addresses._list": {
+				Type: schema.TypeList,
+				Elem: &schema.Schema{Type: schema.TypeString},
+				Computed: true,
+			},
+			"read_end_point._ports": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"read_end_point._ports._list": {
+				Type: schema.TypeList,
+				Elem: &schema.Schema{Type: schema.TypeString},
+				Computed: true,
+			},
 			"at_rest_encryption_enabled": {
 				Type: schema.TypeBool,
 				Optional: true,

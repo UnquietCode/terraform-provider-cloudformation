@@ -23,6 +23,10 @@ func ResourceEMRCluster() *schema.Resource {
 		Delete: resourceEMRClusterDelete,
 
 		Schema: map[string]*schema.Schema{
+			"master_public_dns": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"additional_info": {
 				Type: schema.TypeMap,
 				Optional: true,

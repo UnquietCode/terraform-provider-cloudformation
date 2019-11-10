@@ -18,20 +18,26 @@ func ResourceBackupBackupSelection() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceBackupBackupSelectionCreate,
 		Read:   resourceBackupBackupSelectionRead,
+		Update: resourceBackupBackupSelectionUpdate,
 		Delete: resourceBackupBackupSelectionDelete,
 
 		Schema: map[string]*schema.Schema{
+			"backup_plan_id": {
+				Type: schema.TypeString,
+				Required: true,
+				Computed: true,
+				ForceNew: true,
+			},
+			"selection_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"backup_selection": {
 				Type: schema.TypeList,
 				Elem: propertyBackupSelectionBackupSelectionResourceType(),
 				Required: true,
 				ForceNew: true,
 				MaxItems: 1,
-			},
-			"backup_plan_id": {
-				Type: schema.TypeString,
-				Required: true,
-				ForceNew: true,
 			},
 		},
 	}

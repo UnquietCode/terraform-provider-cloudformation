@@ -23,6 +23,10 @@ func ResourceECSCluster() *schema.Resource {
 		Delete: resourceECSClusterDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"cluster_name": {
 				Type: schema.TypeString,
 				Optional: true,

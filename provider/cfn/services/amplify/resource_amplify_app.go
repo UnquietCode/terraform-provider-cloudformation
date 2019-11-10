@@ -23,6 +23,22 @@ func ResourceAmplifyApp() *schema.Resource {
 		Delete: resourceAmplifyAppDelete,
 
 		Schema: map[string]*schema.Schema{
+			"app_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"default_domain": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"app_name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"auto_branch_creation_config": {
 				Type: schema.TypeList,
 				Elem: propertyAppAutoBranchCreationConfig(),

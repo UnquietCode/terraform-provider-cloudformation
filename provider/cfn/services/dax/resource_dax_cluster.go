@@ -22,6 +22,14 @@ func ResourceDAXCluster() *schema.Resource {
 		Delete: resourceDAXClusterDelete,
 
 		Schema: map[string]*schema.Schema{
+			"cluster_discovery_endpoint": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"sse_specification": {
 				Type: schema.TypeList,
 				Elem: propertyClusterSSESpecification(),

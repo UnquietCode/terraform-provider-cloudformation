@@ -22,6 +22,10 @@ func ResourceCognitoIdentityPool() *schema.Resource {
 		Delete: resourceCognitoIdentityPoolDelete,
 
 		Schema: map[string]*schema.Schema{
+			"name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"push_sync": {
 				Type: schema.TypeList,
 				Elem: propertyIdentityPoolPushSync(),

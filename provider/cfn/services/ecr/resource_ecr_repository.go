@@ -23,6 +23,10 @@ func ResourceECRRepository() *schema.Resource {
 		Delete: resourceECRRepositoryDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"lifecycle_policy": {
 				Type: schema.TypeList,
 				Elem: propertyRepositoryLifecyclePolicy(),

@@ -22,6 +22,15 @@ func ResourceManagedBlockchainMember() *schema.Resource {
 		Delete: resourceManagedBlockchainMemberDelete,
 
 		Schema: map[string]*schema.Schema{
+			"member_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"network_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				Computed: true,
+			},
 			"member_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyMemberMemberConfiguration(),
@@ -33,10 +42,6 @@ func ResourceManagedBlockchainMember() *schema.Resource {
 				Elem: propertyMemberNetworkConfiguration(),
 				Optional: true,
 				MaxItems: 1,
-			},
-			"network_id": {
-				Type: schema.TypeString,
-				Optional: true,
 			},
 			"invitation_id": {
 				Type: schema.TypeString,

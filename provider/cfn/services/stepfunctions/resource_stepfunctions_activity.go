@@ -22,15 +22,16 @@ func ResourceStepFunctionsActivity() *schema.Resource {
 		Delete: resourceStepFunctionsActivityDelete,
 
 		Schema: map[string]*schema.Schema{
+			"name": {
+				Type: schema.TypeString,
+				Required: true,
+				Computed: true,
+				ForceNew: true,
+			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: propertyActivityTagsEntry(),
 				Optional: true,
-			},
-			"name": {
-				Type: schema.TypeString,
-				Required: true,
-				ForceNew: true,
 			},
 		},
 	}

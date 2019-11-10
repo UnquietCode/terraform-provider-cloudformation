@@ -23,15 +23,37 @@ func ResourceRoute53ResolverResolverEndpoint() *schema.Resource {
 		Delete: resourceRoute53ResolverResolverEndpointDelete,
 
 		Schema: map[string]*schema.Schema{
-			"ip_addresses": {
-				Type: schema.TypeList,
-				Elem: propertyResolverEndpointIpAddressRequest(),
-				Required: true,
+			"resolver_endpoint_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"ip_address_count": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
 			},
 			"direction": {
 				Type: schema.TypeString,
 				Required: true,
+				Computed: true,
 				ForceNew: true,
+			},
+			"host_vpc_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"name": {
+				Type: schema.TypeString,
+				Optional: true,
+				Computed: true,
+			},
+			"ip_addresses": {
+				Type: schema.TypeList,
+				Elem: propertyResolverEndpointIpAddressRequest(),
+				Required: true,
 			},
 			"security_group_ids": {
 				Type: schema.TypeList,
@@ -42,10 +64,6 @@ func ResourceRoute53ResolverResolverEndpoint() *schema.Resource {
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
-			"name": {
-				Type: schema.TypeString,
 				Optional: true,
 			},
 		},

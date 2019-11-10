@@ -26,6 +26,7 @@ func ResourceSageMakerEndpoint() *schema.Resource {
 			"endpoint_name": {
 				Type: schema.TypeString,
 				Optional: true,
+				Computed: true,
 				ForceNew: true,
 			},
 			"endpoint_config_name": {

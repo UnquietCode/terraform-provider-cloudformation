@@ -19,9 +19,14 @@ func ResourceInspectorResourceGroup() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceInspectorResourceGroupCreate,
 		Read:   resourceInspectorResourceGroupRead,
+		Update: resourceInspectorResourceGroupUpdate,
 		Delete: resourceInspectorResourceGroupDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"resource_group_tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),

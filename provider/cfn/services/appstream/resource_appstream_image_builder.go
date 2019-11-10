@@ -23,6 +23,10 @@ func ResourceAppStreamImageBuilder() *schema.Resource {
 		Delete: resourceAppStreamImageBuilderDelete,
 
 		Schema: map[string]*schema.Schema{
+			"streaming_url": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"image_name": {
 				Type: schema.TypeString,
 				Optional: true,

@@ -23,6 +23,10 @@ func ResourceCloudFrontDistribution() *schema.Resource {
 		Delete: resourceCloudFrontDistributionDelete,
 
 		Schema: map[string]*schema.Schema{
+			"domain_name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"distribution_config": {
 				Type: schema.TypeList,
 				Elem: propertyDistributionDistributionConfig(),

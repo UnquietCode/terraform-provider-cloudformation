@@ -25,10 +25,20 @@ func ResourceManagedBlockchainNode() *schema.Resource {
 			"member_id": {
 				Type: schema.TypeString,
 				Required: true,
+				Computed: true,
+			},
+			"node_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
 			},
 			"network_id": {
 				Type: schema.TypeString,
 				Required: true,
+				Computed: true,
 			},
 			"node_configuration": {
 				Type: schema.TypeList,

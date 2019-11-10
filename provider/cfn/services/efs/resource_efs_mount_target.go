@@ -22,14 +22,15 @@ func ResourceEFSMountTarget() *schema.Resource {
 		Delete: resourceEFSMountTargetDelete,
 
 		Schema: map[string]*schema.Schema{
-			"file_system_id": {
-				Type: schema.TypeString,
-				Required: true,
-				ForceNew: true,
-			},
 			"ip_address": {
 				Type: schema.TypeString,
 				Optional: true,
+				Computed: true,
+				ForceNew: true,
+			},
+			"file_system_id": {
+				Type: schema.TypeString,
+				Required: true,
 				ForceNew: true,
 			},
 			"security_groups": {

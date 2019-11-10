@@ -25,6 +25,7 @@ func ResourceSageMakerCodeRepository() *schema.Resource {
 			"code_repository_name": {
 				Type: schema.TypeString,
 				Optional: true,
+				Computed: true,
 				ForceNew: true,
 			},
 			"git_config": {

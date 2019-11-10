@@ -22,6 +22,30 @@ func ResourcePinpointEmailIdentity() *schema.Resource {
 		Delete: resourcePinpointEmailIdentityDelete,
 
 		Schema: map[string]*schema.Schema{
+			"identity_dns_record_name3": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"identity_dns_record_name1": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"identity_dns_record_name2": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"identity_dns_record_value3": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"identity_dns_record_value2": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"identity_dns_record_value1": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"feedback_forwarding_enabled": {
 				Type: schema.TypeBool,
 				Optional: true,

@@ -22,6 +22,14 @@ func ResourceEC2LaunchTemplate() *schema.Resource {
 		Delete: resourceEC2LaunchTemplateDelete,
 
 		Schema: map[string]*schema.Schema{
+			"latest_version_number": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"default_version_number": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"launch_template_name": {
 				Type: schema.TypeString,
 				Optional: true,

@@ -22,6 +22,10 @@ func ResourceCloudFormationWaitCondition() *schema.Resource {
 		Delete: resourceCloudFormationWaitConditionDelete,
 
 		Schema: map[string]*schema.Schema{
+			"data": {
+				Type: schema.TypeMap,
+				Computed: true,
+			},
 			"the_count": {
 				Type: schema.TypeInt,
 				Optional: true,

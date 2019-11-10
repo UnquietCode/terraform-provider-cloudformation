@@ -22,6 +22,10 @@ func ResourceCodePipelinePipeline() *schema.Resource {
 		Delete: resourceCodePipelinePipelineDelete,
 
 		Schema: map[string]*schema.Schema{
+			"version": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"artifact_store": {
 				Type: schema.TypeList,
 				Elem: propertyPipelineArtifactStore(),

@@ -22,6 +22,10 @@ func ResourceIAMAccessKey() *schema.Resource {
 		Delete: resourceIAMAccessKeyDelete,
 
 		Schema: map[string]*schema.Schema{
+			"secret_access_key": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"serial": {
 				Type: schema.TypeInt,
 				Optional: true,

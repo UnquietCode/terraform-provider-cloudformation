@@ -22,6 +22,14 @@ func ResourceAutoScalingPlansScalingPlan() *schema.Resource {
 		Delete: resourceAutoScalingPlansScalingPlanDelete,
 
 		Schema: map[string]*schema.Schema{
+			"scaling_plan_name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"scaling_plan_version": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"application_source": {
 				Type: schema.TypeList,
 				Elem: propertyScalingPlanApplicationSource(),

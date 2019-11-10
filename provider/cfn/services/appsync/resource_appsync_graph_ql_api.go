@@ -22,6 +22,18 @@ func ResourceAppSyncGraphQLApi() *schema.Resource {
 		Delete: resourceAppSyncGraphQLApiDelete,
 
 		Schema: map[string]*schema.Schema{
+			"graph_ql_url": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"api_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"open_id_connect_config": {
 				Type: schema.TypeList,
 				Elem: propertyGraphQLApiOpenIDConnectConfig(),

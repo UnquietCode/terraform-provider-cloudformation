@@ -23,6 +23,14 @@ func ResourceDynamoDBTable() *schema.Resource {
 		Delete: resourceDynamoDBTableDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"stream_arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"attribute_definitions": {
 				Type: schema.TypeList,
 				Elem: propertyTableAttributeDefinition(),

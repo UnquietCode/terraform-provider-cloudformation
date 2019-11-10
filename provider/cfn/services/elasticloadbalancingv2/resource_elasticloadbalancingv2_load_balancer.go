@@ -23,6 +23,29 @@ func ResourceElasticLoadBalancingV2LoadBalancer() *schema.Resource {
 		Delete: resourceElasticLoadBalancingV2LoadBalancerDelete,
 
 		Schema: map[string]*schema.Schema{
+			"canonical_hosted_zone_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"dns_name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"load_balancer_full_name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"load_balancer_name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"security_groups": {
+				Type: schema.TypeSet,
+				Elem: &schema.Schema{Type: schema.TypeString},
+				Optional: true,
+				Computed: true,
+				Set: schema.HashString,
+			},
 			"ip_address_type": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -41,12 +64,6 @@ func ResourceElasticLoadBalancingV2LoadBalancer() *schema.Resource {
 				Type: schema.TypeString,
 				Optional: true,
 				ForceNew: true,
-			},
-			"security_groups": {
-				Type: schema.TypeSet,
-				Elem: &schema.Schema{Type: schema.TypeString},
-				Optional: true,
-				Set: schema.HashString,
 			},
 			"subnet_mappings": {
 				Type: schema.TypeSet,

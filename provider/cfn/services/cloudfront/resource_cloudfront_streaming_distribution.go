@@ -23,6 +23,10 @@ func ResourceCloudFrontStreamingDistribution() *schema.Resource {
 		Delete: resourceCloudFrontStreamingDistributionDelete,
 
 		Schema: map[string]*schema.Schema{
+			"domain_name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"streaming_distribution_config": {
 				Type: schema.TypeList,
 				Elem: propertyStreamingDistributionStreamingDistributionConfig(),

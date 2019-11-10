@@ -22,6 +22,20 @@ func ResourceServiceDiscoveryService() *schema.Resource {
 		Delete: resourceServiceDiscoveryServiceDelete,
 
 		Schema: map[string]*schema.Schema{
+			"id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"name": {
+				Type: schema.TypeString,
+				Optional: true,
+				Computed: true,
+				ForceNew: true,
+			},
 			"description": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -49,11 +63,6 @@ func ResourceServiceDiscoveryService() *schema.Resource {
 				Elem: propertyServiceHealthCheckConfig(),
 				Optional: true,
 				MaxItems: 1,
-			},
-			"name": {
-				Type: schema.TypeString,
-				Optional: true,
-				ForceNew: true,
 			},
 		},
 	}

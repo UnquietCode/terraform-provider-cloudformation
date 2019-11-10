@@ -23,6 +23,10 @@ func ResourceServiceCatalogPortfolio() *schema.Resource {
 		Delete: resourceServiceCatalogPortfolioDelete,
 
 		Schema: map[string]*schema.Schema{
+			"portfolio_name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"provider_name": {
 				Type: schema.TypeString,
 				Required: true,

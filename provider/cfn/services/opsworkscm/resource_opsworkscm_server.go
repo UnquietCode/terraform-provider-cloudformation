@@ -22,6 +22,14 @@ func ResourceOpsWorksCMServer() *schema.Resource {
 		Delete: resourceOpsWorksCMServerDelete,
 
 		Schema: map[string]*schema.Schema{
+			"endpoint": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"key_pair": {
 				Type: schema.TypeString,
 				Optional: true,

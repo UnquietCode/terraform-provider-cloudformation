@@ -26,7 +26,26 @@ func ResourceEC2VPC() *schema.Resource {
 			"cidr_block": {
 				Type: schema.TypeString,
 				Required: true,
+				Computed: true,
 				ForceNew: true,
+			},
+			"cidr_block_associations": {
+				Type: schema.TypeList,
+				Elem: &schema.Schema{Type: schema.TypeString},
+				Computed: true,
+			},
+			"default_network_acl": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"default_security_group": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"ipv6_cidr_blocks": {
+				Type: schema.TypeList,
+				Elem: &schema.Schema{Type: schema.TypeString},
+				Computed: true,
 			},
 			"enable_dns_hostnames": {
 				Type: schema.TypeBool,

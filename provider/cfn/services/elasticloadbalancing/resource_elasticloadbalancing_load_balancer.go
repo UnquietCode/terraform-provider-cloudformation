@@ -23,6 +23,26 @@ func ResourceElasticLoadBalancingLoadBalancer() *schema.Resource {
 		Delete: resourceElasticLoadBalancingLoadBalancerDelete,
 
 		Schema: map[string]*schema.Schema{
+			"canonical_hosted_zone_name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"canonical_hosted_zone_name_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"dns_name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"source_security_group._group_name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"source_security_group._owner_alias": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"access_logging_policy": {
 				Type: schema.TypeList,
 				Elem: propertyLoadBalancerAccessLoggingPolicy(),

@@ -22,6 +22,10 @@ func ResourceInspectorAssessmentTarget() *schema.Resource {
 		Delete: resourceInspectorAssessmentTargetDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"assessment_target_name": {
 				Type: schema.TypeString,
 				Optional: true,

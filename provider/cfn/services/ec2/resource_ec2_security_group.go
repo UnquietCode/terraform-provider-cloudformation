@@ -23,6 +23,16 @@ func ResourceEC2SecurityGroup() *schema.Resource {
 		Delete: resourceEC2SecurityGroupDelete,
 
 		Schema: map[string]*schema.Schema{
+			"group_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"vpc_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				Computed: true,
+				ForceNew: true,
+			},
 			"group_description": {
 				Type: schema.TypeString,
 				Required: true,
@@ -47,11 +57,6 @@ func ResourceEC2SecurityGroup() *schema.Resource {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
 				Optional: true,
-			},
-			"vpc_id": {
-				Type: schema.TypeString,
-				Optional: true,
-				ForceNew: true,
 			},
 		},
 	}

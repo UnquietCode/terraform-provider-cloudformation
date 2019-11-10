@@ -22,6 +22,10 @@ func ResourceStepFunctionsStateMachine() *schema.Resource {
 		Delete: resourceStepFunctionsStateMachineDelete,
 
 		Schema: map[string]*schema.Schema{
+			"name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"definition_string": {
 				Type: schema.TypeString,
 				Required: true,

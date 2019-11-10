@@ -23,6 +23,19 @@ func ResourceElasticLoadBalancingV2TargetGroup() *schema.Resource {
 		Delete: resourceElasticLoadBalancingV2TargetGroupDelete,
 
 		Schema: map[string]*schema.Schema{
+			"load_balancer_arns": {
+				Type: schema.TypeList,
+				Elem: &schema.Schema{Type: schema.TypeString},
+				Computed: true,
+			},
+			"target_group_full_name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"target_group_name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"health_check_enabled": {
 				Type: schema.TypeBool,
 				Optional: true,

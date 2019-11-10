@@ -22,6 +22,10 @@ func ResourceMediaLiveInputSecurityGroup() *schema.Resource {
 		Delete: resourceMediaLiveInputSecurityGroupDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"whitelist_rules": {
 				Type: schema.TypeList,
 				Elem: propertyInputSecurityGroupInputWhitelistRuleCidr(),

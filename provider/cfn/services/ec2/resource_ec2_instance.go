@@ -23,6 +23,28 @@ func ResourceEC2Instance() *schema.Resource {
 		Delete: resourceEC2InstanceDelete,
 
 		Schema: map[string]*schema.Schema{
+			"availability_zone": {
+				Type: schema.TypeString,
+				Optional: true,
+				Computed: true,
+				ForceNew: true,
+			},
+			"private_dns_name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"private_ip": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"public_dns_name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"public_ip": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"additional_info": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -30,11 +52,6 @@ func ResourceEC2Instance() *schema.Resource {
 			"affinity": {
 				Type: schema.TypeString,
 				Optional: true,
-			},
-			"availability_zone": {
-				Type: schema.TypeString,
-				Optional: true,
-				ForceNew: true,
 			},
 			"block_device_mappings": {
 				Type: schema.TypeList,

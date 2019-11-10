@@ -23,6 +23,16 @@ func ResourceAmplifyBranch() *schema.Resource {
 		Delete: resourceAmplifyBranchDelete,
 
 		Schema: map[string]*schema.Schema{
+			"branch_name": {
+				Type: schema.TypeString,
+				Required: true,
+				Computed: true,
+				ForceNew: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"description": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -56,11 +66,6 @@ func ResourceAmplifyBranch() *schema.Resource {
 			"stage": {
 				Type: schema.TypeString,
 				Optional: true,
-			},
-			"branch_name": {
-				Type: schema.TypeString,
-				Required: true,
-				ForceNew: true,
 			},
 			"basic_auth_config": {
 				Type: schema.TypeList,

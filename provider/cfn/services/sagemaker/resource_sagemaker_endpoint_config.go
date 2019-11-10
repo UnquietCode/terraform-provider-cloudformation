@@ -23,6 +23,12 @@ func ResourceSageMakerEndpointConfig() *schema.Resource {
 		Delete: resourceSageMakerEndpointConfigDelete,
 
 		Schema: map[string]*schema.Schema{
+			"endpoint_config_name": {
+				Type: schema.TypeString,
+				Optional: true,
+				Computed: true,
+				ForceNew: true,
+			},
 			"production_variants": {
 				Type: schema.TypeList,
 				Elem: propertyEndpointConfigProductionVariant(),
@@ -30,11 +36,6 @@ func ResourceSageMakerEndpointConfig() *schema.Resource {
 				ForceNew: true,
 			},
 			"kms_key_id": {
-				Type: schema.TypeString,
-				Optional: true,
-				ForceNew: true,
-			},
-			"endpoint_config_name": {
 				Type: schema.TypeString,
 				Optional: true,
 				ForceNew: true,

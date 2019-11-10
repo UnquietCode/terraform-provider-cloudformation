@@ -26,29 +26,41 @@ func ResourceRoute53ResolverResolverRule() *schema.Resource {
 			"resolver_endpoint_id": {
 				Type: schema.TypeString,
 				Optional: true,
+				Computed: true,
 			},
 			"domain_name": {
 				Type: schema.TypeString,
 				Required: true,
+				Computed: true,
 				ForceNew: true,
+			},
+			"resolver_rule_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"target_ips": {
+				Type: schema.TypeList,
+				Elem: propertyResolverRuleTargetAddress(),
+				Optional: true,
+				Computed: true,
+			},
+			"name": {
+				Type: schema.TypeString,
+				Optional: true,
+				Computed: true,
 			},
 			"rule_type": {
 				Type: schema.TypeString,
 				Required: true,
 				ForceNew: true,
 			},
-			"target_ips": {
-				Type: schema.TypeList,
-				Elem: propertyResolverRuleTargetAddress(),
-				Optional: true,
-			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
-			"name": {
-				Type: schema.TypeString,
 				Optional: true,
 			},
 		},

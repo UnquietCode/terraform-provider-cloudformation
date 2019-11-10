@@ -23,6 +23,14 @@ func ResourceNeptuneDBInstance() *schema.Resource {
 		Delete: resourceNeptuneDBInstanceDelete,
 
 		Schema: map[string]*schema.Schema{
+			"endpoint": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"port": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"db_parameter_group_name": {
 				Type: schema.TypeString,
 				Optional: true,

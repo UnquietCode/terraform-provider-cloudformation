@@ -22,6 +22,10 @@ func ResourceIAMInstanceProfile() *schema.Resource {
 		Delete: resourceIAMInstanceProfileDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"instance_profile_name": {
 				Type: schema.TypeString,
 				Optional: true,

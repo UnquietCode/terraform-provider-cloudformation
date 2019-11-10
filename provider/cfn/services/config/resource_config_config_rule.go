@@ -22,6 +22,18 @@ func ResourceConfigConfigRule() *schema.Resource {
 		Delete: resourceConfigConfigRuleDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"compliance._type": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"config_rule_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"config_rule_name": {
 				Type: schema.TypeString,
 				Optional: true,

@@ -22,6 +22,14 @@ func ResourcePinpointCampaign() *schema.Resource {
 		Delete: resourcePinpointCampaignDelete,
 
 		Schema: map[string]*schema.Schema{
+			"campaign_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"description": {
 				Type: schema.TypeString,
 				Optional: true,

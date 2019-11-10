@@ -22,6 +22,15 @@ func ResourceDirectoryServiceSimpleAD() *schema.Resource {
 		Delete: resourceDirectoryServiceSimpleADDelete,
 
 		Schema: map[string]*schema.Schema{
+			"alias": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"dns_ip_addresses": {
+				Type: schema.TypeList,
+				Elem: &schema.Schema{Type: schema.TypeString},
+				Computed: true,
+			},
 			"create_alias": {
 				Type: schema.TypeBool,
 				Optional: true,

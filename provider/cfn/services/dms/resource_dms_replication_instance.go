@@ -23,6 +23,16 @@ func ResourceDMSReplicationInstance() *schema.Resource {
 		Delete: resourceDMSReplicationInstanceDelete,
 
 		Schema: map[string]*schema.Schema{
+			"replication_instance_public_ip_addresses": {
+				Type: schema.TypeList,
+				Elem: &schema.Schema{Type: schema.TypeString},
+				Computed: true,
+			},
+			"replication_instance_private_ip_addresses": {
+				Type: schema.TypeList,
+				Elem: &schema.Schema{Type: schema.TypeString},
+				Computed: true,
+			},
 			"replication_instance_identifier": {
 				Type: schema.TypeString,
 				Optional: true,

@@ -22,6 +22,10 @@ func ResourcePinpointEmailTemplate() *schema.Resource {
 		Delete: resourcePinpointEmailTemplateDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"html_part": {
 				Type: schema.TypeString,
 				Optional: true,

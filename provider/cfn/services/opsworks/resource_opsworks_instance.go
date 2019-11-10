@@ -22,6 +22,28 @@ func ResourceOpsWorksInstance() *schema.Resource {
 		Delete: resourceOpsWorksInstanceDelete,
 
 		Schema: map[string]*schema.Schema{
+			"availability_zone": {
+				Type: schema.TypeString,
+				Optional: true,
+				Computed: true,
+				ForceNew: true,
+			},
+			"private_dns_name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"private_ip": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"public_dns_name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"public_ip": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"agent_version": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -35,11 +57,6 @@ func ResourceOpsWorksInstance() *schema.Resource {
 				Optional: true,
 			},
 			"auto_scaling_type": {
-				Type: schema.TypeString,
-				Optional: true,
-				ForceNew: true,
-			},
-			"availability_zone": {
 				Type: schema.TypeString,
 				Optional: true,
 				ForceNew: true,

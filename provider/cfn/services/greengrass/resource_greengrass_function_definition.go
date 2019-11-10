@@ -22,6 +22,23 @@ func ResourceGreengrassFunctionDefinition() *schema.Resource {
 		Delete: resourceGreengrassFunctionDefinitionDelete,
 
 		Schema: map[string]*schema.Schema{
+			"latest_version_arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"name": {
+				Type: schema.TypeString,
+				Required: true,
+				Computed: true,
+			},
 			"initial_version": {
 				Type: schema.TypeList,
 				Elem: propertyFunctionDefinitionFunctionDefinitionVersion(),
@@ -32,10 +49,6 @@ func ResourceGreengrassFunctionDefinition() *schema.Resource {
 			"tags": {
 				Type: schema.TypeMap,
 				Optional: true,
-			},
-			"name": {
-				Type: schema.TypeString,
-				Required: true,
 			},
 		},
 	}

@@ -22,6 +22,14 @@ func ResourceAppSyncApiKey() *schema.Resource {
 		Delete: resourceAppSyncApiKeyDelete,
 
 		Schema: map[string]*schema.Schema{
+			"api_key": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"description": {
 				Type: schema.TypeString,
 				Optional: true,

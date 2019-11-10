@@ -23,6 +23,12 @@ func ResourceSageMakerModel() *schema.Resource {
 		Delete: resourceSageMakerModelDelete,
 
 		Schema: map[string]*schema.Schema{
+			"model_name": {
+				Type: schema.TypeString,
+				Optional: true,
+				Computed: true,
+				ForceNew: true,
+			},
 			"execution_role_arn": {
 				Type: schema.TypeString,
 				Required: true,
@@ -34,11 +40,6 @@ func ResourceSageMakerModel() *schema.Resource {
 				Optional: true,
 				ForceNew: true,
 				MaxItems: 1,
-			},
-			"model_name": {
-				Type: schema.TypeString,
-				Optional: true,
-				ForceNew: true,
 			},
 			"vpc_config": {
 				Type: schema.TypeList,

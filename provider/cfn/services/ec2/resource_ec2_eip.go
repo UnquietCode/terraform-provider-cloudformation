@@ -22,6 +22,10 @@ func ResourceEC2EIP() *schema.Resource {
 		Delete: resourceEC2EIPDelete,
 
 		Schema: map[string]*schema.Schema{
+			"allocation_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"domain": {
 				Type: schema.TypeString,
 				Optional: true,

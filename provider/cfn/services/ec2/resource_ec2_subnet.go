@@ -23,14 +23,30 @@ func ResourceEC2Subnet() *schema.Resource {
 		Delete: resourceEC2SubnetDelete,
 
 		Schema: map[string]*schema.Schema{
-			"assign_ipv6_address_on_creation": {
-				Type: schema.TypeBool,
-				Optional: true,
-			},
 			"availability_zone": {
 				Type: schema.TypeString,
 				Optional: true,
+				Computed: true,
 				ForceNew: true,
+			},
+			"ipv6_cidr_blocks": {
+				Type: schema.TypeList,
+				Elem: &schema.Schema{Type: schema.TypeString},
+				Computed: true,
+			},
+			"network_acl_association_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"vpc_id": {
+				Type: schema.TypeString,
+				Required: true,
+				Computed: true,
+				ForceNew: true,
+			},
+			"assign_ipv6_address_on_creation": {
+				Type: schema.TypeBool,
+				Optional: true,
 			},
 			"cidr_block": {
 				Type: schema.TypeString,
@@ -49,11 +65,6 @@ func ResourceEC2Subnet() *schema.Resource {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
 				Optional: true,
-			},
-			"vpc_id": {
-				Type: schema.TypeString,
-				Required: true,
-				ForceNew: true,
 			},
 		},
 	}

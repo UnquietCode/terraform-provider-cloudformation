@@ -23,6 +23,14 @@ func ResourceDocDBDBInstance() *schema.Resource {
 		Delete: resourceDocDBDBInstanceDelete,
 
 		Schema: map[string]*schema.Schema{
+			"endpoint": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"port": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"db_instance_class": {
 				Type: schema.TypeString,
 				Required: true,

@@ -23,6 +23,14 @@ func ResourceTransferServer() *schema.Resource {
 		Delete: resourceTransferServerDelete,
 
 		Schema: map[string]*schema.Schema{
+			"server_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"logging_role": {
 				Type: schema.TypeString,
 				Optional: true,

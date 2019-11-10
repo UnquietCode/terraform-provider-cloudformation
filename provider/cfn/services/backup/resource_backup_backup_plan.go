@@ -22,6 +22,18 @@ func ResourceBackupBackupPlan() *schema.Resource {
 		Delete: resourceBackupBackupPlanDelete,
 
 		Schema: map[string]*schema.Schema{
+			"version_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"backup_plan_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"backup_plan_arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"backup_plan": {
 				Type: schema.TypeList,
 				Elem: propertyBackupPlanBackupPlanResourceType(),

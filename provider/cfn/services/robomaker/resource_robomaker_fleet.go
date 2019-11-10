@@ -22,6 +22,10 @@ func ResourceRoboMakerFleet() *schema.Resource {
 		Delete: resourceRoboMakerFleetDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"tags": {
 				Type: schema.TypeMap,
 				Optional: true,

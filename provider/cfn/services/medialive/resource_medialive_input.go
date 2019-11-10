@@ -22,15 +22,26 @@ func ResourceMediaLiveInput() *schema.Resource {
 		Delete: resourceMediaLiveInputDelete,
 
 		Schema: map[string]*schema.Schema{
-			"type": {
-				Type: schema.TypeString,
-				Optional: true,
-				ForceNew: true,
-			},
 			"destinations": {
 				Type: schema.TypeList,
 				Elem: propertyInputInputDestinationRequest(),
 				Optional: true,
+				Computed: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"sources": {
+				Type: schema.TypeList,
+				Elem: propertyInputInputSourceRequest(),
+				Optional: true,
+				Computed: true,
+			},
+			"type": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
 			},
 			"vpc": {
 				Type: schema.TypeList,
@@ -47,11 +58,6 @@ func ResourceMediaLiveInput() *schema.Resource {
 			"input_security_groups": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
-				Optional: true,
-			},
-			"sources": {
-				Type: schema.TypeList,
-				Elem: propertyInputInputSourceRequest(),
 				Optional: true,
 			},
 			"role_arn": {

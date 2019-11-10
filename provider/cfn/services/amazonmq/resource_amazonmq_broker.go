@@ -22,6 +22,48 @@ func ResourceAmazonMQBroker() *schema.Resource {
 		Delete: resourceAmazonMQBrokerDelete,
 
 		Schema: map[string]*schema.Schema{
+			"ip_addresses": {
+				Type: schema.TypeList,
+				Elem: &schema.Schema{Type: schema.TypeString},
+				Computed: true,
+			},
+			"open_wire_endpoints": {
+				Type: schema.TypeList,
+				Elem: &schema.Schema{Type: schema.TypeString},
+				Computed: true,
+			},
+			"configuration_revision": {
+				Type: schema.TypeInt,
+				Computed: true,
+			},
+			"stomp_endpoints": {
+				Type: schema.TypeList,
+				Elem: &schema.Schema{Type: schema.TypeString},
+				Computed: true,
+			},
+			"mqtt_endpoints": {
+				Type: schema.TypeList,
+				Elem: &schema.Schema{Type: schema.TypeString},
+				Computed: true,
+			},
+			"amqp_endpoints": {
+				Type: schema.TypeList,
+				Elem: &schema.Schema{Type: schema.TypeString},
+				Computed: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"configuration_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"wss_endpoints": {
+				Type: schema.TypeList,
+				Elem: &schema.Schema{Type: schema.TypeString},
+				Computed: true,
+			},
 			"security_groups": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},

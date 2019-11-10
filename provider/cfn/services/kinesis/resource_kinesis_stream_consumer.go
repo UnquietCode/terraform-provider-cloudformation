@@ -18,17 +18,32 @@ func ResourceKinesisStreamConsumer() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceKinesisStreamConsumerCreate,
 		Read:   resourceKinesisStreamConsumerRead,
+		Update: resourceKinesisStreamConsumerUpdate,
 		Delete: resourceKinesisStreamConsumerDelete,
 
 		Schema: map[string]*schema.Schema{
+			"consumer_creation_timestamp": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"consumer_name": {
 				Type: schema.TypeString,
 				Required: true,
+				Computed: true,
 				ForceNew: true,
+			},
+			"consumer_arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"consumer_status": {
+				Type: schema.TypeString,
+				Computed: true,
 			},
 			"stream_arn": {
 				Type: schema.TypeString,
 				Required: true,
+				Computed: true,
 				ForceNew: true,
 			},
 		},

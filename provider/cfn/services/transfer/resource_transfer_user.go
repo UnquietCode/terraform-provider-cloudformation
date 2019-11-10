@@ -23,6 +23,22 @@ func ResourceTransferUser() *schema.Resource {
 		Delete: resourceTransferUserDelete,
 
 		Schema: map[string]*schema.Schema{
+			"server_id": {
+				Type: schema.TypeString,
+				Required: true,
+				Computed: true,
+				ForceNew: true,
+			},
+			"user_name": {
+				Type: schema.TypeString,
+				Required: true,
+				Computed: true,
+				ForceNew: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"policy": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -34,16 +50,6 @@ func ResourceTransferUser() *schema.Resource {
 			"home_directory": {
 				Type: schema.TypeString,
 				Optional: true,
-			},
-			"server_id": {
-				Type: schema.TypeString,
-				Required: true,
-				ForceNew: true,
-			},
-			"user_name": {
-				Type: schema.TypeString,
-				Required: true,
-				ForceNew: true,
 			},
 			"ssh_public_keys": {
 				Type: schema.TypeList,

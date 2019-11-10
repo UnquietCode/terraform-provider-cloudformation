@@ -22,6 +22,14 @@ func ResourceApiGatewayV2DomainName() *schema.Resource {
 		Delete: resourceApiGatewayV2DomainNameDelete,
 
 		Schema: map[string]*schema.Schema{
+			"regional_hosted_zone_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"regional_domain_name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"domain_name": {
 				Type: schema.TypeString,
 				Required: true,

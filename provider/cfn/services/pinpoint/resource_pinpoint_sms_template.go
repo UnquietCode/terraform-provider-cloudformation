@@ -22,6 +22,10 @@ func ResourcePinpointSmsTemplate() *schema.Resource {
 		Delete: resourcePinpointSmsTemplateDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"template_name": {
 				Type: schema.TypeString,
 				Required: true,

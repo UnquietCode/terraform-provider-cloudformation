@@ -19,9 +19,14 @@ func ResourceInspectorAssessmentTemplate() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceInspectorAssessmentTemplateCreate,
 		Read:   resourceInspectorAssessmentTemplateRead,
+		Update: resourceInspectorAssessmentTemplateUpdate,
 		Delete: resourceInspectorAssessmentTemplateDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"assessment_target_arn": {
 				Type: schema.TypeString,
 				Required: true,

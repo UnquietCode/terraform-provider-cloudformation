@@ -22,6 +22,10 @@ func ResourceCloudWatchAlarm() *schema.Resource {
 		Delete: resourceCloudWatchAlarmDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"actions_enabled": {
 				Type: schema.TypeBool,
 				Optional: true,

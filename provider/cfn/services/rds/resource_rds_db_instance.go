@@ -23,6 +23,14 @@ func ResourceRDSDBInstance() *schema.Resource {
 		Delete: resourceRDSDBInstanceDelete,
 
 		Schema: map[string]*schema.Schema{
+			"endpoint._address": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"endpoint._port": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"allocated_storage": {
 				Type: schema.TypeString,
 				Optional: true,

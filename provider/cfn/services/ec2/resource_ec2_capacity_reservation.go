@@ -25,6 +25,27 @@ func ResourceEC2CapacityReservation() *schema.Resource {
 			"tenancy": {
 				Type: schema.TypeString,
 				Optional: true,
+				Computed: true,
+				ForceNew: true,
+			},
+			"available_instance_count": {
+				Type: schema.TypeInt,
+				Computed: true,
+			},
+			"availability_zone": {
+				Type: schema.TypeString,
+				Required: true,
+				Computed: true,
+				ForceNew: true,
+			},
+			"total_instance_count": {
+				Type: schema.TypeInt,
+				Computed: true,
+			},
+			"instance_type": {
+				Type: schema.TypeString,
+				Required: true,
+				Computed: true,
 				ForceNew: true,
 			},
 			"end_date_type": {
@@ -41,17 +62,7 @@ func ResourceEC2CapacityReservation() *schema.Resource {
 				Optional: true,
 				ForceNew: true,
 			},
-			"availability_zone": {
-				Type: schema.TypeString,
-				Required: true,
-				ForceNew: true,
-			},
 			"instance_platform": {
-				Type: schema.TypeString,
-				Required: true,
-				ForceNew: true,
-			},
-			"instance_type": {
 				Type: schema.TypeString,
 				Required: true,
 				ForceNew: true,

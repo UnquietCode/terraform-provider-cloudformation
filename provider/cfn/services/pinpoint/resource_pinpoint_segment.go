@@ -22,6 +22,14 @@ func ResourcePinpointSegment() *schema.Resource {
 		Delete: resourcePinpointSegmentDelete,
 
 		Schema: map[string]*schema.Schema{
+			"segment_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"segment_groups": {
 				Type: schema.TypeList,
 				Elem: propertySegmentGroups(),

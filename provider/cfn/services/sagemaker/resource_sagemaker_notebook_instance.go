@@ -23,6 +23,12 @@ func ResourceSageMakerNotebookInstance() *schema.Resource {
 		Delete: resourceSageMakerNotebookInstanceDelete,
 
 		Schema: map[string]*schema.Schema{
+			"notebook_instance_name": {
+				Type: schema.TypeString,
+				Optional: true,
+				Computed: true,
+				ForceNew: true,
+			},
 			"kms_key_id": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -69,11 +75,6 @@ func ResourceSageMakerNotebookInstance() *schema.Resource {
 			"root_access": {
 				Type: schema.TypeString,
 				Optional: true,
-			},
-			"notebook_instance_name": {
-				Type: schema.TypeString,
-				Optional: true,
-				ForceNew: true,
 			},
 			"instance_type": {
 				Type: schema.TypeString,

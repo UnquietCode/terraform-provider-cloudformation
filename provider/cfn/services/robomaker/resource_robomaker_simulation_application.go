@@ -22,6 +22,15 @@ func ResourceRoboMakerSimulationApplication() *schema.Resource {
 		Delete: resourceRoboMakerSimulationApplicationDelete,
 
 		Schema: map[string]*schema.Schema{
+			"current_revision_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				Computed: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"rendering_engine": {
 				Type: schema.TypeList,
 				Elem: propertySimulationApplicationRenderingEngine(),
@@ -35,10 +44,6 @@ func ResourceRoboMakerSimulationApplication() *schema.Resource {
 				Required: true,
 				ForceNew: true,
 				MaxItems: 1,
-			},
-			"current_revision_id": {
-				Type: schema.TypeString,
-				Optional: true,
 			},
 			"robot_software_suite": {
 				Type: schema.TypeList,

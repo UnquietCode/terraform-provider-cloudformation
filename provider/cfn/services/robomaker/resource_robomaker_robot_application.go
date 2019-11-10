@@ -25,6 +25,11 @@ func ResourceRoboMakerRobotApplication() *schema.Resource {
 			"current_revision_id": {
 				Type: schema.TypeString,
 				Optional: true,
+				Computed: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
 			},
 			"robot_software_suite": {
 				Type: schema.TypeList,

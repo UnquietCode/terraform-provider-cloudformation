@@ -22,6 +22,24 @@ func ResourceAppSyncFunctionConfiguration() *schema.Resource {
 		Delete: resourceAppSyncFunctionConfigurationDelete,
 
 		Schema: map[string]*schema.Schema{
+			"function_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"function_arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"data_source_name": {
+				Type: schema.TypeString,
+				Required: true,
+				Computed: true,
+			},
+			"name": {
+				Type: schema.TypeString,
+				Required: true,
+				Computed: true,
+			},
 			"response_mapping_template_s3_location": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -29,10 +47,6 @@ func ResourceAppSyncFunctionConfiguration() *schema.Resource {
 			"description": {
 				Type: schema.TypeString,
 				Optional: true,
-			},
-			"data_source_name": {
-				Type: schema.TypeString,
-				Required: true,
 			},
 			"request_mapping_template": {
 				Type: schema.TypeString,
@@ -54,10 +68,6 @@ func ResourceAppSyncFunctionConfiguration() *schema.Resource {
 				Type: schema.TypeString,
 				Required: true,
 				ForceNew: true,
-			},
-			"name": {
-				Type: schema.TypeString,
-				Required: true,
 			},
 		},
 	}

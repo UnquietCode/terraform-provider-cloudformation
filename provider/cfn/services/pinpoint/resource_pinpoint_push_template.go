@@ -22,6 +22,10 @@ func ResourcePinpointPushTemplate() *schema.Resource {
 		Delete: resourcePinpointPushTemplateDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"gcm": {
 				Type: schema.TypeList,
 				Elem: propertyPushTemplateAndroidPushNotificationTemplate(),

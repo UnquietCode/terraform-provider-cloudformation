@@ -18,17 +18,27 @@ func ResourceEventsEventBus() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceEventsEventBusCreate,
 		Read:   resourceEventsEventBusRead,
+		Update: resourceEventsEventBusUpdate,
 		Delete: resourceEventsEventBusDelete,
 
 		Schema: map[string]*schema.Schema{
-			"event_source_name": {
+			"policy": {
 				Type: schema.TypeString,
-				Optional: true,
-				ForceNew: true,
+				Computed: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
 			},
 			"name": {
 				Type: schema.TypeString,
 				Required: true,
+				Computed: true,
+				ForceNew: true,
+			},
+			"event_source_name": {
+				Type: schema.TypeString,
+				Optional: true,
 				ForceNew: true,
 			},
 		},

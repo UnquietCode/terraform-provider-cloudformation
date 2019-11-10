@@ -18,22 +18,30 @@ func ResourceRoute53ResolverResolverRuleAssociation() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceRoute53ResolverResolverRuleAssociationCreate,
 		Read:   resourceRoute53ResolverResolverRuleAssociationRead,
+		Update: resourceRoute53ResolverResolverRuleAssociationUpdate,
 		Delete: resourceRoute53ResolverResolverRuleAssociationDelete,
 
 		Schema: map[string]*schema.Schema{
 			"vpc_id": {
 				Type: schema.TypeString,
 				Required: true,
+				Computed: true,
 				ForceNew: true,
 			},
 			"resolver_rule_id": {
 				Type: schema.TypeString,
 				Required: true,
+				Computed: true,
 				ForceNew: true,
+			},
+			"resolver_rule_association_id": {
+				Type: schema.TypeString,
+				Computed: true,
 			},
 			"name": {
 				Type: schema.TypeString,
 				Optional: true,
+				Computed: true,
 				ForceNew: true,
 			},
 		},

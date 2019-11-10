@@ -22,6 +22,10 @@ func ResourceMediaStoreContainer() *schema.Resource {
 		Delete: resourceMediaStoreContainerDelete,
 
 		Schema: map[string]*schema.Schema{
+			"endpoint": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"policy": {
 				Type: schema.TypeString,
 				Optional: true,

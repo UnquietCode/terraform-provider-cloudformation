@@ -18,9 +18,18 @@ func ResourceServiceDiscoveryPrivateDnsNamespace() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceServiceDiscoveryPrivateDnsNamespaceCreate,
 		Read:   resourceServiceDiscoveryPrivateDnsNamespaceRead,
+		Update: resourceServiceDiscoveryPrivateDnsNamespaceUpdate,
 		Delete: resourceServiceDiscoveryPrivateDnsNamespaceDelete,
 
 		Schema: map[string]*schema.Schema{
+			"id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"description": {
 				Type: schema.TypeString,
 				Optional: true,

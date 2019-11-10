@@ -22,6 +22,10 @@ func ResourceLambdaVersion() *schema.Resource {
 		Delete: resourceLambdaVersionDelete,
 
 		Schema: map[string]*schema.Schema{
+			"version": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"code_sha256": {
 				Type: schema.TypeString,
 				Optional: true,

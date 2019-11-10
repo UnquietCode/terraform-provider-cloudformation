@@ -22,6 +22,15 @@ func ResourceMediaLiveChannel() *schema.Resource {
 		Delete: resourceMediaLiveChannelDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"inputs": {
+				Type: schema.TypeList,
+				Elem: &schema.Schema{Type: schema.TypeString},
+				Computed: true,
+			},
 			"input_attachments": {
 				Type: schema.TypeList,
 				Elem: propertyChannelInputAttachment(),

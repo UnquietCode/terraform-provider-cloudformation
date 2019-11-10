@@ -22,6 +22,10 @@ func ResourceIAMUser() *schema.Resource {
 		Delete: resourceIAMUserDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"groups": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},

@@ -23,6 +23,10 @@ func ResourceDMSEndpoint() *schema.Resource {
 		Delete: resourceDMSEndpointDelete,
 
 		Schema: map[string]*schema.Schema{
+			"external_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"kms_key_id": {
 				Type: schema.TypeString,
 				Optional: true,

@@ -18,9 +18,20 @@ func ResourceCloud9EnvironmentEC2() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceCloud9EnvironmentEC2Create,
 		Read:   resourceCloud9EnvironmentEC2Read,
+		Update: resourceCloud9EnvironmentEC2Update,
 		Delete: resourceCloud9EnvironmentEC2Delete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"name": {
+				Type: schema.TypeString,
+				Optional: true,
+				Computed: true,
+				ForceNew: true,
+			},
 			"repositories": {
 				Type: schema.TypeList,
 				Elem: propertyEnvironmentEC2Repository(),
@@ -50,11 +61,6 @@ func ResourceCloud9EnvironmentEC2() *schema.Resource {
 			"instance_type": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
-			},
-			"name": {
-				Type: schema.TypeString,
-				Optional: true,
 				ForceNew: true,
 			},
 		},

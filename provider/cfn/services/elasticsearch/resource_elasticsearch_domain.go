@@ -23,6 +23,18 @@ func ResourceElasticsearchDomain() *schema.Resource {
 		Delete: resourceElasticsearchDomainDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"domain_arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"domain_endpoint": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"access_policies": {
 				Type: schema.TypeMap,
 				Optional: true,

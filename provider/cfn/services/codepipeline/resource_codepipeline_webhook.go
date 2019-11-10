@@ -22,6 +22,10 @@ func ResourceCodePipelineWebhook() *schema.Resource {
 		Delete: resourceCodePipelineWebhookDelete,
 
 		Schema: map[string]*schema.Schema{
+			"url": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"authentication_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyWebhookWebhookAuthConfiguration(),

@@ -23,6 +23,14 @@ func ResourceServiceCatalogCloudFormationProvisionedProduct() *schema.Resource {
 		Delete: resourceServiceCatalogCloudFormationProvisionedProductDelete,
 
 		Schema: map[string]*schema.Schema{
+			"cloudformation_stack_arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"record_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"path_id": {
 				Type: schema.TypeString,
 				Optional: true,

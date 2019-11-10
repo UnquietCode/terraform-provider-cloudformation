@@ -22,6 +22,10 @@ func ResourceIAMGroup() *schema.Resource {
 		Delete: resourceIAMGroupDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"group_name": {
 				Type: schema.TypeString,
 				Optional: true,

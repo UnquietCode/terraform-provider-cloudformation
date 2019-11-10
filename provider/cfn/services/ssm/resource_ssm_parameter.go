@@ -25,6 +25,12 @@ func ResourceSSMParameter() *schema.Resource {
 			"type": {
 				Type: schema.TypeString,
 				Required: true,
+				Computed: true,
+			},
+			"value": {
+				Type: schema.TypeString,
+				Required: true,
+				Computed: true,
 			},
 			"description": {
 				Type: schema.TypeString,
@@ -41,10 +47,6 @@ func ResourceSSMParameter() *schema.Resource {
 			"tier": {
 				Type: schema.TypeString,
 				Optional: true,
-			},
-			"value": {
-				Type: schema.TypeString,
-				Required: true,
 			},
 			"tags": {
 				Type: schema.TypeMap,

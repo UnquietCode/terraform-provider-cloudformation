@@ -23,6 +23,22 @@ func ResourceCodeCommitRepository() *schema.Resource {
 		Delete: resourceCodeCommitRepositoryDelete,
 
 		Schema: map[string]*schema.Schema{
+			"clone_url_http": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"clone_url_ssh": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"repository_name": {
 				Type: schema.TypeString,
 				Required: true,

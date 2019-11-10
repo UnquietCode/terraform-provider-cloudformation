@@ -18,9 +18,14 @@ func ResourceEC2SubnetNetworkAclAssociation() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceEC2SubnetNetworkAclAssociationCreate,
 		Read:   resourceEC2SubnetNetworkAclAssociationRead,
+		Update: resourceEC2SubnetNetworkAclAssociationUpdate,
 		Delete: resourceEC2SubnetNetworkAclAssociationDelete,
 
 		Schema: map[string]*schema.Schema{
+			"association_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"network_acl_id": {
 				Type: schema.TypeString,
 				Required: true,

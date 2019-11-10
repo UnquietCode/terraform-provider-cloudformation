@@ -22,6 +22,10 @@ func ResourceLogsLogGroup() *schema.Resource {
 		Delete: resourceLogsLogGroupDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"log_group_name": {
 				Type: schema.TypeString,
 				Optional: true,

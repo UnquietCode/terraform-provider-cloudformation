@@ -22,6 +22,10 @@ func ResourceIoTTopicRule() *schema.Resource {
 		Delete: resourceIoTTopicRuleDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"rule_name": {
 				Type: schema.TypeString,
 				Optional: true,

@@ -22,6 +22,18 @@ func ResourceAmazonMQConfiguration() *schema.Resource {
 		Delete: resourceAmazonMQConfigurationDelete,
 
 		Schema: map[string]*schema.Schema{
+			"revision": {
+				Type: schema.TypeInt,
+				Computed: true,
+			},
+			"id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"engine_version": {
 				Type: schema.TypeString,
 				Required: true,

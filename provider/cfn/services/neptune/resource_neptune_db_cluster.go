@@ -23,6 +23,23 @@ func ResourceNeptuneDBCluster() *schema.Resource {
 		Delete: resourceNeptuneDBClusterDelete,
 
 		Schema: map[string]*schema.Schema{
+			"cluster_resource_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"endpoint": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"port": {
+				Type: schema.TypeInt,
+				Optional: true,
+				Computed: true,
+			},
+			"read_endpoint": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"storage_encrypted": {
 				Type: schema.TypeBool,
 				Optional: true,
@@ -43,10 +60,6 @@ func ResourceNeptuneDBCluster() *schema.Resource {
 				Type: schema.TypeString,
 				Optional: true,
 				ForceNew: true,
-			},
-			"port": {
-				Type: schema.TypeInt,
-				Optional: true,
 			},
 			"db_cluster_identifier": {
 				Type: schema.TypeString,

@@ -22,6 +22,16 @@ func ResourceIoT1ClickProject() *schema.Resource {
 		Delete: resourceIoT1ClickProjectDelete,
 
 		Schema: map[string]*schema.Schema{
+			"project_name": {
+				Type: schema.TypeString,
+				Optional: true,
+				Computed: true,
+				ForceNew: true,
+			},
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"description": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -31,11 +41,6 @@ func ResourceIoT1ClickProject() *schema.Resource {
 				Elem: propertyProjectPlacementTemplate(),
 				Required: true,
 				MaxItems: 1,
-			},
-			"project_name": {
-				Type: schema.TypeString,
-				Optional: true,
-				ForceNew: true,
 			},
 		},
 	}

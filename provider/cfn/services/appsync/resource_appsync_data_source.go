@@ -22,6 +22,16 @@ func ResourceAppSyncDataSource() *schema.Resource {
 		Delete: resourceAppSyncDataSourceDelete,
 
 		Schema: map[string]*schema.Schema{
+			"data_source_arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"name": {
+				Type: schema.TypeString,
+				Required: true,
+				Computed: true,
+				ForceNew: true,
+			},
 			"type": {
 				Type: schema.TypeString,
 				Required: true,
@@ -53,11 +63,6 @@ func ResourceAppSyncDataSource() *schema.Resource {
 				MaxItems: 1,
 			},
 			"api_id": {
-				Type: schema.TypeString,
-				Required: true,
-				ForceNew: true,
-			},
-			"name": {
 				Type: schema.TypeString,
 				Required: true,
 				ForceNew: true,

@@ -22,6 +22,10 @@ func ResourceCloudFrontCloudFrontOriginAccessIdentity() *schema.Resource {
 		Delete: resourceCloudFrontCloudFrontOriginAccessIdentityDelete,
 
 		Schema: map[string]*schema.Schema{
+			"s3_canonical_user_id": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"cloud_front_origin_access_identity_config": {
 				Type: schema.TypeList,
 				Elem: propertyCloudFrontOriginAccessIdentityCloudFrontOriginAccessIdentityConfig(),

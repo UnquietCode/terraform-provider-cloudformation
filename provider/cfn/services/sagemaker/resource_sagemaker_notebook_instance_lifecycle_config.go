@@ -22,15 +22,16 @@ func ResourceSageMakerNotebookInstanceLifecycleConfig() *schema.Resource {
 		Delete: resourceSageMakerNotebookInstanceLifecycleConfigDelete,
 
 		Schema: map[string]*schema.Schema{
+			"notebook_instance_lifecycle_config_name": {
+				Type: schema.TypeString,
+				Optional: true,
+				Computed: true,
+				ForceNew: true,
+			},
 			"on_start": {
 				Type: schema.TypeList,
 				Elem: propertyNotebookInstanceLifecycleConfigNotebookInstanceLifecycleHook(),
 				Optional: true,
-			},
-			"notebook_instance_lifecycle_config_name": {
-				Type: schema.TypeString,
-				Optional: true,
-				ForceNew: true,
 			},
 			"on_create": {
 				Type: schema.TypeList,

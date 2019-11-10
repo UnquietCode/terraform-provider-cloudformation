@@ -23,6 +23,10 @@ func ResourceECSService() *schema.Resource {
 		Delete: resourceECSServiceDelete,
 
 		Schema: map[string]*schema.Schema{
+			"name": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"cluster": {
 				Type: schema.TypeString,
 				Optional: true,

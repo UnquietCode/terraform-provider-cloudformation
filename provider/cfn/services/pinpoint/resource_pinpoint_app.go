@@ -22,6 +22,10 @@ func ResourcePinpointApp() *schema.Resource {
 		Delete: resourcePinpointAppDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"tags": {
 				Type: schema.TypeMap,
 				Optional: true,

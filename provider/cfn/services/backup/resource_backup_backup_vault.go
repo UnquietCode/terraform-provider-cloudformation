@@ -22,14 +22,19 @@ func ResourceBackupBackupVault() *schema.Resource {
 		Delete: resourceBackupBackupVaultDelete,
 
 		Schema: map[string]*schema.Schema{
-			"backup_vault_tags": {
-				Type: schema.TypeMap,
-				Optional: true,
-			},
 			"backup_vault_name": {
 				Type: schema.TypeString,
 				Required: true,
+				Computed: true,
 				ForceNew: true,
+			},
+			"backup_vault_arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"backup_vault_tags": {
+				Type: schema.TypeMap,
+				Optional: true,
 			},
 			"encryption_key_arn": {
 				Type: schema.TypeString,

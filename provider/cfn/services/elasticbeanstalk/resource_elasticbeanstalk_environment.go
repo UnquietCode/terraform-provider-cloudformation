@@ -23,6 +23,10 @@ func ResourceElasticBeanstalkEnvironment() *schema.Resource {
 		Delete: resourceElasticBeanstalkEnvironmentDelete,
 
 		Schema: map[string]*schema.Schema{
+			"endpoint_url": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"application_name": {
 				Type: schema.TypeString,
 				Required: true,

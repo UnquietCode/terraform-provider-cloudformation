@@ -22,6 +22,11 @@ func ResourceOpsWorksUserProfile() *schema.Resource {
 		Delete: resourceOpsWorksUserProfileDelete,
 
 		Schema: map[string]*schema.Schema{
+			"ssh_username": {
+				Type: schema.TypeString,
+				Optional: true,
+				Computed: true,
+			},
 			"allow_self_management": {
 				Type: schema.TypeBool,
 				Optional: true,
@@ -32,10 +37,6 @@ func ResourceOpsWorksUserProfile() *schema.Resource {
 				ForceNew: true,
 			},
 			"ssh_public_key": {
-				Type: schema.TypeString,
-				Optional: true,
-			},
-			"ssh_username": {
 				Type: schema.TypeString,
 				Optional: true,
 			},

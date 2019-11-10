@@ -23,6 +23,12 @@ func ResourceSageMakerWorkteam() *schema.Resource {
 		Delete: resourceSageMakerWorkteamDelete,
 
 		Schema: map[string]*schema.Schema{
+			"workteam_name": {
+				Type: schema.TypeString,
+				Optional: true,
+				Computed: true,
+				ForceNew: true,
+			},
 			"description": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -32,11 +38,6 @@ func ResourceSageMakerWorkteam() *schema.Resource {
 				Elem: propertyWorkteamNotificationConfiguration(),
 				Optional: true,
 				MaxItems: 1,
-			},
-			"workteam_name": {
-				Type: schema.TypeString,
-				Optional: true,
-				ForceNew: true,
 			},
 			"member_definitions": {
 				Type: schema.TypeList,

@@ -23,6 +23,14 @@ func ResourceCloudTrailTrail() *schema.Resource {
 		Delete: resourceCloudTrailTrailDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
+			"sns_topic_arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"cloud_watch_logs_log_group_arn": {
 				Type: schema.TypeString,
 				Optional: true,

@@ -22,6 +22,10 @@ func ResourceEventsRule() *schema.Resource {
 		Delete: resourceEventsRuleDelete,
 
 		Schema: map[string]*schema.Schema{
+			"arn": {
+				Type: schema.TypeString,
+				Computed: true,
+			},
 			"description": {
 				Type: schema.TypeString,
 				Optional: true,
