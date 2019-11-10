@@ -1,13 +1,16 @@
 from unquietcode.tools.cfn_provider.models import ResourceAttribute, Property, Resource, Package, Provider
 from unquietcode.tools.cfn_provider.type_support import translate_cfn_type
 
-RESERVED_ATTRIBUTES = {'Count', 'Provider'}
+RESERVED_PROPERTY_ATTRIBUTES = {'Count', 'Provider'}
+RESERVED_RESOURCE_ATTRIBUTES = {'Id'}
+RESERVED_RESOURCE_ATTRIBUTES.update(RESERVED_PROPERTY_ATTRIBUTES)
 
 
-def handle_resource_property(resource_name, property_name, property_data, schema_properties, computed):
+def handle_resource_property(resource_name, property_name, property_data, schema_properties, computed, type):
     attribute_type = translate_cfn_type(resource_name, property_data, schema_properties)
+    reserved = RESERVED_PROPERTY_ATTRIBUTES if type == 'property' else RESERVED_RESOURCE_ATTRIBUTES
     
-    if property_name in RESERVED_ATTRIBUTES:
+    if property_name in reserved:
         property_name = f"The{property_name}"
 
     return ResourceAttribute(
@@ -23,9 +26,12 @@ def handle_resource_property(resource_name, property_name, property_data, schema
 def handle_resource_attribute(resource_name, documentation_link, attribute_name, attribute_data):
     attribute_type = translate_cfn_type(resource_name, attribute_data, {})
     
-    if attribute_name in RESERVED_ATTRIBUTES:
+    if attribute_name in RESERVED_RESOURCE_ATTRIBUTES:
         attribute_name = f"The{attribute_name}"
-
+    
+    # replace nested with flat for now
+    attribute_name = attribute_name.replace('.', '')
+    
     return ResourceAttribute(
         name=attribute_name,
         type=attribute_type,
@@ -43,7 +49,7 @@ def handle_property(*, package, service, outer_name, inner_name, data):
     attributes = {}
     
     for property_name, property_data in property_properties.items():
-        attribute = handle_resource_property(outer_name, property_name, property_data, package.properties, False)
+        attribute = handle_resource_property(outer_name, property_name, property_data, package.properties, False, 'property')
         attributes[attribute.name] = attribute
 
     return Property(
@@ -83,7 +89,8 @@ def handle_resource(*, service, package, resource_name, cfn_type, resource_data)
             property_name=property_name,
             property_data=property_data,
             schema_properties=package.properties,
-            computed=computed, 
+            computed=computed,
+            type='resource',
         )
         attributes[attribute.name] = attribute
     

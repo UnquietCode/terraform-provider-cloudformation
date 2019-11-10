@@ -26,7 +26,7 @@ func ResourceGreengrassSubscriptionDefinition() *schema.Resource {
 				Type: schema.TypeString,
 				Computed: true,
 			},
-			"id": {
+			"the_id": {
 				Type: schema.TypeString,
 				Computed: true,
 			},

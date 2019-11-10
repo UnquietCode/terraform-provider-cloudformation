@@ -35,11 +35,11 @@ func ResourceElasticLoadBalancingLoadBalancer() *schema.Resource {
 				Type: schema.TypeString,
 				Computed: true,
 			},
-			"source_security_group._group_name": {
+			"source_security_group_group_name": {
 				Type: schema.TypeString,
 				Computed: true,
 			},
-			"source_security_group._owner_alias": {
+			"source_security_group_owner_alias": {
 				Type: schema.TypeString,
 				Computed: true,
 			},

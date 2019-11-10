@@ -18,7 +18,6 @@ func ResourceBackupBackupSelection() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceBackupBackupSelectionCreate,
 		Read:   resourceBackupBackupSelectionRead,
-		Update: resourceBackupBackupSelectionUpdate,
 		Delete: resourceBackupBackupSelectionDelete,
 
 		Schema: map[string]*schema.Schema{

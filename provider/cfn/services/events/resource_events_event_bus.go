@@ -18,7 +18,6 @@ func ResourceEventsEventBus() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceEventsEventBusCreate,
 		Read:   resourceEventsEventBusRead,
-		Update: resourceEventsEventBusUpdate,
 		Delete: resourceEventsEventBusDelete,
 
 		Schema: map[string]*schema.Schema{

@@ -19,7 +19,6 @@ func ResourceInspectorAssessmentTemplate() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceInspectorAssessmentTemplateCreate,
 		Read:   resourceInspectorAssessmentTemplateRead,
-		Update: resourceInspectorAssessmentTemplateUpdate,
 		Delete: resourceInspectorAssessmentTemplateDelete,
 
 		Schema: map[string]*schema.Schema{

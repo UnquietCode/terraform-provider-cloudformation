@@ -23,11 +23,11 @@ func ResourceRedshiftCluster() *schema.Resource {
 		Delete: resourceRedshiftClusterDelete,
 
 		Schema: map[string]*schema.Schema{
-			"endpoint._address": {
+			"endpoint_address": {
 				Type: schema.TypeString,
 				Computed: true,
 			},
-			"endpoint._port": {
+			"endpoint_port": {
 				Type: schema.TypeString,
 				Computed: true,
 			},

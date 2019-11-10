@@ -26,7 +26,7 @@ func ResourceConfigConfigRule() *schema.Resource {
 				Type: schema.TypeString,
 				Computed: true,
 			},
-			"compliance._type": {
+			"compliance_type": {
 				Type: schema.TypeString,
 				Computed: true,
 			},

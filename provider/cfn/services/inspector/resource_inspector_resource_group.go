@@ -19,7 +19,6 @@ func ResourceInspectorResourceGroup() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceInspectorResourceGroupCreate,
 		Read:   resourceInspectorResourceGroupRead,
-		Update: resourceInspectorResourceGroupUpdate,
 		Delete: resourceInspectorResourceGroupDelete,
 
 		Schema: map[string]*schema.Schema{

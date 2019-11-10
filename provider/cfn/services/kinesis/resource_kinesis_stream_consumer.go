@@ -18,7 +18,6 @@ func ResourceKinesisStreamConsumer() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceKinesisStreamConsumerCreate,
 		Read:   resourceKinesisStreamConsumerRead,
-		Update: resourceKinesisStreamConsumerUpdate,
 		Delete: resourceKinesisStreamConsumerDelete,
 
 		Schema: map[string]*schema.Schema{

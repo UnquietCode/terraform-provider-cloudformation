@@ -18,11 +18,10 @@ func ResourceServiceDiscoveryHttpNamespace() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceServiceDiscoveryHttpNamespaceCreate,
 		Read:   resourceServiceDiscoveryHttpNamespaceRead,
-		Update: resourceServiceDiscoveryHttpNamespaceUpdate,
 		Delete: resourceServiceDiscoveryHttpNamespaceDelete,
 
 		Schema: map[string]*schema.Schema{
-			"id": {
+			"the_id": {
 				Type: schema.TypeString,
 				Computed: true,
 			},

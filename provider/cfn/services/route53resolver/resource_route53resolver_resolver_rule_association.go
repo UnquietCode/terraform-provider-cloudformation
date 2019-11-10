@@ -18,7 +18,6 @@ func ResourceRoute53ResolverResolverRuleAssociation() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceRoute53ResolverResolverRuleAssociationCreate,
 		Read:   resourceRoute53ResolverResolverRuleAssociationRead,
-		Update: resourceRoute53ResolverResolverRuleAssociationUpdate,
 		Delete: resourceRoute53ResolverResolverRuleAssociationDelete,
 
 		Schema: map[string]*schema.Schema{

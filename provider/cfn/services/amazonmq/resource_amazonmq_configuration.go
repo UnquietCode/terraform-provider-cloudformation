@@ -26,7 +26,7 @@ func ResourceAmazonMQConfiguration() *schema.Resource {
 				Type: schema.TypeInt,
 				Computed: true,
 			},
-			"id": {
+			"the_id": {
 				Type: schema.TypeString,
 				Computed: true,
 			},

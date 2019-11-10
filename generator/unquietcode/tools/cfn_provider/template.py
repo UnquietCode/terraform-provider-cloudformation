@@ -176,7 +176,7 @@ def render_resource_template(*, cfn_version, imports, package_name, resource_nam
 	
 	# at least one attribute will not force a replacement
 	for attribute in attributes:
-		if attribute.will_replace is not True:
+		if attribute.will_replace is not True and attribute.computed is not True:
 			updatable = True
 			break
 			
@@ -251,13 +251,13 @@ def render_property_template(*, cfn_version, package_name, property_name, attrib
 
 
 def _resources_stanza(resources):
-	resource_lines = [f'			"cfn_{snake_caps(r.name)}": {r.package.name}.Resource{r.name}(),' for r in resources]
+	resource_lines = [f'			"cfn_{r.service_name.lower()}_{snake_caps(r.name[len(r.service_name):])}": {r.package.name}.Resource{r.name}(),' for r in resources]
 	resource_lines = '\n'.join(resource_lines)
 	return resource_lines or DEAD_LINE
 
 
 def _datasources_stanza(datasources):
-	datasource_lines = [f'			"cfn_{snake_caps(d.name)}": {d.package.name}.Datasource{d.name}(),' for d in datasources]
+	datasource_lines = [f'			"cfn_{r.service_name.lower()}_{snake_caps(r.name[len(r.service_name):])}": {d.package.name}.Datasource{d.name}(),' for d in datasources]
 	datasource_lines = '\n'.join(datasource_lines)
 	return datasource_lines or DEAD_LINE
 

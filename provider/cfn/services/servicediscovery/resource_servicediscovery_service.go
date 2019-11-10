@@ -22,7 +22,7 @@ func ResourceServiceDiscoveryService() *schema.Resource {
 		Delete: resourceServiceDiscoveryServiceDelete,
 
 		Schema: map[string]*schema.Schema{
-			"id": {
+			"the_id": {
 				Type: schema.TypeString,
 				Computed: true,
 			},

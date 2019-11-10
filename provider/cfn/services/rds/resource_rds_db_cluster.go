@@ -23,15 +23,15 @@ func ResourceRDSDBCluster() *schema.Resource {
 		Delete: resourceRDSDBClusterDelete,
 
 		Schema: map[string]*schema.Schema{
-			"endpoint._address": {
+			"endpoint_address": {
 				Type: schema.TypeString,
 				Computed: true,
 			},
-			"endpoint._port": {
+			"endpoint_port": {
 				Type: schema.TypeString,
 				Computed: true,
 			},
-			"read_endpoint._address": {
+			"read_endpoint_address": {
 				Type: schema.TypeString,
 				Computed: true,
 			},

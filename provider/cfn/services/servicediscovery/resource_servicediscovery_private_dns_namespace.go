@@ -18,11 +18,10 @@ func ResourceServiceDiscoveryPrivateDnsNamespace() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceServiceDiscoveryPrivateDnsNamespaceCreate,
 		Read:   resourceServiceDiscoveryPrivateDnsNamespaceRead,
-		Update: resourceServiceDiscoveryPrivateDnsNamespaceUpdate,
 		Delete: resourceServiceDiscoveryPrivateDnsNamespaceDelete,
 
 		Schema: map[string]*schema.Schema{
-			"id": {
+			"the_id": {
 				Type: schema.TypeString,
 				Computed: true,
 			},

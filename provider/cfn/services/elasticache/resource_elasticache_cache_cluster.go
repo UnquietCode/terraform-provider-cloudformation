@@ -23,19 +23,19 @@ func ResourceElastiCacheCacheCluster() *schema.Resource {
 		Delete: resourceElastiCacheCacheClusterDelete,
 
 		Schema: map[string]*schema.Schema{
-			"configuration_endpoint._address": {
+			"configuration_endpoint_address": {
 				Type: schema.TypeString,
 				Computed: true,
 			},
-			"configuration_endpoint._port": {
+			"configuration_endpoint_port": {
 				Type: schema.TypeString,
 				Computed: true,
 			},
-			"redis_endpoint._address": {
+			"redis_endpoint_address": {
 				Type: schema.TypeString,
 				Computed: true,
 			},
-			"redis_endpoint._port": {
+			"redis_endpoint_port": {
 				Type: schema.TypeString,
 				Computed: true,
 			},

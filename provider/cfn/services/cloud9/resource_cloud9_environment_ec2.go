@@ -18,7 +18,6 @@ func ResourceCloud9EnvironmentEC2() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceCloud9EnvironmentEC2Create,
 		Read:   resourceCloud9EnvironmentEC2Read,
-		Update: resourceCloud9EnvironmentEC2Update,
 		Delete: resourceCloud9EnvironmentEC2Delete,
 
 		Schema: map[string]*schema.Schema{
