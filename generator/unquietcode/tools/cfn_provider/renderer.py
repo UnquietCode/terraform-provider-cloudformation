@@ -160,7 +160,7 @@ def render_package(cfn_version, package, output_path):
     
     # render resources
     for resource in package.resources.values():
-        file_name = f"resource_{snake_caps(resource.name)}.go"
+        file_name = f"resource_{snake_caps(resource.service_name)}_{snake_caps(resource.resource_name)}.go"
         file_path = f"{created_directory}/{file_name}"
         render_resource(cfn_version, resource, file_path)
     

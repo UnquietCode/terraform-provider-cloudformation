@@ -114,6 +114,9 @@ class Resource(ComplexType):
     cfn_type: str = ""
     attributes: dict = field(default_factory=lambda: {})
     
+    service_name: str = ""
+    resource_name: str = ""
+    
     def as_dict(self):
         return asdict(self)
 

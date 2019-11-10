@@ -41,6 +41,8 @@ def handle_resource(*, service, package, resource_name, cfn_type, resource_data)
 
     resource = Resource(
         name=f"{service}{resource_name}",
+        service_name=service,
+        resource_name=resource_name,
         cfn_type=cfn_type,
         package=package,
         attributes=attributes,
