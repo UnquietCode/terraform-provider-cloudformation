@@ -2,6 +2,7 @@ import re
 from string import Template
 from datetime import date
 from unquietcode.tools.cfn_provider.models import ComplexType
+from unquietcode.tools.cfn_provider.utils import snake_caps
 
 # TODO make these dynamic
 PROVIDER_VERSION = '0.0'
@@ -62,7 +63,7 @@ def _render_attribute_template(*, package_name, attribute):
 		attribute_elem = f'{package_prefix}{ae_property_prefix}{attribute_elem.name}()'
 		
 	rendered = RESOURCE_ATTRIBUTE_TEMPLATE.substitute(dict(
-		name=attribute.go_symbol,
+		name=snake_caps(attribute.name),
 		type=attribute_type,
 		elem=attribute_elem or DEAD_LINE,
 		required="true" if attribute.required else "false",
@@ -77,12 +78,11 @@ def _render_attribute_template(*, package_name, attribute):
 
 HEADER_TEMPLATE = Template(
 """
-// This file is generated, and any modifications will be lost
-// when the file is next recreated.
+// This file is generated, and any modifications will be lost when the
+// file is next recreated.
 //
-// Generated on ${date}, using version ${provider_version} of the cfn
-// terraform provider, and version ${schema_version} of the CloudFormation
-// resource specification.
+// Generated on ${date}, using version ${provider_version} of the cfn terraform provider,
+// and version ${schema_version} of the CloudFormation resource specification.
 """[1:-1])
 
 
@@ -207,13 +207,13 @@ def render_property_template(*, cfn_version, package_name, property_name, attrib
 
 
 def _resources_stanza(resources):
-	resource_lines = [f'			"{r.go_symbol}_resource": {r.package.name}.Resource{r.name}(),' for r in resources]
+	resource_lines = [f'			"{snake_caps(r.name)}_resource": {r.package.name}.Resource{r.name}(),' for r in resources]
 	resource_lines = '\n'.join(resource_lines)
 	return resource_lines or DEAD_LINE
 
 
 def _datasources_stanza(datasources):
-	datasource_lines = [f'			"{d.go_symbol}_data_source": {d.package.name}.Datasource{d.name}(),' for d in datasources]
+	datasource_lines = [f'			"{snake_caps(d.name)}_data_source": {d.package.name}.Datasource{d.name}(),' for d in datasources]
 	datasource_lines = '\n'.join(datasource_lines)
 	return datasource_lines or DEAD_LINE
 

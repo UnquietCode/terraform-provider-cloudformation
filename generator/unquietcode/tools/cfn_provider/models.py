@@ -2,8 +2,6 @@ from enum import Enum, auto, unique
 from collections import defaultdict
 from dataclasses import dataclass, asdict, field
 
-from unquietcode.tools.cfn_provider.utils import snake_caps
-
 
 class DataDict(dict):
     
@@ -17,7 +15,7 @@ class Package:
     parent: any = None
     resources: dict = field(default_factory=lambda: defaultdict(lambda: DataDict()))
     datasources: dict = field(default_factory=lambda: defaultdict(lambda: DataDict()))
-    properties: dict = field(default_factory=lambda: defaultdict(lambda: DataDict()))
+    properties: dict = field(default_factory=lambda: {})
     subpackages: dict = field(default_factory=lambda: {})
 
     @property
@@ -100,10 +98,6 @@ class ResourceAttribute:
     type: AttributeType
     required: bool
     will_replace: bool
-
-    @property
-    def go_symbol(self):
-        return snake_caps(self.name)
         
     def as_dict(self):
         return asdict(self)
@@ -114,27 +108,21 @@ class ComplexType:
     name: str = ""
     package: Package = None
 
-    @property
-    def go_symbol(self):
-        return snake_caps(self.name)
-
 
 @dataclass
 class Resource(ComplexType):
     cfn_type: str = ""
     attributes: dict = field(default_factory=lambda: {})
-
+    
     def as_dict(self):
         return asdict(self)
 
 
 @dataclass
 class Property(ComplexType):
+    namespace: str = ""
     attributes: dict = field(default_factory=lambda: {})
-    
-    # TODO deprecated?
-    resource_name: str = ""
-    
+                
     def as_dict(self):
         return asdict(self)
 

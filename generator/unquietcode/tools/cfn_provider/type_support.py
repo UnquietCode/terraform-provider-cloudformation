@@ -1,6 +1,8 @@
 from unquietcode.tools.cfn_provider.models import AttributeType, CF_Type, TF_Type
 
 
+MISC_TYPES = {"Tag"}
+
 TYPE_CONVERSION_MAP = {
 
     # primitive types
@@ -21,8 +23,11 @@ TYPE_CONVERSION_MAP = {
 # def translate_cfn_property_type(property_name, property_data, schema_properties):
 #     return property_name, None
 
-
-def translate_cfn_resource_type(property_data, schema_properties) -> AttributeType:
+# 
+# def translate_cfn_resource_type(property_data, schema_properties) -> AttributeType:
+# 
+    
+def translate_cfn_type(resource_name, property_data, schema_properties) -> AttributeType:
     type = None
     elem_type = None
     max_items = None
@@ -62,12 +67,12 @@ def translate_cfn_resource_type(property_data, schema_properties) -> AttributeTy
             # is a collection of some other type
             else:
                 item_type = property_data.get('ItemType')
-                elem_type = translate_cfn_complex_type(schema_properties, item_type)
+                elem_type = translate_cfn_complex_type(resource_name, item_type, schema_properties)
 
         # is some other complex type
         else:
             type = TF_Type.List
-            elem_type = translate_cfn_complex_type(schema_properties, prop_type)
+            elem_type = translate_cfn_complex_type(resource_name, prop_type, schema_properties)
             max_items = 1
             
             # use required to determine if a minimum is needed
@@ -92,12 +97,19 @@ def translate_cfn_resource_type(property_data, schema_properties) -> AttributeTy
     )
 
 
-def translate_cfn_complex_type(schema_properties, name):
+def translate_cfn_complex_type(resource_name, name, schema_properties):
     if name is None:
         raise Exception('name is empty')
-        
+    
     if name in schema_properties:
         return schema_properties[name]
     
     # use deferred string
-    return f'DEFERRED|{name}'
+    
+    # unfortunate special handling
+    if name in MISC_TYPES:
+        return f'DEFERRED|{name}'
+    
+    # normal case
+    else:
+        return f'DEFERRED|{resource_name}{name}'

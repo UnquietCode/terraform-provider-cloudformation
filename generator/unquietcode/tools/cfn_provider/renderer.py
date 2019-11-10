@@ -99,25 +99,32 @@ def render_property(cfn_version, property, output_path):
     
 
 def _handle_deferred_types(package, type):
+    
     if isinstance(type, str) and type.startswith('DEFERRED'):
         deferred_prop = type.split('|')[1]
         
-        if deferred_prop not in package.properties:
-            if package.parent is not None:
-                return _handle_deferred_types(package.parent, type)
+        if deferred_prop in package.properties:
+            return package.properties[deferred_prop]
+            
+            # search upwards
+            # if package.parent is not None:
+                # return _handle_deferred_types(package.parent, type)
+        
+        # escalate upwards to find the misc package
+        while package.parent is not None:
+            package = package.parent
             
             # TODO total hack
-            elif 'misc' in package.subpackages:
+            if 'misc' in package.subpackages:
                 misc_package = package.subpackages['misc']
                 
                 if deferred_prop in misc_package.properties:
                     return misc_package.properties[deferred_prop]
-                else:
-                    raise Exception('unable to handle deferred type '+deferred_prop)
-            else:
-                raise Exception('unable to handle deferred type '+deferred_prop)
-        else:
-            return package.properties[deferred_prop]
+                
+                break
+    
+        raise Exception(f'unable to handle deferred type {deferred_prop}')
+
     else:
         return type
 
@@ -134,20 +141,26 @@ def render_package(cfn_version, package, output_path):
     
     # patch up deferred properties
     for property in package.properties.values():
-        _patch_deferred_types(package, property.attributes)
+        _patch_deferred_types(
+            package=package,
+            attributes=property.attributes,
+        )
 
     for resource in package.resources.values():
-        _patch_deferred_types(package, resource.attributes)
+        _patch_deferred_types(
+            package=package,
+            attributes=resource.attributes,
+        )
     
     # render properties
     for property in package.properties.values():
-        file_name = f"property_{property.go_symbol}.go"
+        file_name = f"property_{snake_caps(property.name)}.go"
         file_path = f"{created_directory}/{file_name}"
         render_property(cfn_version, property, file_path)
     
     # render resources
     for resource in package.resources.values():
-        file_name = f"resource_{resource.go_symbol}.go"
+        file_name = f"resource_{snake_caps(resource.name)}.go"
         file_path = f"{created_directory}/{file_name}"
         render_resource(cfn_version, resource, file_path)
     
