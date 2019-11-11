@@ -101,7 +101,7 @@ def handle_resource(*, service, package, resource_name, cfn_type, resource_data)
     attributes['LogicalId'] = ResourceAttribute(
         name='LogicalId',
         type=simple_primitive("String"),
-        required=False,
+        required=True,
         computed=False,
         will_replace=True,
         documentation_link='https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resources-section-structure.html',

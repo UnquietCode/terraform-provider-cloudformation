@@ -23,7 +23,7 @@ func ResourceCloudFormationWaitConditionHandle() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},

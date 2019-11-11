@@ -35,7 +35,7 @@ func ResourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOption() *schema.Reso
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},

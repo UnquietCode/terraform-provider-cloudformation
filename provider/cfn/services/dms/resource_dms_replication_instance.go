@@ -98,7 +98,7 @@ func ResourceDMSReplicationInstance() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},

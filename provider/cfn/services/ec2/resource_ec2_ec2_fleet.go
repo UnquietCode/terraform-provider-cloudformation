@@ -85,7 +85,7 @@ func ResourceEC2EC2Fleet() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
