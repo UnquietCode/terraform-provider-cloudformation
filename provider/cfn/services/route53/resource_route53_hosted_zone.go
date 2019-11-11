@@ -54,6 +54,11 @@ func ResourceRoute53HostedZone() *schema.Resource {
 				Elem: propertyHostedZoneVPC(),
 				Optional: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

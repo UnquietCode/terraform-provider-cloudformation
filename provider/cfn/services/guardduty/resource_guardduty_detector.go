@@ -30,6 +30,11 @@ func ResourceGuardDutyDetector() *schema.Resource {
 				Type: schema.TypeBool,
 				Required: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

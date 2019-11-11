@@ -5,12 +5,18 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
+type ResourceMeat struct {
+  Type string
+	Properties map[string]interface{}
+}
+
 type TemplateData struct {
-  resources map[string]map[string]interface{}
+  resources map[string]ResourceMeat
 }
 
 type ProviderMetadata struct {
    template TemplateData
+	 counters map[string]int
 }
 
 
@@ -18,7 +24,7 @@ func newTemplate() TemplateData {
   // return provider.resources["template"]
   
   container := TemplateData{
-    resources: make(map[string]map[string]interface{}),
+    resources: make(map[string]ResourceMeat),
   }
   
   return container
@@ -29,11 +35,14 @@ func getTemplate(meta interface{}) TemplateData {
 	return providerMeta.template
 }
 
-func getResource(id string, template TemplateData) map[string]interface{} {
+func getResource(id string, cfnType string, template TemplateData) ResourceMeat {
 	if val, ok := template.resources[id]; ok {
   	return val
 	} else {
-		var resource = make(map[string]interface{})
+		resource := ResourceMeat{
+			Type: cfnType,
+			Properties: make(map[string]interface{}),
+		}
 		template.resources[id] = resource
 		return resource
 	}
@@ -47,71 +56,72 @@ func convertToTerraform(data interface{}) interface{} {
 	return nil
 }
 
-func deSnake(name string) string {
-		return name
+func getId(resourceType string, resourceData *schema.ResourceData, meta interface{}) string {
+	if value, ok := resourceData.GetOk("logical_id"); ok {
+  	return value.(string)
+	
+	// make one up
+	} else {
+		return ""
+		// split type string into parts '::
+		// take part 1 and 2 and concatenate
 		
-    // dname = ""
-    // dname += name[0].upper()
-    // dname += name[1:]
-		// 
-    // # after an underscore
-    // repl_name = re.sub(
-    //     string=dname,
-    //     pattern=r'_([^_])([^_]*)',
-    //     repl=r'$\2',
-    // )
-		// 
-    // dname = repl_name + ""
-		// 
-    // for c, idx in enumerate(repl_name):
-    //     if c == '$':
-    //         dname[idx] = repl_name[idx].upper()
-		// 
-    // return dname
+		// look for counters in metadata under that name
+		// if present, get and increment
+		// if not, set and return
+		
+	}
 }
 
 
-func ResourceCreate(resourceName string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
-	var logicalId string = deSnake(resourceName)
+func ResourceCreate(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
+	var logicalId string = getId(resourceType, resourceData, meta)
 	var template TemplateData = getTemplate(meta)
   
   if _, ok := template.resources[logicalId]; ok {
     return errors.New("already exists?")
   } else {
-		var resource = make(map[string]interface{})
-  	template.resources[resourceName] = resource
+		var resource = getResource(logicalId, resourceType, template)
+				
+		resourceData.Partial(true)
 		
 		for name := range resourceSchema.Schema {
-	  	resource[name] = convertFromTerraform(resourceData.Get(name))
+			if value, ok := resourceData.GetOk(name); ok {
+		  	resource.Properties[name] = convertFromTerraform(value)
+				resourceData.SetPartial(name)
+			}
 		}
+		
+		resourceData.SetId(logicalId)
+		resourceData.Partial(false)
 	}
 
   return nil
 }
 
-func ResourceRead(resourceName string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
-	var logicalId string = deSnake(resourceName)
+func ResourceRead(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
+	var logicalId string = getId(resourceType, resourceData, meta)
 	var template TemplateData = getTemplate(meta)
-	var resource = getResource(logicalId, template)
+	var resource = getResource(logicalId, resourceType, template)
 	
-	for name := range resourceSchema.Schema {
-  	resourceData.Set(name, convertToTerraform(resource[name]))
+	for name := range resource.Properties {
+  	resourceData.Set(name, convertToTerraform(resource.Properties[name]))
 	}
 	
   return nil
 }
 
-func ResourceUpdate(resourceName string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
-	var logicalId string = deSnake(resourceName)
+func ResourceUpdate(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
+	var logicalId string = getId(resourceType, resourceData, meta)
 	var template TemplateData = getTemplate(meta)
-	var resource = getResource(logicalId, template)
+	var resource = getResource(logicalId, resourceType, template)
 	
 	resourceData.Partial(true)
 	
 	for name := range resourceSchema.Schema {
 		if resourceData.HasChange(name) {
 			_, value := resourceData.GetChange(name)
-			resource[name] = convertFromTerraform(value)
+			resource.Properties[name] = convertFromTerraform(value)
 		}
 	}
 
@@ -120,8 +130,8 @@ func ResourceUpdate(resourceName string, resourceSchema *schema.Resource, resour
   return nil
 }
 
-func ResourceDelete(resourceName string, resourceData *schema.ResourceData, meta interface{}) error {
-	var logicalId string = deSnake(resourceName)
+func ResourceDelete(resourceType string, resourceData *schema.ResourceData, meta interface{}) error {
+	var logicalId string = getId(resourceType, resourceData, meta)
 	var template TemplateData = getTemplate(meta)
 	
 	if _, ok := template.resources[logicalId]; ok {
@@ -143,6 +153,7 @@ func ProviderConfigure(resourceData *schema.ResourceData) (interface{}, error) {
 	
 	meta := ProviderMetadata{
     template: template,
+		counters: make(map[string]int),
   }
 	
 	return meta, nil

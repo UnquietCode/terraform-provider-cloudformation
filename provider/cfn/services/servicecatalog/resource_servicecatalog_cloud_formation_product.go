@@ -77,6 +77,11 @@ func ResourceServiceCatalogCloudFormationProduct() *schema.Resource {
 				Elem: propertyCloudFormationProductProvisioningArtifactProperties(),
 				Required: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

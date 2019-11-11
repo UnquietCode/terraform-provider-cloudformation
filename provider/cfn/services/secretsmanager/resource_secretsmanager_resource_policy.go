@@ -31,6 +31,11 @@ func ResourceSecretsManagerResourcePolicy() *schema.Resource {
 				Type: schema.TypeMap,
 				Required: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

@@ -41,6 +41,11 @@ func ResourceElasticLoadBalancingV2ListenerRule() *schema.Resource {
 				Type: schema.TypeInt,
 				Required: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

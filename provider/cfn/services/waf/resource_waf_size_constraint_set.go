@@ -32,6 +32,11 @@ func ResourceWAFSizeConstraintSet() *schema.Resource {
 				Elem: propertySizeConstraintSetSizeConstraint(),
 				Required: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

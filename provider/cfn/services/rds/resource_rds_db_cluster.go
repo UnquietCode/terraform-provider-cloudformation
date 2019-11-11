@@ -180,6 +180,11 @@ func ResourceRDSDBCluster() *schema.Resource {
 				Optional: true,
 				Set: schema.HashString,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

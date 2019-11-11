@@ -35,6 +35,11 @@ func ResourceIoT1ClickDevice() *schema.Resource {
 				Type: schema.TypeString,
 				Computed: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

@@ -44,6 +44,11 @@ func ResourceStepFunctionsStateMachine() *schema.Resource {
 				Elem: propertyStateMachineTagsEntry(),
 				Optional: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

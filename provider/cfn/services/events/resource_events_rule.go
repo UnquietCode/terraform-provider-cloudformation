@@ -56,6 +56,11 @@ func ResourceEventsRule() *schema.Resource {
 				Elem: propertyRuleTarget(),
 				Optional: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

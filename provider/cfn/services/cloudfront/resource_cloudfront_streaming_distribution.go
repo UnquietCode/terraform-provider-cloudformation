@@ -38,6 +38,11 @@ func ResourceCloudFrontStreamingDistribution() *schema.Resource {
 				Elem: misc.PropertyTag(),
 				Required: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

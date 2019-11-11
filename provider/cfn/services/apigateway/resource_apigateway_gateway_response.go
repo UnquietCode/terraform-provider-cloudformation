@@ -46,6 +46,11 @@ func ResourceApiGatewayGatewayResponse() *schema.Resource {
 				Type: schema.TypeString,
 				Optional: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

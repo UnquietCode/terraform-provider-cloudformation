@@ -41,6 +41,11 @@ func ResourceSNSTopic() *schema.Resource {
 				Elem: propertyTopicSubscription(),
 				Optional: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

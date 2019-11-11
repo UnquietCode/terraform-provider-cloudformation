@@ -103,6 +103,11 @@ func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 				Elem: propertyDeploymentGroupTriggerConfig(),
 				Optional: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

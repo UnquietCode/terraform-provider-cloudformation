@@ -32,6 +32,11 @@ func ResourcePinpointEmailDedicatedIpPool() *schema.Resource {
 				Elem: propertyDedicatedIpPoolTags(),
 				Optional: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

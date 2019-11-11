@@ -41,6 +41,11 @@ func ResourceRoute53ResolverResolverRuleAssociation() *schema.Resource {
 				Computed: true,
 				ForceNew: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

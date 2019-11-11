@@ -32,6 +32,11 @@ func ResourceGreengrassConnectorDefinitionVersion() *schema.Resource {
 				Required: true,
 				ForceNew: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

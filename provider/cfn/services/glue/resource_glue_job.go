@@ -103,6 +103,11 @@ func ResourceGlueJob() *schema.Resource {
 				Type: schema.TypeFloat,
 				Optional: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

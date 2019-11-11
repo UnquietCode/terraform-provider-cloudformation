@@ -72,6 +72,11 @@ func ResourceKinesisFirehoseDeliveryStream() *schema.Resource {
 				Optional: true,
 				MaxItems: 1,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

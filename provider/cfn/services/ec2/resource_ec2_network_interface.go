@@ -85,6 +85,11 @@ func ResourceEC2NetworkInterface() *schema.Resource {
 				Elem: misc.PropertyTag(),
 				Optional: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

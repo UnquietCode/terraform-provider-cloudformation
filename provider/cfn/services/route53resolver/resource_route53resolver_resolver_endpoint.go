@@ -65,6 +65,11 @@ func ResourceRoute53ResolverResolverEndpoint() *schema.Resource {
 				Elem: misc.PropertyTag(),
 				Optional: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

@@ -34,6 +34,11 @@ func ResourceBudgetsBudget() *schema.Resource {
 				Required: true,
 				MaxItems: 1,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

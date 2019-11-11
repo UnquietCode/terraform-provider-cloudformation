@@ -33,6 +33,11 @@ func ResourceRoute53HealthCheck() *schema.Resource {
 				Elem: propertyHealthCheckHealthCheckTag(),
 				Optional: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

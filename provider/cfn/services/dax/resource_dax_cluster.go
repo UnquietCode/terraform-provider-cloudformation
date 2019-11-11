@@ -91,6 +91,11 @@ func ResourceDAXCluster() *schema.Resource {
 				Type: schema.TypeMap,
 				Optional: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

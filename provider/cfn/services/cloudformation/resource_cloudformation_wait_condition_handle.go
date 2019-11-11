@@ -21,7 +21,11 @@ func ResourceCloudFormationWaitConditionHandle() *schema.Resource {
 		Delete: resourceCloudFormationWaitConditionHandleDelete,
 
 		Schema: map[string]*schema.Schema{
-
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

@@ -128,6 +128,11 @@ func ResourceEMRCluster() *schema.Resource {
 				Type: schema.TypeBool,
 				Optional: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

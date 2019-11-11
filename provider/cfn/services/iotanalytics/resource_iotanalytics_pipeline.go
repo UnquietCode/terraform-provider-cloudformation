@@ -38,6 +38,11 @@ func ResourceIoTAnalyticsPipeline() *schema.Resource {
 				Elem: propertyPipelineActivity(),
 				Required: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

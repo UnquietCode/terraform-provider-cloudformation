@@ -32,6 +32,11 @@ func ResourceWAFXssMatchSet() *schema.Resource {
 				Elem: propertyXssMatchSetXssMatchTuple(),
 				Required: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

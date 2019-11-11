@@ -56,6 +56,11 @@ func ResourceDataPipelinePipeline() *schema.Resource {
 				Elem: propertyPipelinePipelineTag(),
 				Optional: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

@@ -60,6 +60,11 @@ func ResourceCodePipelinePipeline() *schema.Resource {
 				Elem: propertyPipelineStageDeclaration(),
 				Required: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

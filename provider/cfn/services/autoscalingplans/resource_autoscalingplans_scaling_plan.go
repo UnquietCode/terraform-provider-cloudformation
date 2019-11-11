@@ -41,6 +41,11 @@ func ResourceAutoScalingPlansScalingPlan() *schema.Resource {
 				Elem: propertyScalingPlanScalingInstruction(),
 				Required: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

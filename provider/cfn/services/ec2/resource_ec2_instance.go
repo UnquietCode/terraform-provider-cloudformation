@@ -212,6 +212,11 @@ func ResourceEC2Instance() *schema.Resource {
 				Elem: propertyInstanceVolume(),
 				Optional: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

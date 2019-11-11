@@ -58,6 +58,11 @@ func ResourceEMRInstanceFleetConfig() *schema.Resource {
 				Type: schema.TypeInt,
 				Optional: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

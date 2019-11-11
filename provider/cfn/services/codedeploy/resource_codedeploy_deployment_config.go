@@ -33,6 +33,11 @@ func ResourceCodeDeployDeploymentConfig() *schema.Resource {
 				ForceNew: true,
 				MaxItems: 1,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

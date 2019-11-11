@@ -44,6 +44,11 @@ func ResourceGuardDutyThreatIntelSet() *schema.Resource {
 				Type: schema.TypeString,
 				Required: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

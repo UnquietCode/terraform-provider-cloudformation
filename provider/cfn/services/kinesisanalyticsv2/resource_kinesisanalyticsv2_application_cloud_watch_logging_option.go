@@ -33,6 +33,11 @@ func ResourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOption() *schema.Reso
 				Required: true,
 				MaxItems: 1,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }

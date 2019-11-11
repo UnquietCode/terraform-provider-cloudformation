@@ -127,6 +127,11 @@ func ResourceAutoScalingAutoScalingGroup() *schema.Resource {
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Optional: true,
 			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Optional: true,
+				ForceNew: true,
+			},
 		},
 	}
 }
