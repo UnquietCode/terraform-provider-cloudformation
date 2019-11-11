@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,24 +16,17 @@ import (
 
 func ResourceApiGatewayV2DomainName() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceApiGatewayV2DomainNameExists,
+		Read: resourceApiGatewayV2DomainNameRead,
 		Create: resourceApiGatewayV2DomainNameCreate,
-		Read:   resourceApiGatewayV2DomainNameRead,
 		Update: resourceApiGatewayV2DomainNameUpdate,
 		Delete: resourceApiGatewayV2DomainNameDelete,
-
+		CustomizeDiff: resourceApiGatewayV2DomainNameCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"regional_hosted_zone_id": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"regional_domain_name": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"domain_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"domain_name_configurations": {
 				Type: schema.TypeList,
@@ -46,19 +39,23 @@ func ResourceApiGatewayV2DomainName() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceApiGatewayV2DomainNameCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGatewayV2::DomainName", ResourceApiGatewayV2DomainName(), data, meta)
+func resourceApiGatewayV2DomainNameExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceApiGatewayV2DomainNameRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ApiGatewayV2::DomainName", ResourceApiGatewayV2DomainName(), data, meta)
+}
+
+func resourceApiGatewayV2DomainNameCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ApiGatewayV2::DomainName", ResourceApiGatewayV2DomainName(), data, meta)
 }
 
 func resourceApiGatewayV2DomainNameUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -68,3 +65,8 @@ func resourceApiGatewayV2DomainNameUpdate(data *schema.ResourceData, meta interf
 func resourceApiGatewayV2DomainNameDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGatewayV2::DomainName", data, meta)
 }
+
+func resourceApiGatewayV2DomainNameCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::ApiGatewayV2::DomainName", data, meta)
+}
+

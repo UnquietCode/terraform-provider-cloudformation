@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,17 @@ import (
 
 func ResourceElasticBeanstalkApplication() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceElasticBeanstalkApplicationExists,
+		Read: resourceElasticBeanstalkApplicationRead,
 		Create: resourceElasticBeanstalkApplicationCreate,
-		Read:   resourceElasticBeanstalkApplicationRead,
 		Update: resourceElasticBeanstalkApplicationUpdate,
 		Delete: resourceElasticBeanstalkApplicationDelete,
-
+		CustomizeDiff: resourceElasticBeanstalkApplicationCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"application_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"description": {
 				Type: schema.TypeString,
@@ -39,19 +40,23 @@ func ResourceElasticBeanstalkApplication() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceElasticBeanstalkApplicationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElasticBeanstalk::Application", ResourceElasticBeanstalkApplication(), data, meta)
+func resourceElasticBeanstalkApplicationExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceElasticBeanstalkApplicationRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ElasticBeanstalk::Application", ResourceElasticBeanstalkApplication(), data, meta)
+}
+
+func resourceElasticBeanstalkApplicationCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ElasticBeanstalk::Application", ResourceElasticBeanstalkApplication(), data, meta)
 }
 
 func resourceElasticBeanstalkApplicationUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -61,3 +66,8 @@ func resourceElasticBeanstalkApplicationUpdate(data *schema.ResourceData, meta i
 func resourceElasticBeanstalkApplicationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ElasticBeanstalk::Application", data, meta)
 }
+
+func resourceElasticBeanstalkApplicationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::ElasticBeanstalk::Application", data, meta)
+}
+

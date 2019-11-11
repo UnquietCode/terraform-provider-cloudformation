@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,20 +17,14 @@ import (
 
 func ResourceIAMRole() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceIAMRoleExists,
+		Read: resourceIAMRoleRead,
 		Create: resourceIAMRoleCreate,
-		Read:   resourceIAMRoleRead,
 		Update: resourceIAMRoleUpdate,
 		Delete: resourceIAMRoleDelete,
-
+		CustomizeDiff: resourceIAMRoleCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"role_id": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"assume_role_policy_document": {
 				Type: schema.TypeMap,
 				Required: true,
@@ -52,7 +46,6 @@ func ResourceIAMRole() *schema.Resource {
 			"path": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"permissions_boundary": {
 				Type: schema.TypeString,
@@ -66,7 +59,6 @@ func ResourceIAMRole() *schema.Resource {
 			"role_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -75,19 +67,23 @@ func ResourceIAMRole() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceIAMRoleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IAM::Role", ResourceIAMRole(), data, meta)
+func resourceIAMRoleExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceIAMRoleRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::IAM::Role", ResourceIAMRole(), data, meta)
+}
+
+func resourceIAMRoleCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::IAM::Role", ResourceIAMRole(), data, meta)
 }
 
 func resourceIAMRoleUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -97,3 +93,8 @@ func resourceIAMRoleUpdate(data *schema.ResourceData, meta interface{}) error {
 func resourceIAMRoleDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IAM::Role", data, meta)
 }
+
+func resourceIAMRoleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::IAM::Role", data, meta)
+}
+

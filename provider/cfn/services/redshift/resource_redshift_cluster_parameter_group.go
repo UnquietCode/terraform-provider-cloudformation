@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,21 +17,21 @@ import (
 
 func ResourceRedshiftClusterParameterGroup() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceRedshiftClusterParameterGroupExists,
+		Read: resourceRedshiftClusterParameterGroupRead,
 		Create: resourceRedshiftClusterParameterGroupCreate,
-		Read:   resourceRedshiftClusterParameterGroupRead,
 		Update: resourceRedshiftClusterParameterGroupUpdate,
 		Delete: resourceRedshiftClusterParameterGroupDelete,
-
+		CustomizeDiff: resourceRedshiftClusterParameterGroupCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"parameter_group_family": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"parameters": {
 				Type: schema.TypeList,
@@ -45,19 +45,23 @@ func ResourceRedshiftClusterParameterGroup() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceRedshiftClusterParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Redshift::ClusterParameterGroup", ResourceRedshiftClusterParameterGroup(), data, meta)
+func resourceRedshiftClusterParameterGroupExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceRedshiftClusterParameterGroupRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Redshift::ClusterParameterGroup", ResourceRedshiftClusterParameterGroup(), data, meta)
+}
+
+func resourceRedshiftClusterParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Redshift::ClusterParameterGroup", ResourceRedshiftClusterParameterGroup(), data, meta)
 }
 
 func resourceRedshiftClusterParameterGroupUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -67,3 +71,8 @@ func resourceRedshiftClusterParameterGroupUpdate(data *schema.ResourceData, meta
 func resourceRedshiftClusterParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Redshift::ClusterParameterGroup", data, meta)
 }
+
+func resourceRedshiftClusterParameterGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Redshift::ClusterParameterGroup", data, meta)
+}
+

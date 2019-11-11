@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceCognitoUserPoolUICustomizationAttachment() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceCognitoUserPoolUICustomizationAttachmentExists,
+		Read: resourceCognitoUserPoolUICustomizationAttachmentRead,
 		Create: resourceCognitoUserPoolUICustomizationAttachmentCreate,
-		Read:   resourceCognitoUserPoolUICustomizationAttachmentRead,
 		Update: resourceCognitoUserPoolUICustomizationAttachmentUpdate,
 		Delete: resourceCognitoUserPoolUICustomizationAttachmentDelete,
-
+		CustomizeDiff: resourceCognitoUserPoolUICustomizationAttachmentCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"css": {
 				Type: schema.TypeString,
@@ -29,28 +31,30 @@ func ResourceCognitoUserPoolUICustomizationAttachment() *schema.Resource {
 			"user_pool_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"client_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceCognitoUserPoolUICustomizationAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Cognito::UserPoolUICustomizationAttachment", ResourceCognitoUserPoolUICustomizationAttachment(), data, meta)
+func resourceCognitoUserPoolUICustomizationAttachmentExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCognitoUserPoolUICustomizationAttachmentRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Cognito::UserPoolUICustomizationAttachment", ResourceCognitoUserPoolUICustomizationAttachment(), data, meta)
+}
+
+func resourceCognitoUserPoolUICustomizationAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Cognito::UserPoolUICustomizationAttachment", ResourceCognitoUserPoolUICustomizationAttachment(), data, meta)
 }
 
 func resourceCognitoUserPoolUICustomizationAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -60,3 +64,8 @@ func resourceCognitoUserPoolUICustomizationAttachmentUpdate(data *schema.Resourc
 func resourceCognitoUserPoolUICustomizationAttachmentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Cognito::UserPoolUICustomizationAttachment", data, meta)
 }
+
+func resourceCognitoUserPoolUICustomizationAttachmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Cognito::UserPoolUICustomizationAttachment", data, meta)
+}
+

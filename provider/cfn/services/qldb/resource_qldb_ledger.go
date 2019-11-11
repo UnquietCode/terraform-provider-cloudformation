@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,16 +17,17 @@ import (
 
 func ResourceQLDBLedger() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceQLDBLedgerExists,
+		Read: resourceQLDBLedgerRead,
 		Create: resourceQLDBLedgerCreate,
-		Read:   resourceQLDBLedgerRead,
 		Update: resourceQLDBLedgerUpdate,
 		Delete: resourceQLDBLedgerDelete,
-
+		CustomizeDiff: resourceQLDBLedgerCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"permissions_mode": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"deletion_protection": {
 				Type: schema.TypeBool,
@@ -40,23 +41,26 @@ func ResourceQLDBLedger() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceQLDBLedgerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::QLDB::Ledger", ResourceQLDBLedger(), data, meta)
+func resourceQLDBLedgerExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceQLDBLedgerRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::QLDB::Ledger", ResourceQLDBLedger(), data, meta)
+}
+
+func resourceQLDBLedgerCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::QLDB::Ledger", ResourceQLDBLedger(), data, meta)
 }
 
 func resourceQLDBLedgerUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -66,3 +70,8 @@ func resourceQLDBLedgerUpdate(data *schema.ResourceData, meta interface{}) error
 func resourceQLDBLedgerDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::QLDB::Ledger", data, meta)
 }
+
+func resourceQLDBLedgerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::QLDB::Ledger", data, meta)
+}
+

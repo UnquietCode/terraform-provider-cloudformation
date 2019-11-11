@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,16 +17,17 @@ import (
 
 func ResourceNeptuneDBSubnetGroup() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceNeptuneDBSubnetGroupExists,
+		Read: resourceNeptuneDBSubnetGroupRead,
 		Create: resourceNeptuneDBSubnetGroupCreate,
-		Read:   resourceNeptuneDBSubnetGroupRead,
 		Update: resourceNeptuneDBSubnetGroupUpdate,
 		Delete: resourceNeptuneDBSubnetGroupDelete,
-
+		CustomizeDiff: resourceNeptuneDBSubnetGroupCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"db_subnet_group_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"db_subnet_group_description": {
 				Type: schema.TypeString,
@@ -44,19 +45,23 @@ func ResourceNeptuneDBSubnetGroup() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceNeptuneDBSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Neptune::DBSubnetGroup", ResourceNeptuneDBSubnetGroup(), data, meta)
+func resourceNeptuneDBSubnetGroupExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceNeptuneDBSubnetGroupRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Neptune::DBSubnetGroup", ResourceNeptuneDBSubnetGroup(), data, meta)
+}
+
+func resourceNeptuneDBSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Neptune::DBSubnetGroup", ResourceNeptuneDBSubnetGroup(), data, meta)
 }
 
 func resourceNeptuneDBSubnetGroupUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -66,3 +71,8 @@ func resourceNeptuneDBSubnetGroupUpdate(data *schema.ResourceData, meta interfac
 func resourceNeptuneDBSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Neptune::DBSubnetGroup", data, meta)
 }
+
+func resourceNeptuneDBSubnetGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Neptune::DBSubnetGroup", data, meta)
+}
+

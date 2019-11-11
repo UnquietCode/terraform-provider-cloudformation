@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,11 +17,13 @@ import (
 
 func ResourceDMSReplicationSubnetGroup() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceDMSReplicationSubnetGroupExists,
+		Read: resourceDMSReplicationSubnetGroupRead,
 		Create: resourceDMSReplicationSubnetGroupCreate,
-		Read:   resourceDMSReplicationSubnetGroupRead,
 		Update: resourceDMSReplicationSubnetGroupUpdate,
 		Delete: resourceDMSReplicationSubnetGroupDelete,
-
+		CustomizeDiff: resourceDMSReplicationSubnetGroupCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"replication_subnet_group_description": {
 				Type: schema.TypeString,
@@ -30,7 +32,6 @@ func ResourceDMSReplicationSubnetGroup() *schema.Resource {
 			"replication_subnet_group_identifier": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"subnet_ids": {
 				Type: schema.TypeList,
@@ -41,23 +42,26 @@ func ResourceDMSReplicationSubnetGroup() *schema.Resource {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceDMSReplicationSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DMS::ReplicationSubnetGroup", ResourceDMSReplicationSubnetGroup(), data, meta)
+func resourceDMSReplicationSubnetGroupExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceDMSReplicationSubnetGroupRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::DMS::ReplicationSubnetGroup", ResourceDMSReplicationSubnetGroup(), data, meta)
+}
+
+func resourceDMSReplicationSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::DMS::ReplicationSubnetGroup", ResourceDMSReplicationSubnetGroup(), data, meta)
 }
 
 func resourceDMSReplicationSubnetGroupUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -67,3 +71,8 @@ func resourceDMSReplicationSubnetGroupUpdate(data *schema.ResourceData, meta int
 func resourceDMSReplicationSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::DMS::ReplicationSubnetGroup", data, meta)
 }
+
+func resourceDMSReplicationSubnetGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::DMS::ReplicationSubnetGroup", data, meta)
+}
+

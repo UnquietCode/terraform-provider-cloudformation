@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,17 @@ import (
 
 func ResourceCognitoUserPoolGroup() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceCognitoUserPoolGroupExists,
+		Read: resourceCognitoUserPoolGroupRead,
 		Create: resourceCognitoUserPoolGroupCreate,
-		Read:   resourceCognitoUserPoolGroupRead,
 		Update: resourceCognitoUserPoolGroupUpdate,
 		Delete: resourceCognitoUserPoolGroupDelete,
-
+		CustomizeDiff: resourceCognitoUserPoolGroupCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"group_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"description": {
 				Type: schema.TypeString,
@@ -34,7 +35,6 @@ func ResourceCognitoUserPoolGroup() *schema.Resource {
 			"user_pool_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"precedence": {
 				Type: schema.TypeFloat,
@@ -46,19 +46,23 @@ func ResourceCognitoUserPoolGroup() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceCognitoUserPoolGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Cognito::UserPoolGroup", ResourceCognitoUserPoolGroup(), data, meta)
+func resourceCognitoUserPoolGroupExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCognitoUserPoolGroupRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Cognito::UserPoolGroup", ResourceCognitoUserPoolGroup(), data, meta)
+}
+
+func resourceCognitoUserPoolGroupCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Cognito::UserPoolGroup", ResourceCognitoUserPoolGroup(), data, meta)
 }
 
 func resourceCognitoUserPoolGroupUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -68,3 +72,8 @@ func resourceCognitoUserPoolGroupUpdate(data *schema.ResourceData, meta interfac
 func resourceCognitoUserPoolGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Cognito::UserPoolGroup", data, meta)
 }
+
+func resourceCognitoUserPoolGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Cognito::UserPoolGroup", data, meta)
+}
+

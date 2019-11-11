@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceConfigConfigurationAggregator() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceConfigConfigurationAggregatorExists,
+		Read: resourceConfigConfigurationAggregatorRead,
 		Create: resourceConfigConfigurationAggregatorCreate,
-		Read:   resourceConfigConfigurationAggregatorRead,
 		Update: resourceConfigConfigurationAggregatorUpdate,
 		Delete: resourceConfigConfigurationAggregatorDelete,
-
+		CustomizeDiff: resourceConfigConfigurationAggregatorCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"account_aggregation_sources": {
 				Type: schema.TypeList,
@@ -30,7 +32,6 @@ func ResourceConfigConfigurationAggregator() *schema.Resource {
 			"configuration_aggregator_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"organization_aggregation_source": {
 				Type: schema.TypeList,
@@ -40,19 +41,23 @@ func ResourceConfigConfigurationAggregator() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceConfigConfigurationAggregatorCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Config::ConfigurationAggregator", ResourceConfigConfigurationAggregator(), data, meta)
+func resourceConfigConfigurationAggregatorExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceConfigConfigurationAggregatorRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Config::ConfigurationAggregator", ResourceConfigConfigurationAggregator(), data, meta)
+}
+
+func resourceConfigConfigurationAggregatorCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Config::ConfigurationAggregator", ResourceConfigConfigurationAggregator(), data, meta)
 }
 
 func resourceConfigConfigurationAggregatorUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -62,3 +67,8 @@ func resourceConfigConfigurationAggregatorUpdate(data *schema.ResourceData, meta
 func resourceConfigConfigurationAggregatorDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Config::ConfigurationAggregator", data, meta)
 }
+
+func resourceConfigConfigurationAggregatorCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Config::ConfigurationAggregator", data, meta)
+}
+

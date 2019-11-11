@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,14 @@ import (
 
 func ResourceIAMUser() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceIAMUserExists,
+		Read: resourceIAMUserRead,
 		Create: resourceIAMUserCreate,
-		Read:   resourceIAMUserRead,
 		Update: resourceIAMUserUpdate,
 		Delete: resourceIAMUserDelete,
-
+		CustomizeDiff: resourceIAMUserCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"groups": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
@@ -59,23 +57,26 @@ func ResourceIAMUser() *schema.Resource {
 			"user_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceIAMUserCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IAM::User", ResourceIAMUser(), data, meta)
+func resourceIAMUserExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceIAMUserRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::IAM::User", ResourceIAMUser(), data, meta)
+}
+
+func resourceIAMUserCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::IAM::User", ResourceIAMUser(), data, meta)
 }
 
 func resourceIAMUserUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -85,3 +86,8 @@ func resourceIAMUserUpdate(data *schema.ResourceData, meta interface{}) error {
 func resourceIAMUserDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IAM::User", data, meta)
 }
+
+func resourceIAMUserCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::IAM::User", data, meta)
+}
+

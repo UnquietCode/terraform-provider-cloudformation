@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceApiGatewayV2RouteResponse() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceApiGatewayV2RouteResponseExists,
+		Read: resourceApiGatewayV2RouteResponseRead,
 		Create: resourceApiGatewayV2RouteResponseCreate,
-		Read:   resourceApiGatewayV2RouteResponseRead,
 		Update: resourceApiGatewayV2RouteResponseUpdate,
 		Delete: resourceApiGatewayV2RouteResponseDelete,
-
+		CustomizeDiff: resourceApiGatewayV2RouteResponseCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"route_response_key": {
 				Type: schema.TypeString,
@@ -33,7 +35,6 @@ func ResourceApiGatewayV2RouteResponse() *schema.Resource {
 			"route_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"model_selection_expression": {
 				Type: schema.TypeString,
@@ -42,7 +43,6 @@ func ResourceApiGatewayV2RouteResponse() *schema.Resource {
 			"api_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"response_models": {
 				Type: schema.TypeMap,
@@ -50,19 +50,23 @@ func ResourceApiGatewayV2RouteResponse() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceApiGatewayV2RouteResponseCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGatewayV2::RouteResponse", ResourceApiGatewayV2RouteResponse(), data, meta)
+func resourceApiGatewayV2RouteResponseExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceApiGatewayV2RouteResponseRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ApiGatewayV2::RouteResponse", ResourceApiGatewayV2RouteResponse(), data, meta)
+}
+
+func resourceApiGatewayV2RouteResponseCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ApiGatewayV2::RouteResponse", ResourceApiGatewayV2RouteResponse(), data, meta)
 }
 
 func resourceApiGatewayV2RouteResponseUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -72,3 +76,8 @@ func resourceApiGatewayV2RouteResponseUpdate(data *schema.ResourceData, meta int
 func resourceApiGatewayV2RouteResponseDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGatewayV2::RouteResponse", data, meta)
 }
+
+func resourceApiGatewayV2RouteResponseCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::ApiGatewayV2::RouteResponse", data, meta)
+}
+

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,41 +16,45 @@ import (
 
 func ResourceCognitoUserPoolUserToGroupAttachment() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceCognitoUserPoolUserToGroupAttachmentExists,
+		Read: resourceCognitoUserPoolUserToGroupAttachmentRead,
 		Create: resourceCognitoUserPoolUserToGroupAttachmentCreate,
-		Read:   resourceCognitoUserPoolUserToGroupAttachmentRead,
+		Update: resourceCognitoUserPoolUserToGroupAttachmentUpdate,
 		Delete: resourceCognitoUserPoolUserToGroupAttachmentDelete,
-
+		CustomizeDiff: resourceCognitoUserPoolUserToGroupAttachmentCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"group_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"user_pool_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"username": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceCognitoUserPoolUserToGroupAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Cognito::UserPoolUserToGroupAttachment", ResourceCognitoUserPoolUserToGroupAttachment(), data, meta)
+func resourceCognitoUserPoolUserToGroupAttachmentExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCognitoUserPoolUserToGroupAttachmentRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Cognito::UserPoolUserToGroupAttachment", ResourceCognitoUserPoolUserToGroupAttachment(), data, meta)
+}
+
+func resourceCognitoUserPoolUserToGroupAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Cognito::UserPoolUserToGroupAttachment", ResourceCognitoUserPoolUserToGroupAttachment(), data, meta)
 }
 
 func resourceCognitoUserPoolUserToGroupAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -60,3 +64,8 @@ func resourceCognitoUserPoolUserToGroupAttachmentUpdate(data *schema.ResourceDat
 func resourceCognitoUserPoolUserToGroupAttachmentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Cognito::UserPoolUserToGroupAttachment", data, meta)
 }
+
+func resourceCognitoUserPoolUserToGroupAttachmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Cognito::UserPoolUserToGroupAttachment", data, meta)
+}
+

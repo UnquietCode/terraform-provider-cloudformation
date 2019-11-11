@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,22 +17,14 @@ import (
 
 func ResourceDMSReplicationInstance() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceDMSReplicationInstanceExists,
+		Read: resourceDMSReplicationInstanceRead,
 		Create: resourceDMSReplicationInstanceCreate,
-		Read:   resourceDMSReplicationInstanceRead,
 		Update: resourceDMSReplicationInstanceUpdate,
 		Delete: resourceDMSReplicationInstanceDelete,
-
+		CustomizeDiff: resourceDMSReplicationInstanceCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"replication_instance_public_ip_addresses": {
-				Type: schema.TypeList,
-				Elem: &schema.Schema{Type: schema.TypeString},
-				Computed: true,
-			},
-			"replication_instance_private_ip_addresses": {
-				Type: schema.TypeList,
-				Elem: &schema.Schema{Type: schema.TypeString},
-				Computed: true,
-			},
 			"replication_instance_identifier": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -44,12 +36,10 @@ func ResourceDMSReplicationInstance() *schema.Resource {
 			"kms_key_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"availability_zone": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"preferred_maintenance_window": {
 				Type: schema.TypeString,
@@ -62,7 +52,6 @@ func ResourceDMSReplicationInstance() *schema.Resource {
 			"replication_subnet_group_identifier": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"allocated_storage": {
 				Type: schema.TypeInt,
@@ -84,7 +73,6 @@ func ResourceDMSReplicationInstance() *schema.Resource {
 			"publicly_accessible": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"multi_az": {
 				Type: schema.TypeBool,
@@ -94,23 +82,26 @@ func ResourceDMSReplicationInstance() *schema.Resource {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceDMSReplicationInstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DMS::ReplicationInstance", ResourceDMSReplicationInstance(), data, meta)
+func resourceDMSReplicationInstanceExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceDMSReplicationInstanceRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::DMS::ReplicationInstance", ResourceDMSReplicationInstance(), data, meta)
+}
+
+func resourceDMSReplicationInstanceCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::DMS::ReplicationInstance", ResourceDMSReplicationInstance(), data, meta)
 }
 
 func resourceDMSReplicationInstanceUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -120,3 +111,8 @@ func resourceDMSReplicationInstanceUpdate(data *schema.ResourceData, meta interf
 func resourceDMSReplicationInstanceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::DMS::ReplicationInstance", data, meta)
 }
+
+func resourceDMSReplicationInstanceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::DMS::ReplicationInstance", data, meta)
+}
+

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceGlueSecurityConfiguration() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceGlueSecurityConfigurationExists,
+		Read: resourceGlueSecurityConfigurationRead,
 		Create: resourceGlueSecurityConfigurationCreate,
-		Read:   resourceGlueSecurityConfigurationRead,
 		Update: resourceGlueSecurityConfigurationUpdate,
 		Delete: resourceGlueSecurityConfigurationDelete,
-
+		CustomizeDiff: resourceGlueSecurityConfigurationCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"encryption_configuration": {
 				Type: schema.TypeList,
@@ -31,23 +33,26 @@ func ResourceGlueSecurityConfiguration() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceGlueSecurityConfigurationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::SecurityConfiguration", ResourceGlueSecurityConfiguration(), data, meta)
+func resourceGlueSecurityConfigurationExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceGlueSecurityConfigurationRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Glue::SecurityConfiguration", ResourceGlueSecurityConfiguration(), data, meta)
+}
+
+func resourceGlueSecurityConfigurationCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Glue::SecurityConfiguration", ResourceGlueSecurityConfiguration(), data, meta)
 }
 
 func resourceGlueSecurityConfigurationUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -57,3 +62,8 @@ func resourceGlueSecurityConfigurationUpdate(data *schema.ResourceData, meta int
 func resourceGlueSecurityConfigurationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Glue::SecurityConfiguration", data, meta)
 }
+
+func resourceGlueSecurityConfigurationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Glue::SecurityConfiguration", data, meta)
+}
+

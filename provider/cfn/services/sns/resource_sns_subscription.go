@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceSNSSubscription() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceSNSSubscriptionExists,
+		Read: resourceSNSSubscriptionRead,
 		Create: resourceSNSSubscriptionCreate,
-		Read:   resourceSNSSubscriptionRead,
 		Update: resourceSNSSubscriptionUpdate,
 		Delete: resourceSNSSubscriptionDelete,
-
+		CustomizeDiff: resourceSNSSubscriptionCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"delivery_policy": {
 				Type: schema.TypeMap,
@@ -29,7 +31,6 @@ func ResourceSNSSubscription() *schema.Resource {
 			"endpoint": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"filter_policy": {
 				Type: schema.TypeMap,
@@ -38,7 +39,6 @@ func ResourceSNSSubscription() *schema.Resource {
 			"protocol": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"raw_message_delivery": {
 				Type: schema.TypeBool,
@@ -51,23 +51,26 @@ func ResourceSNSSubscription() *schema.Resource {
 			"topic_arn": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceSNSSubscriptionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SNS::Subscription", ResourceSNSSubscription(), data, meta)
+func resourceSNSSubscriptionExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceSNSSubscriptionRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::SNS::Subscription", ResourceSNSSubscription(), data, meta)
+}
+
+func resourceSNSSubscriptionCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::SNS::Subscription", ResourceSNSSubscription(), data, meta)
 }
 
 func resourceSNSSubscriptionUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -77,3 +80,8 @@ func resourceSNSSubscriptionUpdate(data *schema.ResourceData, meta interface{}) 
 func resourceSNSSubscriptionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SNS::Subscription", data, meta)
 }
+
+func resourceSNSSubscriptionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::SNS::Subscription", data, meta)
+}
+

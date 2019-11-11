@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,34 +16,14 @@ import (
 
 func ResourceOpsWorksInstance() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceOpsWorksInstanceExists,
+		Read: resourceOpsWorksInstanceRead,
 		Create: resourceOpsWorksInstanceCreate,
-		Read:   resourceOpsWorksInstanceRead,
 		Update: resourceOpsWorksInstanceUpdate,
 		Delete: resourceOpsWorksInstanceDelete,
-
+		CustomizeDiff: resourceOpsWorksInstanceCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"availability_zone": {
-				Type: schema.TypeString,
-				Optional: true,
-				Computed: true,
-				ForceNew: true,
-			},
-			"private_dns_name": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"private_ip": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"public_dns_name": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"public_ip": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"agent_version": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -59,18 +39,19 @@ func ResourceOpsWorksInstance() *schema.Resource {
 			"auto_scaling_type": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
+			},
+			"availability_zone": {
+				Type: schema.TypeString,
+				Optional: true,
 			},
 			"block_device_mappings": {
 				Type: schema.TypeSet,
 				Elem: propertyInstanceBlockDeviceMapping(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"ebs_optimized": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"elastic_ips": {
 				Type: schema.TypeSet,
@@ -102,7 +83,6 @@ func ResourceOpsWorksInstance() *schema.Resource {
 			"root_device_type": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"ssh_key_name": {
 				Type: schema.TypeString,
@@ -111,29 +91,24 @@ func ResourceOpsWorksInstance() *schema.Resource {
 			"stack_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"subnet_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"tenancy": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"time_based_auto_scaling": {
 				Type: schema.TypeList,
 				Elem: propertyInstanceTimeBasedAutoScaling(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"virtualization_type": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"volumes": {
 				Type: schema.TypeSet,
@@ -143,19 +118,23 @@ func ResourceOpsWorksInstance() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceOpsWorksInstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::OpsWorks::Instance", ResourceOpsWorksInstance(), data, meta)
+func resourceOpsWorksInstanceExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceOpsWorksInstanceRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::OpsWorks::Instance", ResourceOpsWorksInstance(), data, meta)
+}
+
+func resourceOpsWorksInstanceCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::OpsWorks::Instance", ResourceOpsWorksInstance(), data, meta)
 }
 
 func resourceOpsWorksInstanceUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -165,3 +144,8 @@ func resourceOpsWorksInstanceUpdate(data *schema.ResourceData, meta interface{})
 func resourceOpsWorksInstanceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::OpsWorks::Instance", data, meta)
 }
+
+func resourceOpsWorksInstanceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::OpsWorks::Instance", data, meta)
+}
+

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,20 +17,17 @@ import (
 
 func ResourceDMSEndpoint() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceDMSEndpointExists,
+		Read: resourceDMSEndpointRead,
 		Create: resourceDMSEndpointCreate,
-		Read:   resourceDMSEndpointRead,
 		Update: resourceDMSEndpointUpdate,
 		Delete: resourceDMSEndpointDelete,
-
+		CustomizeDiff: resourceDMSEndpointCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"external_id": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"kms_key_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"port": {
 				Type: schema.TypeInt,
@@ -92,7 +89,6 @@ func ResourceDMSEndpoint() *schema.Resource {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"endpoint_identifier": {
 				Type: schema.TypeString,
@@ -114,19 +110,23 @@ func ResourceDMSEndpoint() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceDMSEndpointCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DMS::Endpoint", ResourceDMSEndpoint(), data, meta)
+func resourceDMSEndpointExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceDMSEndpointRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::DMS::Endpoint", ResourceDMSEndpoint(), data, meta)
+}
+
+func resourceDMSEndpointCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::DMS::Endpoint", ResourceDMSEndpoint(), data, meta)
 }
 
 func resourceDMSEndpointUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -136,3 +136,8 @@ func resourceDMSEndpointUpdate(data *schema.ResourceData, meta interface{}) erro
 func resourceDMSEndpointDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::DMS::Endpoint", data, meta)
 }
+
+func resourceDMSEndpointCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::DMS::Endpoint", data, meta)
+}
+

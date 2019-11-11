@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceCodeDeployDeploymentGroupExists,
+		Read: resourceCodeDeployDeploymentGroupRead,
 		Create: resourceCodeDeployDeploymentGroupCreate,
-		Read:   resourceCodeDeployDeploymentGroupRead,
 		Update: resourceCodeDeployDeploymentGroupUpdate,
 		Delete: resourceCodeDeployDeploymentGroupDelete,
-
+		CustomizeDiff: resourceCodeDeployDeploymentGroupCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"alarm_configuration": {
 				Type: schema.TypeList,
@@ -31,7 +33,6 @@ func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 			"application_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"auto_rollback_configuration": {
 				Type: schema.TypeList,
@@ -58,7 +59,6 @@ func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 			"deployment_group_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"deployment_style": {
 				Type: schema.TypeList,
@@ -105,19 +105,23 @@ func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceCodeDeployDeploymentGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CodeDeploy::DeploymentGroup", ResourceCodeDeployDeploymentGroup(), data, meta)
+func resourceCodeDeployDeploymentGroupExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCodeDeployDeploymentGroupRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::CodeDeploy::DeploymentGroup", ResourceCodeDeployDeploymentGroup(), data, meta)
+}
+
+func resourceCodeDeployDeploymentGroupCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::CodeDeploy::DeploymentGroup", ResourceCodeDeployDeploymentGroup(), data, meta)
 }
 
 func resourceCodeDeployDeploymentGroupUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -127,3 +131,8 @@ func resourceCodeDeployDeploymentGroupUpdate(data *schema.ResourceData, meta int
 func resourceCodeDeployDeploymentGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CodeDeploy::DeploymentGroup", data, meta)
 }
+
+func resourceCodeDeployDeploymentGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::CodeDeploy::DeploymentGroup", data, meta)
+}
+

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,37 +16,42 @@ import (
 
 func ResourceStepFunctionsActivity() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceStepFunctionsActivityExists,
+		Read: resourceStepFunctionsActivityRead,
 		Create: resourceStepFunctionsActivityCreate,
-		Read:   resourceStepFunctionsActivityRead,
 		Update: resourceStepFunctionsActivityUpdate,
 		Delete: resourceStepFunctionsActivityDelete,
-
+		CustomizeDiff: resourceStepFunctionsActivityCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"name": {
-				Type: schema.TypeString,
-				Required: true,
-				ForceNew: true,
-			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: propertyActivityTagsEntry(),
 				Optional: true,
 			},
+			"name": {
+				Type: schema.TypeString,
+				Required: true,
+			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceStepFunctionsActivityCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::StepFunctions::Activity", ResourceStepFunctionsActivity(), data, meta)
+func resourceStepFunctionsActivityExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceStepFunctionsActivityRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::StepFunctions::Activity", ResourceStepFunctionsActivity(), data, meta)
+}
+
+func resourceStepFunctionsActivityCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::StepFunctions::Activity", ResourceStepFunctionsActivity(), data, meta)
 }
 
 func resourceStepFunctionsActivityUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -56,3 +61,8 @@ func resourceStepFunctionsActivityUpdate(data *schema.ResourceData, meta interfa
 func resourceStepFunctionsActivityDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::StepFunctions::Activity", data, meta)
 }
+
+func resourceStepFunctionsActivityCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::StepFunctions::Activity", data, meta)
+}
+

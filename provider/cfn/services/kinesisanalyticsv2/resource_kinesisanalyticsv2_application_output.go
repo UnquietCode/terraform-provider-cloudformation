@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,17 @@ import (
 
 func ResourceKinesisAnalyticsV2ApplicationOutput() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceKinesisAnalyticsV2ApplicationOutputExists,
+		Read: resourceKinesisAnalyticsV2ApplicationOutputRead,
 		Create: resourceKinesisAnalyticsV2ApplicationOutputCreate,
-		Read:   resourceKinesisAnalyticsV2ApplicationOutputRead,
 		Update: resourceKinesisAnalyticsV2ApplicationOutputUpdate,
 		Delete: resourceKinesisAnalyticsV2ApplicationOutputDelete,
-
+		CustomizeDiff: resourceKinesisAnalyticsV2ApplicationOutputCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"application_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"output": {
 				Type: schema.TypeList,
@@ -35,19 +36,23 @@ func ResourceKinesisAnalyticsV2ApplicationOutput() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceKinesisAnalyticsV2ApplicationOutputCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::KinesisAnalyticsV2::ApplicationOutput", ResourceKinesisAnalyticsV2ApplicationOutput(), data, meta)
+func resourceKinesisAnalyticsV2ApplicationOutputExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceKinesisAnalyticsV2ApplicationOutputRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::KinesisAnalyticsV2::ApplicationOutput", ResourceKinesisAnalyticsV2ApplicationOutput(), data, meta)
+}
+
+func resourceKinesisAnalyticsV2ApplicationOutputCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::KinesisAnalyticsV2::ApplicationOutput", ResourceKinesisAnalyticsV2ApplicationOutput(), data, meta)
 }
 
 func resourceKinesisAnalyticsV2ApplicationOutputUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -57,3 +62,8 @@ func resourceKinesisAnalyticsV2ApplicationOutputUpdate(data *schema.ResourceData
 func resourceKinesisAnalyticsV2ApplicationOutputDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::KinesisAnalyticsV2::ApplicationOutput", data, meta)
 }
+
+func resourceKinesisAnalyticsV2ApplicationOutputCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::KinesisAnalyticsV2::ApplicationOutput", data, meta)
+}
+

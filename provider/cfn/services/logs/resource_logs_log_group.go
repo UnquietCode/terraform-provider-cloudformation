@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,20 +16,17 @@ import (
 
 func ResourceLogsLogGroup() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceLogsLogGroupExists,
+		Read: resourceLogsLogGroupRead,
 		Create: resourceLogsLogGroupCreate,
-		Read:   resourceLogsLogGroupRead,
 		Update: resourceLogsLogGroupUpdate,
 		Delete: resourceLogsLogGroupDelete,
-
+		CustomizeDiff: resourceLogsLogGroupCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"log_group_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"retention_in_days": {
 				Type: schema.TypeInt,
@@ -37,19 +34,23 @@ func ResourceLogsLogGroup() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceLogsLogGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Logs::LogGroup", ResourceLogsLogGroup(), data, meta)
+func resourceLogsLogGroupExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceLogsLogGroupRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Logs::LogGroup", ResourceLogsLogGroup(), data, meta)
+}
+
+func resourceLogsLogGroupCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Logs::LogGroup", ResourceLogsLogGroup(), data, meta)
 }
 
 func resourceLogsLogGroupUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -59,3 +60,8 @@ func resourceLogsLogGroupUpdate(data *schema.ResourceData, meta interface{}) err
 func resourceLogsLogGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Logs::LogGroup", data, meta)
 }
+
+func resourceLogsLogGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Logs::LogGroup", data, meta)
+}
+

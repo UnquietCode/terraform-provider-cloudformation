@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,21 +16,21 @@ import (
 
 func ResourceCognitoUserPoolIdentityProvider() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceCognitoUserPoolIdentityProviderExists,
+		Read: resourceCognitoUserPoolIdentityProviderRead,
 		Create: resourceCognitoUserPoolIdentityProviderCreate,
-		Read:   resourceCognitoUserPoolIdentityProviderRead,
 		Update: resourceCognitoUserPoolIdentityProviderUpdate,
 		Delete: resourceCognitoUserPoolIdentityProviderDelete,
-
+		CustomizeDiff: resourceCognitoUserPoolIdentityProviderCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"provider_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"user_pool_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"attribute_mapping": {
 				Type: schema.TypeMap,
@@ -43,7 +43,6 @@ func ResourceCognitoUserPoolIdentityProvider() *schema.Resource {
 			"provider_type": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"idp_identifiers": {
 				Type: schema.TypeList,
@@ -52,19 +51,23 @@ func ResourceCognitoUserPoolIdentityProvider() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceCognitoUserPoolIdentityProviderCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Cognito::UserPoolIdentityProvider", ResourceCognitoUserPoolIdentityProvider(), data, meta)
+func resourceCognitoUserPoolIdentityProviderExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCognitoUserPoolIdentityProviderRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Cognito::UserPoolIdentityProvider", ResourceCognitoUserPoolIdentityProvider(), data, meta)
+}
+
+func resourceCognitoUserPoolIdentityProviderCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Cognito::UserPoolIdentityProvider", ResourceCognitoUserPoolIdentityProvider(), data, meta)
 }
 
 func resourceCognitoUserPoolIdentityProviderUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -74,3 +77,8 @@ func resourceCognitoUserPoolIdentityProviderUpdate(data *schema.ResourceData, me
 func resourceCognitoUserPoolIdentityProviderDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Cognito::UserPoolIdentityProvider", data, meta)
 }
+
+func resourceCognitoUserPoolIdentityProviderCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Cognito::UserPoolIdentityProvider", data, meta)
+}
+

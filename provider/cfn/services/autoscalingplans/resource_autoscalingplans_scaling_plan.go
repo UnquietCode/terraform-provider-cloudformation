@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,20 +16,14 @@ import (
 
 func ResourceAutoScalingPlansScalingPlan() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceAutoScalingPlansScalingPlanExists,
+		Read: resourceAutoScalingPlansScalingPlanRead,
 		Create: resourceAutoScalingPlansScalingPlanCreate,
-		Read:   resourceAutoScalingPlansScalingPlanRead,
 		Update: resourceAutoScalingPlansScalingPlanUpdate,
 		Delete: resourceAutoScalingPlansScalingPlanDelete,
-
+		CustomizeDiff: resourceAutoScalingPlansScalingPlanCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"scaling_plan_name": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"scaling_plan_version": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"application_source": {
 				Type: schema.TypeList,
 				Elem: propertyScalingPlanApplicationSource(),
@@ -43,19 +37,23 @@ func ResourceAutoScalingPlansScalingPlan() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceAutoScalingPlansScalingPlanCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AutoScalingPlans::ScalingPlan", ResourceAutoScalingPlansScalingPlan(), data, meta)
+func resourceAutoScalingPlansScalingPlanExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceAutoScalingPlansScalingPlanRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::AutoScalingPlans::ScalingPlan", ResourceAutoScalingPlansScalingPlan(), data, meta)
+}
+
+func resourceAutoScalingPlansScalingPlanCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::AutoScalingPlans::ScalingPlan", ResourceAutoScalingPlansScalingPlan(), data, meta)
 }
 
 func resourceAutoScalingPlansScalingPlanUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -65,3 +63,8 @@ func resourceAutoScalingPlansScalingPlanUpdate(data *schema.ResourceData, meta i
 func resourceAutoScalingPlansScalingPlanDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AutoScalingPlans::ScalingPlan", data, meta)
 }
+
+func resourceAutoScalingPlansScalingPlanCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::AutoScalingPlans::ScalingPlan", data, meta)
+}
+

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,16 +17,17 @@ import (
 
 func ResourceDocDBDBClusterParameterGroup() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceDocDBDBClusterParameterGroupExists,
+		Read: resourceDocDBDBClusterParameterGroupRead,
 		Create: resourceDocDBDBClusterParameterGroupCreate,
-		Read:   resourceDocDBDBClusterParameterGroupRead,
 		Update: resourceDocDBDBClusterParameterGroupUpdate,
 		Delete: resourceDocDBDBClusterParameterGroupDelete,
-
+		CustomizeDiff: resourceDocDBDBClusterParameterGroupCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"parameters": {
 				Type: schema.TypeMap,
@@ -35,7 +36,6 @@ func ResourceDocDBDBClusterParameterGroup() *schema.Resource {
 			"family": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -45,23 +45,26 @@ func ResourceDocDBDBClusterParameterGroup() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceDocDBDBClusterParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DocDB::DBClusterParameterGroup", ResourceDocDBDBClusterParameterGroup(), data, meta)
+func resourceDocDBDBClusterParameterGroupExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceDocDBDBClusterParameterGroupRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::DocDB::DBClusterParameterGroup", ResourceDocDBDBClusterParameterGroup(), data, meta)
+}
+
+func resourceDocDBDBClusterParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::DocDB::DBClusterParameterGroup", ResourceDocDBDBClusterParameterGroup(), data, meta)
 }
 
 func resourceDocDBDBClusterParameterGroupUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -71,3 +74,8 @@ func resourceDocDBDBClusterParameterGroupUpdate(data *schema.ResourceData, meta 
 func resourceDocDBDBClusterParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::DocDB::DBClusterParameterGroup", data, meta)
 }
+
+func resourceDocDBDBClusterParameterGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::DocDB::DBClusterParameterGroup", data, meta)
+}
+

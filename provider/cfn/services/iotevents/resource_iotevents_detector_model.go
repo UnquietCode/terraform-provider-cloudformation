@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,11 +17,13 @@ import (
 
 func ResourceIoTEventsDetectorModel() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceIoTEventsDetectorModelExists,
+		Read: resourceIoTEventsDetectorModelRead,
 		Create: resourceIoTEventsDetectorModelCreate,
-		Read:   resourceIoTEventsDetectorModelRead,
 		Update: resourceIoTEventsDetectorModelUpdate,
 		Delete: resourceIoTEventsDetectorModelDelete,
-
+		CustomizeDiff: resourceIoTEventsDetectorModelCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"detector_model_definition": {
 				Type: schema.TypeList,
@@ -32,7 +34,6 @@ func ResourceIoTEventsDetectorModel() *schema.Resource {
 			"detector_model_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"detector_model_description": {
 				Type: schema.TypeString,
@@ -41,7 +42,6 @@ func ResourceIoTEventsDetectorModel() *schema.Resource {
 			"key": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"role_arn": {
 				Type: schema.TypeString,
@@ -54,19 +54,23 @@ func ResourceIoTEventsDetectorModel() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceIoTEventsDetectorModelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoTEvents::DetectorModel", ResourceIoTEventsDetectorModel(), data, meta)
+func resourceIoTEventsDetectorModelExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceIoTEventsDetectorModelRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::IoTEvents::DetectorModel", ResourceIoTEventsDetectorModel(), data, meta)
+}
+
+func resourceIoTEventsDetectorModelCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::IoTEvents::DetectorModel", ResourceIoTEventsDetectorModel(), data, meta)
 }
 
 func resourceIoTEventsDetectorModelUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -76,3 +80,8 @@ func resourceIoTEventsDetectorModelUpdate(data *schema.ResourceData, meta interf
 func resourceIoTEventsDetectorModelDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IoTEvents::DetectorModel", data, meta)
 }
+
+func resourceIoTEventsDetectorModelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::IoTEvents::DetectorModel", data, meta)
+}
+

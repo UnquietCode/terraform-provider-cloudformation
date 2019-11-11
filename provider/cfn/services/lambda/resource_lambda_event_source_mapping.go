@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceLambdaEventSourceMapping() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceLambdaEventSourceMappingExists,
+		Read: resourceLambdaEventSourceMappingRead,
 		Create: resourceLambdaEventSourceMappingCreate,
-		Read:   resourceLambdaEventSourceMappingRead,
 		Update: resourceLambdaEventSourceMappingUpdate,
 		Delete: resourceLambdaEventSourceMappingDelete,
-
+		CustomizeDiff: resourceLambdaEventSourceMappingCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"batch_size": {
 				Type: schema.TypeInt,
@@ -33,7 +35,6 @@ func ResourceLambdaEventSourceMapping() *schema.Resource {
 			"event_source_arn": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"function_name": {
 				Type: schema.TypeString,
@@ -46,23 +47,26 @@ func ResourceLambdaEventSourceMapping() *schema.Resource {
 			"starting_position": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceLambdaEventSourceMappingCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Lambda::EventSourceMapping", ResourceLambdaEventSourceMapping(), data, meta)
+func resourceLambdaEventSourceMappingExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceLambdaEventSourceMappingRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Lambda::EventSourceMapping", ResourceLambdaEventSourceMapping(), data, meta)
+}
+
+func resourceLambdaEventSourceMappingCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Lambda::EventSourceMapping", ResourceLambdaEventSourceMapping(), data, meta)
 }
 
 func resourceLambdaEventSourceMappingUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -72,3 +76,8 @@ func resourceLambdaEventSourceMappingUpdate(data *schema.ResourceData, meta inte
 func resourceLambdaEventSourceMappingDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Lambda::EventSourceMapping", data, meta)
 }
+
+func resourceLambdaEventSourceMappingCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Lambda::EventSourceMapping", data, meta)
+}
+

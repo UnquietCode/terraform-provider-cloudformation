@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,21 +16,14 @@ import (
 
 func ResourceMediaLiveChannel() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceMediaLiveChannelExists,
+		Read: resourceMediaLiveChannelRead,
 		Create: resourceMediaLiveChannelCreate,
-		Read:   resourceMediaLiveChannelRead,
 		Update: resourceMediaLiveChannelUpdate,
 		Delete: resourceMediaLiveChannelDelete,
-
+		CustomizeDiff: resourceMediaLiveChannelCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"inputs": {
-				Type: schema.TypeList,
-				Elem: &schema.Schema{Type: schema.TypeString},
-				Computed: true,
-			},
 			"input_attachments": {
 				Type: schema.TypeList,
 				Elem: propertyChannelInputAttachment(),
@@ -73,19 +66,23 @@ func ResourceMediaLiveChannel() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceMediaLiveChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::MediaLive::Channel", ResourceMediaLiveChannel(), data, meta)
+func resourceMediaLiveChannelExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceMediaLiveChannelRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::MediaLive::Channel", ResourceMediaLiveChannel(), data, meta)
+}
+
+func resourceMediaLiveChannelCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::MediaLive::Channel", ResourceMediaLiveChannel(), data, meta)
 }
 
 func resourceMediaLiveChannelUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -95,3 +92,8 @@ func resourceMediaLiveChannelUpdate(data *schema.ResourceData, meta interface{})
 func resourceMediaLiveChannelDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::MediaLive::Channel", data, meta)
 }
+
+func resourceMediaLiveChannelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::MediaLive::Channel", data, meta)
+}
+

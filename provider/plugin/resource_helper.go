@@ -2,164 +2,235 @@ package plugin
 
 import (
 	"errors"
-	"strings"
-	"strconv"
+	"os"
+	"fmt"
+	"encoding/json"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-type ResourceMeat struct {
-  Type string
-	Properties map[string]interface{}
-}
 
-type TemplateData struct {
-  resources map[string]ResourceMeat
-}
-
-type ProviderMetadata struct {
-   template TemplateData
-	 counters map[string]int
+type TemplateEntry struct {
+   logicalId string
+	 cfnType string
+	 hash string
 }
 
 
-func newTemplate() TemplateData {
-  // return provider.resources["template"]
-  
-  container := TemplateData{
-    resources: make(map[string]ResourceMeat),
-  }
-  
-  return container
-}
-
-func getTemplate(meta interface{}) TemplateData {
-	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
-	return providerMeta.template
-}
-
-func getResource(id string, cfnType string, template TemplateData) ResourceMeat {
-	if val, ok := template.resources[id]; ok {
-  	return val
-	} else {
-		resource := ResourceMeat{
-			Type: cfnType,
-			Properties: make(map[string]interface{}),
-		}
-		template.resources[id] = resource
-		return resource
-	}
-}
-
-func convertFromTerraform(data interface{}) interface{} {
-	return nil
-}
-
-func convertToTerraform(data interface{}) interface{} {
-	return nil
-}
-
-func getId(resourceType string, resourceData *schema.ResourceData, meta ProviderMetadata) string {
-	if value, ok := resourceData.GetOk("logical_id"); ok {
-  	return value.(string)
+func readFile(id string, meta ProviderMetadata) (map[string]interface{}, string, error) {
+	var path string = fmt.Sprintf("%s/%s.json", meta.workdir, id)
+	exists, err := fileExists(path);
 	
-	// make one up
-	} else {
-	 	var parts = strings.Split(resourceType, "::")
-		var counterName = parts[1] + parts[2]
-		
-		if _, ok := meta.counters[counterName]; !ok {
-			meta.counters[counterName] = 1
-		}
-		
-		var counter int = meta.counters[counterName]
-		meta.counters[counterName] = counter + 1
-		
-		return counterName + strconv.Itoa(counter)
+	if err != nil {
+		return nil, EMPTY, err
 	}
+	
+	if !exists {
+		return nil, EMPTY, nil
+	}
+	
+	// try to read the file
+	rawData, hashcode, err := readAndHashFile(path)
+	
+	if err != nil {
+		return nil, EMPTY, err
+	}
+	
+	// turn the data into schema data
+	var data map[string]interface{}
+
+  if err := json.Unmarshal(rawData, &data); err != nil {
+    return nil, EMPTY, err
+  }
+	
+	return data, hashcode, nil
 }
 
 
-func ResourceCreate(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
-	var logicalId string = getId(resourceType, resourceData, meta.(ProviderMetadata))
-	var template TemplateData = getTemplate(meta)
-  
-  if _, ok := template.resources[logicalId]; ok {
-    return errors.New("already exists?")
-  } else {
-		var resource = getResource(logicalId, resourceType, template)
-				
-		resourceData.Partial(true)
+func handleExistingResouce(meta ProviderMetadata, entry TemplateEntry) error {
+	meta.mutex.Lock(LOCK_TEMPLATE_REFERENCE)
+	defer meta.mutex.Unlock(LOCK_TEMPLATE_REFERENCE)
+	
+	var file *os.File = nil
+	var path string = fmt.Sprintf("%s/template.data.json", meta.workdir)
+	
+	// if this is the first run, create the file (or overwrite it)
+	if (*meta.newIndex == true) {
+		f, err := os.Create(path)
 		
-		for name := range resourceSchema.Schema {
-			if value, ok := resourceData.GetOk(name); ok {
-		  	resource.Properties[name] = convertFromTerraform(value)
-				resourceData.SetPartial(name)
-			}
+		if err != nil {
+			return err
 		}
 		
-		resourceData.SetId(logicalId)
-		resourceData.Partial(false)
+		file = f
+		*meta.newIndex = false
 	}
-
-  return nil
+	
+	// open the file if it wasn't created
+	if file == nil {
+		f, err := os.OpenFile(path, os.O_APPEND|os.O_WRONLY, 0600)
+		
+		if err != nil {
+			return err
+		}
+		
+		file = f
+	}
+	
+	// append to the file
+	var data map[string]interface{} = map[string]interface{}{
+	 "id": entry.logicalId,
+	 "type": entry.cfnType,
+	 "hash": entry.hash,
+ 	}
+	
+	entryJson, err := mapToJson(data, false)
+	
+	if err != nil {
+		return err
+	}
+	
+	file.Write(entryJson)
+	file.WriteString("\n")
+	file.Close()
+	
+	// append to list
+	// *meta.existingResources = append(*meta.existingResources, id)	
+	return nil
 }
+
+// --------------------------	------------------------------------------------
+
+func ResourceExists(resourceData *schema.ResourceData, meta interface{}) (bool, error) {
+	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
+	var logicalId string = resourceData.Get("logical_id").(string)
+	var path string = fmt.Sprintf("%s/%s.json", providerMeta.workdir, logicalId)
+
+	exists, err := fileExists(path);	
+
+	if err != nil {
+		return false, err
+	}
+	
+	(*providerMeta.exists)[logicalId] = exists
+	
+  return exists, nil
+}
+
 
 func ResourceRead(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
-	var logicalId string = getId(resourceType, resourceData, meta.(ProviderMetadata))
-	var template TemplateData = getTemplate(meta)
-	var resource = getResource(logicalId, resourceType, template)
+	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
+	var logicalId string = resourceData.Get("logical_id").(string)
 	
-	for name := range resource.Properties {
-  	resourceData.Set(name, convertToTerraform(resource.Properties[name]))
+	data, hash, err := readFile(logicalId, providerMeta)
+	
+	if err != nil {
+		return err
 	}
+	
+	// doesn't exist
+	if data == nil && hash == EMPTY {
+		// handleExistingResouce(providerMeta, logicalId, "")
+		resourceData.SetId("")
+		return nil
+	}
+	
+	for name, value := range data {
+		resourceData.Set(name, value)
+	}
+	
+	resourceData.SetId(hash)
+	// handleExistingResouce(providerMeta, logicalId, hash)
+	incrementResourceCounter(providerMeta)
 	
   return nil
 }
+
+func ResourceCreate(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
+	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
+	var logicalId string = resourceData.Get("logical_id").(string)
+	
+	var data map[string]interface{} = convertResourceToMap("", resourceSchema, resourceData, normalGetter)
+	hashcode, err := writeFile(logicalId, data, meta.(ProviderMetadata))
+	
+	if err != nil {
+		return err
+	}
+	
+	resourceData.SetId(hashcode)
+	incrementResourceCounter(providerMeta)
+	
+  return nil
+}
+
 
 func ResourceUpdate(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
-	var logicalId string = getId(resourceType, resourceData, meta.(ProviderMetadata))
-	var template TemplateData = getTemplate(meta)
-	var resource = getResource(logicalId, resourceType, template)
+	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
+	var logicalId string = resourceData.Get("logical_id").(string)
+	data, _, err := readFile(logicalId, providerMeta)
 	
-	resourceData.Partial(true)
-	
-	for name := range resourceSchema.Schema {
-		if resourceData.HasChange(name) {
-			_, value := resourceData.GetChange(name)
-			resource.Properties[name] = convertFromTerraform(value)
-		}
+	if err != nil {
+		return err
 	}
-
-	resourceData.Partial(false)
 	
+	convertAndMergeResourceToMap("", resourceSchema, resourceData, data, changedOnlyGetter)
+	hashcode, err := writeFile(logicalId, data, meta.(ProviderMetadata))
+	
+	if err != nil {
+		return err
+	}
+	
+	resourceData.SetId(hashcode)
+	incrementResourceCounter(providerMeta)
+
   return nil
 }
+
 
 func ResourceDelete(resourceType string, resourceData *schema.ResourceData, meta interface{}) error {
-	var logicalId string = getId(resourceType, resourceData, meta.(ProviderMetadata))
-	var template TemplateData = getTemplate(meta)
+	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
+	var logicalId string = resourceData.Get("logical_id").(string)
+	err := removeFile(logicalId, meta.(ProviderMetadata))
 	
-	if _, ok := template.resources[logicalId]; ok {
-  	delete(template.resources, logicalId)
-	} else {
-		return errors.New("resource does not exist?")
+	if err != nil {
+		return err
 	}
-
+	
+	resourceData.SetId("")
+	incrementResourceCounter(providerMeta)
+	
   return nil
 }
 
 
-func ProviderConfigure(resourceData *schema.ResourceData) (interface{}, error) {
+func ResourceCustomizeDiff(resourceType string, resourceDiff *schema.ResourceDiff, meta interface{}) error {
+	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
+	logicalId := resourceDiff.Get("logical_id").(string)
 	
-	// check for stack in CF
-		// if it exists, get the template data
-		// if it doesn't exist, start a new template
-	var template TemplateData = newTemplate()
+	if _, ok := (*providerMeta.exists)[logicalId]; ok {
+    return errors.New("exists, duplicate logical id "+logicalId)
+	}
+
+	if _, ok := (*providerMeta.diffed)[logicalId]; ok {
+    return errors.New("diffed, duplicate logical id "+logicalId)
+	}
 	
-	meta := ProviderMetadata{
-    template: template,
-		counters: make(map[string]int),
-  }
+	var entry TemplateEntry = TemplateEntry{
+		cfnType: resourceType,
+		logicalId: logicalId,
+		hash: "---",
+	}
 	
-	return meta, nil
+	handleExistingResouce(providerMeta, entry)
+	(*providerMeta.diffed)[logicalId] = true
+	
+	// log.Printf("customizeResourceDiff %s +++++++++++++++++++++++++++++++++++++++++++++++++", logicalId)
+	
+	// if id, ok := resourceDiff.GetOk("id"); ok {
+	// 	handleExistingResouce(meta.(ProviderMetadata), logical_id.(string), id.(string))
+	// } else {
+	// 	handleExistingResouce(meta.(ProviderMetadata), logical_id.(string), "")
+	// 
+	// }
+	
+	return nil
 }

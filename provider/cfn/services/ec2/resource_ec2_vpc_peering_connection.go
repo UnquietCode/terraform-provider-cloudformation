@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,31 +17,29 @@ import (
 
 func ResourceEC2VPCPeeringConnection() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceEC2VPCPeeringConnectionExists,
+		Read: resourceEC2VPCPeeringConnectionRead,
 		Create: resourceEC2VPCPeeringConnectionCreate,
-		Read:   resourceEC2VPCPeeringConnectionRead,
 		Update: resourceEC2VPCPeeringConnectionUpdate,
 		Delete: resourceEC2VPCPeeringConnectionDelete,
-
+		CustomizeDiff: resourceEC2VPCPeeringConnectionCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"peer_owner_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"peer_region": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"peer_role_arn": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"peer_vpc_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -51,23 +49,26 @@ func ResourceEC2VPCPeeringConnection() *schema.Resource {
 			"vpc_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceEC2VPCPeeringConnectionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::VPCPeeringConnection", ResourceEC2VPCPeeringConnection(), data, meta)
+func resourceEC2VPCPeeringConnectionExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2VPCPeeringConnectionRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::VPCPeeringConnection", ResourceEC2VPCPeeringConnection(), data, meta)
+}
+
+func resourceEC2VPCPeeringConnectionCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::VPCPeeringConnection", ResourceEC2VPCPeeringConnection(), data, meta)
 }
 
 func resourceEC2VPCPeeringConnectionUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -77,3 +78,8 @@ func resourceEC2VPCPeeringConnectionUpdate(data *schema.ResourceData, meta inter
 func resourceEC2VPCPeeringConnectionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::VPCPeeringConnection", data, meta)
 }
+
+func resourceEC2VPCPeeringConnectionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::EC2::VPCPeeringConnection", data, meta)
+}
+

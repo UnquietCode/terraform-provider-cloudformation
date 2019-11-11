@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,48 +16,51 @@ import (
 
 func ResourceEMRStep() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceEMRStepExists,
+		Read: resourceEMRStepRead,
 		Create: resourceEMRStepCreate,
-		Read:   resourceEMRStepRead,
+		Update: resourceEMRStepUpdate,
 		Delete: resourceEMRStepDelete,
-
+		CustomizeDiff: resourceEMRStepCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"action_on_failure": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"hadoop_jar_step": {
 				Type: schema.TypeList,
 				Elem: propertyStepHadoopJarStepConfig(),
 				Required: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"job_flow_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceEMRStepCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EMR::Step", ResourceEMRStep(), data, meta)
+func resourceEMRStepExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEMRStepRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EMR::Step", ResourceEMRStep(), data, meta)
+}
+
+func resourceEMRStepCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EMR::Step", ResourceEMRStep(), data, meta)
 }
 
 func resourceEMRStepUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -67,3 +70,8 @@ func resourceEMRStepUpdate(data *schema.ResourceData, meta interface{}) error {
 func resourceEMRStepDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EMR::Step", data, meta)
 }
+
+func resourceEMRStepCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::EMR::Step", data, meta)
+}
+

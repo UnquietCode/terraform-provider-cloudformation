@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,36 +16,41 @@ import (
 
 func ResourceServiceCatalogAcceptedPortfolioShare() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceServiceCatalogAcceptedPortfolioShareExists,
+		Read: resourceServiceCatalogAcceptedPortfolioShareRead,
 		Create: resourceServiceCatalogAcceptedPortfolioShareCreate,
-		Read:   resourceServiceCatalogAcceptedPortfolioShareRead,
+		Update: resourceServiceCatalogAcceptedPortfolioShareUpdate,
 		Delete: resourceServiceCatalogAcceptedPortfolioShareDelete,
-
+		CustomizeDiff: resourceServiceCatalogAcceptedPortfolioShareCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"accept_language": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"portfolio_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceServiceCatalogAcceptedPortfolioShareCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::AcceptedPortfolioShare", ResourceServiceCatalogAcceptedPortfolioShare(), data, meta)
+func resourceServiceCatalogAcceptedPortfolioShareExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceServiceCatalogAcceptedPortfolioShareRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ServiceCatalog::AcceptedPortfolioShare", ResourceServiceCatalogAcceptedPortfolioShare(), data, meta)
+}
+
+func resourceServiceCatalogAcceptedPortfolioShareCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ServiceCatalog::AcceptedPortfolioShare", ResourceServiceCatalogAcceptedPortfolioShare(), data, meta)
 }
 
 func resourceServiceCatalogAcceptedPortfolioShareUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -55,3 +60,8 @@ func resourceServiceCatalogAcceptedPortfolioShareUpdate(data *schema.ResourceDat
 func resourceServiceCatalogAcceptedPortfolioShareDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ServiceCatalog::AcceptedPortfolioShare", data, meta)
 }
+
+func resourceServiceCatalogAcceptedPortfolioShareCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::ServiceCatalog::AcceptedPortfolioShare", data, meta)
+}
+

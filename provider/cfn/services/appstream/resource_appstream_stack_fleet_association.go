@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceAppStreamStackFleetAssociation() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceAppStreamStackFleetAssociationExists,
+		Read: resourceAppStreamStackFleetAssociationRead,
 		Create: resourceAppStreamStackFleetAssociationCreate,
-		Read:   resourceAppStreamStackFleetAssociationRead,
 		Update: resourceAppStreamStackFleetAssociationUpdate,
 		Delete: resourceAppStreamStackFleetAssociationDelete,
-
+		CustomizeDiff: resourceAppStreamStackFleetAssociationCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"fleet_name": {
 				Type: schema.TypeString,
@@ -32,19 +34,23 @@ func ResourceAppStreamStackFleetAssociation() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceAppStreamStackFleetAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppStream::StackFleetAssociation", ResourceAppStreamStackFleetAssociation(), data, meta)
+func resourceAppStreamStackFleetAssociationExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceAppStreamStackFleetAssociationRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::AppStream::StackFleetAssociation", ResourceAppStreamStackFleetAssociation(), data, meta)
+}
+
+func resourceAppStreamStackFleetAssociationCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::AppStream::StackFleetAssociation", ResourceAppStreamStackFleetAssociation(), data, meta)
 }
 
 func resourceAppStreamStackFleetAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -54,3 +60,8 @@ func resourceAppStreamStackFleetAssociationUpdate(data *schema.ResourceData, met
 func resourceAppStreamStackFleetAssociationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AppStream::StackFleetAssociation", data, meta)
 }
+
+func resourceAppStreamStackFleetAssociationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::AppStream::StackFleetAssociation", data, meta)
+}
+

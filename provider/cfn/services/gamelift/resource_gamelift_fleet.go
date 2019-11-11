@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,17 @@ import (
 
 func ResourceGameLiftFleet() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceGameLiftFleetExists,
+		Read: resourceGameLiftFleetRead,
 		Create: resourceGameLiftFleetCreate,
-		Read:   resourceGameLiftFleetRead,
 		Update: resourceGameLiftFleetUpdate,
 		Delete: resourceGameLiftFleetDelete,
-
+		CustomizeDiff: resourceGameLiftFleetCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"build_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"description": {
 				Type: schema.TypeString,
@@ -43,13 +44,11 @@ func ResourceGameLiftFleet() *schema.Resource {
 			"ec2_instance_type": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"log_paths": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Optional: true,
-				ForceNew: true,
 				Set: schema.HashString,
 			},
 			"max_size": {
@@ -67,28 +66,30 @@ func ResourceGameLiftFleet() *schema.Resource {
 			"server_launch_parameters": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"server_launch_path": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceGameLiftFleetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::GameLift::Fleet", ResourceGameLiftFleet(), data, meta)
+func resourceGameLiftFleetExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceGameLiftFleetRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::GameLift::Fleet", ResourceGameLiftFleet(), data, meta)
+}
+
+func resourceGameLiftFleetCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::GameLift::Fleet", ResourceGameLiftFleet(), data, meta)
 }
 
 func resourceGameLiftFleetUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -98,3 +99,8 @@ func resourceGameLiftFleetUpdate(data *schema.ResourceData, meta interface{}) er
 func resourceGameLiftFleetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::GameLift::Fleet", data, meta)
 }
+
+func resourceGameLiftFleetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::GameLift::Fleet", data, meta)
+}
+

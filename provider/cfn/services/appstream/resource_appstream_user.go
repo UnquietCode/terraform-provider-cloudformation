@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,51 +16,53 @@ import (
 
 func ResourceAppStreamUser() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceAppStreamUserExists,
+		Read: resourceAppStreamUserRead,
 		Create: resourceAppStreamUserCreate,
-		Read:   resourceAppStreamUserRead,
+		Update: resourceAppStreamUserUpdate,
 		Delete: resourceAppStreamUserDelete,
-
+		CustomizeDiff: resourceAppStreamUserCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"user_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"first_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"message_action": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"last_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"authentication_type": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceAppStreamUserCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppStream::User", ResourceAppStreamUser(), data, meta)
+func resourceAppStreamUserExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceAppStreamUserRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::AppStream::User", ResourceAppStreamUser(), data, meta)
+}
+
+func resourceAppStreamUserCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::AppStream::User", ResourceAppStreamUser(), data, meta)
 }
 
 func resourceAppStreamUserUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -70,3 +72,8 @@ func resourceAppStreamUserUpdate(data *schema.ResourceData, meta interface{}) er
 func resourceAppStreamUserDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AppStream::User", data, meta)
 }
+
+func resourceAppStreamUserCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::AppStream::User", data, meta)
+}
+

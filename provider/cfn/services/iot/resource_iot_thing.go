@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceIoTThing() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceIoTThingExists,
+		Read: resourceIoTThingRead,
 		Create: resourceIoTThingCreate,
-		Read:   resourceIoTThingRead,
 		Update: resourceIoTThingUpdate,
 		Delete: resourceIoTThingDelete,
-
+		CustomizeDiff: resourceIoTThingCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"attribute_payload": {
 				Type: schema.TypeList,
@@ -31,23 +33,26 @@ func ResourceIoTThing() *schema.Resource {
 			"thing_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceIoTThingCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoT::Thing", ResourceIoTThing(), data, meta)
+func resourceIoTThingExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceIoTThingRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::IoT::Thing", ResourceIoTThing(), data, meta)
+}
+
+func resourceIoTThingCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::IoT::Thing", ResourceIoTThing(), data, meta)
 }
 
 func resourceIoTThingUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -57,3 +62,8 @@ func resourceIoTThingUpdate(data *schema.ResourceData, meta interface{}) error {
 func resourceIoTThingDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IoT::Thing", data, meta)
 }
+
+func resourceIoTThingCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::IoT::Thing", data, meta)
+}
+

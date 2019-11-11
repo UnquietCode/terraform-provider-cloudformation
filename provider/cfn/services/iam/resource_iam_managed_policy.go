@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,17 @@ import (
 
 func ResourceIAMManagedPolicy() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceIAMManagedPolicyExists,
+		Read: resourceIAMManagedPolicyRead,
 		Create: resourceIAMManagedPolicyCreate,
-		Read:   resourceIAMManagedPolicyRead,
 		Update: resourceIAMManagedPolicyUpdate,
 		Delete: resourceIAMManagedPolicyDelete,
-
+		CustomizeDiff: resourceIAMManagedPolicyCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"groups": {
 				Type: schema.TypeSet,
@@ -36,12 +37,10 @@ func ResourceIAMManagedPolicy() *schema.Resource {
 			"managed_policy_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"path": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"policy_document": {
 				Type: schema.TypeMap,
@@ -59,19 +58,23 @@ func ResourceIAMManagedPolicy() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceIAMManagedPolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IAM::ManagedPolicy", ResourceIAMManagedPolicy(), data, meta)
+func resourceIAMManagedPolicyExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceIAMManagedPolicyRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::IAM::ManagedPolicy", ResourceIAMManagedPolicy(), data, meta)
+}
+
+func resourceIAMManagedPolicyCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::IAM::ManagedPolicy", ResourceIAMManagedPolicy(), data, meta)
 }
 
 func resourceIAMManagedPolicyUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -81,3 +84,8 @@ func resourceIAMManagedPolicyUpdate(data *schema.ResourceData, meta interface{})
 func resourceIAMManagedPolicyDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IAM::ManagedPolicy", data, meta)
 }
+
+func resourceIAMManagedPolicyCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::IAM::ManagedPolicy", data, meta)
+}
+

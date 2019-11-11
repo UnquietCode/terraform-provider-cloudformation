@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceServiceCatalogStackSetConstraint() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceServiceCatalogStackSetConstraintExists,
+		Read: resourceServiceCatalogStackSetConstraintRead,
 		Create: resourceServiceCatalogStackSetConstraintCreate,
-		Read:   resourceServiceCatalogStackSetConstraintRead,
 		Update: resourceServiceCatalogStackSetConstraintUpdate,
 		Delete: resourceServiceCatalogStackSetConstraintDelete,
-
+		CustomizeDiff: resourceServiceCatalogStackSetConstraintCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -37,12 +39,10 @@ func ResourceServiceCatalogStackSetConstraint() *schema.Resource {
 			"portfolio_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"product_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"region_list": {
 				Type: schema.TypeList,
@@ -64,19 +64,23 @@ func ResourceServiceCatalogStackSetConstraint() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceServiceCatalogStackSetConstraintCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::StackSetConstraint", ResourceServiceCatalogStackSetConstraint(), data, meta)
+func resourceServiceCatalogStackSetConstraintExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceServiceCatalogStackSetConstraintRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ServiceCatalog::StackSetConstraint", ResourceServiceCatalogStackSetConstraint(), data, meta)
+}
+
+func resourceServiceCatalogStackSetConstraintCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ServiceCatalog::StackSetConstraint", ResourceServiceCatalogStackSetConstraint(), data, meta)
 }
 
 func resourceServiceCatalogStackSetConstraintUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -86,3 +90,8 @@ func resourceServiceCatalogStackSetConstraintUpdate(data *schema.ResourceData, m
 func resourceServiceCatalogStackSetConstraintDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ServiceCatalog::StackSetConstraint", data, meta)
 }
+
+func resourceServiceCatalogStackSetConstraintCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::ServiceCatalog::StackSetConstraint", data, meta)
+}
+

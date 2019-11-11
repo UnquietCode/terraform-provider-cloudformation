@@ -71,11 +71,7 @@ def render_resource(cfn_version, resource, output_path):
     
     rendered = render_resource_template(
         cfn_version=cfn_version,
-        package_name=resource.package.name,
-        resource_name=resource.name,
-        cfn_type=resource.cfn_type,
-        attributes=resource.attributes.values(),
-        documentation_link=resource.documentation_link,
+        resource=resource,
         imports=imports,
     )
 

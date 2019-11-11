@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,31 +16,37 @@ import (
 
 func ResourceSESReceiptRuleSet() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceSESReceiptRuleSetExists,
+		Read: resourceSESReceiptRuleSetRead,
 		Create: resourceSESReceiptRuleSetCreate,
-		Read:   resourceSESReceiptRuleSetRead,
+		Update: resourceSESReceiptRuleSetUpdate,
 		Delete: resourceSESReceiptRuleSetDelete,
-
+		CustomizeDiff: resourceSESReceiptRuleSetCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"rule_set_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceSESReceiptRuleSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SES::ReceiptRuleSet", ResourceSESReceiptRuleSet(), data, meta)
+func resourceSESReceiptRuleSetExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceSESReceiptRuleSetRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::SES::ReceiptRuleSet", ResourceSESReceiptRuleSet(), data, meta)
+}
+
+func resourceSESReceiptRuleSetCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::SES::ReceiptRuleSet", ResourceSESReceiptRuleSet(), data, meta)
 }
 
 func resourceSESReceiptRuleSetUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -50,3 +56,8 @@ func resourceSESReceiptRuleSetUpdate(data *schema.ResourceData, meta interface{}
 func resourceSESReceiptRuleSetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SES::ReceiptRuleSet", data, meta)
 }
+
+func resourceSESReceiptRuleSetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::SES::ReceiptRuleSet", data, meta)
+}
+

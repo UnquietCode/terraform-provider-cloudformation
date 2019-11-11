@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceSSMMaintenanceWindowTarget() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceSSMMaintenanceWindowTargetExists,
+		Read: resourceSSMMaintenanceWindowTargetRead,
 		Create: resourceSSMMaintenanceWindowTargetCreate,
-		Read:   resourceSSMMaintenanceWindowTargetRead,
 		Update: resourceSSMMaintenanceWindowTargetUpdate,
 		Delete: resourceSSMMaintenanceWindowTargetDelete,
-
+		CustomizeDiff: resourceSSMMaintenanceWindowTargetCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"owner_information": {
 				Type: schema.TypeString,
@@ -33,7 +35,6 @@ func ResourceSSMMaintenanceWindowTarget() *schema.Resource {
 			"window_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"resource_type": {
 				Type: schema.TypeString,
@@ -50,19 +51,23 @@ func ResourceSSMMaintenanceWindowTarget() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceSSMMaintenanceWindowTargetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SSM::MaintenanceWindowTarget", ResourceSSMMaintenanceWindowTarget(), data, meta)
+func resourceSSMMaintenanceWindowTargetExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceSSMMaintenanceWindowTargetRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::SSM::MaintenanceWindowTarget", ResourceSSMMaintenanceWindowTarget(), data, meta)
+}
+
+func resourceSSMMaintenanceWindowTargetCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::SSM::MaintenanceWindowTarget", ResourceSSMMaintenanceWindowTarget(), data, meta)
 }
 
 func resourceSSMMaintenanceWindowTargetUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -72,3 +77,8 @@ func resourceSSMMaintenanceWindowTargetUpdate(data *schema.ResourceData, meta in
 func resourceSSMMaintenanceWindowTargetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SSM::MaintenanceWindowTarget", data, meta)
 }
+
+func resourceSSMMaintenanceWindowTargetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::SSM::MaintenanceWindowTarget", data, meta)
+}
+

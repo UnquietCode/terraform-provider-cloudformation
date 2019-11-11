@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceBatchJobDefinition() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceBatchJobDefinitionExists,
+		Read: resourceBatchJobDefinitionRead,
 		Create: resourceBatchJobDefinitionCreate,
-		Read:   resourceBatchJobDefinitionRead,
 		Update: resourceBatchJobDefinitionUpdate,
 		Delete: resourceBatchJobDefinitionDelete,
-
+		CustomizeDiff: resourceBatchJobDefinitionCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"type": {
 				Type: schema.TypeString,
@@ -51,7 +53,6 @@ func ResourceBatchJobDefinition() *schema.Resource {
 			"job_definition_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"retry_strategy": {
 				Type: schema.TypeList,
@@ -61,19 +62,23 @@ func ResourceBatchJobDefinition() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceBatchJobDefinitionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Batch::JobDefinition", ResourceBatchJobDefinition(), data, meta)
+func resourceBatchJobDefinitionExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceBatchJobDefinitionRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Batch::JobDefinition", ResourceBatchJobDefinition(), data, meta)
+}
+
+func resourceBatchJobDefinitionCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Batch::JobDefinition", ResourceBatchJobDefinition(), data, meta)
 }
 
 func resourceBatchJobDefinitionUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -83,3 +88,8 @@ func resourceBatchJobDefinitionUpdate(data *schema.ResourceData, meta interface{
 func resourceBatchJobDefinitionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Batch::JobDefinition", data, meta)
 }
+
+func resourceBatchJobDefinitionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Batch::JobDefinition", data, meta)
+}
+

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,41 +16,45 @@ import (
 
 func ResourceEC2VolumeAttachment() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceEC2VolumeAttachmentExists,
+		Read: resourceEC2VolumeAttachmentRead,
 		Create: resourceEC2VolumeAttachmentCreate,
-		Read:   resourceEC2VolumeAttachmentRead,
+		Update: resourceEC2VolumeAttachmentUpdate,
 		Delete: resourceEC2VolumeAttachmentDelete,
-
+		CustomizeDiff: resourceEC2VolumeAttachmentCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"device": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"instance_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"volume_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceEC2VolumeAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::VolumeAttachment", ResourceEC2VolumeAttachment(), data, meta)
+func resourceEC2VolumeAttachmentExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2VolumeAttachmentRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::VolumeAttachment", ResourceEC2VolumeAttachment(), data, meta)
+}
+
+func resourceEC2VolumeAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::VolumeAttachment", ResourceEC2VolumeAttachment(), data, meta)
 }
 
 func resourceEC2VolumeAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -60,3 +64,8 @@ func resourceEC2VolumeAttachmentUpdate(data *schema.ResourceData, meta interface
 func resourceEC2VolumeAttachmentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::VolumeAttachment", data, meta)
 }
+
+func resourceEC2VolumeAttachmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::EC2::VolumeAttachment", data, meta)
+}
+

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceAppSyncGraphQLSchema() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceAppSyncGraphQLSchemaExists,
+		Read: resourceAppSyncGraphQLSchemaRead,
 		Create: resourceAppSyncGraphQLSchemaCreate,
-		Read:   resourceAppSyncGraphQLSchemaRead,
 		Update: resourceAppSyncGraphQLSchemaUpdate,
 		Delete: resourceAppSyncGraphQLSchemaDelete,
-
+		CustomizeDiff: resourceAppSyncGraphQLSchemaCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"definition": {
 				Type: schema.TypeString,
@@ -33,23 +35,26 @@ func ResourceAppSyncGraphQLSchema() *schema.Resource {
 			"api_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceAppSyncGraphQLSchemaCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppSync::GraphQLSchema", ResourceAppSyncGraphQLSchema(), data, meta)
+func resourceAppSyncGraphQLSchemaExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceAppSyncGraphQLSchemaRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::AppSync::GraphQLSchema", ResourceAppSyncGraphQLSchema(), data, meta)
+}
+
+func resourceAppSyncGraphQLSchemaCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::AppSync::GraphQLSchema", ResourceAppSyncGraphQLSchema(), data, meta)
 }
 
 func resourceAppSyncGraphQLSchemaUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -59,3 +64,8 @@ func resourceAppSyncGraphQLSchemaUpdate(data *schema.ResourceData, meta interfac
 func resourceAppSyncGraphQLSchemaDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AppSync::GraphQLSchema", data, meta)
 }
+
+func resourceAppSyncGraphQLSchemaCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::AppSync::GraphQLSchema", data, meta)
+}
+

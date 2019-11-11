@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,54 +16,47 @@ import (
 
 func ResourceGreengrassResourceDefinition() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceGreengrassResourceDefinitionExists,
+		Read: resourceGreengrassResourceDefinitionRead,
 		Create: resourceGreengrassResourceDefinitionCreate,
-		Read:   resourceGreengrassResourceDefinitionRead,
 		Update: resourceGreengrassResourceDefinitionUpdate,
 		Delete: resourceGreengrassResourceDefinitionDelete,
-
+		CustomizeDiff: resourceGreengrassResourceDefinitionCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"latest_version_arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"the_id": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"name": {
-				Type: schema.TypeString,
-				Required: true,
-			},
 			"initial_version": {
 				Type: schema.TypeList,
 				Elem: propertyResourceDefinitionResourceDefinitionVersion(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"tags": {
 				Type: schema.TypeMap,
 				Optional: true,
 			},
+			"name": {
+				Type: schema.TypeString,
+				Required: true,
+			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceGreengrassResourceDefinitionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Greengrass::ResourceDefinition", ResourceGreengrassResourceDefinition(), data, meta)
+func resourceGreengrassResourceDefinitionExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceGreengrassResourceDefinitionRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Greengrass::ResourceDefinition", ResourceGreengrassResourceDefinition(), data, meta)
+}
+
+func resourceGreengrassResourceDefinitionCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Greengrass::ResourceDefinition", ResourceGreengrassResourceDefinition(), data, meta)
 }
 
 func resourceGreengrassResourceDefinitionUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -73,3 +66,8 @@ func resourceGreengrassResourceDefinitionUpdate(data *schema.ResourceData, meta 
 func resourceGreengrassResourceDefinitionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Greengrass::ResourceDefinition", data, meta)
 }
+
+func resourceGreengrassResourceDefinitionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Greengrass::ResourceDefinition", data, meta)
+}
+

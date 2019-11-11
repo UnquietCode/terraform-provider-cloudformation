@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceSSMAssociation() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceSSMAssociationExists,
+		Read: resourceSSMAssociationRead,
 		Create: resourceSSMAssociationCreate,
-		Read:   resourceSSMAssociationRead,
 		Update: resourceSSMAssociationUpdate,
 		Delete: resourceSSMAssociationDelete,
-
+		CustomizeDiff: resourceSSMAssociationCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"association_name": {
 				Type: schema.TypeString,
@@ -33,12 +35,10 @@ func ResourceSSMAssociation() *schema.Resource {
 			"instance_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"output_location": {
 				Type: schema.TypeList,
@@ -59,23 +59,26 @@ func ResourceSSMAssociation() *schema.Resource {
 				Type: schema.TypeSet,
 				Elem: propertyAssociationTarget(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceSSMAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SSM::Association", ResourceSSMAssociation(), data, meta)
+func resourceSSMAssociationExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceSSMAssociationRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::SSM::Association", ResourceSSMAssociation(), data, meta)
+}
+
+func resourceSSMAssociationCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::SSM::Association", ResourceSSMAssociation(), data, meta)
 }
 
 func resourceSSMAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -85,3 +88,8 @@ func resourceSSMAssociationUpdate(data *schema.ResourceData, meta interface{}) e
 func resourceSSMAssociationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SSM::Association", data, meta)
 }
+
+func resourceSSMAssociationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::SSM::Association", data, meta)
+}
+

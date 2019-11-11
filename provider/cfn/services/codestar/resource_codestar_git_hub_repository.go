@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceCodeStarGitHubRepository() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceCodeStarGitHubRepositoryExists,
+		Read: resourceCodeStarGitHubRepositoryRead,
 		Create: resourceCodeStarGitHubRepositoryCreate,
-		Read:   resourceCodeStarGitHubRepositoryRead,
 		Update: resourceCodeStarGitHubRepositoryUpdate,
 		Delete: resourceCodeStarGitHubRepositoryDelete,
-
+		CustomizeDiff: resourceCodeStarGitHubRepositoryCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"enable_issues": {
 				Type: schema.TypeBool,
@@ -54,19 +56,23 @@ func ResourceCodeStarGitHubRepository() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceCodeStarGitHubRepositoryCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CodeStar::GitHubRepository", ResourceCodeStarGitHubRepository(), data, meta)
+func resourceCodeStarGitHubRepositoryExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCodeStarGitHubRepositoryRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::CodeStar::GitHubRepository", ResourceCodeStarGitHubRepository(), data, meta)
+}
+
+func resourceCodeStarGitHubRepositoryCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::CodeStar::GitHubRepository", ResourceCodeStarGitHubRepository(), data, meta)
 }
 
 func resourceCodeStarGitHubRepositoryUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -76,3 +82,8 @@ func resourceCodeStarGitHubRepositoryUpdate(data *schema.ResourceData, meta inte
 func resourceCodeStarGitHubRepositoryDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CodeStar::GitHubRepository", data, meta)
 }
+
+func resourceCodeStarGitHubRepositoryCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::CodeStar::GitHubRepository", data, meta)
+}
+

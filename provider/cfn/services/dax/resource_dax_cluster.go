@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,25 +16,18 @@ import (
 
 func ResourceDAXCluster() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceDAXClusterExists,
+		Read: resourceDAXClusterRead,
 		Create: resourceDAXClusterCreate,
-		Read:   resourceDAXClusterRead,
 		Update: resourceDAXClusterUpdate,
 		Delete: resourceDAXClusterDelete,
-
+		CustomizeDiff: resourceDAXClusterCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"cluster_discovery_endpoint": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"sse_specification": {
 				Type: schema.TypeList,
 				Elem: propertyClusterSSESpecification(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"description": {
@@ -57,12 +50,10 @@ func ResourceDAXCluster() *schema.Resource {
 			"iam_role_arn": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"subnet_group_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"preferred_maintenance_window": {
 				Type: schema.TypeString,
@@ -80,12 +71,10 @@ func ResourceDAXCluster() *schema.Resource {
 			"node_type": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"cluster_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeMap,
@@ -93,19 +82,23 @@ func ResourceDAXCluster() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceDAXClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DAX::Cluster", ResourceDAXCluster(), data, meta)
+func resourceDAXClusterExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceDAXClusterRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::DAX::Cluster", ResourceDAXCluster(), data, meta)
+}
+
+func resourceDAXClusterCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::DAX::Cluster", ResourceDAXCluster(), data, meta)
 }
 
 func resourceDAXClusterUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -115,3 +108,8 @@ func resourceDAXClusterUpdate(data *schema.ResourceData, meta interface{}) error
 func resourceDAXClusterDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::DAX::Cluster", data, meta)
 }
+
+func resourceDAXClusterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::DAX::Cluster", data, meta)
+}
+

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceElasticLoadBalancingV2ListenerRule() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceElasticLoadBalancingV2ListenerRuleExists,
+		Read: resourceElasticLoadBalancingV2ListenerRuleRead,
 		Create: resourceElasticLoadBalancingV2ListenerRuleCreate,
-		Read:   resourceElasticLoadBalancingV2ListenerRuleRead,
 		Update: resourceElasticLoadBalancingV2ListenerRuleUpdate,
 		Delete: resourceElasticLoadBalancingV2ListenerRuleDelete,
-
+		CustomizeDiff: resourceElasticLoadBalancingV2ListenerRuleCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"actions": {
 				Type: schema.TypeSet,
@@ -35,7 +37,6 @@ func ResourceElasticLoadBalancingV2ListenerRule() *schema.Resource {
 			"listener_arn": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"priority": {
 				Type: schema.TypeInt,
@@ -43,19 +44,23 @@ func ResourceElasticLoadBalancingV2ListenerRule() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceElasticLoadBalancingV2ListenerRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElasticLoadBalancingV2::ListenerRule", ResourceElasticLoadBalancingV2ListenerRule(), data, meta)
+func resourceElasticLoadBalancingV2ListenerRuleExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceElasticLoadBalancingV2ListenerRuleRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ElasticLoadBalancingV2::ListenerRule", ResourceElasticLoadBalancingV2ListenerRule(), data, meta)
+}
+
+func resourceElasticLoadBalancingV2ListenerRuleCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ElasticLoadBalancingV2::ListenerRule", ResourceElasticLoadBalancingV2ListenerRule(), data, meta)
 }
 
 func resourceElasticLoadBalancingV2ListenerRuleUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -65,3 +70,8 @@ func resourceElasticLoadBalancingV2ListenerRuleUpdate(data *schema.ResourceData,
 func resourceElasticLoadBalancingV2ListenerRuleDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ElasticLoadBalancingV2::ListenerRule", data, meta)
 }
+
+func resourceElasticLoadBalancingV2ListenerRuleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::ElasticLoadBalancingV2::ListenerRule", data, meta)
+}
+

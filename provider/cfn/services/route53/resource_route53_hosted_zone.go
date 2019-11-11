@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,17 +16,14 @@ import (
 
 func ResourceRoute53HostedZone() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceRoute53HostedZoneExists,
+		Read: resourceRoute53HostedZoneRead,
 		Create: resourceRoute53HostedZoneCreate,
-		Read:   resourceRoute53HostedZoneRead,
 		Update: resourceRoute53HostedZoneUpdate,
 		Delete: resourceRoute53HostedZoneDelete,
-
+		CustomizeDiff: resourceRoute53HostedZoneCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"name_servers": {
-				Type: schema.TypeList,
-				Elem: &schema.Schema{Type: schema.TypeString},
-				Computed: true,
-			},
 			"hosted_zone_config": {
 				Type: schema.TypeList,
 				Elem: propertyHostedZoneHostedZoneConfig(),
@@ -41,7 +38,6 @@ func ResourceRoute53HostedZone() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"query_logging_config": {
 				Type: schema.TypeList,
@@ -56,19 +52,23 @@ func ResourceRoute53HostedZone() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceRoute53HostedZoneCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Route53::HostedZone", ResourceRoute53HostedZone(), data, meta)
+func resourceRoute53HostedZoneExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceRoute53HostedZoneRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Route53::HostedZone", ResourceRoute53HostedZone(), data, meta)
+}
+
+func resourceRoute53HostedZoneCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Route53::HostedZone", ResourceRoute53HostedZone(), data, meta)
 }
 
 func resourceRoute53HostedZoneUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -78,3 +78,8 @@ func resourceRoute53HostedZoneUpdate(data *schema.ResourceData, meta interface{}
 func resourceRoute53HostedZoneDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Route53::HostedZone", data, meta)
 }
+
+func resourceRoute53HostedZoneCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Route53::HostedZone", data, meta)
+}
+

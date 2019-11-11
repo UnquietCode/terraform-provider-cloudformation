@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,31 +16,37 @@ import (
 
 func ResourceEC2EgressOnlyInternetGateway() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceEC2EgressOnlyInternetGatewayExists,
+		Read: resourceEC2EgressOnlyInternetGatewayRead,
 		Create: resourceEC2EgressOnlyInternetGatewayCreate,
-		Read:   resourceEC2EgressOnlyInternetGatewayRead,
+		Update: resourceEC2EgressOnlyInternetGatewayUpdate,
 		Delete: resourceEC2EgressOnlyInternetGatewayDelete,
-
+		CustomizeDiff: resourceEC2EgressOnlyInternetGatewayCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"vpc_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceEC2EgressOnlyInternetGatewayCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::EgressOnlyInternetGateway", ResourceEC2EgressOnlyInternetGateway(), data, meta)
+func resourceEC2EgressOnlyInternetGatewayExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2EgressOnlyInternetGatewayRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::EgressOnlyInternetGateway", ResourceEC2EgressOnlyInternetGateway(), data, meta)
+}
+
+func resourceEC2EgressOnlyInternetGatewayCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::EgressOnlyInternetGateway", ResourceEC2EgressOnlyInternetGateway(), data, meta)
 }
 
 func resourceEC2EgressOnlyInternetGatewayUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -50,3 +56,8 @@ func resourceEC2EgressOnlyInternetGatewayUpdate(data *schema.ResourceData, meta 
 func resourceEC2EgressOnlyInternetGatewayDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::EgressOnlyInternetGateway", data, meta)
 }
+
+func resourceEC2EgressOnlyInternetGatewayCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::EC2::EgressOnlyInternetGateway", data, meta)
+}
+

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,17 @@ import (
 
 func ResourceWAFRegionalWebACL() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceWAFRegionalWebACLExists,
+		Read: resourceWAFRegionalWebACLRead,
 		Create: resourceWAFRegionalWebACLCreate,
-		Read:   resourceWAFRegionalWebACLRead,
 		Update: resourceWAFRegionalWebACLUpdate,
 		Delete: resourceWAFRegionalWebACLDelete,
-
+		CustomizeDiff: resourceWAFRegionalWebACLCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"metric_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"default_action": {
 				Type: schema.TypeList,
@@ -41,23 +42,26 @@ func ResourceWAFRegionalWebACL() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceWAFRegionalWebACLCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::WAFRegional::WebACL", ResourceWAFRegionalWebACL(), data, meta)
+func resourceWAFRegionalWebACLExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceWAFRegionalWebACLRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::WAFRegional::WebACL", ResourceWAFRegionalWebACL(), data, meta)
+}
+
+func resourceWAFRegionalWebACLCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::WAFRegional::WebACL", ResourceWAFRegionalWebACL(), data, meta)
 }
 
 func resourceWAFRegionalWebACLUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -67,3 +71,8 @@ func resourceWAFRegionalWebACLUpdate(data *schema.ResourceData, meta interface{}
 func resourceWAFRegionalWebACLDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::WAFRegional::WebACL", data, meta)
 }
+
+func resourceWAFRegionalWebACLCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::WAFRegional::WebACL", data, meta)
+}
+

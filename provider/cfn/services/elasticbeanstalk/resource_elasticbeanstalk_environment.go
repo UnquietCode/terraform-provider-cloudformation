@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,25 +17,21 @@ import (
 
 func ResourceElasticBeanstalkEnvironment() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceElasticBeanstalkEnvironmentExists,
+		Read: resourceElasticBeanstalkEnvironmentRead,
 		Create: resourceElasticBeanstalkEnvironmentCreate,
-		Read:   resourceElasticBeanstalkEnvironmentRead,
 		Update: resourceElasticBeanstalkEnvironmentUpdate,
 		Delete: resourceElasticBeanstalkEnvironmentDelete,
-
+		CustomizeDiff: resourceElasticBeanstalkEnvironmentCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"endpoint_url": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"application_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"cname_prefix": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"description": {
 				Type: schema.TypeString,
@@ -44,7 +40,6 @@ func ResourceElasticBeanstalkEnvironment() *schema.Resource {
 			"environment_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"option_settings": {
 				Type: schema.TypeList,
@@ -58,7 +53,6 @@ func ResourceElasticBeanstalkEnvironment() *schema.Resource {
 			"solution_stack_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -81,19 +75,23 @@ func ResourceElasticBeanstalkEnvironment() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceElasticBeanstalkEnvironmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElasticBeanstalk::Environment", ResourceElasticBeanstalkEnvironment(), data, meta)
+func resourceElasticBeanstalkEnvironmentExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceElasticBeanstalkEnvironmentRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ElasticBeanstalk::Environment", ResourceElasticBeanstalkEnvironment(), data, meta)
+}
+
+func resourceElasticBeanstalkEnvironmentCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ElasticBeanstalk::Environment", ResourceElasticBeanstalkEnvironment(), data, meta)
 }
 
 func resourceElasticBeanstalkEnvironmentUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -103,3 +101,8 @@ func resourceElasticBeanstalkEnvironmentUpdate(data *schema.ResourceData, meta i
 func resourceElasticBeanstalkEnvironmentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ElasticBeanstalk::Environment", data, meta)
 }
+
+func resourceElasticBeanstalkEnvironmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::ElasticBeanstalk::Environment", data, meta)
+}
+

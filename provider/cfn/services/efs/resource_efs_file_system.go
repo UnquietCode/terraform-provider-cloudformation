@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,17 @@ import (
 
 func ResourceEFSFileSystem() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceEFSFileSystemExists,
+		Read: resourceEFSFileSystemRead,
 		Create: resourceEFSFileSystemCreate,
-		Read:   resourceEFSFileSystemRead,
 		Update: resourceEFSFileSystemUpdate,
 		Delete: resourceEFSFileSystemDelete,
-
+		CustomizeDiff: resourceEFSFileSystemCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"encrypted": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"file_system_tags": {
 				Type: schema.TypeSet,
@@ -35,7 +36,6 @@ func ResourceEFSFileSystem() *schema.Resource {
 			"kms_key_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"lifecycle_policies": {
 				Type: schema.TypeSet,
@@ -45,7 +45,6 @@ func ResourceEFSFileSystem() *schema.Resource {
 			"performance_mode": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"provisioned_throughput_in_mibps": {
 				Type: schema.TypeFloat,
@@ -57,19 +56,23 @@ func ResourceEFSFileSystem() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceEFSFileSystemCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EFS::FileSystem", ResourceEFSFileSystem(), data, meta)
+func resourceEFSFileSystemExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEFSFileSystemRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EFS::FileSystem", ResourceEFSFileSystem(), data, meta)
+}
+
+func resourceEFSFileSystemCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EFS::FileSystem", ResourceEFSFileSystem(), data, meta)
 }
 
 func resourceEFSFileSystemUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -79,3 +82,8 @@ func resourceEFSFileSystemUpdate(data *schema.ResourceData, meta interface{}) er
 func resourceEFSFileSystemDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EFS::FileSystem", data, meta)
 }
+
+func resourceEFSFileSystemCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::EFS::FileSystem", data, meta)
+}
+

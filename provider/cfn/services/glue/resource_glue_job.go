@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceGlueJob() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceGlueJobExists,
+		Read: resourceGlueJobRead,
 		Create: resourceGlueJobCreate,
-		Read:   resourceGlueJobRead,
 		Update: resourceGlueJobUpdate,
 		Delete: resourceGlueJobDelete,
-
+		CustomizeDiff: resourceGlueJobCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"connections": {
 				Type: schema.TypeList,
@@ -47,7 +49,6 @@ func ResourceGlueJob() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"role": {
 				Type: schema.TypeString,
@@ -105,19 +106,23 @@ func ResourceGlueJob() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceGlueJobCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::Job", ResourceGlueJob(), data, meta)
+func resourceGlueJobExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceGlueJobRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Glue::Job", ResourceGlueJob(), data, meta)
+}
+
+func resourceGlueJobCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Glue::Job", ResourceGlueJob(), data, meta)
 }
 
 func resourceGlueJobUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -127,3 +132,8 @@ func resourceGlueJobUpdate(data *schema.ResourceData, meta interface{}) error {
 func resourceGlueJobDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Glue::Job", data, meta)
 }
+
+func resourceGlueJobCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Glue::Job", data, meta)
+}
+

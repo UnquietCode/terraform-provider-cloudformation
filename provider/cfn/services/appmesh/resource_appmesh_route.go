@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,34 +17,25 @@ import (
 
 func ResourceAppMeshRoute() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceAppMeshRouteExists,
+		Read: resourceAppMeshRouteRead,
 		Create: resourceAppMeshRouteCreate,
-		Read:   resourceAppMeshRouteRead,
 		Update: resourceAppMeshRouteUpdate,
 		Delete: resourceAppMeshRouteDelete,
-
+		CustomizeDiff: resourceAppMeshRouteCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"uid": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"mesh_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"virtual_router_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"route_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
-			},
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
 			},
 			"spec": {
 				Type: schema.TypeList,
@@ -59,19 +50,23 @@ func ResourceAppMeshRoute() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceAppMeshRouteCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppMesh::Route", ResourceAppMeshRoute(), data, meta)
+func resourceAppMeshRouteExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceAppMeshRouteRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::AppMesh::Route", ResourceAppMeshRoute(), data, meta)
+}
+
+func resourceAppMeshRouteCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::AppMesh::Route", ResourceAppMeshRoute(), data, meta)
 }
 
 func resourceAppMeshRouteUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -81,3 +76,8 @@ func resourceAppMeshRouteUpdate(data *schema.ResourceData, meta interface{}) err
 func resourceAppMeshRouteDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AppMesh::Route", data, meta)
 }
+
+func resourceAppMeshRouteCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::AppMesh::Route", data, meta)
+}
+

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceCognitoIdentityPoolRoleAttachment() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceCognitoIdentityPoolRoleAttachmentExists,
+		Read: resourceCognitoIdentityPoolRoleAttachmentRead,
 		Create: resourceCognitoIdentityPoolRoleAttachmentCreate,
-		Read:   resourceCognitoIdentityPoolRoleAttachmentRead,
 		Update: resourceCognitoIdentityPoolRoleAttachmentUpdate,
 		Delete: resourceCognitoIdentityPoolRoleAttachmentDelete,
-
+		CustomizeDiff: resourceCognitoIdentityPoolRoleAttachmentCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"role_mappings": {
 				Type: schema.TypeMap,
@@ -29,7 +31,6 @@ func ResourceCognitoIdentityPoolRoleAttachment() *schema.Resource {
 			"identity_pool_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"roles": {
 				Type: schema.TypeMap,
@@ -37,19 +38,23 @@ func ResourceCognitoIdentityPoolRoleAttachment() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceCognitoIdentityPoolRoleAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Cognito::IdentityPoolRoleAttachment", ResourceCognitoIdentityPoolRoleAttachment(), data, meta)
+func resourceCognitoIdentityPoolRoleAttachmentExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCognitoIdentityPoolRoleAttachmentRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Cognito::IdentityPoolRoleAttachment", ResourceCognitoIdentityPoolRoleAttachment(), data, meta)
+}
+
+func resourceCognitoIdentityPoolRoleAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Cognito::IdentityPoolRoleAttachment", ResourceCognitoIdentityPoolRoleAttachment(), data, meta)
 }
 
 func resourceCognitoIdentityPoolRoleAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -59,3 +64,8 @@ func resourceCognitoIdentityPoolRoleAttachmentUpdate(data *schema.ResourceData, 
 func resourceCognitoIdentityPoolRoleAttachmentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Cognito::IdentityPoolRoleAttachment", data, meta)
 }
+
+func resourceCognitoIdentityPoolRoleAttachmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Cognito::IdentityPoolRoleAttachment", data, meta)
+}
+

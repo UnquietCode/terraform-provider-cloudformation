@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,20 +17,14 @@ import (
 
 func ResourceCloudTrailTrail() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceCloudTrailTrailExists,
+		Read: resourceCloudTrailTrailRead,
 		Create: resourceCloudTrailTrailCreate,
-		Read:   resourceCloudTrailTrailRead,
 		Update: resourceCloudTrailTrailUpdate,
 		Delete: resourceCloudTrailTrailDelete,
-
+		CustomizeDiff: resourceCloudTrailTrailCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"sns_topic_arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"cloud_watch_logs_log_group_arn": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -84,23 +78,26 @@ func ResourceCloudTrailTrail() *schema.Resource {
 			"trail_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceCloudTrailTrailCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CloudTrail::Trail", ResourceCloudTrailTrail(), data, meta)
+func resourceCloudTrailTrailExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCloudTrailTrailRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::CloudTrail::Trail", ResourceCloudTrailTrail(), data, meta)
+}
+
+func resourceCloudTrailTrailCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::CloudTrail::Trail", ResourceCloudTrailTrail(), data, meta)
 }
 
 func resourceCloudTrailTrailUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -110,3 +107,8 @@ func resourceCloudTrailTrailUpdate(data *schema.ResourceData, meta interface{}) 
 func resourceCloudTrailTrailDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CloudTrail::Trail", data, meta)
 }
+
+func resourceCloudTrailTrailCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::CloudTrail::Trail", data, meta)
+}
+

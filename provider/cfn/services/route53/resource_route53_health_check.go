@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceRoute53HealthCheck() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceRoute53HealthCheckExists,
+		Read: resourceRoute53HealthCheckRead,
 		Create: resourceRoute53HealthCheckCreate,
-		Read:   resourceRoute53HealthCheckRead,
 		Update: resourceRoute53HealthCheckUpdate,
 		Delete: resourceRoute53HealthCheckDelete,
-
+		CustomizeDiff: resourceRoute53HealthCheckCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"health_check_config": {
 				Type: schema.TypeList,
@@ -35,19 +37,23 @@ func ResourceRoute53HealthCheck() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceRoute53HealthCheckCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Route53::HealthCheck", ResourceRoute53HealthCheck(), data, meta)
+func resourceRoute53HealthCheckExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceRoute53HealthCheckRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Route53::HealthCheck", ResourceRoute53HealthCheck(), data, meta)
+}
+
+func resourceRoute53HealthCheckCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Route53::HealthCheck", ResourceRoute53HealthCheck(), data, meta)
 }
 
 func resourceRoute53HealthCheckUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -57,3 +63,8 @@ func resourceRoute53HealthCheckUpdate(data *schema.ResourceData, meta interface{
 func resourceRoute53HealthCheckDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Route53::HealthCheck", data, meta)
 }
+
+func resourceRoute53HealthCheckCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Route53::HealthCheck", data, meta)
+}
+

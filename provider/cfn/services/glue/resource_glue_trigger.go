@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceGlueTrigger() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceGlueTriggerExists,
+		Read: resourceGlueTriggerRead,
 		Create: resourceGlueTriggerCreate,
-		Read:   resourceGlueTriggerRead,
 		Update: resourceGlueTriggerUpdate,
 		Delete: resourceGlueTriggerDelete,
-
+		CustomizeDiff: resourceGlueTriggerCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"type": {
 				Type: schema.TypeString,
@@ -42,7 +44,6 @@ func ResourceGlueTrigger() *schema.Resource {
 			"workflow_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"schedule": {
 				Type: schema.TypeString,
@@ -55,7 +56,6 @@ func ResourceGlueTrigger() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"predicate": {
 				Type: schema.TypeList,
@@ -65,19 +65,23 @@ func ResourceGlueTrigger() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceGlueTriggerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::Trigger", ResourceGlueTrigger(), data, meta)
+func resourceGlueTriggerExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceGlueTriggerRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Glue::Trigger", ResourceGlueTrigger(), data, meta)
+}
+
+func resourceGlueTriggerCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Glue::Trigger", ResourceGlueTrigger(), data, meta)
 }
 
 func resourceGlueTriggerUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -87,3 +91,8 @@ func resourceGlueTriggerUpdate(data *schema.ResourceData, meta interface{}) erro
 func resourceGlueTriggerDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Glue::Trigger", data, meta)
 }
+
+func resourceGlueTriggerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Glue::Trigger", data, meta)
+}
+

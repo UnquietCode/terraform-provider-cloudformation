@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceLogsMetricFilter() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceLogsMetricFilterExists,
+		Read: resourceLogsMetricFilterRead,
 		Create: resourceLogsMetricFilterCreate,
-		Read:   resourceLogsMetricFilterRead,
 		Update: resourceLogsMetricFilterUpdate,
 		Delete: resourceLogsMetricFilterDelete,
-
+		CustomizeDiff: resourceLogsMetricFilterCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"filter_pattern": {
 				Type: schema.TypeString,
@@ -29,7 +31,6 @@ func ResourceLogsMetricFilter() *schema.Resource {
 			"log_group_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"metric_transformations": {
 				Type: schema.TypeSet,
@@ -38,19 +39,23 @@ func ResourceLogsMetricFilter() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceLogsMetricFilterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Logs::MetricFilter", ResourceLogsMetricFilter(), data, meta)
+func resourceLogsMetricFilterExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceLogsMetricFilterRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Logs::MetricFilter", ResourceLogsMetricFilter(), data, meta)
+}
+
+func resourceLogsMetricFilterCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Logs::MetricFilter", ResourceLogsMetricFilter(), data, meta)
 }
 
 func resourceLogsMetricFilterUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -60,3 +65,8 @@ func resourceLogsMetricFilterUpdate(data *schema.ResourceData, meta interface{})
 func resourceLogsMetricFilterDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Logs::MetricFilter", data, meta)
 }
+
+func resourceLogsMetricFilterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Logs::MetricFilter", data, meta)
+}
+

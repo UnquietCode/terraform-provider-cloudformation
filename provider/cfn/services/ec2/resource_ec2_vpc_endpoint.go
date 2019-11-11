@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,26 +16,14 @@ import (
 
 func ResourceEC2VPCEndpoint() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceEC2VPCEndpointExists,
+		Read: resourceEC2VPCEndpointRead,
 		Create: resourceEC2VPCEndpointCreate,
-		Read:   resourceEC2VPCEndpointRead,
 		Update: resourceEC2VPCEndpointUpdate,
 		Delete: resourceEC2VPCEndpointDelete,
-
+		CustomizeDiff: resourceEC2VPCEndpointCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"creation_timestamp": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"dns_entries": {
-				Type: schema.TypeList,
-				Elem: &schema.Schema{Type: schema.TypeString},
-				Computed: true,
-			},
-			"network_interface_ids": {
-				Type: schema.TypeList,
-				Elem: &schema.Schema{Type: schema.TypeString},
-				Computed: true,
-			},
 			"policy_document": {
 				Type: schema.TypeMap,
 				Optional: true,
@@ -59,7 +47,6 @@ func ResourceEC2VPCEndpoint() *schema.Resource {
 			"service_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"subnet_ids": {
 				Type: schema.TypeSet,
@@ -70,28 +57,30 @@ func ResourceEC2VPCEndpoint() *schema.Resource {
 			"vpc_endpoint_type": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"vpc_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceEC2VPCEndpointCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::VPCEndpoint", ResourceEC2VPCEndpoint(), data, meta)
+func resourceEC2VPCEndpointExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2VPCEndpointRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::VPCEndpoint", ResourceEC2VPCEndpoint(), data, meta)
+}
+
+func resourceEC2VPCEndpointCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::VPCEndpoint", ResourceEC2VPCEndpoint(), data, meta)
 }
 
 func resourceEC2VPCEndpointUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -101,3 +90,8 @@ func resourceEC2VPCEndpointUpdate(data *schema.ResourceData, meta interface{}) e
 func resourceEC2VPCEndpointDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::VPCEndpoint", data, meta)
 }
+
+func resourceEC2VPCEndpointCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::EC2::VPCEndpoint", data, meta)
+}
+

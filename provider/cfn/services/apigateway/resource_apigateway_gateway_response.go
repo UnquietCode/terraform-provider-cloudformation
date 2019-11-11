@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceApiGatewayGatewayResponse() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceApiGatewayGatewayResponseExists,
+		Read: resourceApiGatewayGatewayResponseRead,
 		Create: resourceApiGatewayGatewayResponseCreate,
-		Read:   resourceApiGatewayGatewayResponseRead,
 		Update: resourceApiGatewayGatewayResponseUpdate,
 		Delete: resourceApiGatewayGatewayResponseDelete,
-
+		CustomizeDiff: resourceApiGatewayGatewayResponseCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"response_parameters": {
 				Type: schema.TypeMap,
@@ -35,12 +37,10 @@ func ResourceApiGatewayGatewayResponse() *schema.Resource {
 			"response_type": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"rest_api_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"status_code": {
 				Type: schema.TypeString,
@@ -48,19 +48,23 @@ func ResourceApiGatewayGatewayResponse() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceApiGatewayGatewayResponseCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::GatewayResponse", ResourceApiGatewayGatewayResponse(), data, meta)
+func resourceApiGatewayGatewayResponseExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceApiGatewayGatewayResponseRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ApiGateway::GatewayResponse", ResourceApiGatewayGatewayResponse(), data, meta)
+}
+
+func resourceApiGatewayGatewayResponseCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ApiGateway::GatewayResponse", ResourceApiGatewayGatewayResponse(), data, meta)
 }
 
 func resourceApiGatewayGatewayResponseUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -70,3 +74,8 @@ func resourceApiGatewayGatewayResponseUpdate(data *schema.ResourceData, meta int
 func resourceApiGatewayGatewayResponseDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGateway::GatewayResponse", data, meta)
 }
+
+func resourceApiGatewayGatewayResponseCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::ApiGateway::GatewayResponse", data, meta)
+}
+

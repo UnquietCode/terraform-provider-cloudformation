@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceApiGatewayApiKey() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceApiGatewayApiKeyExists,
+		Read: resourceApiGatewayApiKeyRead,
 		Create: resourceApiGatewayApiKeyCreate,
-		Read:   resourceApiGatewayApiKeyRead,
 		Update: resourceApiGatewayApiKeyUpdate,
 		Delete: resourceApiGatewayApiKeyDelete,
-
+		CustomizeDiff: resourceApiGatewayApiKeyCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"customer_id": {
 				Type: schema.TypeString,
@@ -37,12 +39,10 @@ func ResourceApiGatewayApiKey() *schema.Resource {
 			"generate_distinct_id": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"stage_keys": {
 				Type: schema.TypeSet,
@@ -52,23 +52,26 @@ func ResourceApiGatewayApiKey() *schema.Resource {
 			"value": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceApiGatewayApiKeyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::ApiKey", ResourceApiGatewayApiKey(), data, meta)
+func resourceApiGatewayApiKeyExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceApiGatewayApiKeyRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ApiGateway::ApiKey", ResourceApiGatewayApiKey(), data, meta)
+}
+
+func resourceApiGatewayApiKeyCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ApiGateway::ApiKey", ResourceApiGatewayApiKey(), data, meta)
 }
 
 func resourceApiGatewayApiKeyUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -78,3 +81,8 @@ func resourceApiGatewayApiKeyUpdate(data *schema.ResourceData, meta interface{})
 func resourceApiGatewayApiKeyDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGateway::ApiKey", data, meta)
 }
+
+func resourceApiGatewayApiKeyCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::ApiGateway::ApiKey", data, meta)
+}
+

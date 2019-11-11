@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,26 +16,32 @@ import (
 
 func ResourceCloudFormationWaitConditionHandle() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceCloudFormationWaitConditionHandleExists,
+		Read: resourceCloudFormationWaitConditionHandleRead,
 		Create: resourceCloudFormationWaitConditionHandleCreate,
-		Read:   resourceCloudFormationWaitConditionHandleRead,
 		Delete: resourceCloudFormationWaitConditionHandleDelete,
-
+		CustomizeDiff: resourceCloudFormationWaitConditionHandleCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceCloudFormationWaitConditionHandleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CloudFormation::WaitConditionHandle", ResourceCloudFormationWaitConditionHandle(), data, meta)
+func resourceCloudFormationWaitConditionHandleExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCloudFormationWaitConditionHandleRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::CloudFormation::WaitConditionHandle", ResourceCloudFormationWaitConditionHandle(), data, meta)
+}
+
+func resourceCloudFormationWaitConditionHandleCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::CloudFormation::WaitConditionHandle", ResourceCloudFormationWaitConditionHandle(), data, meta)
 }
 
 func resourceCloudFormationWaitConditionHandleUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -45,3 +51,8 @@ func resourceCloudFormationWaitConditionHandleUpdate(data *schema.ResourceData, 
 func resourceCloudFormationWaitConditionHandleDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CloudFormation::WaitConditionHandle", data, meta)
 }
+
+func resourceCloudFormationWaitConditionHandleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::CloudFormation::WaitConditionHandle", data, meta)
+}
+

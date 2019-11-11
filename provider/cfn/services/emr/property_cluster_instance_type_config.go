@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -26,42 +26,36 @@ func propertyClusterInstanceTypeConfig(extras...string) *schema.Resource {
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
-	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"bid_price": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"bid_price_as_percentage_of_on_demand_price": {
 				Type: schema.TypeFloat,
 				Optional: true,
-				ForceNew: true,
 			},
 			"configurations": {
 				Type: schema.TypeSet,
 				Elem: propertyClusterConfiguration(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"ebs_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyClusterEbsConfiguration(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"instance_type": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"weighted_capacity": {
 				Type: schema.TypeInt,
 				Optional: true,
-				ForceNew: true,
 			},
 		},
 	}
 }
+

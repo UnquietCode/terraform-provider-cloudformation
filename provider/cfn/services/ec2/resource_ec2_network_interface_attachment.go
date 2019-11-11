@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceEC2NetworkInterfaceAttachment() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceEC2NetworkInterfaceAttachmentExists,
+		Read: resourceEC2NetworkInterfaceAttachmentRead,
 		Create: resourceEC2NetworkInterfaceAttachmentCreate,
-		Read:   resourceEC2NetworkInterfaceAttachmentRead,
 		Update: resourceEC2NetworkInterfaceAttachmentUpdate,
 		Delete: resourceEC2NetworkInterfaceAttachmentDelete,
-
+		CustomizeDiff: resourceEC2NetworkInterfaceAttachmentCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"delete_on_termination": {
 				Type: schema.TypeBool,
@@ -40,19 +42,23 @@ func ResourceEC2NetworkInterfaceAttachment() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceEC2NetworkInterfaceAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::NetworkInterfaceAttachment", ResourceEC2NetworkInterfaceAttachment(), data, meta)
+func resourceEC2NetworkInterfaceAttachmentExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2NetworkInterfaceAttachmentRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::NetworkInterfaceAttachment", ResourceEC2NetworkInterfaceAttachment(), data, meta)
+}
+
+func resourceEC2NetworkInterfaceAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::NetworkInterfaceAttachment", ResourceEC2NetworkInterfaceAttachment(), data, meta)
 }
 
 func resourceEC2NetworkInterfaceAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -62,3 +68,8 @@ func resourceEC2NetworkInterfaceAttachmentUpdate(data *schema.ResourceData, meta
 func resourceEC2NetworkInterfaceAttachmentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::NetworkInterfaceAttachment", data, meta)
 }
+
+func resourceEC2NetworkInterfaceAttachmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::EC2::NetworkInterfaceAttachment", data, meta)
+}
+

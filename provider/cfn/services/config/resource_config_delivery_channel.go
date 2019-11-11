@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceConfigDeliveryChannel() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceConfigDeliveryChannelExists,
+		Read: resourceConfigDeliveryChannelRead,
 		Create: resourceConfigDeliveryChannelCreate,
-		Read:   resourceConfigDeliveryChannelRead,
 		Update: resourceConfigDeliveryChannelUpdate,
 		Delete: resourceConfigDeliveryChannelDelete,
-
+		CustomizeDiff: resourceConfigDeliveryChannelCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"config_snapshot_delivery_properties": {
 				Type: schema.TypeList,
@@ -31,7 +33,6 @@ func ResourceConfigDeliveryChannel() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"s3_bucket_name": {
 				Type: schema.TypeString,
@@ -47,19 +48,23 @@ func ResourceConfigDeliveryChannel() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceConfigDeliveryChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Config::DeliveryChannel", ResourceConfigDeliveryChannel(), data, meta)
+func resourceConfigDeliveryChannelExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceConfigDeliveryChannelRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Config::DeliveryChannel", ResourceConfigDeliveryChannel(), data, meta)
+}
+
+func resourceConfigDeliveryChannelCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Config::DeliveryChannel", ResourceConfigDeliveryChannel(), data, meta)
 }
 
 func resourceConfigDeliveryChannelUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -69,3 +74,8 @@ func resourceConfigDeliveryChannelUpdate(data *schema.ResourceData, meta interfa
 func resourceConfigDeliveryChannelDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Config::DeliveryChannel", data, meta)
 }
+
+func resourceConfigDeliveryChannelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Config::DeliveryChannel", data, meta)
+}
+

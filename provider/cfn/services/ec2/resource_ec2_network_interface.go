@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,21 +17,14 @@ import (
 
 func ResourceEC2NetworkInterface() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceEC2NetworkInterfaceExists,
+		Read: resourceEC2NetworkInterfaceRead,
 		Create: resourceEC2NetworkInterfaceCreate,
-		Read:   resourceEC2NetworkInterfaceRead,
 		Update: resourceEC2NetworkInterfaceUpdate,
 		Delete: resourceEC2NetworkInterfaceDelete,
-
+		CustomizeDiff: resourceEC2NetworkInterfaceCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"primary_private_ip_address": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"secondary_private_ip_addresses": {
-				Type: schema.TypeList,
-				Elem: &schema.Schema{Type: schema.TypeString},
-				Computed: true,
-			},
 			"description": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -45,7 +38,6 @@ func ResourceEC2NetworkInterface() *schema.Resource {
 			"interface_type": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"ipv6_address_count": {
 				Type: schema.TypeInt,
@@ -60,7 +52,6 @@ func ResourceEC2NetworkInterface() *schema.Resource {
 			"private_ip_address": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"private_ip_addresses": {
 				Type: schema.TypeSet,
@@ -78,7 +69,6 @@ func ResourceEC2NetworkInterface() *schema.Resource {
 			"subnet_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -87,19 +77,23 @@ func ResourceEC2NetworkInterface() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceEC2NetworkInterfaceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::NetworkInterface", ResourceEC2NetworkInterface(), data, meta)
+func resourceEC2NetworkInterfaceExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2NetworkInterfaceRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::NetworkInterface", ResourceEC2NetworkInterface(), data, meta)
+}
+
+func resourceEC2NetworkInterfaceCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::NetworkInterface", ResourceEC2NetworkInterface(), data, meta)
 }
 
 func resourceEC2NetworkInterfaceUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -109,3 +103,8 @@ func resourceEC2NetworkInterfaceUpdate(data *schema.ResourceData, meta interface
 func resourceEC2NetworkInterfaceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::NetworkInterface", data, meta)
 }
+
+func resourceEC2NetworkInterfaceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::EC2::NetworkInterface", data, meta)
+}
+

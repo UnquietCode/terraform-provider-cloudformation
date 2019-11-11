@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,40 +16,41 @@ import (
 
 func ResourceIoTPolicy() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceIoTPolicyExists,
+		Read: resourceIoTPolicyRead,
 		Create: resourceIoTPolicyCreate,
-		Read:   resourceIoTPolicyRead,
+		Update: resourceIoTPolicyUpdate,
 		Delete: resourceIoTPolicyDelete,
-
+		CustomizeDiff: resourceIoTPolicyCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"policy_document": {
 				Type: schema.TypeMap,
 				Required: true,
-				ForceNew: true,
 			},
 			"policy_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceIoTPolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoT::Policy", ResourceIoTPolicy(), data, meta)
+func resourceIoTPolicyExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceIoTPolicyRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::IoT::Policy", ResourceIoTPolicy(), data, meta)
+}
+
+func resourceIoTPolicyCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::IoT::Policy", ResourceIoTPolicy(), data, meta)
 }
 
 func resourceIoTPolicyUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -59,3 +60,8 @@ func resourceIoTPolicyUpdate(data *schema.ResourceData, meta interface{}) error 
 func resourceIoTPolicyDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IoT::Policy", data, meta)
 }
+
+func resourceIoTPolicyCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::IoT::Policy", data, meta)
+}
+

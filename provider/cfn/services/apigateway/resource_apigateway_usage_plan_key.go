@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,41 +16,45 @@ import (
 
 func ResourceApiGatewayUsagePlanKey() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceApiGatewayUsagePlanKeyExists,
+		Read: resourceApiGatewayUsagePlanKeyRead,
 		Create: resourceApiGatewayUsagePlanKeyCreate,
-		Read:   resourceApiGatewayUsagePlanKeyRead,
+		Update: resourceApiGatewayUsagePlanKeyUpdate,
 		Delete: resourceApiGatewayUsagePlanKeyDelete,
-
+		CustomizeDiff: resourceApiGatewayUsagePlanKeyCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"key_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"key_type": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"usage_plan_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceApiGatewayUsagePlanKeyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::UsagePlanKey", ResourceApiGatewayUsagePlanKey(), data, meta)
+func resourceApiGatewayUsagePlanKeyExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceApiGatewayUsagePlanKeyRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ApiGateway::UsagePlanKey", ResourceApiGatewayUsagePlanKey(), data, meta)
+}
+
+func resourceApiGatewayUsagePlanKeyCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ApiGateway::UsagePlanKey", ResourceApiGatewayUsagePlanKey(), data, meta)
 }
 
 func resourceApiGatewayUsagePlanKeyUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -60,3 +64,8 @@ func resourceApiGatewayUsagePlanKeyUpdate(data *schema.ResourceData, meta interf
 func resourceApiGatewayUsagePlanKeyDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGateway::UsagePlanKey", data, meta)
 }
+
+func resourceApiGatewayUsagePlanKeyCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::ApiGateway::UsagePlanKey", data, meta)
+}
+

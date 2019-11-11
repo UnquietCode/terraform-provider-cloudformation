@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,36 +16,41 @@ import (
 
 func ResourceEMRSecurityConfiguration() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceEMRSecurityConfigurationExists,
+		Read: resourceEMRSecurityConfigurationRead,
 		Create: resourceEMRSecurityConfigurationCreate,
-		Read:   resourceEMRSecurityConfigurationRead,
+		Update: resourceEMRSecurityConfigurationUpdate,
 		Delete: resourceEMRSecurityConfigurationDelete,
-
+		CustomizeDiff: resourceEMRSecurityConfigurationCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"security_configuration": {
 				Type: schema.TypeMap,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceEMRSecurityConfigurationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EMR::SecurityConfiguration", ResourceEMRSecurityConfiguration(), data, meta)
+func resourceEMRSecurityConfigurationExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEMRSecurityConfigurationRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EMR::SecurityConfiguration", ResourceEMRSecurityConfiguration(), data, meta)
+}
+
+func resourceEMRSecurityConfigurationCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EMR::SecurityConfiguration", ResourceEMRSecurityConfiguration(), data, meta)
 }
 
 func resourceEMRSecurityConfigurationUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -55,3 +60,8 @@ func resourceEMRSecurityConfigurationUpdate(data *schema.ResourceData, meta inte
 func resourceEMRSecurityConfigurationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EMR::SecurityConfiguration", data, meta)
 }
+
+func resourceEMRSecurityConfigurationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::EMR::SecurityConfiguration", data, meta)
+}
+

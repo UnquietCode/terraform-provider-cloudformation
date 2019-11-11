@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -26,7 +26,6 @@ func propertyFileSystemWindowsConfiguration(extras...string) *schema.Resource {
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
-	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"self_managed_active_directory_configuration": {
@@ -42,17 +41,14 @@ func propertyFileSystemWindowsConfiguration(extras...string) *schema.Resource {
 			"active_directory_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"throughput_capacity": {
 				Type: schema.TypeInt,
 				Optional: true,
-				ForceNew: true,
 			},
 			"copy_tags_to_backups": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"daily_automatic_backup_start_time": {
 				Type: schema.TypeString,
@@ -65,3 +61,4 @@ func propertyFileSystemWindowsConfiguration(extras...string) *schema.Resource {
 		},
 	}
 }
+

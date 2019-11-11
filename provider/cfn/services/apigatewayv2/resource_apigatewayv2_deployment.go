@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceApiGatewayV2Deployment() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceApiGatewayV2DeploymentExists,
+		Read: resourceApiGatewayV2DeploymentRead,
 		Create: resourceApiGatewayV2DeploymentCreate,
-		Read:   resourceApiGatewayV2DeploymentRead,
 		Update: resourceApiGatewayV2DeploymentUpdate,
 		Delete: resourceApiGatewayV2DeploymentDelete,
-
+		CustomizeDiff: resourceApiGatewayV2DeploymentCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -33,23 +35,26 @@ func ResourceApiGatewayV2Deployment() *schema.Resource {
 			"api_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceApiGatewayV2DeploymentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGatewayV2::Deployment", ResourceApiGatewayV2Deployment(), data, meta)
+func resourceApiGatewayV2DeploymentExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceApiGatewayV2DeploymentRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ApiGatewayV2::Deployment", ResourceApiGatewayV2Deployment(), data, meta)
+}
+
+func resourceApiGatewayV2DeploymentCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ApiGatewayV2::Deployment", ResourceApiGatewayV2Deployment(), data, meta)
 }
 
 func resourceApiGatewayV2DeploymentUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -59,3 +64,8 @@ func resourceApiGatewayV2DeploymentUpdate(data *schema.ResourceData, meta interf
 func resourceApiGatewayV2DeploymentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGatewayV2::Deployment", data, meta)
 }
+
+func resourceApiGatewayV2DeploymentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::ApiGatewayV2::Deployment", data, meta)
+}
+

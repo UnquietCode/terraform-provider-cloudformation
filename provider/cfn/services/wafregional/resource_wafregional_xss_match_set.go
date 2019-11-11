@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceWAFRegionalXssMatchSet() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceWAFRegionalXssMatchSetExists,
+		Read: resourceWAFRegionalXssMatchSetRead,
 		Create: resourceWAFRegionalXssMatchSetCreate,
-		Read:   resourceWAFRegionalXssMatchSetRead,
 		Update: resourceWAFRegionalXssMatchSetUpdate,
 		Delete: resourceWAFRegionalXssMatchSetDelete,
-
+		CustomizeDiff: resourceWAFRegionalXssMatchSetCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"xss_match_tuples": {
 				Type: schema.TypeList,
@@ -30,23 +32,26 @@ func ResourceWAFRegionalXssMatchSet() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceWAFRegionalXssMatchSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::WAFRegional::XssMatchSet", ResourceWAFRegionalXssMatchSet(), data, meta)
+func resourceWAFRegionalXssMatchSetExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceWAFRegionalXssMatchSetRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::WAFRegional::XssMatchSet", ResourceWAFRegionalXssMatchSet(), data, meta)
+}
+
+func resourceWAFRegionalXssMatchSetCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::WAFRegional::XssMatchSet", ResourceWAFRegionalXssMatchSet(), data, meta)
 }
 
 func resourceWAFRegionalXssMatchSetUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -56,3 +61,8 @@ func resourceWAFRegionalXssMatchSetUpdate(data *schema.ResourceData, meta interf
 func resourceWAFRegionalXssMatchSetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::WAFRegional::XssMatchSet", data, meta)
 }
+
+func resourceWAFRegionalXssMatchSetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::WAFRegional::XssMatchSet", data, meta)
+}
+

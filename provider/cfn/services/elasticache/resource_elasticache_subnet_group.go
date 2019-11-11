@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,17 @@ import (
 
 func ResourceElastiCacheSubnetGroup() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceElastiCacheSubnetGroupExists,
+		Read: resourceElastiCacheSubnetGroupRead,
 		Create: resourceElastiCacheSubnetGroupCreate,
-		Read:   resourceElastiCacheSubnetGroupRead,
 		Update: resourceElastiCacheSubnetGroupUpdate,
 		Delete: resourceElastiCacheSubnetGroupDelete,
-
+		CustomizeDiff: resourceElastiCacheSubnetGroupCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"cache_subnet_group_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"description": {
 				Type: schema.TypeString,
@@ -38,19 +39,23 @@ func ResourceElastiCacheSubnetGroup() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceElastiCacheSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElastiCache::SubnetGroup", ResourceElastiCacheSubnetGroup(), data, meta)
+func resourceElastiCacheSubnetGroupExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceElastiCacheSubnetGroupRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ElastiCache::SubnetGroup", ResourceElastiCacheSubnetGroup(), data, meta)
+}
+
+func resourceElastiCacheSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ElastiCache::SubnetGroup", ResourceElastiCacheSubnetGroup(), data, meta)
 }
 
 func resourceElastiCacheSubnetGroupUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -60,3 +65,8 @@ func resourceElastiCacheSubnetGroupUpdate(data *schema.ResourceData, meta interf
 func resourceElastiCacheSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ElastiCache::SubnetGroup", data, meta)
 }
+
+func resourceElastiCacheSubnetGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::ElastiCache::SubnetGroup", data, meta)
+}
+

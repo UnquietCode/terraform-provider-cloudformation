@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,31 +16,37 @@ import (
 
 func ResourceCloudFormationCustomResource() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceCloudFormationCustomResourceExists,
+		Read: resourceCloudFormationCustomResourceRead,
 		Create: resourceCloudFormationCustomResourceCreate,
-		Read:   resourceCloudFormationCustomResourceRead,
+		Update: resourceCloudFormationCustomResourceUpdate,
 		Delete: resourceCloudFormationCustomResourceDelete,
-
+		CustomizeDiff: resourceCloudFormationCustomResourceCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"service_token": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceCloudFormationCustomResourceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CloudFormation::CustomResource", ResourceCloudFormationCustomResource(), data, meta)
+func resourceCloudFormationCustomResourceExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCloudFormationCustomResourceRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::CloudFormation::CustomResource", ResourceCloudFormationCustomResource(), data, meta)
+}
+
+func resourceCloudFormationCustomResourceCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::CloudFormation::CustomResource", ResourceCloudFormationCustomResource(), data, meta)
 }
 
 func resourceCloudFormationCustomResourceUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -50,3 +56,8 @@ func resourceCloudFormationCustomResourceUpdate(data *schema.ResourceData, meta 
 func resourceCloudFormationCustomResourceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CloudFormation::CustomResource", data, meta)
 }
+
+func resourceCloudFormationCustomResourceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::CloudFormation::CustomResource", data, meta)
+}
+

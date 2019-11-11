@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,63 +16,51 @@ import (
 
 func ResourceGreengrassGroup() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceGreengrassGroupExists,
+		Read: resourceGreengrassGroupRead,
 		Create: resourceGreengrassGroupCreate,
-		Read:   resourceGreengrassGroupRead,
 		Update: resourceGreengrassGroupUpdate,
 		Delete: resourceGreengrassGroupDelete,
-
+		CustomizeDiff: resourceGreengrassGroupCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"role_attached_at": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"latest_version_arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"the_id": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"role_arn": {
-				Type: schema.TypeString,
-				Optional: true,
-				Computed: true,
-			},
-			"name": {
-				Type: schema.TypeString,
-				Required: true,
-			},
 			"initial_version": {
 				Type: schema.TypeList,
 				Elem: propertyGroupGroupVersion(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
+			},
+			"role_arn": {
+				Type: schema.TypeString,
+				Optional: true,
 			},
 			"tags": {
 				Type: schema.TypeMap,
 				Optional: true,
 			},
+			"name": {
+				Type: schema.TypeString,
+				Required: true,
+			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceGreengrassGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Greengrass::Group", ResourceGreengrassGroup(), data, meta)
+func resourceGreengrassGroupExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceGreengrassGroupRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Greengrass::Group", ResourceGreengrassGroup(), data, meta)
+}
+
+func resourceGreengrassGroupCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Greengrass::Group", ResourceGreengrassGroup(), data, meta)
 }
 
 func resourceGreengrassGroupUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -82,3 +70,8 @@ func resourceGreengrassGroupUpdate(data *schema.ResourceData, meta interface{}) 
 func resourceGreengrassGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Greengrass::Group", data, meta)
 }
+
+func resourceGreengrassGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Greengrass::Group", data, meta)
+}
+

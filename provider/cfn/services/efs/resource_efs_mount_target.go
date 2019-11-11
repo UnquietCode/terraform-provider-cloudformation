@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,22 +16,21 @@ import (
 
 func ResourceEFSMountTarget() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceEFSMountTargetExists,
+		Read: resourceEFSMountTargetRead,
 		Create: resourceEFSMountTargetCreate,
-		Read:   resourceEFSMountTargetRead,
 		Update: resourceEFSMountTargetUpdate,
 		Delete: resourceEFSMountTargetDelete,
-
+		CustomizeDiff: resourceEFSMountTargetCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"ip_address": {
-				Type: schema.TypeString,
-				Optional: true,
-				Computed: true,
-				ForceNew: true,
-			},
 			"file_system_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
+			},
+			"ip_address": {
+				Type: schema.TypeString,
+				Optional: true,
 			},
 			"security_groups": {
 				Type: schema.TypeSet,
@@ -42,23 +41,26 @@ func ResourceEFSMountTarget() *schema.Resource {
 			"subnet_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceEFSMountTargetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EFS::MountTarget", ResourceEFSMountTarget(), data, meta)
+func resourceEFSMountTargetExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEFSMountTargetRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EFS::MountTarget", ResourceEFSMountTarget(), data, meta)
+}
+
+func resourceEFSMountTargetCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EFS::MountTarget", ResourceEFSMountTarget(), data, meta)
 }
 
 func resourceEFSMountTargetUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -68,3 +70,8 @@ func resourceEFSMountTargetUpdate(data *schema.ResourceData, meta interface{}) e
 func resourceEFSMountTargetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EFS::MountTarget", data, meta)
 }
+
+func resourceEFSMountTargetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::EFS::MountTarget", data, meta)
+}
+

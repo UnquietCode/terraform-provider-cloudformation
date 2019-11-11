@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,14 @@ import (
 
 func ResourceCloudFrontCloudFrontOriginAccessIdentity() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceCloudFrontCloudFrontOriginAccessIdentityExists,
+		Read: resourceCloudFrontCloudFrontOriginAccessIdentityRead,
 		Create: resourceCloudFrontCloudFrontOriginAccessIdentityCreate,
-		Read:   resourceCloudFrontCloudFrontOriginAccessIdentityRead,
 		Update: resourceCloudFrontCloudFrontOriginAccessIdentityUpdate,
 		Delete: resourceCloudFrontCloudFrontOriginAccessIdentityDelete,
-
+		CustomizeDiff: resourceCloudFrontCloudFrontOriginAccessIdentityCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"s3_canonical_user_id": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"cloud_front_origin_access_identity_config": {
 				Type: schema.TypeList,
 				Elem: propertyCloudFrontOriginAccessIdentityCloudFrontOriginAccessIdentityConfig(),
@@ -34,19 +32,23 @@ func ResourceCloudFrontCloudFrontOriginAccessIdentity() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceCloudFrontCloudFrontOriginAccessIdentityCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CloudFront::CloudFrontOriginAccessIdentity", ResourceCloudFrontCloudFrontOriginAccessIdentity(), data, meta)
+func resourceCloudFrontCloudFrontOriginAccessIdentityExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCloudFrontCloudFrontOriginAccessIdentityRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::CloudFront::CloudFrontOriginAccessIdentity", ResourceCloudFrontCloudFrontOriginAccessIdentity(), data, meta)
+}
+
+func resourceCloudFrontCloudFrontOriginAccessIdentityCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::CloudFront::CloudFrontOriginAccessIdentity", ResourceCloudFrontCloudFrontOriginAccessIdentity(), data, meta)
 }
 
 func resourceCloudFrontCloudFrontOriginAccessIdentityUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -56,3 +58,8 @@ func resourceCloudFrontCloudFrontOriginAccessIdentityUpdate(data *schema.Resourc
 func resourceCloudFrontCloudFrontOriginAccessIdentityDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CloudFront::CloudFrontOriginAccessIdentity", data, meta)
 }
+
+func resourceCloudFrontCloudFrontOriginAccessIdentityCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::CloudFront::CloudFrontOriginAccessIdentity", data, meta)
+}
+

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -12,7 +12,7 @@ package cfn
 import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/terraform"
-	"github.com/unquietcode/terraform-cfn-provider/plugin"
+	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/cfn/services/amazonmq"
 	"github.com/unquietcode/terraform-cfn-provider/cfn/services/amplify"
 	"github.com/unquietcode/terraform-cfn-provider/cfn/services/apigateway"
@@ -111,35 +111,21 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/services/waf"
 	"github.com/unquietcode/terraform-cfn-provider/cfn/services/wafregional"
 	"github.com/unquietcode/terraform-cfn-provider/cfn/services/workspaces"
+	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
 
 func Provider() terraform.ResourceProvider {
 	return &schema.Provider{
 		ConfigureFunc: plugin.ProviderConfigure,
+		
 		Schema: map[string]*schema.Schema{
-			"bucket_name": {
-				Type:        schema.TypeString,
-				Required:    true,
-				Description: "name of an S3 bucket where we can store template files",
-			},
-			"bucket_prefix": {
-				Type:        schema.TypeString,
-				Optional:    true,
-				Description: "path in the bucket under which CFN can store data",
-			},
-			"stack_name": {
-				Type:        schema.TypeString,
-				Required:    true,
-				Description: "exact name to use for the CloudFormation stack",
-			},
-			"role_arn": {
-				Type:        schema.TypeString,
-				Optional:    true,
-				Description: "ARN of a role to be used for interacting with CloudFormation",
+			"workdir": {
+				Type: schema.TypeString,
+				Required: true,
+				Description: "working directory on the filesystem",
 			},
 		},
-		DataSourcesMap: map[string]*schema.Resource{
-		},
+		
 		ResourcesMap: map[string]*schema.Resource{
 			"cfn_amazonmq_broker": amazonmq.ResourceAmazonMQBroker(),
 			"cfn_amazonmq_configuration": amazonmq.ResourceAmazonMQConfiguration(),
@@ -603,6 +589,11 @@ func Provider() terraform.ResourceProvider {
 			"cfn_wafregional_web_acl_association": wafregional.ResourceWAFRegionalWebACLAssociation(),
 			"cfn_wafregional_xss_match_set": wafregional.ResourceWAFRegionalXssMatchSet(),
 			"cfn_workspaces_workspace": workspaces.ResourceWorkSpacesWorkspace(),
+			"cfn_template_data": misc.ResourceTemplateData(),
+		},
+		
+		DataSourcesMap: map[string]*schema.Resource{
 		},
 	}
 }
+

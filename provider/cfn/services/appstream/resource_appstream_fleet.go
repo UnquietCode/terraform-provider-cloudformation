@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,11 +17,13 @@ import (
 
 func ResourceAppStreamFleet() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceAppStreamFleetExists,
+		Read: resourceAppStreamFleetRead,
 		Create: resourceAppStreamFleetCreate,
-		Read:   resourceAppStreamFleetRead,
 		Update: resourceAppStreamFleetUpdate,
 		Delete: resourceAppStreamFleetDelete,
-
+		CustomizeDiff: resourceAppStreamFleetCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -42,7 +44,6 @@ func ResourceAppStreamFleet() *schema.Resource {
 			"fleet_type": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"enable_default_internet_access": {
 				Type: schema.TypeBool,
@@ -57,7 +58,6 @@ func ResourceAppStreamFleet() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"image_name": {
 				Type: schema.TypeString,
@@ -94,19 +94,23 @@ func ResourceAppStreamFleet() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceAppStreamFleetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppStream::Fleet", ResourceAppStreamFleet(), data, meta)
+func resourceAppStreamFleetExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceAppStreamFleetRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::AppStream::Fleet", ResourceAppStreamFleet(), data, meta)
+}
+
+func resourceAppStreamFleetCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::AppStream::Fleet", ResourceAppStreamFleet(), data, meta)
 }
 
 func resourceAppStreamFleetUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -116,3 +120,8 @@ func resourceAppStreamFleetUpdate(data *schema.ResourceData, meta interface{}) e
 func resourceAppStreamFleetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AppStream::Fleet", data, meta)
 }
+
+func resourceAppStreamFleetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::AppStream::Fleet", data, meta)
+}
+

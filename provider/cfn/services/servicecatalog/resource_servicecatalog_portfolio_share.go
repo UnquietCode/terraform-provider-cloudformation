@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,41 +16,45 @@ import (
 
 func ResourceServiceCatalogPortfolioShare() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceServiceCatalogPortfolioShareExists,
+		Read: resourceServiceCatalogPortfolioShareRead,
 		Create: resourceServiceCatalogPortfolioShareCreate,
-		Read:   resourceServiceCatalogPortfolioShareRead,
+		Update: resourceServiceCatalogPortfolioShareUpdate,
 		Delete: resourceServiceCatalogPortfolioShareDelete,
-
+		CustomizeDiff: resourceServiceCatalogPortfolioShareCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"account_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"accept_language": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"portfolio_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceServiceCatalogPortfolioShareCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::PortfolioShare", ResourceServiceCatalogPortfolioShare(), data, meta)
+func resourceServiceCatalogPortfolioShareExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceServiceCatalogPortfolioShareRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ServiceCatalog::PortfolioShare", ResourceServiceCatalogPortfolioShare(), data, meta)
+}
+
+func resourceServiceCatalogPortfolioShareCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ServiceCatalog::PortfolioShare", ResourceServiceCatalogPortfolioShare(), data, meta)
 }
 
 func resourceServiceCatalogPortfolioShareUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -60,3 +64,8 @@ func resourceServiceCatalogPortfolioShareUpdate(data *schema.ResourceData, meta 
 func resourceServiceCatalogPortfolioShareDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ServiceCatalog::PortfolioShare", data, meta)
 }
+
+func resourceServiceCatalogPortfolioShareCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::ServiceCatalog::PortfolioShare", data, meta)
+}
+

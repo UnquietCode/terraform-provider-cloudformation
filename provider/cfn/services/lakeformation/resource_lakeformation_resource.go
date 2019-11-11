@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceLakeFormationResource() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceLakeFormationResourceExists,
+		Read: resourceLakeFormationResourceRead,
 		Create: resourceLakeFormationResourceCreate,
-		Read:   resourceLakeFormationResourceRead,
 		Update: resourceLakeFormationResourceUpdate,
 		Delete: resourceLakeFormationResourceDelete,
-
+		CustomizeDiff: resourceLakeFormationResourceCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"resource_arn": {
 				Type: schema.TypeString,
@@ -36,19 +38,23 @@ func ResourceLakeFormationResource() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceLakeFormationResourceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::LakeFormation::Resource", ResourceLakeFormationResource(), data, meta)
+func resourceLakeFormationResourceExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceLakeFormationResourceRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::LakeFormation::Resource", ResourceLakeFormationResource(), data, meta)
+}
+
+func resourceLakeFormationResourceCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::LakeFormation::Resource", ResourceLakeFormationResource(), data, meta)
 }
 
 func resourceLakeFormationResourceUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -58,3 +64,8 @@ func resourceLakeFormationResourceUpdate(data *schema.ResourceData, meta interfa
 func resourceLakeFormationResourceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::LakeFormation::Resource", data, meta)
 }
+
+func resourceLakeFormationResourceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::LakeFormation::Resource", data, meta)
+}
+

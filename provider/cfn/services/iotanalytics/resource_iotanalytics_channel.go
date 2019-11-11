@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,16 +17,17 @@ import (
 
 func ResourceIoTAnalyticsChannel() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceIoTAnalyticsChannelExists,
+		Read: resourceIoTAnalyticsChannelRead,
 		Create: resourceIoTAnalyticsChannelCreate,
-		Read:   resourceIoTAnalyticsChannelRead,
 		Update: resourceIoTAnalyticsChannelUpdate,
 		Delete: resourceIoTAnalyticsChannelDelete,
-
+		CustomizeDiff: resourceIoTAnalyticsChannelCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"channel_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"channel_storage": {
 				Type: schema.TypeList,
@@ -47,19 +48,23 @@ func ResourceIoTAnalyticsChannel() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceIoTAnalyticsChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoTAnalytics::Channel", ResourceIoTAnalyticsChannel(), data, meta)
+func resourceIoTAnalyticsChannelExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceIoTAnalyticsChannelRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::IoTAnalytics::Channel", ResourceIoTAnalyticsChannel(), data, meta)
+}
+
+func resourceIoTAnalyticsChannelCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::IoTAnalytics::Channel", ResourceIoTAnalyticsChannel(), data, meta)
 }
 
 func resourceIoTAnalyticsChannelUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -69,3 +74,8 @@ func resourceIoTAnalyticsChannelUpdate(data *schema.ResourceData, meta interface
 func resourceIoTAnalyticsChannelDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IoTAnalytics::Channel", data, meta)
 }
+
+func resourceIoTAnalyticsChannelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::IoTAnalytics::Channel", data, meta)
+}
+

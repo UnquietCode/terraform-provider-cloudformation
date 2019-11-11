@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,11 +17,13 @@ import (
 
 func ResourceOpsWorksLayer() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceOpsWorksLayerExists,
+		Read: resourceOpsWorksLayerRead,
 		Create: resourceOpsWorksLayerCreate,
-		Read:   resourceOpsWorksLayerRead,
 		Update: resourceOpsWorksLayerUpdate,
 		Delete: resourceOpsWorksLayerDelete,
-
+		CustomizeDiff: resourceOpsWorksLayerCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"attributes": {
 				Type: schema.TypeMap,
@@ -91,7 +93,6 @@ func ResourceOpsWorksLayer() *schema.Resource {
 			"stack_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -101,7 +102,6 @@ func ResourceOpsWorksLayer() *schema.Resource {
 			"type": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"use_ebs_optimized_instances": {
 				Type: schema.TypeBool,
@@ -114,19 +114,23 @@ func ResourceOpsWorksLayer() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceOpsWorksLayerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::OpsWorks::Layer", ResourceOpsWorksLayer(), data, meta)
+func resourceOpsWorksLayerExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceOpsWorksLayerRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::OpsWorks::Layer", ResourceOpsWorksLayer(), data, meta)
+}
+
+func resourceOpsWorksLayerCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::OpsWorks::Layer", ResourceOpsWorksLayer(), data, meta)
 }
 
 func resourceOpsWorksLayerUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -136,3 +140,8 @@ func resourceOpsWorksLayerUpdate(data *schema.ResourceData, meta interface{}) er
 func resourceOpsWorksLayerDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::OpsWorks::Layer", data, meta)
 }
+
+func resourceOpsWorksLayerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::OpsWorks::Layer", data, meta)
+}
+

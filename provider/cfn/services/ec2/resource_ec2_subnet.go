@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,40 +17,25 @@ import (
 
 func ResourceEC2Subnet() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceEC2SubnetExists,
+		Read: resourceEC2SubnetRead,
 		Create: resourceEC2SubnetCreate,
-		Read:   resourceEC2SubnetRead,
 		Update: resourceEC2SubnetUpdate,
 		Delete: resourceEC2SubnetDelete,
-
+		CustomizeDiff: resourceEC2SubnetCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"availability_zone": {
-				Type: schema.TypeString,
-				Optional: true,
-				Computed: true,
-				ForceNew: true,
-			},
-			"ipv6_cidr_blocks": {
-				Type: schema.TypeList,
-				Elem: &schema.Schema{Type: schema.TypeString},
-				Computed: true,
-			},
-			"network_acl_association_id": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"vpc_id": {
-				Type: schema.TypeString,
-				Required: true,
-				ForceNew: true,
-			},
 			"assign_ipv6_address_on_creation": {
 				Type: schema.TypeBool,
+				Optional: true,
+			},
+			"availability_zone": {
+				Type: schema.TypeString,
 				Optional: true,
 			},
 			"cidr_block": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"ipv6_cidr_block": {
 				Type: schema.TypeString,
@@ -65,21 +50,29 @@ func ResourceEC2Subnet() *schema.Resource {
 				Elem: misc.PropertyTag(),
 				Optional: true,
 			},
+			"vpc_id": {
+				Type: schema.TypeString,
+				Required: true,
+			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceEC2SubnetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::Subnet", ResourceEC2Subnet(), data, meta)
+func resourceEC2SubnetExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2SubnetRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::Subnet", ResourceEC2Subnet(), data, meta)
+}
+
+func resourceEC2SubnetCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::Subnet", ResourceEC2Subnet(), data, meta)
 }
 
 func resourceEC2SubnetUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -89,3 +82,8 @@ func resourceEC2SubnetUpdate(data *schema.ResourceData, meta interface{}) error 
 func resourceEC2SubnetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::Subnet", data, meta)
 }
+
+func resourceEC2SubnetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::EC2::Subnet", data, meta)
+}
+

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,18 +17,14 @@ import (
 
 func ResourceSageMakerWorkteam() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceSageMakerWorkteamExists,
+		Read: resourceSageMakerWorkteamRead,
 		Create: resourceSageMakerWorkteamCreate,
-		Read:   resourceSageMakerWorkteamRead,
 		Update: resourceSageMakerWorkteamUpdate,
 		Delete: resourceSageMakerWorkteamDelete,
-
+		CustomizeDiff: resourceSageMakerWorkteamCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"workteam_name": {
-				Type: schema.TypeString,
-				Optional: true,
-				Computed: true,
-				ForceNew: true,
-			},
 			"description": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -38,6 +34,10 @@ func ResourceSageMakerWorkteam() *schema.Resource {
 				Elem: propertyWorkteamNotificationConfiguration(),
 				Optional: true,
 				MaxItems: 1,
+			},
+			"workteam_name": {
+				Type: schema.TypeString,
+				Optional: true,
 			},
 			"member_definitions": {
 				Type: schema.TypeList,
@@ -51,19 +51,23 @@ func ResourceSageMakerWorkteam() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceSageMakerWorkteamCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SageMaker::Workteam", ResourceSageMakerWorkteam(), data, meta)
+func resourceSageMakerWorkteamExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceSageMakerWorkteamRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::SageMaker::Workteam", ResourceSageMakerWorkteam(), data, meta)
+}
+
+func resourceSageMakerWorkteamCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::SageMaker::Workteam", ResourceSageMakerWorkteam(), data, meta)
 }
 
 func resourceSageMakerWorkteamUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -73,3 +77,8 @@ func resourceSageMakerWorkteamUpdate(data *schema.ResourceData, meta interface{}
 func resourceSageMakerWorkteamDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SageMaker::Workteam", data, meta)
 }
+
+func resourceSageMakerWorkteamCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::SageMaker::Workteam", data, meta)
+}
+

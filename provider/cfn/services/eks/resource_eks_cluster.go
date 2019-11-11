@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,24 +16,14 @@ import (
 
 func ResourceEKSCluster() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceEKSClusterExists,
+		Read: resourceEKSClusterRead,
 		Create: resourceEKSClusterCreate,
-		Read:   resourceEKSClusterRead,
 		Update: resourceEKSClusterUpdate,
 		Delete: resourceEKSClusterDelete,
-
+		CustomizeDiff: resourceEKSClusterCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"endpoint": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"certificate_authority_data": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"version": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -41,35 +31,36 @@ func ResourceEKSCluster() *schema.Resource {
 			"role_arn": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"resources_vpc_config": {
 				Type: schema.TypeList,
 				Elem: propertyClusterResourcesVpcConfig(),
 				Required: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceEKSClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EKS::Cluster", ResourceEKSCluster(), data, meta)
+func resourceEKSClusterExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEKSClusterRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EKS::Cluster", ResourceEKSCluster(), data, meta)
+}
+
+func resourceEKSClusterCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EKS::Cluster", ResourceEKSCluster(), data, meta)
 }
 
 func resourceEKSClusterUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -79,3 +70,8 @@ func resourceEKSClusterUpdate(data *schema.ResourceData, meta interface{}) error
 func resourceEKSClusterDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EKS::Cluster", data, meta)
 }
+
+func resourceEKSClusterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::EKS::Cluster", data, meta)
+}
+

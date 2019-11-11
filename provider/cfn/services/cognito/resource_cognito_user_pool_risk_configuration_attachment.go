@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceCognitoUserPoolRiskConfigurationAttachment() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceCognitoUserPoolRiskConfigurationAttachmentExists,
+		Read: resourceCognitoUserPoolRiskConfigurationAttachmentRead,
 		Create: resourceCognitoUserPoolRiskConfigurationAttachmentCreate,
-		Read:   resourceCognitoUserPoolRiskConfigurationAttachmentRead,
 		Update: resourceCognitoUserPoolRiskConfigurationAttachmentUpdate,
 		Delete: resourceCognitoUserPoolRiskConfigurationAttachmentDelete,
-
+		CustomizeDiff: resourceCognitoUserPoolRiskConfigurationAttachmentCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"compromised_credentials_risk_configuration": {
 				Type: schema.TypeList,
@@ -31,12 +33,10 @@ func ResourceCognitoUserPoolRiskConfigurationAttachment() *schema.Resource {
 			"user_pool_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"client_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"account_takeover_risk_configuration": {
 				Type: schema.TypeList,
@@ -52,19 +52,23 @@ func ResourceCognitoUserPoolRiskConfigurationAttachment() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceCognitoUserPoolRiskConfigurationAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Cognito::UserPoolRiskConfigurationAttachment", ResourceCognitoUserPoolRiskConfigurationAttachment(), data, meta)
+func resourceCognitoUserPoolRiskConfigurationAttachmentExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCognitoUserPoolRiskConfigurationAttachmentRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Cognito::UserPoolRiskConfigurationAttachment", ResourceCognitoUserPoolRiskConfigurationAttachment(), data, meta)
+}
+
+func resourceCognitoUserPoolRiskConfigurationAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Cognito::UserPoolRiskConfigurationAttachment", ResourceCognitoUserPoolRiskConfigurationAttachment(), data, meta)
 }
 
 func resourceCognitoUserPoolRiskConfigurationAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -74,3 +78,8 @@ func resourceCognitoUserPoolRiskConfigurationAttachmentUpdate(data *schema.Resou
 func resourceCognitoUserPoolRiskConfigurationAttachmentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Cognito::UserPoolRiskConfigurationAttachment", data, meta)
 }
+
+func resourceCognitoUserPoolRiskConfigurationAttachmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Cognito::UserPoolRiskConfigurationAttachment", data, meta)
+}
+

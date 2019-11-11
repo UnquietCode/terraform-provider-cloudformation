@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,36 +16,14 @@ import (
 
 func ResourcePinpointEmailIdentity() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourcePinpointEmailIdentityExists,
+		Read: resourcePinpointEmailIdentityRead,
 		Create: resourcePinpointEmailIdentityCreate,
-		Read:   resourcePinpointEmailIdentityRead,
 		Update: resourcePinpointEmailIdentityUpdate,
 		Delete: resourcePinpointEmailIdentityDelete,
-
+		CustomizeDiff: resourcePinpointEmailIdentityCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"identity_dns_record_name3": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"identity_dns_record_name1": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"identity_dns_record_name2": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"identity_dns_record_value3": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"identity_dns_record_value2": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"identity_dns_record_value1": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"feedback_forwarding_enabled": {
 				Type: schema.TypeBool,
 				Optional: true,
@@ -62,7 +40,6 @@ func ResourcePinpointEmailIdentity() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"mail_from_attributes": {
 				Type: schema.TypeList,
@@ -72,19 +49,23 @@ func ResourcePinpointEmailIdentity() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourcePinpointEmailIdentityCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::PinpointEmail::Identity", ResourcePinpointEmailIdentity(), data, meta)
+func resourcePinpointEmailIdentityExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourcePinpointEmailIdentityRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::PinpointEmail::Identity", ResourcePinpointEmailIdentity(), data, meta)
+}
+
+func resourcePinpointEmailIdentityCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::PinpointEmail::Identity", ResourcePinpointEmailIdentity(), data, meta)
 }
 
 func resourcePinpointEmailIdentityUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -94,3 +75,8 @@ func resourcePinpointEmailIdentityUpdate(data *schema.ResourceData, meta interfa
 func resourcePinpointEmailIdentityDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::PinpointEmail::Identity", data, meta)
 }
+
+func resourcePinpointEmailIdentityCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::PinpointEmail::Identity", data, meta)
+}
+

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,14 @@ import (
 
 func ResourceRoboMakerFleet() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceRoboMakerFleetExists,
+		Read: resourceRoboMakerFleetRead,
 		Create: resourceRoboMakerFleetCreate,
-		Read:   resourceRoboMakerFleetRead,
 		Update: resourceRoboMakerFleetUpdate,
 		Delete: resourceRoboMakerFleetDelete,
-
+		CustomizeDiff: resourceRoboMakerFleetCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"tags": {
 				Type: schema.TypeMap,
 				Optional: true,
@@ -33,23 +31,26 @@ func ResourceRoboMakerFleet() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceRoboMakerFleetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RoboMaker::Fleet", ResourceRoboMakerFleet(), data, meta)
+func resourceRoboMakerFleetExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceRoboMakerFleetRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::RoboMaker::Fleet", ResourceRoboMakerFleet(), data, meta)
+}
+
+func resourceRoboMakerFleetCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::RoboMaker::Fleet", ResourceRoboMakerFleet(), data, meta)
 }
 
 func resourceRoboMakerFleetUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -59,3 +60,8 @@ func resourceRoboMakerFleetUpdate(data *schema.ResourceData, meta interface{}) e
 func resourceRoboMakerFleetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::RoboMaker::Fleet", data, meta)
 }
+
+func resourceRoboMakerFleetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::RoboMaker::Fleet", data, meta)
+}
+

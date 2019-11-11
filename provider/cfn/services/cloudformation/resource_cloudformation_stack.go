@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,11 +17,13 @@ import (
 
 func ResourceCloudFormationStack() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceCloudFormationStackExists,
+		Read: resourceCloudFormationStackRead,
 		Create: resourceCloudFormationStackCreate,
-		Read:   resourceCloudFormationStackRead,
 		Update: resourceCloudFormationStackUpdate,
 		Delete: resourceCloudFormationStackDelete,
-
+		CustomizeDiff: resourceCloudFormationStackCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"notification_ar_ns": {
 				Type: schema.TypeSet,
@@ -49,19 +51,23 @@ func ResourceCloudFormationStack() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceCloudFormationStackCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CloudFormation::Stack", ResourceCloudFormationStack(), data, meta)
+func resourceCloudFormationStackExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCloudFormationStackRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::CloudFormation::Stack", ResourceCloudFormationStack(), data, meta)
+}
+
+func resourceCloudFormationStackCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::CloudFormation::Stack", ResourceCloudFormationStack(), data, meta)
 }
 
 func resourceCloudFormationStackUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -71,3 +77,8 @@ func resourceCloudFormationStackUpdate(data *schema.ResourceData, meta interface
 func resourceCloudFormationStackDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CloudFormation::Stack", data, meta)
 }
+
+func resourceCloudFormationStackCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::CloudFormation::Stack", data, meta)
+}
+

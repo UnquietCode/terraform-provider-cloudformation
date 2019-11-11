@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -26,7 +26,6 @@ func propertyReplicationGroupNodeGroupConfiguration(extras...string) *schema.Res
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
-	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"node_group_id": {
@@ -36,25 +35,22 @@ func propertyReplicationGroupNodeGroupConfiguration(extras...string) *schema.Res
 			"primary_availability_zone": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"replica_availability_zones": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Optional: true,
-				ForceNew: true,
 				Set: schema.HashString,
 			},
 			"replica_count": {
 				Type: schema.TypeInt,
 				Optional: true,
-				ForceNew: true,
 			},
 			"slots": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 		},
 	}
 }
+

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,14 @@ import (
 
 func ResourceCloudWatchAlarm() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceCloudWatchAlarmExists,
+		Read: resourceCloudWatchAlarmRead,
 		Create: resourceCloudWatchAlarmCreate,
-		Read:   resourceCloudWatchAlarmRead,
 		Update: resourceCloudWatchAlarmUpdate,
 		Delete: resourceCloudWatchAlarmDelete,
-
+		CustomizeDiff: resourceCloudWatchAlarmCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"actions_enabled": {
 				Type: schema.TypeBool,
 				Optional: true,
@@ -42,7 +40,6 @@ func ResourceCloudWatchAlarm() *schema.Resource {
 			"alarm_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"comparison_operator": {
 				Type: schema.TypeString,
@@ -118,19 +115,23 @@ func ResourceCloudWatchAlarm() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceCloudWatchAlarmCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CloudWatch::Alarm", ResourceCloudWatchAlarm(), data, meta)
+func resourceCloudWatchAlarmExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCloudWatchAlarmRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::CloudWatch::Alarm", ResourceCloudWatchAlarm(), data, meta)
+}
+
+func resourceCloudWatchAlarmCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::CloudWatch::Alarm", ResourceCloudWatchAlarm(), data, meta)
 }
 
 func resourceCloudWatchAlarmUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -140,3 +141,8 @@ func resourceCloudWatchAlarmUpdate(data *schema.ResourceData, meta interface{}) 
 func resourceCloudWatchAlarmDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CloudWatch::Alarm", data, meta)
 }
+
+func resourceCloudWatchAlarmCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::CloudWatch::Alarm", data, meta)
+}
+

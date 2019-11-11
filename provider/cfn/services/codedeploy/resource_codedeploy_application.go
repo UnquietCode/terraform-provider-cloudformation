@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,36 +16,41 @@ import (
 
 func ResourceCodeDeployApplication() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceCodeDeployApplicationExists,
+		Read: resourceCodeDeployApplicationRead,
 		Create: resourceCodeDeployApplicationCreate,
-		Read:   resourceCodeDeployApplicationRead,
+		Update: resourceCodeDeployApplicationUpdate,
 		Delete: resourceCodeDeployApplicationDelete,
-
+		CustomizeDiff: resourceCodeDeployApplicationCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"application_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"compute_platform": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceCodeDeployApplicationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CodeDeploy::Application", ResourceCodeDeployApplication(), data, meta)
+func resourceCodeDeployApplicationExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCodeDeployApplicationRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::CodeDeploy::Application", ResourceCodeDeployApplication(), data, meta)
+}
+
+func resourceCodeDeployApplicationCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::CodeDeploy::Application", ResourceCodeDeployApplication(), data, meta)
 }
 
 func resourceCodeDeployApplicationUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -55,3 +60,8 @@ func resourceCodeDeployApplicationUpdate(data *schema.ResourceData, meta interfa
 func resourceCodeDeployApplicationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CodeDeploy::Application", data, meta)
 }
+
+func resourceCodeDeployApplicationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::CodeDeploy::Application", data, meta)
+}
+

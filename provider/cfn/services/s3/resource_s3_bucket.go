@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,32 +17,14 @@ import (
 
 func ResourceS3Bucket() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceS3BucketExists,
+		Read: resourceS3BucketRead,
 		Create: resourceS3BucketCreate,
-		Read:   resourceS3BucketRead,
 		Update: resourceS3BucketUpdate,
 		Delete: resourceS3BucketDelete,
-
+		CustomizeDiff: resourceS3BucketCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"domain_name": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"dual_stack_domain_name": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"regional_domain_name": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"website_url": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"accelerate_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyBucketAccelerateConfiguration(),
@@ -67,7 +49,6 @@ func ResourceS3Bucket() *schema.Resource {
 			"bucket_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"cors_configuration": {
 				Type: schema.TypeList,
@@ -112,7 +93,6 @@ func ResourceS3Bucket() *schema.Resource {
 			"object_lock_enabled": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"public_access_block_configuration": {
 				Type: schema.TypeList,
@@ -145,19 +125,23 @@ func ResourceS3Bucket() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceS3BucketCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::S3::Bucket", ResourceS3Bucket(), data, meta)
+func resourceS3BucketExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceS3BucketRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::S3::Bucket", ResourceS3Bucket(), data, meta)
+}
+
+func resourceS3BucketCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::S3::Bucket", ResourceS3Bucket(), data, meta)
 }
 
 func resourceS3BucketUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -167,3 +151,8 @@ func resourceS3BucketUpdate(data *schema.ResourceData, meta interface{}) error {
 func resourceS3BucketDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::S3::Bucket", data, meta)
 }
+
+func resourceS3BucketCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::S3::Bucket", data, meta)
+}
+

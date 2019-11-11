@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourcePinpointSMSChannel() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourcePinpointSMSChannelExists,
+		Read: resourcePinpointSMSChannelRead,
 		Create: resourcePinpointSMSChannelCreate,
-		Read:   resourcePinpointSMSChannelRead,
 		Update: resourcePinpointSMSChannelUpdate,
 		Delete: resourcePinpointSMSChannelDelete,
-
+		CustomizeDiff: resourcePinpointSMSChannelCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"short_code": {
 				Type: schema.TypeString,
@@ -33,7 +35,6 @@ func ResourcePinpointSMSChannel() *schema.Resource {
 			"application_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"sender_id": {
 				Type: schema.TypeString,
@@ -41,19 +42,23 @@ func ResourcePinpointSMSChannel() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourcePinpointSMSChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::SMSChannel", ResourcePinpointSMSChannel(), data, meta)
+func resourcePinpointSMSChannelExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourcePinpointSMSChannelRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Pinpoint::SMSChannel", ResourcePinpointSMSChannel(), data, meta)
+}
+
+func resourcePinpointSMSChannelCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Pinpoint::SMSChannel", ResourcePinpointSMSChannel(), data, meta)
 }
 
 func resourcePinpointSMSChannelUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -63,3 +68,8 @@ func resourcePinpointSMSChannelUpdate(data *schema.ResourceData, meta interface{
 func resourcePinpointSMSChannelDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Pinpoint::SMSChannel", data, meta)
 }
+
+func resourcePinpointSMSChannelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Pinpoint::SMSChannel", data, meta)
+}
+

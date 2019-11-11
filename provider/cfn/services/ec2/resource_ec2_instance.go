@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,39 +17,23 @@ import (
 
 func ResourceEC2Instance() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceEC2InstanceExists,
+		Read: resourceEC2InstanceRead,
 		Create: resourceEC2InstanceCreate,
-		Read:   resourceEC2InstanceRead,
 		Update: resourceEC2InstanceUpdate,
 		Delete: resourceEC2InstanceDelete,
-
+		CustomizeDiff: resourceEC2InstanceCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"availability_zone": {
-				Type: schema.TypeString,
-				Optional: true,
-				Computed: true,
-				ForceNew: true,
-			},
-			"private_dns_name": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"private_ip": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"public_dns_name": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"public_ip": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"additional_info": {
 				Type: schema.TypeString,
 				Optional: true,
 			},
 			"affinity": {
+				Type: schema.TypeString,
+				Optional: true,
+			},
+			"availability_zone": {
 				Type: schema.TypeString,
 				Optional: true,
 			},
@@ -62,7 +46,6 @@ func ResourceEC2Instance() *schema.Resource {
 				Type: schema.TypeList,
 				Elem: propertyInstanceCpuOptions(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"credit_specification": {
@@ -83,13 +66,11 @@ func ResourceEC2Instance() *schema.Resource {
 				Type: schema.TypeSet,
 				Elem: propertyInstanceElasticGpuSpecification(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"elastic_inference_accelerators": {
 				Type: schema.TypeSet,
 				Elem: propertyInstanceElasticInferenceAccelerator(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"host_id": {
 				Type: schema.TypeString,
@@ -102,7 +83,6 @@ func ResourceEC2Instance() *schema.Resource {
 			"image_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"instance_initiated_shutdown_behavior": {
 				Type: schema.TypeString,
@@ -115,13 +95,11 @@ func ResourceEC2Instance() *schema.Resource {
 			"ipv6_address_count": {
 				Type: schema.TypeInt,
 				Optional: true,
-				ForceNew: true,
 			},
 			"ipv6_addresses": {
 				Type: schema.TypeList,
 				Elem: propertyInstanceInstanceIpv6Address(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"kernel_id": {
 				Type: schema.TypeString,
@@ -130,20 +108,17 @@ func ResourceEC2Instance() *schema.Resource {
 			"key_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"launch_template": {
 				Type: schema.TypeList,
 				Elem: propertyInstanceLaunchTemplateSpecification(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"license_specifications": {
 				Type: schema.TypeSet,
 				Elem: propertyInstanceLicenseSpecification(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"monitoring": {
 				Type: schema.TypeBool,
@@ -153,17 +128,14 @@ func ResourceEC2Instance() *schema.Resource {
 				Type: schema.TypeList,
 				Elem: propertyInstanceNetworkInterface(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"placement_group_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"private_ip_address": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"ramdisk_id": {
 				Type: schema.TypeString,
@@ -178,7 +150,6 @@ func ResourceEC2Instance() *schema.Resource {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Optional: true,
-				ForceNew: true,
 			},
 			"source_dest_check": {
 				Type: schema.TypeBool,
@@ -192,7 +163,6 @@ func ResourceEC2Instance() *schema.Resource {
 			"subnet_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -214,19 +184,23 @@ func ResourceEC2Instance() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceEC2InstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::Instance", ResourceEC2Instance(), data, meta)
+func resourceEC2InstanceExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2InstanceRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::Instance", ResourceEC2Instance(), data, meta)
+}
+
+func resourceEC2InstanceCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::Instance", ResourceEC2Instance(), data, meta)
 }
 
 func resourceEC2InstanceUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -236,3 +210,8 @@ func resourceEC2InstanceUpdate(data *schema.ResourceData, meta interface{}) erro
 func resourceEC2InstanceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::Instance", data, meta)
 }
+
+func resourceEC2InstanceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::EC2::Instance", data, meta)
+}
+

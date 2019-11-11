@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,21 +17,21 @@ import (
 
 func ResourceSSMDocument() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceSSMDocumentExists,
+		Read: resourceSSMDocumentRead,
 		Create: resourceSSMDocumentCreate,
-		Read:   resourceSSMDocumentRead,
 		Update: resourceSSMDocumentUpdate,
 		Delete: resourceSSMDocumentDelete,
-
+		CustomizeDiff: resourceSSMDocumentCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"content": {
 				Type: schema.TypeMap,
 				Required: true,
-				ForceNew: true,
 			},
 			"document_type": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -40,19 +40,23 @@ func ResourceSSMDocument() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceSSMDocumentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SSM::Document", ResourceSSMDocument(), data, meta)
+func resourceSSMDocumentExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceSSMDocumentRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::SSM::Document", ResourceSSMDocument(), data, meta)
+}
+
+func resourceSSMDocumentCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::SSM::Document", ResourceSSMDocument(), data, meta)
 }
 
 func resourceSSMDocumentUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -62,3 +66,8 @@ func resourceSSMDocumentUpdate(data *schema.ResourceData, meta interface{}) erro
 func resourceSSMDocumentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SSM::Document", data, meta)
 }
+
+func resourceSSMDocumentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::SSM::Document", data, meta)
+}
+

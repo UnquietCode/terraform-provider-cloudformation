@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceConfigRemediationConfiguration() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceConfigRemediationConfigurationExists,
+		Read: resourceConfigRemediationConfigurationRead,
 		Create: resourceConfigRemediationConfigurationCreate,
-		Read:   resourceConfigRemediationConfigurationRead,
 		Update: resourceConfigRemediationConfigurationUpdate,
 		Delete: resourceConfigRemediationConfigurationDelete,
-
+		CustomizeDiff: resourceConfigRemediationConfigurationCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"target_version": {
 				Type: schema.TypeString,
@@ -43,7 +45,6 @@ func ResourceConfigRemediationConfiguration() *schema.Resource {
 			"config_rule_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"resource_type": {
 				Type: schema.TypeString,
@@ -67,19 +68,23 @@ func ResourceConfigRemediationConfiguration() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceConfigRemediationConfigurationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Config::RemediationConfiguration", ResourceConfigRemediationConfiguration(), data, meta)
+func resourceConfigRemediationConfigurationExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceConfigRemediationConfigurationRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Config::RemediationConfiguration", ResourceConfigRemediationConfiguration(), data, meta)
+}
+
+func resourceConfigRemediationConfigurationCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Config::RemediationConfiguration", ResourceConfigRemediationConfiguration(), data, meta)
 }
 
 func resourceConfigRemediationConfigurationUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -89,3 +94,8 @@ func resourceConfigRemediationConfigurationUpdate(data *schema.ResourceData, met
 func resourceConfigRemediationConfigurationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Config::RemediationConfiguration", data, meta)
 }
+
+func resourceConfigRemediationConfigurationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Config::RemediationConfiguration", data, meta)
+}
+

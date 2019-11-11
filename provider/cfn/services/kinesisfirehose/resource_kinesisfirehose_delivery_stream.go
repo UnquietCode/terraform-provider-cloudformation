@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,25 +16,21 @@ import (
 
 func ResourceKinesisFirehoseDeliveryStream() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceKinesisFirehoseDeliveryStreamExists,
+		Read: resourceKinesisFirehoseDeliveryStreamRead,
 		Create: resourceKinesisFirehoseDeliveryStreamCreate,
-		Read:   resourceKinesisFirehoseDeliveryStreamRead,
 		Update: resourceKinesisFirehoseDeliveryStreamUpdate,
 		Delete: resourceKinesisFirehoseDeliveryStreamDelete,
-
+		CustomizeDiff: resourceKinesisFirehoseDeliveryStreamCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"delivery_stream_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"delivery_stream_type": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"elasticsearch_destination_configuration": {
 				Type: schema.TypeList,
@@ -74,19 +70,23 @@ func ResourceKinesisFirehoseDeliveryStream() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceKinesisFirehoseDeliveryStreamCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::KinesisFirehose::DeliveryStream", ResourceKinesisFirehoseDeliveryStream(), data, meta)
+func resourceKinesisFirehoseDeliveryStreamExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceKinesisFirehoseDeliveryStreamRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::KinesisFirehose::DeliveryStream", ResourceKinesisFirehoseDeliveryStream(), data, meta)
+}
+
+func resourceKinesisFirehoseDeliveryStreamCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::KinesisFirehose::DeliveryStream", ResourceKinesisFirehoseDeliveryStream(), data, meta)
 }
 
 func resourceKinesisFirehoseDeliveryStreamUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -96,3 +96,8 @@ func resourceKinesisFirehoseDeliveryStreamUpdate(data *schema.ResourceData, meta
 func resourceKinesisFirehoseDeliveryStreamDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::KinesisFirehose::DeliveryStream", data, meta)
 }
+
+func resourceKinesisFirehoseDeliveryStreamCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::KinesisFirehose::DeliveryStream", data, meta)
+}
+

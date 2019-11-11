@@ -1,47 +1,29 @@
 import re
-from string import Template
 from datetime import date
-from unquietcode.tools.cfn_provider.models import ComplexType
+from string import Template
+
+from unquietcode.tools.cfn_provider.models import ComplexType, TF_Type
 from unquietcode.tools.cfn_provider.utils import snake_caps
+from unquietcode.tools.cfn_provider.golang.code_model import (
+    SourceFile,
+	GoParameter,
+    GoFunction,
+	GoMapLiteral,
+	GoStructLiteral,
+	ReturnExpression,
+	LiteralExpression,
+)
+from unquietcode.tools.cfn_provider.golang.code_writer import write_file_to_string
+
 
 # TODO make this dynamic
 PROVIDER_VERSION = '0.0'
 
-DEAD_LINE = '~x~x~x~x~x~x~x~'
 MAX_PROPERTY_RECURSION = 5
 PROJECT_URL = "https://github.com/UnquietCode/terraform-provider-cloudformation"
 
 
-RESOURCE_ATTRIBUTE_TEMPLATE = Template(
-"""
-			"${name}": {
-				Type: ${type},
-				Elem: ${elem},
-				Required: ${required},
-				Optional: ${optional},
-				Computed: ${computed},
-				ForceNew: ${force_replace},
-				MaxItems: ${max_items},
-				Set: ${set_function},
-			},
-"""[1:])
-
-
-def _remove_dead_lines(content):
-	lines = []
-
-	for line in content.split('\n'):
-		if DEAD_LINE in line:
-			continue
-
-		lines.append(line)
-
-	content = '\n'.join(lines)
-	content = content[:-1] if len(lines) > 1 else content
-	return content
-
-
-def _render_attribute_template(*, package_name, schema_name, attribute):
+def _generate_attribute_struct(*, package_name, schema_name, attribute):
 	attribute_type = attribute.type.type
 	
 	if isinstance(attribute_type, ComplexType):
@@ -75,20 +57,27 @@ def _render_attribute_template(*, package_name, schema_name, attribute):
 		call = '()' if recursive is not True else '(strconv.Itoa(int(count + 1)))'
 		attribute_elem = f'{package_prefix}{ae_property_prefix}{attribute_elem.name}{call}'
 	
-	rendered = RESOURCE_ATTRIBUTE_TEMPLATE.substitute(dict(
-		name=snake_caps(attribute.name),
-		type=attribute_type,
-		elem=attribute_elem or DEAD_LINE,
-		computed="true" if attribute.computed is True else DEAD_LINE,
-		required="true" if attribute.required is True else DEAD_LINE,
-		optional="true" if attribute.required is not True and attribute.required is not None else DEAD_LINE,
-		force_replace="true" if attribute.will_replace is True else DEAD_LINE,
-		max_items=attribute.type.max_items or DEAD_LINE,
-		set_function=attribute.type.set_function or DEAD_LINE,
-	))
+	name = snake_caps(attribute.name)
 	
-	rendered = _remove_dead_lines(rendered)
-	return rendered
+	struct = GoStructLiteral(
+		type="",
+		fields={
+			"Type": attribute_type,
+		}
+	)
+	
+	def add_field(name, condition, value):
+		if condition:
+			struct.fields[name] = value
+	
+	add_field("Elem", attribute_elem, attribute_elem)
+	add_field("Required", attribute.required is True, "true")
+	add_field("Optional", attribute.required is not True and attribute.required is not None, "true")
+	add_field("ForceNew", attribute.will_replace is True, "true")
+	add_field("MaxItems", attribute.type.max_items is not None, attribute.type.max_items)
+	add_field("Set", attribute.type.set_function, attribute.type.set_function)
+	
+	return name, struct
 
 
 HEADER_TEMPLATE = Template(
@@ -111,67 +100,28 @@ def _header_stanza(cfn_version, documentation_link):
 		schema_version=cfn_version,
 		documentation_link=documentation_link or PROJECT_URL,
 	))
+
+
+def _import_prefix(i):
+	return f"github.com/unquietcode/terraform-cfn-provider/{i}"
 	
 
-def _imports_stanza(imports):
-	import_lines = [f'	"github.com/unquietcode/terraform-cfn-provider/{i}"' for i in sorted(imports)]
-	import_lines = '\n'.join(import_lines)
+def render_resource_template(*, cfn_version, imports, resource):
+	import_lines = [ _import_prefix(i) for i in imports ]
+	import_lines.extend([
+		"github.com/hashicorp/terraform-plugin-sdk/helper/schema",
+	])
 	
-	return import_lines or DEAD_LINE
-
-
-RESOURCE_TEMPLATE = Template(
-"""
-${header}
-
-package ${package}
-
-import (
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-${imports}
-)
-
-func Resource${name}() *schema.Resource {
-	return &schema.Resource{
-		Create: resource${name}Create,
-		Read:   resource${name}Read,
-		Update: ${update_line},
-		Delete: resource${name}Delete,
-
-		Schema: map[string]*schema.Schema{
-${attributes}
-		},
-	}
-}
-
-func resource${name}Create(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("${cfn_type}", Resource${name}(), data, meta)
-}
-
-func resource${name}Read(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("${cfn_type}", Resource${name}(), data, meta)
-}
-
-func resource${name}Update(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("${cfn_type}", Resource${name}(), data, meta)
-}
-
-func resource${name}Delete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("${cfn_type}", data, meta)
-}
-"""[1:])
-
-
-
-def render_resource_template(*, cfn_version, imports, package_name, resource_name, cfn_type, attributes, documentation_link):
-	rendered_attributes = [
-		_render_attribute_template(package_name=package_name, schema_name=None, attribute=attribute)
+	resource_name = resource.name
+	package_name = resource.package.name
+	attributes = resource.attributes.values()
+	
+	attribute_structs = [
+		_generate_attribute_struct(package_name=package_name, schema_name=None, attribute=attribute)
 		for attribute in attributes
 	]
-	rendered_attributes = '\n'.join(rendered_attributes)
 	
 	# Terraform requires that we check for the case of non-updatable resources
-	# TODO computable
 	updatable = False
 	
 	# at least one attribute will not force a replacement
@@ -179,149 +129,250 @@ def render_resource_template(*, cfn_version, imports, package_name, resource_nam
 		if attribute.will_replace is not True and attribute.computed is not True:
 			updatable = True
 			break
-			
-	rendered = RESOURCE_TEMPLATE.substitute(dict(
-		header=_header_stanza(cfn_version, documentation_link),
-		package=package_name,
-		name=resource_name,
-		cfn_type=cfn_type,
-		attributes=rendered_attributes,
-		update_line=f"resource{resource_name}Update" if updatable else DEAD_LINE,
-		imports=_imports_stanza(imports)
-	))
 	
-	rendered = _remove_dead_lines(rendered)
-	return rendered
-	
-
-
-PROPERTY_TEMPLATE = Template(
-"""
-${header}
-
-package ${package}
-
-import (
-	"strconv"
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-${imports}
-)
-
-func ${prefix}${name}(extras...string) *schema.Resource {
-	var count int64 = 0
-	
-	if len(extras) > 0 {
-		if i, err := strconv.ParseInt(extras[0], 10, 32); err == nil {
-			count = i
+	resource_struct = GoStructLiteral(
+		type="&schema.Resource",
+		fields={
+			"Exists": f"resource{resource_name}Exists",
+			"Read": f"resource{resource_name}Read",
+			"Create": f"resource{resource_name}Create",
+			"Update": f"resource{resource_name}Update",
+			"Delete": f"resource{resource_name}Delete",
+			"CustomizeDiff": f"resource{resource_name}CustomizeDiff",
 		}
-	}
+	)
 	
-	if count >= ${max_recursion} {
-		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
-	}
+	if not updatable:
+		del resource_struct.fields["Update"]
 	
-	return &schema.Resource{
-		Schema: map[string]*schema.Schema{
-${attributes}
-		},
+	resource_struct.fields["Schema"] = GoMapLiteral(
+		key_type="string",
+		value_type="*schema.Schema",
+		fields={ name:value for name,value in attribute_structs },
+	)
+	
+	functions = [
+		GoFunction(
+			name=f"Resource{resource_name}",
+			parameters=[],
+		    return_types=[
+				"*schema.Resource"
+		    ],
+			body=[ReturnExpression(resource_struct)],
+		),
+		GoFunction(
+			name=f"resource{resource_name}Exists",
+			parameters=[
+				GoParameter(name="data", type="*schema.ResourceData"),
+				GoParameter(name="meta", type="interface{}"),
+			],
+			return_types=["bool", "error"],
+			body=["return plugin.ResourceExists(data, meta)"],
+		),
+		GoFunction(
+			name=f"resource{resource_name}Read",
+			parameters=[
+				GoParameter(name="data", type="*schema.ResourceData"),
+				GoParameter(name="meta", type="interface{}"),
+			],
+			return_types=["error"],
+			body=[f'return plugin.ResourceRead("{resource.cfn_type}", Resource{resource_name}(), data, meta)'],
+		),
+		GoFunction(
+			name=f"resource{resource_name}Create",
+			parameters=[
+				GoParameter(name="data", type="*schema.ResourceData"),
+				GoParameter(name="meta", type="interface{}"),
+			],
+			return_types=["error"],
+			body=[f'return plugin.ResourceCreate("{resource.cfn_type}", Resource{resource_name}(), data, meta)'],
+		),
+		GoFunction(
+			name=f"resource{resource_name}Update",
+			parameters=[
+				GoParameter(name="data", type="*schema.ResourceData"),
+				GoParameter(name="meta", type="interface{}"),
+			],
+			return_types=["error"],
+			body=[f'return plugin.ResourceUpdate("{resource.cfn_type}", Resource{resource_name}(), data, meta)'],
+		),
+		GoFunction(
+			name=f"resource{resource_name}Delete",
+			parameters=[
+				GoParameter(name="data", type="*schema.ResourceData"),
+				GoParameter(name="meta", type="interface{}"),
+			],
+			return_types=["error"],
+			body=[f'return plugin.ResourceDelete("{resource.cfn_type}", data, meta)'],
+		),
+		GoFunction(
+			name=f"resource{resource_name}CustomizeDiff",
+			parameters=[
+				GoParameter(name="data", type="*schema.ResourceDiff"),
+				GoParameter(name="meta", type="interface{}"),
+			],
+			return_types=["error"],
+			body=[f'return plugin.ResourceCustomizeDiff("{resource.cfn_type}", data, meta)'],
+		),
+	]
+	
+	code_file = SourceFile(
+	    header=_header_stanza(cfn_version, resource.documentation_link),
+	    package_name=package_name,
+	    imports=import_lines,
+	    declarations=functions,
+	)	
+	
+	return write_file_to_string(code_file)
+
+
+PROPERTY_FUNCTION_BODY = Template(
+"""
+var count int64 = 0
+
+if len(extras) > 0 {
+	if i, err := strconv.ParseInt(extras[0], 10, 32); err == nil {
+		count = i
 	}
+}
+
+if count >= ${max_recursion} {
+	return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 }
 """[1:])
 
 
 def render_property_template(*, cfn_version, package_name, property_name, attributes, imports, documentation_link):
-	rendered_attributes = [
-		_render_attribute_template(package_name=package_name, schema_name=property_name, attribute=attribute)
+	import_lines = [ _import_prefix(i) for i in imports ]
+	import_lines.extend([
+		"strconv",
+		"github.com/hashicorp/terraform-plugin-sdk/helper/schema",
+	])
+	
+	function_name = 'property' if property_name != 'Tag' else 'Property'
+	function_name += property_name
+	
+	attribute_structs = [
+		_generate_attribute_struct(package_name=package_name, schema_name=property_name, attribute=attribute)
 		for attribute in attributes
 	]
-	rendered_attributes = '\n'.join(rendered_attributes)
 	
-	rendered = PROPERTY_TEMPLATE.substitute(dict(
-		header=_header_stanza(cfn_version, documentation_link),
-		package=package_name,
-		prefix='property' if property_name != 'Tag' else 'Property',
-		name=property_name,
-		attributes=rendered_attributes,
-		imports=_imports_stanza(imports),
+	resource_struct = GoStructLiteral(
+		type="&schema.Resource",
+	)
+	
+	resource_struct.fields["Schema"] = GoMapLiteral(
+		key_type="string",
+		value_type="*schema.Schema",
+		fields={ name:value for name,value in attribute_structs },
+	)
+	
+	function_body = PROPERTY_FUNCTION_BODY.substitute(dict(
 		max_recursion=MAX_PROPERTY_RECURSION,
 	))
 	
-	rendered = _remove_dead_lines(rendered)
-	return rendered
-
-
-def _resources_stanza(resources):
-	resource_lines = [f'			"cfn_{r.service_name.lower()}_{snake_caps(r.name[len(r.service_name):])}": {r.package.name}.Resource{r.name}(),' for r in resources]
-	resource_lines = '\n'.join(resource_lines)
-	return resource_lines or DEAD_LINE
-
-
-def _datasources_stanza(datasources):
-	datasource_lines = [f'			"cfn_{r.service_name.lower()}_{snake_caps(r.name[len(r.service_name):])}": {d.package.name}.Datasource{d.name}(),' for d in datasources]
-	datasource_lines = '\n'.join(datasource_lines)
-	return datasource_lines or DEAD_LINE
-
+	functions = [
+		GoFunction(
+			name=function_name,
+			parameters=[
+				GoParameter(
+					name="extras",
+					type="string",
+					varargs=True,
+				)
+			],
+		    return_types=["*schema.Resource"],
+			body=[function_body, ReturnExpression(resource_struct)],
+		)
+	]
 	
+	code_file = SourceFile(
+	    header=_header_stanza(cfn_version, documentation_link),
+	    package_name=package_name,
+	    imports=import_lines,
+	    declarations=functions,
+	)
+	
+	return write_file_to_string(code_file)
 
 
-PROVIDER_TEMPLATE = Template(
-"""
-${header}
+def _resource_line(resource):
+	r = resource
+	
+	name = f'cfn_{r.service_name.lower()}_{snake_caps(r.name[len(r.service_name):])}'
+	value = f'{r.package.name}.Resource{r.name}()'
+	return name, LiteralExpression(expression=value)
 
-package ${package}
 
-import (
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-	"github.com/hashicorp/terraform-plugin-sdk/terraform"
-	"github.com/unquietcode/terraform-cfn-provider/plugin"
-${imports}
-)
-
-func Provider() terraform.ResourceProvider {
-	return &schema.Provider{
-		ConfigureFunc: plugin.ProviderConfigure,
-		Schema: map[string]*schema.Schema{
-			"bucket_name": {
-				Type:        schema.TypeString,
-				Required:    true,
-				Description: "name of an S3 bucket where we can store template files",
-			},
-			"bucket_prefix": {
-				Type:        schema.TypeString,
-				Optional:    true,
-				Description: "path in the bucket under which CFN can store data",
-			},
-			"stack_name": {
-				Type:        schema.TypeString,
-				Required:    true,
-				Description: "exact name to use for the CloudFormation stack",
-			},
-			"role_arn": {
-				Type:        schema.TypeString,
-				Optional:    true,
-				Description: "ARN of a role to be used for interacting with CloudFormation",
-			},
-		},
-		DataSourcesMap: map[string]*schema.Resource{
-${datasources}
-		},
-		ResourcesMap: map[string]*schema.Resource{
-${resources}
-		},
-	}
-}
-"""[1:])
-
+def _datasources_line(datasource):
+	d = datasource
+	
+	name = f'cfn_{r.service_name.lower()}_{snake_caps(r.name[len(r.service_name):])}'
+	value = f'{d.package.name}.Datasource{d.name}(),'
+	return name, LiteralExpression(expression=value)
+	
 
 def render_provider_template(*, cfn_version, package_name, imports, datasources, resources):
-	rendered = PROVIDER_TEMPLATE.substitute(dict(
-		header=_header_stanza(cfn_version, None),
-		package=package_name,
-		imports=_imports_stanza(imports),
-		resources=_resources_stanza(resources),
-		datasources=_datasources_stanza(datasources),
-	))
+	import_lines = [ _import_prefix(i) for i in imports ]
+	import_lines.extend([
+		"github.com/hashicorp/terraform-plugin-sdk/helper/schema",
+		"github.com/hashicorp/terraform-plugin-sdk/terraform",
+		"github.com/unquietcode/terraform-cfn-provider/plugin",
+		"github.com/unquietcode/terraform-cfn-provider/cfn/misc",
+	])
 	
-	rendered = _remove_dead_lines(rendered)
-	return rendered
+	resource_fields = [ _resource_line(_) for _ in resources ]
+	resource_fields = { _[0]:_[1] for _ in resource_fields }
+	resource_fields["cfn_template_data"] =  LiteralExpression(expression="misc.ResourceTemplateData()")
 
+	datasource_fields = [ _datasources_line(_) for _ in datasources ]
+	datasource_fields = { _[0]:_[1] for _ in datasource_fields }
+	
+	provider_struct = GoStructLiteral(
+		type="&schema.Provider",
+		fields={
+			"ConfigureFunc": "plugin.ProviderConfigure",
+			"Schema": GoMapLiteral(
+				key_type="string",
+				value_type="*schema.Schema",
+				fields={
+					"workdir": GoStructLiteral(
+						type="",
+						fields={
+							"Type": "schema.TypeString",
+							"Required": "true",
+							"Description": '"working directory on the filesystem"',
+						}
+					)
+				}
+			),
+			"ResourcesMap": GoMapLiteral(
+				key_type="string",
+				value_type="*schema.Resource",
+				fields=resource_fields,
+			),
+			"DataSourcesMap": GoMapLiteral(
+				key_type="string",
+				value_type="*schema.Resource",
+				fields=datasource_fields,
+			)
+		},
+	)
+	
+	functions = [
+		GoFunction(
+			name="Provider",
+			parameters=[],
+			return_types=["terraform.ResourceProvider"],
+			body=[ReturnExpression(provider_struct)],
+		)
+	]	
+	
+	code_file = SourceFile(
+		header=_header_stanza(cfn_version, None),
+		package_name=package_name,
+		imports=import_lines,
+		declarations=functions,
+	)
+	
+	return write_file_to_string(code_file)

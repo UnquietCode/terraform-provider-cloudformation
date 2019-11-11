@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceGameLiftBuild() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceGameLiftBuildExists,
+		Read: resourceGameLiftBuildRead,
 		Create: resourceGameLiftBuildCreate,
-		Read:   resourceGameLiftBuildRead,
 		Update: resourceGameLiftBuildUpdate,
 		Delete: resourceGameLiftBuildDelete,
-
+		CustomizeDiff: resourceGameLiftBuildCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"name": {
 				Type: schema.TypeString,
@@ -30,7 +32,6 @@ func ResourceGameLiftBuild() *schema.Resource {
 				Type: schema.TypeList,
 				Elem: propertyBuildS3Location(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"version": {
@@ -39,19 +40,23 @@ func ResourceGameLiftBuild() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceGameLiftBuildCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::GameLift::Build", ResourceGameLiftBuild(), data, meta)
+func resourceGameLiftBuildExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceGameLiftBuildRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::GameLift::Build", ResourceGameLiftBuild(), data, meta)
+}
+
+func resourceGameLiftBuildCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::GameLift::Build", ResourceGameLiftBuild(), data, meta)
 }
 
 func resourceGameLiftBuildUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -61,3 +66,8 @@ func resourceGameLiftBuildUpdate(data *schema.ResourceData, meta interface{}) er
 func resourceGameLiftBuildDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::GameLift::Build", data, meta)
 }
+
+func resourceGameLiftBuildCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::GameLift::Build", data, meta)
+}
+

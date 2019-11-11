@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,30 +16,21 @@ import (
 
 func ResourceDirectoryServiceSimpleAD() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceDirectoryServiceSimpleADExists,
+		Read: resourceDirectoryServiceSimpleADRead,
 		Create: resourceDirectoryServiceSimpleADCreate,
-		Read:   resourceDirectoryServiceSimpleADRead,
 		Update: resourceDirectoryServiceSimpleADUpdate,
 		Delete: resourceDirectoryServiceSimpleADDelete,
-
+		CustomizeDiff: resourceDirectoryServiceSimpleADCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"alias": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"dns_ip_addresses": {
-				Type: schema.TypeList,
-				Elem: &schema.Schema{Type: schema.TypeString},
-				Computed: true,
-			},
 			"create_alias": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"description": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"enable_sso": {
 				Type: schema.TypeBool,
@@ -48,45 +39,44 @@ func ResourceDirectoryServiceSimpleAD() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"password": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"short_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"size": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"vpc_settings": {
 				Type: schema.TypeList,
 				Elem: propertySimpleADVpcSettings(),
 				Required: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceDirectoryServiceSimpleADCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DirectoryService::SimpleAD", ResourceDirectoryServiceSimpleAD(), data, meta)
+func resourceDirectoryServiceSimpleADExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceDirectoryServiceSimpleADRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::DirectoryService::SimpleAD", ResourceDirectoryServiceSimpleAD(), data, meta)
+}
+
+func resourceDirectoryServiceSimpleADCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::DirectoryService::SimpleAD", ResourceDirectoryServiceSimpleAD(), data, meta)
 }
 
 func resourceDirectoryServiceSimpleADUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -96,3 +86,8 @@ func resourceDirectoryServiceSimpleADUpdate(data *schema.ResourceData, meta inte
 func resourceDirectoryServiceSimpleADDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::DirectoryService::SimpleAD", data, meta)
 }
+
+func resourceDirectoryServiceSimpleADCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::DirectoryService::SimpleAD", data, meta)
+}
+

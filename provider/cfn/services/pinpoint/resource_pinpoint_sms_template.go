@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,20 +16,17 @@ import (
 
 func ResourcePinpointSmsTemplate() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourcePinpointSmsTemplateExists,
+		Read: resourcePinpointSmsTemplateRead,
 		Create: resourcePinpointSmsTemplateCreate,
-		Read:   resourcePinpointSmsTemplateRead,
 		Update: resourcePinpointSmsTemplateUpdate,
 		Delete: resourcePinpointSmsTemplateDelete,
-
+		CustomizeDiff: resourcePinpointSmsTemplateCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"template_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"body": {
 				Type: schema.TypeString,
@@ -41,19 +38,23 @@ func ResourcePinpointSmsTemplate() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourcePinpointSmsTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::SmsTemplate", ResourcePinpointSmsTemplate(), data, meta)
+func resourcePinpointSmsTemplateExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourcePinpointSmsTemplateRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Pinpoint::SmsTemplate", ResourcePinpointSmsTemplate(), data, meta)
+}
+
+func resourcePinpointSmsTemplateCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Pinpoint::SmsTemplate", ResourcePinpointSmsTemplate(), data, meta)
 }
 
 func resourcePinpointSmsTemplateUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -63,3 +64,8 @@ func resourcePinpointSmsTemplateUpdate(data *schema.ResourceData, meta interface
 func resourcePinpointSmsTemplateDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Pinpoint::SmsTemplate", data, meta)
 }
+
+func resourcePinpointSmsTemplateCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Pinpoint::SmsTemplate", data, meta)
+}
+

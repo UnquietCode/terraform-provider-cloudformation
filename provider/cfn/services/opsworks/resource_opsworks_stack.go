@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,11 +17,13 @@ import (
 
 func ResourceOpsWorksStack() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceOpsWorksStackExists,
+		Read: resourceOpsWorksStackRead,
 		Create: resourceOpsWorksStackCreate,
-		Read:   resourceOpsWorksStackRead,
 		Update: resourceOpsWorksStackUpdate,
 		Delete: resourceOpsWorksStackDelete,
-
+		CustomizeDiff: resourceOpsWorksStackCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"agent_version": {
 				Type: schema.TypeString,
@@ -42,13 +44,11 @@ func ResourceOpsWorksStack() *schema.Resource {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Optional: true,
-				ForceNew: true,
 				Set: schema.HashString,
 			},
 			"clone_permissions": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"configuration_manager": {
 				Type: schema.TypeList,
@@ -115,12 +115,10 @@ func ResourceOpsWorksStack() *schema.Resource {
 			"service_role_arn": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"source_stack_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -138,23 +136,26 @@ func ResourceOpsWorksStack() *schema.Resource {
 			"vpc_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceOpsWorksStackCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::OpsWorks::Stack", ResourceOpsWorksStack(), data, meta)
+func resourceOpsWorksStackExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceOpsWorksStackRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::OpsWorks::Stack", ResourceOpsWorksStack(), data, meta)
+}
+
+func resourceOpsWorksStackCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::OpsWorks::Stack", ResourceOpsWorksStack(), data, meta)
 }
 
 func resourceOpsWorksStackUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -164,3 +165,8 @@ func resourceOpsWorksStackUpdate(data *schema.ResourceData, meta interface{}) er
 func resourceOpsWorksStackDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::OpsWorks::Stack", data, meta)
 }
+
+func resourceOpsWorksStackCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::OpsWorks::Stack", data, meta)
+}
+

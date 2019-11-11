@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourcePinpointAPNSVoipSandboxChannel() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourcePinpointAPNSVoipSandboxChannelExists,
+		Read: resourcePinpointAPNSVoipSandboxChannelRead,
 		Create: resourcePinpointAPNSVoipSandboxChannelCreate,
-		Read:   resourcePinpointAPNSVoipSandboxChannelRead,
 		Update: resourcePinpointAPNSVoipSandboxChannelUpdate,
 		Delete: resourcePinpointAPNSVoipSandboxChannelDelete,
-
+		CustomizeDiff: resourcePinpointAPNSVoipSandboxChannelCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"bundle_id": {
 				Type: schema.TypeString,
@@ -45,7 +47,6 @@ func ResourcePinpointAPNSVoipSandboxChannel() *schema.Resource {
 			"application_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"team_id": {
 				Type: schema.TypeString,
@@ -61,19 +62,23 @@ func ResourcePinpointAPNSVoipSandboxChannel() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourcePinpointAPNSVoipSandboxChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::APNSVoipSandboxChannel", ResourcePinpointAPNSVoipSandboxChannel(), data, meta)
+func resourcePinpointAPNSVoipSandboxChannelExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourcePinpointAPNSVoipSandboxChannelRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Pinpoint::APNSVoipSandboxChannel", ResourcePinpointAPNSVoipSandboxChannel(), data, meta)
+}
+
+func resourcePinpointAPNSVoipSandboxChannelCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Pinpoint::APNSVoipSandboxChannel", ResourcePinpointAPNSVoipSandboxChannel(), data, meta)
 }
 
 func resourcePinpointAPNSVoipSandboxChannelUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -83,3 +88,8 @@ func resourcePinpointAPNSVoipSandboxChannelUpdate(data *schema.ResourceData, met
 func resourcePinpointAPNSVoipSandboxChannelDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Pinpoint::APNSVoipSandboxChannel", data, meta)
 }
+
+func resourcePinpointAPNSVoipSandboxChannelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Pinpoint::APNSVoipSandboxChannel", data, meta)
+}
+

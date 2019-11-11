@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceWAFIPSet() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceWAFIPSetExists,
+		Read: resourceWAFIPSetRead,
 		Create: resourceWAFIPSetCreate,
-		Read:   resourceWAFIPSetRead,
 		Update: resourceWAFIPSetUpdate,
 		Delete: resourceWAFIPSetDelete,
-
+		CustomizeDiff: resourceWAFIPSetCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"ip_set_descriptors": {
 				Type: schema.TypeSet,
@@ -30,23 +32,26 @@ func ResourceWAFIPSet() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceWAFIPSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::WAF::IPSet", ResourceWAFIPSet(), data, meta)
+func resourceWAFIPSetExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceWAFIPSetRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::WAF::IPSet", ResourceWAFIPSet(), data, meta)
+}
+
+func resourceWAFIPSetCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::WAF::IPSet", ResourceWAFIPSet(), data, meta)
 }
 
 func resourceWAFIPSetUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -56,3 +61,8 @@ func resourceWAFIPSetUpdate(data *schema.ResourceData, meta interface{}) error {
 func resourceWAFIPSetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::WAF::IPSet", data, meta)
 }
+
+func resourceWAFIPSetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::WAF::IPSet", data, meta)
+}
+

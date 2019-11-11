@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,37 +16,42 @@ import (
 
 func ResourceGreengrassDeviceDefinitionVersion() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceGreengrassDeviceDefinitionVersionExists,
+		Read: resourceGreengrassDeviceDefinitionVersionRead,
 		Create: resourceGreengrassDeviceDefinitionVersionCreate,
-		Read:   resourceGreengrassDeviceDefinitionVersionRead,
+		Update: resourceGreengrassDeviceDefinitionVersionUpdate,
 		Delete: resourceGreengrassDeviceDefinitionVersionDelete,
-
+		CustomizeDiff: resourceGreengrassDeviceDefinitionVersionCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"device_definition_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"devices": {
 				Type: schema.TypeList,
 				Elem: propertyDeviceDefinitionVersionDevice(),
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceGreengrassDeviceDefinitionVersionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Greengrass::DeviceDefinitionVersion", ResourceGreengrassDeviceDefinitionVersion(), data, meta)
+func resourceGreengrassDeviceDefinitionVersionExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceGreengrassDeviceDefinitionVersionRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Greengrass::DeviceDefinitionVersion", ResourceGreengrassDeviceDefinitionVersion(), data, meta)
+}
+
+func resourceGreengrassDeviceDefinitionVersionCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Greengrass::DeviceDefinitionVersion", ResourceGreengrassDeviceDefinitionVersion(), data, meta)
 }
 
 func resourceGreengrassDeviceDefinitionVersionUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -56,3 +61,8 @@ func resourceGreengrassDeviceDefinitionVersionUpdate(data *schema.ResourceData, 
 func resourceGreengrassDeviceDefinitionVersionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Greengrass::DeviceDefinitionVersion", data, meta)
 }
+
+func resourceGreengrassDeviceDefinitionVersionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Greengrass::DeviceDefinitionVersion", data, meta)
+}
+

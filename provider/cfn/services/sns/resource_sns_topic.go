@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,18 +16,14 @@ import (
 
 func ResourceSNSTopic() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceSNSTopicExists,
+		Read: resourceSNSTopicRead,
 		Create: resourceSNSTopicCreate,
-		Read:   resourceSNSTopicRead,
 		Update: resourceSNSTopicUpdate,
 		Delete: resourceSNSTopicDelete,
-
+		CustomizeDiff: resourceSNSTopicCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"topic_name": {
-				Type: schema.TypeString,
-				Optional: true,
-				Computed: true,
-				ForceNew: true,
-			},
 			"display_name": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -41,21 +37,29 @@ func ResourceSNSTopic() *schema.Resource {
 				Elem: propertyTopicSubscription(),
 				Optional: true,
 			},
-			"logical_id": {
+			"topic_name": {
 				Type: schema.TypeString,
 				Optional: true,
+			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceSNSTopicCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SNS::Topic", ResourceSNSTopic(), data, meta)
+func resourceSNSTopicExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceSNSTopicRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::SNS::Topic", ResourceSNSTopic(), data, meta)
+}
+
+func resourceSNSTopicCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::SNS::Topic", ResourceSNSTopic(), data, meta)
 }
 
 func resourceSNSTopicUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -65,3 +69,8 @@ func resourceSNSTopicUpdate(data *schema.ResourceData, meta interface{}) error {
 func resourceSNSTopicDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SNS::Topic", data, meta)
 }
+
+func resourceSNSTopicCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::SNS::Topic", data, meta)
+}
+

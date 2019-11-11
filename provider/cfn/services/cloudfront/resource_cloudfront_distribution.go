@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,16 +17,14 @@ import (
 
 func ResourceCloudFrontDistribution() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceCloudFrontDistributionExists,
+		Read: resourceCloudFrontDistributionRead,
 		Create: resourceCloudFrontDistributionCreate,
-		Read:   resourceCloudFrontDistributionRead,
 		Update: resourceCloudFrontDistributionUpdate,
 		Delete: resourceCloudFrontDistributionDelete,
-
+		CustomizeDiff: resourceCloudFrontDistributionCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"domain_name": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"distribution_config": {
 				Type: schema.TypeList,
 				Elem: propertyDistributionDistributionConfig(),
@@ -40,19 +38,23 @@ func ResourceCloudFrontDistribution() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceCloudFrontDistributionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CloudFront::Distribution", ResourceCloudFrontDistribution(), data, meta)
+func resourceCloudFrontDistributionExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCloudFrontDistributionRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::CloudFront::Distribution", ResourceCloudFrontDistribution(), data, meta)
+}
+
+func resourceCloudFrontDistributionCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::CloudFront::Distribution", ResourceCloudFrontDistribution(), data, meta)
 }
 
 func resourceCloudFrontDistributionUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -62,3 +64,8 @@ func resourceCloudFrontDistributionUpdate(data *schema.ResourceData, meta interf
 func resourceCloudFrontDistributionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CloudFront::Distribution", data, meta)
 }
+
+func resourceCloudFrontDistributionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::CloudFront::Distribution", data, meta)
+}
+

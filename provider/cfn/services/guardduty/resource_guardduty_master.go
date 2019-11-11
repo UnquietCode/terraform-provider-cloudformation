@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,41 +16,45 @@ import (
 
 func ResourceGuardDutyMaster() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceGuardDutyMasterExists,
+		Read: resourceGuardDutyMasterRead,
 		Create: resourceGuardDutyMasterCreate,
-		Read:   resourceGuardDutyMasterRead,
+		Update: resourceGuardDutyMasterUpdate,
 		Delete: resourceGuardDutyMasterDelete,
-
+		CustomizeDiff: resourceGuardDutyMasterCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"detector_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"master_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"invitation_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceGuardDutyMasterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::GuardDuty::Master", ResourceGuardDutyMaster(), data, meta)
+func resourceGuardDutyMasterExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceGuardDutyMasterRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::GuardDuty::Master", ResourceGuardDutyMaster(), data, meta)
+}
+
+func resourceGuardDutyMasterCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::GuardDuty::Master", ResourceGuardDutyMaster(), data, meta)
 }
 
 func resourceGuardDutyMasterUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -60,3 +64,8 @@ func resourceGuardDutyMasterUpdate(data *schema.ResourceData, meta interface{}) 
 func resourceGuardDutyMasterDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::GuardDuty::Master", data, meta)
 }
+
+func resourceGuardDutyMasterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::GuardDuty::Master", data, meta)
+}
+

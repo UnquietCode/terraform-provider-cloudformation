@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceElastiCacheSecurityGroupIngress() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceElastiCacheSecurityGroupIngressExists,
+		Read: resourceElastiCacheSecurityGroupIngressRead,
 		Create: resourceElastiCacheSecurityGroupIngressCreate,
-		Read:   resourceElastiCacheSecurityGroupIngressRead,
 		Update: resourceElastiCacheSecurityGroupIngressUpdate,
 		Delete: resourceElastiCacheSecurityGroupIngressDelete,
-
+		CustomizeDiff: resourceElastiCacheSecurityGroupIngressCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"cache_security_group_name": {
 				Type: schema.TypeString,
@@ -36,19 +38,23 @@ func ResourceElastiCacheSecurityGroupIngress() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceElastiCacheSecurityGroupIngressCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElastiCache::SecurityGroupIngress", ResourceElastiCacheSecurityGroupIngress(), data, meta)
+func resourceElastiCacheSecurityGroupIngressExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceElastiCacheSecurityGroupIngressRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ElastiCache::SecurityGroupIngress", ResourceElastiCacheSecurityGroupIngress(), data, meta)
+}
+
+func resourceElastiCacheSecurityGroupIngressCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ElastiCache::SecurityGroupIngress", ResourceElastiCacheSecurityGroupIngress(), data, meta)
 }
 
 func resourceElastiCacheSecurityGroupIngressUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -58,3 +64,8 @@ func resourceElastiCacheSecurityGroupIngressUpdate(data *schema.ResourceData, me
 func resourceElastiCacheSecurityGroupIngressDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ElastiCache::SecurityGroupIngress", data, meta)
 }
+
+func resourceElastiCacheSecurityGroupIngressCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::ElastiCache::SecurityGroupIngress", data, meta)
+}
+

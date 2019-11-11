@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,14 @@ import (
 
 func ResourcePinpointPushTemplate() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourcePinpointPushTemplateExists,
+		Read: resourcePinpointPushTemplateRead,
 		Create: resourcePinpointPushTemplateCreate,
-		Read:   resourcePinpointPushTemplateRead,
 		Update: resourcePinpointPushTemplateUpdate,
 		Delete: resourcePinpointPushTemplateDelete,
-
+		CustomizeDiff: resourcePinpointPushTemplateCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"gcm": {
 				Type: schema.TypeList,
 				Elem: propertyPushTemplateAndroidPushNotificationTemplate(),
@@ -41,7 +39,6 @@ func ResourcePinpointPushTemplate() *schema.Resource {
 			"template_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"adm": {
 				Type: schema.TypeList,
@@ -67,19 +64,23 @@ func ResourcePinpointPushTemplate() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourcePinpointPushTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::PushTemplate", ResourcePinpointPushTemplate(), data, meta)
+func resourcePinpointPushTemplateExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourcePinpointPushTemplateRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Pinpoint::PushTemplate", ResourcePinpointPushTemplate(), data, meta)
+}
+
+func resourcePinpointPushTemplateCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Pinpoint::PushTemplate", ResourcePinpointPushTemplate(), data, meta)
 }
 
 func resourcePinpointPushTemplateUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -89,3 +90,8 @@ func resourcePinpointPushTemplateUpdate(data *schema.ResourceData, meta interfac
 func resourcePinpointPushTemplateDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Pinpoint::PushTemplate", data, meta)
 }
+
+func resourcePinpointPushTemplateCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Pinpoint::PushTemplate", data, meta)
+}
+

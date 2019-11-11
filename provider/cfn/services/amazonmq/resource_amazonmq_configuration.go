@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,28 +16,17 @@ import (
 
 func ResourceAmazonMQConfiguration() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceAmazonMQConfigurationExists,
+		Read: resourceAmazonMQConfigurationRead,
 		Create: resourceAmazonMQConfigurationCreate,
-		Read:   resourceAmazonMQConfigurationRead,
 		Update: resourceAmazonMQConfigurationUpdate,
 		Delete: resourceAmazonMQConfigurationDelete,
-
+		CustomizeDiff: resourceAmazonMQConfigurationCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"revision": {
-				Type: schema.TypeInt,
-				Computed: true,
-			},
-			"the_id": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"engine_version": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"description": {
 				Type: schema.TypeString,
@@ -46,7 +35,6 @@ func ResourceAmazonMQConfiguration() *schema.Resource {
 			"engine_type": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"data": {
 				Type: schema.TypeString,
@@ -60,23 +48,26 @@ func ResourceAmazonMQConfiguration() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceAmazonMQConfigurationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AmazonMQ::Configuration", ResourceAmazonMQConfiguration(), data, meta)
+func resourceAmazonMQConfigurationExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceAmazonMQConfigurationRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::AmazonMQ::Configuration", ResourceAmazonMQConfiguration(), data, meta)
+}
+
+func resourceAmazonMQConfigurationCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::AmazonMQ::Configuration", ResourceAmazonMQConfiguration(), data, meta)
 }
 
 func resourceAmazonMQConfigurationUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -86,3 +77,8 @@ func resourceAmazonMQConfigurationUpdate(data *schema.ResourceData, meta interfa
 func resourceAmazonMQConfigurationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AmazonMQ::Configuration", data, meta)
 }
+
+func resourceAmazonMQConfigurationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::AmazonMQ::Configuration", data, meta)
+}
+

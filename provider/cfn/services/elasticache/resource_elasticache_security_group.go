@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceElastiCacheSecurityGroup() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceElastiCacheSecurityGroupExists,
+		Read: resourceElastiCacheSecurityGroupRead,
 		Create: resourceElastiCacheSecurityGroupCreate,
-		Read:   resourceElastiCacheSecurityGroupRead,
 		Update: resourceElastiCacheSecurityGroupUpdate,
 		Delete: resourceElastiCacheSecurityGroupDelete,
-
+		CustomizeDiff: resourceElastiCacheSecurityGroupCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -28,19 +30,23 @@ func ResourceElastiCacheSecurityGroup() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceElastiCacheSecurityGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElastiCache::SecurityGroup", ResourceElastiCacheSecurityGroup(), data, meta)
+func resourceElastiCacheSecurityGroupExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceElastiCacheSecurityGroupRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ElastiCache::SecurityGroup", ResourceElastiCacheSecurityGroup(), data, meta)
+}
+
+func resourceElastiCacheSecurityGroupCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ElastiCache::SecurityGroup", ResourceElastiCacheSecurityGroup(), data, meta)
 }
 
 func resourceElastiCacheSecurityGroupUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -50,3 +56,8 @@ func resourceElastiCacheSecurityGroupUpdate(data *schema.ResourceData, meta inte
 func resourceElastiCacheSecurityGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ElastiCache::SecurityGroup", data, meta)
 }
+
+func resourceElastiCacheSecurityGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::ElastiCache::SecurityGroup", data, meta)
+}
+

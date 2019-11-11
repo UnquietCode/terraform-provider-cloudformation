@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,16 +17,17 @@ import (
 
 func ResourceSSMPatchBaseline() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceSSMPatchBaselineExists,
+		Read: resourceSSMPatchBaselineRead,
 		Create: resourceSSMPatchBaselineCreate,
-		Read:   resourceSSMPatchBaselineRead,
 		Update: resourceSSMPatchBaselineUpdate,
 		Delete: resourceSSMPatchBaselineDelete,
-
+		CustomizeDiff: resourceSSMPatchBaselineCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"operating_system": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"description": {
 				Type: schema.TypeString,
@@ -87,19 +88,23 @@ func ResourceSSMPatchBaseline() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceSSMPatchBaselineCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SSM::PatchBaseline", ResourceSSMPatchBaseline(), data, meta)
+func resourceSSMPatchBaselineExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceSSMPatchBaselineRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::SSM::PatchBaseline", ResourceSSMPatchBaseline(), data, meta)
+}
+
+func resourceSSMPatchBaselineCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::SSM::PatchBaseline", ResourceSSMPatchBaseline(), data, meta)
 }
 
 func resourceSSMPatchBaselineUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -109,3 +114,8 @@ func resourceSSMPatchBaselineUpdate(data *schema.ResourceData, meta interface{})
 func resourceSSMPatchBaselineDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SSM::PatchBaseline", data, meta)
 }
+
+func resourceSSMPatchBaselineCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::SSM::PatchBaseline", data, meta)
+}
+

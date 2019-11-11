@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceWAFRegionalRegexPatternSet() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceWAFRegionalRegexPatternSetExists,
+		Read: resourceWAFRegionalRegexPatternSetRead,
 		Create: resourceWAFRegionalRegexPatternSetCreate,
-		Read:   resourceWAFRegionalRegexPatternSetRead,
 		Update: resourceWAFRegionalRegexPatternSetUpdate,
 		Delete: resourceWAFRegionalRegexPatternSetDelete,
-
+		CustomizeDiff: resourceWAFRegionalRegexPatternSetCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"regex_pattern_strings": {
 				Type: schema.TypeList,
@@ -30,23 +32,26 @@ func ResourceWAFRegionalRegexPatternSet() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceWAFRegionalRegexPatternSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::WAFRegional::RegexPatternSet", ResourceWAFRegionalRegexPatternSet(), data, meta)
+func resourceWAFRegionalRegexPatternSetExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceWAFRegionalRegexPatternSetRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::WAFRegional::RegexPatternSet", ResourceWAFRegionalRegexPatternSet(), data, meta)
+}
+
+func resourceWAFRegionalRegexPatternSetCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::WAFRegional::RegexPatternSet", ResourceWAFRegionalRegexPatternSet(), data, meta)
 }
 
 func resourceWAFRegionalRegexPatternSetUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -56,3 +61,8 @@ func resourceWAFRegionalRegexPatternSetUpdate(data *schema.ResourceData, meta in
 func resourceWAFRegionalRegexPatternSetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::WAFRegional::RegexPatternSet", data, meta)
 }
+
+func resourceWAFRegionalRegexPatternSetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::WAFRegional::RegexPatternSet", data, meta)
+}
+

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,16 +17,14 @@ import (
 
 func ResourceRAMResourceShare() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceRAMResourceShareExists,
+		Read: resourceRAMResourceShareRead,
 		Create: resourceRAMResourceShareCreate,
-		Read:   resourceRAMResourceShareRead,
 		Update: resourceRAMResourceShareUpdate,
 		Delete: resourceRAMResourceShareDelete,
-
+		CustomizeDiff: resourceRAMResourceShareCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"principals": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
@@ -52,19 +50,23 @@ func ResourceRAMResourceShare() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceRAMResourceShareCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RAM::ResourceShare", ResourceRAMResourceShare(), data, meta)
+func resourceRAMResourceShareExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceRAMResourceShareRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::RAM::ResourceShare", ResourceRAMResourceShare(), data, meta)
+}
+
+func resourceRAMResourceShareCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::RAM::ResourceShare", ResourceRAMResourceShare(), data, meta)
 }
 
 func resourceRAMResourceShareUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -74,3 +76,8 @@ func resourceRAMResourceShareUpdate(data *schema.ResourceData, meta interface{})
 func resourceRAMResourceShareDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::RAM::ResourceShare", data, meta)
 }
+
+func resourceRAMResourceShareCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::RAM::ResourceShare", data, meta)
+}
+

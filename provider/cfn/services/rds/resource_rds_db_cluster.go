@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,24 +17,14 @@ import (
 
 func ResourceRDSDBCluster() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceRDSDBClusterExists,
+		Read: resourceRDSDBClusterRead,
 		Create: resourceRDSDBClusterCreate,
-		Read:   resourceRDSDBClusterRead,
 		Update: resourceRDSDBClusterUpdate,
 		Delete: resourceRDSDBClusterDelete,
-
+		CustomizeDiff: resourceRDSDBClusterCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"endpoint_address": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"endpoint_port": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"read_endpoint_address": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"associated_roles": {
 				Type: schema.TypeSet,
 				Elem: propertyDBClusterDBClusterRole(),
@@ -44,7 +34,6 @@ func ResourceRDSDBCluster() *schema.Resource {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Optional: true,
-				ForceNew: true,
 				Set: schema.HashString,
 			},
 			"backtrack_window": {
@@ -58,7 +47,6 @@ func ResourceRDSDBCluster() *schema.Resource {
 			"db_cluster_identifier": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"db_cluster_parameter_group_name": {
 				Type: schema.TypeString,
@@ -67,12 +55,10 @@ func ResourceRDSDBCluster() *schema.Resource {
 			"db_subnet_group_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"database_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"deletion_protection": {
 				Type: schema.TypeBool,
@@ -91,22 +77,18 @@ func ResourceRDSDBCluster() *schema.Resource {
 			"engine": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"engine_mode": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"engine_version": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"kms_key_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"master_user_password": {
 				Type: schema.TypeString,
@@ -115,7 +97,6 @@ func ResourceRDSDBCluster() *schema.Resource {
 			"master_username": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"port": {
 				Type: schema.TypeInt,
@@ -136,7 +117,6 @@ func ResourceRDSDBCluster() *schema.Resource {
 			"restore_type": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"scaling_configuration": {
 				Type: schema.TypeList,
@@ -147,22 +127,18 @@ func ResourceRDSDBCluster() *schema.Resource {
 			"snapshot_identifier": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"source_db_cluster_identifier": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"source_region": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"storage_encrypted": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -172,7 +148,6 @@ func ResourceRDSDBCluster() *schema.Resource {
 			"use_latest_restorable_time": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"vpc_security_group_ids": {
 				Type: schema.TypeSet,
@@ -182,19 +157,23 @@ func ResourceRDSDBCluster() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceRDSDBClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RDS::DBCluster", ResourceRDSDBCluster(), data, meta)
+func resourceRDSDBClusterExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceRDSDBClusterRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::RDS::DBCluster", ResourceRDSDBCluster(), data, meta)
+}
+
+func resourceRDSDBClusterCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::RDS::DBCluster", ResourceRDSDBCluster(), data, meta)
 }
 
 func resourceRDSDBClusterUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -204,3 +183,8 @@ func resourceRDSDBClusterUpdate(data *schema.ResourceData, meta interface{}) err
 func resourceRDSDBClusterDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::RDS::DBCluster", data, meta)
 }
+
+func resourceRDSDBClusterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::RDS::DBCluster", data, meta)
+}
+

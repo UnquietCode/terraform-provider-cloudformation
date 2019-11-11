@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourcePinpointEmailConfigurationSet() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourcePinpointEmailConfigurationSetExists,
+		Read: resourcePinpointEmailConfigurationSetRead,
 		Create: resourcePinpointEmailConfigurationSetCreate,
-		Read:   resourcePinpointEmailConfigurationSetRead,
 		Update: resourcePinpointEmailConfigurationSetUpdate,
 		Delete: resourcePinpointEmailConfigurationSetDelete,
-
+		CustomizeDiff: resourcePinpointEmailConfigurationSetCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"sending_options": {
 				Type: schema.TypeList,
@@ -54,23 +56,26 @@ func ResourcePinpointEmailConfigurationSet() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourcePinpointEmailConfigurationSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::PinpointEmail::ConfigurationSet", ResourcePinpointEmailConfigurationSet(), data, meta)
+func resourcePinpointEmailConfigurationSetExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourcePinpointEmailConfigurationSetRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::PinpointEmail::ConfigurationSet", ResourcePinpointEmailConfigurationSet(), data, meta)
+}
+
+func resourcePinpointEmailConfigurationSetCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::PinpointEmail::ConfigurationSet", ResourcePinpointEmailConfigurationSet(), data, meta)
 }
 
 func resourcePinpointEmailConfigurationSetUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -80,3 +85,8 @@ func resourcePinpointEmailConfigurationSetUpdate(data *schema.ResourceData, meta
 func resourcePinpointEmailConfigurationSetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::PinpointEmail::ConfigurationSet", data, meta)
 }
+
+func resourcePinpointEmailConfigurationSetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::PinpointEmail::ConfigurationSet", data, meta)
+}
+

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceSESTemplate() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceSESTemplateExists,
+		Read: resourceSESTemplateRead,
 		Create: resourceSESTemplateCreate,
-		Read:   resourceSESTemplateRead,
 		Update: resourceSESTemplateUpdate,
 		Delete: resourceSESTemplateDelete,
-
+		CustomizeDiff: resourceSESTemplateCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"template": {
 				Type: schema.TypeList,
@@ -30,19 +32,23 @@ func ResourceSESTemplate() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceSESTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SES::Template", ResourceSESTemplate(), data, meta)
+func resourceSESTemplateExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceSESTemplateRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::SES::Template", ResourceSESTemplate(), data, meta)
+}
+
+func resourceSESTemplateCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::SES::Template", ResourceSESTemplate(), data, meta)
 }
 
 func resourceSESTemplateUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -52,3 +58,8 @@ func resourceSESTemplateUpdate(data *schema.ResourceData, meta interface{}) erro
 func resourceSESTemplateDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SES::Template", data, meta)
 }
+
+func resourceSESTemplateCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::SES::Template", data, meta)
+}
+

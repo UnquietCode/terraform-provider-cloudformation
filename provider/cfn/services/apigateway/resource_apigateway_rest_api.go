@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,14 @@ import (
 
 func ResourceApiGatewayRestApi() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceApiGatewayRestApiExists,
+		Read: resourceApiGatewayRestApiRead,
 		Create: resourceApiGatewayRestApiCreate,
-		Read:   resourceApiGatewayRestApiRead,
 		Update: resourceApiGatewayRestApiUpdate,
 		Delete: resourceApiGatewayRestApiDelete,
-
+		CustomizeDiff: resourceApiGatewayRestApiCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"root_resource_id": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"api_key_source_type": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -83,19 +81,23 @@ func ResourceApiGatewayRestApi() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceApiGatewayRestApiCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::RestApi", ResourceApiGatewayRestApi(), data, meta)
+func resourceApiGatewayRestApiExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceApiGatewayRestApiRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ApiGateway::RestApi", ResourceApiGatewayRestApi(), data, meta)
+}
+
+func resourceApiGatewayRestApiCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ApiGateway::RestApi", ResourceApiGatewayRestApi(), data, meta)
 }
 
 func resourceApiGatewayRestApiUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -105,3 +107,8 @@ func resourceApiGatewayRestApiUpdate(data *schema.ResourceData, meta interface{}
 func resourceApiGatewayRestApiDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGateway::RestApi", data, meta)
 }
+
+func resourceApiGatewayRestApiCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::ApiGateway::RestApi", data, meta)
+}
+

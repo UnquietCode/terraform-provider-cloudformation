@@ -1,8 +1,8 @@
 from unquietcode.tools.cfn_provider.models import ResourceAttribute, Property, Resource, Package, Provider
 from unquietcode.tools.cfn_provider.type_support import translate_cfn_type, simple_primitive
 
-RESERVED_PROPERTY_ATTRIBUTES = {'Count', 'Provider'}
-RESERVED_RESOURCE_ATTRIBUTES = {'Id'}
+RESERVED_PROPERTY_ATTRIBUTES = {'count', 'provider'}
+RESERVED_RESOURCE_ATTRIBUTES = {'id', 'cfn'}
 RESERVED_RESOURCE_ATTRIBUTES.update(RESERVED_PROPERTY_ATTRIBUTES)
 
 
@@ -10,15 +10,15 @@ def handle_resource_property(resource_name, property_name, property_data, schema
     attribute_type = translate_cfn_type(resource_name, property_data, schema_properties)
     reserved = RESERVED_PROPERTY_ATTRIBUTES if type == 'property' else RESERVED_RESOURCE_ATTRIBUTES
     
-    if property_name in reserved:
+    if property_name.lower() in reserved:
         property_name = f"The{property_name}"
 
     return ResourceAttribute(
         name=property_name,
         type=attribute_type,
         required=property_data['Required'],
-        computed=computed,
-        will_replace=property_data['UpdateType'] == 'Immutable',
+        computed=False,#computed,
+        will_replace=False, #property_data['UpdateType'] == 'Immutable',
         documentation_link=property_data['Documentation'],
     )
 
@@ -26,7 +26,7 @@ def handle_resource_property(resource_name, property_name, property_data, schema
 def handle_resource_attribute(resource_name, documentation_link, attribute_name, attribute_data):
     attribute_type = translate_cfn_type(resource_name, attribute_data, {})
     
-    if attribute_name in RESERVED_RESOURCE_ATTRIBUTES:
+    if attribute_name.lower() in RESERVED_RESOURCE_ATTRIBUTES:
         attribute_name = f"The{attribute_name}"
     
     # replace nested with flat for now
@@ -61,27 +61,15 @@ def handle_property(*, package, service, outer_name, inner_name, data):
 
 
 def handle_resource(*, service, package, resource_name, cfn_type, resource_data):
-    attributes = {}
-        
-    # resource attributes
-    resource_attributes = resource_data.get("Attributes", {})
-    
-    for attribute_name, attribute_data in resource_attributes.items():
-        attribute = handle_resource_attribute(
-            resource_name=resource_name,
-            documentation_link=resource_data['Documentation'],
-            attribute_name=attribute_name,
-            attribute_data=attribute_data,
-        )
-        attributes[attribute.name] = attribute
     
     # resource properties (clobbers attributes with same name)
     resource_properties = resource_data['Properties']
+    attributes = {}
     
     for property_name, property_data in resource_properties.items():
         
         # computable if an attribute exists and it is not required
-        computed = property_name in resource_attributes \
+        computed = property_name in resource_properties \
                and property_data.get('Required') is not True
         
         attribute = handle_resource_property(
@@ -97,15 +85,28 @@ def handle_resource(*, service, package, resource_name, cfn_type, resource_data)
     # special attributes
     if 'LogicalId' in attributes:
         raise Exception('attribute name collision')
-        
+
     attributes['LogicalId'] = ResourceAttribute(
         name='LogicalId',
         type=simple_primitive("String"),
-        required=False,
+        required=True,
         computed=False,
         will_replace=True,
         documentation_link='https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resources-section-structure.html',
     )
+    
+    # resource attributes
+    # resource_attributes = resource_data.get("Attributes", {})
+    # attributes = {}
+    # 
+    # for attribute_name, attribute_data in resource_attributes.items():
+    #     attribute = handle_resource_attribute(
+    #         resource_name=resource_name,
+    #         documentation_link=attribute_data.get('Documentation'),
+    #         attribute_name=attribute_name,
+    #         attribute_data=attribute_data,
+    #     )
+    #     attributes[attribute.name] = attribute
     
     resource = Resource(
         name=f"{service}{resource_name}",

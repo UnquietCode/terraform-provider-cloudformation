@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceRDSEventSubscription() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceRDSEventSubscriptionExists,
+		Read: resourceRDSEventSubscriptionRead,
 		Create: resourceRDSEventSubscriptionCreate,
-		Read:   resourceRDSEventSubscriptionRead,
 		Update: resourceRDSEventSubscriptionUpdate,
 		Delete: resourceRDSEventSubscriptionDelete,
-
+		CustomizeDiff: resourceRDSEventSubscriptionCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"enabled": {
 				Type: schema.TypeBool,
@@ -35,7 +37,6 @@ func ResourceRDSEventSubscription() *schema.Resource {
 			"sns_topic_arn": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"source_ids": {
 				Type: schema.TypeList,
@@ -48,19 +49,23 @@ func ResourceRDSEventSubscription() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceRDSEventSubscriptionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RDS::EventSubscription", ResourceRDSEventSubscription(), data, meta)
+func resourceRDSEventSubscriptionExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceRDSEventSubscriptionRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::RDS::EventSubscription", ResourceRDSEventSubscription(), data, meta)
+}
+
+func resourceRDSEventSubscriptionCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::RDS::EventSubscription", ResourceRDSEventSubscription(), data, meta)
 }
 
 func resourceRDSEventSubscriptionUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -70,3 +75,8 @@ func resourceRDSEventSubscriptionUpdate(data *schema.ResourceData, meta interfac
 func resourceRDSEventSubscriptionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::RDS::EventSubscription", data, meta)
 }
+
+func resourceRDSEventSubscriptionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::RDS::EventSubscription", data, meta)
+}
+

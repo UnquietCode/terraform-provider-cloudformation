@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceEC2VPNGatewayRoutePropagation() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceEC2VPNGatewayRoutePropagationExists,
+		Read: resourceEC2VPNGatewayRoutePropagationRead,
 		Create: resourceEC2VPNGatewayRoutePropagationCreate,
-		Read:   resourceEC2VPNGatewayRoutePropagationRead,
 		Update: resourceEC2VPNGatewayRoutePropagationUpdate,
 		Delete: resourceEC2VPNGatewayRoutePropagationDelete,
-
+		CustomizeDiff: resourceEC2VPNGatewayRoutePropagationCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"route_table_ids": {
 				Type: schema.TypeList,
@@ -33,19 +35,23 @@ func ResourceEC2VPNGatewayRoutePropagation() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceEC2VPNGatewayRoutePropagationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::VPNGatewayRoutePropagation", ResourceEC2VPNGatewayRoutePropagation(), data, meta)
+func resourceEC2VPNGatewayRoutePropagationExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2VPNGatewayRoutePropagationRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::VPNGatewayRoutePropagation", ResourceEC2VPNGatewayRoutePropagation(), data, meta)
+}
+
+func resourceEC2VPNGatewayRoutePropagationCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::VPNGatewayRoutePropagation", ResourceEC2VPNGatewayRoutePropagation(), data, meta)
 }
 
 func resourceEC2VPNGatewayRoutePropagationUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -55,3 +61,8 @@ func resourceEC2VPNGatewayRoutePropagationUpdate(data *schema.ResourceData, meta
 func resourceEC2VPNGatewayRoutePropagationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::VPNGatewayRoutePropagation", data, meta)
 }
+
+func resourceEC2VPNGatewayRoutePropagationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::EC2::VPNGatewayRoutePropagation", data, meta)
+}
+

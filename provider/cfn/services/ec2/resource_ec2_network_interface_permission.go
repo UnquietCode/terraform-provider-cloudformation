@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,41 +16,45 @@ import (
 
 func ResourceEC2NetworkInterfacePermission() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceEC2NetworkInterfacePermissionExists,
+		Read: resourceEC2NetworkInterfacePermissionRead,
 		Create: resourceEC2NetworkInterfacePermissionCreate,
-		Read:   resourceEC2NetworkInterfacePermissionRead,
+		Update: resourceEC2NetworkInterfacePermissionUpdate,
 		Delete: resourceEC2NetworkInterfacePermissionDelete,
-
+		CustomizeDiff: resourceEC2NetworkInterfacePermissionCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"aws_account_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"network_interface_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"permission": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceEC2NetworkInterfacePermissionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::NetworkInterfacePermission", ResourceEC2NetworkInterfacePermission(), data, meta)
+func resourceEC2NetworkInterfacePermissionExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2NetworkInterfacePermissionRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::NetworkInterfacePermission", ResourceEC2NetworkInterfacePermission(), data, meta)
+}
+
+func resourceEC2NetworkInterfacePermissionCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::NetworkInterfacePermission", ResourceEC2NetworkInterfacePermission(), data, meta)
 }
 
 func resourceEC2NetworkInterfacePermissionUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -60,3 +64,8 @@ func resourceEC2NetworkInterfacePermissionUpdate(data *schema.ResourceData, meta
 func resourceEC2NetworkInterfacePermissionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::NetworkInterfacePermission", data, meta)
 }
+
+func resourceEC2NetworkInterfacePermissionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::EC2::NetworkInterfacePermission", data, meta)
+}
+

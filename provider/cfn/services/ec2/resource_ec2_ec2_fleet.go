@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceEC2EC2Fleet() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceEC2EC2FleetExists,
+		Read: resourceEC2EC2FleetRead,
 		Create: resourceEC2EC2FleetCreate,
-		Read:   resourceEC2EC2FleetRead,
 		Update: resourceEC2EC2FleetUpdate,
 		Delete: resourceEC2EC2FleetDelete,
-
+		CustomizeDiff: resourceEC2EC2FleetCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"target_capacity_specification": {
 				Type: schema.TypeList,
@@ -32,13 +34,11 @@ func ResourceEC2EC2Fleet() *schema.Resource {
 				Type: schema.TypeList,
 				Elem: propertyEC2FleetOnDemandOptionsRequest(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"type": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"excess_capacity_termination_policy": {
 				Type: schema.TypeString,
@@ -48,56 +48,53 @@ func ResourceEC2EC2Fleet() *schema.Resource {
 				Type: schema.TypeList,
 				Elem: propertyEC2FleetTagSpecification(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"spot_options": {
 				Type: schema.TypeList,
 				Elem: propertyEC2FleetSpotOptionsRequest(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"valid_from": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"replace_unhealthy_instances": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"launch_template_configs": {
 				Type: schema.TypeList,
 				Elem: propertyEC2FleetFleetLaunchTemplateConfigRequest(),
 				Required: true,
-				ForceNew: true,
 			},
 			"terminate_instances_with_expiration": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"valid_until": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceEC2EC2FleetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::EC2Fleet", ResourceEC2EC2Fleet(), data, meta)
+func resourceEC2EC2FleetExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2EC2FleetRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::EC2Fleet", ResourceEC2EC2Fleet(), data, meta)
+}
+
+func resourceEC2EC2FleetCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::EC2Fleet", ResourceEC2EC2Fleet(), data, meta)
 }
 
 func resourceEC2EC2FleetUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -107,3 +104,8 @@ func resourceEC2EC2FleetUpdate(data *schema.ResourceData, meta interface{}) erro
 func resourceEC2EC2FleetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::EC2Fleet", data, meta)
 }
+
+func resourceEC2EC2FleetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::EC2::EC2Fleet", data, meta)
+}
+

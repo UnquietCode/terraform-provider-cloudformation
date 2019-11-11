@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,31 +17,21 @@ import (
 
 func ResourceEC2SecurityGroup() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceEC2SecurityGroupExists,
+		Read: resourceEC2SecurityGroupRead,
 		Create: resourceEC2SecurityGroupCreate,
-		Read:   resourceEC2SecurityGroupRead,
 		Update: resourceEC2SecurityGroupUpdate,
 		Delete: resourceEC2SecurityGroupDelete,
-
+		CustomizeDiff: resourceEC2SecurityGroupCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"group_id": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"vpc_id": {
-				Type: schema.TypeString,
-				Optional: true,
-				Computed: true,
-				ForceNew: true,
-			},
 			"group_description": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"group_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"security_group_egress": {
 				Type: schema.TypeList,
@@ -58,21 +48,29 @@ func ResourceEC2SecurityGroup() *schema.Resource {
 				Elem: misc.PropertyTag(),
 				Optional: true,
 			},
-			"logical_id": {
+			"vpc_id": {
 				Type: schema.TypeString,
 				Optional: true,
+			},
+			"logical_id": {
+				Type: schema.TypeString,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceEC2SecurityGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::SecurityGroup", ResourceEC2SecurityGroup(), data, meta)
+func resourceEC2SecurityGroupExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2SecurityGroupRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::SecurityGroup", ResourceEC2SecurityGroup(), data, meta)
+}
+
+func resourceEC2SecurityGroupCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::SecurityGroup", ResourceEC2SecurityGroup(), data, meta)
 }
 
 func resourceEC2SecurityGroupUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -82,3 +80,8 @@ func resourceEC2SecurityGroupUpdate(data *schema.ResourceData, meta interface{})
 func resourceEC2SecurityGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::SecurityGroup", data, meta)
 }
+
+func resourceEC2SecurityGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::EC2::SecurityGroup", data, meta)
+}
+

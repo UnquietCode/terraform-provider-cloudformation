@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,16 +17,14 @@ import (
 
 func ResourceAppStreamImageBuilder() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceAppStreamImageBuilderExists,
+		Read: resourceAppStreamImageBuilderRead,
 		Create: resourceAppStreamImageBuilderCreate,
-		Read:   resourceAppStreamImageBuilderRead,
 		Update: resourceAppStreamImageBuilderUpdate,
 		Delete: resourceAppStreamImageBuilderDelete,
-
+		CustomizeDiff: resourceAppStreamImageBuilderCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"streaming_url": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"image_name": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -78,19 +76,23 @@ func ResourceAppStreamImageBuilder() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceAppStreamImageBuilderCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppStream::ImageBuilder", ResourceAppStreamImageBuilder(), data, meta)
+func resourceAppStreamImageBuilderExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceAppStreamImageBuilderRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::AppStream::ImageBuilder", ResourceAppStreamImageBuilder(), data, meta)
+}
+
+func resourceAppStreamImageBuilderCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::AppStream::ImageBuilder", ResourceAppStreamImageBuilder(), data, meta)
 }
 
 func resourceAppStreamImageBuilderUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -100,3 +102,8 @@ func resourceAppStreamImageBuilderUpdate(data *schema.ResourceData, meta interfa
 func resourceAppStreamImageBuilderDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AppStream::ImageBuilder", data, meta)
 }
+
+func resourceAppStreamImageBuilderCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::AppStream::ImageBuilder", data, meta)
+}
+

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceGlueDevEndpoint() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceGlueDevEndpointExists,
+		Read: resourceGlueDevEndpointRead,
 		Create: resourceGlueDevEndpointCreate,
-		Read:   resourceGlueDevEndpointRead,
 		Update: resourceGlueDevEndpointUpdate,
 		Delete: resourceGlueDevEndpointDelete,
-
+		CustomizeDiff: resourceGlueDevEndpointCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"extra_jars_s3_path": {
 				Type: schema.TypeString,
@@ -58,7 +60,6 @@ func ResourceGlueDevEndpoint() *schema.Resource {
 			"endpoint_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"glue_version": {
 				Type: schema.TypeString,
@@ -82,19 +83,23 @@ func ResourceGlueDevEndpoint() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceGlueDevEndpointCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::DevEndpoint", ResourceGlueDevEndpoint(), data, meta)
+func resourceGlueDevEndpointExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceGlueDevEndpointRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Glue::DevEndpoint", ResourceGlueDevEndpoint(), data, meta)
+}
+
+func resourceGlueDevEndpointCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Glue::DevEndpoint", ResourceGlueDevEndpoint(), data, meta)
 }
 
 func resourceGlueDevEndpointUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -104,3 +109,8 @@ func resourceGlueDevEndpointUpdate(data *schema.ResourceData, meta interface{}) 
 func resourceGlueDevEndpointDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Glue::DevEndpoint", data, meta)
 }
+
+func resourceGlueDevEndpointCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Glue::DevEndpoint", data, meta)
+}
+

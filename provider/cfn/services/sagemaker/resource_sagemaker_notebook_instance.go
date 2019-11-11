@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,22 +17,17 @@ import (
 
 func ResourceSageMakerNotebookInstance() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceSageMakerNotebookInstanceExists,
+		Read: resourceSageMakerNotebookInstanceRead,
 		Create: resourceSageMakerNotebookInstanceCreate,
-		Read:   resourceSageMakerNotebookInstanceRead,
 		Update: resourceSageMakerNotebookInstanceUpdate,
 		Delete: resourceSageMakerNotebookInstanceDelete,
-
+		CustomizeDiff: resourceSageMakerNotebookInstanceCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"notebook_instance_name": {
-				Type: schema.TypeString,
-				Optional: true,
-				Computed: true,
-				ForceNew: true,
-			},
 			"kms_key_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"volume_size_in_gb": {
 				Type: schema.TypeInt,
@@ -50,7 +45,6 @@ func ResourceSageMakerNotebookInstance() *schema.Resource {
 			"direct_internet_access": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"accelerator_types": {
 				Type: schema.TypeList,
@@ -60,19 +54,21 @@ func ResourceSageMakerNotebookInstance() *schema.Resource {
 			"subnet_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"security_group_ids": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Optional: true,
-				ForceNew: true,
 			},
 			"role_arn": {
 				Type: schema.TypeString,
 				Required: true,
 			},
 			"root_access": {
+				Type: schema.TypeString,
+				Optional: true,
+			},
+			"notebook_instance_name": {
 				Type: schema.TypeString,
 				Optional: true,
 			},
@@ -91,19 +87,23 @@ func ResourceSageMakerNotebookInstance() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceSageMakerNotebookInstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SageMaker::NotebookInstance", ResourceSageMakerNotebookInstance(), data, meta)
+func resourceSageMakerNotebookInstanceExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceSageMakerNotebookInstanceRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::SageMaker::NotebookInstance", ResourceSageMakerNotebookInstance(), data, meta)
+}
+
+func resourceSageMakerNotebookInstanceCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::SageMaker::NotebookInstance", ResourceSageMakerNotebookInstance(), data, meta)
 }
 
 func resourceSageMakerNotebookInstanceUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -113,3 +113,8 @@ func resourceSageMakerNotebookInstanceUpdate(data *schema.ResourceData, meta int
 func resourceSageMakerNotebookInstanceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SageMaker::NotebookInstance", data, meta)
 }
+
+func resourceSageMakerNotebookInstanceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::SageMaker::NotebookInstance", data, meta)
+}
+

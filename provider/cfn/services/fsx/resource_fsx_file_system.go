@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,26 +17,25 @@ import (
 
 func ResourceFSxFileSystem() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceFSxFileSystemExists,
+		Read: resourceFSxFileSystemRead,
 		Create: resourceFSxFileSystemCreate,
-		Read:   resourceFSxFileSystemRead,
 		Update: resourceFSxFileSystemUpdate,
 		Delete: resourceFSxFileSystemDelete,
-
+		CustomizeDiff: resourceFSxFileSystemCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"kms_key_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"storage_capacity": {
 				Type: schema.TypeInt,
 				Optional: true,
-				ForceNew: true,
 			},
 			"file_system_type": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"lustre_configuration": {
 				Type: schema.TypeList,
@@ -47,19 +46,16 @@ func ResourceFSxFileSystem() *schema.Resource {
 			"backup_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"subnet_ids": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Required: true,
-				ForceNew: true,
 			},
 			"security_group_ids": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Optional: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -74,19 +70,23 @@ func ResourceFSxFileSystem() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceFSxFileSystemCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::FSx::FileSystem", ResourceFSxFileSystem(), data, meta)
+func resourceFSxFileSystemExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceFSxFileSystemRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::FSx::FileSystem", ResourceFSxFileSystem(), data, meta)
+}
+
+func resourceFSxFileSystemCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::FSx::FileSystem", ResourceFSxFileSystem(), data, meta)
 }
 
 func resourceFSxFileSystemUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -96,3 +96,8 @@ func resourceFSxFileSystemUpdate(data *schema.ResourceData, meta interface{}) er
 func resourceFSxFileSystemDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::FSx::FileSystem", data, meta)
 }
+
+func resourceFSxFileSystemCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::FSx::FileSystem", data, meta)
+}
+

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,44 +16,41 @@ import (
 
 func ResourceServiceDiscoveryPublicDnsNamespace() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceServiceDiscoveryPublicDnsNamespaceExists,
+		Read: resourceServiceDiscoveryPublicDnsNamespaceRead,
 		Create: resourceServiceDiscoveryPublicDnsNamespaceCreate,
-		Read:   resourceServiceDiscoveryPublicDnsNamespaceRead,
+		Update: resourceServiceDiscoveryPublicDnsNamespaceUpdate,
 		Delete: resourceServiceDiscoveryPublicDnsNamespaceDelete,
-
+		CustomizeDiff: resourceServiceDiscoveryPublicDnsNamespaceCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"the_id": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"description": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceServiceDiscoveryPublicDnsNamespaceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceDiscovery::PublicDnsNamespace", ResourceServiceDiscoveryPublicDnsNamespace(), data, meta)
+func resourceServiceDiscoveryPublicDnsNamespaceExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceServiceDiscoveryPublicDnsNamespaceRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ServiceDiscovery::PublicDnsNamespace", ResourceServiceDiscoveryPublicDnsNamespace(), data, meta)
+}
+
+func resourceServiceDiscoveryPublicDnsNamespaceCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ServiceDiscovery::PublicDnsNamespace", ResourceServiceDiscoveryPublicDnsNamespace(), data, meta)
 }
 
 func resourceServiceDiscoveryPublicDnsNamespaceUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -63,3 +60,8 @@ func resourceServiceDiscoveryPublicDnsNamespaceUpdate(data *schema.ResourceData,
 func resourceServiceDiscoveryPublicDnsNamespaceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ServiceDiscovery::PublicDnsNamespace", data, meta)
 }
+
+func resourceServiceDiscoveryPublicDnsNamespaceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::ServiceDiscovery::PublicDnsNamespace", data, meta)
+}
+

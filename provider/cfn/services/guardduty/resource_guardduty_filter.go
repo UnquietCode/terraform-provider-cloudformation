@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceGuardDutyFilter() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceGuardDutyFilterExists,
+		Read: resourceGuardDutyFilterRead,
 		Create: resourceGuardDutyFilterCreate,
-		Read:   resourceGuardDutyFilterRead,
 		Update: resourceGuardDutyFilterUpdate,
 		Delete: resourceGuardDutyFilterDelete,
-
+		CustomizeDiff: resourceGuardDutyFilterCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"action": {
 				Type: schema.TypeString,
@@ -33,7 +35,6 @@ func ResourceGuardDutyFilter() *schema.Resource {
 			"detector_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"finding_criteria": {
 				Type: schema.TypeList,
@@ -48,23 +49,26 @@ func ResourceGuardDutyFilter() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceGuardDutyFilterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::GuardDuty::Filter", ResourceGuardDutyFilter(), data, meta)
+func resourceGuardDutyFilterExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceGuardDutyFilterRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::GuardDuty::Filter", ResourceGuardDutyFilter(), data, meta)
+}
+
+func resourceGuardDutyFilterCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::GuardDuty::Filter", ResourceGuardDutyFilter(), data, meta)
 }
 
 func resourceGuardDutyFilterUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -74,3 +78,8 @@ func resourceGuardDutyFilterUpdate(data *schema.ResourceData, meta interface{}) 
 func resourceGuardDutyFilterDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::GuardDuty::Filter", data, meta)
 }
+
+func resourceGuardDutyFilterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::GuardDuty::Filter", data, meta)
+}
+

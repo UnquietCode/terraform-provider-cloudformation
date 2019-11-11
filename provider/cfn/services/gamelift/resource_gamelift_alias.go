@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceGameLiftAlias() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceGameLiftAliasExists,
+		Read: resourceGameLiftAliasRead,
 		Create: resourceGameLiftAliasCreate,
-		Read:   resourceGameLiftAliasRead,
 		Update: resourceGameLiftAliasUpdate,
 		Delete: resourceGameLiftAliasDelete,
-
+		CustomizeDiff: resourceGameLiftAliasCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -38,19 +40,23 @@ func ResourceGameLiftAlias() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceGameLiftAliasCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::GameLift::Alias", ResourceGameLiftAlias(), data, meta)
+func resourceGameLiftAliasExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceGameLiftAliasRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::GameLift::Alias", ResourceGameLiftAlias(), data, meta)
+}
+
+func resourceGameLiftAliasCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::GameLift::Alias", ResourceGameLiftAlias(), data, meta)
 }
 
 func resourceGameLiftAliasUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -60,3 +66,8 @@ func resourceGameLiftAliasUpdate(data *schema.ResourceData, meta interface{}) er
 func resourceGameLiftAliasDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::GameLift::Alias", data, meta)
 }
+
+func resourceGameLiftAliasCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::GameLift::Alias", data, meta)
+}
+

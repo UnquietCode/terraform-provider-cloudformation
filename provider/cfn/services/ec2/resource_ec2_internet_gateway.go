@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,11 +17,13 @@ import (
 
 func ResourceEC2InternetGateway() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceEC2InternetGatewayExists,
+		Read: resourceEC2InternetGatewayRead,
 		Create: resourceEC2InternetGatewayCreate,
-		Read:   resourceEC2InternetGatewayRead,
 		Update: resourceEC2InternetGatewayUpdate,
 		Delete: resourceEC2InternetGatewayDelete,
-
+		CustomizeDiff: resourceEC2InternetGatewayCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"tags": {
 				Type: schema.TypeList,
@@ -30,19 +32,23 @@ func ResourceEC2InternetGateway() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceEC2InternetGatewayCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::InternetGateway", ResourceEC2InternetGateway(), data, meta)
+func resourceEC2InternetGatewayExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2InternetGatewayRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::InternetGateway", ResourceEC2InternetGateway(), data, meta)
+}
+
+func resourceEC2InternetGatewayCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::InternetGateway", ResourceEC2InternetGateway(), data, meta)
 }
 
 func resourceEC2InternetGatewayUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -52,3 +58,8 @@ func resourceEC2InternetGatewayUpdate(data *schema.ResourceData, meta interface{
 func resourceEC2InternetGatewayDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::InternetGateway", data, meta)
 }
+
+func resourceEC2InternetGatewayCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::EC2::InternetGateway", data, meta)
+}
+

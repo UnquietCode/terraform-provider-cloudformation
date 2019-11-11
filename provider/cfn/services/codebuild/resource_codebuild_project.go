@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,16 +17,14 @@ import (
 
 func ResourceCodeBuildProject() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceCodeBuildProjectExists,
+		Read: resourceCodeBuildProjectRead,
 		Create: resourceCodeBuildProjectCreate,
-		Read:   resourceCodeBuildProjectRead,
 		Update: resourceCodeBuildProjectUpdate,
 		Delete: resourceCodeBuildProjectDelete,
-
+		CustomizeDiff: resourceCodeBuildProjectCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"description": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -70,7 +68,6 @@ func ResourceCodeBuildProject() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"artifacts": {
 				Type: schema.TypeList,
@@ -124,19 +121,23 @@ func ResourceCodeBuildProject() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceCodeBuildProjectCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CodeBuild::Project", ResourceCodeBuildProject(), data, meta)
+func resourceCodeBuildProjectExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCodeBuildProjectRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::CodeBuild::Project", ResourceCodeBuildProject(), data, meta)
+}
+
+func resourceCodeBuildProjectCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::CodeBuild::Project", ResourceCodeBuildProject(), data, meta)
 }
 
 func resourceCodeBuildProjectUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -146,3 +147,8 @@ func resourceCodeBuildProjectUpdate(data *schema.ResourceData, meta interface{})
 func resourceCodeBuildProjectDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CodeBuild::Project", data, meta)
 }
+
+func resourceCodeBuildProjectCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::CodeBuild::Project", data, meta)
+}
+

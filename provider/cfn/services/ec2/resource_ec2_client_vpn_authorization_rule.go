@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,51 +16,53 @@ import (
 
 func ResourceEC2ClientVpnAuthorizationRule() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceEC2ClientVpnAuthorizationRuleExists,
+		Read: resourceEC2ClientVpnAuthorizationRuleRead,
 		Create: resourceEC2ClientVpnAuthorizationRuleCreate,
-		Read:   resourceEC2ClientVpnAuthorizationRuleRead,
+		Update: resourceEC2ClientVpnAuthorizationRuleUpdate,
 		Delete: resourceEC2ClientVpnAuthorizationRuleDelete,
-
+		CustomizeDiff: resourceEC2ClientVpnAuthorizationRuleCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"client_vpn_endpoint_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"description": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"access_group_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"target_network_cidr": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"authorize_all_groups": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceEC2ClientVpnAuthorizationRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::ClientVpnAuthorizationRule", ResourceEC2ClientVpnAuthorizationRule(), data, meta)
+func resourceEC2ClientVpnAuthorizationRuleExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2ClientVpnAuthorizationRuleRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::ClientVpnAuthorizationRule", ResourceEC2ClientVpnAuthorizationRule(), data, meta)
+}
+
+func resourceEC2ClientVpnAuthorizationRuleCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::ClientVpnAuthorizationRule", ResourceEC2ClientVpnAuthorizationRule(), data, meta)
 }
 
 func resourceEC2ClientVpnAuthorizationRuleUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -70,3 +72,8 @@ func resourceEC2ClientVpnAuthorizationRuleUpdate(data *schema.ResourceData, meta
 func resourceEC2ClientVpnAuthorizationRuleDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::ClientVpnAuthorizationRule", data, meta)
 }
+
+func resourceEC2ClientVpnAuthorizationRuleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::EC2::ClientVpnAuthorizationRule", data, meta)
+}
+

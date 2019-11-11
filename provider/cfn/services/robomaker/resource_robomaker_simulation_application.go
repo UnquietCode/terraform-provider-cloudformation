@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,40 +16,34 @@ import (
 
 func ResourceRoboMakerSimulationApplication() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceRoboMakerSimulationApplicationExists,
+		Read: resourceRoboMakerSimulationApplicationRead,
 		Create: resourceRoboMakerSimulationApplicationCreate,
-		Read:   resourceRoboMakerSimulationApplicationRead,
 		Update: resourceRoboMakerSimulationApplicationUpdate,
 		Delete: resourceRoboMakerSimulationApplicationDelete,
-
+		CustomizeDiff: resourceRoboMakerSimulationApplicationCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"current_revision_id": {
-				Type: schema.TypeString,
-				Optional: true,
-				Computed: true,
-			},
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"rendering_engine": {
 				Type: schema.TypeList,
 				Elem: propertySimulationApplicationRenderingEngine(),
 				Required: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"simulation_software_suite": {
 				Type: schema.TypeList,
 				Elem: propertySimulationApplicationSimulationSoftwareSuite(),
 				Required: true,
-				ForceNew: true,
 				MaxItems: 1,
+			},
+			"current_revision_id": {
+				Type: schema.TypeString,
+				Optional: true,
 			},
 			"robot_software_suite": {
 				Type: schema.TypeList,
 				Elem: propertySimulationApplicationRobotSoftwareSuite(),
 				Required: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"sources": {
@@ -64,23 +58,26 @@ func ResourceRoboMakerSimulationApplication() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceRoboMakerSimulationApplicationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RoboMaker::SimulationApplication", ResourceRoboMakerSimulationApplication(), data, meta)
+func resourceRoboMakerSimulationApplicationExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceRoboMakerSimulationApplicationRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::RoboMaker::SimulationApplication", ResourceRoboMakerSimulationApplication(), data, meta)
+}
+
+func resourceRoboMakerSimulationApplicationCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::RoboMaker::SimulationApplication", ResourceRoboMakerSimulationApplication(), data, meta)
 }
 
 func resourceRoboMakerSimulationApplicationUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -90,3 +87,8 @@ func resourceRoboMakerSimulationApplicationUpdate(data *schema.ResourceData, met
 func resourceRoboMakerSimulationApplicationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::RoboMaker::SimulationApplication", data, meta)
 }
+
+func resourceRoboMakerSimulationApplicationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::RoboMaker::SimulationApplication", data, meta)
+}
+

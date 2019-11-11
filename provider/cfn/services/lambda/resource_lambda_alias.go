@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourceLambdaAlias() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceLambdaAliasExists,
+		Read: resourceLambdaAliasRead,
 		Create: resourceLambdaAliasCreate,
-		Read:   resourceLambdaAliasRead,
 		Update: resourceLambdaAliasUpdate,
 		Delete: resourceLambdaAliasDelete,
-
+		CustomizeDiff: resourceLambdaAliasCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -29,7 +31,6 @@ func ResourceLambdaAlias() *schema.Resource {
 			"function_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"function_version": {
 				Type: schema.TypeString,
@@ -38,7 +39,6 @@ func ResourceLambdaAlias() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"routing_config": {
 				Type: schema.TypeList,
@@ -48,19 +48,23 @@ func ResourceLambdaAlias() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceLambdaAliasCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Lambda::Alias", ResourceLambdaAlias(), data, meta)
+func resourceLambdaAliasExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceLambdaAliasRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Lambda::Alias", ResourceLambdaAlias(), data, meta)
+}
+
+func resourceLambdaAliasCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Lambda::Alias", ResourceLambdaAlias(), data, meta)
 }
 
 func resourceLambdaAliasUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -70,3 +74,8 @@ func resourceLambdaAliasUpdate(data *schema.ResourceData, meta interface{}) erro
 func resourceLambdaAliasDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Lambda::Alias", data, meta)
 }
+
+func resourceLambdaAliasCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Lambda::Alias", data, meta)
+}
+

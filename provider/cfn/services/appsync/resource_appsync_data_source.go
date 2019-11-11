@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,21 +16,14 @@ import (
 
 func ResourceAppSyncDataSource() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceAppSyncDataSourceExists,
+		Read: resourceAppSyncDataSourceRead,
 		Create: resourceAppSyncDataSourceCreate,
-		Read:   resourceAppSyncDataSourceRead,
 		Update: resourceAppSyncDataSourceUpdate,
 		Delete: resourceAppSyncDataSourceDelete,
-
+		CustomizeDiff: resourceAppSyncDataSourceCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"data_source_arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"name": {
-				Type: schema.TypeString,
-				Required: true,
-				ForceNew: true,
-			},
 			"type": {
 				Type: schema.TypeString,
 				Required: true,
@@ -64,7 +57,10 @@ func ResourceAppSyncDataSource() *schema.Resource {
 			"api_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
+			},
+			"name": {
+				Type: schema.TypeString,
+				Required: true,
 			},
 			"dynamo_db_config": {
 				Type: schema.TypeList,
@@ -80,19 +76,23 @@ func ResourceAppSyncDataSource() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceAppSyncDataSourceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppSync::DataSource", ResourceAppSyncDataSource(), data, meta)
+func resourceAppSyncDataSourceExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceAppSyncDataSourceRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::AppSync::DataSource", ResourceAppSyncDataSource(), data, meta)
+}
+
+func resourceAppSyncDataSourceCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::AppSync::DataSource", ResourceAppSyncDataSource(), data, meta)
 }
 
 func resourceAppSyncDataSourceUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -102,3 +102,8 @@ func resourceAppSyncDataSourceUpdate(data *schema.ResourceData, meta interface{}
 func resourceAppSyncDataSourceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AppSync::DataSource", data, meta)
 }
+
+func resourceAppSyncDataSourceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::AppSync::DataSource", data, meta)
+}
+

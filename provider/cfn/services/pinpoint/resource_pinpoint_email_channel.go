@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,13 @@ import (
 
 func ResourcePinpointEmailChannel() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourcePinpointEmailChannelExists,
+		Read: resourcePinpointEmailChannelRead,
 		Create: resourcePinpointEmailChannelCreate,
-		Read:   resourcePinpointEmailChannelRead,
 		Update: resourcePinpointEmailChannelUpdate,
 		Delete: resourcePinpointEmailChannelDelete,
-
+		CustomizeDiff: resourcePinpointEmailChannelCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"configuration_set": {
 				Type: schema.TypeString,
@@ -37,7 +39,6 @@ func ResourcePinpointEmailChannel() *schema.Resource {
 			"application_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"identity": {
 				Type: schema.TypeString,
@@ -49,19 +50,23 @@ func ResourcePinpointEmailChannel() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourcePinpointEmailChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::EmailChannel", ResourcePinpointEmailChannel(), data, meta)
+func resourcePinpointEmailChannelExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourcePinpointEmailChannelRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Pinpoint::EmailChannel", ResourcePinpointEmailChannel(), data, meta)
+}
+
+func resourcePinpointEmailChannelCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Pinpoint::EmailChannel", ResourcePinpointEmailChannel(), data, meta)
 }
 
 func resourcePinpointEmailChannelUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -71,3 +76,8 @@ func resourcePinpointEmailChannelUpdate(data *schema.ResourceData, meta interfac
 func resourcePinpointEmailChannelDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Pinpoint::EmailChannel", data, meta)
 }
+
+func resourcePinpointEmailChannelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::Pinpoint::EmailChannel", data, meta)
+}
+

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,54 +16,14 @@ import (
 
 func ResourceAmazonMQBroker() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceAmazonMQBrokerExists,
+		Read: resourceAmazonMQBrokerRead,
 		Create: resourceAmazonMQBrokerCreate,
-		Read:   resourceAmazonMQBrokerRead,
 		Update: resourceAmazonMQBrokerUpdate,
 		Delete: resourceAmazonMQBrokerDelete,
-
+		CustomizeDiff: resourceAmazonMQBrokerCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"ip_addresses": {
-				Type: schema.TypeList,
-				Elem: &schema.Schema{Type: schema.TypeString},
-				Computed: true,
-			},
-			"open_wire_endpoints": {
-				Type: schema.TypeList,
-				Elem: &schema.Schema{Type: schema.TypeString},
-				Computed: true,
-			},
-			"configuration_revision": {
-				Type: schema.TypeInt,
-				Computed: true,
-			},
-			"stomp_endpoints": {
-				Type: schema.TypeList,
-				Elem: &schema.Schema{Type: schema.TypeString},
-				Computed: true,
-			},
-			"mqtt_endpoints": {
-				Type: schema.TypeList,
-				Elem: &schema.Schema{Type: schema.TypeString},
-				Computed: true,
-			},
-			"amqp_endpoints": {
-				Type: schema.TypeList,
-				Elem: &schema.Schema{Type: schema.TypeString},
-				Computed: true,
-			},
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"configuration_id": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"wss_endpoints": {
-				Type: schema.TypeList,
-				Elem: &schema.Schema{Type: schema.TypeString},
-				Computed: true,
-			},
 			"security_groups": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
@@ -83,7 +43,6 @@ func ResourceAmazonMQBroker() *schema.Resource {
 				Type: schema.TypeList,
 				Elem: propertyBrokerMaintenanceWindow(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"host_instance_type": {
@@ -109,33 +68,27 @@ func ResourceAmazonMQBroker() *schema.Resource {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Optional: true,
-				ForceNew: true,
 			},
 			"broker_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"deployment_mode": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"engine_type": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"publicly_accessible": {
 				Type: schema.TypeBool,
 				Required: true,
-				ForceNew: true,
 			},
 			"encryption_options": {
 				Type: schema.TypeList,
 				Elem: propertyBrokerEncryptionOptions(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"tags": {
@@ -145,19 +98,23 @@ func ResourceAmazonMQBroker() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceAmazonMQBrokerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AmazonMQ::Broker", ResourceAmazonMQBroker(), data, meta)
+func resourceAmazonMQBrokerExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceAmazonMQBrokerRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::AmazonMQ::Broker", ResourceAmazonMQBroker(), data, meta)
+}
+
+func resourceAmazonMQBrokerCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::AmazonMQ::Broker", ResourceAmazonMQBroker(), data, meta)
 }
 
 func resourceAmazonMQBrokerUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -167,3 +124,8 @@ func resourceAmazonMQBrokerUpdate(data *schema.ResourceData, meta interface{}) e
 func resourceAmazonMQBrokerDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AmazonMQ::Broker", data, meta)
 }
+
+func resourceAmazonMQBrokerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::AmazonMQ::Broker", data, meta)
+}
+

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,17 @@ import (
 
 func ResourceSecretsManagerRotationSchedule() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceSecretsManagerRotationScheduleExists,
+		Read: resourceSecretsManagerRotationScheduleRead,
 		Create: resourceSecretsManagerRotationScheduleCreate,
-		Read:   resourceSecretsManagerRotationScheduleRead,
 		Update: resourceSecretsManagerRotationScheduleUpdate,
 		Delete: resourceSecretsManagerRotationScheduleDelete,
-
+		CustomizeDiff: resourceSecretsManagerRotationScheduleCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
 			"secret_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"rotation_lambda_arn": {
 				Type: schema.TypeString,
@@ -39,19 +40,23 @@ func ResourceSecretsManagerRotationSchedule() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceSecretsManagerRotationScheduleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SecretsManager::RotationSchedule", ResourceSecretsManagerRotationSchedule(), data, meta)
+func resourceSecretsManagerRotationScheduleExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceSecretsManagerRotationScheduleRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::SecretsManager::RotationSchedule", ResourceSecretsManagerRotationSchedule(), data, meta)
+}
+
+func resourceSecretsManagerRotationScheduleCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::SecretsManager::RotationSchedule", ResourceSecretsManagerRotationSchedule(), data, meta)
 }
 
 func resourceSecretsManagerRotationScheduleUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -61,3 +66,8 @@ func resourceSecretsManagerRotationScheduleUpdate(data *schema.ResourceData, met
 func resourceSecretsManagerRotationScheduleDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SecretsManager::RotationSchedule", data, meta)
 }
+
+func resourceSecretsManagerRotationScheduleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::SecretsManager::RotationSchedule", data, meta)
+}
+

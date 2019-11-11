@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,28 +17,14 @@ import (
 
 func ResourceElastiCacheCacheCluster() *schema.Resource {
 	return &schema.Resource{
+		Exists: resourceElastiCacheCacheClusterExists,
+		Read: resourceElastiCacheCacheClusterRead,
 		Create: resourceElastiCacheCacheClusterCreate,
-		Read:   resourceElastiCacheCacheClusterRead,
 		Update: resourceElastiCacheCacheClusterUpdate,
 		Delete: resourceElastiCacheCacheClusterDelete,
-
+		CustomizeDiff: resourceElastiCacheCacheClusterCustomizeDiff,
+		
 		Schema: map[string]*schema.Schema{
-			"configuration_endpoint_address": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"configuration_endpoint_port": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"redis_endpoint_address": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"redis_endpoint_port": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"az_mode": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -63,17 +49,14 @@ func ResourceElastiCacheCacheCluster() *schema.Resource {
 			"cache_subnet_group_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"cluster_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"engine": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"engine_version": {
 				Type: schema.TypeString,
@@ -90,7 +73,6 @@ func ResourceElastiCacheCacheCluster() *schema.Resource {
 			"port": {
 				Type: schema.TypeInt,
 				Optional: true,
-				ForceNew: true,
 			},
 			"preferred_availability_zone": {
 				Type: schema.TypeString,
@@ -110,13 +92,11 @@ func ResourceElastiCacheCacheCluster() *schema.Resource {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Optional: true,
-				ForceNew: true,
 				Set: schema.HashString,
 			},
 			"snapshot_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"snapshot_retention_limit": {
 				Type: schema.TypeInt,
@@ -138,19 +118,23 @@ func ResourceElastiCacheCacheCluster() *schema.Resource {
 			},
 			"logical_id": {
 				Type: schema.TypeString,
-				Optional: true,
+				Required: true,
 				ForceNew: true,
 			},
 		},
 	}
 }
 
-func resourceElastiCacheCacheClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElastiCache::CacheCluster", ResourceElastiCacheCacheCluster(), data, meta)
+func resourceElastiCacheCacheClusterExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceElastiCacheCacheClusterRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ElastiCache::CacheCluster", ResourceElastiCacheCacheCluster(), data, meta)
+}
+
+func resourceElastiCacheCacheClusterCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ElastiCache::CacheCluster", ResourceElastiCacheCacheCluster(), data, meta)
 }
 
 func resourceElastiCacheCacheClusterUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -160,3 +144,8 @@ func resourceElastiCacheCacheClusterUpdate(data *schema.ResourceData, meta inter
 func resourceElastiCacheCacheClusterDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ElastiCache::CacheCluster", data, meta)
 }
+
+func resourceElastiCacheCacheClusterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff("AWS::ElastiCache::CacheCluster", data, meta)
+}
+
