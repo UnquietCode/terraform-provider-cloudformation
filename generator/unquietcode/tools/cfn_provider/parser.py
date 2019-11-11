@@ -1,5 +1,5 @@
 from unquietcode.tools.cfn_provider.models import ResourceAttribute, Property, Resource, Package, Provider
-from unquietcode.tools.cfn_provider.type_support import translate_cfn_type
+from unquietcode.tools.cfn_provider.type_support import translate_cfn_type, simple_primitive
 
 RESERVED_PROPERTY_ATTRIBUTES = {'Count', 'Provider'}
 RESERVED_RESOURCE_ATTRIBUTES = {'Id'}
@@ -93,6 +93,19 @@ def handle_resource(*, service, package, resource_name, cfn_type, resource_data)
             type='resource',
         )
         attributes[attribute.name] = attribute
+    
+    # special attributes
+    if 'LogicalId' in attributes:
+        raise Exception('attribute name collision')
+        
+    attributes['LogicalId'] = ResourceAttribute(
+        name='LogicalId',
+        type=simple_primitive("String"),
+        required=False,
+        computed=False,
+        will_replace=True,
+        documentation_link='https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resources-section-structure.html',
+    )
     
     resource = Resource(
         name=f"{service}{resource_name}",

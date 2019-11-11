@@ -25,7 +25,20 @@ TYPE_CONVERSION_MAP = {
 
 # 
 # def translate_cfn_resource_type(property_data, schema_properties) -> AttributeType:
-# 
+
+
+def simple_primitive(cf_type) -> AttributeType:
+    type = TYPE_CONVERSION_MAP[CF_Type[cf_type]]
+    
+    return AttributeType(
+        type=type,
+        element_type=None,
+        min_items=None,
+        max_items=None,
+        set_function=None,
+    )
+
+
     
 def translate_cfn_type(resource_name, property_data, schema_properties) -> AttributeType:
     type = None
