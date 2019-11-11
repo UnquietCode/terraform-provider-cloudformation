@@ -2,6 +2,8 @@ package plugin
 
 import (
 	"errors"
+	"strings"
+	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
@@ -56,26 +58,29 @@ func convertToTerraform(data interface{}) interface{} {
 	return nil
 }
 
-func getId(resourceType string, resourceData *schema.ResourceData, meta interface{}) string {
+func getId(resourceType string, resourceData *schema.ResourceData, meta ProviderMetadata) string {
 	if value, ok := resourceData.GetOk("logical_id"); ok {
   	return value.(string)
 	
 	// make one up
 	} else {
-		return ""
-		// split type string into parts '::
-		// take part 1 and 2 and concatenate
+	 	var parts = strings.Split(resourceType, "::")
+		var counterName = parts[1] + parts[2]
 		
-		// look for counters in metadata under that name
-		// if present, get and increment
-		// if not, set and return
+		if _, ok := meta.counters[counterName]; !ok {
+			meta.counters[counterName] = 1
+		}
 		
+		var counter int = meta.counters[counterName]
+		meta.counters[counterName] = counter + 1
+		
+		return counterName + strconv.Itoa(counter)
 	}
 }
 
 
 func ResourceCreate(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
-	var logicalId string = getId(resourceType, resourceData, meta)
+	var logicalId string = getId(resourceType, resourceData, meta.(ProviderMetadata))
 	var template TemplateData = getTemplate(meta)
   
   if _, ok := template.resources[logicalId]; ok {
@@ -100,7 +105,7 @@ func ResourceCreate(resourceType string, resourceSchema *schema.Resource, resour
 }
 
 func ResourceRead(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
-	var logicalId string = getId(resourceType, resourceData, meta)
+	var logicalId string = getId(resourceType, resourceData, meta.(ProviderMetadata))
 	var template TemplateData = getTemplate(meta)
 	var resource = getResource(logicalId, resourceType, template)
 	
@@ -112,7 +117,7 @@ func ResourceRead(resourceType string, resourceSchema *schema.Resource, resource
 }
 
 func ResourceUpdate(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
-	var logicalId string = getId(resourceType, resourceData, meta)
+	var logicalId string = getId(resourceType, resourceData, meta.(ProviderMetadata))
 	var template TemplateData = getTemplate(meta)
 	var resource = getResource(logicalId, resourceType, template)
 	
@@ -131,7 +136,7 @@ func ResourceUpdate(resourceType string, resourceSchema *schema.Resource, resour
 }
 
 func ResourceDelete(resourceType string, resourceData *schema.ResourceData, meta interface{}) error {
-	var logicalId string = getId(resourceType, resourceData, meta)
+	var logicalId string = getId(resourceType, resourceData, meta.(ProviderMetadata))
 	var template TemplateData = getTemplate(meta)
 	
 	if _, ok := template.resources[logicalId]; ok {
