@@ -19,7 +19,6 @@ RESOURCE_ATTRIBUTE_TEMPLATE = Template(
 				Elem: ${elem},
 				Required: ${required},
 				Optional: ${optional},
-				Computed: ${computed},
 				ForceNew: ${force_replace},
 				MaxItems: ${max_items},
 				Set: ${set_function},
@@ -79,7 +78,7 @@ def _render_attribute_template(*, package_name, schema_name, attribute):
 		name=snake_caps(attribute.name),
 		type=attribute_type,
 		elem=attribute_elem or DEAD_LINE,
-		computed="true" if attribute.computed is True else DEAD_LINE,
+		# computed="true" if attribute.computed is True else DEAD_LINE,
 		required="true" if attribute.required is True else DEAD_LINE,
 		optional="true" if attribute.required is not True and attribute.required is not None else DEAD_LINE,
 		force_replace="true" if attribute.will_replace is True else DEAD_LINE,
@@ -179,7 +178,7 @@ def render_resource_template(*, cfn_version, imports, package_name, resource_nam
 		if attribute.will_replace is not True and attribute.computed is not True:
 			updatable = True
 			break
-			
+	
 	rendered = RESOURCE_TEMPLATE.substitute(dict(
 		header=_header_stanza(cfn_version, documentation_link),
 		package=package_name,
@@ -281,32 +280,17 @@ func Provider() terraform.ResourceProvider {
 	return &schema.Provider{
 		ConfigureFunc: plugin.ProviderConfigure,
 		Schema: map[string]*schema.Schema{
-			"bucket_name": {
-				Type:        schema.TypeString,
-				Required:    true,
-				Description: "name of an S3 bucket where we can store template files",
-			},
-			"bucket_prefix": {
+			"template_description": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "path in the bucket under which CFN can store data",
+				Description: "descriptive text to include in the template",
 			},
-			"stack_name": {
-				Type:        schema.TypeString,
-				Required:    true,
-				Description: "exact name to use for the CloudFormation stack",
-			},
-			"role_arn": {
-				Type:        schema.TypeString,
-				Optional:    true,
-				Description: "ARN of a role to be used for interacting with CloudFormation",
-			},
-		},
-		DataSourcesMap: map[string]*schema.Resource{
-${datasources}
 		},
 		ResourcesMap: map[string]*schema.Resource{
 ${resources}
+		},
+		DataSourcesMap: map[string]*schema.Resource{
+${datasources}
 		},
 	}
 }
