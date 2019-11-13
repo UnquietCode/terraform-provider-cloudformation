@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 12-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -111,36 +111,21 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/services/waf"
 	"github.com/unquietcode/terraform-cfn-provider/cfn/services/wafregional"
 	"github.com/unquietcode/terraform-cfn-provider/cfn/services/workspaces"
+	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 )
 
 func Provider() terraform.ResourceProvider {
 	return &schema.Provider{
 		ConfigureFunc: plugin.ProviderConfigure,
 		Schema: map[string]*schema.Schema{
-			"bucket_name": {
-				Type:        schema.TypeString,
-				Required:    true,
-				Description: "name of an S3 bucket where we can store template files",
-			},
-			"bucket_prefix": {
+			"workdir": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Description: "path in the bucket under which CFN can store data",
+				Description: "descriptive text to include in the template",
 			},
-			"stack_name": {
-				Type:        schema.TypeString,
-				Required:    true,
-				Description: "exact name to use for the CloudFormation stack",
-			},
-			"role_arn": {
-				Type:        schema.TypeString,
-				Optional:    true,
-				Description: "ARN of a role to be used for interacting with CloudFormation",
-			},
-		},
-		DataSourcesMap: map[string]*schema.Resource{
 		},
 		ResourcesMap: map[string]*schema.Resource{
+			"cfn_template_data": misc.ResourceTemplateData(),
 			"cfn_amazonmq_broker": amazonmq.ResourceAmazonMQBroker(),
 			"cfn_amazonmq_configuration": amazonmq.ResourceAmazonMQConfiguration(),
 			"cfn_amazonmq_configuration_association": amazonmq.ResourceAmazonMQConfigurationAssociation(),
@@ -603,6 +588,10 @@ func Provider() terraform.ResourceProvider {
 			"cfn_wafregional_web_acl_association": wafregional.ResourceWAFRegionalWebACLAssociation(),
 			"cfn_wafregional_xss_match_set": wafregional.ResourceWAFRegionalXssMatchSet(),
 			"cfn_workspaces_workspace": workspaces.ResourceWorkSpacesWorkspace(),
+		},
+		DataSourcesMap: map[string]*schema.Resource{
+						"cfn_s3_bucket": s3.DatasourceS3Bucket(),
+
 		},
 	}
 }
