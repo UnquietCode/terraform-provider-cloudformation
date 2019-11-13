@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,20 +16,16 @@ import (
 
 func ResourceIAMGroup() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceIAMGroupCreate,
+		Exists: resourceIAMGroupExists,
 		Read:   resourceIAMGroupRead,
+		Create: resourceIAMGroupCreate,
 		Update: resourceIAMGroupUpdate,
 		Delete: resourceIAMGroupDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"group_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"managed_policy_arns": {
 				Type: schema.TypeSet,
@@ -55,12 +51,16 @@ func ResourceIAMGroup() *schema.Resource {
 	}
 }
 
-func resourceIAMGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IAM::Group", ResourceIAMGroup(), data, meta)
+func resourceIAMGroupExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceIAMGroupRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::IAM::Group", ResourceIAMGroup(), data, meta)
+}
+
+func resourceIAMGroupCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::IAM::Group", ResourceIAMGroup(), data, meta)
 }
 
 func resourceIAMGroupUpdate(data *schema.ResourceData, meta interface{}) error {

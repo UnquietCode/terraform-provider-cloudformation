@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,16 +17,13 @@ import (
 
 func ResourceLambdaFunction() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceLambdaFunctionCreate,
+		Exists: resourceLambdaFunctionExists,
 		Read:   resourceLambdaFunctionRead,
+		Create: resourceLambdaFunctionCreate,
 		Update: resourceLambdaFunctionUpdate,
 		Delete: resourceLambdaFunctionDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"code": {
 				Type: schema.TypeList,
 				Elem: propertyFunctionCode(),
@@ -52,7 +49,6 @@ func ResourceLambdaFunction() *schema.Resource {
 			"function_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"handler": {
 				Type: schema.TypeString,
@@ -114,12 +110,16 @@ func ResourceLambdaFunction() *schema.Resource {
 	}
 }
 
-func resourceLambdaFunctionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Lambda::Function", ResourceLambdaFunction(), data, meta)
+func resourceLambdaFunctionExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceLambdaFunctionRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Lambda::Function", ResourceLambdaFunction(), data, meta)
+}
+
+func resourceLambdaFunctionCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Lambda::Function", ResourceLambdaFunction(), data, meta)
 }
 
 func resourceLambdaFunctionUpdate(data *schema.ResourceData, meta interface{}) error {

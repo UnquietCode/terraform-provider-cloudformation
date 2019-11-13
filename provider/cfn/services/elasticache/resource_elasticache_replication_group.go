@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,55 +17,20 @@ import (
 
 func ResourceElastiCacheReplicationGroup() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceElastiCacheReplicationGroupCreate,
+		Exists: resourceElastiCacheReplicationGroupExists,
 		Read:   resourceElastiCacheReplicationGroupRead,
+		Create: resourceElastiCacheReplicationGroupCreate,
 		Update: resourceElastiCacheReplicationGroupUpdate,
 		Delete: resourceElastiCacheReplicationGroupDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"configuration_end_point_address": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"configuration_end_point_port": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"primary_end_point_address": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"primary_end_point_port": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"read_end_point_addresses": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"read_end_point_addresses_list": {
-				Type: schema.TypeList,
-				Elem: &schema.Schema{Type: schema.TypeString},
-				Computed: true,
-			},
-			"read_end_point_ports": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"read_end_point_ports_list": {
-				Type: schema.TypeList,
-				Elem: &schema.Schema{Type: schema.TypeString},
-				Computed: true,
-			},
 			"at_rest_encryption_enabled": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"auth_token": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"auto_minor_version_upgrade": {
 				Type: schema.TypeBool,
@@ -92,12 +57,10 @@ func ResourceElastiCacheReplicationGroup() *schema.Resource {
 			"cache_subnet_group_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"engine": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"engine_version": {
 				Type: schema.TypeString,
@@ -106,7 +69,6 @@ func ResourceElastiCacheReplicationGroup() *schema.Resource {
 			"kms_key_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"node_group_configuration": {
 				Type: schema.TypeSet,
@@ -128,13 +90,11 @@ func ResourceElastiCacheReplicationGroup() *schema.Resource {
 			"port": {
 				Type: schema.TypeInt,
 				Optional: true,
-				ForceNew: true,
 			},
 			"preferred_cache_cluster_a_zs": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Optional: true,
-				ForceNew: true,
 				Set: schema.HashString,
 			},
 			"preferred_maintenance_window": {
@@ -148,7 +108,6 @@ func ResourceElastiCacheReplicationGroup() *schema.Resource {
 			"replicas_per_node_group": {
 				Type: schema.TypeInt,
 				Optional: true,
-				ForceNew: true,
 			},
 			"replication_group_description": {
 				Type: schema.TypeString,
@@ -157,7 +116,6 @@ func ResourceElastiCacheReplicationGroup() *schema.Resource {
 			"replication_group_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"security_group_ids": {
 				Type: schema.TypeSet,
@@ -169,13 +127,11 @@ func ResourceElastiCacheReplicationGroup() *schema.Resource {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Optional: true,
-				ForceNew: true,
 				Set: schema.HashString,
 			},
 			"snapshot_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"snapshot_retention_limit": {
 				Type: schema.TypeInt,
@@ -197,7 +153,6 @@ func ResourceElastiCacheReplicationGroup() *schema.Resource {
 			"transit_encryption_enabled": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -208,12 +163,16 @@ func ResourceElastiCacheReplicationGroup() *schema.Resource {
 	}
 }
 
-func resourceElastiCacheReplicationGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElastiCache::ReplicationGroup", ResourceElastiCacheReplicationGroup(), data, meta)
+func resourceElastiCacheReplicationGroupExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceElastiCacheReplicationGroupRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ElastiCache::ReplicationGroup", ResourceElastiCacheReplicationGroup(), data, meta)
+}
+
+func resourceElastiCacheReplicationGroupCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ElastiCache::ReplicationGroup", ResourceElastiCacheReplicationGroup(), data, meta)
 }
 
 func resourceElastiCacheReplicationGroupUpdate(data *schema.ResourceData, meta interface{}) error {

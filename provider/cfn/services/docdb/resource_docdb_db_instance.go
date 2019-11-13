@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,20 +17,13 @@ import (
 
 func ResourceDocDBDBInstance() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceDocDBDBInstanceCreate,
+		Exists: resourceDocDBDBInstanceExists,
 		Read:   resourceDocDBDBInstanceRead,
+		Create: resourceDocDBDBInstanceCreate,
 		Update: resourceDocDBDBInstanceUpdate,
 		Delete: resourceDocDBDBInstanceDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"endpoint": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"port": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"db_instance_class": {
 				Type: schema.TypeString,
 				Required: true,
@@ -38,12 +31,10 @@ func ResourceDocDBDBInstance() *schema.Resource {
 			"db_cluster_identifier": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"availability_zone": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"preferred_maintenance_window": {
 				Type: schema.TypeString,
@@ -56,7 +47,6 @@ func ResourceDocDBDBInstance() *schema.Resource {
 			"db_instance_identifier": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -72,12 +62,16 @@ func ResourceDocDBDBInstance() *schema.Resource {
 	}
 }
 
-func resourceDocDBDBInstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DocDB::DBInstance", ResourceDocDBDBInstance(), data, meta)
+func resourceDocDBDBInstanceExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceDocDBDBInstanceRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::DocDB::DBInstance", ResourceDocDBDBInstance(), data, meta)
+}
+
+func resourceDocDBDBInstanceCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::DocDB::DBInstance", ResourceDocDBDBInstance(), data, meta)
 }
 
 func resourceDocDBDBInstanceUpdate(data *schema.ResourceData, meta interface{}) error {

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,28 +17,25 @@ import (
 
 func ResourceSageMakerEndpointConfig() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceSageMakerEndpointConfigCreate,
+		Exists: resourceSageMakerEndpointConfigExists,
 		Read:   resourceSageMakerEndpointConfigRead,
+		Create: resourceSageMakerEndpointConfigCreate,
 		Update: resourceSageMakerEndpointConfigUpdate,
 		Delete: resourceSageMakerEndpointConfigDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"endpoint_config_name": {
-				Type: schema.TypeString,
-				Optional: true,
-				Computed: true,
-				ForceNew: true,
-			},
 			"production_variants": {
 				Type: schema.TypeList,
 				Elem: propertyEndpointConfigProductionVariant(),
 				Required: true,
-				ForceNew: true,
 			},
 			"kms_key_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
+			},
+			"endpoint_config_name": {
+				Type: schema.TypeString,
+				Optional: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -54,12 +51,16 @@ func ResourceSageMakerEndpointConfig() *schema.Resource {
 	}
 }
 
-func resourceSageMakerEndpointConfigCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SageMaker::EndpointConfig", ResourceSageMakerEndpointConfig(), data, meta)
+func resourceSageMakerEndpointConfigExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceSageMakerEndpointConfigRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::SageMaker::EndpointConfig", ResourceSageMakerEndpointConfig(), data, meta)
+}
+
+func resourceSageMakerEndpointConfigCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::SageMaker::EndpointConfig", ResourceSageMakerEndpointConfig(), data, meta)
 }
 
 func resourceSageMakerEndpointConfigUpdate(data *schema.ResourceData, meta interface{}) error {

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,16 @@ import (
 
 func ResourceOpsWorksVolume() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceOpsWorksVolumeCreate,
+		Exists: resourceOpsWorksVolumeExists,
 		Read:   resourceOpsWorksVolumeRead,
+		Create: resourceOpsWorksVolumeCreate,
 		Update: resourceOpsWorksVolumeUpdate,
 		Delete: resourceOpsWorksVolumeDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"ec2_volume_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"mount_point": {
 				Type: schema.TypeString,
@@ -38,7 +38,6 @@ func ResourceOpsWorksVolume() *schema.Resource {
 			"stack_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -49,12 +48,16 @@ func ResourceOpsWorksVolume() *schema.Resource {
 	}
 }
 
-func resourceOpsWorksVolumeCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::OpsWorks::Volume", ResourceOpsWorksVolume(), data, meta)
+func resourceOpsWorksVolumeExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceOpsWorksVolumeRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::OpsWorks::Volume", ResourceOpsWorksVolume(), data, meta)
+}
+
+func resourceOpsWorksVolumeCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::OpsWorks::Volume", ResourceOpsWorksVolume(), data, meta)
 }
 
 func resourceOpsWorksVolumeUpdate(data *schema.ResourceData, meta interface{}) error {

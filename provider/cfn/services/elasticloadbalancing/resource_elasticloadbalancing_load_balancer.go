@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,32 +17,13 @@ import (
 
 func ResourceElasticLoadBalancingLoadBalancer() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceElasticLoadBalancingLoadBalancerCreate,
+		Exists: resourceElasticLoadBalancingLoadBalancerExists,
 		Read:   resourceElasticLoadBalancingLoadBalancerRead,
+		Create: resourceElasticLoadBalancingLoadBalancerCreate,
 		Update: resourceElasticLoadBalancingLoadBalancerUpdate,
 		Delete: resourceElasticLoadBalancingLoadBalancerDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"canonical_hosted_zone_name": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"canonical_hosted_zone_name_id": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"dns_name": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"source_security_group_group_name": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"source_security_group_owner_alias": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"access_logging_policy": {
 				Type: schema.TypeList,
 				Elem: propertyLoadBalancerAccessLoggingPolicy(),
@@ -101,7 +82,6 @@ func ResourceElasticLoadBalancingLoadBalancer() *schema.Resource {
 			"load_balancer_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"policies": {
 				Type: schema.TypeSet,
@@ -111,7 +91,6 @@ func ResourceElasticLoadBalancingLoadBalancer() *schema.Resource {
 			"scheme": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"security_groups": {
 				Type: schema.TypeSet,
@@ -139,12 +118,16 @@ func ResourceElasticLoadBalancingLoadBalancer() *schema.Resource {
 	}
 }
 
-func resourceElasticLoadBalancingLoadBalancerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElasticLoadBalancing::LoadBalancer", ResourceElasticLoadBalancingLoadBalancer(), data, meta)
+func resourceElasticLoadBalancingLoadBalancerExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceElasticLoadBalancingLoadBalancerRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ElasticLoadBalancing::LoadBalancer", ResourceElasticLoadBalancingLoadBalancer(), data, meta)
+}
+
+func resourceElasticLoadBalancingLoadBalancerCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ElasticLoadBalancing::LoadBalancer", ResourceElasticLoadBalancingLoadBalancer(), data, meta)
 }
 
 func resourceElasticLoadBalancingLoadBalancerUpdate(data *schema.ResourceData, meta interface{}) error {

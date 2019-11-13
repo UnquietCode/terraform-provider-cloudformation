@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceBatchJobQueue() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceBatchJobQueueCreate,
+		Exists: resourceBatchJobQueueExists,
 		Read:   resourceBatchJobQueueRead,
+		Create: resourceBatchJobQueueCreate,
 		Update: resourceBatchJobQueueUpdate,
 		Delete: resourceBatchJobQueueDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"compute_environment_order": {
 				Type: schema.TypeList,
@@ -38,7 +39,6 @@ func ResourceBatchJobQueue() *schema.Resource {
 			"job_queue_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -49,12 +49,16 @@ func ResourceBatchJobQueue() *schema.Resource {
 	}
 }
 
-func resourceBatchJobQueueCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Batch::JobQueue", ResourceBatchJobQueue(), data, meta)
+func resourceBatchJobQueueExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceBatchJobQueueRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Batch::JobQueue", ResourceBatchJobQueue(), data, meta)
+}
+
+func resourceBatchJobQueueCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Batch::JobQueue", ResourceBatchJobQueue(), data, meta)
 }
 
 func resourceBatchJobQueueUpdate(data *schema.ResourceData, meta interface{}) error {

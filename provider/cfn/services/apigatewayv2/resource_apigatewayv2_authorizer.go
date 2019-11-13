@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceApiGatewayV2Authorizer() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceApiGatewayV2AuthorizerCreate,
+		Exists: resourceApiGatewayV2AuthorizerExists,
 		Read:   resourceApiGatewayV2AuthorizerRead,
+		Create: resourceApiGatewayV2AuthorizerCreate,
 		Update: resourceApiGatewayV2AuthorizerUpdate,
 		Delete: resourceApiGatewayV2AuthorizerDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"identity_validation_expression": {
 				Type: schema.TypeString,
@@ -50,7 +51,6 @@ func ResourceApiGatewayV2Authorizer() *schema.Resource {
 			"api_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"name": {
 				Type: schema.TypeString,
@@ -65,12 +65,16 @@ func ResourceApiGatewayV2Authorizer() *schema.Resource {
 	}
 }
 
-func resourceApiGatewayV2AuthorizerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGatewayV2::Authorizer", ResourceApiGatewayV2Authorizer(), data, meta)
+func resourceApiGatewayV2AuthorizerExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceApiGatewayV2AuthorizerRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ApiGatewayV2::Authorizer", ResourceApiGatewayV2Authorizer(), data, meta)
+}
+
+func resourceApiGatewayV2AuthorizerCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ApiGatewayV2::Authorizer", ResourceApiGatewayV2Authorizer(), data, meta)
 }
 
 func resourceApiGatewayV2AuthorizerUpdate(data *schema.ResourceData, meta interface{}) error {

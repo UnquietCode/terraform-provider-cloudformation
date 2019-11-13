@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,28 +17,13 @@ import (
 
 func ResourceAmplifyApp() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceAmplifyAppCreate,
+		Exists: resourceAmplifyAppExists,
 		Read:   resourceAmplifyAppRead,
+		Create: resourceAmplifyAppCreate,
 		Update: resourceAmplifyAppUpdate,
 		Delete: resourceAmplifyAppDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"app_id": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"default_domain": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"app_name": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"auto_branch_creation_config": {
 				Type: schema.TypeList,
 				Elem: propertyAppAutoBranchCreationConfig(),
@@ -103,12 +88,16 @@ func ResourceAmplifyApp() *schema.Resource {
 	}
 }
 
-func resourceAmplifyAppCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Amplify::App", ResourceAmplifyApp(), data, meta)
+func resourceAmplifyAppExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceAmplifyAppRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Amplify::App", ResourceAmplifyApp(), data, meta)
+}
+
+func resourceAmplifyAppCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Amplify::App", ResourceAmplifyApp(), data, meta)
 }
 
 func resourceAmplifyAppUpdate(data *schema.ResourceData, meta interface{}) error {

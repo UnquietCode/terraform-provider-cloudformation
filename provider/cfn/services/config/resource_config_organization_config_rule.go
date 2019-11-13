@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceConfigOrganizationConfigRule() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceConfigOrganizationConfigRuleCreate,
+		Exists: resourceConfigOrganizationConfigRuleExists,
 		Read:   resourceConfigOrganizationConfigRuleRead,
+		Create: resourceConfigOrganizationConfigRuleCreate,
 		Update: resourceConfigOrganizationConfigRuleUpdate,
 		Delete: resourceConfigOrganizationConfigRuleDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"organization_managed_rule_metadata": {
 				Type: schema.TypeList,
@@ -31,7 +32,6 @@ func ResourceConfigOrganizationConfigRule() *schema.Resource {
 			"organization_config_rule_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"organization_custom_rule_metadata": {
 				Type: schema.TypeList,
@@ -53,12 +53,16 @@ func ResourceConfigOrganizationConfigRule() *schema.Resource {
 	}
 }
 
-func resourceConfigOrganizationConfigRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Config::OrganizationConfigRule", ResourceConfigOrganizationConfigRule(), data, meta)
+func resourceConfigOrganizationConfigRuleExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceConfigOrganizationConfigRuleRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Config::OrganizationConfigRule", ResourceConfigOrganizationConfigRule(), data, meta)
+}
+
+func resourceConfigOrganizationConfigRuleCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Config::OrganizationConfigRule", ResourceConfigOrganizationConfigRule(), data, meta)
 }
 
 func resourceConfigOrganizationConfigRuleUpdate(data *schema.ResourceData, meta interface{}) error {

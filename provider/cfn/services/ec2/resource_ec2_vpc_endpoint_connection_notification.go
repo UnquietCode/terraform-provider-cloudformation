@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceEC2VPCEndpointConnectionNotification() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceEC2VPCEndpointConnectionNotificationCreate,
+		Exists: resourceEC2VPCEndpointConnectionNotificationExists,
 		Read:   resourceEC2VPCEndpointConnectionNotificationRead,
+		Create: resourceEC2VPCEndpointConnectionNotificationCreate,
 		Update: resourceEC2VPCEndpointConnectionNotificationUpdate,
 		Delete: resourceEC2VPCEndpointConnectionNotificationDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"connection_events": {
 				Type: schema.TypeList,
@@ -30,12 +31,10 @@ func ResourceEC2VPCEndpointConnectionNotification() *schema.Resource {
 			"vpc_endpoint_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"service_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"connection_notification_arn": {
 				Type: schema.TypeString,
@@ -50,12 +49,16 @@ func ResourceEC2VPCEndpointConnectionNotification() *schema.Resource {
 	}
 }
 
-func resourceEC2VPCEndpointConnectionNotificationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::VPCEndpointConnectionNotification", ResourceEC2VPCEndpointConnectionNotification(), data, meta)
+func resourceEC2VPCEndpointConnectionNotificationExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2VPCEndpointConnectionNotificationRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::VPCEndpointConnectionNotification", ResourceEC2VPCEndpointConnectionNotification(), data, meta)
+}
+
+func resourceEC2VPCEndpointConnectionNotificationCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::VPCEndpointConnectionNotification", ResourceEC2VPCEndpointConnectionNotification(), data, meta)
 }
 
 func resourceEC2VPCEndpointConnectionNotificationUpdate(data *schema.ResourceData, meta interface{}) error {

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,38 +16,26 @@ import (
 
 func ResourceGreengrassSubscriptionDefinition() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceGreengrassSubscriptionDefinitionCreate,
+		Exists: resourceGreengrassSubscriptionDefinitionExists,
 		Read:   resourceGreengrassSubscriptionDefinitionRead,
+		Create: resourceGreengrassSubscriptionDefinitionCreate,
 		Update: resourceGreengrassSubscriptionDefinitionUpdate,
 		Delete: resourceGreengrassSubscriptionDefinitionDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"latest_version_arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"the_id": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"name": {
-				Type: schema.TypeString,
-				Required: true,
-			},
 			"initial_version": {
 				Type: schema.TypeList,
 				Elem: propertySubscriptionDefinitionSubscriptionDefinitionVersion(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"tags": {
 				Type: schema.TypeMap,
 				Optional: true,
+			},
+			"name": {
+				Type: schema.TypeString,
+				Required: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -58,12 +46,16 @@ func ResourceGreengrassSubscriptionDefinition() *schema.Resource {
 	}
 }
 
-func resourceGreengrassSubscriptionDefinitionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Greengrass::SubscriptionDefinition", ResourceGreengrassSubscriptionDefinition(), data, meta)
+func resourceGreengrassSubscriptionDefinitionExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceGreengrassSubscriptionDefinitionRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Greengrass::SubscriptionDefinition", ResourceGreengrassSubscriptionDefinition(), data, meta)
+}
+
+func resourceGreengrassSubscriptionDefinitionCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Greengrass::SubscriptionDefinition", ResourceGreengrassSubscriptionDefinition(), data, meta)
 }
 
 func resourceGreengrassSubscriptionDefinitionUpdate(data *schema.ResourceData, meta interface{}) error {

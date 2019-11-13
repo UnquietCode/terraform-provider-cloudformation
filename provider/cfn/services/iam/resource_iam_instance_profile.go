@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,25 +16,20 @@ import (
 
 func ResourceIAMInstanceProfile() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceIAMInstanceProfileCreate,
+		Exists: resourceIAMInstanceProfileExists,
 		Read:   resourceIAMInstanceProfileRead,
+		Create: resourceIAMInstanceProfileCreate,
 		Update: resourceIAMInstanceProfileUpdate,
 		Delete: resourceIAMInstanceProfileDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"instance_profile_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"path": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"roles": {
 				Type: schema.TypeList,
@@ -50,12 +45,16 @@ func ResourceIAMInstanceProfile() *schema.Resource {
 	}
 }
 
-func resourceIAMInstanceProfileCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IAM::InstanceProfile", ResourceIAMInstanceProfile(), data, meta)
+func resourceIAMInstanceProfileExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceIAMInstanceProfileRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::IAM::InstanceProfile", ResourceIAMInstanceProfile(), data, meta)
+}
+
+func resourceIAMInstanceProfileCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::IAM::InstanceProfile", ResourceIAMInstanceProfile(), data, meta)
 }
 
 func resourceIAMInstanceProfileUpdate(data *schema.ResourceData, meta interface{}) error {

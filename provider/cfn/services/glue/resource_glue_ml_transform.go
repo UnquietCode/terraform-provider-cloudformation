@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceGlueMLTransform() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceGlueMLTransformCreate,
+		Exists: resourceGlueMLTransformExists,
 		Read:   resourceGlueMLTransformRead,
+		Create: resourceGlueMLTransformCreate,
 		Update: resourceGlueMLTransformUpdate,
 		Delete: resourceGlueMLTransformDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"role": {
 				Type: schema.TypeString,
@@ -52,7 +53,6 @@ func ResourceGlueMLTransform() *schema.Resource {
 				Type: schema.TypeList,
 				Elem: propertyMLTransformInputRecordTables(),
 				Required: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"number_of_workers": {
@@ -76,12 +76,16 @@ func ResourceGlueMLTransform() *schema.Resource {
 	}
 }
 
-func resourceGlueMLTransformCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::MLTransform", ResourceGlueMLTransform(), data, meta)
+func resourceGlueMLTransformExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceGlueMLTransformRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Glue::MLTransform", ResourceGlueMLTransform(), data, meta)
+}
+
+func resourceGlueMLTransformCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Glue::MLTransform", ResourceGlueMLTransform(), data, meta)
 }
 
 func resourceGlueMLTransformUpdate(data *schema.ResourceData, meta interface{}) error {

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,16 +17,16 @@ import (
 
 func ResourceIoTAnalyticsPipeline() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceIoTAnalyticsPipelineCreate,
+		Exists: resourceIoTAnalyticsPipelineExists,
 		Read:   resourceIoTAnalyticsPipelineRead,
+		Create: resourceIoTAnalyticsPipelineCreate,
 		Update: resourceIoTAnalyticsPipelineUpdate,
 		Delete: resourceIoTAnalyticsPipelineDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"pipeline_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -47,12 +47,16 @@ func ResourceIoTAnalyticsPipeline() *schema.Resource {
 	}
 }
 
-func resourceIoTAnalyticsPipelineCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoTAnalytics::Pipeline", ResourceIoTAnalyticsPipeline(), data, meta)
+func resourceIoTAnalyticsPipelineExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceIoTAnalyticsPipelineRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::IoTAnalytics::Pipeline", ResourceIoTAnalyticsPipeline(), data, meta)
+}
+
+func resourceIoTAnalyticsPipelineCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::IoTAnalytics::Pipeline", ResourceIoTAnalyticsPipeline(), data, meta)
 }
 
 func resourceIoTAnalyticsPipelineUpdate(data *schema.ResourceData, meta interface{}) error {

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,16 +17,13 @@ import (
 
 func ResourceKMSKey() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceKMSKeyCreate,
+		Exists: resourceKMSKeyExists,
 		Read:   resourceKMSKeyRead,
+		Create: resourceKMSKeyCreate,
 		Update: resourceKMSKeyUpdate,
 		Delete: resourceKMSKeyDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"description": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -46,7 +43,6 @@ func ResourceKMSKey() *schema.Resource {
 			"key_usage": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"pending_window_in_days": {
 				Type: schema.TypeInt,
@@ -66,12 +62,16 @@ func ResourceKMSKey() *schema.Resource {
 	}
 }
 
-func resourceKMSKeyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::KMS::Key", ResourceKMSKey(), data, meta)
+func resourceKMSKeyExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceKMSKeyRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::KMS::Key", ResourceKMSKey(), data, meta)
+}
+
+func resourceKMSKeyCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::KMS::Key", ResourceKMSKey(), data, meta)
 }
 
 func resourceKMSKeyUpdate(data *schema.ResourceData, meta interface{}) error {

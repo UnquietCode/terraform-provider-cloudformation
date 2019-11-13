@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,24 +17,13 @@ import (
 
 func ResourceServiceCatalogCloudFormationProduct() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceServiceCatalogCloudFormationProductCreate,
+		Exists: resourceServiceCatalogCloudFormationProductExists,
 		Read:   resourceServiceCatalogCloudFormationProductRead,
+		Create: resourceServiceCatalogCloudFormationProductCreate,
 		Update: resourceServiceCatalogCloudFormationProductUpdate,
 		Delete: resourceServiceCatalogCloudFormationProductDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"product_name": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"provisioning_artifact_ids": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"provisioning_artifact_names": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"owner": {
 				Type: schema.TypeString,
 				Required: true,
@@ -86,12 +75,16 @@ func ResourceServiceCatalogCloudFormationProduct() *schema.Resource {
 	}
 }
 
-func resourceServiceCatalogCloudFormationProductCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::CloudFormationProduct", ResourceServiceCatalogCloudFormationProduct(), data, meta)
+func resourceServiceCatalogCloudFormationProductExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceServiceCatalogCloudFormationProductRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ServiceCatalog::CloudFormationProduct", ResourceServiceCatalogCloudFormationProduct(), data, meta)
+}
+
+func resourceServiceCatalogCloudFormationProductCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ServiceCatalog::CloudFormationProduct", ResourceServiceCatalogCloudFormationProduct(), data, meta)
 }
 
 func resourceServiceCatalogCloudFormationProductUpdate(data *schema.ResourceData, meta interface{}) error {

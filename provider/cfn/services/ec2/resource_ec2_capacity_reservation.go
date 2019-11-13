@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,35 +16,16 @@ import (
 
 func ResourceEC2CapacityReservation() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceEC2CapacityReservationCreate,
+		Exists: resourceEC2CapacityReservationExists,
 		Read:   resourceEC2CapacityReservationRead,
+		Create: resourceEC2CapacityReservationCreate,
 		Update: resourceEC2CapacityReservationUpdate,
 		Delete: resourceEC2CapacityReservationDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"tenancy": {
 				Type: schema.TypeString,
 				Optional: true,
-				Computed: true,
-				ForceNew: true,
-			},
-			"available_instance_count": {
-				Type: schema.TypeInt,
-				Computed: true,
-			},
-			"availability_zone": {
-				Type: schema.TypeString,
-				Required: true,
-				ForceNew: true,
-			},
-			"total_instance_count": {
-				Type: schema.TypeInt,
-				Computed: true,
-			},
-			"instance_type": {
-				Type: schema.TypeString,
-				Required: true,
-				ForceNew: true,
 			},
 			"end_date_type": {
 				Type: schema.TypeString,
@@ -58,22 +39,26 @@ func ResourceEC2CapacityReservation() *schema.Resource {
 				Type: schema.TypeList,
 				Elem: propertyCapacityReservationTagSpecification(),
 				Optional: true,
-				ForceNew: true,
+			},
+			"availability_zone": {
+				Type: schema.TypeString,
+				Required: true,
 			},
 			"instance_platform": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
+			},
+			"instance_type": {
+				Type: schema.TypeString,
+				Required: true,
 			},
 			"ephemeral_storage": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"instance_match_criteria": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"end_date": {
 				Type: schema.TypeString,
@@ -82,7 +67,6 @@ func ResourceEC2CapacityReservation() *schema.Resource {
 			"ebs_optimized": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -93,12 +77,16 @@ func ResourceEC2CapacityReservation() *schema.Resource {
 	}
 }
 
-func resourceEC2CapacityReservationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::CapacityReservation", ResourceEC2CapacityReservation(), data, meta)
+func resourceEC2CapacityReservationExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2CapacityReservationRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::CapacityReservation", ResourceEC2CapacityReservation(), data, meta)
+}
+
+func resourceEC2CapacityReservationCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::CapacityReservation", ResourceEC2CapacityReservation(), data, meta)
 }
 
 func resourceEC2CapacityReservationUpdate(data *schema.ResourceData, meta interface{}) error {

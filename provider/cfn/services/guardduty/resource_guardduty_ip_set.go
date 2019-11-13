@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,16 @@ import (
 
 func ResourceGuardDutyIPSet() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceGuardDutyIPSetCreate,
+		Exists: resourceGuardDutyIPSetExists,
 		Read:   resourceGuardDutyIPSetRead,
+		Create: resourceGuardDutyIPSetCreate,
 		Update: resourceGuardDutyIPSetUpdate,
 		Delete: resourceGuardDutyIPSetDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"format": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"activate": {
 				Type: schema.TypeBool,
@@ -34,7 +34,6 @@ func ResourceGuardDutyIPSet() *schema.Resource {
 			"detector_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"name": {
 				Type: schema.TypeString,
@@ -53,12 +52,16 @@ func ResourceGuardDutyIPSet() *schema.Resource {
 	}
 }
 
-func resourceGuardDutyIPSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::GuardDuty::IPSet", ResourceGuardDutyIPSet(), data, meta)
+func resourceGuardDutyIPSetExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceGuardDutyIPSetRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::GuardDuty::IPSet", ResourceGuardDutyIPSet(), data, meta)
+}
+
+func resourceGuardDutyIPSetCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::GuardDuty::IPSet", ResourceGuardDutyIPSet(), data, meta)
 }
 
 func resourceGuardDutyIPSetUpdate(data *schema.ResourceData, meta interface{}) error {

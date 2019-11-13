@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceSSMMaintenanceWindowTask() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceSSMMaintenanceWindowTaskCreate,
+		Exists: resourceSSMMaintenanceWindowTaskExists,
 		Read:   resourceSSMMaintenanceWindowTaskRead,
+		Create: resourceSSMMaintenanceWindowTaskCreate,
 		Update: resourceSSMMaintenanceWindowTaskUpdate,
 		Delete: resourceSSMMaintenanceWindowTaskDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"max_errors": {
 				Type: schema.TypeString,
@@ -64,7 +65,6 @@ func ResourceSSMMaintenanceWindowTask() *schema.Resource {
 			"window_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"task_parameters": {
 				Type: schema.TypeMap,
@@ -89,12 +89,16 @@ func ResourceSSMMaintenanceWindowTask() *schema.Resource {
 	}
 }
 
-func resourceSSMMaintenanceWindowTaskCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SSM::MaintenanceWindowTask", ResourceSSMMaintenanceWindowTask(), data, meta)
+func resourceSSMMaintenanceWindowTaskExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceSSMMaintenanceWindowTaskRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::SSM::MaintenanceWindowTask", ResourceSSMMaintenanceWindowTask(), data, meta)
+}
+
+func resourceSSMMaintenanceWindowTaskCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::SSM::MaintenanceWindowTask", ResourceSSMMaintenanceWindowTask(), data, meta)
 }
 
 func resourceSSMMaintenanceWindowTaskUpdate(data *schema.ResourceData, meta interface{}) error {

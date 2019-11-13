@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceWAFRegionalRegexPatternSet() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceWAFRegionalRegexPatternSetCreate,
+		Exists: resourceWAFRegionalRegexPatternSetExists,
 		Read:   resourceWAFRegionalRegexPatternSetRead,
+		Create: resourceWAFRegionalRegexPatternSetCreate,
 		Update: resourceWAFRegionalRegexPatternSetUpdate,
 		Delete: resourceWAFRegionalRegexPatternSetDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"regex_pattern_strings": {
 				Type: schema.TypeList,
@@ -30,7 +31,6 @@ func ResourceWAFRegionalRegexPatternSet() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -41,12 +41,16 @@ func ResourceWAFRegionalRegexPatternSet() *schema.Resource {
 	}
 }
 
-func resourceWAFRegionalRegexPatternSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::WAFRegional::RegexPatternSet", ResourceWAFRegionalRegexPatternSet(), data, meta)
+func resourceWAFRegionalRegexPatternSetExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceWAFRegionalRegexPatternSetRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::WAFRegional::RegexPatternSet", ResourceWAFRegionalRegexPatternSet(), data, meta)
+}
+
+func resourceWAFRegionalRegexPatternSetCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::WAFRegional::RegexPatternSet", ResourceWAFRegionalRegexPatternSet(), data, meta)
 }
 
 func resourceWAFRegionalRegexPatternSetUpdate(data *schema.ResourceData, meta interface{}) error {

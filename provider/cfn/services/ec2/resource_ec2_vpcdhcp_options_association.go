@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceEC2VPCDHCPOptionsAssociation() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceEC2VPCDHCPOptionsAssociationCreate,
+		Exists: resourceEC2VPCDHCPOptionsAssociationExists,
 		Read:   resourceEC2VPCDHCPOptionsAssociationRead,
+		Create: resourceEC2VPCDHCPOptionsAssociationCreate,
 		Update: resourceEC2VPCDHCPOptionsAssociationUpdate,
 		Delete: resourceEC2VPCDHCPOptionsAssociationDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"dhcp_options_id": {
 				Type: schema.TypeString,
@@ -29,7 +30,6 @@ func ResourceEC2VPCDHCPOptionsAssociation() *schema.Resource {
 			"vpc_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -40,12 +40,16 @@ func ResourceEC2VPCDHCPOptionsAssociation() *schema.Resource {
 	}
 }
 
-func resourceEC2VPCDHCPOptionsAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::VPCDHCPOptionsAssociation", ResourceEC2VPCDHCPOptionsAssociation(), data, meta)
+func resourceEC2VPCDHCPOptionsAssociationExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2VPCDHCPOptionsAssociationRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::VPCDHCPOptionsAssociation", ResourceEC2VPCDHCPOptionsAssociation(), data, meta)
+}
+
+func resourceEC2VPCDHCPOptionsAssociationCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::VPCDHCPOptionsAssociation", ResourceEC2VPCDHCPOptionsAssociation(), data, meta)
 }
 
 func resourceEC2VPCDHCPOptionsAssociationUpdate(data *schema.ResourceData, meta interface{}) error {

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceApiGatewayAccount() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceApiGatewayAccountCreate,
+		Exists: resourceApiGatewayAccountExists,
 		Read:   resourceApiGatewayAccountRead,
+		Create: resourceApiGatewayAccountCreate,
 		Update: resourceApiGatewayAccountUpdate,
 		Delete: resourceApiGatewayAccountDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"cloud_watch_role_arn": {
 				Type: schema.TypeString,
@@ -35,12 +36,16 @@ func ResourceApiGatewayAccount() *schema.Resource {
 	}
 }
 
-func resourceApiGatewayAccountCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::Account", ResourceApiGatewayAccount(), data, meta)
+func resourceApiGatewayAccountExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceApiGatewayAccountRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ApiGateway::Account", ResourceApiGatewayAccount(), data, meta)
+}
+
+func resourceApiGatewayAccountCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ApiGateway::Account", ResourceApiGatewayAccount(), data, meta)
 }
 
 func resourceApiGatewayAccountUpdate(data *schema.ResourceData, meta interface{}) error {

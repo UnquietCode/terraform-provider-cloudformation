@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,29 +17,20 @@ import (
 
 func ResourceAppMeshVirtualService() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceAppMeshVirtualServiceCreate,
+		Exists: resourceAppMeshVirtualServiceExists,
 		Read:   resourceAppMeshVirtualServiceRead,
+		Create: resourceAppMeshVirtualServiceCreate,
 		Update: resourceAppMeshVirtualServiceUpdate,
 		Delete: resourceAppMeshVirtualServiceDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"uid": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"mesh_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"virtual_service_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
-			},
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
 			},
 			"spec": {
 				Type: schema.TypeList,
@@ -61,12 +52,16 @@ func ResourceAppMeshVirtualService() *schema.Resource {
 	}
 }
 
-func resourceAppMeshVirtualServiceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppMesh::VirtualService", ResourceAppMeshVirtualService(), data, meta)
+func resourceAppMeshVirtualServiceExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceAppMeshVirtualServiceRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::AppMesh::VirtualService", ResourceAppMeshVirtualService(), data, meta)
+}
+
+func resourceAppMeshVirtualServiceCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::AppMesh::VirtualService", ResourceAppMeshVirtualService(), data, meta)
 }
 
 func resourceAppMeshVirtualServiceUpdate(data *schema.ResourceData, meta interface{}) error {

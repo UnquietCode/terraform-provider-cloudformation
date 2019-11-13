@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,30 +16,28 @@ import (
 
 func ResourceServiceCatalogPortfolioPrincipalAssociation() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceServiceCatalogPortfolioPrincipalAssociationCreate,
+		Exists: resourceServiceCatalogPortfolioPrincipalAssociationExists,
 		Read:   resourceServiceCatalogPortfolioPrincipalAssociationRead,
+		Create: resourceServiceCatalogPortfolioPrincipalAssociationCreate,
+		Update: resourceServiceCatalogPortfolioPrincipalAssociationUpdate,
 		Delete: resourceServiceCatalogPortfolioPrincipalAssociationDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"principal_arn": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"accept_language": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"portfolio_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"principal_type": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -50,12 +48,16 @@ func ResourceServiceCatalogPortfolioPrincipalAssociation() *schema.Resource {
 	}
 }
 
-func resourceServiceCatalogPortfolioPrincipalAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::PortfolioPrincipalAssociation", ResourceServiceCatalogPortfolioPrincipalAssociation(), data, meta)
+func resourceServiceCatalogPortfolioPrincipalAssociationExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceServiceCatalogPortfolioPrincipalAssociationRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ServiceCatalog::PortfolioPrincipalAssociation", ResourceServiceCatalogPortfolioPrincipalAssociation(), data, meta)
+}
+
+func resourceServiceCatalogPortfolioPrincipalAssociationCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ServiceCatalog::PortfolioPrincipalAssociation", ResourceServiceCatalogPortfolioPrincipalAssociation(), data, meta)
 }
 
 func resourceServiceCatalogPortfolioPrincipalAssociationUpdate(data *schema.ResourceData, meta interface{}) error {

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,24 +16,13 @@ import (
 
 func ResourceCognitoUserPool() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceCognitoUserPoolCreate,
+		Exists: resourceCognitoUserPoolExists,
 		Read:   resourceCognitoUserPoolRead,
+		Create: resourceCognitoUserPoolCreate,
 		Update: resourceCognitoUserPoolUpdate,
 		Delete: resourceCognitoUserPoolDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"provider_name": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"provider_url": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"user_pool_tags": {
 				Type: schema.TypeMap,
 				Optional: true,
@@ -144,12 +133,16 @@ func ResourceCognitoUserPool() *schema.Resource {
 	}
 }
 
-func resourceCognitoUserPoolCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Cognito::UserPool", ResourceCognitoUserPool(), data, meta)
+func resourceCognitoUserPoolExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCognitoUserPoolRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Cognito::UserPool", ResourceCognitoUserPool(), data, meta)
+}
+
+func resourceCognitoUserPoolCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Cognito::UserPool", ResourceCognitoUserPool(), data, meta)
 }
 
 func resourceCognitoUserPoolUpdate(data *schema.ResourceData, meta interface{}) error {

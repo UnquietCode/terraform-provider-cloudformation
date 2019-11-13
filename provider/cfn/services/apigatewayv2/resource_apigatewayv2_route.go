@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceApiGatewayV2Route() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceApiGatewayV2RouteCreate,
+		Exists: resourceApiGatewayV2RouteExists,
 		Read:   resourceApiGatewayV2RouteRead,
+		Create: resourceApiGatewayV2RouteCreate,
 		Update: resourceApiGatewayV2RouteUpdate,
 		Delete: resourceApiGatewayV2RouteDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"target": {
 				Type: schema.TypeString,
@@ -66,7 +67,6 @@ func ResourceApiGatewayV2Route() *schema.Resource {
 			"api_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"request_parameters": {
 				Type: schema.TypeMap,
@@ -81,12 +81,16 @@ func ResourceApiGatewayV2Route() *schema.Resource {
 	}
 }
 
-func resourceApiGatewayV2RouteCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGatewayV2::Route", ResourceApiGatewayV2Route(), data, meta)
+func resourceApiGatewayV2RouteExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceApiGatewayV2RouteRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ApiGatewayV2::Route", ResourceApiGatewayV2Route(), data, meta)
+}
+
+func resourceApiGatewayV2RouteCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ApiGatewayV2::Route", ResourceApiGatewayV2Route(), data, meta)
 }
 
 func resourceApiGatewayV2RouteUpdate(data *schema.ResourceData, meta interface{}) error {

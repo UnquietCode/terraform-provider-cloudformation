@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,16 +17,16 @@ import (
 
 func ResourceDocDBDBSubnetGroup() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceDocDBDBSubnetGroupCreate,
+		Exists: resourceDocDBDBSubnetGroupExists,
 		Read:   resourceDocDBDBSubnetGroupRead,
+		Create: resourceDocDBDBSubnetGroupCreate,
 		Update: resourceDocDBDBSubnetGroupUpdate,
 		Delete: resourceDocDBDBSubnetGroupDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"db_subnet_group_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"db_subnet_group_description": {
 				Type: schema.TypeString,
@@ -51,12 +51,16 @@ func ResourceDocDBDBSubnetGroup() *schema.Resource {
 	}
 }
 
-func resourceDocDBDBSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DocDB::DBSubnetGroup", ResourceDocDBDBSubnetGroup(), data, meta)
+func resourceDocDBDBSubnetGroupExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceDocDBDBSubnetGroupRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::DocDB::DBSubnetGroup", ResourceDocDBDBSubnetGroup(), data, meta)
+}
+
+func resourceDocDBDBSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::DocDB::DBSubnetGroup", ResourceDocDBDBSubnetGroup(), data, meta)
 }
 
 func resourceDocDBDBSubnetGroupUpdate(data *schema.ResourceData, meta interface{}) error {

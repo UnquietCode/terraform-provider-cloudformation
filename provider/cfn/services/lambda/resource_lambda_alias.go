@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceLambdaAlias() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceLambdaAliasCreate,
+		Exists: resourceLambdaAliasExists,
 		Read:   resourceLambdaAliasRead,
+		Create: resourceLambdaAliasCreate,
 		Update: resourceLambdaAliasUpdate,
 		Delete: resourceLambdaAliasDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -29,7 +30,6 @@ func ResourceLambdaAlias() *schema.Resource {
 			"function_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"function_version": {
 				Type: schema.TypeString,
@@ -38,7 +38,6 @@ func ResourceLambdaAlias() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"routing_config": {
 				Type: schema.TypeList,
@@ -55,12 +54,16 @@ func ResourceLambdaAlias() *schema.Resource {
 	}
 }
 
-func resourceLambdaAliasCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Lambda::Alias", ResourceLambdaAlias(), data, meta)
+func resourceLambdaAliasExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceLambdaAliasRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Lambda::Alias", ResourceLambdaAlias(), data, meta)
+}
+
+func resourceLambdaAliasCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Lambda::Alias", ResourceLambdaAlias(), data, meta)
 }
 
 func resourceLambdaAliasUpdate(data *schema.ResourceData, meta interface{}) error {

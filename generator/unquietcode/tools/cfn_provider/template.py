@@ -132,23 +132,28 @@ ${imports}
 
 func Resource${name}() *schema.Resource {
 	return &schema.Resource{
-		Create: resource${name}Create,
+		Exists: resource${name}Exists,
 		Read:   resource${name}Read,
+		Create: resource${name}Create,
 		Update: ${update_line},
 		Delete: resource${name}Delete,
-
+		
 		Schema: map[string]*schema.Schema{
 ${attributes}
 		},
 	}
 }
 
-func resource${name}Create(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("${cfn_type}", Resource${name}(), data, meta)
+func resource${name}Exists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resource${name}Read(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("${cfn_type}", Resource${name}(), data, meta)
+}
+
+func resource${name}Create(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("${cfn_type}", Resource${name}(), data, meta)
 }
 
 func resource${name}Update(data *schema.ResourceData, meta interface{}) error {
@@ -273,6 +278,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/terraform"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
+	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 ${imports}
 )
 
@@ -280,13 +286,14 @@ func Provider() terraform.ResourceProvider {
 	return &schema.Provider{
 		ConfigureFunc: plugin.ProviderConfigure,
 		Schema: map[string]*schema.Schema{
-			"template_description": {
+			"workdir": {
 				Type:        schema.TypeString,
-				Optional:    true,
-				Description: "descriptive text to include in the template",
+				Required:    true,
+				Description: "working directory on the filesystem",
 			},
 		},
 		ResourcesMap: map[string]*schema.Resource{
+			"cfn_template_data": misc.ResourceTemplateData(),
 ${resources}
 		},
 		DataSourcesMap: map[string]*schema.Resource{

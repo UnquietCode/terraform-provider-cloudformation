@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceElasticLoadBalancingV2Listener() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceElasticLoadBalancingV2ListenerCreate,
+		Exists: resourceElasticLoadBalancingV2ListenerExists,
 		Read:   resourceElasticLoadBalancingV2ListenerRead,
+		Create: resourceElasticLoadBalancingV2ListenerCreate,
 		Update: resourceElasticLoadBalancingV2ListenerUpdate,
 		Delete: resourceElasticLoadBalancingV2ListenerDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"certificates": {
 				Type: schema.TypeSet,
@@ -35,7 +36,6 @@ func ResourceElasticLoadBalancingV2Listener() *schema.Resource {
 			"load_balancer_arn": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"port": {
 				Type: schema.TypeInt,
@@ -58,12 +58,16 @@ func ResourceElasticLoadBalancingV2Listener() *schema.Resource {
 	}
 }
 
-func resourceElasticLoadBalancingV2ListenerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElasticLoadBalancingV2::Listener", ResourceElasticLoadBalancingV2Listener(), data, meta)
+func resourceElasticLoadBalancingV2ListenerExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceElasticLoadBalancingV2ListenerRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ElasticLoadBalancingV2::Listener", ResourceElasticLoadBalancingV2Listener(), data, meta)
+}
+
+func resourceElasticLoadBalancingV2ListenerCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ElasticLoadBalancingV2::Listener", ResourceElasticLoadBalancingV2Listener(), data, meta)
 }
 
 func resourceElasticLoadBalancingV2ListenerUpdate(data *schema.ResourceData, meta interface{}) error {

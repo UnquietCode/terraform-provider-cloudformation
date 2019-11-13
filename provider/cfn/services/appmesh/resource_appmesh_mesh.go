@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,24 +17,16 @@ import (
 
 func ResourceAppMeshMesh() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceAppMeshMeshCreate,
+		Exists: resourceAppMeshMeshExists,
 		Read:   resourceAppMeshMeshRead,
+		Create: resourceAppMeshMeshCreate,
 		Update: resourceAppMeshMeshUpdate,
 		Delete: resourceAppMeshMeshDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"uid": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"mesh_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
-			},
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
 			},
 			"spec": {
 				Type: schema.TypeList,
@@ -56,12 +48,16 @@ func ResourceAppMeshMesh() *schema.Resource {
 	}
 }
 
-func resourceAppMeshMeshCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppMesh::Mesh", ResourceAppMeshMesh(), data, meta)
+func resourceAppMeshMeshExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceAppMeshMeshRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::AppMesh::Mesh", ResourceAppMeshMesh(), data, meta)
+}
+
+func resourceAppMeshMeshCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::AppMesh::Mesh", ResourceAppMeshMesh(), data, meta)
 }
 
 func resourceAppMeshMeshUpdate(data *schema.ResourceData, meta interface{}) error {

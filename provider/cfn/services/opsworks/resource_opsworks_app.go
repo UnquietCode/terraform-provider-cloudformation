@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceOpsWorksApp() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceOpsWorksAppCreate,
+		Exists: resourceOpsWorksAppExists,
 		Read:   resourceOpsWorksAppRead,
+		Create: resourceOpsWorksAppCreate,
 		Update: resourceOpsWorksAppUpdate,
 		Delete: resourceOpsWorksAppDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"app_source": {
 				Type: schema.TypeList,
@@ -63,7 +64,6 @@ func ResourceOpsWorksApp() *schema.Resource {
 			"shortname": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"ssl_configuration": {
 				Type: schema.TypeList,
@@ -74,7 +74,6 @@ func ResourceOpsWorksApp() *schema.Resource {
 			"stack_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"type": {
 				Type: schema.TypeString,
@@ -89,12 +88,16 @@ func ResourceOpsWorksApp() *schema.Resource {
 	}
 }
 
-func resourceOpsWorksAppCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::OpsWorks::App", ResourceOpsWorksApp(), data, meta)
+func resourceOpsWorksAppExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceOpsWorksAppRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::OpsWorks::App", ResourceOpsWorksApp(), data, meta)
+}
+
+func resourceOpsWorksAppCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::OpsWorks::App", ResourceOpsWorksApp(), data, meta)
 }
 
 func resourceOpsWorksAppUpdate(data *schema.ResourceData, meta interface{}) error {

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,13 @@ import (
 
 func ResourceCloudFormationWaitCondition() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceCloudFormationWaitConditionCreate,
+		Exists: resourceCloudFormationWaitConditionExists,
 		Read:   resourceCloudFormationWaitConditionRead,
+		Create: resourceCloudFormationWaitConditionCreate,
 		Update: resourceCloudFormationWaitConditionUpdate,
 		Delete: resourceCloudFormationWaitConditionDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"data": {
-				Type: schema.TypeMap,
-				Computed: true,
-			},
 			"the_count": {
 				Type: schema.TypeInt,
 				Optional: true,
@@ -47,12 +44,16 @@ func ResourceCloudFormationWaitCondition() *schema.Resource {
 	}
 }
 
-func resourceCloudFormationWaitConditionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CloudFormation::WaitCondition", ResourceCloudFormationWaitCondition(), data, meta)
+func resourceCloudFormationWaitConditionExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCloudFormationWaitConditionRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::CloudFormation::WaitCondition", ResourceCloudFormationWaitCondition(), data, meta)
+}
+
+func resourceCloudFormationWaitConditionCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::CloudFormation::WaitCondition", ResourceCloudFormationWaitCondition(), data, meta)
 }
 
 func resourceCloudFormationWaitConditionUpdate(data *schema.ResourceData, meta interface{}) error {

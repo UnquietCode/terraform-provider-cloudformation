@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,20 +16,16 @@ import (
 
 func ResourceLogsDestination() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceLogsDestinationCreate,
+		Exists: resourceLogsDestinationExists,
 		Read:   resourceLogsDestinationRead,
+		Create: resourceLogsDestinationCreate,
 		Update: resourceLogsDestinationUpdate,
 		Delete: resourceLogsDestinationDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"destination_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"destination_policy": {
 				Type: schema.TypeString,
@@ -52,12 +48,16 @@ func ResourceLogsDestination() *schema.Resource {
 	}
 }
 
-func resourceLogsDestinationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Logs::Destination", ResourceLogsDestination(), data, meta)
+func resourceLogsDestinationExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceLogsDestinationRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Logs::Destination", ResourceLogsDestination(), data, meta)
+}
+
+func resourceLogsDestinationCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Logs::Destination", ResourceLogsDestination(), data, meta)
 }
 
 func resourceLogsDestinationUpdate(data *schema.ResourceData, meta interface{}) error {

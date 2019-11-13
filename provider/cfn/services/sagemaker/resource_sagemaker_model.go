@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,42 +17,37 @@ import (
 
 func ResourceSageMakerModel() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceSageMakerModelCreate,
+		Exists: resourceSageMakerModelExists,
 		Read:   resourceSageMakerModelRead,
+		Create: resourceSageMakerModelCreate,
 		Update: resourceSageMakerModelUpdate,
 		Delete: resourceSageMakerModelDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"model_name": {
-				Type: schema.TypeString,
-				Optional: true,
-				Computed: true,
-				ForceNew: true,
-			},
 			"execution_role_arn": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"primary_container": {
 				Type: schema.TypeList,
 				Elem: propertyModelContainerDefinition(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
+			},
+			"model_name": {
+				Type: schema.TypeString,
+				Optional: true,
 			},
 			"vpc_config": {
 				Type: schema.TypeList,
 				Elem: propertyModelVpcConfig(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"containers": {
 				Type: schema.TypeList,
 				Elem: propertyModelContainerDefinition(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -68,12 +63,16 @@ func ResourceSageMakerModel() *schema.Resource {
 	}
 }
 
-func resourceSageMakerModelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SageMaker::Model", ResourceSageMakerModel(), data, meta)
+func resourceSageMakerModelExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceSageMakerModelRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::SageMaker::Model", ResourceSageMakerModel(), data, meta)
+}
+
+func resourceSageMakerModelCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::SageMaker::Model", ResourceSageMakerModel(), data, meta)
 }
 
 func resourceSageMakerModelUpdate(data *schema.ResourceData, meta interface{}) error {

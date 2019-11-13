@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,11 +17,12 @@ import (
 
 func ResourceIoTAnalyticsDatastore() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceIoTAnalyticsDatastoreCreate,
+		Exists: resourceIoTAnalyticsDatastoreExists,
 		Read:   resourceIoTAnalyticsDatastoreRead,
+		Create: resourceIoTAnalyticsDatastoreCreate,
 		Update: resourceIoTAnalyticsDatastoreUpdate,
 		Delete: resourceIoTAnalyticsDatastoreDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"datastore_storage": {
 				Type: schema.TypeList,
@@ -32,7 +33,6 @@ func ResourceIoTAnalyticsDatastore() *schema.Resource {
 			"datastore_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"retention_period": {
 				Type: schema.TypeList,
@@ -54,12 +54,16 @@ func ResourceIoTAnalyticsDatastore() *schema.Resource {
 	}
 }
 
-func resourceIoTAnalyticsDatastoreCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoTAnalytics::Datastore", ResourceIoTAnalyticsDatastore(), data, meta)
+func resourceIoTAnalyticsDatastoreExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceIoTAnalyticsDatastoreRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::IoTAnalytics::Datastore", ResourceIoTAnalyticsDatastore(), data, meta)
+}
+
+func resourceIoTAnalyticsDatastoreCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::IoTAnalytics::Datastore", ResourceIoTAnalyticsDatastore(), data, meta)
 }
 
 func resourceIoTAnalyticsDatastoreUpdate(data *schema.ResourceData, meta interface{}) error {

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,11 +17,12 @@ import (
 
 func ResourceRedshiftClusterSubnetGroup() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceRedshiftClusterSubnetGroupCreate,
+		Exists: resourceRedshiftClusterSubnetGroupExists,
 		Read:   resourceRedshiftClusterSubnetGroupRead,
+		Create: resourceRedshiftClusterSubnetGroupCreate,
 		Update: resourceRedshiftClusterSubnetGroupUpdate,
 		Delete: resourceRedshiftClusterSubnetGroupDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -46,12 +47,16 @@ func ResourceRedshiftClusterSubnetGroup() *schema.Resource {
 	}
 }
 
-func resourceRedshiftClusterSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Redshift::ClusterSubnetGroup", ResourceRedshiftClusterSubnetGroup(), data, meta)
+func resourceRedshiftClusterSubnetGroupExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceRedshiftClusterSubnetGroupRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Redshift::ClusterSubnetGroup", ResourceRedshiftClusterSubnetGroup(), data, meta)
+}
+
+func resourceRedshiftClusterSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Redshift::ClusterSubnetGroup", ResourceRedshiftClusterSubnetGroup(), data, meta)
 }
 
 func resourceRedshiftClusterSubnetGroupUpdate(data *schema.ResourceData, meta interface{}) error {

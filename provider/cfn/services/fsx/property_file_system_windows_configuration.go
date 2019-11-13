@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -42,17 +42,14 @@ func propertyFileSystemWindowsConfiguration(extras...string) *schema.Resource {
 			"active_directory_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"throughput_capacity": {
 				Type: schema.TypeInt,
 				Optional: true,
-				ForceNew: true,
 			},
 			"copy_tags_to_backups": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"daily_automatic_backup_start_time": {
 				Type: schema.TypeString,

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceEC2VPCEndpointServicePermissions() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceEC2VPCEndpointServicePermissionsCreate,
+		Exists: resourceEC2VPCEndpointServicePermissionsExists,
 		Read:   resourceEC2VPCEndpointServicePermissionsRead,
+		Create: resourceEC2VPCEndpointServicePermissionsCreate,
 		Update: resourceEC2VPCEndpointServicePermissionsUpdate,
 		Delete: resourceEC2VPCEndpointServicePermissionsDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"allowed_principals": {
 				Type: schema.TypeList,
@@ -30,7 +31,6 @@ func ResourceEC2VPCEndpointServicePermissions() *schema.Resource {
 			"service_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -41,12 +41,16 @@ func ResourceEC2VPCEndpointServicePermissions() *schema.Resource {
 	}
 }
 
-func resourceEC2VPCEndpointServicePermissionsCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::VPCEndpointServicePermissions", ResourceEC2VPCEndpointServicePermissions(), data, meta)
+func resourceEC2VPCEndpointServicePermissionsExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2VPCEndpointServicePermissionsRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::VPCEndpointServicePermissions", ResourceEC2VPCEndpointServicePermissions(), data, meta)
+}
+
+func resourceEC2VPCEndpointServicePermissionsCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::VPCEndpointServicePermissions", ResourceEC2VPCEndpointServicePermissions(), data, meta)
 }
 
 func resourceEC2VPCEndpointServicePermissionsUpdate(data *schema.ResourceData, meta interface{}) error {

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,22 +17,13 @@ import (
 
 func ResourceSQSQueue() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceSQSQueueCreate,
+		Exists: resourceSQSQueueExists,
 		Read:   resourceSQSQueueRead,
+		Create: resourceSQSQueueCreate,
 		Update: resourceSQSQueueUpdate,
 		Delete: resourceSQSQueueDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"queue_name": {
-				Type: schema.TypeString,
-				Optional: true,
-				Computed: true,
-				ForceNew: true,
-			},
 			"content_based_deduplication": {
 				Type: schema.TypeBool,
 				Optional: true,
@@ -44,7 +35,6 @@ func ResourceSQSQueue() *schema.Resource {
 			"fifo_queue": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"kms_data_key_reuse_period_seconds": {
 				Type: schema.TypeInt,
@@ -60,6 +50,10 @@ func ResourceSQSQueue() *schema.Resource {
 			},
 			"message_retention_period": {
 				Type: schema.TypeInt,
+				Optional: true,
+			},
+			"queue_name": {
+				Type: schema.TypeString,
 				Optional: true,
 			},
 			"receive_message_wait_time_seconds": {
@@ -88,12 +82,16 @@ func ResourceSQSQueue() *schema.Resource {
 	}
 }
 
-func resourceSQSQueueCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SQS::Queue", ResourceSQSQueue(), data, meta)
+func resourceSQSQueueExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceSQSQueueRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::SQS::Queue", ResourceSQSQueue(), data, meta)
+}
+
+func resourceSQSQueueCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::SQS::Queue", ResourceSQSQueue(), data, meta)
 }
 
 func resourceSQSQueueUpdate(data *schema.ResourceData, meta interface{}) error {

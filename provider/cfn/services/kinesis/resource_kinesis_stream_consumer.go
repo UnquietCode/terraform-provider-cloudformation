@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,32 +16,20 @@ import (
 
 func ResourceKinesisStreamConsumer() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceKinesisStreamConsumerCreate,
+		Exists: resourceKinesisStreamConsumerExists,
 		Read:   resourceKinesisStreamConsumerRead,
+		Create: resourceKinesisStreamConsumerCreate,
+		Update: resourceKinesisStreamConsumerUpdate,
 		Delete: resourceKinesisStreamConsumerDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"consumer_creation_timestamp": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"consumer_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
-			},
-			"consumer_arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"consumer_status": {
-				Type: schema.TypeString,
-				Computed: true,
 			},
 			"stream_arn": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -52,12 +40,16 @@ func ResourceKinesisStreamConsumer() *schema.Resource {
 	}
 }
 
-func resourceKinesisStreamConsumerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Kinesis::StreamConsumer", ResourceKinesisStreamConsumer(), data, meta)
+func resourceKinesisStreamConsumerExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceKinesisStreamConsumerRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Kinesis::StreamConsumer", ResourceKinesisStreamConsumer(), data, meta)
+}
+
+func resourceKinesisStreamConsumerCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Kinesis::StreamConsumer", ResourceKinesisStreamConsumer(), data, meta)
 }
 
 func resourceKinesisStreamConsumerUpdate(data *schema.ResourceData, meta interface{}) error {

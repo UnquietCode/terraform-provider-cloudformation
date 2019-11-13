@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceGlueConnection() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceGlueConnectionCreate,
+		Exists: resourceGlueConnectionExists,
 		Read:   resourceGlueConnectionRead,
+		Create: resourceGlueConnectionCreate,
 		Update: resourceGlueConnectionUpdate,
 		Delete: resourceGlueConnectionDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"connection_input": {
 				Type: schema.TypeList,
@@ -31,7 +32,6 @@ func ResourceGlueConnection() *schema.Resource {
 			"catalog_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -42,12 +42,16 @@ func ResourceGlueConnection() *schema.Resource {
 	}
 }
 
-func resourceGlueConnectionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::Connection", ResourceGlueConnection(), data, meta)
+func resourceGlueConnectionExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceGlueConnectionRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Glue::Connection", ResourceGlueConnection(), data, meta)
+}
+
+func resourceGlueConnectionCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Glue::Connection", ResourceGlueConnection(), data, meta)
 }
 
 func resourceGlueConnectionUpdate(data *schema.ResourceData, meta interface{}) error {

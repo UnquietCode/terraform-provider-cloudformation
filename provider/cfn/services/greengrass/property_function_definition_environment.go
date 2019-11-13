@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -32,25 +32,21 @@ func propertyFunctionDefinitionEnvironment(extras...string) *schema.Resource {
 			"variables": {
 				Type: schema.TypeMap,
 				Optional: true,
-				ForceNew: true,
 			},
 			"execution": {
 				Type: schema.TypeList,
 				Elem: propertyFunctionDefinitionExecution(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"resource_access_policies": {
 				Type: schema.TypeList,
 				Elem: propertyFunctionDefinitionResourceAccessPolicy(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"access_sysfs": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 		},
 	}

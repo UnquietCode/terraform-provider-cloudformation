@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,28 +16,27 @@ import (
 
 func ResourceGreengrassFunctionDefinitionVersion() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceGreengrassFunctionDefinitionVersionCreate,
+		Exists: resourceGreengrassFunctionDefinitionVersionExists,
 		Read:   resourceGreengrassFunctionDefinitionVersionRead,
+		Create: resourceGreengrassFunctionDefinitionVersionCreate,
+		Update: resourceGreengrassFunctionDefinitionVersionUpdate,
 		Delete: resourceGreengrassFunctionDefinitionVersionDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"default_config": {
 				Type: schema.TypeList,
 				Elem: propertyFunctionDefinitionVersionDefaultConfig(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"functions": {
 				Type: schema.TypeList,
 				Elem: propertyFunctionDefinitionVersionFunction(),
 				Required: true,
-				ForceNew: true,
 			},
 			"function_definition_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -48,12 +47,16 @@ func ResourceGreengrassFunctionDefinitionVersion() *schema.Resource {
 	}
 }
 
-func resourceGreengrassFunctionDefinitionVersionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Greengrass::FunctionDefinitionVersion", ResourceGreengrassFunctionDefinitionVersion(), data, meta)
+func resourceGreengrassFunctionDefinitionVersionExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceGreengrassFunctionDefinitionVersionRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Greengrass::FunctionDefinitionVersion", ResourceGreengrassFunctionDefinitionVersion(), data, meta)
+}
+
+func resourceGreengrassFunctionDefinitionVersionCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Greengrass::FunctionDefinitionVersion", ResourceGreengrassFunctionDefinitionVersion(), data, meta)
 }
 
 func resourceGreengrassFunctionDefinitionVersionUpdate(data *schema.ResourceData, meta interface{}) error {

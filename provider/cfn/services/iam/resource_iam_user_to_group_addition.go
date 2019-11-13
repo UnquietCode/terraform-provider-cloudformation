@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceIAMUserToGroupAddition() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceIAMUserToGroupAdditionCreate,
+		Exists: resourceIAMUserToGroupAdditionExists,
 		Read:   resourceIAMUserToGroupAdditionRead,
+		Create: resourceIAMUserToGroupAdditionCreate,
 		Update: resourceIAMUserToGroupAdditionUpdate,
 		Delete: resourceIAMUserToGroupAdditionDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"group_name": {
 				Type: schema.TypeString,
@@ -40,12 +41,16 @@ func ResourceIAMUserToGroupAddition() *schema.Resource {
 	}
 }
 
-func resourceIAMUserToGroupAdditionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IAM::UserToGroupAddition", ResourceIAMUserToGroupAddition(), data, meta)
+func resourceIAMUserToGroupAdditionExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceIAMUserToGroupAdditionRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::IAM::UserToGroupAddition", ResourceIAMUserToGroupAddition(), data, meta)
+}
+
+func resourceIAMUserToGroupAdditionCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::IAM::UserToGroupAddition", ResourceIAMUserToGroupAddition(), data, meta)
 }
 
 func resourceIAMUserToGroupAdditionUpdate(data *schema.ResourceData, meta interface{}) error {

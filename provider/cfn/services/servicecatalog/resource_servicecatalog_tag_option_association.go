@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,20 +16,20 @@ import (
 
 func ResourceServiceCatalogTagOptionAssociation() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceServiceCatalogTagOptionAssociationCreate,
+		Exists: resourceServiceCatalogTagOptionAssociationExists,
 		Read:   resourceServiceCatalogTagOptionAssociationRead,
+		Create: resourceServiceCatalogTagOptionAssociationCreate,
+		Update: resourceServiceCatalogTagOptionAssociationUpdate,
 		Delete: resourceServiceCatalogTagOptionAssociationDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"tag_option_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"resource_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -40,12 +40,16 @@ func ResourceServiceCatalogTagOptionAssociation() *schema.Resource {
 	}
 }
 
-func resourceServiceCatalogTagOptionAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::TagOptionAssociation", ResourceServiceCatalogTagOptionAssociation(), data, meta)
+func resourceServiceCatalogTagOptionAssociationExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceServiceCatalogTagOptionAssociationRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ServiceCatalog::TagOptionAssociation", ResourceServiceCatalogTagOptionAssociation(), data, meta)
+}
+
+func resourceServiceCatalogTagOptionAssociationCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ServiceCatalog::TagOptionAssociation", ResourceServiceCatalogTagOptionAssociation(), data, meta)
 }
 
 func resourceServiceCatalogTagOptionAssociationUpdate(data *schema.ResourceData, meta interface{}) error {

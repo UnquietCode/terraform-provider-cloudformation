@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,28 +17,13 @@ import (
 
 func ResourceCodeCommitRepository() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceCodeCommitRepositoryCreate,
+		Exists: resourceCodeCommitRepositoryExists,
 		Read:   resourceCodeCommitRepositoryRead,
+		Create: resourceCodeCommitRepositoryCreate,
 		Update: resourceCodeCommitRepositoryUpdate,
 		Delete: resourceCodeCommitRepositoryDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"clone_url_http": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"clone_url_ssh": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"name": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"repository_name": {
 				Type: schema.TypeString,
 				Required: true,
@@ -72,12 +57,16 @@ func ResourceCodeCommitRepository() *schema.Resource {
 	}
 }
 
-func resourceCodeCommitRepositoryCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CodeCommit::Repository", ResourceCodeCommitRepository(), data, meta)
+func resourceCodeCommitRepositoryExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCodeCommitRepositoryRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::CodeCommit::Repository", ResourceCodeCommitRepository(), data, meta)
+}
+
+func resourceCodeCommitRepositoryCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::CodeCommit::Repository", ResourceCodeCommitRepository(), data, meta)
 }
 
 func resourceCodeCommitRepositoryUpdate(data *schema.ResourceData, meta interface{}) error {

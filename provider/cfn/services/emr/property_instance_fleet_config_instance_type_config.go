@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -32,35 +32,29 @@ func propertyInstanceFleetConfigInstanceTypeConfig(extras...string) *schema.Reso
 			"bid_price": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"bid_price_as_percentage_of_on_demand_price": {
 				Type: schema.TypeFloat,
 				Optional: true,
-				ForceNew: true,
 			},
 			"configurations": {
 				Type: schema.TypeSet,
 				Elem: propertyInstanceFleetConfigConfiguration(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"ebs_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyInstanceFleetConfigEbsConfiguration(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"instance_type": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"weighted_capacity": {
 				Type: schema.TypeInt,
 				Optional: true,
-				ForceNew: true,
 			},
 		},
 	}

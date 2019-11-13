@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceIAMPolicy() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceIAMPolicyCreate,
+		Exists: resourceIAMPolicyExists,
 		Read:   resourceIAMPolicyRead,
+		Create: resourceIAMPolicyCreate,
 		Update: resourceIAMPolicyUpdate,
 		Delete: resourceIAMPolicyDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"groups": {
 				Type: schema.TypeList,
@@ -54,12 +55,16 @@ func ResourceIAMPolicy() *schema.Resource {
 	}
 }
 
-func resourceIAMPolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IAM::Policy", ResourceIAMPolicy(), data, meta)
+func resourceIAMPolicyExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceIAMPolicyRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::IAM::Policy", ResourceIAMPolicy(), data, meta)
+}
+
+func resourceIAMPolicyCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::IAM::Policy", ResourceIAMPolicy(), data, meta)
 }
 
 func resourceIAMPolicyUpdate(data *schema.ResourceData, meta interface{}) error {

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceEC2VPNGatewayRoutePropagation() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceEC2VPNGatewayRoutePropagationCreate,
+		Exists: resourceEC2VPNGatewayRoutePropagationExists,
 		Read:   resourceEC2VPNGatewayRoutePropagationRead,
+		Create: resourceEC2VPNGatewayRoutePropagationCreate,
 		Update: resourceEC2VPNGatewayRoutePropagationUpdate,
 		Delete: resourceEC2VPNGatewayRoutePropagationDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"route_table_ids": {
 				Type: schema.TypeList,
@@ -40,12 +41,16 @@ func ResourceEC2VPNGatewayRoutePropagation() *schema.Resource {
 	}
 }
 
-func resourceEC2VPNGatewayRoutePropagationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::VPNGatewayRoutePropagation", ResourceEC2VPNGatewayRoutePropagation(), data, meta)
+func resourceEC2VPNGatewayRoutePropagationExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2VPNGatewayRoutePropagationRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::VPNGatewayRoutePropagation", ResourceEC2VPNGatewayRoutePropagation(), data, meta)
+}
+
+func resourceEC2VPNGatewayRoutePropagationCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::VPNGatewayRoutePropagation", ResourceEC2VPNGatewayRoutePropagation(), data, meta)
 }
 
 func resourceEC2VPNGatewayRoutePropagationUpdate(data *schema.ResourceData, meta interface{}) error {

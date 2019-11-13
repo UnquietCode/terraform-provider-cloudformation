@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,13 @@ import (
 
 func ResourceDLMLifecyclePolicy() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceDLMLifecyclePolicyCreate,
+		Exists: resourceDLMLifecyclePolicyExists,
 		Read:   resourceDLMLifecyclePolicyRead,
+		Create: resourceDLMLifecyclePolicyCreate,
 		Update: resourceDLMLifecyclePolicyUpdate,
 		Delete: resourceDLMLifecyclePolicyDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"execution_role_arn": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -53,12 +50,16 @@ func ResourceDLMLifecyclePolicy() *schema.Resource {
 	}
 }
 
-func resourceDLMLifecyclePolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DLM::LifecyclePolicy", ResourceDLMLifecyclePolicy(), data, meta)
+func resourceDLMLifecyclePolicyExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceDLMLifecyclePolicyRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::DLM::LifecyclePolicy", ResourceDLMLifecyclePolicy(), data, meta)
+}
+
+func resourceDLMLifecyclePolicyCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::DLM::LifecyclePolicy", ResourceDLMLifecyclePolicy(), data, meta)
 }
 
 func resourceDLMLifecyclePolicyUpdate(data *schema.ResourceData, meta interface{}) error {

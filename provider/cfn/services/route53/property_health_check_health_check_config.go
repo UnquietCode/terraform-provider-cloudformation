@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -72,7 +72,6 @@ func propertyHealthCheckHealthCheckConfig(extras...string) *schema.Resource {
 			"measure_latency": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"port": {
 				Type: schema.TypeInt,
@@ -87,7 +86,6 @@ func propertyHealthCheckHealthCheckConfig(extras...string) *schema.Resource {
 			"request_interval": {
 				Type: schema.TypeInt,
 				Optional: true,
-				ForceNew: true,
 			},
 			"resource_path": {
 				Type: schema.TypeString,
@@ -100,7 +98,6 @@ func propertyHealthCheckHealthCheckConfig(extras...string) *schema.Resource {
 			"type": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 		},
 	}

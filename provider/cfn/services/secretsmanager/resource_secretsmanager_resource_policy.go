@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,16 @@ import (
 
 func ResourceSecretsManagerResourcePolicy() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceSecretsManagerResourcePolicyCreate,
+		Exists: resourceSecretsManagerResourcePolicyExists,
 		Read:   resourceSecretsManagerResourcePolicyRead,
+		Create: resourceSecretsManagerResourcePolicyCreate,
 		Update: resourceSecretsManagerResourcePolicyUpdate,
 		Delete: resourceSecretsManagerResourcePolicyDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"secret_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"resource_policy": {
 				Type: schema.TypeMap,
@@ -40,12 +40,16 @@ func ResourceSecretsManagerResourcePolicy() *schema.Resource {
 	}
 }
 
-func resourceSecretsManagerResourcePolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SecretsManager::ResourcePolicy", ResourceSecretsManagerResourcePolicy(), data, meta)
+func resourceSecretsManagerResourcePolicyExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceSecretsManagerResourcePolicyRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::SecretsManager::ResourcePolicy", ResourceSecretsManagerResourcePolicy(), data, meta)
+}
+
+func resourceSecretsManagerResourcePolicyCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::SecretsManager::ResourcePolicy", ResourceSecretsManagerResourcePolicy(), data, meta)
 }
 
 func resourceSecretsManagerResourcePolicyUpdate(data *schema.ResourceData, meta interface{}) error {

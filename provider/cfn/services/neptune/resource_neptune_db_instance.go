@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,20 +17,13 @@ import (
 
 func ResourceNeptuneDBInstance() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceNeptuneDBInstanceCreate,
+		Exists: resourceNeptuneDBInstanceExists,
 		Read:   resourceNeptuneDBInstanceRead,
+		Create: resourceNeptuneDBInstanceCreate,
 		Update: resourceNeptuneDBInstanceUpdate,
 		Delete: resourceNeptuneDBInstanceDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"endpoint": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"port": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"db_parameter_group_name": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -46,12 +39,10 @@ func ResourceNeptuneDBInstance() *schema.Resource {
 			"db_cluster_identifier": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"availability_zone": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"preferred_maintenance_window": {
 				Type: schema.TypeString,
@@ -64,17 +55,14 @@ func ResourceNeptuneDBInstance() *schema.Resource {
 			"db_subnet_group_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"db_instance_identifier": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"db_snapshot_identifier": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -90,12 +78,16 @@ func ResourceNeptuneDBInstance() *schema.Resource {
 	}
 }
 
-func resourceNeptuneDBInstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Neptune::DBInstance", ResourceNeptuneDBInstance(), data, meta)
+func resourceNeptuneDBInstanceExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceNeptuneDBInstanceRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Neptune::DBInstance", ResourceNeptuneDBInstance(), data, meta)
+}
+
+func resourceNeptuneDBInstanceCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Neptune::DBInstance", ResourceNeptuneDBInstance(), data, meta)
 }
 
 func resourceNeptuneDBInstanceUpdate(data *schema.ResourceData, meta interface{}) error {

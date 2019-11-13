@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,13 @@ import (
 
 func ResourceCognitoIdentityPool() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceCognitoIdentityPoolCreate,
+		Exists: resourceCognitoIdentityPoolExists,
 		Read:   resourceCognitoIdentityPoolRead,
+		Create: resourceCognitoIdentityPoolCreate,
 		Update: resourceCognitoIdentityPoolUpdate,
 		Delete: resourceCognitoIdentityPoolDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"name": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"push_sync": {
 				Type: schema.TypeList,
 				Elem: propertyIdentityPoolPushSync(),
@@ -82,12 +79,16 @@ func ResourceCognitoIdentityPool() *schema.Resource {
 	}
 }
 
-func resourceCognitoIdentityPoolCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Cognito::IdentityPool", ResourceCognitoIdentityPool(), data, meta)
+func resourceCognitoIdentityPoolExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCognitoIdentityPoolRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Cognito::IdentityPool", ResourceCognitoIdentityPool(), data, meta)
+}
+
+func resourceCognitoIdentityPoolCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Cognito::IdentityPool", ResourceCognitoIdentityPool(), data, meta)
 }
 
 func resourceCognitoIdentityPoolUpdate(data *schema.ResourceData, meta interface{}) error {

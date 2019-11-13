@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,20 +16,16 @@ import (
 
 func ResourceInspectorAssessmentTarget() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceInspectorAssessmentTargetCreate,
+		Exists: resourceInspectorAssessmentTargetExists,
 		Read:   resourceInspectorAssessmentTargetRead,
+		Create: resourceInspectorAssessmentTargetCreate,
 		Update: resourceInspectorAssessmentTargetUpdate,
 		Delete: resourceInspectorAssessmentTargetDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"assessment_target_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"resource_group_arn": {
 				Type: schema.TypeString,
@@ -44,12 +40,16 @@ func ResourceInspectorAssessmentTarget() *schema.Resource {
 	}
 }
 
-func resourceInspectorAssessmentTargetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Inspector::AssessmentTarget", ResourceInspectorAssessmentTarget(), data, meta)
+func resourceInspectorAssessmentTargetExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceInspectorAssessmentTargetRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Inspector::AssessmentTarget", ResourceInspectorAssessmentTarget(), data, meta)
+}
+
+func resourceInspectorAssessmentTargetCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Inspector::AssessmentTarget", ResourceInspectorAssessmentTarget(), data, meta)
 }
 
 func resourceInspectorAssessmentTargetUpdate(data *schema.ResourceData, meta interface{}) error {

@@ -144,7 +144,7 @@ func writeFile(name string, data map[string]interface{}, meta ProviderMetadata) 
 	file, _ := os.Create(path)
 	defer file.Close()
 	
-	rawData, err := json.Marshal(data)
+	rawData, err := json.MarshalIndent(data, "", "  ")
 	
 	if err != nil {
 		return "", err
@@ -198,6 +198,19 @@ func handleExistingResouce(meta ProviderMetadata, id string, hash string) error 
 }
 
 
+func incrementResourceCounter(meta ProviderMetadata) {
+	meta.mutex.Lock(LOCK_RESOURCE_COUNTER)
+	*meta.resourceCounter += 1
+	meta.mutex.Unlock(LOCK_RESOURCE_COUNTER)
+}
+
+
+func readCounter(meta ProviderMetadata) int {
+	meta.mutex.Lock(LOCK_RESOURCE_COUNTER)
+	defer meta.mutex.Unlock(LOCK_RESOURCE_COUNTER)
+	return *meta.resourceCounter
+}
+
 
 // --------------------------	------------------------------------------------
 
@@ -223,19 +236,6 @@ func ResourceExists(resourceData *schema.ResourceData, meta interface{}) (bool, 
 	// }
 
   return exists, nil
-}
-
-func incrementResourceCounter(meta ProviderMetadata) {
-	meta.mutex.Lock(LOCK_RESOURCE_COUNTER)
-	*meta.resourceCounter += 1
-	meta.mutex.Unlock(LOCK_RESOURCE_COUNTER)
-}
-
-
-func readCounter(meta ProviderMetadata) int {
-	meta.mutex.Lock(LOCK_RESOURCE_COUNTER)
-	defer meta.mutex.Unlock(LOCK_RESOURCE_COUNTER)
-	return *meta.resourceCounter
 }
 
 

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,21 +17,20 @@ import (
 
 func ResourceEC2VPNConnection() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceEC2VPNConnectionCreate,
+		Exists: resourceEC2VPNConnectionExists,
 		Read:   resourceEC2VPNConnectionRead,
+		Create: resourceEC2VPNConnectionCreate,
 		Update: resourceEC2VPNConnectionUpdate,
 		Delete: resourceEC2VPNConnectionDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"customer_gateway_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"static_routes_only": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -41,23 +40,19 @@ func ResourceEC2VPNConnection() *schema.Resource {
 			"transit_gateway_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"type": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"vpn_gateway_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"vpn_tunnel_options_specifications": {
 				Type: schema.TypeSet,
 				Elem: propertyVPNConnectionVpnTunnelOptionsSpecification(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -68,12 +63,16 @@ func ResourceEC2VPNConnection() *schema.Resource {
 	}
 }
 
-func resourceEC2VPNConnectionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::VPNConnection", ResourceEC2VPNConnection(), data, meta)
+func resourceEC2VPNConnectionExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2VPNConnectionRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::VPNConnection", ResourceEC2VPNConnection(), data, meta)
+}
+
+func resourceEC2VPNConnectionCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::VPNConnection", ResourceEC2VPNConnection(), data, meta)
 }
 
 func resourceEC2VPNConnectionUpdate(data *schema.ResourceData, meta interface{}) error {

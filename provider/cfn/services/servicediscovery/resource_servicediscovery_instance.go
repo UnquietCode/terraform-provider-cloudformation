@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceServiceDiscoveryInstance() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceServiceDiscoveryInstanceCreate,
+		Exists: resourceServiceDiscoveryInstanceExists,
 		Read:   resourceServiceDiscoveryInstanceRead,
+		Create: resourceServiceDiscoveryInstanceCreate,
 		Update: resourceServiceDiscoveryInstanceUpdate,
 		Delete: resourceServiceDiscoveryInstanceDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"instance_attributes": {
 				Type: schema.TypeMap,
@@ -29,12 +30,10 @@ func ResourceServiceDiscoveryInstance() *schema.Resource {
 			"instance_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"service_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -45,12 +44,16 @@ func ResourceServiceDiscoveryInstance() *schema.Resource {
 	}
 }
 
-func resourceServiceDiscoveryInstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceDiscovery::Instance", ResourceServiceDiscoveryInstance(), data, meta)
+func resourceServiceDiscoveryInstanceExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceServiceDiscoveryInstanceRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ServiceDiscovery::Instance", ResourceServiceDiscoveryInstance(), data, meta)
+}
+
+func resourceServiceDiscoveryInstanceCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ServiceDiscovery::Instance", ResourceServiceDiscoveryInstance(), data, meta)
 }
 
 func resourceServiceDiscoveryInstanceUpdate(data *schema.ResourceData, meta interface{}) error {

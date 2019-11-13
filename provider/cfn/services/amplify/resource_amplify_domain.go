@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,33 +16,13 @@ import (
 
 func ResourceAmplifyDomain() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceAmplifyDomainCreate,
+		Exists: resourceAmplifyDomainExists,
 		Read:   resourceAmplifyDomainRead,
+		Create: resourceAmplifyDomainCreate,
 		Update: resourceAmplifyDomainUpdate,
 		Delete: resourceAmplifyDomainDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"domain_name": {
-				Type: schema.TypeString,
-				Required: true,
-				ForceNew: true,
-			},
-			"status_reason": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"domain_status": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"certificate_record": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"sub_domain_settings": {
 				Type: schema.TypeList,
 				Elem: propertyDomainSubDomainSetting(),
@@ -51,7 +31,10 @@ func ResourceAmplifyDomain() *schema.Resource {
 			"app_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
+			},
+			"domain_name": {
+				Type: schema.TypeString,
+				Required: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -62,12 +45,16 @@ func ResourceAmplifyDomain() *schema.Resource {
 	}
 }
 
-func resourceAmplifyDomainCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Amplify::Domain", ResourceAmplifyDomain(), data, meta)
+func resourceAmplifyDomainExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceAmplifyDomainRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Amplify::Domain", ResourceAmplifyDomain(), data, meta)
+}
+
+func resourceAmplifyDomainCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Amplify::Domain", ResourceAmplifyDomain(), data, meta)
 }
 
 func resourceAmplifyDomainUpdate(data *schema.ResourceData, meta interface{}) error {

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -32,7 +32,6 @@ func propertyComputeEnvironmentComputeResources(extras...string) *schema.Resourc
 			"spot_iam_fleet_role": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"maxv_cpus": {
 				Type: schema.TypeInt,
@@ -41,29 +40,24 @@ func propertyComputeEnvironmentComputeResources(extras...string) *schema.Resourc
 			"bid_percentage": {
 				Type: schema.TypeInt,
 				Optional: true,
-				ForceNew: true,
 			},
 			"security_group_ids": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Optional: true,
-				ForceNew: true,
 			},
 			"subnets": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Required: true,
-				ForceNew: true,
 			},
 			"type": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"allocation_strategy": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"minv_cpus": {
 				Type: schema.TypeInt,
@@ -73,39 +67,32 @@ func propertyComputeEnvironmentComputeResources(extras...string) *schema.Resourc
 				Type: schema.TypeList,
 				Elem: propertyComputeEnvironmentLaunchTemplateSpecification(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"image_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"instance_role": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"instance_types": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Required: true,
-				ForceNew: true,
 			},
 			"ec2_key_pair": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"placement_group": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeMap,
 				Optional: true,
-				ForceNew: true,
 			},
 			"desiredv_cpus": {
 				Type: schema.TypeInt,

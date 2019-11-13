@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceCodeDeployDeploymentGroupCreate,
+		Exists: resourceCodeDeployDeploymentGroupExists,
 		Read:   resourceCodeDeployDeploymentGroupRead,
+		Create: resourceCodeDeployDeploymentGroupCreate,
 		Update: resourceCodeDeployDeploymentGroupUpdate,
 		Delete: resourceCodeDeployDeploymentGroupDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"alarm_configuration": {
 				Type: schema.TypeList,
@@ -31,7 +32,6 @@ func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 			"application_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"auto_rollback_configuration": {
 				Type: schema.TypeList,
@@ -58,7 +58,6 @@ func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 			"deployment_group_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"deployment_style": {
 				Type: schema.TypeList,
@@ -112,12 +111,16 @@ func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 	}
 }
 
-func resourceCodeDeployDeploymentGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CodeDeploy::DeploymentGroup", ResourceCodeDeployDeploymentGroup(), data, meta)
+func resourceCodeDeployDeploymentGroupExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCodeDeployDeploymentGroupRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::CodeDeploy::DeploymentGroup", ResourceCodeDeployDeploymentGroup(), data, meta)
+}
+
+func resourceCodeDeployDeploymentGroupCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::CodeDeploy::DeploymentGroup", ResourceCodeDeployDeploymentGroup(), data, meta)
 }
 
 func resourceCodeDeployDeploymentGroupUpdate(data *schema.ResourceData, meta interface{}) error {

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourcePinpointAPNSChannel() *schema.Resource {
 	return &schema.Resource{
-		Create: resourcePinpointAPNSChannelCreate,
+		Exists: resourcePinpointAPNSChannelExists,
 		Read:   resourcePinpointAPNSChannelRead,
+		Create: resourcePinpointAPNSChannelCreate,
 		Update: resourcePinpointAPNSChannelUpdate,
 		Delete: resourcePinpointAPNSChannelDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"bundle_id": {
 				Type: schema.TypeString,
@@ -45,7 +46,6 @@ func ResourcePinpointAPNSChannel() *schema.Resource {
 			"application_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"team_id": {
 				Type: schema.TypeString,
@@ -68,12 +68,16 @@ func ResourcePinpointAPNSChannel() *schema.Resource {
 	}
 }
 
-func resourcePinpointAPNSChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::APNSChannel", ResourcePinpointAPNSChannel(), data, meta)
+func resourcePinpointAPNSChannelExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourcePinpointAPNSChannelRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Pinpoint::APNSChannel", ResourcePinpointAPNSChannel(), data, meta)
+}
+
+func resourcePinpointAPNSChannelCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Pinpoint::APNSChannel", ResourcePinpointAPNSChannel(), data, meta)
 }
 
 func resourcePinpointAPNSChannelUpdate(data *schema.ResourceData, meta interface{}) error {

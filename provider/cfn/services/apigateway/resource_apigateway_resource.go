@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,25 +16,24 @@ import (
 
 func ResourceApiGatewayResource() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceApiGatewayResourceCreate,
+		Exists: resourceApiGatewayResourceExists,
 		Read:   resourceApiGatewayResourceRead,
+		Create: resourceApiGatewayResourceCreate,
+		Update: resourceApiGatewayResourceUpdate,
 		Delete: resourceApiGatewayResourceDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"parent_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"path_part": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"rest_api_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -45,12 +44,16 @@ func ResourceApiGatewayResource() *schema.Resource {
 	}
 }
 
-func resourceApiGatewayResourceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::Resource", ResourceApiGatewayResource(), data, meta)
+func resourceApiGatewayResourceExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceApiGatewayResourceRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ApiGateway::Resource", ResourceApiGatewayResource(), data, meta)
+}
+
+func resourceApiGatewayResourceCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ApiGateway::Resource", ResourceApiGatewayResource(), data, meta)
 }
 
 func resourceApiGatewayResourceUpdate(data *schema.ResourceData, meta interface{}) error {

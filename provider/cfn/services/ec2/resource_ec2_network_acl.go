@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,11 +17,12 @@ import (
 
 func ResourceEC2NetworkAcl() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceEC2NetworkAclCreate,
+		Exists: resourceEC2NetworkAclExists,
 		Read:   resourceEC2NetworkAclRead,
+		Create: resourceEC2NetworkAclCreate,
 		Update: resourceEC2NetworkAclUpdate,
 		Delete: resourceEC2NetworkAclDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"tags": {
 				Type: schema.TypeList,
@@ -31,7 +32,6 @@ func ResourceEC2NetworkAcl() *schema.Resource {
 			"vpc_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -42,12 +42,16 @@ func ResourceEC2NetworkAcl() *schema.Resource {
 	}
 }
 
-func resourceEC2NetworkAclCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::NetworkAcl", ResourceEC2NetworkAcl(), data, meta)
+func resourceEC2NetworkAclExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2NetworkAclRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::NetworkAcl", ResourceEC2NetworkAcl(), data, meta)
+}
+
+func resourceEC2NetworkAclCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::NetworkAcl", ResourceEC2NetworkAcl(), data, meta)
 }
 
 func resourceEC2NetworkAclUpdate(data *schema.ResourceData, meta interface{}) error {

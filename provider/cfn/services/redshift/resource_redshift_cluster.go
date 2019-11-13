@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,20 +17,13 @@ import (
 
 func ResourceRedshiftCluster() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceRedshiftClusterCreate,
+		Exists: resourceRedshiftClusterExists,
 		Read:   resourceRedshiftClusterRead,
+		Create: resourceRedshiftClusterCreate,
 		Update: resourceRedshiftClusterUpdate,
 		Delete: resourceRedshiftClusterDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"endpoint_address": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"endpoint_port": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"allow_version_upgrade": {
 				Type: schema.TypeBool,
 				Optional: true,
@@ -42,12 +35,10 @@ func ResourceRedshiftCluster() *schema.Resource {
 			"availability_zone": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"cluster_identifier": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"cluster_parameter_group_name": {
 				Type: schema.TypeString,
@@ -61,7 +52,6 @@ func ResourceRedshiftCluster() *schema.Resource {
 			"cluster_subnet_group_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"cluster_type": {
 				Type: schema.TypeString,
@@ -74,17 +64,14 @@ func ResourceRedshiftCluster() *schema.Resource {
 			"db_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"elastic_ip": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"encrypted": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"hsm_client_certificate_identifier": {
 				Type: schema.TypeString,
@@ -103,7 +90,6 @@ func ResourceRedshiftCluster() *schema.Resource {
 			"kms_key_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logging_properties": {
 				Type: schema.TypeList,
@@ -118,7 +104,6 @@ func ResourceRedshiftCluster() *schema.Resource {
 			"master_username": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"node_type": {
 				Type: schema.TypeString,
@@ -131,12 +116,10 @@ func ResourceRedshiftCluster() *schema.Resource {
 			"owner_account": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"port": {
 				Type: schema.TypeInt,
 				Optional: true,
-				ForceNew: true,
 			},
 			"preferred_maintenance_window": {
 				Type: schema.TypeString,
@@ -149,12 +132,10 @@ func ResourceRedshiftCluster() *schema.Resource {
 			"snapshot_cluster_identifier": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"snapshot_identifier": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -175,12 +156,16 @@ func ResourceRedshiftCluster() *schema.Resource {
 	}
 }
 
-func resourceRedshiftClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Redshift::Cluster", ResourceRedshiftCluster(), data, meta)
+func resourceRedshiftClusterExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceRedshiftClusterRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Redshift::Cluster", ResourceRedshiftCluster(), data, meta)
+}
+
+func resourceRedshiftClusterCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Redshift::Cluster", ResourceRedshiftCluster(), data, meta)
 }
 
 func resourceRedshiftClusterUpdate(data *schema.ResourceData, meta interface{}) error {

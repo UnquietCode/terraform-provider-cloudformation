@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,71 +17,61 @@ import (
 
 func ResourceECSTaskDefinition() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceECSTaskDefinitionCreate,
+		Exists: resourceECSTaskDefinitionExists,
 		Read:   resourceECSTaskDefinitionRead,
+		Create: resourceECSTaskDefinitionCreate,
 		Update: resourceECSTaskDefinitionUpdate,
 		Delete: resourceECSTaskDefinitionDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"container_definitions": {
 				Type: schema.TypeSet,
 				Elem: propertyTaskDefinitionContainerDefinition(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"cpu": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"execution_role_arn": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"family": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"ipc_mode": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"memory": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"network_mode": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"pid_mode": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"placement_constraints": {
 				Type: schema.TypeSet,
 				Elem: propertyTaskDefinitionTaskDefinitionPlacementConstraint(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"proxy_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyTaskDefinitionProxyConfiguration(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"requires_compatibilities": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Optional: true,
-				ForceNew: true,
 				Set: schema.HashString,
 			},
 			"tags": {
@@ -92,13 +82,11 @@ func ResourceECSTaskDefinition() *schema.Resource {
 			"task_role_arn": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"volumes": {
 				Type: schema.TypeSet,
 				Elem: propertyTaskDefinitionVolume(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -109,12 +97,16 @@ func ResourceECSTaskDefinition() *schema.Resource {
 	}
 }
 
-func resourceECSTaskDefinitionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ECS::TaskDefinition", ResourceECSTaskDefinition(), data, meta)
+func resourceECSTaskDefinitionExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceECSTaskDefinitionRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ECS::TaskDefinition", ResourceECSTaskDefinition(), data, meta)
+}
+
+func resourceECSTaskDefinitionCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ECS::TaskDefinition", ResourceECSTaskDefinition(), data, meta)
 }
 
 func resourceECSTaskDefinitionUpdate(data *schema.ResourceData, meta interface{}) error {

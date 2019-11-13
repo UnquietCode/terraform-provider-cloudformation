@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,17 +16,17 @@ import (
 
 func ResourceApiGatewayDeployment() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceApiGatewayDeploymentCreate,
+		Exists: resourceApiGatewayDeploymentExists,
 		Read:   resourceApiGatewayDeploymentRead,
+		Create: resourceApiGatewayDeploymentCreate,
 		Update: resourceApiGatewayDeploymentUpdate,
 		Delete: resourceApiGatewayDeploymentDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"deployment_canary_settings": {
 				Type: schema.TypeList,
 				Elem: propertyDeploymentDeploymentCanarySettings(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"description": {
@@ -36,7 +36,6 @@ func ResourceApiGatewayDeployment() *schema.Resource {
 			"rest_api_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"stage_description": {
 				Type: schema.TypeList,
@@ -57,12 +56,16 @@ func ResourceApiGatewayDeployment() *schema.Resource {
 	}
 }
 
-func resourceApiGatewayDeploymentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::Deployment", ResourceApiGatewayDeployment(), data, meta)
+func resourceApiGatewayDeploymentExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceApiGatewayDeploymentRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ApiGateway::Deployment", ResourceApiGatewayDeployment(), data, meta)
+}
+
+func resourceApiGatewayDeploymentCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ApiGateway::Deployment", ResourceApiGatewayDeployment(), data, meta)
 }
 
 func resourceApiGatewayDeploymentUpdate(data *schema.ResourceData, meta interface{}) error {

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -32,7 +32,6 @@ func propertySpotFleetSpotFleetRequestConfigData(extras...string) *schema.Resour
 			"allocation_strategy": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"excess_capacity_termination_policy": {
 				Type: schema.TypeString,
@@ -41,41 +40,34 @@ func propertySpotFleetSpotFleetRequestConfigData(extras...string) *schema.Resour
 			"iam_fleet_role": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"instance_interruption_behavior": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"launch_specifications": {
 				Type: schema.TypeSet,
 				Elem: propertySpotFleetSpotFleetLaunchSpecification(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"launch_template_configs": {
 				Type: schema.TypeSet,
 				Elem: propertySpotFleetLaunchTemplateConfig(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"load_balancers_config": {
 				Type: schema.TypeList,
 				Elem: propertySpotFleetLoadBalancersConfig(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"replace_unhealthy_instances": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"spot_price": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"target_capacity": {
 				Type: schema.TypeInt,
@@ -84,22 +76,18 @@ func propertySpotFleetSpotFleetRequestConfigData(extras...string) *schema.Resour
 			"terminate_instances_with_expiration": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"type": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"valid_from": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"valid_until": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 		},
 	}

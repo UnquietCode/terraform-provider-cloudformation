@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,20 +17,13 @@ import (
 
 func ResourceDynamoDBTable() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceDynamoDBTableCreate,
+		Exists: resourceDynamoDBTableExists,
 		Read:   resourceDynamoDBTableRead,
+		Create: resourceDynamoDBTableCreate,
 		Update: resourceDynamoDBTableUpdate,
 		Delete: resourceDynamoDBTableDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"stream_arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"attribute_definitions": {
 				Type: schema.TypeList,
 				Elem: propertyTableAttributeDefinition(),
@@ -49,13 +42,11 @@ func ResourceDynamoDBTable() *schema.Resource {
 				Type: schema.TypeSet,
 				Elem: propertyTableKeySchema(),
 				Required: true,
-				ForceNew: true,
 			},
 			"local_secondary_indexes": {
 				Type: schema.TypeList,
 				Elem: propertyTableLocalSecondaryIndex(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"point_in_time_recovery_specification": {
 				Type: schema.TypeList,
@@ -84,7 +75,6 @@ func ResourceDynamoDBTable() *schema.Resource {
 			"table_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -106,12 +96,16 @@ func ResourceDynamoDBTable() *schema.Resource {
 	}
 }
 
-func resourceDynamoDBTableCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DynamoDB::Table", ResourceDynamoDBTable(), data, meta)
+func resourceDynamoDBTableExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceDynamoDBTableRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::DynamoDB::Table", ResourceDynamoDBTable(), data, meta)
+}
+
+func resourceDynamoDBTableCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::DynamoDB::Table", ResourceDynamoDBTable(), data, meta)
 }
 
 func resourceDynamoDBTableUpdate(data *schema.ResourceData, meta interface{}) error {

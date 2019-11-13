@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,20 +17,16 @@ import (
 
 func ResourceECSService() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceECSServiceCreate,
+		Exists: resourceECSServiceExists,
 		Read:   resourceECSServiceRead,
+		Create: resourceECSServiceCreate,
 		Update: resourceECSServiceUpdate,
 		Delete: resourceECSServiceDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"name": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"cluster": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"deployment_configuration": {
 				Type: schema.TypeList,
@@ -45,7 +41,6 @@ func ResourceECSService() *schema.Resource {
 			"enable_ecs_managed_tags": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"health_check_grace_period_seconds": {
 				Type: schema.TypeInt,
@@ -54,13 +49,11 @@ func ResourceECSService() *schema.Resource {
 			"launch_type": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"load_balancers": {
 				Type: schema.TypeSet,
 				Elem: propertyServiceLoadBalancer(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"network_configuration": {
 				Type: schema.TypeList,
@@ -72,44 +65,36 @@ func ResourceECSService() *schema.Resource {
 				Type: schema.TypeSet,
 				Elem: propertyServicePlacementConstraint(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"placement_strategies": {
 				Type: schema.TypeSet,
 				Elem: propertyServicePlacementStrategy(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"platform_version": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"propagate_tags": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"role": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"scheduling_strategy": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"service_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"service_registries": {
 				Type: schema.TypeSet,
 				Elem: propertyServiceServiceRegistry(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -129,12 +114,16 @@ func ResourceECSService() *schema.Resource {
 	}
 }
 
-func resourceECSServiceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ECS::Service", ResourceECSService(), data, meta)
+func resourceECSServiceExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceECSServiceRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ECS::Service", ResourceECSService(), data, meta)
+}
+
+func resourceECSServiceCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ECS::Service", ResourceECSService(), data, meta)
 }
 
 func resourceECSServiceUpdate(data *schema.ResourceData, meta interface{}) error {

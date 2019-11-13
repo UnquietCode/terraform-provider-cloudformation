@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,16 +17,16 @@ import (
 
 func ResourceQLDBLedger() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceQLDBLedgerCreate,
+		Exists: resourceQLDBLedgerExists,
 		Read:   resourceQLDBLedgerRead,
+		Create: resourceQLDBLedgerCreate,
 		Update: resourceQLDBLedgerUpdate,
 		Delete: resourceQLDBLedgerDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"permissions_mode": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"deletion_protection": {
 				Type: schema.TypeBool,
@@ -40,7 +40,6 @@ func ResourceQLDBLedger() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -51,12 +50,16 @@ func ResourceQLDBLedger() *schema.Resource {
 	}
 }
 
-func resourceQLDBLedgerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::QLDB::Ledger", ResourceQLDBLedger(), data, meta)
+func resourceQLDBLedgerExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceQLDBLedgerRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::QLDB::Ledger", ResourceQLDBLedger(), data, meta)
+}
+
+func resourceQLDBLedgerCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::QLDB::Ledger", ResourceQLDBLedger(), data, meta)
 }
 
 func resourceQLDBLedgerUpdate(data *schema.ResourceData, meta interface{}) error {

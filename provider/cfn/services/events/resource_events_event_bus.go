@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,28 +16,20 @@ import (
 
 func ResourceEventsEventBus() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceEventsEventBusCreate,
+		Exists: resourceEventsEventBusExists,
 		Read:   resourceEventsEventBusRead,
+		Create: resourceEventsEventBusCreate,
+		Update: resourceEventsEventBusUpdate,
 		Delete: resourceEventsEventBusDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"policy": {
+			"event_source_name": {
 				Type: schema.TypeString,
-				Computed: true,
-			},
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
+				Optional: true,
 			},
 			"name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
-			},
-			"event_source_name": {
-				Type: schema.TypeString,
-				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -48,12 +40,16 @@ func ResourceEventsEventBus() *schema.Resource {
 	}
 }
 
-func resourceEventsEventBusCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Events::EventBus", ResourceEventsEventBus(), data, meta)
+func resourceEventsEventBusExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEventsEventBusRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Events::EventBus", ResourceEventsEventBus(), data, meta)
+}
+
+func resourceEventsEventBusCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Events::EventBus", ResourceEventsEventBus(), data, meta)
 }
 
 func resourceEventsEventBusUpdate(data *schema.ResourceData, meta interface{}) error {

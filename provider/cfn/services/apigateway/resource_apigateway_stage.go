@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,11 +17,12 @@ import (
 
 func ResourceApiGatewayStage() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceApiGatewayStageCreate,
+		Exists: resourceApiGatewayStageExists,
 		Read:   resourceApiGatewayStageRead,
+		Create: resourceApiGatewayStageCreate,
 		Update: resourceApiGatewayStageUpdate,
 		Delete: resourceApiGatewayStageDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"access_log_setting": {
 				Type: schema.TypeList,
@@ -67,12 +68,10 @@ func ResourceApiGatewayStage() *schema.Resource {
 			"rest_api_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"stage_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -97,12 +96,16 @@ func ResourceApiGatewayStage() *schema.Resource {
 	}
 }
 
-func resourceApiGatewayStageCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::Stage", ResourceApiGatewayStage(), data, meta)
+func resourceApiGatewayStageExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceApiGatewayStageRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ApiGateway::Stage", ResourceApiGatewayStage(), data, meta)
+}
+
+func resourceApiGatewayStageCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ApiGateway::Stage", ResourceApiGatewayStage(), data, meta)
 }
 
 func resourceApiGatewayStageUpdate(data *schema.ResourceData, meta interface{}) error {

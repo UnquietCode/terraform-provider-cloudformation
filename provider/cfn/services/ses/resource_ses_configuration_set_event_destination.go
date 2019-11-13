@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,16 @@ import (
 
 func ResourceSESConfigurationSetEventDestination() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceSESConfigurationSetEventDestinationCreate,
+		Exists: resourceSESConfigurationSetEventDestinationExists,
 		Read:   resourceSESConfigurationSetEventDestinationRead,
+		Create: resourceSESConfigurationSetEventDestinationCreate,
 		Update: resourceSESConfigurationSetEventDestinationUpdate,
 		Delete: resourceSESConfigurationSetEventDestinationDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"configuration_set_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"event_destination": {
 				Type: schema.TypeList,
@@ -42,12 +42,16 @@ func ResourceSESConfigurationSetEventDestination() *schema.Resource {
 	}
 }
 
-func resourceSESConfigurationSetEventDestinationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SES::ConfigurationSetEventDestination", ResourceSESConfigurationSetEventDestination(), data, meta)
+func resourceSESConfigurationSetEventDestinationExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceSESConfigurationSetEventDestinationRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::SES::ConfigurationSetEventDestination", ResourceSESConfigurationSetEventDestination(), data, meta)
+}
+
+func resourceSESConfigurationSetEventDestinationCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::SES::ConfigurationSetEventDestination", ResourceSESConfigurationSetEventDestination(), data, meta)
 }
 
 func resourceSESConfigurationSetEventDestinationUpdate(data *schema.ResourceData, meta interface{}) error {

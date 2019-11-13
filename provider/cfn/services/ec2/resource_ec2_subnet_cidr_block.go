@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,20 +16,20 @@ import (
 
 func ResourceEC2SubnetCidrBlock() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceEC2SubnetCidrBlockCreate,
+		Exists: resourceEC2SubnetCidrBlockExists,
 		Read:   resourceEC2SubnetCidrBlockRead,
+		Create: resourceEC2SubnetCidrBlockCreate,
+		Update: resourceEC2SubnetCidrBlockUpdate,
 		Delete: resourceEC2SubnetCidrBlockDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"ipv6_cidr_block": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"subnet_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -40,12 +40,16 @@ func ResourceEC2SubnetCidrBlock() *schema.Resource {
 	}
 }
 
-func resourceEC2SubnetCidrBlockCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::SubnetCidrBlock", ResourceEC2SubnetCidrBlock(), data, meta)
+func resourceEC2SubnetCidrBlockExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2SubnetCidrBlockRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::SubnetCidrBlock", ResourceEC2SubnetCidrBlock(), data, meta)
+}
+
+func resourceEC2SubnetCidrBlockCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::SubnetCidrBlock", ResourceEC2SubnetCidrBlock(), data, meta)
 }
 
 func resourceEC2SubnetCidrBlockUpdate(data *schema.ResourceData, meta interface{}) error {

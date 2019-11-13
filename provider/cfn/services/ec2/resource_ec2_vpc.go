@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,34 +17,16 @@ import (
 
 func ResourceEC2VPC() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceEC2VPCCreate,
+		Exists: resourceEC2VPCExists,
 		Read:   resourceEC2VPCRead,
+		Create: resourceEC2VPCCreate,
 		Update: resourceEC2VPCUpdate,
 		Delete: resourceEC2VPCDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"cidr_block": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
-			},
-			"cidr_block_associations": {
-				Type: schema.TypeList,
-				Elem: &schema.Schema{Type: schema.TypeString},
-				Computed: true,
-			},
-			"default_network_acl": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"default_security_group": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"ipv6_cidr_blocks": {
-				Type: schema.TypeList,
-				Elem: &schema.Schema{Type: schema.TypeString},
-				Computed: true,
 			},
 			"enable_dns_hostnames": {
 				Type: schema.TypeBool,
@@ -72,12 +54,16 @@ func ResourceEC2VPC() *schema.Resource {
 	}
 }
 
-func resourceEC2VPCCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::VPC", ResourceEC2VPC(), data, meta)
+func resourceEC2VPCExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2VPCRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::VPC", ResourceEC2VPC(), data, meta)
+}
+
+func resourceEC2VPCCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::VPC", ResourceEC2VPC(), data, meta)
 }
 
 func resourceEC2VPCUpdate(data *schema.ResourceData, meta interface{}) error {

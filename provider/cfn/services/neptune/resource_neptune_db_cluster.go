@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,54 +17,37 @@ import (
 
 func ResourceNeptuneDBCluster() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceNeptuneDBClusterCreate,
+		Exists: resourceNeptuneDBClusterExists,
 		Read:   resourceNeptuneDBClusterRead,
+		Create: resourceNeptuneDBClusterCreate,
 		Update: resourceNeptuneDBClusterUpdate,
 		Delete: resourceNeptuneDBClusterDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"cluster_resource_id": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"endpoint": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"port": {
-				Type: schema.TypeInt,
-				Optional: true,
-				Computed: true,
-			},
-			"read_endpoint": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"storage_encrypted": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"kms_key_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"availability_zones": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Optional: true,
-				ForceNew: true,
 			},
 			"snapshot_identifier": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
+			},
+			"port": {
+				Type: schema.TypeInt,
+				Optional: true,
 			},
 			"db_cluster_identifier": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"preferred_maintenance_window": {
 				Type: schema.TypeString,
@@ -77,7 +60,6 @@ func ResourceNeptuneDBCluster() *schema.Resource {
 			"db_subnet_group_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"preferred_backup_window": {
 				Type: schema.TypeString,
@@ -115,12 +97,16 @@ func ResourceNeptuneDBCluster() *schema.Resource {
 	}
 }
 
-func resourceNeptuneDBClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Neptune::DBCluster", ResourceNeptuneDBCluster(), data, meta)
+func resourceNeptuneDBClusterExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceNeptuneDBClusterRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Neptune::DBCluster", ResourceNeptuneDBCluster(), data, meta)
+}
+
+func resourceNeptuneDBClusterCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Neptune::DBCluster", ResourceNeptuneDBCluster(), data, meta)
 }
 
 func resourceNeptuneDBClusterUpdate(data *schema.ResourceData, meta interface{}) error {

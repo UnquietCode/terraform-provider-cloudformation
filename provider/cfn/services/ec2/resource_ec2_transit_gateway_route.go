@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,30 +16,28 @@ import (
 
 func ResourceEC2TransitGatewayRoute() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceEC2TransitGatewayRouteCreate,
+		Exists: resourceEC2TransitGatewayRouteExists,
 		Read:   resourceEC2TransitGatewayRouteRead,
+		Create: resourceEC2TransitGatewayRouteCreate,
+		Update: resourceEC2TransitGatewayRouteUpdate,
 		Delete: resourceEC2TransitGatewayRouteDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"transit_gateway_route_table_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"destination_cidr_block": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"blackhole": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"transit_gateway_attachment_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -50,12 +48,16 @@ func ResourceEC2TransitGatewayRoute() *schema.Resource {
 	}
 }
 
-func resourceEC2TransitGatewayRouteCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::TransitGatewayRoute", ResourceEC2TransitGatewayRoute(), data, meta)
+func resourceEC2TransitGatewayRouteExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2TransitGatewayRouteRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::TransitGatewayRoute", ResourceEC2TransitGatewayRoute(), data, meta)
+}
+
+func resourceEC2TransitGatewayRouteCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::TransitGatewayRoute", ResourceEC2TransitGatewayRoute(), data, meta)
 }
 
 func resourceEC2TransitGatewayRouteUpdate(data *schema.ResourceData, meta interface{}) error {

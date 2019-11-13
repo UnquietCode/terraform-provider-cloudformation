@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,24 +17,13 @@ import (
 
 func ResourceElasticsearchDomain() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceElasticsearchDomainCreate,
+		Exists: resourceElasticsearchDomainExists,
 		Read:   resourceElasticsearchDomainRead,
+		Create: resourceElasticsearchDomainCreate,
 		Update: resourceElasticsearchDomainUpdate,
 		Delete: resourceElasticsearchDomainDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"domain_arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"domain_endpoint": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"access_policies": {
 				Type: schema.TypeMap,
 				Optional: true,
@@ -47,7 +36,6 @@ func ResourceElasticsearchDomain() *schema.Resource {
 			"domain_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"ebs_options": {
 				Type: schema.TypeList,
@@ -64,20 +52,17 @@ func ResourceElasticsearchDomain() *schema.Resource {
 			"elasticsearch_version": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"encryption_at_rest_options": {
 				Type: schema.TypeList,
 				Elem: propertyDomainEncryptionAtRestOptions(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"node_to_node_encryption_options": {
 				Type: schema.TypeList,
 				Elem: propertyDomainNodeToNodeEncryptionOptions(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"snapshot_options": {
@@ -106,12 +91,16 @@ func ResourceElasticsearchDomain() *schema.Resource {
 	}
 }
 
-func resourceElasticsearchDomainCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Elasticsearch::Domain", ResourceElasticsearchDomain(), data, meta)
+func resourceElasticsearchDomainExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceElasticsearchDomainRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Elasticsearch::Domain", ResourceElasticsearchDomain(), data, meta)
+}
+
+func resourceElasticsearchDomainCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Elasticsearch::Domain", ResourceElasticsearchDomain(), data, meta)
 }
 
 func resourceElasticsearchDomainUpdate(data *schema.ResourceData, meta interface{}) error {

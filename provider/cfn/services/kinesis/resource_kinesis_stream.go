@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,20 +17,16 @@ import (
 
 func ResourceKinesisStream() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceKinesisStreamCreate,
+		Exists: resourceKinesisStreamExists,
 		Read:   resourceKinesisStreamRead,
+		Create: resourceKinesisStreamCreate,
 		Update: resourceKinesisStreamUpdate,
 		Delete: resourceKinesisStreamDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"retention_period_hours": {
 				Type: schema.TypeInt,
@@ -60,12 +56,16 @@ func ResourceKinesisStream() *schema.Resource {
 	}
 }
 
-func resourceKinesisStreamCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Kinesis::Stream", ResourceKinesisStream(), data, meta)
+func resourceKinesisStreamExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceKinesisStreamRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Kinesis::Stream", ResourceKinesisStream(), data, meta)
+}
+
+func resourceKinesisStreamCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Kinesis::Stream", ResourceKinesisStream(), data, meta)
 }
 
 func resourceKinesisStreamUpdate(data *schema.ResourceData, meta interface{}) error {

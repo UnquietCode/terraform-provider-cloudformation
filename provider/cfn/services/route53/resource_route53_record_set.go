@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceRoute53RecordSet() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceRoute53RecordSetCreate,
+		Exists: resourceRoute53RecordSetExists,
 		Read:   resourceRoute53RecordSetRead,
+		Create: resourceRoute53RecordSetCreate,
 		Update: resourceRoute53RecordSetUpdate,
 		Delete: resourceRoute53RecordSetDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"alias_target": {
 				Type: schema.TypeList,
@@ -49,12 +50,10 @@ func ResourceRoute53RecordSet() *schema.Resource {
 			"hosted_zone_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"hosted_zone_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"multi_value_answer": {
 				Type: schema.TypeBool,
@@ -63,7 +62,6 @@ func ResourceRoute53RecordSet() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"region": {
 				Type: schema.TypeString,
@@ -99,12 +97,16 @@ func ResourceRoute53RecordSet() *schema.Resource {
 	}
 }
 
-func resourceRoute53RecordSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Route53::RecordSet", ResourceRoute53RecordSet(), data, meta)
+func resourceRoute53RecordSetExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceRoute53RecordSetRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Route53::RecordSet", ResourceRoute53RecordSet(), data, meta)
+}
+
+func resourceRoute53RecordSetCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Route53::RecordSet", ResourceRoute53RecordSet(), data, meta)
 }
 
 func resourceRoute53RecordSetUpdate(data *schema.ResourceData, meta interface{}) error {

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,28 +17,26 @@ import (
 
 func ResourceCertificateManagerCertificate() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceCertificateManagerCertificateCreate,
+		Exists: resourceCertificateManagerCertificateExists,
 		Read:   resourceCertificateManagerCertificateRead,
+		Create: resourceCertificateManagerCertificateCreate,
 		Update: resourceCertificateManagerCertificateUpdate,
 		Delete: resourceCertificateManagerCertificateDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"domain_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"domain_validation_options": {
 				Type: schema.TypeSet,
 				Elem: propertyCertificateDomainValidationOption(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"subject_alternative_names": {
 				Type: schema.TypeSet,
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Optional: true,
-				ForceNew: true,
 				Set: schema.HashString,
 			},
 			"tags": {
@@ -49,7 +47,6 @@ func ResourceCertificateManagerCertificate() *schema.Resource {
 			"validation_method": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -60,12 +57,16 @@ func ResourceCertificateManagerCertificate() *schema.Resource {
 	}
 }
 
-func resourceCertificateManagerCertificateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CertificateManager::Certificate", ResourceCertificateManagerCertificate(), data, meta)
+func resourceCertificateManagerCertificateExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCertificateManagerCertificateRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::CertificateManager::Certificate", ResourceCertificateManagerCertificate(), data, meta)
+}
+
+func resourceCertificateManagerCertificateCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::CertificateManager::Certificate", ResourceCertificateManagerCertificate(), data, meta)
 }
 
 func resourceCertificateManagerCertificateUpdate(data *schema.ResourceData, meta interface{}) error {

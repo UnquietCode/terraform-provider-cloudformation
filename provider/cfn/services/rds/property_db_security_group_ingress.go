@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -36,17 +36,14 @@ func propertyDBSecurityGroupIngress(extras...string) *schema.Resource {
 			"ec2_security_group_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"ec2_security_group_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"ec2_security_group_owner_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 		},
 	}

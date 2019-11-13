@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,21 +16,20 @@ import (
 
 func ResourceCloudWatchAnomalyDetector() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceCloudWatchAnomalyDetectorCreate,
+		Exists: resourceCloudWatchAnomalyDetectorExists,
 		Read:   resourceCloudWatchAnomalyDetectorRead,
+		Create: resourceCloudWatchAnomalyDetectorCreate,
 		Update: resourceCloudWatchAnomalyDetectorUpdate,
 		Delete: resourceCloudWatchAnomalyDetectorDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"metric_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"stat": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"configuration": {
 				Type: schema.TypeList,
@@ -42,12 +41,10 @@ func ResourceCloudWatchAnomalyDetector() *schema.Resource {
 				Type: schema.TypeList,
 				Elem: propertyAnomalyDetectorDimension(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"namespace": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -58,12 +55,16 @@ func ResourceCloudWatchAnomalyDetector() *schema.Resource {
 	}
 }
 
-func resourceCloudWatchAnomalyDetectorCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CloudWatch::AnomalyDetector", ResourceCloudWatchAnomalyDetector(), data, meta)
+func resourceCloudWatchAnomalyDetectorExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCloudWatchAnomalyDetectorRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::CloudWatch::AnomalyDetector", ResourceCloudWatchAnomalyDetector(), data, meta)
+}
+
+func resourceCloudWatchAnomalyDetectorCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::CloudWatch::AnomalyDetector", ResourceCloudWatchAnomalyDetector(), data, meta)
 }
 
 func resourceCloudWatchAnomalyDetectorUpdate(data *schema.ResourceData, meta interface{}) error {

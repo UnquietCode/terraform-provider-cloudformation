@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,16 @@ import (
 
 func ResourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOption() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionCreate,
+		Exists: resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionExists,
 		Read:   resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionRead,
+		Create: resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionCreate,
 		Update: resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionUpdate,
 		Delete: resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"application_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"cloud_watch_logging_option": {
 				Type: schema.TypeList,
@@ -42,12 +42,16 @@ func ResourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOption() *schema.Reso
 	}
 }
 
-func resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::KinesisAnalyticsV2::ApplicationCloudWatchLoggingOption", ResourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOption(), data, meta)
+func resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::KinesisAnalyticsV2::ApplicationCloudWatchLoggingOption", ResourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOption(), data, meta)
+}
+
+func resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::KinesisAnalyticsV2::ApplicationCloudWatchLoggingOption", ResourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOption(), data, meta)
 }
 
 func resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionUpdate(data *schema.ResourceData, meta interface{}) error {

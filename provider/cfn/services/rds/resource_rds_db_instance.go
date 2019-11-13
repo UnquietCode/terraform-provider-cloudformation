@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,20 +17,13 @@ import (
 
 func ResourceRDSDBInstance() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceRDSDBInstanceCreate,
+		Exists: resourceRDSDBInstanceExists,
 		Read:   resourceRDSDBInstanceRead,
+		Create: resourceRDSDBInstanceCreate,
 		Update: resourceRDSDBInstanceUpdate,
 		Delete: resourceRDSDBInstanceDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"endpoint_address": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"endpoint_port": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"allocated_storage": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -51,7 +44,6 @@ func ResourceRDSDBInstance() *schema.Resource {
 			"availability_zone": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"backup_retention_period": {
 				Type: schema.TypeInt,
@@ -60,7 +52,6 @@ func ResourceRDSDBInstance() *schema.Resource {
 			"character_set_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"copy_tags_to_snapshot": {
 				Type: schema.TypeBool,
@@ -69,7 +60,6 @@ func ResourceRDSDBInstance() *schema.Resource {
 			"db_cluster_identifier": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"db_instance_class": {
 				Type: schema.TypeString,
@@ -78,12 +68,10 @@ func ResourceRDSDBInstance() *schema.Resource {
 			"db_instance_identifier": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"db_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"db_parameter_group_name": {
 				Type: schema.TypeString,
@@ -97,12 +85,10 @@ func ResourceRDSDBInstance() *schema.Resource {
 			"db_snapshot_identifier": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"db_subnet_group_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"delete_automated_backups": {
 				Type: schema.TypeBool,
@@ -137,7 +123,6 @@ func ResourceRDSDBInstance() *schema.Resource {
 			"engine": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"engine_version": {
 				Type: schema.TypeString,
@@ -150,7 +135,6 @@ func ResourceRDSDBInstance() *schema.Resource {
 			"kms_key_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"license_model": {
 				Type: schema.TypeString,
@@ -163,7 +147,6 @@ func ResourceRDSDBInstance() *schema.Resource {
 			"master_username": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"monitoring_interval": {
 				Type: schema.TypeInt,
@@ -192,7 +175,6 @@ func ResourceRDSDBInstance() *schema.Resource {
 			"port": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"preferred_backup_window": {
 				Type: schema.TypeString,
@@ -214,22 +196,18 @@ func ResourceRDSDBInstance() *schema.Resource {
 			"publicly_accessible": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"source_db_instance_identifier": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"source_region": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"storage_encrypted": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"storage_type": {
 				Type: schema.TypeString,
@@ -243,7 +221,6 @@ func ResourceRDSDBInstance() *schema.Resource {
 			"timezone": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"use_default_processor_features": {
 				Type: schema.TypeBool,
@@ -263,12 +240,16 @@ func ResourceRDSDBInstance() *schema.Resource {
 	}
 }
 
-func resourceRDSDBInstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RDS::DBInstance", ResourceRDSDBInstance(), data, meta)
+func resourceRDSDBInstanceExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceRDSDBInstanceRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::RDS::DBInstance", ResourceRDSDBInstance(), data, meta)
+}
+
+func resourceRDSDBInstanceCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::RDS::DBInstance", ResourceRDSDBInstance(), data, meta)
 }
 
 func resourceRDSDBInstanceUpdate(data *schema.ResourceData, meta interface{}) error {

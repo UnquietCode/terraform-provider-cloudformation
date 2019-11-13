@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,16 @@ import (
 
 func ResourceAutoScalingAutoScalingGroup() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceAutoScalingAutoScalingGroupCreate,
+		Exists: resourceAutoScalingAutoScalingGroupExists,
 		Read:   resourceAutoScalingAutoScalingGroupRead,
+		Create: resourceAutoScalingAutoScalingGroupCreate,
 		Update: resourceAutoScalingAutoScalingGroupUpdate,
 		Delete: resourceAutoScalingAutoScalingGroupDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"auto_scaling_group_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"availability_zones": {
 				Type: schema.TypeList,
@@ -51,7 +51,6 @@ func ResourceAutoScalingAutoScalingGroup() *schema.Resource {
 			"instance_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"launch_configuration_name": {
 				Type: schema.TypeString,
@@ -136,12 +135,16 @@ func ResourceAutoScalingAutoScalingGroup() *schema.Resource {
 	}
 }
 
-func resourceAutoScalingAutoScalingGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AutoScaling::AutoScalingGroup", ResourceAutoScalingAutoScalingGroup(), data, meta)
+func resourceAutoScalingAutoScalingGroupExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceAutoScalingAutoScalingGroupRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::AutoScaling::AutoScalingGroup", ResourceAutoScalingAutoScalingGroup(), data, meta)
+}
+
+func resourceAutoScalingAutoScalingGroupCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::AutoScaling::AutoScalingGroup", ResourceAutoScalingAutoScalingGroup(), data, meta)
 }
 
 func resourceAutoScalingAutoScalingGroupUpdate(data *schema.ResourceData, meta interface{}) error {

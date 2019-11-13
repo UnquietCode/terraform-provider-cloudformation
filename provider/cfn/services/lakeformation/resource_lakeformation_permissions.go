@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceLakeFormationPermissions() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceLakeFormationPermissionsCreate,
+		Exists: resourceLakeFormationPermissionsExists,
 		Read:   resourceLakeFormationPermissionsRead,
+		Create: resourceLakeFormationPermissionsCreate,
 		Update: resourceLakeFormationPermissionsUpdate,
 		Delete: resourceLakeFormationPermissionsDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"data_lake_principal": {
 				Type: schema.TypeList,
@@ -53,12 +54,16 @@ func ResourceLakeFormationPermissions() *schema.Resource {
 	}
 }
 
-func resourceLakeFormationPermissionsCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::LakeFormation::Permissions", ResourceLakeFormationPermissions(), data, meta)
+func resourceLakeFormationPermissionsExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceLakeFormationPermissionsRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::LakeFormation::Permissions", ResourceLakeFormationPermissions(), data, meta)
+}
+
+func resourceLakeFormationPermissionsCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::LakeFormation::Permissions", ResourceLakeFormationPermissions(), data, meta)
 }
 
 func resourceLakeFormationPermissionsUpdate(data *schema.ResourceData, meta interface{}) error {

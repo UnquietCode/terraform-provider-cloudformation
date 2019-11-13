@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -33,30 +33,25 @@ func propertyClusterBrokerNodeGroupInfo(extras...string) *schema.Resource {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Optional: true,
-				ForceNew: true,
 			},
 			"client_subnets": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Required: true,
-				ForceNew: true,
 			},
 			"storage_info": {
 				Type: schema.TypeList,
 				Elem: propertyClusterStorageInfo(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"broker_az_distribution": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"instance_type": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 		},
 	}

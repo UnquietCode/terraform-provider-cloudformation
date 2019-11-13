@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceEC2Host() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceEC2HostCreate,
+		Exists: resourceEC2HostExists,
 		Read:   resourceEC2HostRead,
+		Create: resourceEC2HostCreate,
 		Update: resourceEC2HostUpdate,
 		Delete: resourceEC2HostDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"auto_placement": {
 				Type: schema.TypeString,
@@ -29,7 +30,6 @@ func ResourceEC2Host() *schema.Resource {
 			"availability_zone": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"host_recovery": {
 				Type: schema.TypeString,
@@ -38,7 +38,6 @@ func ResourceEC2Host() *schema.Resource {
 			"instance_type": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -49,12 +48,16 @@ func ResourceEC2Host() *schema.Resource {
 	}
 }
 
-func resourceEC2HostCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::Host", ResourceEC2Host(), data, meta)
+func resourceEC2HostExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2HostRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::Host", ResourceEC2Host(), data, meta)
+}
+
+func resourceEC2HostCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::Host", ResourceEC2Host(), data, meta)
 }
 
 func resourceEC2HostUpdate(data *schema.ResourceData, meta interface{}) error {

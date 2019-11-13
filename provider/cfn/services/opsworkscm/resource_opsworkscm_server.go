@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,34 +16,24 @@ import (
 
 func ResourceOpsWorksCMServer() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceOpsWorksCMServerCreate,
+		Exists: resourceOpsWorksCMServerExists,
 		Read:   resourceOpsWorksCMServerRead,
+		Create: resourceOpsWorksCMServerCreate,
 		Update: resourceOpsWorksCMServerUpdate,
 		Delete: resourceOpsWorksCMServerDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"endpoint": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"key_pair": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"engine_version": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"service_role_arn": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"disable_automated_backup": {
 				Type: schema.TypeBool,
@@ -52,12 +42,10 @@ func ResourceOpsWorksCMServer() *schema.Resource {
 			"backup_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"engine_model": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"preferred_maintenance_window": {
 				Type: schema.TypeString,
@@ -66,12 +54,10 @@ func ResourceOpsWorksCMServer() *schema.Resource {
 			"associate_public_ip_address": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"instance_profile_arn": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"preferred_backup_window": {
 				Type: schema.TypeString,
@@ -81,18 +67,15 @@ func ResourceOpsWorksCMServer() *schema.Resource {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Optional: true,
-				ForceNew: true,
 			},
 			"subnet_ids": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Optional: true,
-				ForceNew: true,
 			},
 			"server_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"engine_attributes": {
 				Type: schema.TypeList,
@@ -106,12 +89,10 @@ func ResourceOpsWorksCMServer() *schema.Resource {
 			"instance_type": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"engine": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -122,12 +103,16 @@ func ResourceOpsWorksCMServer() *schema.Resource {
 	}
 }
 
-func resourceOpsWorksCMServerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::OpsWorksCM::Server", ResourceOpsWorksCMServer(), data, meta)
+func resourceOpsWorksCMServerExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceOpsWorksCMServerRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::OpsWorksCM::Server", ResourceOpsWorksCMServer(), data, meta)
+}
+
+func resourceOpsWorksCMServerCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::OpsWorksCM::Server", ResourceOpsWorksCMServer(), data, meta)
 }
 
 func resourceOpsWorksCMServerUpdate(data *schema.ResourceData, meta interface{}) error {

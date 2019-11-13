@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,26 +16,24 @@ import (
 
 func ResourceRoboMakerRobot() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceRoboMakerRobotCreate,
+		Exists: resourceRoboMakerRobotExists,
 		Read:   resourceRoboMakerRobotRead,
+		Create: resourceRoboMakerRobotCreate,
 		Update: resourceRoboMakerRobotUpdate,
 		Delete: resourceRoboMakerRobotDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"fleet": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"architecture": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"greengrass_group_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeMap,
@@ -44,7 +42,6 @@ func ResourceRoboMakerRobot() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -55,12 +52,16 @@ func ResourceRoboMakerRobot() *schema.Resource {
 	}
 }
 
-func resourceRoboMakerRobotCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RoboMaker::Robot", ResourceRoboMakerRobot(), data, meta)
+func resourceRoboMakerRobotExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceRoboMakerRobotRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::RoboMaker::Robot", ResourceRoboMakerRobot(), data, meta)
+}
+
+func resourceRoboMakerRobotCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::RoboMaker::Robot", ResourceRoboMakerRobot(), data, meta)
 }
 
 func resourceRoboMakerRobotUpdate(data *schema.ResourceData, meta interface{}) error {

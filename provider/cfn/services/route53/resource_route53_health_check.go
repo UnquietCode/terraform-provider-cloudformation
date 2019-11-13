@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceRoute53HealthCheck() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceRoute53HealthCheckCreate,
+		Exists: resourceRoute53HealthCheckExists,
 		Read:   resourceRoute53HealthCheckRead,
+		Create: resourceRoute53HealthCheckCreate,
 		Update: resourceRoute53HealthCheckUpdate,
 		Delete: resourceRoute53HealthCheckDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"health_check_config": {
 				Type: schema.TypeList,
@@ -42,12 +43,16 @@ func ResourceRoute53HealthCheck() *schema.Resource {
 	}
 }
 
-func resourceRoute53HealthCheckCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Route53::HealthCheck", ResourceRoute53HealthCheck(), data, meta)
+func resourceRoute53HealthCheckExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceRoute53HealthCheckRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Route53::HealthCheck", ResourceRoute53HealthCheck(), data, meta)
+}
+
+func resourceRoute53HealthCheckCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Route53::HealthCheck", ResourceRoute53HealthCheck(), data, meta)
 }
 
 func resourceRoute53HealthCheckUpdate(data *schema.ResourceData, meta interface{}) error {

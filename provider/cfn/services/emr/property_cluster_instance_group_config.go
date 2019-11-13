@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -38,19 +38,16 @@ func propertyClusterInstanceGroupConfig(extras...string) *schema.Resource {
 			"bid_price": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"configurations": {
 				Type: schema.TypeSet,
 				Elem: propertyClusterConfiguration(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"ebs_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyClusterEbsConfiguration(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"instance_count": {
@@ -60,17 +57,14 @@ func propertyClusterInstanceGroupConfig(extras...string) *schema.Resource {
 			"instance_type": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"market": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 		},
 	}

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,16 @@ import (
 
 func ResourceEventsEventBusPolicy() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceEventsEventBusPolicyCreate,
+		Exists: resourceEventsEventBusPolicyExists,
 		Read:   resourceEventsEventBusPolicyRead,
+		Create: resourceEventsEventBusPolicyCreate,
 		Update: resourceEventsEventBusPolicyUpdate,
 		Delete: resourceEventsEventBusPolicyDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"event_bus_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"condition": {
 				Type: schema.TypeList,
@@ -40,7 +40,6 @@ func ResourceEventsEventBusPolicy() *schema.Resource {
 			"statement_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"principal": {
 				Type: schema.TypeString,
@@ -55,12 +54,16 @@ func ResourceEventsEventBusPolicy() *schema.Resource {
 	}
 }
 
-func resourceEventsEventBusPolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Events::EventBusPolicy", ResourceEventsEventBusPolicy(), data, meta)
+func resourceEventsEventBusPolicyExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEventsEventBusPolicyRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Events::EventBusPolicy", ResourceEventsEventBusPolicy(), data, meta)
+}
+
+func resourceEventsEventBusPolicyCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Events::EventBusPolicy", ResourceEventsEventBusPolicy(), data, meta)
 }
 
 func resourceEventsEventBusPolicyUpdate(data *schema.ResourceData, meta interface{}) error {

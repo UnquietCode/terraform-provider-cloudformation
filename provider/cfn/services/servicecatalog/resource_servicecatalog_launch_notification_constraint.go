@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceServiceCatalogLaunchNotificationConstraint() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceServiceCatalogLaunchNotificationConstraintCreate,
+		Exists: resourceServiceCatalogLaunchNotificationConstraintExists,
 		Read:   resourceServiceCatalogLaunchNotificationConstraintRead,
+		Create: resourceServiceCatalogLaunchNotificationConstraintCreate,
 		Update: resourceServiceCatalogLaunchNotificationConstraintUpdate,
 		Delete: resourceServiceCatalogLaunchNotificationConstraintDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -38,12 +39,10 @@ func ResourceServiceCatalogLaunchNotificationConstraint() *schema.Resource {
 			"portfolio_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"product_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -54,12 +53,16 @@ func ResourceServiceCatalogLaunchNotificationConstraint() *schema.Resource {
 	}
 }
 
-func resourceServiceCatalogLaunchNotificationConstraintCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::LaunchNotificationConstraint", ResourceServiceCatalogLaunchNotificationConstraint(), data, meta)
+func resourceServiceCatalogLaunchNotificationConstraintExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceServiceCatalogLaunchNotificationConstraintRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ServiceCatalog::LaunchNotificationConstraint", ResourceServiceCatalogLaunchNotificationConstraint(), data, meta)
+}
+
+func resourceServiceCatalogLaunchNotificationConstraintCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ServiceCatalog::LaunchNotificationConstraint", ResourceServiceCatalogLaunchNotificationConstraint(), data, meta)
 }
 
 func resourceServiceCatalogLaunchNotificationConstraintUpdate(data *schema.ResourceData, meta interface{}) error {

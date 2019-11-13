@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,11 +17,12 @@ import (
 
 func ResourceEC2Volume() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceEC2VolumeCreate,
+		Exists: resourceEC2VolumeExists,
 		Read:   resourceEC2VolumeRead,
+		Create: resourceEC2VolumeCreate,
 		Update: resourceEC2VolumeUpdate,
 		Delete: resourceEC2VolumeDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"auto_enable_io": {
 				Type: schema.TypeBool,
@@ -69,12 +70,16 @@ func ResourceEC2Volume() *schema.Resource {
 	}
 }
 
-func resourceEC2VolumeCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::Volume", ResourceEC2Volume(), data, meta)
+func resourceEC2VolumeExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2VolumeRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::Volume", ResourceEC2Volume(), data, meta)
+}
+
+func resourceEC2VolumeCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::Volume", ResourceEC2Volume(), data, meta)
 }
 
 func resourceEC2VolumeUpdate(data *schema.ResourceData, meta interface{}) error {

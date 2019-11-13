@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceDataPipelinePipeline() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceDataPipelinePipelineCreate,
+		Exists: resourceDataPipelinePipelineExists,
 		Read:   resourceDataPipelinePipelineRead,
+		Create: resourceDataPipelinePipelineCreate,
 		Update: resourceDataPipelinePipelineUpdate,
 		Delete: resourceDataPipelinePipelineDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"activate": {
 				Type: schema.TypeBool,
@@ -29,12 +30,10 @@ func ResourceDataPipelinePipeline() *schema.Resource {
 			"description": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"parameter_objects": {
 				Type: schema.TypeList,
@@ -65,12 +64,16 @@ func ResourceDataPipelinePipeline() *schema.Resource {
 	}
 }
 
-func resourceDataPipelinePipelineCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DataPipeline::Pipeline", ResourceDataPipelinePipeline(), data, meta)
+func resourceDataPipelinePipelineExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceDataPipelinePipelineRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::DataPipeline::Pipeline", ResourceDataPipelinePipeline(), data, meta)
+}
+
+func resourceDataPipelinePipelineCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::DataPipeline::Pipeline", ResourceDataPipelinePipeline(), data, meta)
 }
 
 func resourceDataPipelinePipelineUpdate(data *schema.ResourceData, meta interface{}) error {

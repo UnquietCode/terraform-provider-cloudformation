@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,20 +16,16 @@ import (
 
 func ResourcePinpointSmsTemplate() *schema.Resource {
 	return &schema.Resource{
-		Create: resourcePinpointSmsTemplateCreate,
+		Exists: resourcePinpointSmsTemplateExists,
 		Read:   resourcePinpointSmsTemplateRead,
+		Create: resourcePinpointSmsTemplateCreate,
 		Update: resourcePinpointSmsTemplateUpdate,
 		Delete: resourcePinpointSmsTemplateDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"template_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"body": {
 				Type: schema.TypeString,
@@ -48,12 +44,16 @@ func ResourcePinpointSmsTemplate() *schema.Resource {
 	}
 }
 
-func resourcePinpointSmsTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::SmsTemplate", ResourcePinpointSmsTemplate(), data, meta)
+func resourcePinpointSmsTemplateExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourcePinpointSmsTemplateRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Pinpoint::SmsTemplate", ResourcePinpointSmsTemplate(), data, meta)
+}
+
+func resourcePinpointSmsTemplateCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Pinpoint::SmsTemplate", ResourcePinpointSmsTemplate(), data, meta)
 }
 
 func resourcePinpointSmsTemplateUpdate(data *schema.ResourceData, meta interface{}) error {

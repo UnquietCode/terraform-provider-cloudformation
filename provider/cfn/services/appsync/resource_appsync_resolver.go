@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,29 +16,20 @@ import (
 
 func ResourceAppSyncResolver() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceAppSyncResolverCreate,
+		Exists: resourceAppSyncResolverExists,
 		Read:   resourceAppSyncResolverRead,
+		Create: resourceAppSyncResolverCreate,
 		Update: resourceAppSyncResolverUpdate,
 		Delete: resourceAppSyncResolverDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"type_name": {
-				Type: schema.TypeString,
-				Required: true,
-				ForceNew: true,
-			},
-			"resolver_arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"field_name": {
-				Type: schema.TypeString,
-				Required: true,
-				ForceNew: true,
-			},
 			"response_mapping_template_s3_location": {
 				Type: schema.TypeString,
 				Optional: true,
+			},
+			"type_name": {
+				Type: schema.TypeString,
+				Required: true,
 			},
 			"pipeline_config": {
 				Type: schema.TypeList,
@@ -69,7 +60,10 @@ func ResourceAppSyncResolver() *schema.Resource {
 			"api_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
+			},
+			"field_name": {
+				Type: schema.TypeString,
+				Required: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -80,12 +74,16 @@ func ResourceAppSyncResolver() *schema.Resource {
 	}
 }
 
-func resourceAppSyncResolverCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppSync::Resolver", ResourceAppSyncResolver(), data, meta)
+func resourceAppSyncResolverExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceAppSyncResolverRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::AppSync::Resolver", ResourceAppSyncResolver(), data, meta)
+}
+
+func resourceAppSyncResolverCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::AppSync::Resolver", ResourceAppSyncResolver(), data, meta)
 }
 
 func resourceAppSyncResolverUpdate(data *schema.ResourceData, meta interface{}) error {

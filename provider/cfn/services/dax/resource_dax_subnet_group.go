@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceDAXSubnetGroup() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceDAXSubnetGroupCreate,
+		Exists: resourceDAXSubnetGroupExists,
 		Read:   resourceDAXSubnetGroupRead,
+		Create: resourceDAXSubnetGroupCreate,
 		Update: resourceDAXSubnetGroupUpdate,
 		Delete: resourceDAXSubnetGroupDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -29,7 +30,6 @@ func ResourceDAXSubnetGroup() *schema.Resource {
 			"subnet_group_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"subnet_ids": {
 				Type: schema.TypeList,
@@ -45,12 +45,16 @@ func ResourceDAXSubnetGroup() *schema.Resource {
 	}
 }
 
-func resourceDAXSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DAX::SubnetGroup", ResourceDAXSubnetGroup(), data, meta)
+func resourceDAXSubnetGroupExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceDAXSubnetGroupRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::DAX::SubnetGroup", ResourceDAXSubnetGroup(), data, meta)
+}
+
+func resourceDAXSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::DAX::SubnetGroup", ResourceDAXSubnetGroup(), data, meta)
 }
 
 func resourceDAXSubnetGroupUpdate(data *schema.ResourceData, meta interface{}) error {

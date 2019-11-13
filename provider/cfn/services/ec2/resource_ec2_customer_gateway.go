@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,21 +17,20 @@ import (
 
 func ResourceEC2CustomerGateway() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceEC2CustomerGatewayCreate,
+		Exists: resourceEC2CustomerGatewayExists,
 		Read:   resourceEC2CustomerGatewayRead,
+		Create: resourceEC2CustomerGatewayCreate,
 		Update: resourceEC2CustomerGatewayUpdate,
 		Delete: resourceEC2CustomerGatewayDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"bgp_asn": {
 				Type: schema.TypeInt,
 				Required: true,
-				ForceNew: true,
 			},
 			"ip_address": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -41,7 +40,6 @@ func ResourceEC2CustomerGateway() *schema.Resource {
 			"type": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -52,12 +50,16 @@ func ResourceEC2CustomerGateway() *schema.Resource {
 	}
 }
 
-func resourceEC2CustomerGatewayCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::CustomerGateway", ResourceEC2CustomerGateway(), data, meta)
+func resourceEC2CustomerGatewayExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2CustomerGatewayRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::CustomerGateway", ResourceEC2CustomerGateway(), data, meta)
+}
+
+func resourceEC2CustomerGatewayCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::CustomerGateway", ResourceEC2CustomerGateway(), data, meta)
 }
 
 func resourceEC2CustomerGatewayUpdate(data *schema.ResourceData, meta interface{}) error {

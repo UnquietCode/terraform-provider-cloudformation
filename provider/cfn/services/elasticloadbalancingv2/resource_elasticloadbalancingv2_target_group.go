@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,25 +17,13 @@ import (
 
 func ResourceElasticLoadBalancingV2TargetGroup() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceElasticLoadBalancingV2TargetGroupCreate,
+		Exists: resourceElasticLoadBalancingV2TargetGroupExists,
 		Read:   resourceElasticLoadBalancingV2TargetGroupRead,
+		Create: resourceElasticLoadBalancingV2TargetGroupCreate,
 		Update: resourceElasticLoadBalancingV2TargetGroupUpdate,
 		Delete: resourceElasticLoadBalancingV2TargetGroupDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"load_balancer_arns": {
-				Type: schema.TypeList,
-				Elem: &schema.Schema{Type: schema.TypeString},
-				Computed: true,
-			},
-			"target_group_full_name": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"target_group_name": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"health_check_enabled": {
 				Type: schema.TypeBool,
 				Optional: true,
@@ -73,17 +61,14 @@ func ResourceElasticLoadBalancingV2TargetGroup() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"port": {
 				Type: schema.TypeInt,
 				Optional: true,
-				ForceNew: true,
 			},
 			"protocol": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -98,7 +83,6 @@ func ResourceElasticLoadBalancingV2TargetGroup() *schema.Resource {
 			"target_type": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"targets": {
 				Type: schema.TypeSet,
@@ -112,7 +96,6 @@ func ResourceElasticLoadBalancingV2TargetGroup() *schema.Resource {
 			"vpc_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -123,12 +106,16 @@ func ResourceElasticLoadBalancingV2TargetGroup() *schema.Resource {
 	}
 }
 
-func resourceElasticLoadBalancingV2TargetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElasticLoadBalancingV2::TargetGroup", ResourceElasticLoadBalancingV2TargetGroup(), data, meta)
+func resourceElasticLoadBalancingV2TargetGroupExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceElasticLoadBalancingV2TargetGroupRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ElasticLoadBalancingV2::TargetGroup", ResourceElasticLoadBalancingV2TargetGroup(), data, meta)
+}
+
+func resourceElasticLoadBalancingV2TargetGroupCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ElasticLoadBalancingV2::TargetGroup", ResourceElasticLoadBalancingV2TargetGroup(), data, meta)
 }
 
 func resourceElasticLoadBalancingV2TargetGroupUpdate(data *schema.ResourceData, meta interface{}) error {

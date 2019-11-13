@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,11 +17,12 @@ import (
 
 func ResourceAppStreamFleet() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceAppStreamFleetCreate,
+		Exists: resourceAppStreamFleetExists,
 		Read:   resourceAppStreamFleetRead,
+		Create: resourceAppStreamFleetCreate,
 		Update: resourceAppStreamFleetUpdate,
 		Delete: resourceAppStreamFleetDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -42,7 +43,6 @@ func ResourceAppStreamFleet() *schema.Resource {
 			"fleet_type": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"enable_default_internet_access": {
 				Type: schema.TypeBool,
@@ -57,7 +57,6 @@ func ResourceAppStreamFleet() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"image_name": {
 				Type: schema.TypeString,
@@ -101,12 +100,16 @@ func ResourceAppStreamFleet() *schema.Resource {
 	}
 }
 
-func resourceAppStreamFleetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppStream::Fleet", ResourceAppStreamFleet(), data, meta)
+func resourceAppStreamFleetExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceAppStreamFleetRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::AppStream::Fleet", ResourceAppStreamFleet(), data, meta)
+}
+
+func resourceAppStreamFleetCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::AppStream::Fleet", ResourceAppStreamFleet(), data, meta)
 }
 
 func resourceAppStreamFleetUpdate(data *schema.ResourceData, meta interface{}) error {

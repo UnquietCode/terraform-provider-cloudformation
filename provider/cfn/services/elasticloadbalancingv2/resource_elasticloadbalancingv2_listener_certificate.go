@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,21 +16,21 @@ import (
 
 func ResourceElasticLoadBalancingV2ListenerCertificate() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceElasticLoadBalancingV2ListenerCertificateCreate,
+		Exists: resourceElasticLoadBalancingV2ListenerCertificateExists,
 		Read:   resourceElasticLoadBalancingV2ListenerCertificateRead,
+		Create: resourceElasticLoadBalancingV2ListenerCertificateCreate,
+		Update: resourceElasticLoadBalancingV2ListenerCertificateUpdate,
 		Delete: resourceElasticLoadBalancingV2ListenerCertificateDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"certificates": {
 				Type: schema.TypeSet,
 				Elem: propertyListenerCertificateCertificate(),
 				Required: true,
-				ForceNew: true,
 			},
 			"listener_arn": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -41,12 +41,16 @@ func ResourceElasticLoadBalancingV2ListenerCertificate() *schema.Resource {
 	}
 }
 
-func resourceElasticLoadBalancingV2ListenerCertificateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElasticLoadBalancingV2::ListenerCertificate", ResourceElasticLoadBalancingV2ListenerCertificate(), data, meta)
+func resourceElasticLoadBalancingV2ListenerCertificateExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceElasticLoadBalancingV2ListenerCertificateRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ElasticLoadBalancingV2::ListenerCertificate", ResourceElasticLoadBalancingV2ListenerCertificate(), data, meta)
+}
+
+func resourceElasticLoadBalancingV2ListenerCertificateCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ElasticLoadBalancingV2::ListenerCertificate", ResourceElasticLoadBalancingV2ListenerCertificate(), data, meta)
 }
 
 func resourceElasticLoadBalancingV2ListenerCertificateUpdate(data *schema.ResourceData, meta interface{}) error {

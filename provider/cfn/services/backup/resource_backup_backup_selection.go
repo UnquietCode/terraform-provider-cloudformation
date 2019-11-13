@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,26 +16,22 @@ import (
 
 func ResourceBackupBackupSelection() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceBackupBackupSelectionCreate,
+		Exists: resourceBackupBackupSelectionExists,
 		Read:   resourceBackupBackupSelectionRead,
+		Create: resourceBackupBackupSelectionCreate,
+		Update: resourceBackupBackupSelectionUpdate,
 		Delete: resourceBackupBackupSelectionDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"backup_plan_id": {
-				Type: schema.TypeString,
-				Required: true,
-				ForceNew: true,
-			},
-			"selection_id": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"backup_selection": {
 				Type: schema.TypeList,
 				Elem: propertyBackupSelectionBackupSelectionResourceType(),
 				Required: true,
-				ForceNew: true,
 				MaxItems: 1,
+			},
+			"backup_plan_id": {
+				Type: schema.TypeString,
+				Required: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -46,12 +42,16 @@ func ResourceBackupBackupSelection() *schema.Resource {
 	}
 }
 
-func resourceBackupBackupSelectionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Backup::BackupSelection", ResourceBackupBackupSelection(), data, meta)
+func resourceBackupBackupSelectionExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceBackupBackupSelectionRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Backup::BackupSelection", ResourceBackupBackupSelection(), data, meta)
+}
+
+func resourceBackupBackupSelectionCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Backup::BackupSelection", ResourceBackupBackupSelection(), data, meta)
 }
 
 func resourceBackupBackupSelectionUpdate(data *schema.ResourceData, meta interface{}) error {

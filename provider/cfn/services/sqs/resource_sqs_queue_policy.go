@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceSQSQueuePolicy() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceSQSQueuePolicyCreate,
+		Exists: resourceSQSQueuePolicyExists,
 		Read:   resourceSQSQueuePolicyRead,
+		Create: resourceSQSQueuePolicyCreate,
 		Update: resourceSQSQueuePolicyUpdate,
 		Delete: resourceSQSQueuePolicyDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"policy_document": {
 				Type: schema.TypeMap,
@@ -40,12 +41,16 @@ func ResourceSQSQueuePolicy() *schema.Resource {
 	}
 }
 
-func resourceSQSQueuePolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SQS::QueuePolicy", ResourceSQSQueuePolicy(), data, meta)
+func resourceSQSQueuePolicyExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceSQSQueuePolicyRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::SQS::QueuePolicy", ResourceSQSQueuePolicy(), data, meta)
+}
+
+func resourceSQSQueuePolicyCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::SQS::QueuePolicy", ResourceSQSQueuePolicy(), data, meta)
 }
 
 func resourceSQSQueuePolicyUpdate(data *schema.ResourceData, meta interface{}) error {

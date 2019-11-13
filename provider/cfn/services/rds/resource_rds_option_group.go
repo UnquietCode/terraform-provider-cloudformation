@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,32 +17,29 @@ import (
 
 func ResourceRDSOptionGroup() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceRDSOptionGroupCreate,
+		Exists: resourceRDSOptionGroupExists,
 		Read:   resourceRDSOptionGroupRead,
+		Create: resourceRDSOptionGroupCreate,
 		Update: resourceRDSOptionGroupUpdate,
 		Delete: resourceRDSOptionGroupDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"engine_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"major_engine_version": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"option_configurations": {
 				Type: schema.TypeList,
 				Elem: propertyOptionGroupOptionConfiguration(),
 				Required: true,
-				ForceNew: true,
 			},
 			"option_group_description": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -58,12 +55,16 @@ func ResourceRDSOptionGroup() *schema.Resource {
 	}
 }
 
-func resourceRDSOptionGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RDS::OptionGroup", ResourceRDSOptionGroup(), data, meta)
+func resourceRDSOptionGroupExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceRDSOptionGroupRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::RDS::OptionGroup", ResourceRDSOptionGroup(), data, meta)
+}
+
+func resourceRDSOptionGroupCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::RDS::OptionGroup", ResourceRDSOptionGroup(), data, meta)
 }
 
 func resourceRDSOptionGroupUpdate(data *schema.ResourceData, meta interface{}) error {

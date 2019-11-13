@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -32,18 +32,15 @@ func propertyResourceDefinitionLocalVolumeResourceData(extras...string) *schema.
 			"source_path": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"destination_path": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"group_owner_setting": {
 				Type: schema.TypeList,
 				Elem: propertyResourceDefinitionGroupOwnerSetting(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 		},

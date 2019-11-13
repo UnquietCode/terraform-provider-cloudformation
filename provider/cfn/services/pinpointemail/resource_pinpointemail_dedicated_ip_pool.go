@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,16 @@ import (
 
 func ResourcePinpointEmailDedicatedIpPool() *schema.Resource {
 	return &schema.Resource{
-		Create: resourcePinpointEmailDedicatedIpPoolCreate,
+		Exists: resourcePinpointEmailDedicatedIpPoolExists,
 		Read:   resourcePinpointEmailDedicatedIpPoolRead,
+		Create: resourcePinpointEmailDedicatedIpPoolCreate,
 		Update: resourcePinpointEmailDedicatedIpPoolUpdate,
 		Delete: resourcePinpointEmailDedicatedIpPoolDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"pool_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -41,12 +41,16 @@ func ResourcePinpointEmailDedicatedIpPool() *schema.Resource {
 	}
 }
 
-func resourcePinpointEmailDedicatedIpPoolCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::PinpointEmail::DedicatedIpPool", ResourcePinpointEmailDedicatedIpPool(), data, meta)
+func resourcePinpointEmailDedicatedIpPoolExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourcePinpointEmailDedicatedIpPoolRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::PinpointEmail::DedicatedIpPool", ResourcePinpointEmailDedicatedIpPool(), data, meta)
+}
+
+func resourcePinpointEmailDedicatedIpPoolCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::PinpointEmail::DedicatedIpPool", ResourcePinpointEmailDedicatedIpPool(), data, meta)
 }
 
 func resourcePinpointEmailDedicatedIpPoolUpdate(data *schema.ResourceData, meta interface{}) error {

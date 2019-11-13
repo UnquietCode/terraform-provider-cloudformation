@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,21 +16,13 @@ import (
 
 func ResourceManagedBlockchainMember() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceManagedBlockchainMemberCreate,
+		Exists: resourceManagedBlockchainMemberExists,
 		Read:   resourceManagedBlockchainMemberRead,
+		Create: resourceManagedBlockchainMemberCreate,
 		Update: resourceManagedBlockchainMemberUpdate,
 		Delete: resourceManagedBlockchainMemberDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"member_id": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"network_id": {
-				Type: schema.TypeString,
-				Optional: true,
-				Computed: true,
-			},
 			"member_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyMemberMemberConfiguration(),
@@ -42,6 +34,10 @@ func ResourceManagedBlockchainMember() *schema.Resource {
 				Elem: propertyMemberNetworkConfiguration(),
 				Optional: true,
 				MaxItems: 1,
+			},
+			"network_id": {
+				Type: schema.TypeString,
+				Optional: true,
 			},
 			"invitation_id": {
 				Type: schema.TypeString,
@@ -56,12 +52,16 @@ func ResourceManagedBlockchainMember() *schema.Resource {
 	}
 }
 
-func resourceManagedBlockchainMemberCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ManagedBlockchain::Member", ResourceManagedBlockchainMember(), data, meta)
+func resourceManagedBlockchainMemberExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceManagedBlockchainMemberRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ManagedBlockchain::Member", ResourceManagedBlockchainMember(), data, meta)
+}
+
+func resourceManagedBlockchainMemberCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ManagedBlockchain::Member", ResourceManagedBlockchainMember(), data, meta)
 }
 
 func resourceManagedBlockchainMemberUpdate(data *schema.ResourceData, meta interface{}) error {

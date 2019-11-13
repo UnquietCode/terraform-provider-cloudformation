@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,30 +16,28 @@ import (
 
 func ResourceRedshiftClusterSecurityGroupIngress() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceRedshiftClusterSecurityGroupIngressCreate,
+		Exists: resourceRedshiftClusterSecurityGroupIngressExists,
 		Read:   resourceRedshiftClusterSecurityGroupIngressRead,
+		Create: resourceRedshiftClusterSecurityGroupIngressCreate,
+		Update: resourceRedshiftClusterSecurityGroupIngressUpdate,
 		Delete: resourceRedshiftClusterSecurityGroupIngressDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"cidrip": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"cluster_security_group_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"ec2_security_group_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"ec2_security_group_owner_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -50,12 +48,16 @@ func ResourceRedshiftClusterSecurityGroupIngress() *schema.Resource {
 	}
 }
 
-func resourceRedshiftClusterSecurityGroupIngressCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Redshift::ClusterSecurityGroupIngress", ResourceRedshiftClusterSecurityGroupIngress(), data, meta)
+func resourceRedshiftClusterSecurityGroupIngressExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceRedshiftClusterSecurityGroupIngressRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Redshift::ClusterSecurityGroupIngress", ResourceRedshiftClusterSecurityGroupIngress(), data, meta)
+}
+
+func resourceRedshiftClusterSecurityGroupIngressCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Redshift::ClusterSecurityGroupIngress", ResourceRedshiftClusterSecurityGroupIngress(), data, meta)
 }
 
 func resourceRedshiftClusterSecurityGroupIngressUpdate(data *schema.ResourceData, meta interface{}) error {

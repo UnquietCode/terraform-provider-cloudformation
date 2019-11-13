@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,16 +17,16 @@ import (
 
 func ResourceEC2TrafficMirrorFilter() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceEC2TrafficMirrorFilterCreate,
+		Exists: resourceEC2TrafficMirrorFilterExists,
 		Read:   resourceEC2TrafficMirrorFilterRead,
+		Create: resourceEC2TrafficMirrorFilterCreate,
 		Update: resourceEC2TrafficMirrorFilterUpdate,
 		Delete: resourceEC2TrafficMirrorFilterDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"network_services": {
 				Type: schema.TypeList,
@@ -47,12 +47,16 @@ func ResourceEC2TrafficMirrorFilter() *schema.Resource {
 	}
 }
 
-func resourceEC2TrafficMirrorFilterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::TrafficMirrorFilter", ResourceEC2TrafficMirrorFilter(), data, meta)
+func resourceEC2TrafficMirrorFilterExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2TrafficMirrorFilterRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::TrafficMirrorFilter", ResourceEC2TrafficMirrorFilter(), data, meta)
+}
+
+func resourceEC2TrafficMirrorFilterCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::TrafficMirrorFilter", ResourceEC2TrafficMirrorFilter(), data, meta)
 }
 
 func resourceEC2TrafficMirrorFilterUpdate(data *schema.ResourceData, meta interface{}) error {

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,26 +16,21 @@ import (
 
 func ResourceRoboMakerRobotApplication() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceRoboMakerRobotApplicationCreate,
+		Exists: resourceRoboMakerRobotApplicationExists,
 		Read:   resourceRoboMakerRobotApplicationRead,
+		Create: resourceRoboMakerRobotApplicationCreate,
 		Update: resourceRoboMakerRobotApplicationUpdate,
 		Delete: resourceRoboMakerRobotApplicationDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"current_revision_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				Computed: true,
-			},
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
 			},
 			"robot_software_suite": {
 				Type: schema.TypeList,
 				Elem: propertyRobotApplicationRobotSoftwareSuite(),
 				Required: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"sources": {
@@ -50,7 +45,6 @@ func ResourceRoboMakerRobotApplication() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -61,12 +55,16 @@ func ResourceRoboMakerRobotApplication() *schema.Resource {
 	}
 }
 
-func resourceRoboMakerRobotApplicationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RoboMaker::RobotApplication", ResourceRoboMakerRobotApplication(), data, meta)
+func resourceRoboMakerRobotApplicationExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceRoboMakerRobotApplicationRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::RoboMaker::RobotApplication", ResourceRoboMakerRobotApplication(), data, meta)
+}
+
+func resourceRoboMakerRobotApplicationCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::RoboMaker::RobotApplication", ResourceRoboMakerRobotApplication(), data, meta)
 }
 
 func resourceRoboMakerRobotApplicationUpdate(data *schema.ResourceData, meta interface{}) error {

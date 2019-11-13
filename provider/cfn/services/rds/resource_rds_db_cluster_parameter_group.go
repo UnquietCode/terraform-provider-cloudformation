@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,21 +17,20 @@ import (
 
 func ResourceRDSDBClusterParameterGroup() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceRDSDBClusterParameterGroupCreate,
+		Exists: resourceRDSDBClusterParameterGroupExists,
 		Read:   resourceRDSDBClusterParameterGroupRead,
+		Create: resourceRDSDBClusterParameterGroupCreate,
 		Update: resourceRDSDBClusterParameterGroupUpdate,
 		Delete: resourceRDSDBClusterParameterGroupDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"family": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"parameters": {
 				Type: schema.TypeMap,
@@ -51,12 +50,16 @@ func ResourceRDSDBClusterParameterGroup() *schema.Resource {
 	}
 }
 
-func resourceRDSDBClusterParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RDS::DBClusterParameterGroup", ResourceRDSDBClusterParameterGroup(), data, meta)
+func resourceRDSDBClusterParameterGroupExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceRDSDBClusterParameterGroupRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::RDS::DBClusterParameterGroup", ResourceRDSDBClusterParameterGroup(), data, meta)
+}
+
+func resourceRDSDBClusterParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::RDS::DBClusterParameterGroup", ResourceRDSDBClusterParameterGroup(), data, meta)
 }
 
 func resourceRDSDBClusterParameterGroupUpdate(data *schema.ResourceData, meta interface{}) error {

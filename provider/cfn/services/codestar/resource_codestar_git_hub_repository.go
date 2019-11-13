@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceCodeStarGitHubRepository() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceCodeStarGitHubRepositoryCreate,
+		Exists: resourceCodeStarGitHubRepositoryExists,
 		Read:   resourceCodeStarGitHubRepositoryRead,
+		Create: resourceCodeStarGitHubRepositoryCreate,
 		Update: resourceCodeStarGitHubRepositoryUpdate,
 		Delete: resourceCodeStarGitHubRepositoryDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"enable_issues": {
 				Type: schema.TypeBool,
@@ -61,12 +62,16 @@ func ResourceCodeStarGitHubRepository() *schema.Resource {
 	}
 }
 
-func resourceCodeStarGitHubRepositoryCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CodeStar::GitHubRepository", ResourceCodeStarGitHubRepository(), data, meta)
+func resourceCodeStarGitHubRepositoryExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCodeStarGitHubRepositoryRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::CodeStar::GitHubRepository", ResourceCodeStarGitHubRepository(), data, meta)
+}
+
+func resourceCodeStarGitHubRepositoryCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::CodeStar::GitHubRepository", ResourceCodeStarGitHubRepository(), data, meta)
 }
 
 func resourceCodeStarGitHubRepositoryUpdate(data *schema.ResourceData, meta interface{}) error {

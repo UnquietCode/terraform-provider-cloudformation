@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,13 @@ import (
 
 func ResourcePinpointEmailTemplate() *schema.Resource {
 	return &schema.Resource{
-		Create: resourcePinpointEmailTemplateCreate,
+		Exists: resourcePinpointEmailTemplateExists,
 		Read:   resourcePinpointEmailTemplateRead,
+		Create: resourcePinpointEmailTemplateCreate,
 		Update: resourcePinpointEmailTemplateUpdate,
 		Delete: resourcePinpointEmailTemplateDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"html_part": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -37,7 +34,6 @@ func ResourcePinpointEmailTemplate() *schema.Resource {
 			"template_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"subject": {
 				Type: schema.TypeString,
@@ -56,12 +52,16 @@ func ResourcePinpointEmailTemplate() *schema.Resource {
 	}
 }
 
-func resourcePinpointEmailTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::EmailTemplate", ResourcePinpointEmailTemplate(), data, meta)
+func resourcePinpointEmailTemplateExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourcePinpointEmailTemplateRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Pinpoint::EmailTemplate", ResourcePinpointEmailTemplate(), data, meta)
+}
+
+func resourcePinpointEmailTemplateCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Pinpoint::EmailTemplate", ResourcePinpointEmailTemplate(), data, meta)
 }
 
 func resourcePinpointEmailTemplateUpdate(data *schema.ResourceData, meta interface{}) error {

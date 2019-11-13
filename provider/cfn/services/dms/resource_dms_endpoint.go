@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,20 +17,16 @@ import (
 
 func ResourceDMSEndpoint() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceDMSEndpointCreate,
+		Exists: resourceDMSEndpointExists,
 		Read:   resourceDMSEndpointRead,
+		Create: resourceDMSEndpointCreate,
 		Update: resourceDMSEndpointUpdate,
 		Delete: resourceDMSEndpointDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"external_id": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"kms_key_id": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"port": {
 				Type: schema.TypeInt,
@@ -92,7 +88,6 @@ func ResourceDMSEndpoint() *schema.Resource {
 				Type: schema.TypeList,
 				Elem: misc.PropertyTag(),
 				Optional: true,
-				ForceNew: true,
 			},
 			"endpoint_identifier": {
 				Type: schema.TypeString,
@@ -121,12 +116,16 @@ func ResourceDMSEndpoint() *schema.Resource {
 	}
 }
 
-func resourceDMSEndpointCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DMS::Endpoint", ResourceDMSEndpoint(), data, meta)
+func resourceDMSEndpointExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceDMSEndpointRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::DMS::Endpoint", ResourceDMSEndpoint(), data, meta)
+}
+
+func resourceDMSEndpointCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::DMS::Endpoint", ResourceDMSEndpoint(), data, meta)
 }
 
 func resourceDMSEndpointUpdate(data *schema.ResourceData, meta interface{}) error {

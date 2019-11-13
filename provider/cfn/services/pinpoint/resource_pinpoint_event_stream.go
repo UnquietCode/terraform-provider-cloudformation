@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,16 @@ import (
 
 func ResourcePinpointEventStream() *schema.Resource {
 	return &schema.Resource{
-		Create: resourcePinpointEventStreamCreate,
+		Exists: resourcePinpointEventStreamExists,
 		Read:   resourcePinpointEventStreamRead,
+		Create: resourcePinpointEventStreamCreate,
 		Update: resourcePinpointEventStreamUpdate,
 		Delete: resourcePinpointEventStreamDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"application_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"destination_stream_arn": {
 				Type: schema.TypeString,
@@ -44,12 +44,16 @@ func ResourcePinpointEventStream() *schema.Resource {
 	}
 }
 
-func resourcePinpointEventStreamCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::EventStream", ResourcePinpointEventStream(), data, meta)
+func resourcePinpointEventStreamExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourcePinpointEventStreamRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Pinpoint::EventStream", ResourcePinpointEventStream(), data, meta)
+}
+
+func resourcePinpointEventStreamCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Pinpoint::EventStream", ResourcePinpointEventStream(), data, meta)
 }
 
 func resourcePinpointEventStreamUpdate(data *schema.ResourceData, meta interface{}) error {

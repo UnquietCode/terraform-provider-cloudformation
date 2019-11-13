@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,18 +16,13 @@ import (
 
 func ResourceSNSTopic() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceSNSTopicCreate,
+		Exists: resourceSNSTopicExists,
 		Read:   resourceSNSTopicRead,
+		Create: resourceSNSTopicCreate,
 		Update: resourceSNSTopicUpdate,
 		Delete: resourceSNSTopicDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"topic_name": {
-				Type: schema.TypeString,
-				Optional: true,
-				Computed: true,
-				ForceNew: true,
-			},
 			"display_name": {
 				Type: schema.TypeString,
 				Optional: true,
@@ -41,6 +36,10 @@ func ResourceSNSTopic() *schema.Resource {
 				Elem: propertyTopicSubscription(),
 				Optional: true,
 			},
+			"topic_name": {
+				Type: schema.TypeString,
+				Optional: true,
+			},
 			"logical_id": {
 				Type: schema.TypeString,
 				Required: true,
@@ -50,12 +49,16 @@ func ResourceSNSTopic() *schema.Resource {
 	}
 }
 
-func resourceSNSTopicCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SNS::Topic", ResourceSNSTopic(), data, meta)
+func resourceSNSTopicExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceSNSTopicRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::SNS::Topic", ResourceSNSTopic(), data, meta)
+}
+
+func resourceSNSTopicCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::SNS::Topic", ResourceSNSTopic(), data, meta)
 }
 
 func resourceSNSTopicUpdate(data *schema.ResourceData, meta interface{}) error {

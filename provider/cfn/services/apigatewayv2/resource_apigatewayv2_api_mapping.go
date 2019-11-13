@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,16 @@ import (
 
 func ResourceApiGatewayV2ApiMapping() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceApiGatewayV2ApiMappingCreate,
+		Exists: resourceApiGatewayV2ApiMappingExists,
 		Read:   resourceApiGatewayV2ApiMappingRead,
+		Create: resourceApiGatewayV2ApiMappingCreate,
 		Update: resourceApiGatewayV2ApiMappingUpdate,
 		Delete: resourceApiGatewayV2ApiMappingDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"domain_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"stage": {
 				Type: schema.TypeString,
@@ -38,7 +38,6 @@ func ResourceApiGatewayV2ApiMapping() *schema.Resource {
 			"api_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -49,12 +48,16 @@ func ResourceApiGatewayV2ApiMapping() *schema.Resource {
 	}
 }
 
-func resourceApiGatewayV2ApiMappingCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGatewayV2::ApiMapping", ResourceApiGatewayV2ApiMapping(), data, meta)
+func resourceApiGatewayV2ApiMappingExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceApiGatewayV2ApiMappingRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ApiGatewayV2::ApiMapping", ResourceApiGatewayV2ApiMapping(), data, meta)
+}
+
+func resourceApiGatewayV2ApiMappingCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ApiGatewayV2::ApiMapping", ResourceApiGatewayV2ApiMapping(), data, meta)
 }
 
 func resourceApiGatewayV2ApiMappingUpdate(data *schema.ResourceData, meta interface{}) error {

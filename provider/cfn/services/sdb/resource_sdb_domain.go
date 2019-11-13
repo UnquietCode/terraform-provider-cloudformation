@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceSDBDomain() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceSDBDomainCreate,
+		Exists: resourceSDBDomainExists,
 		Read:   resourceSDBDomainRead,
+		Create: resourceSDBDomainCreate,
 		Update: resourceSDBDomainUpdate,
 		Delete: resourceSDBDomainDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -35,12 +36,16 @@ func ResourceSDBDomain() *schema.Resource {
 	}
 }
 
-func resourceSDBDomainCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SDB::Domain", ResourceSDBDomain(), data, meta)
+func resourceSDBDomainExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceSDBDomainRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::SDB::Domain", ResourceSDBDomain(), data, meta)
+}
+
+func resourceSDBDomainCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::SDB::Domain", ResourceSDBDomain(), data, meta)
 }
 
 func resourceSDBDomainUpdate(data *schema.ResourceData, meta interface{}) error {

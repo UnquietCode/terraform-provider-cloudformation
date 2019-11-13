@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceServiceCatalogStackSetConstraint() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceServiceCatalogStackSetConstraintCreate,
+		Exists: resourceServiceCatalogStackSetConstraintExists,
 		Read:   resourceServiceCatalogStackSetConstraintRead,
+		Create: resourceServiceCatalogStackSetConstraintCreate,
 		Update: resourceServiceCatalogStackSetConstraintUpdate,
 		Delete: resourceServiceCatalogStackSetConstraintDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -37,12 +38,10 @@ func ResourceServiceCatalogStackSetConstraint() *schema.Resource {
 			"portfolio_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"product_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"region_list": {
 				Type: schema.TypeList,
@@ -71,12 +70,16 @@ func ResourceServiceCatalogStackSetConstraint() *schema.Resource {
 	}
 }
 
-func resourceServiceCatalogStackSetConstraintCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::StackSetConstraint", ResourceServiceCatalogStackSetConstraint(), data, meta)
+func resourceServiceCatalogStackSetConstraintExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceServiceCatalogStackSetConstraintRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ServiceCatalog::StackSetConstraint", ResourceServiceCatalogStackSetConstraint(), data, meta)
+}
+
+func resourceServiceCatalogStackSetConstraintCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ServiceCatalog::StackSetConstraint", ResourceServiceCatalogStackSetConstraint(), data, meta)
 }
 
 func resourceServiceCatalogStackSetConstraintUpdate(data *schema.ResourceData, meta interface{}) error {

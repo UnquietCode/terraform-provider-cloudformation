@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,16 @@ import (
 
 func ResourceIAMServiceLinkedRole() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceIAMServiceLinkedRoleCreate,
+		Exists: resourceIAMServiceLinkedRoleExists,
 		Read:   resourceIAMServiceLinkedRoleRead,
+		Create: resourceIAMServiceLinkedRoleCreate,
 		Update: resourceIAMServiceLinkedRoleUpdate,
 		Delete: resourceIAMServiceLinkedRoleDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"custom_suffix": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"description": {
 				Type: schema.TypeString,
@@ -34,7 +34,6 @@ func ResourceIAMServiceLinkedRole() *schema.Resource {
 			"aws_service_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -45,12 +44,16 @@ func ResourceIAMServiceLinkedRole() *schema.Resource {
 	}
 }
 
-func resourceIAMServiceLinkedRoleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IAM::ServiceLinkedRole", ResourceIAMServiceLinkedRole(), data, meta)
+func resourceIAMServiceLinkedRoleExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceIAMServiceLinkedRoleRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::IAM::ServiceLinkedRole", ResourceIAMServiceLinkedRole(), data, meta)
+}
+
+func resourceIAMServiceLinkedRoleCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::IAM::ServiceLinkedRole", ResourceIAMServiceLinkedRole(), data, meta)
 }
 
 func resourceIAMServiceLinkedRoleUpdate(data *schema.ResourceData, meta interface{}) error {

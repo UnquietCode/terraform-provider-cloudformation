@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,16 @@ import (
 
 func ResourceElasticBeanstalkApplicationVersion() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceElasticBeanstalkApplicationVersionCreate,
+		Exists: resourceElasticBeanstalkApplicationVersionExists,
 		Read:   resourceElasticBeanstalkApplicationVersionRead,
+		Create: resourceElasticBeanstalkApplicationVersionCreate,
 		Update: resourceElasticBeanstalkApplicationVersionUpdate,
 		Delete: resourceElasticBeanstalkApplicationVersionDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"application_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"description": {
 				Type: schema.TypeString,
@@ -35,7 +35,6 @@ func ResourceElasticBeanstalkApplicationVersion() *schema.Resource {
 				Type: schema.TypeList,
 				Elem: propertyApplicationVersionSourceBundle(),
 				Required: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"logical_id": {
@@ -47,12 +46,16 @@ func ResourceElasticBeanstalkApplicationVersion() *schema.Resource {
 	}
 }
 
-func resourceElasticBeanstalkApplicationVersionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElasticBeanstalk::ApplicationVersion", ResourceElasticBeanstalkApplicationVersion(), data, meta)
+func resourceElasticBeanstalkApplicationVersionExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceElasticBeanstalkApplicationVersionRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ElasticBeanstalk::ApplicationVersion", ResourceElasticBeanstalkApplicationVersion(), data, meta)
+}
+
+func resourceElasticBeanstalkApplicationVersionCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ElasticBeanstalk::ApplicationVersion", ResourceElasticBeanstalkApplicationVersion(), data, meta)
 }
 
 func resourceElasticBeanstalkApplicationVersionUpdate(data *schema.ResourceData, meta interface{}) error {

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -32,22 +32,18 @@ func propertyDeviceDefinitionDevice(extras...string) *schema.Resource {
 			"sync_shadow": {
 				Type: schema.TypeBool,
 				Optional: true,
-				ForceNew: true,
 			},
 			"thing_arn": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"certificate_arn": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 		},
 	}

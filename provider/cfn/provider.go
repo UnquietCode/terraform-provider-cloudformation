@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 12-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/terraform"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
+	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/cfn/services/amazonmq"
 	"github.com/unquietcode/terraform-cfn-provider/cfn/services/amplify"
 	"github.com/unquietcode/terraform-cfn-provider/cfn/services/apigateway"
@@ -111,7 +112,6 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/services/waf"
 	"github.com/unquietcode/terraform-cfn-provider/cfn/services/wafregional"
 	"github.com/unquietcode/terraform-cfn-provider/cfn/services/workspaces"
-	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 )
 
 func Provider() terraform.ResourceProvider {
@@ -120,8 +120,8 @@ func Provider() terraform.ResourceProvider {
 		Schema: map[string]*schema.Schema{
 			"workdir": {
 				Type:        schema.TypeString,
-				Optional:    true,
-				Description: "descriptive text to include in the template",
+				Required:    true,
+				Description: "working directory on the filesystem",
 			},
 		},
 		ResourcesMap: map[string]*schema.Resource{
@@ -590,8 +590,6 @@ func Provider() terraform.ResourceProvider {
 			"cfn_workspaces_workspace": workspaces.ResourceWorkSpacesWorkspace(),
 		},
 		DataSourcesMap: map[string]*schema.Resource{
-						"cfn_s3_bucket": s3.DatasourceS3Bucket(),
-
 		},
 	}
 }

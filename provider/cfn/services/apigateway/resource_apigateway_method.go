@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceApiGatewayMethod() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceApiGatewayMethodCreate,
+		Exists: resourceApiGatewayMethodExists,
 		Read:   resourceApiGatewayMethodRead,
+		Create: resourceApiGatewayMethodCreate,
 		Update: resourceApiGatewayMethodUpdate,
 		Delete: resourceApiGatewayMethodDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"api_key_required": {
 				Type: schema.TypeBool,
@@ -90,12 +91,16 @@ func ResourceApiGatewayMethod() *schema.Resource {
 	}
 }
 
-func resourceApiGatewayMethodCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::Method", ResourceApiGatewayMethod(), data, meta)
+func resourceApiGatewayMethodExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceApiGatewayMethodRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ApiGateway::Method", ResourceApiGatewayMethod(), data, meta)
+}
+
+func resourceApiGatewayMethodCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ApiGateway::Method", ResourceApiGatewayMethod(), data, meta)
 }
 
 func resourceApiGatewayMethodUpdate(data *schema.ResourceData, meta interface{}) error {

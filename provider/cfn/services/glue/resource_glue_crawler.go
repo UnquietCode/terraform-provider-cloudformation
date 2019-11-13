@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceGlueCrawler() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceGlueCrawlerCreate,
+		Exists: resourceGlueCrawlerExists,
 		Read:   resourceGlueCrawlerRead,
+		Create: resourceGlueCrawlerCreate,
 		Update: resourceGlueCrawlerUpdate,
 		Delete: resourceGlueCrawlerDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"role": {
 				Type: schema.TypeString,
@@ -76,7 +77,6 @@ func ResourceGlueCrawler() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -87,12 +87,16 @@ func ResourceGlueCrawler() *schema.Resource {
 	}
 }
 
-func resourceGlueCrawlerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::Crawler", ResourceGlueCrawler(), data, meta)
+func resourceGlueCrawlerExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceGlueCrawlerRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Glue::Crawler", ResourceGlueCrawler(), data, meta)
+}
+
+func resourceGlueCrawlerCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Glue::Crawler", ResourceGlueCrawler(), data, meta)
 }
 
 func resourceGlueCrawlerUpdate(data *schema.ResourceData, meta interface{}) error {

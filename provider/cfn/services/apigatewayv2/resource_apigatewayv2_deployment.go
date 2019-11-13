@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceApiGatewayV2Deployment() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceApiGatewayV2DeploymentCreate,
+		Exists: resourceApiGatewayV2DeploymentExists,
 		Read:   resourceApiGatewayV2DeploymentRead,
+		Create: resourceApiGatewayV2DeploymentCreate,
 		Update: resourceApiGatewayV2DeploymentUpdate,
 		Delete: resourceApiGatewayV2DeploymentDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -33,7 +34,6 @@ func ResourceApiGatewayV2Deployment() *schema.Resource {
 			"api_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -44,12 +44,16 @@ func ResourceApiGatewayV2Deployment() *schema.Resource {
 	}
 }
 
-func resourceApiGatewayV2DeploymentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGatewayV2::Deployment", ResourceApiGatewayV2Deployment(), data, meta)
+func resourceApiGatewayV2DeploymentExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceApiGatewayV2DeploymentRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ApiGatewayV2::Deployment", ResourceApiGatewayV2Deployment(), data, meta)
+}
+
+func resourceApiGatewayV2DeploymentCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ApiGatewayV2::Deployment", ResourceApiGatewayV2Deployment(), data, meta)
 }
 
 func resourceApiGatewayV2DeploymentUpdate(data *schema.ResourceData, meta interface{}) error {

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceOpsWorksElasticLoadBalancerAttachment() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceOpsWorksElasticLoadBalancerAttachmentCreate,
+		Exists: resourceOpsWorksElasticLoadBalancerAttachmentExists,
 		Read:   resourceOpsWorksElasticLoadBalancerAttachmentRead,
+		Create: resourceOpsWorksElasticLoadBalancerAttachmentCreate,
 		Update: resourceOpsWorksElasticLoadBalancerAttachmentUpdate,
 		Delete: resourceOpsWorksElasticLoadBalancerAttachmentDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"elastic_load_balancer_name": {
 				Type: schema.TypeString,
@@ -39,12 +40,16 @@ func ResourceOpsWorksElasticLoadBalancerAttachment() *schema.Resource {
 	}
 }
 
-func resourceOpsWorksElasticLoadBalancerAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::OpsWorks::ElasticLoadBalancerAttachment", ResourceOpsWorksElasticLoadBalancerAttachment(), data, meta)
+func resourceOpsWorksElasticLoadBalancerAttachmentExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceOpsWorksElasticLoadBalancerAttachmentRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::OpsWorks::ElasticLoadBalancerAttachment", ResourceOpsWorksElasticLoadBalancerAttachment(), data, meta)
+}
+
+func resourceOpsWorksElasticLoadBalancerAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::OpsWorks::ElasticLoadBalancerAttachment", ResourceOpsWorksElasticLoadBalancerAttachment(), data, meta)
 }
 
 func resourceOpsWorksElasticLoadBalancerAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {

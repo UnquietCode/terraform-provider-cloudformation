@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,16 @@ import (
 
 func ResourceCloudWatchDashboard() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceCloudWatchDashboardCreate,
+		Exists: resourceCloudWatchDashboardExists,
 		Read:   resourceCloudWatchDashboardRead,
+		Create: resourceCloudWatchDashboardCreate,
 		Update: resourceCloudWatchDashboardUpdate,
 		Delete: resourceCloudWatchDashboardDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"dashboard_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"dashboard_body": {
 				Type: schema.TypeString,
@@ -40,12 +40,16 @@ func ResourceCloudWatchDashboard() *schema.Resource {
 	}
 }
 
-func resourceCloudWatchDashboardCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CloudWatch::Dashboard", ResourceCloudWatchDashboard(), data, meta)
+func resourceCloudWatchDashboardExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCloudWatchDashboardRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::CloudWatch::Dashboard", ResourceCloudWatchDashboard(), data, meta)
+}
+
+func resourceCloudWatchDashboardCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::CloudWatch::Dashboard", ResourceCloudWatchDashboard(), data, meta)
 }
 
 func resourceCloudWatchDashboardUpdate(data *schema.ResourceData, meta interface{}) error {

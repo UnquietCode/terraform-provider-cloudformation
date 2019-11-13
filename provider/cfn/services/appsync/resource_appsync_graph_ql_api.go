@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,24 +16,13 @@ import (
 
 func ResourceAppSyncGraphQLApi() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceAppSyncGraphQLApiCreate,
+		Exists: resourceAppSyncGraphQLApiExists,
 		Read:   resourceAppSyncGraphQLApiRead,
+		Create: resourceAppSyncGraphQLApiCreate,
 		Update: resourceAppSyncGraphQLApiUpdate,
 		Delete: resourceAppSyncGraphQLApiDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"graph_ql_url": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
-			"api_id": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"open_id_connect_config": {
 				Type: schema.TypeList,
 				Elem: propertyGraphQLApiOpenIDConnectConfig(),
@@ -81,12 +70,16 @@ func ResourceAppSyncGraphQLApi() *schema.Resource {
 	}
 }
 
-func resourceAppSyncGraphQLApiCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppSync::GraphQLApi", ResourceAppSyncGraphQLApi(), data, meta)
+func resourceAppSyncGraphQLApiExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceAppSyncGraphQLApiRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::AppSync::GraphQLApi", ResourceAppSyncGraphQLApi(), data, meta)
+}
+
+func resourceAppSyncGraphQLApiCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::AppSync::GraphQLApi", ResourceAppSyncGraphQLApi(), data, meta)
 }
 
 func resourceAppSyncGraphQLApiUpdate(data *schema.ResourceData, meta interface{}) error {

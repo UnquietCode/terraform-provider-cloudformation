@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceApiGatewayClientCertificate() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceApiGatewayClientCertificateCreate,
+		Exists: resourceApiGatewayClientCertificateExists,
 		Read:   resourceApiGatewayClientCertificateRead,
+		Create: resourceApiGatewayClientCertificateCreate,
 		Update: resourceApiGatewayClientCertificateUpdate,
 		Delete: resourceApiGatewayClientCertificateDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -35,12 +36,16 @@ func ResourceApiGatewayClientCertificate() *schema.Resource {
 	}
 }
 
-func resourceApiGatewayClientCertificateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::ClientCertificate", ResourceApiGatewayClientCertificate(), data, meta)
+func resourceApiGatewayClientCertificateExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceApiGatewayClientCertificateRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ApiGateway::ClientCertificate", ResourceApiGatewayClientCertificate(), data, meta)
+}
+
+func resourceApiGatewayClientCertificateCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ApiGateway::ClientCertificate", ResourceApiGatewayClientCertificate(), data, meta)
 }
 
 func resourceApiGatewayClientCertificateUpdate(data *schema.ResourceData, meta interface{}) error {

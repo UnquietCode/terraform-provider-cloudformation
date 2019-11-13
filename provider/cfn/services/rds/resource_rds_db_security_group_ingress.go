@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceRDSDBSecurityGroupIngress() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceRDSDBSecurityGroupIngressCreate,
+		Exists: resourceRDSDBSecurityGroupIngressExists,
 		Read:   resourceRDSDBSecurityGroupIngressRead,
+		Create: resourceRDSDBSecurityGroupIngressCreate,
 		Update: resourceRDSDBSecurityGroupIngressUpdate,
 		Delete: resourceRDSDBSecurityGroupIngressDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"cidrip": {
 				Type: schema.TypeString,
@@ -51,12 +52,16 @@ func ResourceRDSDBSecurityGroupIngress() *schema.Resource {
 	}
 }
 
-func resourceRDSDBSecurityGroupIngressCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RDS::DBSecurityGroupIngress", ResourceRDSDBSecurityGroupIngress(), data, meta)
+func resourceRDSDBSecurityGroupIngressExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceRDSDBSecurityGroupIngressRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::RDS::DBSecurityGroupIngress", ResourceRDSDBSecurityGroupIngress(), data, meta)
+}
+
+func resourceRDSDBSecurityGroupIngressCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::RDS::DBSecurityGroupIngress", ResourceRDSDBSecurityGroupIngress(), data, meta)
 }
 
 func resourceRDSDBSecurityGroupIngressUpdate(data *schema.ResourceData, meta interface{}) error {

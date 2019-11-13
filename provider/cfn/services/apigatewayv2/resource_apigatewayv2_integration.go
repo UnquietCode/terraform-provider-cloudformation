@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceApiGatewayV2Integration() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceApiGatewayV2IntegrationCreate,
+		Exists: resourceApiGatewayV2IntegrationExists,
 		Read:   resourceApiGatewayV2IntegrationRead,
+		Create: resourceApiGatewayV2IntegrationCreate,
 		Update: resourceApiGatewayV2IntegrationUpdate,
 		Delete: resourceApiGatewayV2IntegrationDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -69,7 +70,6 @@ func ResourceApiGatewayV2Integration() *schema.Resource {
 			"api_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"integration_type": {
 				Type: schema.TypeString,
@@ -84,12 +84,16 @@ func ResourceApiGatewayV2Integration() *schema.Resource {
 	}
 }
 
-func resourceApiGatewayV2IntegrationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGatewayV2::Integration", ResourceApiGatewayV2Integration(), data, meta)
+func resourceApiGatewayV2IntegrationExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceApiGatewayV2IntegrationRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ApiGatewayV2::Integration", ResourceApiGatewayV2Integration(), data, meta)
+}
+
+func resourceApiGatewayV2IntegrationCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ApiGatewayV2::Integration", ResourceApiGatewayV2Integration(), data, meta)
 }
 
 func resourceApiGatewayV2IntegrationUpdate(data *schema.ResourceData, meta interface{}) error {

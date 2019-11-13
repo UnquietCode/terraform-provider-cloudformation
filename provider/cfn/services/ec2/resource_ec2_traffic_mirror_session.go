@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,11 +17,12 @@ import (
 
 func ResourceEC2TrafficMirrorSession() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceEC2TrafficMirrorSessionCreate,
+		Exists: resourceEC2TrafficMirrorSessionExists,
 		Read:   resourceEC2TrafficMirrorSessionRead,
+		Create: resourceEC2TrafficMirrorSessionCreate,
 		Update: resourceEC2TrafficMirrorSessionUpdate,
 		Delete: resourceEC2TrafficMirrorSessionDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"traffic_mirror_target_id": {
 				Type: schema.TypeString,
@@ -46,7 +47,6 @@ func ResourceEC2TrafficMirrorSession() *schema.Resource {
 			"network_interface_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"traffic_mirror_filter_id": {
 				Type: schema.TypeString,
@@ -66,12 +66,16 @@ func ResourceEC2TrafficMirrorSession() *schema.Resource {
 	}
 }
 
-func resourceEC2TrafficMirrorSessionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::TrafficMirrorSession", ResourceEC2TrafficMirrorSession(), data, meta)
+func resourceEC2TrafficMirrorSessionExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2TrafficMirrorSessionRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::TrafficMirrorSession", ResourceEC2TrafficMirrorSession(), data, meta)
+}
+
+func resourceEC2TrafficMirrorSessionCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::TrafficMirrorSession", ResourceEC2TrafficMirrorSession(), data, meta)
 }
 
 func resourceEC2TrafficMirrorSessionUpdate(data *schema.ResourceData, meta interface{}) error {

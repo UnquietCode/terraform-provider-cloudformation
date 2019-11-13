@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourceDAXParameterGroup() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceDAXParameterGroupCreate,
+		Exists: resourceDAXParameterGroupExists,
 		Read:   resourceDAXParameterGroupRead,
+		Create: resourceDAXParameterGroupCreate,
 		Update: resourceDAXParameterGroupUpdate,
 		Delete: resourceDAXParameterGroupDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"parameter_name_values": {
 				Type: schema.TypeMap,
@@ -33,7 +34,6 @@ func ResourceDAXParameterGroup() *schema.Resource {
 			"parameter_group_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -44,12 +44,16 @@ func ResourceDAXParameterGroup() *schema.Resource {
 	}
 }
 
-func resourceDAXParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DAX::ParameterGroup", ResourceDAXParameterGroup(), data, meta)
+func resourceDAXParameterGroupExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceDAXParameterGroupRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::DAX::ParameterGroup", ResourceDAXParameterGroup(), data, meta)
+}
+
+func resourceDAXParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::DAX::ParameterGroup", ResourceDAXParameterGroup(), data, meta)
 }
 
 func resourceDAXParameterGroupUpdate(data *schema.ResourceData, meta interface{}) error {

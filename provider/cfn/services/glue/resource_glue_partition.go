@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,26 +16,24 @@ import (
 
 func ResourceGluePartition() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceGluePartitionCreate,
+		Exists: resourceGluePartitionExists,
 		Read:   resourceGluePartitionRead,
+		Create: resourceGluePartitionCreate,
 		Update: resourceGluePartitionUpdate,
 		Delete: resourceGluePartitionDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"table_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"database_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"catalog_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"partition_input": {
 				Type: schema.TypeList,
@@ -52,12 +50,16 @@ func ResourceGluePartition() *schema.Resource {
 	}
 }
 
-func resourceGluePartitionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::Partition", ResourceGluePartition(), data, meta)
+func resourceGluePartitionExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceGluePartitionRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Glue::Partition", ResourceGluePartition(), data, meta)
+}
+
+func resourceGluePartitionCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Glue::Partition", ResourceGluePartition(), data, meta)
 }
 
 func resourceGluePartitionUpdate(data *schema.ResourceData, meta interface{}) error {

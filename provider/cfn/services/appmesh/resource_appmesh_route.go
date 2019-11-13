@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,34 +17,24 @@ import (
 
 func ResourceAppMeshRoute() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceAppMeshRouteCreate,
+		Exists: resourceAppMeshRouteExists,
 		Read:   resourceAppMeshRouteRead,
+		Create: resourceAppMeshRouteCreate,
 		Update: resourceAppMeshRouteUpdate,
 		Delete: resourceAppMeshRouteDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"uid": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"mesh_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"virtual_router_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"route_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
-			},
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
 			},
 			"spec": {
 				Type: schema.TypeList,
@@ -66,12 +56,16 @@ func ResourceAppMeshRoute() *schema.Resource {
 	}
 }
 
-func resourceAppMeshRouteCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppMesh::Route", ResourceAppMeshRoute(), data, meta)
+func resourceAppMeshRouteExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceAppMeshRouteRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::AppMesh::Route", ResourceAppMeshRoute(), data, meta)
+}
+
+func resourceAppMeshRouteCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::AppMesh::Route", ResourceAppMeshRoute(), data, meta)
 }
 
 func resourceAppMeshRouteUpdate(data *schema.ResourceData, meta interface{}) error {

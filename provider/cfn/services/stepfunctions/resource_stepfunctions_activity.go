@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,21 +16,21 @@ import (
 
 func ResourceStepFunctionsActivity() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceStepFunctionsActivityCreate,
+		Exists: resourceStepFunctionsActivityExists,
 		Read:   resourceStepFunctionsActivityRead,
+		Create: resourceStepFunctionsActivityCreate,
 		Update: resourceStepFunctionsActivityUpdate,
 		Delete: resourceStepFunctionsActivityDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"name": {
-				Type: schema.TypeString,
-				Required: true,
-				ForceNew: true,
-			},
 			"tags": {
 				Type: schema.TypeList,
 				Elem: propertyActivityTagsEntry(),
 				Optional: true,
+			},
+			"name": {
+				Type: schema.TypeString,
+				Required: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -41,12 +41,16 @@ func ResourceStepFunctionsActivity() *schema.Resource {
 	}
 }
 
-func resourceStepFunctionsActivityCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::StepFunctions::Activity", ResourceStepFunctionsActivity(), data, meta)
+func resourceStepFunctionsActivityExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceStepFunctionsActivityRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::StepFunctions::Activity", ResourceStepFunctionsActivity(), data, meta)
+}
+
+func resourceStepFunctionsActivityCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::StepFunctions::Activity", ResourceStepFunctionsActivity(), data, meta)
 }
 
 func resourceStepFunctionsActivityUpdate(data *schema.ResourceData, meta interface{}) error {

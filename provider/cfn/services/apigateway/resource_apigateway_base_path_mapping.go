@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,21 +16,20 @@ import (
 
 func ResourceApiGatewayBasePathMapping() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceApiGatewayBasePathMappingCreate,
+		Exists: resourceApiGatewayBasePathMappingExists,
 		Read:   resourceApiGatewayBasePathMappingRead,
+		Create: resourceApiGatewayBasePathMappingCreate,
 		Update: resourceApiGatewayBasePathMappingUpdate,
 		Delete: resourceApiGatewayBasePathMappingDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"base_path": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"domain_name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"rest_api_id": {
 				Type: schema.TypeString,
@@ -49,12 +48,16 @@ func ResourceApiGatewayBasePathMapping() *schema.Resource {
 	}
 }
 
-func resourceApiGatewayBasePathMappingCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::BasePathMapping", ResourceApiGatewayBasePathMapping(), data, meta)
+func resourceApiGatewayBasePathMappingExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceApiGatewayBasePathMappingRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ApiGateway::BasePathMapping", ResourceApiGatewayBasePathMapping(), data, meta)
+}
+
+func resourceApiGatewayBasePathMappingCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ApiGateway::BasePathMapping", ResourceApiGatewayBasePathMapping(), data, meta)
 }
 
 func resourceApiGatewayBasePathMappingUpdate(data *schema.ResourceData, meta interface{}) error {

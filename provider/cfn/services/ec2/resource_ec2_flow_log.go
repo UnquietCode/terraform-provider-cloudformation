@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,45 +16,40 @@ import (
 
 func ResourceEC2FlowLog() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceEC2FlowLogCreate,
+		Exists: resourceEC2FlowLogExists,
 		Read:   resourceEC2FlowLogRead,
+		Create: resourceEC2FlowLogCreate,
+		Update: resourceEC2FlowLogUpdate,
 		Delete: resourceEC2FlowLogDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"deliver_logs_permission_arn": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"log_destination": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"log_destination_type": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"log_group_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"resource_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"resource_type": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"traffic_type": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -65,12 +60,16 @@ func ResourceEC2FlowLog() *schema.Resource {
 	}
 }
 
-func resourceEC2FlowLogCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::FlowLog", ResourceEC2FlowLog(), data, meta)
+func resourceEC2FlowLogExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2FlowLogRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::EC2::FlowLog", ResourceEC2FlowLog(), data, meta)
+}
+
+func resourceEC2FlowLogCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::EC2::FlowLog", ResourceEC2FlowLog(), data, meta)
 }
 
 func resourceEC2FlowLogUpdate(data *schema.ResourceData, meta interface{}) error {

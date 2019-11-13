@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,16 +16,13 @@ import (
 
 func ResourcePinpointApp() *schema.Resource {
 	return &schema.Resource{
-		Create: resourcePinpointAppCreate,
+		Exists: resourcePinpointAppExists,
 		Read:   resourcePinpointAppRead,
+		Create: resourcePinpointAppCreate,
 		Update: resourcePinpointAppUpdate,
 		Delete: resourcePinpointAppDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"tags": {
 				Type: schema.TypeMap,
 				Optional: true,
@@ -33,7 +30,6 @@ func ResourcePinpointApp() *schema.Resource {
 			"name": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -44,12 +40,16 @@ func ResourcePinpointApp() *schema.Resource {
 	}
 }
 
-func resourcePinpointAppCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::App", ResourcePinpointApp(), data, meta)
+func resourcePinpointAppExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourcePinpointAppRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Pinpoint::App", ResourcePinpointApp(), data, meta)
+}
+
+func resourcePinpointAppCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Pinpoint::App", ResourcePinpointApp(), data, meta)
 }
 
 func resourcePinpointAppUpdate(data *schema.ResourceData, meta interface{}) error {

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -16,11 +16,12 @@ import (
 
 func ResourcePinpointGCMChannel() *schema.Resource {
 	return &schema.Resource{
-		Create: resourcePinpointGCMChannelCreate,
+		Exists: resourcePinpointGCMChannelExists,
 		Read:   resourcePinpointGCMChannelRead,
+		Create: resourcePinpointGCMChannelCreate,
 		Update: resourcePinpointGCMChannelUpdate,
 		Delete: resourcePinpointGCMChannelDelete,
-
+		
 		Schema: map[string]*schema.Schema{
 			"api_key": {
 				Type: schema.TypeString,
@@ -33,7 +34,6 @@ func ResourcePinpointGCMChannel() *schema.Resource {
 			"application_id": {
 				Type: schema.TypeString,
 				Required: true,
-				ForceNew: true,
 			},
 			"logical_id": {
 				Type: schema.TypeString,
@@ -44,12 +44,16 @@ func ResourcePinpointGCMChannel() *schema.Resource {
 	}
 }
 
-func resourcePinpointGCMChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::GCMChannel", ResourcePinpointGCMChannel(), data, meta)
+func resourcePinpointGCMChannelExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourcePinpointGCMChannelRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::Pinpoint::GCMChannel", ResourcePinpointGCMChannel(), data, meta)
+}
+
+func resourcePinpointGCMChannelCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::Pinpoint::GCMChannel", ResourcePinpointGCMChannel(), data, meta)
 }
 
 func resourcePinpointGCMChannelUpdate(data *schema.ResourceData, meta interface{}) error {

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -17,20 +17,16 @@ import (
 
 func ResourceECSCluster() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceECSClusterCreate,
+		Exists: resourceECSClusterExists,
 		Read:   resourceECSClusterRead,
+		Create: resourceECSClusterCreate,
 		Update: resourceECSClusterUpdate,
 		Delete: resourceECSClusterDelete,
-
+		
 		Schema: map[string]*schema.Schema{
-			"arn": {
-				Type: schema.TypeString,
-				Computed: true,
-			},
 			"cluster_name": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"tags": {
 				Type: schema.TypeList,
@@ -46,12 +42,16 @@ func ResourceECSCluster() *schema.Resource {
 	}
 }
 
-func resourceECSClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ECS::Cluster", ResourceECSCluster(), data, meta)
+func resourceECSClusterExists(data *schema.ResourceData, meta interface{}) (bool, error) {
+	return plugin.ResourceExists(data, meta)
 }
 
 func resourceECSClusterRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceRead("AWS::ECS::Cluster", ResourceECSCluster(), data, meta)
+}
+
+func resourceECSClusterCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.ResourceCreate("AWS::ECS::Cluster", ResourceECSCluster(), data, meta)
 }
 
 func resourceECSClusterUpdate(data *schema.ResourceData, meta interface{}) error {

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 10-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -32,7 +32,6 @@ func propertyFunctionDefinitionFunctionConfiguration(extras...string) *schema.Re
 			"memory_size": {
 				Type: schema.TypeInt,
 				Optional: true,
-				ForceNew: true,
 			},
 			"pinned": {
 				Type: schema.TypeBool,
@@ -41,29 +40,24 @@ func propertyFunctionDefinitionFunctionConfiguration(extras...string) *schema.Re
 			"exec_args": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"timeout": {
 				Type: schema.TypeInt,
 				Optional: true,
-				ForceNew: true,
 			},
 			"encoding_type": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 			"environment": {
 				Type: schema.TypeList,
 				Elem: propertyFunctionDefinitionEnvironment(),
 				Optional: true,
-				ForceNew: true,
 				MaxItems: 1,
 			},
 			"executable": {
 				Type: schema.TypeString,
 				Optional: true,
-				ForceNew: true,
 			},
 		},
 	}
