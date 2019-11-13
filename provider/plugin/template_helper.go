@@ -15,7 +15,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/resource"
 )
 
-// --------------------------------------------------------------------------
+const RENDERD_TEMPLATE_NAME string = "template.rendered"
+
 
 func buildTemplateReference(resourceData *schema.ResourceData, meta interface{}) ([]string, string, error) {
 	var resourceHashes map[string]string
@@ -123,7 +124,7 @@ func TemplateCreate(resourceData *schema.ResourceData, meta interface{}) error {
 		templateData["Resources"].(map[string]interface{})[ref] = data
 	}
 	
-	hashcode, err := writeFile("template.rendered", templateData, providerMeta)
+	hashcode, err := writeFile(RENDERD_TEMPLATE_NAME, templateData, providerMeta)
 	
 	if err != nil {
 		return err
@@ -143,8 +144,13 @@ func TemplateUpdate(resourceData *schema.ResourceData, meta interface{}) error {
 
 
 func TemplateDelete(resourceData *schema.ResourceData, meta interface{}) error {
+	err := removeFile(RENDERD_TEMPLATE_NAME, meta.(ProviderMetadata))
+	
+	if err != nil {
+		return err
+	}
+	
 	resourceData.SetId("")
-
   return nil
 }
 
