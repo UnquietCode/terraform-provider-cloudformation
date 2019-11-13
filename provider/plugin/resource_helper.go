@@ -1,6 +1,7 @@
 package plugin
 
 // TODO can we do hashcode of a file without reading it in?
+// TODO resort imports
 
 import (
 	"errors"
@@ -10,29 +11,28 @@ import (
 	"fmt"
 	"sort"
 	"bufio"
+	"time"
 	"encoding/json"
 	"strings"
-	"sync/atomic"
+	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/hashcode"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/resource"
+	mutex "github.com/hashicorp/terraform-plugin-sdk/helper/mutexkv"
 )
-
-type ResourceMeat struct {
-  Type string
-	Properties map[string]interface{}
-}
 
 type ProviderMetadata struct {
    workdir string
-	 existingResources []string
-	 templateTargets []string
-	 resourceHashes map[string]interface{}
-	 resourceCounter int32
+	 existingResources *[]string
+	 resourceCounter *int
+	 mutex *mutex.MutexKV
 }
 
 const EMPTY string = "\xff"
-
+const LOCK_TEMPLATE_REFERENCE string = "TEMPLATE_REFERENCE"
+const LOCK_RESOURCE_COUNTER string = "RESOURCE_COUNTER"
+const STATE_WAIT string = "WAIT"
+const STATE_DONE string = "DONE"
 
 func fileExists(path string) (bool, error) {
 	_, err := os.Stat(path)
@@ -45,6 +45,18 @@ func fileExists(path string) (bool, error) {
 	}
   
 	return true, nil
+}
+
+
+func readAndHashFile(path string) ([]byte, string, error) {
+	rawData, err := ioutil.ReadFile(path)
+	
+	if err != nil {
+		return nil, EMPTY, err
+	}
+	
+	var hashcode string = strconv.Itoa(hashcode.String(string(rawData)))
+	return rawData, hashcode, nil
 }
 
 
@@ -61,8 +73,7 @@ func readFile(id string, meta ProviderMetadata) (map[string]interface{}, string,
 	}
 	
 	// try to read the file
-	rawData, err := ioutil.ReadFile(path)
-	var hashcode string = fmt.Sprintf("%s", hashcode.String(string(rawData)))
+	rawData, hashcode, err := readAndHashFile(path)
 	
 	if err != nil {
 		return nil, EMPTY, err
@@ -91,7 +102,7 @@ func readResources(meta ProviderMetadata) (map[string]string, error) {
   scanner := bufio.NewScanner(file)
   
 	for scanner.Scan() {
-      lines = append(lines, scanner.Text())
+    lines = append(lines, scanner.Text())
   }
 	
 	err = scanner.Err()
@@ -103,8 +114,8 @@ func readResources(meta ProviderMetadata) (map[string]string, error) {
 	var mapD map[string]string = map[string]string{}
 	// lines = sort.Strings(lines)
 	
-	for line := range lines {
-		parts := strings.Split(lines[line], " ")
+	for _, line := range lines {
+		parts := strings.Split(line, " ")
 		mapD[parts[0]] = parts[1]
 	}
 	
@@ -134,41 +145,20 @@ func writeFile(id string, data map[string]interface{}, meta ProviderMetadata) (s
 	
  	file.Write(rawData)
 	
-	var hashcode string = fmt.Sprintf("%s", hashcode.String(string(rawData)))
+	var hashcode string = strconv.Itoa(hashcode.String(string(rawData)))
 	return hashcode, nil
 }
 
 
-func readAllFiles(path string) string {
-  files, _ := ioutil.ReadDir(path)
-	var data string = ""
-	
-	for _, f := range files {
-		log.Printf(f.Name())
-    buf, _ := ioutil.ReadFile(path+"/"+f.Name())
-		data += string(buf)
-  }
-	
-	return data
-}
-
-func readAll(resourceData *schema.ResourceData, meta interface{}) error {
-	
-	log.Printf("here again +++++++++++++++++++++++++++++++++++++++++++++++++")
-	// log.Printf("hey %s", template.resources)
-	
-	// resourceData.SetId("")
-
-  return nil
-}
-
 func handleExistingResouce(meta ProviderMetadata, id string, hash string) error {
-	// TODO mutex
+	meta.mutex.Lock(LOCK_TEMPLATE_REFERENCE)
+	defer meta.mutex.Unlock(LOCK_TEMPLATE_REFERENCE)
+	
 	var file *os.File = nil
 	var path string = fmt.Sprintf("%s/template.data.json", meta.workdir)
 	
 	// if this is the first run, create the file (or overwrite it)
-	if len(meta.existingResources) == 0 {
+	if len(*meta.existingResources) == 0 {
 		f, err := os.Create(path)
 		
 		if err != nil {
@@ -178,7 +168,7 @@ func handleExistingResouce(meta ProviderMetadata, id string, hash string) error 
 		file = f
 	}
 	
-	// open the file if it wasn't
+	// open the file if it wasn't created
 	if file == nil {
 		f, err := os.OpenFile(path, os.O_APPEND|os.O_WRONLY, 0600)
 		
@@ -193,48 +183,73 @@ func handleExistingResouce(meta ProviderMetadata, id string, hash string) error 
 	file.WriteString(id+" "+hash+"\n")
 	file.Close()
 	
-	// append to the list
-	meta.existingResources = append(meta.existingResources, id)	
+	// append to list
+	*meta.existingResources = append(*meta.existingResources, id)	
 	return nil
 }
 
 // --------------------------	------------------------------------------------
 
-func ResourceExists(resourceData *schema.ResourceData, meta interface{}) (bool, error) {
-	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
-	var logicalId string = resourceData.Get("logical_id").(string)
-	var path string = fmt.Sprintf("%s/%s.json", providerMeta.workdir, logicalId)
-	
-	log.Printf("exists +++++++++++++++++++++++++++++++++++++++++++++++++")
-	
-	exists, err := fileExists(path);	
-	
-	if err != nil {
-		return false, err
-	}
-	
-  return exists, nil
+// func ResourceExists(resourceData *schema.ResourceData, meta interface{}) (bool, error) {
+// 	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
+// 	var logicalId string = resourceData.Get("logical_id").(string)
+// 	var path string = fmt.Sprintf("%s/%s.json", providerMeta.workdir, logicalId)
+// 
+// 	exists, err := fileExists(path);	
+// 
+// 	if err != nil {
+// 		return false, err
+// 	}
+// 
+// 	if exists {
+// 		rawData, hashcode, err := readAndHashFile(path)
+// 		handleExistingResouce(providerMeta, logicalId, hash)
+// 	}
+// 
+//   return exists, nil
+// }
+
+func incrementResourceCounter(meta ProviderMetadata) {
+	meta.mutex.Lock(LOCK_RESOURCE_COUNTER)
+	*meta.resourceCounter += 1
+	meta.mutex.Unlock(LOCK_RESOURCE_COUNTER)
 }
+
+
+func readCounter(meta ProviderMetadata) int {
+	meta.mutex.Lock(LOCK_RESOURCE_COUNTER)
+	defer meta.mutex.Unlock(LOCK_RESOURCE_COUNTER)
+	return *meta.resourceCounter
+}
+
 
 func ResourceRead(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
 	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
 	var logicalId string = resourceData.Get("logical_id").(string)
+	
 	data, hash, err := readFile(logicalId, providerMeta)
 	
 	if err != nil {
 		return err
 	}
 	
-	for name := range data {
-		resourceData.Set(name, data[name])
+	// doesn't exist
+	if data == nil && hash == EMPTY {
+		resourceData.SetId("")
+		return nil
+	}
+	
+	for name, value := range data {
+		resourceData.Set(name, value)
 	}
 	
 	resourceData.SetId(hash)
 	handleExistingResouce(providerMeta, logicalId, hash)
-	atomic.AddInt32(&providerMeta.resourceCounter, 1)
+	incrementResourceCounter(providerMeta)
 	
   return nil
 }
+
 
 func ResourceCreate(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
 	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
@@ -253,14 +268,14 @@ func ResourceCreate(resourceType string, resourceSchema *schema.Resource, resour
 		return err
 	}
 	
-	resourceData.SetId(hashcode)	
-	atomic.AddInt32(&providerMeta.resourceCounter, 1)
+	resourceData.SetId(hashcode)
+	incrementResourceCounter(providerMeta)
+	
   return nil
 }
 
 
 func ResourceUpdate(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
-  // var data map[string]interface{} = map[string]interface{}{}
 	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
 	var logicalId string = resourceData.Get("logical_id").(string)
 	data, _, err := readFile(logicalId, providerMeta)
@@ -283,7 +298,8 @@ func ResourceUpdate(resourceType string, resourceSchema *schema.Resource, resour
 	}
 	
 	resourceData.SetId(hashcode)
-	atomic.AddInt32(&providerMeta.resourceCounter, 1)
+	incrementResourceCounter(providerMeta)
+
   return nil
 }
 
@@ -298,7 +314,8 @@ func ResourceDelete(resourceType string, resourceData *schema.ResourceData, meta
 	}
 	
 	resourceData.SetId("")
-	atomic.AddInt32(&providerMeta.resourceCounter, 1)
+	incrementResourceCounter(providerMeta)
+	
   return nil
 }
 
@@ -308,6 +325,35 @@ func ResourceCustomizeDiff(resourceDiff *schema.ResourceDiff, meta interface{}) 
 }
 
 // --------------------------------------------------------------------------
+
+func buildTemplateReference(resourceData *schema.ResourceData, meta interface{}) (int, string, error) {
+	var resourceHashes map[string]string
+	var err error
+	resourceHashes, err = readResources(meta.(ProviderMetadata))
+	
+	if err != nil {
+		return -1, EMPTY, err
+	}
+	
+	var keys []string
+	
+	for _, key := range resourceHashes {
+    keys = append(keys, key)
+	}
+	
+	sort.Strings(keys)
+	
+	var bigHash string = ""
+	
+	for _, key := range keys {
+		hash := resourceHashes[key]
+		bigHash += hash
+	}
+	
+	bigHash = strconv.Itoa(hashcode.String(bigHash))
+	return len(keys), bigHash, nil
+}
+
 
 func TemplateRead(resourceData *schema.ResourceData, meta interface{}) error {
 	// hash, _, err := buildTemplateReference(resourceData, meta)
@@ -323,7 +369,6 @@ func TemplateRead(resourceData *schema.ResourceData, meta interface{}) error {
 
 func TemplateCreate(resourceData *schema.ResourceData, meta interface{}) error {
 	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
-	
 	refs, hash, err := buildTemplateReference(resourceData, meta)
 	
 	if err != nil {
@@ -332,62 +377,39 @@ func TemplateCreate(resourceData *schema.ResourceData, meta interface{}) error {
 	
 	createStateConf := &resource.StateChangeConf{
       Pending: []string{
-        "WAIT",
+        STATE_WAIT,
       },
       Target: []string{
-        "DONE",
+        STATE_DONE,
       },
       Refresh: func() (interface{}, string, error) {
-				var counter int32 = atomic.LoadInt32(&providerMeta.resourceCounter)
-				var refs32 int32 = int32(refs)
+				var counter int = readCounter(providerMeta)
+				log.Printf("waiting for template refs to converge %d %d", refs, counter)
 				
-        if counter == refs32 {
-					return nil, "DONE", nil
+        if counter == refs {
+					return STATE_DONE, STATE_DONE, nil
 				}
 				
-        if counter >= refs32 {
+        if counter >= refs {
 					return nil, EMPTY, errors.New("too many refs")
 				}
 
-				return nil, "WAIT", nil
+				return nil, STATE_WAIT, nil
       },
+			Timeout: 10 * time.Minute,
+			Delay: 1 * time.Second,
   }
-	createStateConf.WaitForState()
+	
+	_, err = createStateConf.WaitForState()
+	
+	if err != nil {
+		return err
+	}
 	
 	resourceData.SetId(hash)
 	return nil
 }
 
-
-func buildTemplateReference(resourceData *schema.ResourceData, meta interface{}) (int, string, error) {
-	var resourceHashes map[string]string
-	var err error
-	resourceHashes, err = readResources(meta.(ProviderMetadata))
-	
-	if err != nil {
-		return -1, EMPTY, err
-	}
-	
-	var keys []string
-	
-	for k := range resourceHashes {
-    keys = append(keys, k)
-	}
-	
-	sort.Strings(keys)
-	
-	var bigHash string = ""
-	
-	for s := range keys {
-		var ss string = keys[s]
-		log.Printf("line %s +++++++++++++++++++++++++++++++++++++++++++++++++", ss)
-		hash := resourceHashes[ss]
-		bigHash += hash
-	}
-	
-	bigHash = fmt.Sprintf("%s", hashcode.String(bigHash))
-	return len(keys), bigHash, nil
-}
 
 func TemplateUpdate(resourceData *schema.ResourceData, meta interface{}) error {
 	// refs, hash, err := buildTemplateReference(resourceData, meta)
@@ -398,15 +420,13 @@ func TemplateUpdate(resourceData *schema.ResourceData, meta interface{}) error {
 
 
 func TemplateDelete(resourceData *schema.ResourceData, meta interface{}) error {
-	
 	resourceData.SetId("")
 
   return nil
 }
 
 func TemplateCustomizeDiff(resourceDiff *schema.ResourceDiff, meta interface{}) error {
-	
-	log.Printf("here +++++++++++++++++++++++++++++++++++++++++++++++++")
+	log.Printf("customizeDiff +++++++++++++++++++++++++++++++++++++++++++++++++")
 	// log.Printf("%s", resourceDiff)
 	// log.Printf("%s", meta.(ProviderMetadata).resourceHashes)
 	resourceDiff.SetNewComputed("id")
@@ -416,11 +436,13 @@ func TemplateCustomizeDiff(resourceDiff *schema.ResourceDiff, meta interface{}) 
 // ---------------------------------------------------------------------------
 
 func ProviderConfigure(resourceData *schema.ResourceData) (interface{}, error) {	
+	var counter int = 0
+	
 	meta := ProviderMetadata{
 		workdir: resourceData.Get("workdir").(string),
-		existingResources: []string{},
-		resourceHashes: map[string]interface{}{},
-		resourceCounter: 0,
+		resourceCounter: &counter,
+		existingResources: &[]string{},
+		mutex: mutex.NewMutexKV(),
   }
 	
 	return meta, nil
