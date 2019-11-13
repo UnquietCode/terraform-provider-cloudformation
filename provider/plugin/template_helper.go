@@ -1,8 +1,5 @@
 package plugin
 
-// TODO can we do hashcode of a file without reading it in?
-// TODO resort imports
-
 import (
 	"errors"
 	"log"

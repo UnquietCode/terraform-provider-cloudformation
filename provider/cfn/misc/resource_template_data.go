@@ -7,11 +7,11 @@ import (
 
 func ResourceTemplateData() *schema.Resource {
 	return &schema.Resource{
+		Read: 	resourceTemplateRead,
 		Create: resourceTemplateCreate,
-		Read:   resourceTemplateRead,
-		// Update:   resourceTemplateUpdate,
+		Update: resourceTemplateUpdate,
 		Delete: resourceTemplateDelete,		
-		CustomizeDiff: plugin.TemplateCustomizeDiff,
+		CustomizeDiff: resourceTemplateCustomizeDiff,
 
 		Schema: map[string]*schema.Schema{
 			"output": {
@@ -22,12 +22,12 @@ func ResourceTemplateData() *schema.Resource {
 	}
 }
 
-func resourceTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.TemplateCreate(data, meta)
-}
-
 func resourceTemplateRead(data *schema.ResourceData, meta interface{}) error {
 	return plugin.TemplateRead(data, meta)
+}
+
+func resourceTemplateCreate(data *schema.ResourceData, meta interface{}) error {
+	return plugin.TemplateCreate(data, meta)
 }
 
 func resourceTemplateUpdate(data *schema.ResourceData, meta interface{}) error {
@@ -36,4 +36,8 @@ func resourceTemplateUpdate(data *schema.ResourceData, meta interface{}) error {
 
 func resourceTemplateDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.TemplateDelete(data, meta)
+}
+
+func resourceTemplateCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.TemplateCustomizeDiff(data, meta)
 }

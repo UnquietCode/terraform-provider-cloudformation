@@ -1,7 +1,5 @@
 package plugin
 
-// TODO can we do hashcode of a file without reading it in?
-// TODO resort imports
 
 import (
 	"os"
@@ -15,9 +13,8 @@ import (
 
 type ProviderMetadata struct {
    workdir string
-	 // existingResources *[]string
-	 resourceCounter *int
 	 mutex *mutex.MutexKV
+	 resourceCounter *int
 	 
 	 newIndex *bool
 	 exists *map[string]bool
@@ -87,6 +84,7 @@ func writeFile(name string, data map[string]interface{}, meta ProviderMetadata) 
 	return hashcode, nil
 }
 
+
 func incrementResourceCounter(meta ProviderMetadata) {
 	meta.mutex.Lock(LOCK_RESOURCE_COUNTER)
 	*meta.resourceCounter += 1
@@ -107,9 +105,8 @@ func ProviderConfigure(resourceData *schema.ResourceData) (interface{}, error) {
 	
 	meta := ProviderMetadata{
 		workdir: resourceData.Get("workdir").(string),
-		resourceCounter: &counter,
-		// existingResources: &[]string{},
 		mutex: mutex.NewMutexKV(),
+		resourceCounter: &counter,
 		
 		newIndex: &newIndex,
 		exists: &map[string]bool{},
