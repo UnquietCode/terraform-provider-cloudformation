@@ -15,6 +15,7 @@ import (
 	"encoding/json"
 	"strings"
 	"strconv"
+	"crypto/md5"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/hashcode"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/resource"
@@ -23,9 +24,13 @@ import (
 
 type ProviderMetadata struct {
    workdir string
-	 existingResources *[]string
+	 // existingResources *[]string
 	 resourceCounter *int
 	 mutex *mutex.MutexKV
+	 
+	 newIndex *bool
+	 exists *map[string]bool
+	 diffed *map[string]bool
 }
 
 const EMPTY string = "\xff"
@@ -33,6 +38,7 @@ const LOCK_TEMPLATE_REFERENCE string = "TEMPLATE_REFERENCE"
 const LOCK_RESOURCE_COUNTER string = "RESOURCE_COUNTER"
 const STATE_WAIT string = "WAIT"
 const STATE_DONE string = "DONE"
+
 
 func fileExists(path string) (bool, error) {
 	_, err := os.Stat(path)
@@ -54,8 +60,8 @@ func readAndHashFile(path string) ([]byte, string, error) {
 	if err != nil {
 		return nil, EMPTY, err
 	}
-	
-	var hashcode string = strconv.Itoa(hashcode.String(string(rawData)))
+
+	var hashcode string = fmt.Sprintf("%x", md5.Sum(rawData))
 	return rawData, hashcode, nil
 }
 
@@ -88,6 +94,7 @@ func readFile(id string, meta ProviderMetadata) (map[string]interface{}, string,
 	
 	return data, hashcode, nil
 }
+
 
 func readResources(meta ProviderMetadata) (map[string]string, error) {
 	var path string = fmt.Sprintf("%s/template.data.json", meta.workdir)
@@ -131,8 +138,8 @@ func removeFile(id string, meta ProviderMetadata) error {
 }
 
 
-func writeFile(id string, data map[string]interface{}, meta ProviderMetadata) (string, error) {
-	var path string = fmt.Sprintf("%s/%s.json", meta.workdir, id)
+func writeFile(name string, data map[string]interface{}, meta ProviderMetadata) (string, error) {
+	var path string = fmt.Sprintf("%s/%s.json", meta.workdir, name)
 
 	file, _ := os.Create(path)
 	defer file.Close()
@@ -145,7 +152,7 @@ func writeFile(id string, data map[string]interface{}, meta ProviderMetadata) (s
 	
  	file.Write(rawData)
 	
-	var hashcode string = strconv.Itoa(hashcode.String(string(rawData)))
+	var hashcode string = fmt.Sprintf("%x", md5.Sum(rawData))
 	return hashcode, nil
 }
 
@@ -158,7 +165,8 @@ func handleExistingResouce(meta ProviderMetadata, id string, hash string) error 
 	var path string = fmt.Sprintf("%s/template.data.json", meta.workdir)
 	
 	// if this is the first run, create the file (or overwrite it)
-	if len(*meta.existingResources) == 0 {
+	// if len(*meta.existingResources) == 0 {
+	if (*meta.newIndex == true) {
 		f, err := os.Create(path)
 		
 		if err != nil {
@@ -166,6 +174,7 @@ func handleExistingResouce(meta ProviderMetadata, id string, hash string) error 
 		}
 		
 		file = f
+		*meta.newIndex = false
 	}
 	
 	// open the file if it wasn't created
@@ -184,30 +193,37 @@ func handleExistingResouce(meta ProviderMetadata, id string, hash string) error 
 	file.Close()
 	
 	// append to list
-	*meta.existingResources = append(*meta.existingResources, id)	
+	// *meta.existingResources = append(*meta.existingResources, id)	
 	return nil
 }
 
+
+
 // --------------------------	------------------------------------------------
 
-// func ResourceExists(resourceData *schema.ResourceData, meta interface{}) (bool, error) {
-// 	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
-// 	var logicalId string = resourceData.Get("logical_id").(string)
-// 	var path string = fmt.Sprintf("%s/%s.json", providerMeta.workdir, logicalId)
-// 
-// 	exists, err := fileExists(path);	
-// 
-// 	if err != nil {
-// 		return false, err
-// 	}
-// 
-// 	if exists {
-// 		rawData, hashcode, err := readAndHashFile(path)
-// 		handleExistingResouce(providerMeta, logicalId, hash)
-// 	}
-// 
-//   return exists, nil
-// }
+func ResourceExists(resourceData *schema.ResourceData, meta interface{}) (bool, error) {
+	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
+	var logicalId string = resourceData.Get("logical_id").(string)
+	var path string = fmt.Sprintf("%s/%s.json", providerMeta.workdir, logicalId)
+
+	log.Printf("-------------- exists %s", logicalId)
+
+	exists, err := fileExists(path);	
+
+	if err != nil {
+		return false, err
+	}
+	
+	(*providerMeta.exists)[logicalId] = exists
+
+
+	// if exists {
+		// rawData, hashcode, err := readAndHashFile(path)
+		// handleExistingResouce(providerMeta, logicalId, hash)
+	// }
+
+  return exists, nil
+}
 
 func incrementResourceCounter(meta ProviderMetadata) {
 	meta.mutex.Lock(LOCK_RESOURCE_COUNTER)
@@ -235,6 +251,7 @@ func ResourceRead(resourceType string, resourceSchema *schema.Resource, resource
 	
 	// doesn't exist
 	if data == nil && hash == EMPTY {
+		// handleExistingResouce(providerMeta, logicalId, "")
 		resourceData.SetId("")
 		return nil
 	}
@@ -244,7 +261,7 @@ func ResourceRead(resourceType string, resourceSchema *schema.Resource, resource
 	}
 	
 	resourceData.SetId(hash)
-	handleExistingResouce(providerMeta, logicalId, hash)
+	// handleExistingResouce(providerMeta, logicalId, hash)
 	incrementResourceCounter(providerMeta)
 	
   return nil
@@ -326,18 +343,18 @@ func ResourceCustomizeDiff(resourceDiff *schema.ResourceDiff, meta interface{}) 
 
 // --------------------------------------------------------------------------
 
-func buildTemplateReference(resourceData *schema.ResourceData, meta interface{}) (int, string, error) {
+func buildTemplateReference(resourceData *schema.ResourceData, meta interface{}) ([]string, string, error) {
 	var resourceHashes map[string]string
 	var err error
 	resourceHashes, err = readResources(meta.(ProviderMetadata))
 	
 	if err != nil {
-		return -1, EMPTY, err
+		return nil, EMPTY, err
 	}
 	
 	var keys []string
 	
-	for _, key := range resourceHashes {
+	for key, _ := range resourceHashes {
     keys = append(keys, key)
 	}
 	
@@ -351,53 +368,66 @@ func buildTemplateReference(resourceData *schema.ResourceData, meta interface{})
 	}
 	
 	bigHash = strconv.Itoa(hashcode.String(bigHash))
-	return len(keys), bigHash, nil
+	return keys, bigHash, nil
 }
 
 
 func TemplateRead(resourceData *schema.ResourceData, meta interface{}) error {
-	// hash, _, err := buildTemplateReference(resourceData, meta)
-	// 
-	// if err != nil {
-	// 	return err
-	// }
-	// 
-	// resourceData.SetId(hash)
+	var path string = fmt.Sprintf("%s/template.rendered.json", meta.(ProviderMetadata).workdir)	
+	exists, err := fileExists(path);
+	
+	if err != nil {
+		return err
+	}
+	
+	if !exists {
+		resourceData.SetId("")
+	} else {
+		_, hashcode, err := readAndHashFile(path)
+	
+		if err != nil {
+			return err
+		}
+		
+		resourceData.SetId(hashcode)
+	}
+	
 	return nil
 }
 
 
 func TemplateCreate(resourceData *schema.ResourceData, meta interface{}) error {
 	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
-	refs, hash, err := buildTemplateReference(resourceData, meta)
+	refs, _, err := buildTemplateReference(resourceData, meta)
+	var refCount int = len(refs)
 	
 	if err != nil {
 		return err
 	}
 	
 	createStateConf := &resource.StateChangeConf{
-      Pending: []string{
-        STATE_WAIT,
-      },
-      Target: []string{
-        STATE_DONE,
-      },
-      Refresh: func() (interface{}, string, error) {
-				var counter int = readCounter(providerMeta)
-				log.Printf("waiting for template refs to converge %d %d", refs, counter)
-				
-        if counter == refs {
-					return STATE_DONE, STATE_DONE, nil
-				}
-				
-        if counter >= refs {
-					return nil, EMPTY, errors.New("too many refs")
-				}
+    Pending: []string{
+      STATE_WAIT,
+    },
+    Target: []string{
+      STATE_DONE,
+    },
+    Refresh: func() (interface{}, string, error) {
+			var counter int = readCounter(providerMeta)
+			log.Printf("waiting for template refs to converge %d %d", refCount, counter)
+			
+      if counter == refCount {
+				return STATE_DONE, STATE_DONE, nil
+			}
+			
+      if counter >= refCount {
+				return nil, EMPTY, errors.New("too many refs")
+			}
 
-				return nil, STATE_WAIT, nil
-      },
-			Timeout: 10 * time.Minute,
-			Delay: 1 * time.Second,
+			return nil, STATE_WAIT, nil
+    },
+		Timeout: 10 * time.Minute,
+		Delay: 1 * time.Second,
   }
 	
 	_, err = createStateConf.WaitForState()
@@ -406,7 +436,26 @@ func TemplateCreate(resourceData *schema.ResourceData, meta interface{}) error {
 		return err
 	}
 	
-	resourceData.SetId(hash)
+	var templateData map[string]interface{} = map[string]interface{}{}
+	templateData["Resources"] = map[string]interface{}{}
+	
+	for _, ref := range refs {
+		data, _, err := readFile(ref, providerMeta)
+		
+		if err != nil {
+			return err
+		}
+		
+		templateData["Resources"].(map[string]interface{})[ref] = data
+	}
+	
+	hashcode, err := writeFile("template.rendered", templateData, providerMeta)
+	
+	if err != nil {
+		return err
+	}
+	
+	resourceData.SetId(hashcode)
 	return nil
 }
 
@@ -433,16 +482,53 @@ func TemplateCustomizeDiff(resourceDiff *schema.ResourceDiff, meta interface{}) 
 	return nil
 }
 
+
+func CustomizeDiff(resourceDiff *schema.ResourceDiff, meta interface{}) error {
+	// log.Printf("%s", resourceDiff)
+	// log.Printf("%s", meta.(ProviderMetadata).existingResources)
+	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
+	
+	logicalId := resourceDiff.Get("logical_id").(string)
+	
+	if _, ok := (*providerMeta.exists)[logicalId]; ok {
+    return errors.New("exists, duplicate logical id "+logicalId)
+	}
+
+	if _, ok := (*providerMeta.diffed)[logicalId]; ok {
+    return errors.New("diffed, duplicate logical id "+logicalId)
+	}
+	
+	(*providerMeta.diffed)[logicalId] = true
+	
+	log.Printf("customizeResourceDiff %s +++++++++++++++++++++++++++++++++++++++++++++++++", logicalId)
+
+	handleExistingResouce(providerMeta, logicalId, "---")
+	
+	// if id, ok := resourceDiff.GetOk("id"); ok {
+	// 	handleExistingResouce(meta.(ProviderMetadata), logical_id.(string), id.(string))
+	// } else {
+	// 	handleExistingResouce(meta.(ProviderMetadata), logical_id.(string), "")
+	// 
+	// }
+	
+	return nil
+}
+
 // ---------------------------------------------------------------------------
 
 func ProviderConfigure(resourceData *schema.ResourceData) (interface{}, error) {	
 	var counter int = 0
+	var newIndex bool = true
 	
 	meta := ProviderMetadata{
 		workdir: resourceData.Get("workdir").(string),
 		resourceCounter: &counter,
-		existingResources: &[]string{},
+		// existingResources: &[]string{},
 		mutex: mutex.NewMutexKV(),
+		
+		newIndex: &newIndex,
+		exists: &map[string]bool{},
+		diffed: &map[string]bool{},
   }
 	
 	return meta, nil
