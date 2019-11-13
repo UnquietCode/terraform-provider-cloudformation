@@ -21,7 +21,8 @@ func ResourceOpsWorksApp() *schema.Resource {
 		Create: resourceOpsWorksAppCreate,
 		Update: resourceOpsWorksAppUpdate,
 		Delete: resourceOpsWorksAppDelete,
-		
+		CustomizeDiff: resourceOpsWorksAppCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"app_source": {
 				Type: schema.TypeList,
@@ -106,4 +107,8 @@ func resourceOpsWorksAppUpdate(data *schema.ResourceData, meta interface{}) erro
 
 func resourceOpsWorksAppDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::OpsWorks::App", data, meta)
+}
+
+func resourceOpsWorksAppCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

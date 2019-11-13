@@ -22,7 +22,8 @@ func ResourceEC2TrafficMirrorTarget() *schema.Resource {
 		Create: resourceEC2TrafficMirrorTargetCreate,
 		Update: resourceEC2TrafficMirrorTargetUpdate,
 		Delete: resourceEC2TrafficMirrorTargetDelete,
-		
+		CustomizeDiff: resourceEC2TrafficMirrorTargetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"network_load_balancer_arn": {
 				Type: schema.TypeString,
@@ -68,4 +69,8 @@ func resourceEC2TrafficMirrorTargetUpdate(data *schema.ResourceData, meta interf
 
 func resourceEC2TrafficMirrorTargetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::TrafficMirrorTarget", data, meta)
+}
+
+func resourceEC2TrafficMirrorTargetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

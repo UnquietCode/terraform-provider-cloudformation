@@ -21,7 +21,8 @@ func ResourcePinpointEmailTemplate() *schema.Resource {
 		Create: resourcePinpointEmailTemplateCreate,
 		Update: resourcePinpointEmailTemplateUpdate,
 		Delete: resourcePinpointEmailTemplateDelete,
-		
+		CustomizeDiff: resourcePinpointEmailTemplateCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"html_part": {
 				Type: schema.TypeString,
@@ -70,4 +71,8 @@ func resourcePinpointEmailTemplateUpdate(data *schema.ResourceData, meta interfa
 
 func resourcePinpointEmailTemplateDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Pinpoint::EmailTemplate", data, meta)
+}
+
+func resourcePinpointEmailTemplateCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

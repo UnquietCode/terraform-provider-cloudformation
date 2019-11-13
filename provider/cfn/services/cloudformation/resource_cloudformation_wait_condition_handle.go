@@ -20,7 +20,8 @@ func ResourceCloudFormationWaitConditionHandle() *schema.Resource {
 		Read:   resourceCloudFormationWaitConditionHandleRead,
 		Create: resourceCloudFormationWaitConditionHandleCreate,
 		Delete: resourceCloudFormationWaitConditionHandleDelete,
-		
+		CustomizeDiff: resourceCloudFormationWaitConditionHandleCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"logical_id": {
 				Type: schema.TypeString,
@@ -49,4 +50,8 @@ func resourceCloudFormationWaitConditionHandleUpdate(data *schema.ResourceData, 
 
 func resourceCloudFormationWaitConditionHandleDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CloudFormation::WaitConditionHandle", data, meta)
+}
+
+func resourceCloudFormationWaitConditionHandleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

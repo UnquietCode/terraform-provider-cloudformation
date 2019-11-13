@@ -22,7 +22,8 @@ func ResourceElasticBeanstalkEnvironment() *schema.Resource {
 		Create: resourceElasticBeanstalkEnvironmentCreate,
 		Update: resourceElasticBeanstalkEnvironmentUpdate,
 		Delete: resourceElasticBeanstalkEnvironmentDelete,
-		
+		CustomizeDiff: resourceElasticBeanstalkEnvironmentCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"application_name": {
 				Type: schema.TypeString,
@@ -99,4 +100,8 @@ func resourceElasticBeanstalkEnvironmentUpdate(data *schema.ResourceData, meta i
 
 func resourceElasticBeanstalkEnvironmentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ElasticBeanstalk::Environment", data, meta)
+}
+
+func resourceElasticBeanstalkEnvironmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

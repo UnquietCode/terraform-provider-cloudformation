@@ -21,7 +21,8 @@ func ResourceGlueDatabase() *schema.Resource {
 		Create: resourceGlueDatabaseCreate,
 		Update: resourceGlueDatabaseUpdate,
 		Delete: resourceGlueDatabaseDelete,
-		
+		CustomizeDiff: resourceGlueDatabaseCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"database_input": {
 				Type: schema.TypeList,
@@ -60,4 +61,8 @@ func resourceGlueDatabaseUpdate(data *schema.ResourceData, meta interface{}) err
 
 func resourceGlueDatabaseDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Glue::Database", data, meta)
+}
+
+func resourceGlueDatabaseCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

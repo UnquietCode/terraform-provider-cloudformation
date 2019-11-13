@@ -21,7 +21,8 @@ func ResourceEC2TransitGatewayRouteTableAssociation() *schema.Resource {
 		Create: resourceEC2TransitGatewayRouteTableAssociationCreate,
 		Update: resourceEC2TransitGatewayRouteTableAssociationUpdate,
 		Delete: resourceEC2TransitGatewayRouteTableAssociationDelete,
-		
+		CustomizeDiff: resourceEC2TransitGatewayRouteTableAssociationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"transit_gateway_route_table_id": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceEC2TransitGatewayRouteTableAssociationUpdate(data *schema.ResourceD
 
 func resourceEC2TransitGatewayRouteTableAssociationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::TransitGatewayRouteTableAssociation", data, meta)
+}
+
+func resourceEC2TransitGatewayRouteTableAssociationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

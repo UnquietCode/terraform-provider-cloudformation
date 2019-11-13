@@ -21,7 +21,8 @@ func ResourceKinesisAnalyticsApplicationReferenceDataSource() *schema.Resource {
 		Create: resourceKinesisAnalyticsApplicationReferenceDataSourceCreate,
 		Update: resourceKinesisAnalyticsApplicationReferenceDataSourceUpdate,
 		Delete: resourceKinesisAnalyticsApplicationReferenceDataSourceDelete,
-		
+		CustomizeDiff: resourceKinesisAnalyticsApplicationReferenceDataSourceCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"application_name": {
 				Type: schema.TypeString,
@@ -60,4 +61,8 @@ func resourceKinesisAnalyticsApplicationReferenceDataSourceUpdate(data *schema.R
 
 func resourceKinesisAnalyticsApplicationReferenceDataSourceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::KinesisAnalytics::ApplicationReferenceDataSource", data, meta)
+}
+
+func resourceKinesisAnalyticsApplicationReferenceDataSourceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

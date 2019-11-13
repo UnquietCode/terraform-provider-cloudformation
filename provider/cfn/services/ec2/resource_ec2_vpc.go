@@ -22,7 +22,8 @@ func ResourceEC2VPC() *schema.Resource {
 		Create: resourceEC2VPCCreate,
 		Update: resourceEC2VPCUpdate,
 		Delete: resourceEC2VPCDelete,
-		
+		CustomizeDiff: resourceEC2VPCCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"cidr_block": {
 				Type: schema.TypeString,
@@ -72,4 +73,8 @@ func resourceEC2VPCUpdate(data *schema.ResourceData, meta interface{}) error {
 
 func resourceEC2VPCDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::VPC", data, meta)
+}
+
+func resourceEC2VPCCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

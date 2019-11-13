@@ -21,7 +21,8 @@ func ResourceApiGatewayRestApi() *schema.Resource {
 		Create: resourceApiGatewayRestApiCreate,
 		Update: resourceApiGatewayRestApiUpdate,
 		Delete: resourceApiGatewayRestApiDelete,
-		
+		CustomizeDiff: resourceApiGatewayRestApiCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"api_key_source_type": {
 				Type: schema.TypeString,
@@ -105,4 +106,8 @@ func resourceApiGatewayRestApiUpdate(data *schema.ResourceData, meta interface{}
 
 func resourceApiGatewayRestApiDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGateway::RestApi", data, meta)
+}
+
+func resourceApiGatewayRestApiCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

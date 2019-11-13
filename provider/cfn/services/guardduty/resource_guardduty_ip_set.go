@@ -21,7 +21,8 @@ func ResourceGuardDutyIPSet() *schema.Resource {
 		Create: resourceGuardDutyIPSetCreate,
 		Update: resourceGuardDutyIPSetUpdate,
 		Delete: resourceGuardDutyIPSetDelete,
-		
+		CustomizeDiff: resourceGuardDutyIPSetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"format": {
 				Type: schema.TypeString,
@@ -70,4 +71,8 @@ func resourceGuardDutyIPSetUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceGuardDutyIPSetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::GuardDuty::IPSet", data, meta)
+}
+
+func resourceGuardDutyIPSetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

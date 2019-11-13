@@ -22,7 +22,8 @@ func ResourceFSxFileSystem() *schema.Resource {
 		Create: resourceFSxFileSystemCreate,
 		Update: resourceFSxFileSystemUpdate,
 		Delete: resourceFSxFileSystemDelete,
-		
+		CustomizeDiff: resourceFSxFileSystemCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"kms_key_id": {
 				Type: schema.TypeString,
@@ -94,4 +95,8 @@ func resourceFSxFileSystemUpdate(data *schema.ResourceData, meta interface{}) er
 
 func resourceFSxFileSystemDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::FSx::FileSystem", data, meta)
+}
+
+func resourceFSxFileSystemCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

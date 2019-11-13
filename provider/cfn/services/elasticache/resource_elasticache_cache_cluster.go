@@ -22,7 +22,8 @@ func ResourceElastiCacheCacheCluster() *schema.Resource {
 		Create: resourceElastiCacheCacheClusterCreate,
 		Update: resourceElastiCacheCacheClusterUpdate,
 		Delete: resourceElastiCacheCacheClusterDelete,
-		
+		CustomizeDiff: resourceElastiCacheCacheClusterCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"az_mode": {
 				Type: schema.TypeString,
@@ -142,4 +143,8 @@ func resourceElastiCacheCacheClusterUpdate(data *schema.ResourceData, meta inter
 
 func resourceElastiCacheCacheClusterDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ElastiCache::CacheCluster", data, meta)
+}
+
+func resourceElastiCacheCacheClusterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourcePinpointAPNSChannel() *schema.Resource {
 		Create: resourcePinpointAPNSChannelCreate,
 		Update: resourcePinpointAPNSChannelUpdate,
 		Delete: resourcePinpointAPNSChannelDelete,
-		
+		CustomizeDiff: resourcePinpointAPNSChannelCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"bundle_id": {
 				Type: schema.TypeString,
@@ -86,4 +87,8 @@ func resourcePinpointAPNSChannelUpdate(data *schema.ResourceData, meta interface
 
 func resourcePinpointAPNSChannelDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Pinpoint::APNSChannel", data, meta)
+}
+
+func resourcePinpointAPNSChannelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

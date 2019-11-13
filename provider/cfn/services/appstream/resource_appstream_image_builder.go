@@ -22,7 +22,8 @@ func ResourceAppStreamImageBuilder() *schema.Resource {
 		Create: resourceAppStreamImageBuilderCreate,
 		Update: resourceAppStreamImageBuilderUpdate,
 		Delete: resourceAppStreamImageBuilderDelete,
-		
+		CustomizeDiff: resourceAppStreamImageBuilderCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"image_name": {
 				Type: schema.TypeString,
@@ -100,4 +101,8 @@ func resourceAppStreamImageBuilderUpdate(data *schema.ResourceData, meta interfa
 
 func resourceAppStreamImageBuilderDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AppStream::ImageBuilder", data, meta)
+}
+
+func resourceAppStreamImageBuilderCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

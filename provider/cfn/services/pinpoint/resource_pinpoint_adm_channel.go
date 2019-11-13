@@ -21,7 +21,8 @@ func ResourcePinpointADMChannel() *schema.Resource {
 		Create: resourcePinpointADMChannelCreate,
 		Update: resourcePinpointADMChannelUpdate,
 		Delete: resourcePinpointADMChannelDelete,
-		
+		CustomizeDiff: resourcePinpointADMChannelCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"client_secret": {
 				Type: schema.TypeString,
@@ -66,4 +67,8 @@ func resourcePinpointADMChannelUpdate(data *schema.ResourceData, meta interface{
 
 func resourcePinpointADMChannelDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Pinpoint::ADMChannel", data, meta)
+}
+
+func resourcePinpointADMChannelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

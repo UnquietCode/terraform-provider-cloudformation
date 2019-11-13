@@ -21,7 +21,8 @@ func ResourceGlueTable() *schema.Resource {
 		Create: resourceGlueTableCreate,
 		Update: resourceGlueTableUpdate,
 		Delete: resourceGlueTableDelete,
-		
+		CustomizeDiff: resourceGlueTableCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"table_input": {
 				Type: schema.TypeList,
@@ -64,4 +65,8 @@ func resourceGlueTableUpdate(data *schema.ResourceData, meta interface{}) error 
 
 func resourceGlueTableDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Glue::Table", data, meta)
+}
+
+func resourceGlueTableCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

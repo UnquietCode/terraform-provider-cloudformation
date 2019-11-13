@@ -21,7 +21,8 @@ func ResourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOption() *schema.Reso
 		Create: resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionCreate,
 		Update: resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionUpdate,
 		Delete: resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionDelete,
-		
+		CustomizeDiff: resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"application_name": {
 				Type: schema.TypeString,
@@ -60,4 +61,8 @@ func resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionUpdate(data *sc
 
 func resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::KinesisAnalyticsV2::ApplicationCloudWatchLoggingOption", data, meta)
+}
+
+func resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

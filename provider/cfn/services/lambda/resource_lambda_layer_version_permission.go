@@ -21,7 +21,8 @@ func ResourceLambdaLayerVersionPermission() *schema.Resource {
 		Create: resourceLambdaLayerVersionPermissionCreate,
 		Update: resourceLambdaLayerVersionPermissionUpdate,
 		Delete: resourceLambdaLayerVersionPermissionDelete,
-		
+		CustomizeDiff: resourceLambdaLayerVersionPermissionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"action": {
 				Type: schema.TypeString,
@@ -66,4 +67,8 @@ func resourceLambdaLayerVersionPermissionUpdate(data *schema.ResourceData, meta 
 
 func resourceLambdaLayerVersionPermissionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Lambda::LayerVersionPermission", data, meta)
+}
+
+func resourceLambdaLayerVersionPermissionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

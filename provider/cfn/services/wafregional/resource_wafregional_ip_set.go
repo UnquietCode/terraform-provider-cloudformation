@@ -21,7 +21,8 @@ func ResourceWAFRegionalIPSet() *schema.Resource {
 		Create: resourceWAFRegionalIPSetCreate,
 		Update: resourceWAFRegionalIPSetUpdate,
 		Delete: resourceWAFRegionalIPSetDelete,
-		
+		CustomizeDiff: resourceWAFRegionalIPSetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"ip_set_descriptors": {
 				Type: schema.TypeList,
@@ -59,4 +60,8 @@ func resourceWAFRegionalIPSetUpdate(data *schema.ResourceData, meta interface{})
 
 func resourceWAFRegionalIPSetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::WAFRegional::IPSet", data, meta)
+}
+
+func resourceWAFRegionalIPSetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

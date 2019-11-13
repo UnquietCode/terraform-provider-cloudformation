@@ -22,7 +22,8 @@ func ResourceRedshiftCluster() *schema.Resource {
 		Create: resourceRedshiftClusterCreate,
 		Update: resourceRedshiftClusterUpdate,
 		Delete: resourceRedshiftClusterDelete,
-		
+		CustomizeDiff: resourceRedshiftClusterCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"allow_version_upgrade": {
 				Type: schema.TypeBool,
@@ -174,4 +175,8 @@ func resourceRedshiftClusterUpdate(data *schema.ResourceData, meta interface{}) 
 
 func resourceRedshiftClusterDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Redshift::Cluster", data, meta)
+}
+
+func resourceRedshiftClusterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

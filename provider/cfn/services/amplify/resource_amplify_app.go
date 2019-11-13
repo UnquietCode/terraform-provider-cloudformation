@@ -22,7 +22,8 @@ func ResourceAmplifyApp() *schema.Resource {
 		Create: resourceAmplifyAppCreate,
 		Update: resourceAmplifyAppUpdate,
 		Delete: resourceAmplifyAppDelete,
-		
+		CustomizeDiff: resourceAmplifyAppCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"auto_branch_creation_config": {
 				Type: schema.TypeList,
@@ -106,4 +107,8 @@ func resourceAmplifyAppUpdate(data *schema.ResourceData, meta interface{}) error
 
 func resourceAmplifyAppDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Amplify::App", data, meta)
+}
+
+func resourceAmplifyAppCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

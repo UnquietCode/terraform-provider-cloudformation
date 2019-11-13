@@ -22,7 +22,8 @@ func ResourceEC2InternetGateway() *schema.Resource {
 		Create: resourceEC2InternetGatewayCreate,
 		Update: resourceEC2InternetGatewayUpdate,
 		Delete: resourceEC2InternetGatewayDelete,
-		
+		CustomizeDiff: resourceEC2InternetGatewayCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"tags": {
 				Type: schema.TypeList,
@@ -56,4 +57,8 @@ func resourceEC2InternetGatewayUpdate(data *schema.ResourceData, meta interface{
 
 func resourceEC2InternetGatewayDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::InternetGateway", data, meta)
+}
+
+func resourceEC2InternetGatewayCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

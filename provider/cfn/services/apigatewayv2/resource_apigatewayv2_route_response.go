@@ -21,7 +21,8 @@ func ResourceApiGatewayV2RouteResponse() *schema.Resource {
 		Create: resourceApiGatewayV2RouteResponseCreate,
 		Update: resourceApiGatewayV2RouteResponseUpdate,
 		Delete: resourceApiGatewayV2RouteResponseDelete,
-		
+		CustomizeDiff: resourceApiGatewayV2RouteResponseCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"route_response_key": {
 				Type: schema.TypeString,
@@ -74,4 +75,8 @@ func resourceApiGatewayV2RouteResponseUpdate(data *schema.ResourceData, meta int
 
 func resourceApiGatewayV2RouteResponseDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGatewayV2::RouteResponse", data, meta)
+}
+
+func resourceApiGatewayV2RouteResponseCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

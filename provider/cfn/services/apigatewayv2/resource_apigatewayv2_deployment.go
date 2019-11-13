@@ -21,7 +21,8 @@ func ResourceApiGatewayV2Deployment() *schema.Resource {
 		Create: resourceApiGatewayV2DeploymentCreate,
 		Update: resourceApiGatewayV2DeploymentUpdate,
 		Delete: resourceApiGatewayV2DeploymentDelete,
-		
+		CustomizeDiff: resourceApiGatewayV2DeploymentCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -62,4 +63,8 @@ func resourceApiGatewayV2DeploymentUpdate(data *schema.ResourceData, meta interf
 
 func resourceApiGatewayV2DeploymentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGatewayV2::Deployment", data, meta)
+}
+
+func resourceApiGatewayV2DeploymentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

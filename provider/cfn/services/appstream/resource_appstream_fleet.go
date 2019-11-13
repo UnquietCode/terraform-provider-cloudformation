@@ -22,7 +22,8 @@ func ResourceAppStreamFleet() *schema.Resource {
 		Create: resourceAppStreamFleetCreate,
 		Update: resourceAppStreamFleetUpdate,
 		Delete: resourceAppStreamFleetDelete,
-		
+		CustomizeDiff: resourceAppStreamFleetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -118,4 +119,8 @@ func resourceAppStreamFleetUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceAppStreamFleetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AppStream::Fleet", data, meta)
+}
+
+func resourceAppStreamFleetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

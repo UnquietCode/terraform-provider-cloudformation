@@ -22,7 +22,8 @@ func ResourceDocDBDBCluster() *schema.Resource {
 		Create: resourceDocDBDBClusterCreate,
 		Update: resourceDocDBDBClusterUpdate,
 		Delete: resourceDocDBDBClusterDelete,
-		
+		CustomizeDiff: resourceDocDBDBClusterCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"storage_encrypted": {
 				Type: schema.TypeBool,
@@ -123,4 +124,8 @@ func resourceDocDBDBClusterUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceDocDBDBClusterDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::DocDB::DBCluster", data, meta)
+}
+
+func resourceDocDBDBClusterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

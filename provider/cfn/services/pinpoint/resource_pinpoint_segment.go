@@ -21,7 +21,8 @@ func ResourcePinpointSegment() *schema.Resource {
 		Create: resourcePinpointSegmentCreate,
 		Update: resourcePinpointSegmentUpdate,
 		Delete: resourcePinpointSegmentDelete,
-		
+		CustomizeDiff: resourcePinpointSegmentCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"segment_groups": {
 				Type: schema.TypeList,
@@ -74,4 +75,8 @@ func resourcePinpointSegmentUpdate(data *schema.ResourceData, meta interface{}) 
 
 func resourcePinpointSegmentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Pinpoint::Segment", data, meta)
+}
+
+func resourcePinpointSegmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

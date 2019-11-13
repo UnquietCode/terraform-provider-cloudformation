@@ -21,7 +21,8 @@ func ResourceEC2VPCDHCPOptionsAssociation() *schema.Resource {
 		Create: resourceEC2VPCDHCPOptionsAssociationCreate,
 		Update: resourceEC2VPCDHCPOptionsAssociationUpdate,
 		Delete: resourceEC2VPCDHCPOptionsAssociationDelete,
-		
+		CustomizeDiff: resourceEC2VPCDHCPOptionsAssociationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"dhcp_options_id": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceEC2VPCDHCPOptionsAssociationUpdate(data *schema.ResourceData, meta 
 
 func resourceEC2VPCDHCPOptionsAssociationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::VPCDHCPOptionsAssociation", data, meta)
+}
+
+func resourceEC2VPCDHCPOptionsAssociationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

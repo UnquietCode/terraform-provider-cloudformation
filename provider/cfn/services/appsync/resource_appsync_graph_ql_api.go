@@ -21,7 +21,8 @@ func ResourceAppSyncGraphQLApi() *schema.Resource {
 		Create: resourceAppSyncGraphQLApiCreate,
 		Update: resourceAppSyncGraphQLApiUpdate,
 		Delete: resourceAppSyncGraphQLApiDelete,
-		
+		CustomizeDiff: resourceAppSyncGraphQLApiCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"open_id_connect_config": {
 				Type: schema.TypeList,
@@ -88,4 +89,8 @@ func resourceAppSyncGraphQLApiUpdate(data *schema.ResourceData, meta interface{}
 
 func resourceAppSyncGraphQLApiDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AppSync::GraphQLApi", data, meta)
+}
+
+func resourceAppSyncGraphQLApiCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

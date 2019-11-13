@@ -21,7 +21,8 @@ func ResourceEFSMountTarget() *schema.Resource {
 		Create: resourceEFSMountTargetCreate,
 		Update: resourceEFSMountTargetUpdate,
 		Delete: resourceEFSMountTargetDelete,
-		
+		CustomizeDiff: resourceEFSMountTargetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"file_system_id": {
 				Type: schema.TypeString,
@@ -68,4 +69,8 @@ func resourceEFSMountTargetUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceEFSMountTargetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EFS::MountTarget", data, meta)
+}
+
+func resourceEFSMountTargetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

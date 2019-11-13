@@ -21,7 +21,8 @@ func ResourcePinpointApp() *schema.Resource {
 		Create: resourcePinpointAppCreate,
 		Update: resourcePinpointAppUpdate,
 		Delete: resourcePinpointAppDelete,
-		
+		CustomizeDiff: resourcePinpointAppCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"tags": {
 				Type: schema.TypeMap,
@@ -58,4 +59,8 @@ func resourcePinpointAppUpdate(data *schema.ResourceData, meta interface{}) erro
 
 func resourcePinpointAppDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Pinpoint::App", data, meta)
+}
+
+func resourcePinpointAppCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

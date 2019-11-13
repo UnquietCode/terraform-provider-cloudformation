@@ -21,7 +21,8 @@ func ResourceS3BucketPolicy() *schema.Resource {
 		Create: resourceS3BucketPolicyCreate,
 		Update: resourceS3BucketPolicyUpdate,
 		Delete: resourceS3BucketPolicyDelete,
-		
+		CustomizeDiff: resourceS3BucketPolicyCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"bucket": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceS3BucketPolicyUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceS3BucketPolicyDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::S3::BucketPolicy", data, meta)
+}
+
+func resourceS3BucketPolicyCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

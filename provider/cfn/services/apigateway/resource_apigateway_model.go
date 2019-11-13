@@ -21,7 +21,8 @@ func ResourceApiGatewayModel() *schema.Resource {
 		Create: resourceApiGatewayModelCreate,
 		Update: resourceApiGatewayModelUpdate,
 		Delete: resourceApiGatewayModelDelete,
-		
+		CustomizeDiff: resourceApiGatewayModelCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"content_type": {
 				Type: schema.TypeString,
@@ -70,4 +71,8 @@ func resourceApiGatewayModelUpdate(data *schema.ResourceData, meta interface{}) 
 
 func resourceApiGatewayModelDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGateway::Model", data, meta)
+}
+
+func resourceApiGatewayModelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

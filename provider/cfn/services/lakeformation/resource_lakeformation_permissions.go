@@ -21,7 +21,8 @@ func ResourceLakeFormationPermissions() *schema.Resource {
 		Create: resourceLakeFormationPermissionsCreate,
 		Update: resourceLakeFormationPermissionsUpdate,
 		Delete: resourceLakeFormationPermissionsDelete,
-		
+		CustomizeDiff: resourceLakeFormationPermissionsCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"data_lake_principal": {
 				Type: schema.TypeList,
@@ -72,4 +73,8 @@ func resourceLakeFormationPermissionsUpdate(data *schema.ResourceData, meta inte
 
 func resourceLakeFormationPermissionsDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::LakeFormation::Permissions", data, meta)
+}
+
+func resourceLakeFormationPermissionsCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

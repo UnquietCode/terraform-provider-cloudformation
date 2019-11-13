@@ -22,7 +22,8 @@ func ResourceECSCluster() *schema.Resource {
 		Create: resourceECSClusterCreate,
 		Update: resourceECSClusterUpdate,
 		Delete: resourceECSClusterDelete,
-		
+		CustomizeDiff: resourceECSClusterCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"cluster_name": {
 				Type: schema.TypeString,
@@ -60,4 +61,8 @@ func resourceECSClusterUpdate(data *schema.ResourceData, meta interface{}) error
 
 func resourceECSClusterDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ECS::Cluster", data, meta)
+}
+
+func resourceECSClusterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

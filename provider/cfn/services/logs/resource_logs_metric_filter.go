@@ -21,7 +21,8 @@ func ResourceLogsMetricFilter() *schema.Resource {
 		Create: resourceLogsMetricFilterCreate,
 		Update: resourceLogsMetricFilterUpdate,
 		Delete: resourceLogsMetricFilterDelete,
-		
+		CustomizeDiff: resourceLogsMetricFilterCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"filter_pattern": {
 				Type: schema.TypeString,
@@ -63,4 +64,8 @@ func resourceLogsMetricFilterUpdate(data *schema.ResourceData, meta interface{})
 
 func resourceLogsMetricFilterDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Logs::MetricFilter", data, meta)
+}
+
+func resourceLogsMetricFilterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

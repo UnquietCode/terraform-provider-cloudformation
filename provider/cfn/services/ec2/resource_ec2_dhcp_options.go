@@ -22,7 +22,8 @@ func ResourceEC2DHCPOptions() *schema.Resource {
 		Create: resourceEC2DHCPOptionsCreate,
 		Update: resourceEC2DHCPOptionsUpdate,
 		Delete: resourceEC2DHCPOptionsDelete,
-		
+		CustomizeDiff: resourceEC2DHCPOptionsCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"domain_name": {
 				Type: schema.TypeString,
@@ -81,4 +82,8 @@ func resourceEC2DHCPOptionsUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceEC2DHCPOptionsDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::DHCPOptions", data, meta)
+}
+
+func resourceEC2DHCPOptionsCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceAmazonMQConfigurationAssociation() *schema.Resource {
 		Create: resourceAmazonMQConfigurationAssociationCreate,
 		Update: resourceAmazonMQConfigurationAssociationUpdate,
 		Delete: resourceAmazonMQConfigurationAssociationDelete,
-		
+		CustomizeDiff: resourceAmazonMQConfigurationAssociationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"broker": {
 				Type: schema.TypeString,
@@ -60,4 +61,8 @@ func resourceAmazonMQConfigurationAssociationUpdate(data *schema.ResourceData, m
 
 func resourceAmazonMQConfigurationAssociationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AmazonMQ::ConfigurationAssociation", data, meta)
+}
+
+func resourceAmazonMQConfigurationAssociationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

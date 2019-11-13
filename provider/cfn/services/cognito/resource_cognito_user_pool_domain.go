@@ -21,7 +21,8 @@ func ResourceCognitoUserPoolDomain() *schema.Resource {
 		Create: resourceCognitoUserPoolDomainCreate,
 		Update: resourceCognitoUserPoolDomainUpdate,
 		Delete: resourceCognitoUserPoolDomainDelete,
-		
+		CustomizeDiff: resourceCognitoUserPoolDomainCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"user_pool_id": {
 				Type: schema.TypeString,
@@ -64,4 +65,8 @@ func resourceCognitoUserPoolDomainUpdate(data *schema.ResourceData, meta interfa
 
 func resourceCognitoUserPoolDomainDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Cognito::UserPoolDomain", data, meta)
+}
+
+func resourceCognitoUserPoolDomainCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -22,7 +22,8 @@ func ResourceEC2VPNConnection() *schema.Resource {
 		Create: resourceEC2VPNConnectionCreate,
 		Update: resourceEC2VPNConnectionUpdate,
 		Delete: resourceEC2VPNConnectionDelete,
-		
+		CustomizeDiff: resourceEC2VPNConnectionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"customer_gateway_id": {
 				Type: schema.TypeString,
@@ -81,4 +82,8 @@ func resourceEC2VPNConnectionUpdate(data *schema.ResourceData, meta interface{})
 
 func resourceEC2VPNConnectionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::VPNConnection", data, meta)
+}
+
+func resourceEC2VPNConnectionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

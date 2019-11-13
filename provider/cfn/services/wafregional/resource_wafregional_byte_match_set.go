@@ -21,7 +21,8 @@ func ResourceWAFRegionalByteMatchSet() *schema.Resource {
 		Create: resourceWAFRegionalByteMatchSetCreate,
 		Update: resourceWAFRegionalByteMatchSetUpdate,
 		Delete: resourceWAFRegionalByteMatchSetDelete,
-		
+		CustomizeDiff: resourceWAFRegionalByteMatchSetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"byte_match_tuples": {
 				Type: schema.TypeList,
@@ -59,4 +60,8 @@ func resourceWAFRegionalByteMatchSetUpdate(data *schema.ResourceData, meta inter
 
 func resourceWAFRegionalByteMatchSetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::WAFRegional::ByteMatchSet", data, meta)
+}
+
+func resourceWAFRegionalByteMatchSetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

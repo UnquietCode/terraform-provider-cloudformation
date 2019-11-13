@@ -21,7 +21,8 @@ func ResourceConfigConfigurationAggregator() *schema.Resource {
 		Create: resourceConfigConfigurationAggregatorCreate,
 		Update: resourceConfigConfigurationAggregatorUpdate,
 		Delete: resourceConfigConfigurationAggregatorDelete,
-		
+		CustomizeDiff: resourceConfigConfigurationAggregatorCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"account_aggregation_sources": {
 				Type: schema.TypeList,
@@ -65,4 +66,8 @@ func resourceConfigConfigurationAggregatorUpdate(data *schema.ResourceData, meta
 
 func resourceConfigConfigurationAggregatorDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Config::ConfigurationAggregator", data, meta)
+}
+
+func resourceConfigConfigurationAggregatorCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

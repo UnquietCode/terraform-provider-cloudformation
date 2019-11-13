@@ -21,7 +21,8 @@ func ResourceSSMResourceDataSync() *schema.Resource {
 		Create: resourceSSMResourceDataSyncCreate,
 		Update: resourceSSMResourceDataSyncUpdate,
 		Delete: resourceSSMResourceDataSyncDelete,
-		
+		CustomizeDiff: resourceSSMResourceDataSyncCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"kms_key_arn": {
 				Type: schema.TypeString,
@@ -74,4 +75,8 @@ func resourceSSMResourceDataSyncUpdate(data *schema.ResourceData, meta interface
 
 func resourceSSMResourceDataSyncDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SSM::ResourceDataSync", data, meta)
+}
+
+func resourceSSMResourceDataSyncCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

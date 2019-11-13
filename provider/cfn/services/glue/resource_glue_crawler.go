@@ -21,7 +21,8 @@ func ResourceGlueCrawler() *schema.Resource {
 		Create: resourceGlueCrawlerCreate,
 		Update: resourceGlueCrawlerUpdate,
 		Delete: resourceGlueCrawlerDelete,
-		
+		CustomizeDiff: resourceGlueCrawlerCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"role": {
 				Type: schema.TypeString,
@@ -105,4 +106,8 @@ func resourceGlueCrawlerUpdate(data *schema.ResourceData, meta interface{}) erro
 
 func resourceGlueCrawlerDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Glue::Crawler", data, meta)
+}
+
+func resourceGlueCrawlerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

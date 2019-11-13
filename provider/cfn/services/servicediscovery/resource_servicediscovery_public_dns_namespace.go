@@ -21,7 +21,8 @@ func ResourceServiceDiscoveryPublicDnsNamespace() *schema.Resource {
 		Create: resourceServiceDiscoveryPublicDnsNamespaceCreate,
 		Update: resourceServiceDiscoveryPublicDnsNamespaceUpdate,
 		Delete: resourceServiceDiscoveryPublicDnsNamespaceDelete,
-		
+		CustomizeDiff: resourceServiceDiscoveryPublicDnsNamespaceCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceServiceDiscoveryPublicDnsNamespaceUpdate(data *schema.ResourceData,
 
 func resourceServiceDiscoveryPublicDnsNamespaceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ServiceDiscovery::PublicDnsNamespace", data, meta)
+}
+
+func resourceServiceDiscoveryPublicDnsNamespaceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

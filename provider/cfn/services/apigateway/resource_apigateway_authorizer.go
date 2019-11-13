@@ -21,7 +21,8 @@ func ResourceApiGatewayAuthorizer() *schema.Resource {
 		Create: resourceApiGatewayAuthorizerCreate,
 		Update: resourceApiGatewayAuthorizerUpdate,
 		Delete: resourceApiGatewayAuthorizerDelete,
-		
+		CustomizeDiff: resourceApiGatewayAuthorizerCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"auth_type": {
 				Type: schema.TypeString,
@@ -92,4 +93,8 @@ func resourceApiGatewayAuthorizerUpdate(data *schema.ResourceData, meta interfac
 
 func resourceApiGatewayAuthorizerDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGateway::Authorizer", data, meta)
+}
+
+func resourceApiGatewayAuthorizerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

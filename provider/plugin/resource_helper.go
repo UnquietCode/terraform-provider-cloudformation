@@ -336,8 +336,35 @@ func ResourceDelete(resourceType string, resourceData *schema.ResourceData, meta
   return nil
 }
 
+
 func ResourceCustomizeDiff(resourceDiff *schema.ResourceDiff, meta interface{}) error {
-	// resourceDiff.SetNewComputed("last_
+	// log.Printf("%s", resourceDiff)
+	// log.Printf("%s", meta.(ProviderMetadata).existingResources)
+	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
+	
+	logicalId := resourceDiff.Get("logical_id").(string)
+	
+	if _, ok := (*providerMeta.exists)[logicalId]; ok {
+    return errors.New("exists, duplicate logical id "+logicalId)
+	}
+
+	if _, ok := (*providerMeta.diffed)[logicalId]; ok {
+    return errors.New("diffed, duplicate logical id "+logicalId)
+	}
+	
+	(*providerMeta.diffed)[logicalId] = true
+	
+	log.Printf("customizeResourceDiff %s +++++++++++++++++++++++++++++++++++++++++++++++++", logicalId)
+
+	handleExistingResouce(providerMeta, logicalId, "---")
+	
+	// if id, ok := resourceDiff.GetOk("id"); ok {
+	// 	handleExistingResouce(meta.(ProviderMetadata), logical_id.(string), id.(string))
+	// } else {
+	// 	handleExistingResouce(meta.(ProviderMetadata), logical_id.(string), "")
+	// 
+	// }
+	
 	return nil
 }
 
@@ -479,38 +506,6 @@ func TemplateCustomizeDiff(resourceDiff *schema.ResourceDiff, meta interface{}) 
 	// log.Printf("%s", resourceDiff)
 	// log.Printf("%s", meta.(ProviderMetadata).resourceHashes)
 	resourceDiff.SetNewComputed("id")
-	return nil
-}
-
-
-func CustomizeDiff(resourceDiff *schema.ResourceDiff, meta interface{}) error {
-	// log.Printf("%s", resourceDiff)
-	// log.Printf("%s", meta.(ProviderMetadata).existingResources)
-	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
-	
-	logicalId := resourceDiff.Get("logical_id").(string)
-	
-	if _, ok := (*providerMeta.exists)[logicalId]; ok {
-    return errors.New("exists, duplicate logical id "+logicalId)
-	}
-
-	if _, ok := (*providerMeta.diffed)[logicalId]; ok {
-    return errors.New("diffed, duplicate logical id "+logicalId)
-	}
-	
-	(*providerMeta.diffed)[logicalId] = true
-	
-	log.Printf("customizeResourceDiff %s +++++++++++++++++++++++++++++++++++++++++++++++++", logicalId)
-
-	handleExistingResouce(providerMeta, logicalId, "---")
-	
-	// if id, ok := resourceDiff.GetOk("id"); ok {
-	// 	handleExistingResouce(meta.(ProviderMetadata), logical_id.(string), id.(string))
-	// } else {
-	// 	handleExistingResouce(meta.(ProviderMetadata), logical_id.(string), "")
-	// 
-	// }
-	
 	return nil
 }
 

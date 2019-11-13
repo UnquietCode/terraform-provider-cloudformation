@@ -21,7 +21,8 @@ func ResourceRoute53ResolverResolverRuleAssociation() *schema.Resource {
 		Create: resourceRoute53ResolverResolverRuleAssociationCreate,
 		Update: resourceRoute53ResolverResolverRuleAssociationUpdate,
 		Delete: resourceRoute53ResolverResolverRuleAssociationDelete,
-		
+		CustomizeDiff: resourceRoute53ResolverResolverRuleAssociationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"vpc_id": {
 				Type: schema.TypeString,
@@ -62,4 +63,8 @@ func resourceRoute53ResolverResolverRuleAssociationUpdate(data *schema.ResourceD
 
 func resourceRoute53ResolverResolverRuleAssociationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Route53Resolver::ResolverRuleAssociation", data, meta)
+}
+
+func resourceRoute53ResolverResolverRuleAssociationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

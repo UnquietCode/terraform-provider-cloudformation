@@ -21,7 +21,8 @@ func ResourceMediaLiveInput() *schema.Resource {
 		Create: resourceMediaLiveInputCreate,
 		Update: resourceMediaLiveInputUpdate,
 		Delete: resourceMediaLiveInputDelete,
-		
+		CustomizeDiff: resourceMediaLiveInputCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"type": {
 				Type: schema.TypeString,
@@ -92,4 +93,8 @@ func resourceMediaLiveInputUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceMediaLiveInputDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::MediaLive::Input", data, meta)
+}
+
+func resourceMediaLiveInputCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

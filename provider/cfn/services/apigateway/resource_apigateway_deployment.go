@@ -21,7 +21,8 @@ func ResourceApiGatewayDeployment() *schema.Resource {
 		Create: resourceApiGatewayDeploymentCreate,
 		Update: resourceApiGatewayDeploymentUpdate,
 		Delete: resourceApiGatewayDeploymentDelete,
-		
+		CustomizeDiff: resourceApiGatewayDeploymentCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"deployment_canary_settings": {
 				Type: schema.TypeList,
@@ -74,4 +75,8 @@ func resourceApiGatewayDeploymentUpdate(data *schema.ResourceData, meta interfac
 
 func resourceApiGatewayDeploymentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGateway::Deployment", data, meta)
+}
+
+func resourceApiGatewayDeploymentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

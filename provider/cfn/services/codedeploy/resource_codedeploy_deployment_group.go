@@ -21,7 +21,8 @@ func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 		Create: resourceCodeDeployDeploymentGroupCreate,
 		Update: resourceCodeDeployDeploymentGroupUpdate,
 		Delete: resourceCodeDeployDeploymentGroupDelete,
-		
+		CustomizeDiff: resourceCodeDeployDeploymentGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"alarm_configuration": {
 				Type: schema.TypeList,
@@ -129,4 +130,8 @@ func resourceCodeDeployDeploymentGroupUpdate(data *schema.ResourceData, meta int
 
 func resourceCodeDeployDeploymentGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CodeDeploy::DeploymentGroup", data, meta)
+}
+
+func resourceCodeDeployDeploymentGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

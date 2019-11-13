@@ -21,7 +21,8 @@ func ResourceBackupBackupVault() *schema.Resource {
 		Create: resourceBackupBackupVaultCreate,
 		Update: resourceBackupBackupVaultUpdate,
 		Delete: resourceBackupBackupVaultDelete,
-		
+		CustomizeDiff: resourceBackupBackupVaultCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"backup_vault_tags": {
 				Type: schema.TypeMap,
@@ -72,4 +73,8 @@ func resourceBackupBackupVaultUpdate(data *schema.ResourceData, meta interface{}
 
 func resourceBackupBackupVaultDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Backup::BackupVault", data, meta)
+}
+
+func resourceBackupBackupVaultCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

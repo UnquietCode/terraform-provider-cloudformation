@@ -22,7 +22,8 @@ func ResourceRedshiftClusterParameterGroup() *schema.Resource {
 		Create: resourceRedshiftClusterParameterGroupCreate,
 		Update: resourceRedshiftClusterParameterGroupUpdate,
 		Delete: resourceRedshiftClusterParameterGroupDelete,
-		
+		CustomizeDiff: resourceRedshiftClusterParameterGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -69,4 +70,8 @@ func resourceRedshiftClusterParameterGroupUpdate(data *schema.ResourceData, meta
 
 func resourceRedshiftClusterParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Redshift::ClusterParameterGroup", data, meta)
+}
+
+func resourceRedshiftClusterParameterGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceWAFIPSet() *schema.Resource {
 		Create: resourceWAFIPSetCreate,
 		Update: resourceWAFIPSetUpdate,
 		Delete: resourceWAFIPSetDelete,
-		
+		CustomizeDiff: resourceWAFIPSetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"ip_set_descriptors": {
 				Type: schema.TypeSet,
@@ -59,4 +60,8 @@ func resourceWAFIPSetUpdate(data *schema.ResourceData, meta interface{}) error {
 
 func resourceWAFIPSetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::WAF::IPSet", data, meta)
+}
+
+func resourceWAFIPSetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

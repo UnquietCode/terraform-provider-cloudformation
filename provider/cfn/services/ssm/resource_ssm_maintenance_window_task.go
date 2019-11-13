@@ -21,7 +21,8 @@ func ResourceSSMMaintenanceWindowTask() *schema.Resource {
 		Create: resourceSSMMaintenanceWindowTaskCreate,
 		Update: resourceSSMMaintenanceWindowTaskUpdate,
 		Delete: resourceSSMMaintenanceWindowTaskDelete,
-		
+		CustomizeDiff: resourceSSMMaintenanceWindowTaskCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"max_errors": {
 				Type: schema.TypeString,
@@ -107,4 +108,8 @@ func resourceSSMMaintenanceWindowTaskUpdate(data *schema.ResourceData, meta inte
 
 func resourceSSMMaintenanceWindowTaskDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SSM::MaintenanceWindowTask", data, meta)
+}
+
+func resourceSSMMaintenanceWindowTaskCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

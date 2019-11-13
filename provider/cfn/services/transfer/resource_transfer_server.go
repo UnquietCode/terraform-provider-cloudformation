@@ -22,7 +22,8 @@ func ResourceTransferServer() *schema.Resource {
 		Create: resourceTransferServerCreate,
 		Update: resourceTransferServerUpdate,
 		Delete: resourceTransferServerDelete,
-		
+		CustomizeDiff: resourceTransferServerCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"logging_role": {
 				Type: schema.TypeString,
@@ -80,4 +81,8 @@ func resourceTransferServerUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceTransferServerDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Transfer::Server", data, meta)
+}
+
+func resourceTransferServerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

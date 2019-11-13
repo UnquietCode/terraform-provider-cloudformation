@@ -21,7 +21,8 @@ func ResourceWAFRegionalSqlInjectionMatchSet() *schema.Resource {
 		Create: resourceWAFRegionalSqlInjectionMatchSetCreate,
 		Update: resourceWAFRegionalSqlInjectionMatchSetUpdate,
 		Delete: resourceWAFRegionalSqlInjectionMatchSetDelete,
-		
+		CustomizeDiff: resourceWAFRegionalSqlInjectionMatchSetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"sql_injection_match_tuples": {
 				Type: schema.TypeList,
@@ -59,4 +60,8 @@ func resourceWAFRegionalSqlInjectionMatchSetUpdate(data *schema.ResourceData, me
 
 func resourceWAFRegionalSqlInjectionMatchSetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::WAFRegional::SqlInjectionMatchSet", data, meta)
+}
+
+func resourceWAFRegionalSqlInjectionMatchSetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceServiceCatalogPortfolioProductAssociation() *schema.Resource {
 		Create: resourceServiceCatalogPortfolioProductAssociationCreate,
 		Update: resourceServiceCatalogPortfolioProductAssociationUpdate,
 		Delete: resourceServiceCatalogPortfolioProductAssociationDelete,
-		
+		CustomizeDiff: resourceServiceCatalogPortfolioProductAssociationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"source_portfolio_id": {
 				Type: schema.TypeString,
@@ -66,4 +67,8 @@ func resourceServiceCatalogPortfolioProductAssociationUpdate(data *schema.Resour
 
 func resourceServiceCatalogPortfolioProductAssociationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ServiceCatalog::PortfolioProductAssociation", data, meta)
+}
+
+func resourceServiceCatalogPortfolioProductAssociationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceApplicationAutoScalingScalingPolicy() *schema.Resource {
 		Create: resourceApplicationAutoScalingScalingPolicyCreate,
 		Update: resourceApplicationAutoScalingScalingPolicyUpdate,
 		Delete: resourceApplicationAutoScalingScalingPolicyDelete,
-		
+		CustomizeDiff: resourceApplicationAutoScalingScalingPolicyCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"policy_name": {
 				Type: schema.TypeString,
@@ -86,4 +87,8 @@ func resourceApplicationAutoScalingScalingPolicyUpdate(data *schema.ResourceData
 
 func resourceApplicationAutoScalingScalingPolicyDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApplicationAutoScaling::ScalingPolicy", data, meta)
+}
+
+func resourceApplicationAutoScalingScalingPolicyCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -22,7 +22,8 @@ func ResourceOpsWorksStack() *schema.Resource {
 		Create: resourceOpsWorksStackCreate,
 		Update: resourceOpsWorksStackUpdate,
 		Delete: resourceOpsWorksStackDelete,
-		
+		CustomizeDiff: resourceOpsWorksStackCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"agent_version": {
 				Type: schema.TypeString,
@@ -163,4 +164,8 @@ func resourceOpsWorksStackUpdate(data *schema.ResourceData, meta interface{}) er
 
 func resourceOpsWorksStackDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::OpsWorks::Stack", data, meta)
+}
+
+func resourceOpsWorksStackCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

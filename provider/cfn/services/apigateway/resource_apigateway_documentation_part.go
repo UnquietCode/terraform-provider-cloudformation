@@ -21,7 +21,8 @@ func ResourceApiGatewayDocumentationPart() *schema.Resource {
 		Create: resourceApiGatewayDocumentationPartCreate,
 		Update: resourceApiGatewayDocumentationPartUpdate,
 		Delete: resourceApiGatewayDocumentationPartDelete,
-		
+		CustomizeDiff: resourceApiGatewayDocumentationPartCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"location": {
 				Type: schema.TypeList,
@@ -64,4 +65,8 @@ func resourceApiGatewayDocumentationPartUpdate(data *schema.ResourceData, meta i
 
 func resourceApiGatewayDocumentationPartDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGateway::DocumentationPart", data, meta)
+}
+
+func resourceApiGatewayDocumentationPartCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

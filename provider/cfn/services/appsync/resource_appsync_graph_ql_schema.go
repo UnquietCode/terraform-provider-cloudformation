@@ -21,7 +21,8 @@ func ResourceAppSyncGraphQLSchema() *schema.Resource {
 		Create: resourceAppSyncGraphQLSchemaCreate,
 		Update: resourceAppSyncGraphQLSchemaUpdate,
 		Delete: resourceAppSyncGraphQLSchemaDelete,
-		
+		CustomizeDiff: resourceAppSyncGraphQLSchemaCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"definition": {
 				Type: schema.TypeString,
@@ -62,4 +63,8 @@ func resourceAppSyncGraphQLSchemaUpdate(data *schema.ResourceData, meta interfac
 
 func resourceAppSyncGraphQLSchemaDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AppSync::GraphQLSchema", data, meta)
+}
+
+func resourceAppSyncGraphQLSchemaCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

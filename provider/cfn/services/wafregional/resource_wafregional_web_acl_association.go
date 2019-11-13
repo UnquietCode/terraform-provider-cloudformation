@@ -21,7 +21,8 @@ func ResourceWAFRegionalWebACLAssociation() *schema.Resource {
 		Create: resourceWAFRegionalWebACLAssociationCreate,
 		Update: resourceWAFRegionalWebACLAssociationUpdate,
 		Delete: resourceWAFRegionalWebACLAssociationDelete,
-		
+		CustomizeDiff: resourceWAFRegionalWebACLAssociationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"resource_arn": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceWAFRegionalWebACLAssociationUpdate(data *schema.ResourceData, meta 
 
 func resourceWAFRegionalWebACLAssociationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::WAFRegional::WebACLAssociation", data, meta)
+}
+
+func resourceWAFRegionalWebACLAssociationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

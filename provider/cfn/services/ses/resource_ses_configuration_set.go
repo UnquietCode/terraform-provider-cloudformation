@@ -21,7 +21,8 @@ func ResourceSESConfigurationSet() *schema.Resource {
 		Create: resourceSESConfigurationSetCreate,
 		Update: resourceSESConfigurationSetUpdate,
 		Delete: resourceSESConfigurationSetDelete,
-		
+		CustomizeDiff: resourceSESConfigurationSetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"name": {
 				Type: schema.TypeString,
@@ -54,4 +55,8 @@ func resourceSESConfigurationSetUpdate(data *schema.ResourceData, meta interface
 
 func resourceSESConfigurationSetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SES::ConfigurationSet", data, meta)
+}
+
+func resourceSESConfigurationSetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

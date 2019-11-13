@@ -22,7 +22,8 @@ func ResourceAppStreamStack() *schema.Resource {
 		Create: resourceAppStreamStackCreate,
 		Update: resourceAppStreamStackUpdate,
 		Delete: resourceAppStreamStackDelete,
-		
+		CustomizeDiff: resourceAppStreamStackCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"application_settings": {
 				Type: schema.TypeList,
@@ -101,4 +102,8 @@ func resourceAppStreamStackUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceAppStreamStackDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AppStream::Stack", data, meta)
+}
+
+func resourceAppStreamStackCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

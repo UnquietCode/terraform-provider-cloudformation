@@ -21,7 +21,8 @@ func ResourceCognitoUserPoolUserToGroupAttachment() *schema.Resource {
 		Create: resourceCognitoUserPoolUserToGroupAttachmentCreate,
 		Update: resourceCognitoUserPoolUserToGroupAttachmentUpdate,
 		Delete: resourceCognitoUserPoolUserToGroupAttachmentDelete,
-		
+		CustomizeDiff: resourceCognitoUserPoolUserToGroupAttachmentCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"group_name": {
 				Type: schema.TypeString,
@@ -62,4 +63,8 @@ func resourceCognitoUserPoolUserToGroupAttachmentUpdate(data *schema.ResourceDat
 
 func resourceCognitoUserPoolUserToGroupAttachmentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Cognito::UserPoolUserToGroupAttachment", data, meta)
+}
+
+func resourceCognitoUserPoolUserToGroupAttachmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

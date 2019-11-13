@@ -21,7 +21,8 @@ func ResourceGameLiftFleet() *schema.Resource {
 		Create: resourceGameLiftFleetCreate,
 		Update: resourceGameLiftFleetUpdate,
 		Delete: resourceGameLiftFleetDelete,
-		
+		CustomizeDiff: resourceGameLiftFleetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"build_id": {
 				Type: schema.TypeString,
@@ -97,4 +98,8 @@ func resourceGameLiftFleetUpdate(data *schema.ResourceData, meta interface{}) er
 
 func resourceGameLiftFleetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::GameLift::Fleet", data, meta)
+}
+
+func resourceGameLiftFleetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

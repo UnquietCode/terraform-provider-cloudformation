@@ -22,7 +22,8 @@ func ResourceSSMPatchBaseline() *schema.Resource {
 		Create: resourceSSMPatchBaselineCreate,
 		Update: resourceSSMPatchBaselineUpdate,
 		Delete: resourceSSMPatchBaselineDelete,
-		
+		CustomizeDiff: resourceSSMPatchBaselineCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"operating_system": {
 				Type: schema.TypeString,
@@ -112,4 +113,8 @@ func resourceSSMPatchBaselineUpdate(data *schema.ResourceData, meta interface{})
 
 func resourceSSMPatchBaselineDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SSM::PatchBaseline", data, meta)
+}
+
+func resourceSSMPatchBaselineCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

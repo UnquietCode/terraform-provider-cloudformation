@@ -22,7 +22,8 @@ func ResourceAppMeshVirtualNode() *schema.Resource {
 		Create: resourceAppMeshVirtualNodeCreate,
 		Update: resourceAppMeshVirtualNodeUpdate,
 		Delete: resourceAppMeshVirtualNodeDelete,
-		
+		CustomizeDiff: resourceAppMeshVirtualNodeCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"mesh_name": {
 				Type: schema.TypeString,
@@ -70,4 +71,8 @@ func resourceAppMeshVirtualNodeUpdate(data *schema.ResourceData, meta interface{
 
 func resourceAppMeshVirtualNodeDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AppMesh::VirtualNode", data, meta)
+}
+
+func resourceAppMeshVirtualNodeCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

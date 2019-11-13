@@ -21,7 +21,8 @@ func ResourceIoTCertificate() *schema.Resource {
 		Create: resourceIoTCertificateCreate,
 		Update: resourceIoTCertificateUpdate,
 		Delete: resourceIoTCertificateDelete,
-		
+		CustomizeDiff: resourceIoTCertificateCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"certificate_signing_request": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceIoTCertificateUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceIoTCertificateDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IoT::Certificate", data, meta)
+}
+
+func resourceIoTCertificateCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

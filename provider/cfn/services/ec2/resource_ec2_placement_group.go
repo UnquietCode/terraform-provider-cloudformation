@@ -21,7 +21,8 @@ func ResourceEC2PlacementGroup() *schema.Resource {
 		Create: resourceEC2PlacementGroupCreate,
 		Update: resourceEC2PlacementGroupUpdate,
 		Delete: resourceEC2PlacementGroupDelete,
-		
+		CustomizeDiff: resourceEC2PlacementGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"strategy": {
 				Type: schema.TypeString,
@@ -54,4 +55,8 @@ func resourceEC2PlacementGroupUpdate(data *schema.ResourceData, meta interface{}
 
 func resourceEC2PlacementGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::PlacementGroup", data, meta)
+}
+
+func resourceEC2PlacementGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

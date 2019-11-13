@@ -21,7 +21,8 @@ func ResourceEC2SubnetRouteTableAssociation() *schema.Resource {
 		Create: resourceEC2SubnetRouteTableAssociationCreate,
 		Update: resourceEC2SubnetRouteTableAssociationUpdate,
 		Delete: resourceEC2SubnetRouteTableAssociationDelete,
-		
+		CustomizeDiff: resourceEC2SubnetRouteTableAssociationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"route_table_id": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceEC2SubnetRouteTableAssociationUpdate(data *schema.ResourceData, met
 
 func resourceEC2SubnetRouteTableAssociationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::SubnetRouteTableAssociation", data, meta)
+}
+
+func resourceEC2SubnetRouteTableAssociationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

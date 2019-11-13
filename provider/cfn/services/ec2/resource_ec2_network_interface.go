@@ -22,7 +22,8 @@ func ResourceEC2NetworkInterface() *schema.Resource {
 		Create: resourceEC2NetworkInterfaceCreate,
 		Update: resourceEC2NetworkInterfaceUpdate,
 		Delete: resourceEC2NetworkInterfaceDelete,
-		
+		CustomizeDiff: resourceEC2NetworkInterfaceCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -101,4 +102,8 @@ func resourceEC2NetworkInterfaceUpdate(data *schema.ResourceData, meta interface
 
 func resourceEC2NetworkInterfaceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::NetworkInterface", data, meta)
+}
+
+func resourceEC2NetworkInterfaceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

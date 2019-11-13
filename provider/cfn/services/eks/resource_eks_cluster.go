@@ -21,7 +21,8 @@ func ResourceEKSCluster() *schema.Resource {
 		Create: resourceEKSClusterCreate,
 		Update: resourceEKSClusterUpdate,
 		Delete: resourceEKSClusterDelete,
-		
+		CustomizeDiff: resourceEKSClusterCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"version": {
 				Type: schema.TypeString,
@@ -68,4 +69,8 @@ func resourceEKSClusterUpdate(data *schema.ResourceData, meta interface{}) error
 
 func resourceEKSClusterDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EKS::Cluster", data, meta)
+}
+
+func resourceEKSClusterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceGuardDutyMaster() *schema.Resource {
 		Create: resourceGuardDutyMasterCreate,
 		Update: resourceGuardDutyMasterUpdate,
 		Delete: resourceGuardDutyMasterDelete,
-		
+		CustomizeDiff: resourceGuardDutyMasterCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"detector_id": {
 				Type: schema.TypeString,
@@ -62,4 +63,8 @@ func resourceGuardDutyMasterUpdate(data *schema.ResourceData, meta interface{}) 
 
 func resourceGuardDutyMasterDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::GuardDuty::Master", data, meta)
+}
+
+func resourceGuardDutyMasterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

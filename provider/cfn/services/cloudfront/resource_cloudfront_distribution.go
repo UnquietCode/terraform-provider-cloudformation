@@ -22,7 +22,8 @@ func ResourceCloudFrontDistribution() *schema.Resource {
 		Create: resourceCloudFrontDistributionCreate,
 		Update: resourceCloudFrontDistributionUpdate,
 		Delete: resourceCloudFrontDistributionDelete,
-		
+		CustomizeDiff: resourceCloudFrontDistributionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"distribution_config": {
 				Type: schema.TypeList,
@@ -62,4 +63,8 @@ func resourceCloudFrontDistributionUpdate(data *schema.ResourceData, meta interf
 
 func resourceCloudFrontDistributionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CloudFront::Distribution", data, meta)
+}
+
+func resourceCloudFrontDistributionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -22,7 +22,8 @@ func ResourceDMSEndpoint() *schema.Resource {
 		Create: resourceDMSEndpointCreate,
 		Update: resourceDMSEndpointUpdate,
 		Delete: resourceDMSEndpointDelete,
-		
+		CustomizeDiff: resourceDMSEndpointCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"kms_key_id": {
 				Type: schema.TypeString,
@@ -134,4 +135,8 @@ func resourceDMSEndpointUpdate(data *schema.ResourceData, meta interface{}) erro
 
 func resourceDMSEndpointDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::DMS::Endpoint", data, meta)
+}
+
+func resourceDMSEndpointCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

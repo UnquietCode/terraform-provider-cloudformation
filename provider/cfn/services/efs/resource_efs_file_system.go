@@ -21,7 +21,8 @@ func ResourceEFSFileSystem() *schema.Resource {
 		Create: resourceEFSFileSystemCreate,
 		Update: resourceEFSFileSystemUpdate,
 		Delete: resourceEFSFileSystemDelete,
-		
+		CustomizeDiff: resourceEFSFileSystemCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"encrypted": {
 				Type: schema.TypeBool,
@@ -80,4 +81,8 @@ func resourceEFSFileSystemUpdate(data *schema.ResourceData, meta interface{}) er
 
 func resourceEFSFileSystemDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EFS::FileSystem", data, meta)
+}
+
+func resourceEFSFileSystemCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

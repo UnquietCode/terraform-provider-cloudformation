@@ -22,7 +22,8 @@ func ResourceServiceCatalogPortfolio() *schema.Resource {
 		Create: resourceServiceCatalogPortfolioCreate,
 		Update: resourceServiceCatalogPortfolioUpdate,
 		Delete: resourceServiceCatalogPortfolioDelete,
-		
+		CustomizeDiff: resourceServiceCatalogPortfolioCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"provider_name": {
 				Type: schema.TypeString,
@@ -72,4 +73,8 @@ func resourceServiceCatalogPortfolioUpdate(data *schema.ResourceData, meta inter
 
 func resourceServiceCatalogPortfolioDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ServiceCatalog::Portfolio", data, meta)
+}
+
+func resourceServiceCatalogPortfolioCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

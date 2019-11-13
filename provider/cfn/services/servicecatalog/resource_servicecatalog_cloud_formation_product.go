@@ -22,7 +22,8 @@ func ResourceServiceCatalogCloudFormationProduct() *schema.Resource {
 		Create: resourceServiceCatalogCloudFormationProductCreate,
 		Update: resourceServiceCatalogCloudFormationProductUpdate,
 		Delete: resourceServiceCatalogCloudFormationProductDelete,
-		
+		CustomizeDiff: resourceServiceCatalogCloudFormationProductCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"owner": {
 				Type: schema.TypeString,
@@ -93,4 +94,8 @@ func resourceServiceCatalogCloudFormationProductUpdate(data *schema.ResourceData
 
 func resourceServiceCatalogCloudFormationProductDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ServiceCatalog::CloudFormationProduct", data, meta)
+}
+
+func resourceServiceCatalogCloudFormationProductCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

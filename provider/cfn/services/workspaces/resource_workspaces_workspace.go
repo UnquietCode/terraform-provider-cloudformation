@@ -22,7 +22,8 @@ func ResourceWorkSpacesWorkspace() *schema.Resource {
 		Create: resourceWorkSpacesWorkspaceCreate,
 		Update: resourceWorkSpacesWorkspaceUpdate,
 		Delete: resourceWorkSpacesWorkspaceDelete,
-		
+		CustomizeDiff: resourceWorkSpacesWorkspaceCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"bundle_id": {
 				Type: schema.TypeString,
@@ -86,4 +87,8 @@ func resourceWorkSpacesWorkspaceUpdate(data *schema.ResourceData, meta interface
 
 func resourceWorkSpacesWorkspaceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::WorkSpaces::Workspace", data, meta)
+}
+
+func resourceWorkSpacesWorkspaceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

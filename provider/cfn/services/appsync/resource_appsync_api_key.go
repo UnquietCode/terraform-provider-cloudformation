@@ -21,7 +21,8 @@ func ResourceAppSyncApiKey() *schema.Resource {
 		Create: resourceAppSyncApiKeyCreate,
 		Update: resourceAppSyncApiKeyUpdate,
 		Delete: resourceAppSyncApiKeyDelete,
-		
+		CustomizeDiff: resourceAppSyncApiKeyCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -62,4 +63,8 @@ func resourceAppSyncApiKeyUpdate(data *schema.ResourceData, meta interface{}) er
 
 func resourceAppSyncApiKeyDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AppSync::ApiKey", data, meta)
+}
+
+func resourceAppSyncApiKeyCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

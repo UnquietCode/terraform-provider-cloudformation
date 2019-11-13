@@ -22,7 +22,8 @@ func ResourceEC2CustomerGateway() *schema.Resource {
 		Create: resourceEC2CustomerGatewayCreate,
 		Update: resourceEC2CustomerGatewayUpdate,
 		Delete: resourceEC2CustomerGatewayDelete,
-		
+		CustomizeDiff: resourceEC2CustomerGatewayCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"bgp_asn": {
 				Type: schema.TypeInt,
@@ -68,4 +69,8 @@ func resourceEC2CustomerGatewayUpdate(data *schema.ResourceData, meta interface{
 
 func resourceEC2CustomerGatewayDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::CustomerGateway", data, meta)
+}
+
+func resourceEC2CustomerGatewayCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

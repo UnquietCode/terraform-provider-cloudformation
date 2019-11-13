@@ -21,7 +21,8 @@ func ResourceManagedBlockchainMember() *schema.Resource {
 		Create: resourceManagedBlockchainMemberCreate,
 		Update: resourceManagedBlockchainMemberUpdate,
 		Delete: resourceManagedBlockchainMemberDelete,
-		
+		CustomizeDiff: resourceManagedBlockchainMemberCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"member_configuration": {
 				Type: schema.TypeList,
@@ -70,4 +71,8 @@ func resourceManagedBlockchainMemberUpdate(data *schema.ResourceData, meta inter
 
 func resourceManagedBlockchainMemberDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ManagedBlockchain::Member", data, meta)
+}
+
+func resourceManagedBlockchainMemberCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

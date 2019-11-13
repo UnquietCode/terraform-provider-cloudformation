@@ -21,7 +21,8 @@ func ResourceLogsDestination() *schema.Resource {
 		Create: resourceLogsDestinationCreate,
 		Update: resourceLogsDestinationUpdate,
 		Delete: resourceLogsDestinationDelete,
-		
+		CustomizeDiff: resourceLogsDestinationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"destination_name": {
 				Type: schema.TypeString,
@@ -66,4 +67,8 @@ func resourceLogsDestinationUpdate(data *schema.ResourceData, meta interface{}) 
 
 func resourceLogsDestinationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Logs::Destination", data, meta)
+}
+
+func resourceLogsDestinationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

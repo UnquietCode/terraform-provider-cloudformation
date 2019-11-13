@@ -21,7 +21,8 @@ func ResourceEC2VPCEndpoint() *schema.Resource {
 		Create: resourceEC2VPCEndpointCreate,
 		Update: resourceEC2VPCEndpointUpdate,
 		Delete: resourceEC2VPCEndpointDelete,
-		
+		CustomizeDiff: resourceEC2VPCEndpointCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"policy_document": {
 				Type: schema.TypeMap,
@@ -88,4 +89,8 @@ func resourceEC2VPCEndpointUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceEC2VPCEndpointDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::VPCEndpoint", data, meta)
+}
+
+func resourceEC2VPCEndpointCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceRoboMakerSimulationApplicationVersion() *schema.Resource {
 		Create: resourceRoboMakerSimulationApplicationVersionCreate,
 		Update: resourceRoboMakerSimulationApplicationVersionUpdate,
 		Delete: resourceRoboMakerSimulationApplicationVersionDelete,
-		
+		CustomizeDiff: resourceRoboMakerSimulationApplicationVersionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"current_revision_id": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceRoboMakerSimulationApplicationVersionUpdate(data *schema.ResourceDa
 
 func resourceRoboMakerSimulationApplicationVersionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::RoboMaker::SimulationApplicationVersion", data, meta)
+}
+
+func resourceRoboMakerSimulationApplicationVersionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

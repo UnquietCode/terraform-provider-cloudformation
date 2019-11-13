@@ -21,7 +21,8 @@ func ResourceGreengrassSubscriptionDefinitionVersion() *schema.Resource {
 		Create: resourceGreengrassSubscriptionDefinitionVersionCreate,
 		Update: resourceGreengrassSubscriptionDefinitionVersionUpdate,
 		Delete: resourceGreengrassSubscriptionDefinitionVersionDelete,
-		
+		CustomizeDiff: resourceGreengrassSubscriptionDefinitionVersionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"subscription_definition_id": {
 				Type: schema.TypeString,
@@ -59,4 +60,8 @@ func resourceGreengrassSubscriptionDefinitionVersionUpdate(data *schema.Resource
 
 func resourceGreengrassSubscriptionDefinitionVersionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Greengrass::SubscriptionDefinitionVersion", data, meta)
+}
+
+func resourceGreengrassSubscriptionDefinitionVersionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

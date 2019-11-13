@@ -21,7 +21,8 @@ func ResourceAutoScalingLifecycleHook() *schema.Resource {
 		Create: resourceAutoScalingLifecycleHookCreate,
 		Update: resourceAutoScalingLifecycleHookUpdate,
 		Delete: resourceAutoScalingLifecycleHookDelete,
-		
+		CustomizeDiff: resourceAutoScalingLifecycleHookCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"auto_scaling_group_name": {
 				Type: schema.TypeString,
@@ -82,4 +83,8 @@ func resourceAutoScalingLifecycleHookUpdate(data *schema.ResourceData, meta inte
 
 func resourceAutoScalingLifecycleHookDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AutoScaling::LifecycleHook", data, meta)
+}
+
+func resourceAutoScalingLifecycleHookCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

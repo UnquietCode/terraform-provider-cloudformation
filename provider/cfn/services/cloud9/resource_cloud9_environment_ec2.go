@@ -21,7 +21,8 @@ func ResourceCloud9EnvironmentEC2() *schema.Resource {
 		Create: resourceCloud9EnvironmentEC2Create,
 		Update: resourceCloud9EnvironmentEC2Update,
 		Delete: resourceCloud9EnvironmentEC2Delete,
-		
+		CustomizeDiff: resourceCloud9EnvironmentEC2CustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"repositories": {
 				Type: schema.TypeList,
@@ -79,4 +80,8 @@ func resourceCloud9EnvironmentEC2Update(data *schema.ResourceData, meta interfac
 
 func resourceCloud9EnvironmentEC2Delete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Cloud9::EnvironmentEC2", data, meta)
+}
+
+func resourceCloud9EnvironmentEC2CustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

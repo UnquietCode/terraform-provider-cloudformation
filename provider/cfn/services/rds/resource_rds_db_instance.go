@@ -22,7 +22,8 @@ func ResourceRDSDBInstance() *schema.Resource {
 		Create: resourceRDSDBInstanceCreate,
 		Update: resourceRDSDBInstanceUpdate,
 		Delete: resourceRDSDBInstanceDelete,
-		
+		CustomizeDiff: resourceRDSDBInstanceCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"allocated_storage": {
 				Type: schema.TypeString,
@@ -258,4 +259,8 @@ func resourceRDSDBInstanceUpdate(data *schema.ResourceData, meta interface{}) er
 
 func resourceRDSDBInstanceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::RDS::DBInstance", data, meta)
+}
+
+func resourceRDSDBInstanceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

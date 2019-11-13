@@ -21,7 +21,8 @@ func ResourceCognitoUserPool() *schema.Resource {
 		Create: resourceCognitoUserPoolCreate,
 		Update: resourceCognitoUserPoolUpdate,
 		Delete: resourceCognitoUserPoolDelete,
-		
+		CustomizeDiff: resourceCognitoUserPoolCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"user_pool_tags": {
 				Type: schema.TypeMap,
@@ -151,4 +152,8 @@ func resourceCognitoUserPoolUpdate(data *schema.ResourceData, meta interface{}) 
 
 func resourceCognitoUserPoolDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Cognito::UserPool", data, meta)
+}
+
+func resourceCognitoUserPoolCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

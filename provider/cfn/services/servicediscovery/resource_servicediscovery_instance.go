@@ -21,7 +21,8 @@ func ResourceServiceDiscoveryInstance() *schema.Resource {
 		Create: resourceServiceDiscoveryInstanceCreate,
 		Update: resourceServiceDiscoveryInstanceUpdate,
 		Delete: resourceServiceDiscoveryInstanceDelete,
-		
+		CustomizeDiff: resourceServiceDiscoveryInstanceCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"instance_attributes": {
 				Type: schema.TypeMap,
@@ -62,4 +63,8 @@ func resourceServiceDiscoveryInstanceUpdate(data *schema.ResourceData, meta inte
 
 func resourceServiceDiscoveryInstanceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ServiceDiscovery::Instance", data, meta)
+}
+
+func resourceServiceDiscoveryInstanceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceLambdaLayerVersion() *schema.Resource {
 		Create: resourceLambdaLayerVersionCreate,
 		Update: resourceLambdaLayerVersionUpdate,
 		Delete: resourceLambdaLayerVersionDelete,
-		
+		CustomizeDiff: resourceLambdaLayerVersionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"compatible_runtimes": {
 				Type: schema.TypeList,
@@ -73,4 +74,8 @@ func resourceLambdaLayerVersionUpdate(data *schema.ResourceData, meta interface{
 
 func resourceLambdaLayerVersionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Lambda::LayerVersion", data, meta)
+}
+
+func resourceLambdaLayerVersionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

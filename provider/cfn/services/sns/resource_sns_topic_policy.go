@@ -21,7 +21,8 @@ func ResourceSNSTopicPolicy() *schema.Resource {
 		Create: resourceSNSTopicPolicyCreate,
 		Update: resourceSNSTopicPolicyUpdate,
 		Delete: resourceSNSTopicPolicyDelete,
-		
+		CustomizeDiff: resourceSNSTopicPolicyCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"policy_document": {
 				Type: schema.TypeMap,
@@ -59,4 +60,8 @@ func resourceSNSTopicPolicyUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceSNSTopicPolicyDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SNS::TopicPolicy", data, meta)
+}
+
+func resourceSNSTopicPolicyCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

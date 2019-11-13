@@ -21,7 +21,8 @@ func ResourceEC2VPNGatewayRoutePropagation() *schema.Resource {
 		Create: resourceEC2VPNGatewayRoutePropagationCreate,
 		Update: resourceEC2VPNGatewayRoutePropagationUpdate,
 		Delete: resourceEC2VPNGatewayRoutePropagationDelete,
-		
+		CustomizeDiff: resourceEC2VPNGatewayRoutePropagationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"route_table_ids": {
 				Type: schema.TypeList,
@@ -59,4 +60,8 @@ func resourceEC2VPNGatewayRoutePropagationUpdate(data *schema.ResourceData, meta
 
 func resourceEC2VPNGatewayRoutePropagationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::VPNGatewayRoutePropagation", data, meta)
+}
+
+func resourceEC2VPNGatewayRoutePropagationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

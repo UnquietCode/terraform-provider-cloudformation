@@ -21,7 +21,8 @@ func ResourceAppSyncFunctionConfiguration() *schema.Resource {
 		Create: resourceAppSyncFunctionConfigurationCreate,
 		Update: resourceAppSyncFunctionConfigurationUpdate,
 		Delete: resourceAppSyncFunctionConfigurationDelete,
-		
+		CustomizeDiff: resourceAppSyncFunctionConfigurationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"response_mapping_template_s3_location": {
 				Type: schema.TypeString,
@@ -86,4 +87,8 @@ func resourceAppSyncFunctionConfigurationUpdate(data *schema.ResourceData, meta 
 
 func resourceAppSyncFunctionConfigurationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AppSync::FunctionConfiguration", data, meta)
+}
+
+func resourceAppSyncFunctionConfigurationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

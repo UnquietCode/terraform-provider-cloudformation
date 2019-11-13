@@ -21,7 +21,8 @@ func ResourcePinpointSmsTemplate() *schema.Resource {
 		Create: resourcePinpointSmsTemplateCreate,
 		Update: resourcePinpointSmsTemplateUpdate,
 		Delete: resourcePinpointSmsTemplateDelete,
-		
+		CustomizeDiff: resourcePinpointSmsTemplateCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"template_name": {
 				Type: schema.TypeString,
@@ -62,4 +63,8 @@ func resourcePinpointSmsTemplateUpdate(data *schema.ResourceData, meta interface
 
 func resourcePinpointSmsTemplateDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Pinpoint::SmsTemplate", data, meta)
+}
+
+func resourcePinpointSmsTemplateCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

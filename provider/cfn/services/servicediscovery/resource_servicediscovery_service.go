@@ -21,7 +21,8 @@ func ResourceServiceDiscoveryService() *schema.Resource {
 		Create: resourceServiceDiscoveryServiceCreate,
 		Update: resourceServiceDiscoveryServiceUpdate,
 		Delete: resourceServiceDiscoveryServiceDelete,
-		
+		CustomizeDiff: resourceServiceDiscoveryServiceCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -80,4 +81,8 @@ func resourceServiceDiscoveryServiceUpdate(data *schema.ResourceData, meta inter
 
 func resourceServiceDiscoveryServiceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ServiceDiscovery::Service", data, meta)
+}
+
+func resourceServiceDiscoveryServiceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

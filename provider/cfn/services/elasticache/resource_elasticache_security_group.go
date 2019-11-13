@@ -21,7 +21,8 @@ func ResourceElastiCacheSecurityGroup() *schema.Resource {
 		Create: resourceElastiCacheSecurityGroupCreate,
 		Update: resourceElastiCacheSecurityGroupUpdate,
 		Delete: resourceElastiCacheSecurityGroupDelete,
-		
+		CustomizeDiff: resourceElastiCacheSecurityGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -54,4 +55,8 @@ func resourceElastiCacheSecurityGroupUpdate(data *schema.ResourceData, meta inte
 
 func resourceElastiCacheSecurityGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ElastiCache::SecurityGroup", data, meta)
+}
+
+func resourceElastiCacheSecurityGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

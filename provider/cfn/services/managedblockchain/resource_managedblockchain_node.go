@@ -21,7 +21,8 @@ func ResourceManagedBlockchainNode() *schema.Resource {
 		Create: resourceManagedBlockchainNodeCreate,
 		Update: resourceManagedBlockchainNodeUpdate,
 		Delete: resourceManagedBlockchainNodeDelete,
-		
+		CustomizeDiff: resourceManagedBlockchainNodeCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"member_id": {
 				Type: schema.TypeString,
@@ -64,4 +65,8 @@ func resourceManagedBlockchainNodeUpdate(data *schema.ResourceData, meta interfa
 
 func resourceManagedBlockchainNodeDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ManagedBlockchain::Node", data, meta)
+}
+
+func resourceManagedBlockchainNodeCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

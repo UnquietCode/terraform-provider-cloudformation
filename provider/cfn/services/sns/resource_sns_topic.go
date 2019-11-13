@@ -21,7 +21,8 @@ func ResourceSNSTopic() *schema.Resource {
 		Create: resourceSNSTopicCreate,
 		Update: resourceSNSTopicUpdate,
 		Delete: resourceSNSTopicDelete,
-		
+		CustomizeDiff: resourceSNSTopicCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"display_name": {
 				Type: schema.TypeString,
@@ -67,4 +68,8 @@ func resourceSNSTopicUpdate(data *schema.ResourceData, meta interface{}) error {
 
 func resourceSNSTopicDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SNS::Topic", data, meta)
+}
+
+func resourceSNSTopicCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

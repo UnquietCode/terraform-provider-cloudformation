@@ -22,7 +22,8 @@ func ResourceEC2VPCPeeringConnection() *schema.Resource {
 		Create: resourceEC2VPCPeeringConnectionCreate,
 		Update: resourceEC2VPCPeeringConnectionUpdate,
 		Delete: resourceEC2VPCPeeringConnectionDelete,
-		
+		CustomizeDiff: resourceEC2VPCPeeringConnectionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"peer_owner_id": {
 				Type: schema.TypeString,
@@ -76,4 +77,8 @@ func resourceEC2VPCPeeringConnectionUpdate(data *schema.ResourceData, meta inter
 
 func resourceEC2VPCPeeringConnectionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::VPCPeeringConnection", data, meta)
+}
+
+func resourceEC2VPCPeeringConnectionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

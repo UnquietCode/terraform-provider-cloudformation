@@ -21,7 +21,8 @@ func ResourceKinesisStreamConsumer() *schema.Resource {
 		Create: resourceKinesisStreamConsumerCreate,
 		Update: resourceKinesisStreamConsumerUpdate,
 		Delete: resourceKinesisStreamConsumerDelete,
-		
+		CustomizeDiff: resourceKinesisStreamConsumerCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"consumer_name": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceKinesisStreamConsumerUpdate(data *schema.ResourceData, meta interfa
 
 func resourceKinesisStreamConsumerDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Kinesis::StreamConsumer", data, meta)
+}
+
+func resourceKinesisStreamConsumerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

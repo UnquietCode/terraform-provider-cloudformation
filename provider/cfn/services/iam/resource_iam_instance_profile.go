@@ -21,7 +21,8 @@ func ResourceIAMInstanceProfile() *schema.Resource {
 		Create: resourceIAMInstanceProfileCreate,
 		Update: resourceIAMInstanceProfileUpdate,
 		Delete: resourceIAMInstanceProfileDelete,
-		
+		CustomizeDiff: resourceIAMInstanceProfileCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"instance_profile_name": {
 				Type: schema.TypeString,
@@ -63,4 +64,8 @@ func resourceIAMInstanceProfileUpdate(data *schema.ResourceData, meta interface{
 
 func resourceIAMInstanceProfileDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IAM::InstanceProfile", data, meta)
+}
+
+func resourceIAMInstanceProfileCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceIoTThingPrincipalAttachment() *schema.Resource {
 		Create: resourceIoTThingPrincipalAttachmentCreate,
 		Update: resourceIoTThingPrincipalAttachmentUpdate,
 		Delete: resourceIoTThingPrincipalAttachmentDelete,
-		
+		CustomizeDiff: resourceIoTThingPrincipalAttachmentCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"principal": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceIoTThingPrincipalAttachmentUpdate(data *schema.ResourceData, meta i
 
 func resourceIoTThingPrincipalAttachmentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IoT::ThingPrincipalAttachment", data, meta)
+}
+
+func resourceIoTThingPrincipalAttachmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

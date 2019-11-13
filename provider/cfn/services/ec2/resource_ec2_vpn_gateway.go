@@ -22,7 +22,8 @@ func ResourceEC2VPNGateway() *schema.Resource {
 		Create: resourceEC2VPNGatewayCreate,
 		Update: resourceEC2VPNGatewayUpdate,
 		Delete: resourceEC2VPNGatewayDelete,
-		
+		CustomizeDiff: resourceEC2VPNGatewayCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"amazon_side_asn": {
 				Type: schema.TypeInt,
@@ -64,4 +65,8 @@ func resourceEC2VPNGatewayUpdate(data *schema.ResourceData, meta interface{}) er
 
 func resourceEC2VPNGatewayDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::VPNGateway", data, meta)
+}
+
+func resourceEC2VPNGatewayCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

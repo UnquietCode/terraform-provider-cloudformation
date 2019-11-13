@@ -22,7 +22,8 @@ func ResourceEC2TransitGatewayAttachment() *schema.Resource {
 		Create: resourceEC2TransitGatewayAttachmentCreate,
 		Update: resourceEC2TransitGatewayAttachmentUpdate,
 		Delete: resourceEC2TransitGatewayAttachmentDelete,
-		
+		CustomizeDiff: resourceEC2TransitGatewayAttachmentCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"transit_gateway_id": {
 				Type: schema.TypeString,
@@ -69,4 +70,8 @@ func resourceEC2TransitGatewayAttachmentUpdate(data *schema.ResourceData, meta i
 
 func resourceEC2TransitGatewayAttachmentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::TransitGatewayAttachment", data, meta)
+}
+
+func resourceEC2TransitGatewayAttachmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

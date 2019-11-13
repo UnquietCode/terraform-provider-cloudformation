@@ -21,7 +21,8 @@ func ResourceCognitoUserPoolUser() *schema.Resource {
 		Create: resourceCognitoUserPoolUserCreate,
 		Update: resourceCognitoUserPoolUserUpdate,
 		Delete: resourceCognitoUserPoolUserDelete,
-		
+		CustomizeDiff: resourceCognitoUserPoolUserCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"validation_data": {
 				Type: schema.TypeList,
@@ -81,4 +82,8 @@ func resourceCognitoUserPoolUserUpdate(data *schema.ResourceData, meta interface
 
 func resourceCognitoUserPoolUserDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Cognito::UserPoolUser", data, meta)
+}
+
+func resourceCognitoUserPoolUserCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

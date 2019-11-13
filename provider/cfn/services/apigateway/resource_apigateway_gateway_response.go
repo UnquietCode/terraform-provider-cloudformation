@@ -21,7 +21,8 @@ func ResourceApiGatewayGatewayResponse() *schema.Resource {
 		Create: resourceApiGatewayGatewayResponseCreate,
 		Update: resourceApiGatewayGatewayResponseUpdate,
 		Delete: resourceApiGatewayGatewayResponseDelete,
-		
+		CustomizeDiff: resourceApiGatewayGatewayResponseCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"response_parameters": {
 				Type: schema.TypeMap,
@@ -72,4 +73,8 @@ func resourceApiGatewayGatewayResponseUpdate(data *schema.ResourceData, meta int
 
 func resourceApiGatewayGatewayResponseDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGateway::GatewayResponse", data, meta)
+}
+
+func resourceApiGatewayGatewayResponseCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceElastiCacheSubnetGroup() *schema.Resource {
 		Create: resourceElastiCacheSubnetGroupCreate,
 		Update: resourceElastiCacheSubnetGroupUpdate,
 		Delete: resourceElastiCacheSubnetGroupDelete,
-		
+		CustomizeDiff: resourceElastiCacheSubnetGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"cache_subnet_group_name": {
 				Type: schema.TypeString,
@@ -63,4 +64,8 @@ func resourceElastiCacheSubnetGroupUpdate(data *schema.ResourceData, meta interf
 
 func resourceElastiCacheSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ElastiCache::SubnetGroup", data, meta)
+}
+
+func resourceElastiCacheSubnetGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

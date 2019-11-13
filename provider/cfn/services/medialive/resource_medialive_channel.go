@@ -21,7 +21,8 @@ func ResourceMediaLiveChannel() *schema.Resource {
 		Create: resourceMediaLiveChannelCreate,
 		Update: resourceMediaLiveChannelUpdate,
 		Delete: resourceMediaLiveChannelDelete,
-		
+		CustomizeDiff: resourceMediaLiveChannelCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"input_attachments": {
 				Type: schema.TypeList,
@@ -90,4 +91,8 @@ func resourceMediaLiveChannelUpdate(data *schema.ResourceData, meta interface{})
 
 func resourceMediaLiveChannelDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::MediaLive::Channel", data, meta)
+}
+
+func resourceMediaLiveChannelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

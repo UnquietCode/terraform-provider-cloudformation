@@ -21,7 +21,8 @@ func ResourceSNSSubscription() *schema.Resource {
 		Create: resourceSNSSubscriptionCreate,
 		Update: resourceSNSSubscriptionUpdate,
 		Delete: resourceSNSSubscriptionDelete,
-		
+		CustomizeDiff: resourceSNSSubscriptionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"delivery_policy": {
 				Type: schema.TypeMap,
@@ -78,4 +79,8 @@ func resourceSNSSubscriptionUpdate(data *schema.ResourceData, meta interface{}) 
 
 func resourceSNSSubscriptionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SNS::Subscription", data, meta)
+}
+
+func resourceSNSSubscriptionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

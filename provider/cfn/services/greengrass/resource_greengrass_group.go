@@ -21,7 +21,8 @@ func ResourceGreengrassGroup() *schema.Resource {
 		Create: resourceGreengrassGroupCreate,
 		Update: resourceGreengrassGroupUpdate,
 		Delete: resourceGreengrassGroupDelete,
-		
+		CustomizeDiff: resourceGreengrassGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"initial_version": {
 				Type: schema.TypeList,
@@ -68,4 +69,8 @@ func resourceGreengrassGroupUpdate(data *schema.ResourceData, meta interface{}) 
 
 func resourceGreengrassGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Greengrass::Group", data, meta)
+}
+
+func resourceGreengrassGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

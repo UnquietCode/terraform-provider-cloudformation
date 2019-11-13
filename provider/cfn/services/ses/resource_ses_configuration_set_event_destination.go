@@ -21,7 +21,8 @@ func ResourceSESConfigurationSetEventDestination() *schema.Resource {
 		Create: resourceSESConfigurationSetEventDestinationCreate,
 		Update: resourceSESConfigurationSetEventDestinationUpdate,
 		Delete: resourceSESConfigurationSetEventDestinationDelete,
-		
+		CustomizeDiff: resourceSESConfigurationSetEventDestinationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"configuration_set_name": {
 				Type: schema.TypeString,
@@ -60,4 +61,8 @@ func resourceSESConfigurationSetEventDestinationUpdate(data *schema.ResourceData
 
 func resourceSESConfigurationSetEventDestinationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SES::ConfigurationSetEventDestination", data, meta)
+}
+
+func resourceSESConfigurationSetEventDestinationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

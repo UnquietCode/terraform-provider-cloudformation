@@ -21,7 +21,8 @@ func ResourceAmazonMQBroker() *schema.Resource {
 		Create: resourceAmazonMQBrokerCreate,
 		Update: resourceAmazonMQBrokerUpdate,
 		Delete: resourceAmazonMQBrokerDelete,
-		
+		CustomizeDiff: resourceAmazonMQBrokerCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"security_groups": {
 				Type: schema.TypeList,
@@ -122,4 +123,8 @@ func resourceAmazonMQBrokerUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceAmazonMQBrokerDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AmazonMQ::Broker", data, meta)
+}
+
+func resourceAmazonMQBrokerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

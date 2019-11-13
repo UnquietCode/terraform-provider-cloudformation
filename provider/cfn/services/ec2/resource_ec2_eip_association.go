@@ -21,7 +21,8 @@ func ResourceEC2EIPAssociation() *schema.Resource {
 		Create: resourceEC2EIPAssociationCreate,
 		Update: resourceEC2EIPAssociationUpdate,
 		Delete: resourceEC2EIPAssociationDelete,
-		
+		CustomizeDiff: resourceEC2EIPAssociationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"allocation_id": {
 				Type: schema.TypeString,
@@ -70,4 +71,8 @@ func resourceEC2EIPAssociationUpdate(data *schema.ResourceData, meta interface{}
 
 func resourceEC2EIPAssociationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::EIPAssociation", data, meta)
+}
+
+func resourceEC2EIPAssociationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

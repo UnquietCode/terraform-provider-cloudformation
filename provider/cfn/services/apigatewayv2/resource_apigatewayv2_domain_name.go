@@ -21,7 +21,8 @@ func ResourceApiGatewayV2DomainName() *schema.Resource {
 		Create: resourceApiGatewayV2DomainNameCreate,
 		Update: resourceApiGatewayV2DomainNameUpdate,
 		Delete: resourceApiGatewayV2DomainNameDelete,
-		
+		CustomizeDiff: resourceApiGatewayV2DomainNameCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"domain_name": {
 				Type: schema.TypeString,
@@ -63,4 +64,8 @@ func resourceApiGatewayV2DomainNameUpdate(data *schema.ResourceData, meta interf
 
 func resourceApiGatewayV2DomainNameDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGatewayV2::DomainName", data, meta)
+}
+
+func resourceApiGatewayV2DomainNameCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

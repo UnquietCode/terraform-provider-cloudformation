@@ -21,7 +21,8 @@ func ResourceAppStreamStackFleetAssociation() *schema.Resource {
 		Create: resourceAppStreamStackFleetAssociationCreate,
 		Update: resourceAppStreamStackFleetAssociationUpdate,
 		Delete: resourceAppStreamStackFleetAssociationDelete,
-		
+		CustomizeDiff: resourceAppStreamStackFleetAssociationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"fleet_name": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceAppStreamStackFleetAssociationUpdate(data *schema.ResourceData, met
 
 func resourceAppStreamStackFleetAssociationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AppStream::StackFleetAssociation", data, meta)
+}
+
+func resourceAppStreamStackFleetAssociationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

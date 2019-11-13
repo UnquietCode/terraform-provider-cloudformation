@@ -21,7 +21,8 @@ func ResourceGluePartition() *schema.Resource {
 		Create: resourceGluePartitionCreate,
 		Update: resourceGluePartitionUpdate,
 		Delete: resourceGluePartitionDelete,
-		
+		CustomizeDiff: resourceGluePartitionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"table_name": {
 				Type: schema.TypeString,
@@ -68,4 +69,8 @@ func resourceGluePartitionUpdate(data *schema.ResourceData, meta interface{}) er
 
 func resourceGluePartitionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Glue::Partition", data, meta)
+}
+
+func resourceGluePartitionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

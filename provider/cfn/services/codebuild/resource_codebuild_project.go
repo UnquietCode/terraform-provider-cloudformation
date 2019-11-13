@@ -22,7 +22,8 @@ func ResourceCodeBuildProject() *schema.Resource {
 		Create: resourceCodeBuildProjectCreate,
 		Update: resourceCodeBuildProjectUpdate,
 		Delete: resourceCodeBuildProjectDelete,
-		
+		CustomizeDiff: resourceCodeBuildProjectCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -145,4 +146,8 @@ func resourceCodeBuildProjectUpdate(data *schema.ResourceData, meta interface{})
 
 func resourceCodeBuildProjectDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CodeBuild::Project", data, meta)
+}
+
+func resourceCodeBuildProjectCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

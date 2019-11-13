@@ -21,7 +21,8 @@ func ResourcePinpointEventStream() *schema.Resource {
 		Create: resourcePinpointEventStreamCreate,
 		Update: resourcePinpointEventStreamUpdate,
 		Delete: resourcePinpointEventStreamDelete,
-		
+		CustomizeDiff: resourcePinpointEventStreamCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"application_id": {
 				Type: schema.TypeString,
@@ -62,4 +63,8 @@ func resourcePinpointEventStreamUpdate(data *schema.ResourceData, meta interface
 
 func resourcePinpointEventStreamDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Pinpoint::EventStream", data, meta)
+}
+
+func resourcePinpointEventStreamCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

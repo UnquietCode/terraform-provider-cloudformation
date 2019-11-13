@@ -21,7 +21,8 @@ func ResourceRDSDBSecurityGroupIngress() *schema.Resource {
 		Create: resourceRDSDBSecurityGroupIngressCreate,
 		Update: resourceRDSDBSecurityGroupIngressUpdate,
 		Delete: resourceRDSDBSecurityGroupIngressDelete,
-		
+		CustomizeDiff: resourceRDSDBSecurityGroupIngressCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"cidrip": {
 				Type: schema.TypeString,
@@ -70,4 +71,8 @@ func resourceRDSDBSecurityGroupIngressUpdate(data *schema.ResourceData, meta int
 
 func resourceRDSDBSecurityGroupIngressDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::RDS::DBSecurityGroupIngress", data, meta)
+}
+
+func resourceRDSDBSecurityGroupIngressCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

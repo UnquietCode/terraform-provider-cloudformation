@@ -21,7 +21,8 @@ func ResourceGlueSecurityConfiguration() *schema.Resource {
 		Create: resourceGlueSecurityConfigurationCreate,
 		Update: resourceGlueSecurityConfigurationUpdate,
 		Delete: resourceGlueSecurityConfigurationDelete,
-		
+		CustomizeDiff: resourceGlueSecurityConfigurationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"encryption_configuration": {
 				Type: schema.TypeList,
@@ -60,4 +61,8 @@ func resourceGlueSecurityConfigurationUpdate(data *schema.ResourceData, meta int
 
 func resourceGlueSecurityConfigurationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Glue::SecurityConfiguration", data, meta)
+}
+
+func resourceGlueSecurityConfigurationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

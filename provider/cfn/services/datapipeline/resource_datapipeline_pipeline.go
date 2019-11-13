@@ -21,7 +21,8 @@ func ResourceDataPipelinePipeline() *schema.Resource {
 		Create: resourceDataPipelinePipelineCreate,
 		Update: resourceDataPipelinePipelineUpdate,
 		Delete: resourceDataPipelinePipelineDelete,
-		
+		CustomizeDiff: resourceDataPipelinePipelineCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"activate": {
 				Type: schema.TypeBool,
@@ -82,4 +83,8 @@ func resourceDataPipelinePipelineUpdate(data *schema.ResourceData, meta interfac
 
 func resourceDataPipelinePipelineDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::DataPipeline::Pipeline", data, meta)
+}
+
+func resourceDataPipelinePipelineCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

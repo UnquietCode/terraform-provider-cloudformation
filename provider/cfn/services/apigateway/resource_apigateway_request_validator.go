@@ -21,7 +21,8 @@ func ResourceApiGatewayRequestValidator() *schema.Resource {
 		Create: resourceApiGatewayRequestValidatorCreate,
 		Update: resourceApiGatewayRequestValidatorUpdate,
 		Delete: resourceApiGatewayRequestValidatorDelete,
-		
+		CustomizeDiff: resourceApiGatewayRequestValidatorCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"name": {
 				Type: schema.TypeString,
@@ -66,4 +67,8 @@ func resourceApiGatewayRequestValidatorUpdate(data *schema.ResourceData, meta in
 
 func resourceApiGatewayRequestValidatorDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGateway::RequestValidator", data, meta)
+}
+
+func resourceApiGatewayRequestValidatorCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

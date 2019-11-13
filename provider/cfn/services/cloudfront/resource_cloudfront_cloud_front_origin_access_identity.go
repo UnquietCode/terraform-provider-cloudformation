@@ -21,7 +21,8 @@ func ResourceCloudFrontCloudFrontOriginAccessIdentity() *schema.Resource {
 		Create: resourceCloudFrontCloudFrontOriginAccessIdentityCreate,
 		Update: resourceCloudFrontCloudFrontOriginAccessIdentityUpdate,
 		Delete: resourceCloudFrontCloudFrontOriginAccessIdentityDelete,
-		
+		CustomizeDiff: resourceCloudFrontCloudFrontOriginAccessIdentityCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"cloud_front_origin_access_identity_config": {
 				Type: schema.TypeList,
@@ -56,4 +57,8 @@ func resourceCloudFrontCloudFrontOriginAccessIdentityUpdate(data *schema.Resourc
 
 func resourceCloudFrontCloudFrontOriginAccessIdentityDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CloudFront::CloudFrontOriginAccessIdentity", data, meta)
+}
+
+func resourceCloudFrontCloudFrontOriginAccessIdentityCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceConfigRemediationConfiguration() *schema.Resource {
 		Create: resourceConfigRemediationConfigurationCreate,
 		Update: resourceConfigRemediationConfigurationUpdate,
 		Delete: resourceConfigRemediationConfigurationDelete,
-		
+		CustomizeDiff: resourceConfigRemediationConfigurationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"target_version": {
 				Type: schema.TypeString,
@@ -92,4 +93,8 @@ func resourceConfigRemediationConfigurationUpdate(data *schema.ResourceData, met
 
 func resourceConfigRemediationConfigurationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Config::RemediationConfiguration", data, meta)
+}
+
+func resourceConfigRemediationConfigurationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

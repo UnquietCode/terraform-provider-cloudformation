@@ -22,7 +22,8 @@ func ResourceSSMMaintenanceWindow() *schema.Resource {
 		Create: resourceSSMMaintenanceWindowCreate,
 		Update: resourceSSMMaintenanceWindowUpdate,
 		Delete: resourceSSMMaintenanceWindowDelete,
-		
+		CustomizeDiff: resourceSSMMaintenanceWindowCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"start_date": {
 				Type: schema.TypeString,
@@ -92,4 +93,8 @@ func resourceSSMMaintenanceWindowUpdate(data *schema.ResourceData, meta interfac
 
 func resourceSSMMaintenanceWindowDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SSM::MaintenanceWindow", data, meta)
+}
+
+func resourceSSMMaintenanceWindowCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

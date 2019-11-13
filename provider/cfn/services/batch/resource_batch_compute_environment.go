@@ -21,7 +21,8 @@ func ResourceBatchComputeEnvironment() *schema.Resource {
 		Create: resourceBatchComputeEnvironmentCreate,
 		Update: resourceBatchComputeEnvironmentUpdate,
 		Delete: resourceBatchComputeEnvironmentDelete,
-		
+		CustomizeDiff: resourceBatchComputeEnvironmentCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"type": {
 				Type: schema.TypeString,
@@ -72,4 +73,8 @@ func resourceBatchComputeEnvironmentUpdate(data *schema.ResourceData, meta inter
 
 func resourceBatchComputeEnvironmentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Batch::ComputeEnvironment", data, meta)
+}
+
+func resourceBatchComputeEnvironmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

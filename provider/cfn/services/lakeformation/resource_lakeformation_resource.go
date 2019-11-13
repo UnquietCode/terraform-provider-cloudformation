@@ -21,7 +21,8 @@ func ResourceLakeFormationResource() *schema.Resource {
 		Create: resourceLakeFormationResourceCreate,
 		Update: resourceLakeFormationResourceUpdate,
 		Delete: resourceLakeFormationResourceDelete,
-		
+		CustomizeDiff: resourceLakeFormationResourceCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"resource_arn": {
 				Type: schema.TypeString,
@@ -62,4 +63,8 @@ func resourceLakeFormationResourceUpdate(data *schema.ResourceData, meta interfa
 
 func resourceLakeFormationResourceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::LakeFormation::Resource", data, meta)
+}
+
+func resourceLakeFormationResourceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceAppSyncResolver() *schema.Resource {
 		Create: resourceAppSyncResolverCreate,
 		Update: resourceAppSyncResolverUpdate,
 		Delete: resourceAppSyncResolverDelete,
-		
+		CustomizeDiff: resourceAppSyncResolverCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"response_mapping_template_s3_location": {
 				Type: schema.TypeString,
@@ -92,4 +93,8 @@ func resourceAppSyncResolverUpdate(data *schema.ResourceData, meta interface{}) 
 
 func resourceAppSyncResolverDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AppSync::Resolver", data, meta)
+}
+
+func resourceAppSyncResolverCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

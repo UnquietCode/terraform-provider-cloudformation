@@ -22,7 +22,8 @@ func ResourceElasticsearchDomain() *schema.Resource {
 		Create: resourceElasticsearchDomainCreate,
 		Update: resourceElasticsearchDomainUpdate,
 		Delete: resourceElasticsearchDomainDelete,
-		
+		CustomizeDiff: resourceElasticsearchDomainCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"access_policies": {
 				Type: schema.TypeMap,
@@ -109,4 +110,8 @@ func resourceElasticsearchDomainUpdate(data *schema.ResourceData, meta interface
 
 func resourceElasticsearchDomainDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Elasticsearch::Domain", data, meta)
+}
+
+func resourceElasticsearchDomainCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

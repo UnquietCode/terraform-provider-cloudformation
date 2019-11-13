@@ -22,7 +22,8 @@ func ResourceOpsWorksLayer() *schema.Resource {
 		Create: resourceOpsWorksLayerCreate,
 		Update: resourceOpsWorksLayerUpdate,
 		Delete: resourceOpsWorksLayerDelete,
-		
+		CustomizeDiff: resourceOpsWorksLayerCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"attributes": {
 				Type: schema.TypeMap,
@@ -138,4 +139,8 @@ func resourceOpsWorksLayerUpdate(data *schema.ResourceData, meta interface{}) er
 
 func resourceOpsWorksLayerDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::OpsWorks::Layer", data, meta)
+}
+
+func resourceOpsWorksLayerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceIoTTopicRule() *schema.Resource {
 		Create: resourceIoTTopicRuleCreate,
 		Update: resourceIoTTopicRuleUpdate,
 		Delete: resourceIoTTopicRuleDelete,
-		
+		CustomizeDiff: resourceIoTTopicRuleCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"rule_name": {
 				Type: schema.TypeString,
@@ -60,4 +61,8 @@ func resourceIoTTopicRuleUpdate(data *schema.ResourceData, meta interface{}) err
 
 func resourceIoTTopicRuleDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IoT::TopicRule", data, meta)
+}
+
+func resourceIoTTopicRuleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

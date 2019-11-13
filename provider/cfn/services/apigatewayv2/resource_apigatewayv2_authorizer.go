@@ -21,7 +21,8 @@ func ResourceApiGatewayV2Authorizer() *schema.Resource {
 		Create: resourceApiGatewayV2AuthorizerCreate,
 		Update: resourceApiGatewayV2AuthorizerUpdate,
 		Delete: resourceApiGatewayV2AuthorizerDelete,
-		
+		CustomizeDiff: resourceApiGatewayV2AuthorizerCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"identity_validation_expression": {
 				Type: schema.TypeString,
@@ -83,4 +84,8 @@ func resourceApiGatewayV2AuthorizerUpdate(data *schema.ResourceData, meta interf
 
 func resourceApiGatewayV2AuthorizerDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGatewayV2::Authorizer", data, meta)
+}
+
+func resourceApiGatewayV2AuthorizerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

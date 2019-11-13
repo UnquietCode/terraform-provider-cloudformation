@@ -21,7 +21,8 @@ func ResourceApiGatewayV2Api() *schema.Resource {
 		Create: resourceApiGatewayV2ApiCreate,
 		Update: resourceApiGatewayV2ApiUpdate,
 		Delete: resourceApiGatewayV2ApiDelete,
-		
+		CustomizeDiff: resourceApiGatewayV2ApiCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"route_selection_expression": {
 				Type: schema.TypeString,
@@ -82,4 +83,8 @@ func resourceApiGatewayV2ApiUpdate(data *schema.ResourceData, meta interface{}) 
 
 func resourceApiGatewayV2ApiDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGatewayV2::Api", data, meta)
+}
+
+func resourceApiGatewayV2ApiCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

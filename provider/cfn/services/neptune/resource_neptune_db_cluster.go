@@ -22,7 +22,8 @@ func ResourceNeptuneDBCluster() *schema.Resource {
 		Create: resourceNeptuneDBClusterCreate,
 		Update: resourceNeptuneDBClusterUpdate,
 		Delete: resourceNeptuneDBClusterDelete,
-		
+		CustomizeDiff: resourceNeptuneDBClusterCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"storage_encrypted": {
 				Type: schema.TypeBool,
@@ -115,4 +116,8 @@ func resourceNeptuneDBClusterUpdate(data *schema.ResourceData, meta interface{})
 
 func resourceNeptuneDBClusterDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Neptune::DBCluster", data, meta)
+}
+
+func resourceNeptuneDBClusterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

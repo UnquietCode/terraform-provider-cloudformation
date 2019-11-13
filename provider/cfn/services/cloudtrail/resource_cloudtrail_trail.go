@@ -22,7 +22,8 @@ func ResourceCloudTrailTrail() *schema.Resource {
 		Create: resourceCloudTrailTrailCreate,
 		Update: resourceCloudTrailTrailUpdate,
 		Delete: resourceCloudTrailTrailDelete,
-		
+		CustomizeDiff: resourceCloudTrailTrailCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"cloud_watch_logs_log_group_arn": {
 				Type: schema.TypeString,
@@ -105,4 +106,8 @@ func resourceCloudTrailTrailUpdate(data *schema.ResourceData, meta interface{}) 
 
 func resourceCloudTrailTrailDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CloudTrail::Trail", data, meta)
+}
+
+func resourceCloudTrailTrailCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

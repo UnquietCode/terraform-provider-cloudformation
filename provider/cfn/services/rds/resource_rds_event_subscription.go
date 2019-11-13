@@ -21,7 +21,8 @@ func ResourceRDSEventSubscription() *schema.Resource {
 		Create: resourceRDSEventSubscriptionCreate,
 		Update: resourceRDSEventSubscriptionUpdate,
 		Delete: resourceRDSEventSubscriptionDelete,
-		
+		CustomizeDiff: resourceRDSEventSubscriptionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"enabled": {
 				Type: schema.TypeBool,
@@ -73,4 +74,8 @@ func resourceRDSEventSubscriptionUpdate(data *schema.ResourceData, meta interfac
 
 func resourceRDSEventSubscriptionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::RDS::EventSubscription", data, meta)
+}
+
+func resourceRDSEventSubscriptionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

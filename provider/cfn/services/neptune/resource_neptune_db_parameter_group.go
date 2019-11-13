@@ -22,7 +22,8 @@ func ResourceNeptuneDBParameterGroup() *schema.Resource {
 		Create: resourceNeptuneDBParameterGroupCreate,
 		Update: resourceNeptuneDBParameterGroupUpdate,
 		Delete: resourceNeptuneDBParameterGroupDelete,
-		
+		CustomizeDiff: resourceNeptuneDBParameterGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -72,4 +73,8 @@ func resourceNeptuneDBParameterGroupUpdate(data *schema.ResourceData, meta inter
 
 func resourceNeptuneDBParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Neptune::DBParameterGroup", data, meta)
+}
+
+func resourceNeptuneDBParameterGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

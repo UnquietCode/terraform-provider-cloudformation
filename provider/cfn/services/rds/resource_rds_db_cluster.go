@@ -22,7 +22,8 @@ func ResourceRDSDBCluster() *schema.Resource {
 		Create: resourceRDSDBClusterCreate,
 		Update: resourceRDSDBClusterUpdate,
 		Delete: resourceRDSDBClusterDelete,
-		
+		CustomizeDiff: resourceRDSDBClusterCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"associated_roles": {
 				Type: schema.TypeSet,
@@ -181,4 +182,8 @@ func resourceRDSDBClusterUpdate(data *schema.ResourceData, meta interface{}) err
 
 func resourceRDSDBClusterDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::RDS::DBCluster", data, meta)
+}
+
+func resourceRDSDBClusterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

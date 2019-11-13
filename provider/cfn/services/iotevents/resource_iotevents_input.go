@@ -22,7 +22,8 @@ func ResourceIoTEventsInput() *schema.Resource {
 		Create: resourceIoTEventsInputCreate,
 		Update: resourceIoTEventsInputUpdate,
 		Delete: resourceIoTEventsInputDelete,
-		
+		CustomizeDiff: resourceIoTEventsInputCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"input_definition": {
 				Type: schema.TypeList,
@@ -70,4 +71,8 @@ func resourceIoTEventsInputUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceIoTEventsInputDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IoTEvents::Input", data, meta)
+}
+
+func resourceIoTEventsInputCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

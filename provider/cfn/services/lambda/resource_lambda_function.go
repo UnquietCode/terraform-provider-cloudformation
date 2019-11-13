@@ -22,7 +22,8 @@ func ResourceLambdaFunction() *schema.Resource {
 		Create: resourceLambdaFunctionCreate,
 		Update: resourceLambdaFunctionUpdate,
 		Delete: resourceLambdaFunctionDelete,
-		
+		CustomizeDiff: resourceLambdaFunctionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"code": {
 				Type: schema.TypeList,
@@ -128,4 +129,8 @@ func resourceLambdaFunctionUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceLambdaFunctionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Lambda::Function", data, meta)
+}
+
+func resourceLambdaFunctionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceEC2SubnetCidrBlock() *schema.Resource {
 		Create: resourceEC2SubnetCidrBlockCreate,
 		Update: resourceEC2SubnetCidrBlockUpdate,
 		Delete: resourceEC2SubnetCidrBlockDelete,
-		
+		CustomizeDiff: resourceEC2SubnetCidrBlockCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"ipv6_cidr_block": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceEC2SubnetCidrBlockUpdate(data *schema.ResourceData, meta interface{
 
 func resourceEC2SubnetCidrBlockDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::SubnetCidrBlock", data, meta)
+}
+
+func resourceEC2SubnetCidrBlockCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

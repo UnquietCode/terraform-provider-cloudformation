@@ -21,7 +21,8 @@ func ResourceWAFRegionalXssMatchSet() *schema.Resource {
 		Create: resourceWAFRegionalXssMatchSetCreate,
 		Update: resourceWAFRegionalXssMatchSetUpdate,
 		Delete: resourceWAFRegionalXssMatchSetDelete,
-		
+		CustomizeDiff: resourceWAFRegionalXssMatchSetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"xss_match_tuples": {
 				Type: schema.TypeList,
@@ -59,4 +60,8 @@ func resourceWAFRegionalXssMatchSetUpdate(data *schema.ResourceData, meta interf
 
 func resourceWAFRegionalXssMatchSetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::WAFRegional::XssMatchSet", data, meta)
+}
+
+func resourceWAFRegionalXssMatchSetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

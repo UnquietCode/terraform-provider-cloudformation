@@ -22,7 +22,8 @@ func ResourceInspectorAssessmentTemplate() *schema.Resource {
 		Create: resourceInspectorAssessmentTemplateCreate,
 		Update: resourceInspectorAssessmentTemplateUpdate,
 		Delete: resourceInspectorAssessmentTemplateDelete,
-		
+		CustomizeDiff: resourceInspectorAssessmentTemplateCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"assessment_target_arn": {
 				Type: schema.TypeString,
@@ -73,4 +74,8 @@ func resourceInspectorAssessmentTemplateUpdate(data *schema.ResourceData, meta i
 
 func resourceInspectorAssessmentTemplateDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Inspector::AssessmentTemplate", data, meta)
+}
+
+func resourceInspectorAssessmentTemplateCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

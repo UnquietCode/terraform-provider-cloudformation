@@ -21,7 +21,8 @@ func ResourcePinpointBaiduChannel() *schema.Resource {
 		Create: resourcePinpointBaiduChannelCreate,
 		Update: resourcePinpointBaiduChannelUpdate,
 		Delete: resourcePinpointBaiduChannelDelete,
-		
+		CustomizeDiff: resourcePinpointBaiduChannelCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"secret_key": {
 				Type: schema.TypeString,
@@ -66,4 +67,8 @@ func resourcePinpointBaiduChannelUpdate(data *schema.ResourceData, meta interfac
 
 func resourcePinpointBaiduChannelDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Pinpoint::BaiduChannel", data, meta)
+}
+
+func resourcePinpointBaiduChannelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

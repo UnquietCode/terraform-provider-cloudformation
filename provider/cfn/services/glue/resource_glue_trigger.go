@@ -21,7 +21,8 @@ func ResourceGlueTrigger() *schema.Resource {
 		Create: resourceGlueTriggerCreate,
 		Update: resourceGlueTriggerUpdate,
 		Delete: resourceGlueTriggerDelete,
-		
+		CustomizeDiff: resourceGlueTriggerCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"type": {
 				Type: schema.TypeString,
@@ -89,4 +90,8 @@ func resourceGlueTriggerUpdate(data *schema.ResourceData, meta interface{}) erro
 
 func resourceGlueTriggerDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Glue::Trigger", data, meta)
+}
+
+func resourceGlueTriggerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

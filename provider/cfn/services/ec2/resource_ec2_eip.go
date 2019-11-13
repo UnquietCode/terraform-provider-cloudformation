@@ -21,7 +21,8 @@ func ResourceEC2EIP() *schema.Resource {
 		Create: resourceEC2EIPCreate,
 		Update: resourceEC2EIPUpdate,
 		Delete: resourceEC2EIPDelete,
-		
+		CustomizeDiff: resourceEC2EIPCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"domain": {
 				Type: schema.TypeString,
@@ -62,4 +63,8 @@ func resourceEC2EIPUpdate(data *schema.ResourceData, meta interface{}) error {
 
 func resourceEC2EIPDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::EIP", data, meta)
+}
+
+func resourceEC2EIPCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

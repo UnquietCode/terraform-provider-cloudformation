@@ -21,7 +21,8 @@ func ResourceServiceDiscoveryHttpNamespace() *schema.Resource {
 		Create: resourceServiceDiscoveryHttpNamespaceCreate,
 		Update: resourceServiceDiscoveryHttpNamespaceUpdate,
 		Delete: resourceServiceDiscoveryHttpNamespaceDelete,
-		
+		CustomizeDiff: resourceServiceDiscoveryHttpNamespaceCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceServiceDiscoveryHttpNamespaceUpdate(data *schema.ResourceData, meta
 
 func resourceServiceDiscoveryHttpNamespaceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ServiceDiscovery::HttpNamespace", data, meta)
+}
+
+func resourceServiceDiscoveryHttpNamespaceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

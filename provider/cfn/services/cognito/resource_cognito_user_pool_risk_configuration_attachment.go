@@ -21,7 +21,8 @@ func ResourceCognitoUserPoolRiskConfigurationAttachment() *schema.Resource {
 		Create: resourceCognitoUserPoolRiskConfigurationAttachmentCreate,
 		Update: resourceCognitoUserPoolRiskConfigurationAttachmentUpdate,
 		Delete: resourceCognitoUserPoolRiskConfigurationAttachmentDelete,
-		
+		CustomizeDiff: resourceCognitoUserPoolRiskConfigurationAttachmentCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"compromised_credentials_risk_configuration": {
 				Type: schema.TypeList,
@@ -76,4 +77,8 @@ func resourceCognitoUserPoolRiskConfigurationAttachmentUpdate(data *schema.Resou
 
 func resourceCognitoUserPoolRiskConfigurationAttachmentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Cognito::UserPoolRiskConfigurationAttachment", data, meta)
+}
+
+func resourceCognitoUserPoolRiskConfigurationAttachmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

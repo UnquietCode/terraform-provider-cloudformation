@@ -21,7 +21,8 @@ func ResourceEC2NetworkInterfaceAttachment() *schema.Resource {
 		Create: resourceEC2NetworkInterfaceAttachmentCreate,
 		Update: resourceEC2NetworkInterfaceAttachmentUpdate,
 		Delete: resourceEC2NetworkInterfaceAttachmentDelete,
-		
+		CustomizeDiff: resourceEC2NetworkInterfaceAttachmentCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"delete_on_termination": {
 				Type: schema.TypeBool,
@@ -66,4 +67,8 @@ func resourceEC2NetworkInterfaceAttachmentUpdate(data *schema.ResourceData, meta
 
 func resourceEC2NetworkInterfaceAttachmentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::NetworkInterfaceAttachment", data, meta)
+}
+
+func resourceEC2NetworkInterfaceAttachmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

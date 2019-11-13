@@ -22,7 +22,8 @@ func ResourceDocDBDBInstance() *schema.Resource {
 		Create: resourceDocDBDBInstanceCreate,
 		Update: resourceDocDBDBInstanceUpdate,
 		Delete: resourceDocDBDBInstanceDelete,
-		
+		CustomizeDiff: resourceDocDBDBInstanceCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"db_instance_class": {
 				Type: schema.TypeString,
@@ -80,4 +81,8 @@ func resourceDocDBDBInstanceUpdate(data *schema.ResourceData, meta interface{}) 
 
 func resourceDocDBDBInstanceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::DocDB::DBInstance", data, meta)
+}
+
+func resourceDocDBDBInstanceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

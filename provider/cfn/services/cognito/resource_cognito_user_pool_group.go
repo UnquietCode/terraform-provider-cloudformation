@@ -21,7 +21,8 @@ func ResourceCognitoUserPoolGroup() *schema.Resource {
 		Create: resourceCognitoUserPoolGroupCreate,
 		Update: resourceCognitoUserPoolGroupUpdate,
 		Delete: resourceCognitoUserPoolGroupDelete,
-		
+		CustomizeDiff: resourceCognitoUserPoolGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"group_name": {
 				Type: schema.TypeString,
@@ -70,4 +71,8 @@ func resourceCognitoUserPoolGroupUpdate(data *schema.ResourceData, meta interfac
 
 func resourceCognitoUserPoolGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Cognito::UserPoolGroup", data, meta)
+}
+
+func resourceCognitoUserPoolGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

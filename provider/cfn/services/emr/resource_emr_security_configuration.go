@@ -21,7 +21,8 @@ func ResourceEMRSecurityConfiguration() *schema.Resource {
 		Create: resourceEMRSecurityConfigurationCreate,
 		Update: resourceEMRSecurityConfigurationUpdate,
 		Delete: resourceEMRSecurityConfigurationDelete,
-		
+		CustomizeDiff: resourceEMRSecurityConfigurationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"name": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceEMRSecurityConfigurationUpdate(data *schema.ResourceData, meta inte
 
 func resourceEMRSecurityConfigurationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EMR::SecurityConfiguration", data, meta)
+}
+
+func resourceEMRSecurityConfigurationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

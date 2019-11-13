@@ -21,7 +21,8 @@ func ResourceAmazonMQConfiguration() *schema.Resource {
 		Create: resourceAmazonMQConfigurationCreate,
 		Update: resourceAmazonMQConfigurationUpdate,
 		Delete: resourceAmazonMQConfigurationDelete,
-		
+		CustomizeDiff: resourceAmazonMQConfigurationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"engine_version": {
 				Type: schema.TypeString,
@@ -75,4 +76,8 @@ func resourceAmazonMQConfigurationUpdate(data *schema.ResourceData, meta interfa
 
 func resourceAmazonMQConfigurationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AmazonMQ::Configuration", data, meta)
+}
+
+func resourceAmazonMQConfigurationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

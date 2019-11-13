@@ -21,7 +21,8 @@ func ResourceElastiCacheSecurityGroupIngress() *schema.Resource {
 		Create: resourceElastiCacheSecurityGroupIngressCreate,
 		Update: resourceElastiCacheSecurityGroupIngressUpdate,
 		Delete: resourceElastiCacheSecurityGroupIngressDelete,
-		
+		CustomizeDiff: resourceElastiCacheSecurityGroupIngressCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"cache_security_group_name": {
 				Type: schema.TypeString,
@@ -62,4 +63,8 @@ func resourceElastiCacheSecurityGroupIngressUpdate(data *schema.ResourceData, me
 
 func resourceElastiCacheSecurityGroupIngressDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ElastiCache::SecurityGroupIngress", data, meta)
+}
+
+func resourceElastiCacheSecurityGroupIngressCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

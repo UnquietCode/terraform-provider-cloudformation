@@ -21,7 +21,8 @@ func ResourceAutoScalingPlansScalingPlan() *schema.Resource {
 		Create: resourceAutoScalingPlansScalingPlanCreate,
 		Update: resourceAutoScalingPlansScalingPlanUpdate,
 		Delete: resourceAutoScalingPlansScalingPlanDelete,
-		
+		CustomizeDiff: resourceAutoScalingPlansScalingPlanCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"application_source": {
 				Type: schema.TypeList,
@@ -61,4 +62,8 @@ func resourceAutoScalingPlansScalingPlanUpdate(data *schema.ResourceData, meta i
 
 func resourceAutoScalingPlansScalingPlanDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AutoScalingPlans::ScalingPlan", data, meta)
+}
+
+func resourceAutoScalingPlansScalingPlanCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

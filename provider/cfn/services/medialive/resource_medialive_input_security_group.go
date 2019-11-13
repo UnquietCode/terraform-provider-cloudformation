@@ -21,7 +21,8 @@ func ResourceMediaLiveInputSecurityGroup() *schema.Resource {
 		Create: resourceMediaLiveInputSecurityGroupCreate,
 		Update: resourceMediaLiveInputSecurityGroupUpdate,
 		Delete: resourceMediaLiveInputSecurityGroupDelete,
-		
+		CustomizeDiff: resourceMediaLiveInputSecurityGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"whitelist_rules": {
 				Type: schema.TypeList,
@@ -59,4 +60,8 @@ func resourceMediaLiveInputSecurityGroupUpdate(data *schema.ResourceData, meta i
 
 func resourceMediaLiveInputSecurityGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::MediaLive::InputSecurityGroup", data, meta)
+}
+
+func resourceMediaLiveInputSecurityGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

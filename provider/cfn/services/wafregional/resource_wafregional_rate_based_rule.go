@@ -21,7 +21,8 @@ func ResourceWAFRegionalRateBasedRule() *schema.Resource {
 		Create: resourceWAFRegionalRateBasedRuleCreate,
 		Update: resourceWAFRegionalRateBasedRuleUpdate,
 		Delete: resourceWAFRegionalRateBasedRuleDelete,
-		
+		CustomizeDiff: resourceWAFRegionalRateBasedRuleCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"metric_name": {
 				Type: schema.TypeString,
@@ -71,4 +72,8 @@ func resourceWAFRegionalRateBasedRuleUpdate(data *schema.ResourceData, meta inte
 
 func resourceWAFRegionalRateBasedRuleDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::WAFRegional::RateBasedRule", data, meta)
+}
+
+func resourceWAFRegionalRateBasedRuleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

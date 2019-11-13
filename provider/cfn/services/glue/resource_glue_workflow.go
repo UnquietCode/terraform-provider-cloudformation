@@ -21,7 +21,8 @@ func ResourceGlueWorkflow() *schema.Resource {
 		Create: resourceGlueWorkflowCreate,
 		Update: resourceGlueWorkflowUpdate,
 		Delete: resourceGlueWorkflowDelete,
-		
+		CustomizeDiff: resourceGlueWorkflowCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -66,4 +67,8 @@ func resourceGlueWorkflowUpdate(data *schema.ResourceData, meta interface{}) err
 
 func resourceGlueWorkflowDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Glue::Workflow", data, meta)
+}
+
+func resourceGlueWorkflowCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceCloudFormationCustomResource() *schema.Resource {
 		Create: resourceCloudFormationCustomResourceCreate,
 		Update: resourceCloudFormationCustomResourceUpdate,
 		Delete: resourceCloudFormationCustomResourceDelete,
-		
+		CustomizeDiff: resourceCloudFormationCustomResourceCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"service_token": {
 				Type: schema.TypeString,
@@ -54,4 +55,8 @@ func resourceCloudFormationCustomResourceUpdate(data *schema.ResourceData, meta 
 
 func resourceCloudFormationCustomResourceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CloudFormation::CustomResource", data, meta)
+}
+
+func resourceCloudFormationCustomResourceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

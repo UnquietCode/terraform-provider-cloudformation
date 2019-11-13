@@ -21,7 +21,8 @@ func ResourceElasticLoadBalancingV2ListenerCertificate() *schema.Resource {
 		Create: resourceElasticLoadBalancingV2ListenerCertificateCreate,
 		Update: resourceElasticLoadBalancingV2ListenerCertificateUpdate,
 		Delete: resourceElasticLoadBalancingV2ListenerCertificateDelete,
-		
+		CustomizeDiff: resourceElasticLoadBalancingV2ListenerCertificateCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"certificates": {
 				Type: schema.TypeSet,
@@ -59,4 +60,8 @@ func resourceElasticLoadBalancingV2ListenerCertificateUpdate(data *schema.Resour
 
 func resourceElasticLoadBalancingV2ListenerCertificateDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ElasticLoadBalancingV2::ListenerCertificate", data, meta)
+}
+
+func resourceElasticLoadBalancingV2ListenerCertificateCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

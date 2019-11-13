@@ -22,7 +22,8 @@ func ResourceServiceCatalogCloudFormationProvisionedProduct() *schema.Resource {
 		Create: resourceServiceCatalogCloudFormationProvisionedProductCreate,
 		Update: resourceServiceCatalogCloudFormationProvisionedProductUpdate,
 		Delete: resourceServiceCatalogCloudFormationProvisionedProductDelete,
-		
+		CustomizeDiff: resourceServiceCatalogCloudFormationProvisionedProductCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"path_id": {
 				Type: schema.TypeString,
@@ -100,4 +101,8 @@ func resourceServiceCatalogCloudFormationProvisionedProductUpdate(data *schema.R
 
 func resourceServiceCatalogCloudFormationProvisionedProductDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ServiceCatalog::CloudFormationProvisionedProduct", data, meta)
+}
+
+func resourceServiceCatalogCloudFormationProvisionedProductCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

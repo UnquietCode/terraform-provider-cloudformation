@@ -21,7 +21,8 @@ func ResourcePinpointSMSChannel() *schema.Resource {
 		Create: resourcePinpointSMSChannelCreate,
 		Update: resourcePinpointSMSChannelUpdate,
 		Delete: resourcePinpointSMSChannelDelete,
-		
+		CustomizeDiff: resourcePinpointSMSChannelCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"short_code": {
 				Type: schema.TypeString,
@@ -66,4 +67,8 @@ func resourcePinpointSMSChannelUpdate(data *schema.ResourceData, meta interface{
 
 func resourcePinpointSMSChannelDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Pinpoint::SMSChannel", data, meta)
+}
+
+func resourcePinpointSMSChannelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -22,7 +22,8 @@ func ResourceNeptuneDBClusterParameterGroup() *schema.Resource {
 		Create: resourceNeptuneDBClusterParameterGroupCreate,
 		Update: resourceNeptuneDBClusterParameterGroupUpdate,
 		Delete: resourceNeptuneDBClusterParameterGroupDelete,
-		
+		CustomizeDiff: resourceNeptuneDBClusterParameterGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -72,4 +73,8 @@ func resourceNeptuneDBClusterParameterGroupUpdate(data *schema.ResourceData, met
 
 func resourceNeptuneDBClusterParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Neptune::DBClusterParameterGroup", data, meta)
+}
+
+func resourceNeptuneDBClusterParameterGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

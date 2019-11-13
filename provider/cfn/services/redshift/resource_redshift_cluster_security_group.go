@@ -22,7 +22,8 @@ func ResourceRedshiftClusterSecurityGroup() *schema.Resource {
 		Create: resourceRedshiftClusterSecurityGroupCreate,
 		Update: resourceRedshiftClusterSecurityGroupUpdate,
 		Delete: resourceRedshiftClusterSecurityGroupDelete,
-		
+		CustomizeDiff: resourceRedshiftClusterSecurityGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -60,4 +61,8 @@ func resourceRedshiftClusterSecurityGroupUpdate(data *schema.ResourceData, meta 
 
 func resourceRedshiftClusterSecurityGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Redshift::ClusterSecurityGroup", data, meta)
+}
+
+func resourceRedshiftClusterSecurityGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

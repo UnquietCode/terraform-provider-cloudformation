@@ -21,7 +21,8 @@ func ResourceServiceDiscoveryPrivateDnsNamespace() *schema.Resource {
 		Create: resourceServiceDiscoveryPrivateDnsNamespaceCreate,
 		Update: resourceServiceDiscoveryPrivateDnsNamespaceUpdate,
 		Delete: resourceServiceDiscoveryPrivateDnsNamespaceDelete,
-		
+		CustomizeDiff: resourceServiceDiscoveryPrivateDnsNamespaceCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -62,4 +63,8 @@ func resourceServiceDiscoveryPrivateDnsNamespaceUpdate(data *schema.ResourceData
 
 func resourceServiceDiscoveryPrivateDnsNamespaceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ServiceDiscovery::PrivateDnsNamespace", data, meta)
+}
+
+func resourceServiceDiscoveryPrivateDnsNamespaceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

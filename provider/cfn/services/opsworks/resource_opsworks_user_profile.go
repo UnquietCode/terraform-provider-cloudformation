@@ -21,7 +21,8 @@ func ResourceOpsWorksUserProfile() *schema.Resource {
 		Create: resourceOpsWorksUserProfileCreate,
 		Update: resourceOpsWorksUserProfileUpdate,
 		Delete: resourceOpsWorksUserProfileDelete,
-		
+		CustomizeDiff: resourceOpsWorksUserProfileCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"allow_self_management": {
 				Type: schema.TypeBool,
@@ -66,4 +67,8 @@ func resourceOpsWorksUserProfileUpdate(data *schema.ResourceData, meta interface
 
 func resourceOpsWorksUserProfileDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::OpsWorks::UserProfile", data, meta)
+}
+
+func resourceOpsWorksUserProfileCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

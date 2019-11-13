@@ -21,7 +21,8 @@ func ResourceCodeStarGitHubRepository() *schema.Resource {
 		Create: resourceCodeStarGitHubRepositoryCreate,
 		Update: resourceCodeStarGitHubRepositoryUpdate,
 		Delete: resourceCodeStarGitHubRepositoryDelete,
-		
+		CustomizeDiff: resourceCodeStarGitHubRepositoryCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"enable_issues": {
 				Type: schema.TypeBool,
@@ -80,4 +81,8 @@ func resourceCodeStarGitHubRepositoryUpdate(data *schema.ResourceData, meta inte
 
 func resourceCodeStarGitHubRepositoryDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CodeStar::GitHubRepository", data, meta)
+}
+
+func resourceCodeStarGitHubRepositoryCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceConfigDeliveryChannel() *schema.Resource {
 		Create: resourceConfigDeliveryChannelCreate,
 		Update: resourceConfigDeliveryChannelUpdate,
 		Delete: resourceConfigDeliveryChannelDelete,
-		
+		CustomizeDiff: resourceConfigDeliveryChannelCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"config_snapshot_delivery_properties": {
 				Type: schema.TypeList,
@@ -72,4 +73,8 @@ func resourceConfigDeliveryChannelUpdate(data *schema.ResourceData, meta interfa
 
 func resourceConfigDeliveryChannelDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Config::DeliveryChannel", data, meta)
+}
+
+func resourceConfigDeliveryChannelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

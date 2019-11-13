@@ -21,7 +21,8 @@ func ResourceSecurityHubHub() *schema.Resource {
 		Create: resourceSecurityHubHubCreate,
 		Update: resourceSecurityHubHubUpdate,
 		Delete: resourceSecurityHubHubDelete,
-		
+		CustomizeDiff: resourceSecurityHubHubCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"tags": {
 				Type: schema.TypeMap,
@@ -54,4 +55,8 @@ func resourceSecurityHubHubUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceSecurityHubHubDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SecurityHub::Hub", data, meta)
+}
+
+func resourceSecurityHubHubCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

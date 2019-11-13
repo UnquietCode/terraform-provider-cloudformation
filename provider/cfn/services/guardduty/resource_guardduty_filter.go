@@ -21,7 +21,8 @@ func ResourceGuardDutyFilter() *schema.Resource {
 		Create: resourceGuardDutyFilterCreate,
 		Update: resourceGuardDutyFilterUpdate,
 		Delete: resourceGuardDutyFilterDelete,
-		
+		CustomizeDiff: resourceGuardDutyFilterCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"action": {
 				Type: schema.TypeString,
@@ -76,4 +77,8 @@ func resourceGuardDutyFilterUpdate(data *schema.ResourceData, meta interface{}) 
 
 func resourceGuardDutyFilterDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::GuardDuty::Filter", data, meta)
+}
+
+func resourceGuardDutyFilterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

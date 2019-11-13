@@ -22,7 +22,8 @@ func ResourceAppMeshVirtualRouter() *schema.Resource {
 		Create: resourceAppMeshVirtualRouterCreate,
 		Update: resourceAppMeshVirtualRouterUpdate,
 		Delete: resourceAppMeshVirtualRouterDelete,
-		
+		CustomizeDiff: resourceAppMeshVirtualRouterCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"mesh_name": {
 				Type: schema.TypeString,
@@ -70,4 +71,8 @@ func resourceAppMeshVirtualRouterUpdate(data *schema.ResourceData, meta interfac
 
 func resourceAppMeshVirtualRouterDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AppMesh::VirtualRouter", data, meta)
+}
+
+func resourceAppMeshVirtualRouterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

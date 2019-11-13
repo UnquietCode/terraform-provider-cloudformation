@@ -22,7 +22,8 @@ func ResourceDocDBDBSubnetGroup() *schema.Resource {
 		Create: resourceDocDBDBSubnetGroupCreate,
 		Update: resourceDocDBDBSubnetGroupUpdate,
 		Delete: resourceDocDBDBSubnetGroupDelete,
-		
+		CustomizeDiff: resourceDocDBDBSubnetGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"db_subnet_group_name": {
 				Type: schema.TypeString,
@@ -69,4 +70,8 @@ func resourceDocDBDBSubnetGroupUpdate(data *schema.ResourceData, meta interface{
 
 func resourceDocDBDBSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::DocDB::DBSubnetGroup", data, meta)
+}
+
+func resourceDocDBDBSubnetGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

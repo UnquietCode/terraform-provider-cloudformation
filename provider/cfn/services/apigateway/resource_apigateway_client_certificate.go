@@ -21,7 +21,8 @@ func ResourceApiGatewayClientCertificate() *schema.Resource {
 		Create: resourceApiGatewayClientCertificateCreate,
 		Update: resourceApiGatewayClientCertificateUpdate,
 		Delete: resourceApiGatewayClientCertificateDelete,
-		
+		CustomizeDiff: resourceApiGatewayClientCertificateCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -54,4 +55,8 @@ func resourceApiGatewayClientCertificateUpdate(data *schema.ResourceData, meta i
 
 func resourceApiGatewayClientCertificateDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGateway::ClientCertificate", data, meta)
+}
+
+func resourceApiGatewayClientCertificateCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

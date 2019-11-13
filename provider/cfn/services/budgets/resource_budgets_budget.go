@@ -21,7 +21,8 @@ func ResourceBudgetsBudget() *schema.Resource {
 		Create: resourceBudgetsBudgetCreate,
 		Update: resourceBudgetsBudgetUpdate,
 		Delete: resourceBudgetsBudgetDelete,
-		
+		CustomizeDiff: resourceBudgetsBudgetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"notifications_with_subscribers": {
 				Type: schema.TypeList,
@@ -61,4 +62,8 @@ func resourceBudgetsBudgetUpdate(data *schema.ResourceData, meta interface{}) er
 
 func resourceBudgetsBudgetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Budgets::Budget", data, meta)
+}
+
+func resourceBudgetsBudgetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourcePinpointVoiceChannel() *schema.Resource {
 		Create: resourcePinpointVoiceChannelCreate,
 		Update: resourcePinpointVoiceChannelUpdate,
 		Delete: resourcePinpointVoiceChannelDelete,
-		
+		CustomizeDiff: resourcePinpointVoiceChannelCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"enabled": {
 				Type: schema.TypeBool,
@@ -58,4 +59,8 @@ func resourcePinpointVoiceChannelUpdate(data *schema.ResourceData, meta interfac
 
 func resourcePinpointVoiceChannelDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Pinpoint::VoiceChannel", data, meta)
+}
+
+func resourcePinpointVoiceChannelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

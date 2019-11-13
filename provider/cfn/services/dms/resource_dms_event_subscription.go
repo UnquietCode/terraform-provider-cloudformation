@@ -22,7 +22,8 @@ func ResourceDMSEventSubscription() *schema.Resource {
 		Create: resourceDMSEventSubscriptionCreate,
 		Update: resourceDMSEventSubscriptionUpdate,
 		Delete: resourceDMSEventSubscriptionDelete,
-		
+		CustomizeDiff: resourceDMSEventSubscriptionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"source_type": {
 				Type: schema.TypeString,
@@ -82,4 +83,8 @@ func resourceDMSEventSubscriptionUpdate(data *schema.ResourceData, meta interfac
 
 func resourceDMSEventSubscriptionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::DMS::EventSubscription", data, meta)
+}
+
+func resourceDMSEventSubscriptionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

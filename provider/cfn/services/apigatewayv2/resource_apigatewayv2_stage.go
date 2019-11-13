@@ -21,7 +21,8 @@ func ResourceApiGatewayV2Stage() *schema.Resource {
 		Create: resourceApiGatewayV2StageCreate,
 		Update: resourceApiGatewayV2StageUpdate,
 		Delete: resourceApiGatewayV2StageDelete,
-		
+		CustomizeDiff: resourceApiGatewayV2StageCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"client_certificate_id": {
 				Type: schema.TypeString,
@@ -94,4 +95,8 @@ func resourceApiGatewayV2StageUpdate(data *schema.ResourceData, meta interface{}
 
 func resourceApiGatewayV2StageDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGatewayV2::Stage", data, meta)
+}
+
+func resourceApiGatewayV2StageCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

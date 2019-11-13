@@ -21,7 +21,8 @@ func ResourceSSMParameter() *schema.Resource {
 		Create: resourceSSMParameterCreate,
 		Update: resourceSSMParameterUpdate,
 		Delete: resourceSSMParameterDelete,
-		
+		CustomizeDiff: resourceSSMParameterCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"type": {
 				Type: schema.TypeString,
@@ -82,4 +83,8 @@ func resourceSSMParameterUpdate(data *schema.ResourceData, meta interface{}) err
 
 func resourceSSMParameterDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SSM::Parameter", data, meta)
+}
+
+func resourceSSMParameterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

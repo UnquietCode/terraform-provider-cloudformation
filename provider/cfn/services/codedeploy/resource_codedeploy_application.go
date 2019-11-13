@@ -21,7 +21,8 @@ func ResourceCodeDeployApplication() *schema.Resource {
 		Create: resourceCodeDeployApplicationCreate,
 		Update: resourceCodeDeployApplicationUpdate,
 		Delete: resourceCodeDeployApplicationDelete,
-		
+		CustomizeDiff: resourceCodeDeployApplicationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"application_name": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceCodeDeployApplicationUpdate(data *schema.ResourceData, meta interfa
 
 func resourceCodeDeployApplicationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CodeDeploy::Application", data, meta)
+}
+
+func resourceCodeDeployApplicationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

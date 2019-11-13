@@ -21,7 +21,8 @@ func ResourceOpsWorksElasticLoadBalancerAttachment() *schema.Resource {
 		Create: resourceOpsWorksElasticLoadBalancerAttachmentCreate,
 		Update: resourceOpsWorksElasticLoadBalancerAttachmentUpdate,
 		Delete: resourceOpsWorksElasticLoadBalancerAttachmentDelete,
-		
+		CustomizeDiff: resourceOpsWorksElasticLoadBalancerAttachmentCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"elastic_load_balancer_name": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceOpsWorksElasticLoadBalancerAttachmentUpdate(data *schema.ResourceDa
 
 func resourceOpsWorksElasticLoadBalancerAttachmentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::OpsWorks::ElasticLoadBalancerAttachment", data, meta)
+}
+
+func resourceOpsWorksElasticLoadBalancerAttachmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

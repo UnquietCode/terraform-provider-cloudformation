@@ -22,7 +22,8 @@ func ResourceEC2TrafficMirrorFilter() *schema.Resource {
 		Create: resourceEC2TrafficMirrorFilterCreate,
 		Update: resourceEC2TrafficMirrorFilterUpdate,
 		Delete: resourceEC2TrafficMirrorFilterDelete,
-		
+		CustomizeDiff: resourceEC2TrafficMirrorFilterCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -65,4 +66,8 @@ func resourceEC2TrafficMirrorFilterUpdate(data *schema.ResourceData, meta interf
 
 func resourceEC2TrafficMirrorFilterDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::TrafficMirrorFilter", data, meta)
+}
+
+func resourceEC2TrafficMirrorFilterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

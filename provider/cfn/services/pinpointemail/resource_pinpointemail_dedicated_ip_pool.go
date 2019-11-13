@@ -21,7 +21,8 @@ func ResourcePinpointEmailDedicatedIpPool() *schema.Resource {
 		Create: resourcePinpointEmailDedicatedIpPoolCreate,
 		Update: resourcePinpointEmailDedicatedIpPoolUpdate,
 		Delete: resourcePinpointEmailDedicatedIpPoolDelete,
-		
+		CustomizeDiff: resourcePinpointEmailDedicatedIpPoolCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"pool_name": {
 				Type: schema.TypeString,
@@ -59,4 +60,8 @@ func resourcePinpointEmailDedicatedIpPoolUpdate(data *schema.ResourceData, meta 
 
 func resourcePinpointEmailDedicatedIpPoolDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::PinpointEmail::DedicatedIpPool", data, meta)
+}
+
+func resourcePinpointEmailDedicatedIpPoolCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -22,7 +22,8 @@ func ResourceElasticLoadBalancingLoadBalancer() *schema.Resource {
 		Create: resourceElasticLoadBalancingLoadBalancerCreate,
 		Update: resourceElasticLoadBalancingLoadBalancerUpdate,
 		Delete: resourceElasticLoadBalancingLoadBalancerDelete,
-		
+		CustomizeDiff: resourceElasticLoadBalancingLoadBalancerCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"access_logging_policy": {
 				Type: schema.TypeList,
@@ -136,4 +137,8 @@ func resourceElasticLoadBalancingLoadBalancerUpdate(data *schema.ResourceData, m
 
 func resourceElasticLoadBalancingLoadBalancerDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ElasticLoadBalancing::LoadBalancer", data, meta)
+}
+
+func resourceElasticLoadBalancingLoadBalancerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

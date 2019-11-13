@@ -21,7 +21,8 @@ func ResourceLogsLogGroup() *schema.Resource {
 		Create: resourceLogsLogGroupCreate,
 		Update: resourceLogsLogGroupUpdate,
 		Delete: resourceLogsLogGroupDelete,
-		
+		CustomizeDiff: resourceLogsLogGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"log_group_name": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceLogsLogGroupUpdate(data *schema.ResourceData, meta interface{}) err
 
 func resourceLogsLogGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Logs::LogGroup", data, meta)
+}
+
+func resourceLogsLogGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

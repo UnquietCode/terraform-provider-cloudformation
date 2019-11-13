@@ -22,7 +22,8 @@ func ResourceRoute53ResolverResolverRule() *schema.Resource {
 		Create: resourceRoute53ResolverResolverRuleCreate,
 		Update: resourceRoute53ResolverResolverRuleUpdate,
 		Delete: resourceRoute53ResolverResolverRuleDelete,
-		
+		CustomizeDiff: resourceRoute53ResolverResolverRuleCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"resolver_endpoint_id": {
 				Type: schema.TypeString,
@@ -77,4 +78,8 @@ func resourceRoute53ResolverResolverRuleUpdate(data *schema.ResourceData, meta i
 
 func resourceRoute53ResolverResolverRuleDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Route53Resolver::ResolverRule", data, meta)
+}
+
+func resourceRoute53ResolverResolverRuleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

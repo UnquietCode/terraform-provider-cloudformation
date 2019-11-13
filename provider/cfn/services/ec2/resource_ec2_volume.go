@@ -22,7 +22,8 @@ func ResourceEC2Volume() *schema.Resource {
 		Create: resourceEC2VolumeCreate,
 		Update: resourceEC2VolumeUpdate,
 		Delete: resourceEC2VolumeDelete,
-		
+		CustomizeDiff: resourceEC2VolumeCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"auto_enable_io": {
 				Type: schema.TypeBool,
@@ -88,4 +89,8 @@ func resourceEC2VolumeUpdate(data *schema.ResourceData, meta interface{}) error 
 
 func resourceEC2VolumeDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::Volume", data, meta)
+}
+
+func resourceEC2VolumeCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

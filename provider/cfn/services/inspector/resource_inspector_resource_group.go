@@ -22,7 +22,8 @@ func ResourceInspectorResourceGroup() *schema.Resource {
 		Create: resourceInspectorResourceGroupCreate,
 		Update: resourceInspectorResourceGroupUpdate,
 		Delete: resourceInspectorResourceGroupDelete,
-		
+		CustomizeDiff: resourceInspectorResourceGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"resource_group_tags": {
 				Type: schema.TypeList,
@@ -56,4 +57,8 @@ func resourceInspectorResourceGroupUpdate(data *schema.ResourceData, meta interf
 
 func resourceInspectorResourceGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Inspector::ResourceGroup", data, meta)
+}
+
+func resourceInspectorResourceGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceEC2VPNConnectionRoute() *schema.Resource {
 		Create: resourceEC2VPNConnectionRouteCreate,
 		Update: resourceEC2VPNConnectionRouteUpdate,
 		Delete: resourceEC2VPNConnectionRouteDelete,
-		
+		CustomizeDiff: resourceEC2VPNConnectionRouteCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"destination_cidr_block": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceEC2VPNConnectionRouteUpdate(data *schema.ResourceData, meta interfa
 
 func resourceEC2VPNConnectionRouteDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::VPNConnectionRoute", data, meta)
+}
+
+func resourceEC2VPNConnectionRouteCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

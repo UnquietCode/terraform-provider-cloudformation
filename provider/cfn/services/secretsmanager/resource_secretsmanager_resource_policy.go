@@ -21,7 +21,8 @@ func ResourceSecretsManagerResourcePolicy() *schema.Resource {
 		Create: resourceSecretsManagerResourcePolicyCreate,
 		Update: resourceSecretsManagerResourcePolicyUpdate,
 		Delete: resourceSecretsManagerResourcePolicyDelete,
-		
+		CustomizeDiff: resourceSecretsManagerResourcePolicyCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"secret_id": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceSecretsManagerResourcePolicyUpdate(data *schema.ResourceData, meta 
 
 func resourceSecretsManagerResourcePolicyDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SecretsManager::ResourcePolicy", data, meta)
+}
+
+func resourceSecretsManagerResourcePolicyCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

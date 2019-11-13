@@ -21,7 +21,8 @@ func ResourceGreengrassConnectorDefinition() *schema.Resource {
 		Create: resourceGreengrassConnectorDefinitionCreate,
 		Update: resourceGreengrassConnectorDefinitionUpdate,
 		Delete: resourceGreengrassConnectorDefinitionDelete,
-		
+		CustomizeDiff: resourceGreengrassConnectorDefinitionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"initial_version": {
 				Type: schema.TypeList,
@@ -64,4 +65,8 @@ func resourceGreengrassConnectorDefinitionUpdate(data *schema.ResourceData, meta
 
 func resourceGreengrassConnectorDefinitionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Greengrass::ConnectorDefinition", data, meta)
+}
+
+func resourceGreengrassConnectorDefinitionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

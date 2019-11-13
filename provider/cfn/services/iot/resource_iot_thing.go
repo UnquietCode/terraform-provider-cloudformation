@@ -21,7 +21,8 @@ func ResourceIoTThing() *schema.Resource {
 		Create: resourceIoTThingCreate,
 		Update: resourceIoTThingUpdate,
 		Delete: resourceIoTThingDelete,
-		
+		CustomizeDiff: resourceIoTThingCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"attribute_payload": {
 				Type: schema.TypeList,
@@ -60,4 +61,8 @@ func resourceIoTThingUpdate(data *schema.ResourceData, meta interface{}) error {
 
 func resourceIoTThingDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IoT::Thing", data, meta)
+}
+
+func resourceIoTThingCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

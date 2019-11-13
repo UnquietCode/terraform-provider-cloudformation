@@ -21,7 +21,8 @@ func ResourceEC2VolumeAttachment() *schema.Resource {
 		Create: resourceEC2VolumeAttachmentCreate,
 		Update: resourceEC2VolumeAttachmentUpdate,
 		Delete: resourceEC2VolumeAttachmentDelete,
-		
+		CustomizeDiff: resourceEC2VolumeAttachmentCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"device": {
 				Type: schema.TypeString,
@@ -62,4 +63,8 @@ func resourceEC2VolumeAttachmentUpdate(data *schema.ResourceData, meta interface
 
 func resourceEC2VolumeAttachmentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::VolumeAttachment", data, meta)
+}
+
+func resourceEC2VolumeAttachmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

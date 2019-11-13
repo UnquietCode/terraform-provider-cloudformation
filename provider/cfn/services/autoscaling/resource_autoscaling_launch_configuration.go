@@ -21,7 +21,8 @@ func ResourceAutoScalingLaunchConfiguration() *schema.Resource {
 		Create: resourceAutoScalingLaunchConfigurationCreate,
 		Update: resourceAutoScalingLaunchConfigurationUpdate,
 		Delete: resourceAutoScalingLaunchConfigurationDelete,
-		
+		CustomizeDiff: resourceAutoScalingLaunchConfigurationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"associate_public_ip_address": {
 				Type: schema.TypeBool,
@@ -127,4 +128,8 @@ func resourceAutoScalingLaunchConfigurationUpdate(data *schema.ResourceData, met
 
 func resourceAutoScalingLaunchConfigurationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AutoScaling::LaunchConfiguration", data, meta)
+}
+
+func resourceAutoScalingLaunchConfigurationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

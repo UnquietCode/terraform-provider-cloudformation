@@ -21,7 +21,8 @@ func ResourceWAFSizeConstraintSet() *schema.Resource {
 		Create: resourceWAFSizeConstraintSetCreate,
 		Update: resourceWAFSizeConstraintSetUpdate,
 		Delete: resourceWAFSizeConstraintSetDelete,
-		
+		CustomizeDiff: resourceWAFSizeConstraintSetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"name": {
 				Type: schema.TypeString,
@@ -59,4 +60,8 @@ func resourceWAFSizeConstraintSetUpdate(data *schema.ResourceData, meta interfac
 
 func resourceWAFSizeConstraintSetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::WAF::SizeConstraintSet", data, meta)
+}
+
+func resourceWAFSizeConstraintSetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

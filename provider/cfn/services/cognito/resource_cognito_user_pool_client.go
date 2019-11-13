@@ -21,7 +21,8 @@ func ResourceCognitoUserPoolClient() *schema.Resource {
 		Create: resourceCognitoUserPoolClientCreate,
 		Update: resourceCognitoUserPoolClientUpdate,
 		Delete: resourceCognitoUserPoolClientDelete,
-		
+		CustomizeDiff: resourceCognitoUserPoolClientCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"analytics_configuration": {
 				Type: schema.TypeList,
@@ -120,4 +121,8 @@ func resourceCognitoUserPoolClientUpdate(data *schema.ResourceData, meta interfa
 
 func resourceCognitoUserPoolClientDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Cognito::UserPoolClient", data, meta)
+}
+
+func resourceCognitoUserPoolClientCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

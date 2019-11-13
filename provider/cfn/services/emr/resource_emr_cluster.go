@@ -22,7 +22,8 @@ func ResourceEMRCluster() *schema.Resource {
 		Create: resourceEMRClusterCreate,
 		Update: resourceEMRClusterUpdate,
 		Delete: resourceEMRClusterDelete,
-		
+		CustomizeDiff: resourceEMRClusterCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"additional_info": {
 				Type: schema.TypeMap,
@@ -136,4 +137,8 @@ func resourceEMRClusterUpdate(data *schema.ResourceData, meta interface{}) error
 
 func resourceEMRClusterDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EMR::Cluster", data, meta)
+}
+
+func resourceEMRClusterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

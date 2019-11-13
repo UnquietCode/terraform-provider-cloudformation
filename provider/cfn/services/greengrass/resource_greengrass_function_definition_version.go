@@ -21,7 +21,8 @@ func ResourceGreengrassFunctionDefinitionVersion() *schema.Resource {
 		Create: resourceGreengrassFunctionDefinitionVersionCreate,
 		Update: resourceGreengrassFunctionDefinitionVersionUpdate,
 		Delete: resourceGreengrassFunctionDefinitionVersionDelete,
-		
+		CustomizeDiff: resourceGreengrassFunctionDefinitionVersionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"default_config": {
 				Type: schema.TypeList,
@@ -65,4 +66,8 @@ func resourceGreengrassFunctionDefinitionVersionUpdate(data *schema.ResourceData
 
 func resourceGreengrassFunctionDefinitionVersionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Greengrass::FunctionDefinitionVersion", data, meta)
+}
+
+func resourceGreengrassFunctionDefinitionVersionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

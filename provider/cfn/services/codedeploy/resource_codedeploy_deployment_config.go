@@ -21,7 +21,8 @@ func ResourceCodeDeployDeploymentConfig() *schema.Resource {
 		Create: resourceCodeDeployDeploymentConfigCreate,
 		Update: resourceCodeDeployDeploymentConfigUpdate,
 		Delete: resourceCodeDeployDeploymentConfigDelete,
-		
+		CustomizeDiff: resourceCodeDeployDeploymentConfigCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"deployment_config_name": {
 				Type: schema.TypeString,
@@ -60,4 +61,8 @@ func resourceCodeDeployDeploymentConfigUpdate(data *schema.ResourceData, meta in
 
 func resourceCodeDeployDeploymentConfigDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CodeDeploy::DeploymentConfig", data, meta)
+}
+
+func resourceCodeDeployDeploymentConfigCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

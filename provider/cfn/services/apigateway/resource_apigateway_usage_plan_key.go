@@ -21,7 +21,8 @@ func ResourceApiGatewayUsagePlanKey() *schema.Resource {
 		Create: resourceApiGatewayUsagePlanKeyCreate,
 		Update: resourceApiGatewayUsagePlanKeyUpdate,
 		Delete: resourceApiGatewayUsagePlanKeyDelete,
-		
+		CustomizeDiff: resourceApiGatewayUsagePlanKeyCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"key_id": {
 				Type: schema.TypeString,
@@ -62,4 +63,8 @@ func resourceApiGatewayUsagePlanKeyUpdate(data *schema.ResourceData, meta interf
 
 func resourceApiGatewayUsagePlanKeyDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGateway::UsagePlanKey", data, meta)
+}
+
+func resourceApiGatewayUsagePlanKeyCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

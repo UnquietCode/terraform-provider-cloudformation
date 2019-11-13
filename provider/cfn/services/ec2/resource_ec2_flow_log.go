@@ -21,7 +21,8 @@ func ResourceEC2FlowLog() *schema.Resource {
 		Create: resourceEC2FlowLogCreate,
 		Update: resourceEC2FlowLogUpdate,
 		Delete: resourceEC2FlowLogDelete,
-		
+		CustomizeDiff: resourceEC2FlowLogCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"deliver_logs_permission_arn": {
 				Type: schema.TypeString,
@@ -78,4 +79,8 @@ func resourceEC2FlowLogUpdate(data *schema.ResourceData, meta interface{}) error
 
 func resourceEC2FlowLogDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::FlowLog", data, meta)
+}
+
+func resourceEC2FlowLogCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

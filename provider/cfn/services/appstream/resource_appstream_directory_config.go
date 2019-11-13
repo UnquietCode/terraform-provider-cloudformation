@@ -21,7 +21,8 @@ func ResourceAppStreamDirectoryConfig() *schema.Resource {
 		Create: resourceAppStreamDirectoryConfigCreate,
 		Update: resourceAppStreamDirectoryConfigUpdate,
 		Delete: resourceAppStreamDirectoryConfigDelete,
-		
+		CustomizeDiff: resourceAppStreamDirectoryConfigCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"organizational_unit_distinguished_names": {
 				Type: schema.TypeList,
@@ -65,4 +66,8 @@ func resourceAppStreamDirectoryConfigUpdate(data *schema.ResourceData, meta inte
 
 func resourceAppStreamDirectoryConfigDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AppStream::DirectoryConfig", data, meta)
+}
+
+func resourceAppStreamDirectoryConfigCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

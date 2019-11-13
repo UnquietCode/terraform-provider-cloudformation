@@ -21,7 +21,8 @@ func ResourcePinpointEmailConfigurationSetEventDestination() *schema.Resource {
 		Create: resourcePinpointEmailConfigurationSetEventDestinationCreate,
 		Update: resourcePinpointEmailConfigurationSetEventDestinationUpdate,
 		Delete: resourcePinpointEmailConfigurationSetEventDestinationDelete,
-		
+		CustomizeDiff: resourcePinpointEmailConfigurationSetEventDestinationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"event_destination_name": {
 				Type: schema.TypeString,
@@ -64,4 +65,8 @@ func resourcePinpointEmailConfigurationSetEventDestinationUpdate(data *schema.Re
 
 func resourcePinpointEmailConfigurationSetEventDestinationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::PinpointEmail::ConfigurationSetEventDestination", data, meta)
+}
+
+func resourcePinpointEmailConfigurationSetEventDestinationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

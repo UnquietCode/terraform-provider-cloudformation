@@ -21,7 +21,8 @@ func ResourceElasticBeanstalkApplication() *schema.Resource {
 		Create: resourceElasticBeanstalkApplicationCreate,
 		Update: resourceElasticBeanstalkApplicationUpdate,
 		Delete: resourceElasticBeanstalkApplicationDelete,
-		
+		CustomizeDiff: resourceElasticBeanstalkApplicationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"application_name": {
 				Type: schema.TypeString,
@@ -64,4 +65,8 @@ func resourceElasticBeanstalkApplicationUpdate(data *schema.ResourceData, meta i
 
 func resourceElasticBeanstalkApplicationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ElasticBeanstalk::Application", data, meta)
+}
+
+func resourceElasticBeanstalkApplicationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

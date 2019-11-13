@@ -137,7 +137,8 @@ func Resource${name}() *schema.Resource {
 		Create: resource${name}Create,
 		Update: ${update_line},
 		Delete: resource${name}Delete,
-		
+		CustomizeDiff: resource${name}CustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 ${attributes}
 		},
@@ -162,6 +163,10 @@ func resource${name}Update(data *schema.ResourceData, meta interface{}) error {
 
 func resource${name}Delete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("${cfn_type}", data, meta)
+}
+
+func resource${name}CustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }
 """[1:])
 

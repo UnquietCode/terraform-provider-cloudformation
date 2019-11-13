@@ -21,7 +21,8 @@ func ResourceRoute53HostedZone() *schema.Resource {
 		Create: resourceRoute53HostedZoneCreate,
 		Update: resourceRoute53HostedZoneUpdate,
 		Delete: resourceRoute53HostedZoneDelete,
-		
+		CustomizeDiff: resourceRoute53HostedZoneCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"hosted_zone_config": {
 				Type: schema.TypeList,
@@ -76,4 +77,8 @@ func resourceRoute53HostedZoneUpdate(data *schema.ResourceData, meta interface{}
 
 func resourceRoute53HostedZoneDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Route53::HostedZone", data, meta)
+}
+
+func resourceRoute53HostedZoneCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

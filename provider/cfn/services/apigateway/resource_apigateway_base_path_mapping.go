@@ -21,7 +21,8 @@ func ResourceApiGatewayBasePathMapping() *schema.Resource {
 		Create: resourceApiGatewayBasePathMappingCreate,
 		Update: resourceApiGatewayBasePathMappingUpdate,
 		Delete: resourceApiGatewayBasePathMappingDelete,
-		
+		CustomizeDiff: resourceApiGatewayBasePathMappingCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"base_path": {
 				Type: schema.TypeString,
@@ -66,4 +67,8 @@ func resourceApiGatewayBasePathMappingUpdate(data *schema.ResourceData, meta int
 
 func resourceApiGatewayBasePathMappingDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGateway::BasePathMapping", data, meta)
+}
+
+func resourceApiGatewayBasePathMappingCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

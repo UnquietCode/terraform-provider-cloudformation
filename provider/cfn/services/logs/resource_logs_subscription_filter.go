@@ -21,7 +21,8 @@ func ResourceLogsSubscriptionFilter() *schema.Resource {
 		Create: resourceLogsSubscriptionFilterCreate,
 		Update: resourceLogsSubscriptionFilterUpdate,
 		Delete: resourceLogsSubscriptionFilterDelete,
-		
+		CustomizeDiff: resourceLogsSubscriptionFilterCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"destination_arn": {
 				Type: schema.TypeString,
@@ -66,4 +67,8 @@ func resourceLogsSubscriptionFilterUpdate(data *schema.ResourceData, meta interf
 
 func resourceLogsSubscriptionFilterDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Logs::SubscriptionFilter", data, meta)
+}
+
+func resourceLogsSubscriptionFilterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceGreengrassDeviceDefinition() *schema.Resource {
 		Create: resourceGreengrassDeviceDefinitionCreate,
 		Update: resourceGreengrassDeviceDefinitionUpdate,
 		Delete: resourceGreengrassDeviceDefinitionDelete,
-		
+		CustomizeDiff: resourceGreengrassDeviceDefinitionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"initial_version": {
 				Type: schema.TypeList,
@@ -64,4 +65,8 @@ func resourceGreengrassDeviceDefinitionUpdate(data *schema.ResourceData, meta in
 
 func resourceGreengrassDeviceDefinitionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Greengrass::DeviceDefinition", data, meta)
+}
+
+func resourceGreengrassDeviceDefinitionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

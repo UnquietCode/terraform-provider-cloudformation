@@ -21,7 +21,8 @@ func ResourceEMRStep() *schema.Resource {
 		Create: resourceEMRStepCreate,
 		Update: resourceEMRStepUpdate,
 		Delete: resourceEMRStepDelete,
-		
+		CustomizeDiff: resourceEMRStepCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"action_on_failure": {
 				Type: schema.TypeString,
@@ -68,4 +69,8 @@ func resourceEMRStepUpdate(data *schema.ResourceData, meta interface{}) error {
 
 func resourceEMRStepDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EMR::Step", data, meta)
+}
+
+func resourceEMRStepCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -22,7 +22,8 @@ func ResourceElasticLoadBalancingV2LoadBalancer() *schema.Resource {
 		Create: resourceElasticLoadBalancingV2LoadBalancerCreate,
 		Update: resourceElasticLoadBalancingV2LoadBalancerUpdate,
 		Delete: resourceElasticLoadBalancingV2LoadBalancerDelete,
-		
+		CustomizeDiff: resourceElasticLoadBalancingV2LoadBalancerCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"ip_address_type": {
 				Type: schema.TypeString,
@@ -94,4 +95,8 @@ func resourceElasticLoadBalancingV2LoadBalancerUpdate(data *schema.ResourceData,
 
 func resourceElasticLoadBalancingV2LoadBalancerDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ElasticLoadBalancingV2::LoadBalancer", data, meta)
+}
+
+func resourceElasticLoadBalancingV2LoadBalancerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

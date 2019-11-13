@@ -22,7 +22,8 @@ func ResourceRDSDBParameterGroup() *schema.Resource {
 		Create: resourceRDSDBParameterGroupCreate,
 		Update: resourceRDSDBParameterGroupUpdate,
 		Delete: resourceRDSDBParameterGroupDelete,
-		
+		CustomizeDiff: resourceRDSDBParameterGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -69,4 +70,8 @@ func resourceRDSDBParameterGroupUpdate(data *schema.ResourceData, meta interface
 
 func resourceRDSDBParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::RDS::DBParameterGroup", data, meta)
+}
+
+func resourceRDSDBParameterGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

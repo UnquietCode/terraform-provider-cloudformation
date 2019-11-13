@@ -21,7 +21,8 @@ func ResourcePinpointEmailConfigurationSet() *schema.Resource {
 		Create: resourcePinpointEmailConfigurationSetCreate,
 		Update: resourcePinpointEmailConfigurationSetUpdate,
 		Delete: resourcePinpointEmailConfigurationSetDelete,
-		
+		CustomizeDiff: resourcePinpointEmailConfigurationSetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"sending_options": {
 				Type: schema.TypeList,
@@ -83,4 +84,8 @@ func resourcePinpointEmailConfigurationSetUpdate(data *schema.ResourceData, meta
 
 func resourcePinpointEmailConfigurationSetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::PinpointEmail::ConfigurationSet", data, meta)
+}
+
+func resourcePinpointEmailConfigurationSetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

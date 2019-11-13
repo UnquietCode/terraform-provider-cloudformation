@@ -21,7 +21,8 @@ func ResourceSDBDomain() *schema.Resource {
 		Create: resourceSDBDomainCreate,
 		Update: resourceSDBDomainUpdate,
 		Delete: resourceSDBDomainDelete,
-		
+		CustomizeDiff: resourceSDBDomainCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -54,4 +55,8 @@ func resourceSDBDomainUpdate(data *schema.ResourceData, meta interface{}) error 
 
 func resourceSDBDomainDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SDB::Domain", data, meta)
+}
+
+func resourceSDBDomainCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceApiGatewayUsagePlan() *schema.Resource {
 		Create: resourceApiGatewayUsagePlanCreate,
 		Update: resourceApiGatewayUsagePlanUpdate,
 		Delete: resourceApiGatewayUsagePlanDelete,
-		
+		CustomizeDiff: resourceApiGatewayUsagePlanCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"api_stages": {
 				Type: schema.TypeSet,
@@ -75,4 +76,8 @@ func resourceApiGatewayUsagePlanUpdate(data *schema.ResourceData, meta interface
 
 func resourceApiGatewayUsagePlanDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGateway::UsagePlan", data, meta)
+}
+
+func resourceApiGatewayUsagePlanCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

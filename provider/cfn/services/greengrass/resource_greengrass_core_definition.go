@@ -21,7 +21,8 @@ func ResourceGreengrassCoreDefinition() *schema.Resource {
 		Create: resourceGreengrassCoreDefinitionCreate,
 		Update: resourceGreengrassCoreDefinitionUpdate,
 		Delete: resourceGreengrassCoreDefinitionDelete,
-		
+		CustomizeDiff: resourceGreengrassCoreDefinitionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"initial_version": {
 				Type: schema.TypeList,
@@ -64,4 +65,8 @@ func resourceGreengrassCoreDefinitionUpdate(data *schema.ResourceData, meta inte
 
 func resourceGreengrassCoreDefinitionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Greengrass::CoreDefinition", data, meta)
+}
+
+func resourceGreengrassCoreDefinitionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

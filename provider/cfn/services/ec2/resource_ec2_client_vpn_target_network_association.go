@@ -21,7 +21,8 @@ func ResourceEC2ClientVpnTargetNetworkAssociation() *schema.Resource {
 		Create: resourceEC2ClientVpnTargetNetworkAssociationCreate,
 		Update: resourceEC2ClientVpnTargetNetworkAssociationUpdate,
 		Delete: resourceEC2ClientVpnTargetNetworkAssociationDelete,
-		
+		CustomizeDiff: resourceEC2ClientVpnTargetNetworkAssociationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"client_vpn_endpoint_id": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceEC2ClientVpnTargetNetworkAssociationUpdate(data *schema.ResourceDat
 
 func resourceEC2ClientVpnTargetNetworkAssociationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::ClientVpnTargetNetworkAssociation", data, meta)
+}
+
+func resourceEC2ClientVpnTargetNetworkAssociationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

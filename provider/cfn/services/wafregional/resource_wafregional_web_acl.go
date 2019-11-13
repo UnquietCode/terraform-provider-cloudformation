@@ -21,7 +21,8 @@ func ResourceWAFRegionalWebACL() *schema.Resource {
 		Create: resourceWAFRegionalWebACLCreate,
 		Update: resourceWAFRegionalWebACLUpdate,
 		Delete: resourceWAFRegionalWebACLDelete,
-		
+		CustomizeDiff: resourceWAFRegionalWebACLCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"metric_name": {
 				Type: schema.TypeString,
@@ -69,4 +70,8 @@ func resourceWAFRegionalWebACLUpdate(data *schema.ResourceData, meta interface{}
 
 func resourceWAFRegionalWebACLDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::WAFRegional::WebACL", data, meta)
+}
+
+func resourceWAFRegionalWebACLCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

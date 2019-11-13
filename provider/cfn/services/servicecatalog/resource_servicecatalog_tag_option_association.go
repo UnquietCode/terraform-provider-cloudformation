@@ -21,7 +21,8 @@ func ResourceServiceCatalogTagOptionAssociation() *schema.Resource {
 		Create: resourceServiceCatalogTagOptionAssociationCreate,
 		Update: resourceServiceCatalogTagOptionAssociationUpdate,
 		Delete: resourceServiceCatalogTagOptionAssociationDelete,
-		
+		CustomizeDiff: resourceServiceCatalogTagOptionAssociationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"tag_option_id": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceServiceCatalogTagOptionAssociationUpdate(data *schema.ResourceData,
 
 func resourceServiceCatalogTagOptionAssociationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ServiceCatalog::TagOptionAssociation", data, meta)
+}
+
+func resourceServiceCatalogTagOptionAssociationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

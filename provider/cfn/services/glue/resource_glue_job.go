@@ -21,7 +21,8 @@ func ResourceGlueJob() *schema.Resource {
 		Create: resourceGlueJobCreate,
 		Update: resourceGlueJobUpdate,
 		Delete: resourceGlueJobDelete,
-		
+		CustomizeDiff: resourceGlueJobCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"connections": {
 				Type: schema.TypeList,
@@ -130,4 +131,8 @@ func resourceGlueJobUpdate(data *schema.ResourceData, meta interface{}) error {
 
 func resourceGlueJobDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Glue::Job", data, meta)
+}
+
+func resourceGlueJobCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

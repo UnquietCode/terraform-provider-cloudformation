@@ -21,7 +21,8 @@ func ResourceGreengrassGroupVersion() *schema.Resource {
 		Create: resourceGreengrassGroupVersionCreate,
 		Update: resourceGreengrassGroupVersionUpdate,
 		Delete: resourceGreengrassGroupVersionDelete,
-		
+		CustomizeDiff: resourceGreengrassGroupVersionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"logger_definition_version_arn": {
 				Type: schema.TypeString,
@@ -82,4 +83,8 @@ func resourceGreengrassGroupVersionUpdate(data *schema.ResourceData, meta interf
 
 func resourceGreengrassGroupVersionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Greengrass::GroupVersion", data, meta)
+}
+
+func resourceGreengrassGroupVersionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

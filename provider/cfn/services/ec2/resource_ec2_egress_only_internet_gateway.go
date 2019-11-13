@@ -21,7 +21,8 @@ func ResourceEC2EgressOnlyInternetGateway() *schema.Resource {
 		Create: resourceEC2EgressOnlyInternetGatewayCreate,
 		Update: resourceEC2EgressOnlyInternetGatewayUpdate,
 		Delete: resourceEC2EgressOnlyInternetGatewayDelete,
-		
+		CustomizeDiff: resourceEC2EgressOnlyInternetGatewayCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"vpc_id": {
 				Type: schema.TypeString,
@@ -54,4 +55,8 @@ func resourceEC2EgressOnlyInternetGatewayUpdate(data *schema.ResourceData, meta 
 
 func resourceEC2EgressOnlyInternetGatewayDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::EgressOnlyInternetGateway", data, meta)
+}
+
+func resourceEC2EgressOnlyInternetGatewayCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

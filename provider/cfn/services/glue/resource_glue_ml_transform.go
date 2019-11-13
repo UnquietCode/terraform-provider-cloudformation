@@ -21,7 +21,8 @@ func ResourceGlueMLTransform() *schema.Resource {
 		Create: resourceGlueMLTransformCreate,
 		Update: resourceGlueMLTransformUpdate,
 		Delete: resourceGlueMLTransformDelete,
-		
+		CustomizeDiff: resourceGlueMLTransformCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"role": {
 				Type: schema.TypeString,
@@ -94,4 +95,8 @@ func resourceGlueMLTransformUpdate(data *schema.ResourceData, meta interface{}) 
 
 func resourceGlueMLTransformDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Glue::MLTransform", data, meta)
+}
+
+func resourceGlueMLTransformCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

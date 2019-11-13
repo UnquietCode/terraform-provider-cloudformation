@@ -21,7 +21,8 @@ func ResourceMediaStoreContainer() *schema.Resource {
 		Create: resourceMediaStoreContainerCreate,
 		Update: resourceMediaStoreContainerUpdate,
 		Delete: resourceMediaStoreContainerDelete,
-		
+		CustomizeDiff: resourceMediaStoreContainerCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"policy": {
 				Type: schema.TypeString,
@@ -71,4 +72,8 @@ func resourceMediaStoreContainerUpdate(data *schema.ResourceData, meta interface
 
 func resourceMediaStoreContainerDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::MediaStore::Container", data, meta)
+}
+
+func resourceMediaStoreContainerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

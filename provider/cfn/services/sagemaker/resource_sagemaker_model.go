@@ -22,7 +22,8 @@ func ResourceSageMakerModel() *schema.Resource {
 		Create: resourceSageMakerModelCreate,
 		Update: resourceSageMakerModelUpdate,
 		Delete: resourceSageMakerModelDelete,
-		
+		CustomizeDiff: resourceSageMakerModelCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"execution_role_arn": {
 				Type: schema.TypeString,
@@ -81,4 +82,8 @@ func resourceSageMakerModelUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceSageMakerModelDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SageMaker::Model", data, meta)
+}
+
+func resourceSageMakerModelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

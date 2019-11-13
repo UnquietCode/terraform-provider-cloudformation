@@ -21,7 +21,8 @@ func ResourceCodePipelinePipeline() *schema.Resource {
 		Create: resourceCodePipelinePipelineCreate,
 		Update: resourceCodePipelinePipelineUpdate,
 		Delete: resourceCodePipelinePipelineDelete,
-		
+		CustomizeDiff: resourceCodePipelinePipelineCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"artifact_store": {
 				Type: schema.TypeList,
@@ -83,4 +84,8 @@ func resourceCodePipelinePipelineUpdate(data *schema.ResourceData, meta interfac
 
 func resourceCodePipelinePipelineDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CodePipeline::Pipeline", data, meta)
+}
+
+func resourceCodePipelinePipelineCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

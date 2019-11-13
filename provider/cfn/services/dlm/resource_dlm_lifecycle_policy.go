@@ -21,7 +21,8 @@ func ResourceDLMLifecyclePolicy() *schema.Resource {
 		Create: resourceDLMLifecyclePolicyCreate,
 		Update: resourceDLMLifecyclePolicyUpdate,
 		Delete: resourceDLMLifecyclePolicyDelete,
-		
+		CustomizeDiff: resourceDLMLifecyclePolicyCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"execution_role_arn": {
 				Type: schema.TypeString,
@@ -68,4 +69,8 @@ func resourceDLMLifecyclePolicyUpdate(data *schema.ResourceData, meta interface{
 
 func resourceDLMLifecyclePolicyDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::DLM::LifecyclePolicy", data, meta)
+}
+
+func resourceDLMLifecyclePolicyCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

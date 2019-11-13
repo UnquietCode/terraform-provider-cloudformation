@@ -21,7 +21,8 @@ func ResourceCloudFormationMacro() *schema.Resource {
 		Create: resourceCloudFormationMacroCreate,
 		Update: resourceCloudFormationMacroUpdate,
 		Delete: resourceCloudFormationMacroDelete,
-		
+		CustomizeDiff: resourceCloudFormationMacroCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -70,4 +71,8 @@ func resourceCloudFormationMacroUpdate(data *schema.ResourceData, meta interface
 
 func resourceCloudFormationMacroDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CloudFormation::Macro", data, meta)
+}
+
+func resourceCloudFormationMacroCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

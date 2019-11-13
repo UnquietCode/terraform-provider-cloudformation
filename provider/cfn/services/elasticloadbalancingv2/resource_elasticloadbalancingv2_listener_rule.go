@@ -21,7 +21,8 @@ func ResourceElasticLoadBalancingV2ListenerRule() *schema.Resource {
 		Create: resourceElasticLoadBalancingV2ListenerRuleCreate,
 		Update: resourceElasticLoadBalancingV2ListenerRuleUpdate,
 		Delete: resourceElasticLoadBalancingV2ListenerRuleDelete,
-		
+		CustomizeDiff: resourceElasticLoadBalancingV2ListenerRuleCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"actions": {
 				Type: schema.TypeSet,
@@ -68,4 +69,8 @@ func resourceElasticLoadBalancingV2ListenerRuleUpdate(data *schema.ResourceData,
 
 func resourceElasticLoadBalancingV2ListenerRuleDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ElasticLoadBalancingV2::ListenerRule", data, meta)
+}
+
+func resourceElasticLoadBalancingV2ListenerRuleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

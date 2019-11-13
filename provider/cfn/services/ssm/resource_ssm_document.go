@@ -22,7 +22,8 @@ func ResourceSSMDocument() *schema.Resource {
 		Create: resourceSSMDocumentCreate,
 		Update: resourceSSMDocumentUpdate,
 		Delete: resourceSSMDocumentDelete,
-		
+		CustomizeDiff: resourceSSMDocumentCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"content": {
 				Type: schema.TypeMap,
@@ -64,4 +65,8 @@ func resourceSSMDocumentUpdate(data *schema.ResourceData, meta interface{}) erro
 
 func resourceSSMDocumentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SSM::Document", data, meta)
+}
+
+func resourceSSMDocumentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

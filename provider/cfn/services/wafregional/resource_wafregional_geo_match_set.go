@@ -21,7 +21,8 @@ func ResourceWAFRegionalGeoMatchSet() *schema.Resource {
 		Create: resourceWAFRegionalGeoMatchSetCreate,
 		Update: resourceWAFRegionalGeoMatchSetUpdate,
 		Delete: resourceWAFRegionalGeoMatchSetDelete,
-		
+		CustomizeDiff: resourceWAFRegionalGeoMatchSetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"geo_match_constraints": {
 				Type: schema.TypeList,
@@ -59,4 +60,8 @@ func resourceWAFRegionalGeoMatchSetUpdate(data *schema.ResourceData, meta interf
 
 func resourceWAFRegionalGeoMatchSetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::WAFRegional::GeoMatchSet", data, meta)
+}
+
+func resourceWAFRegionalGeoMatchSetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

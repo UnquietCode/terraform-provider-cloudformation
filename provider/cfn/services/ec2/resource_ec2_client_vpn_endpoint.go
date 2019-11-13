@@ -21,7 +21,8 @@ func ResourceEC2ClientVpnEndpoint() *schema.Resource {
 		Create: resourceEC2ClientVpnEndpointCreate,
 		Update: resourceEC2ClientVpnEndpointUpdate,
 		Delete: resourceEC2ClientVpnEndpointDelete,
-		
+		CustomizeDiff: resourceEC2ClientVpnEndpointCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"client_cidr_block": {
 				Type: schema.TypeString,
@@ -91,4 +92,8 @@ func resourceEC2ClientVpnEndpointUpdate(data *schema.ResourceData, meta interfac
 
 func resourceEC2ClientVpnEndpointDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::ClientVpnEndpoint", data, meta)
+}
+
+func resourceEC2ClientVpnEndpointCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

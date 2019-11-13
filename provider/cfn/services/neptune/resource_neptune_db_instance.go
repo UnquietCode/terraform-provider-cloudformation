@@ -22,7 +22,8 @@ func ResourceNeptuneDBInstance() *schema.Resource {
 		Create: resourceNeptuneDBInstanceCreate,
 		Update: resourceNeptuneDBInstanceUpdate,
 		Delete: resourceNeptuneDBInstanceDelete,
-		
+		CustomizeDiff: resourceNeptuneDBInstanceCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"db_parameter_group_name": {
 				Type: schema.TypeString,
@@ -96,4 +97,8 @@ func resourceNeptuneDBInstanceUpdate(data *schema.ResourceData, meta interface{}
 
 func resourceNeptuneDBInstanceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Neptune::DBInstance", data, meta)
+}
+
+func resourceNeptuneDBInstanceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

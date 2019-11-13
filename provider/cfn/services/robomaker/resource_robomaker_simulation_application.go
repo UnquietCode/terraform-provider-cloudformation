@@ -21,7 +21,8 @@ func ResourceRoboMakerSimulationApplication() *schema.Resource {
 		Create: resourceRoboMakerSimulationApplicationCreate,
 		Update: resourceRoboMakerSimulationApplicationUpdate,
 		Delete: resourceRoboMakerSimulationApplicationDelete,
-		
+		CustomizeDiff: resourceRoboMakerSimulationApplicationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"rendering_engine": {
 				Type: schema.TypeList,
@@ -85,4 +86,8 @@ func resourceRoboMakerSimulationApplicationUpdate(data *schema.ResourceData, met
 
 func resourceRoboMakerSimulationApplicationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::RoboMaker::SimulationApplication", data, meta)
+}
+
+func resourceRoboMakerSimulationApplicationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

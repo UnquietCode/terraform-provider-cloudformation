@@ -21,7 +21,8 @@ func ResourceApiGatewayV2Model() *schema.Resource {
 		Create: resourceApiGatewayV2ModelCreate,
 		Update: resourceApiGatewayV2ModelUpdate,
 		Delete: resourceApiGatewayV2ModelDelete,
-		
+		CustomizeDiff: resourceApiGatewayV2ModelCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -70,4 +71,8 @@ func resourceApiGatewayV2ModelUpdate(data *schema.ResourceData, meta interface{}
 
 func resourceApiGatewayV2ModelDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGatewayV2::Model", data, meta)
+}
+
+func resourceApiGatewayV2ModelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceSecretsManagerSecretTargetAttachment() *schema.Resource {
 		Create: resourceSecretsManagerSecretTargetAttachmentCreate,
 		Update: resourceSecretsManagerSecretTargetAttachmentUpdate,
 		Delete: resourceSecretsManagerSecretTargetAttachmentDelete,
-		
+		CustomizeDiff: resourceSecretsManagerSecretTargetAttachmentCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"secret_id": {
 				Type: schema.TypeString,
@@ -62,4 +63,8 @@ func resourceSecretsManagerSecretTargetAttachmentUpdate(data *schema.ResourceDat
 
 func resourceSecretsManagerSecretTargetAttachmentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SecretsManager::SecretTargetAttachment", data, meta)
+}
+
+func resourceSecretsManagerSecretTargetAttachmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

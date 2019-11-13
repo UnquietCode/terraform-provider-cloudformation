@@ -21,7 +21,8 @@ func ResourceAutoScalingScheduledAction() *schema.Resource {
 		Create: resourceAutoScalingScheduledActionCreate,
 		Update: resourceAutoScalingScheduledActionUpdate,
 		Delete: resourceAutoScalingScheduledActionDelete,
-		
+		CustomizeDiff: resourceAutoScalingScheduledActionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"auto_scaling_group_name": {
 				Type: schema.TypeString,
@@ -78,4 +79,8 @@ func resourceAutoScalingScheduledActionUpdate(data *schema.ResourceData, meta in
 
 func resourceAutoScalingScheduledActionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AutoScaling::ScheduledAction", data, meta)
+}
+
+func resourceAutoScalingScheduledActionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

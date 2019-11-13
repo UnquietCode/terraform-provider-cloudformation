@@ -21,7 +21,8 @@ func ResourcePinpointApplicationSettings() *schema.Resource {
 		Create: resourcePinpointApplicationSettingsCreate,
 		Update: resourcePinpointApplicationSettingsUpdate,
 		Delete: resourcePinpointApplicationSettingsDelete,
-		
+		CustomizeDiff: resourcePinpointApplicationSettingsCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"quiet_time": {
 				Type: schema.TypeList,
@@ -76,4 +77,8 @@ func resourcePinpointApplicationSettingsUpdate(data *schema.ResourceData, meta i
 
 func resourcePinpointApplicationSettingsDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Pinpoint::ApplicationSettings", data, meta)
+}
+
+func resourcePinpointApplicationSettingsCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceIoT1ClickProject() *schema.Resource {
 		Create: resourceIoT1ClickProjectCreate,
 		Update: resourceIoT1ClickProjectUpdate,
 		Delete: resourceIoT1ClickProjectDelete,
-		
+		CustomizeDiff: resourceIoT1ClickProjectCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -64,4 +65,8 @@ func resourceIoT1ClickProjectUpdate(data *schema.ResourceData, meta interface{})
 
 func resourceIoT1ClickProjectDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IoT1Click::Project", data, meta)
+}
+
+func resourceIoT1ClickProjectCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

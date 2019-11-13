@@ -21,7 +21,8 @@ func ResourceSESReceiptFilter() *schema.Resource {
 		Create: resourceSESReceiptFilterCreate,
 		Update: resourceSESReceiptFilterUpdate,
 		Delete: resourceSESReceiptFilterDelete,
-		
+		CustomizeDiff: resourceSESReceiptFilterCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"filter": {
 				Type: schema.TypeList,
@@ -56,4 +57,8 @@ func resourceSESReceiptFilterUpdate(data *schema.ResourceData, meta interface{})
 
 func resourceSESReceiptFilterDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SES::ReceiptFilter", data, meta)
+}
+
+func resourceSESReceiptFilterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

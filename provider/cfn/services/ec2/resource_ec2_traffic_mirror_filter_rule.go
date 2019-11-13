@@ -21,7 +21,8 @@ func ResourceEC2TrafficMirrorFilterRule() *schema.Resource {
 		Create: resourceEC2TrafficMirrorFilterRuleCreate,
 		Update: resourceEC2TrafficMirrorFilterRuleUpdate,
 		Delete: resourceEC2TrafficMirrorFilterRuleDelete,
-		
+		CustomizeDiff: resourceEC2TrafficMirrorFilterRuleCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"destination_port_range": {
 				Type: schema.TypeList,
@@ -94,4 +95,8 @@ func resourceEC2TrafficMirrorFilterRuleUpdate(data *schema.ResourceData, meta in
 
 func resourceEC2TrafficMirrorFilterRuleDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::TrafficMirrorFilterRule", data, meta)
+}
+
+func resourceEC2TrafficMirrorFilterRuleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -22,7 +22,8 @@ func ResourceSQSQueue() *schema.Resource {
 		Create: resourceSQSQueueCreate,
 		Update: resourceSQSQueueUpdate,
 		Delete: resourceSQSQueueDelete,
-		
+		CustomizeDiff: resourceSQSQueueCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"content_based_deduplication": {
 				Type: schema.TypeBool,
@@ -100,4 +101,8 @@ func resourceSQSQueueUpdate(data *schema.ResourceData, meta interface{}) error {
 
 func resourceSQSQueueDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SQS::Queue", data, meta)
+}
+
+func resourceSQSQueueCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

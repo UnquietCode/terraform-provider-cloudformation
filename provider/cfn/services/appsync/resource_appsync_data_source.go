@@ -21,7 +21,8 @@ func ResourceAppSyncDataSource() *schema.Resource {
 		Create: resourceAppSyncDataSourceCreate,
 		Update: resourceAppSyncDataSourceUpdate,
 		Delete: resourceAppSyncDataSourceDelete,
-		
+		CustomizeDiff: resourceAppSyncDataSourceCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"type": {
 				Type: schema.TypeString,
@@ -100,4 +101,8 @@ func resourceAppSyncDataSourceUpdate(data *schema.ResourceData, meta interface{}
 
 func resourceAppSyncDataSourceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AppSync::DataSource", data, meta)
+}
+
+func resourceAppSyncDataSourceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

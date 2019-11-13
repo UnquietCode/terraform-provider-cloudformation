@@ -21,7 +21,8 @@ func ResourceEMRInstanceFleetConfig() *schema.Resource {
 		Create: resourceEMRInstanceFleetConfigCreate,
 		Update: resourceEMRInstanceFleetConfigUpdate,
 		Delete: resourceEMRInstanceFleetConfigDelete,
-		
+		CustomizeDiff: resourceEMRInstanceFleetConfigCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"cluster_id": {
 				Type: schema.TypeString,
@@ -81,4 +82,8 @@ func resourceEMRInstanceFleetConfigUpdate(data *schema.ResourceData, meta interf
 
 func resourceEMRInstanceFleetConfigDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EMR::InstanceFleetConfig", data, meta)
+}
+
+func resourceEMRInstanceFleetConfigCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

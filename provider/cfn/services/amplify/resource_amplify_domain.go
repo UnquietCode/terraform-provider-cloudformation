@@ -21,7 +21,8 @@ func ResourceAmplifyDomain() *schema.Resource {
 		Create: resourceAmplifyDomainCreate,
 		Update: resourceAmplifyDomainUpdate,
 		Delete: resourceAmplifyDomainDelete,
-		
+		CustomizeDiff: resourceAmplifyDomainCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"sub_domain_settings": {
 				Type: schema.TypeList,
@@ -63,4 +64,8 @@ func resourceAmplifyDomainUpdate(data *schema.ResourceData, meta interface{}) er
 
 func resourceAmplifyDomainDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Amplify::Domain", data, meta)
+}
+
+func resourceAmplifyDomainCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

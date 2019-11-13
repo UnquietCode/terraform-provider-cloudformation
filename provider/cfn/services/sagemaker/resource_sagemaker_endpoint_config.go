@@ -22,7 +22,8 @@ func ResourceSageMakerEndpointConfig() *schema.Resource {
 		Create: resourceSageMakerEndpointConfigCreate,
 		Update: resourceSageMakerEndpointConfigUpdate,
 		Delete: resourceSageMakerEndpointConfigDelete,
-		
+		CustomizeDiff: resourceSageMakerEndpointConfigCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"production_variants": {
 				Type: schema.TypeList,
@@ -69,4 +70,8 @@ func resourceSageMakerEndpointConfigUpdate(data *schema.ResourceData, meta inter
 
 func resourceSageMakerEndpointConfigDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SageMaker::EndpointConfig", data, meta)
+}
+
+func resourceSageMakerEndpointConfigCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

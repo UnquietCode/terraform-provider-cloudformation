@@ -21,7 +21,8 @@ func ResourceSecretsManagerRotationSchedule() *schema.Resource {
 		Create: resourceSecretsManagerRotationScheduleCreate,
 		Update: resourceSecretsManagerRotationScheduleUpdate,
 		Delete: resourceSecretsManagerRotationScheduleDelete,
-		
+		CustomizeDiff: resourceSecretsManagerRotationScheduleCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"secret_id": {
 				Type: schema.TypeString,
@@ -64,4 +65,8 @@ func resourceSecretsManagerRotationScheduleUpdate(data *schema.ResourceData, met
 
 func resourceSecretsManagerRotationScheduleDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SecretsManager::RotationSchedule", data, meta)
+}
+
+func resourceSecretsManagerRotationScheduleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

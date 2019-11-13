@@ -21,7 +21,8 @@ func ResourceWAFSqlInjectionMatchSet() *schema.Resource {
 		Create: resourceWAFSqlInjectionMatchSetCreate,
 		Update: resourceWAFSqlInjectionMatchSetUpdate,
 		Delete: resourceWAFSqlInjectionMatchSetDelete,
-		
+		CustomizeDiff: resourceWAFSqlInjectionMatchSetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"name": {
 				Type: schema.TypeString,
@@ -59,4 +60,8 @@ func resourceWAFSqlInjectionMatchSetUpdate(data *schema.ResourceData, meta inter
 
 func resourceWAFSqlInjectionMatchSetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::WAF::SqlInjectionMatchSet", data, meta)
+}
+
+func resourceWAFSqlInjectionMatchSetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

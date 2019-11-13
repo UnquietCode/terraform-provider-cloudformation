@@ -21,7 +21,8 @@ func ResourceServiceCatalogAcceptedPortfolioShare() *schema.Resource {
 		Create: resourceServiceCatalogAcceptedPortfolioShareCreate,
 		Update: resourceServiceCatalogAcceptedPortfolioShareUpdate,
 		Delete: resourceServiceCatalogAcceptedPortfolioShareDelete,
-		
+		CustomizeDiff: resourceServiceCatalogAcceptedPortfolioShareCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"accept_language": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceServiceCatalogAcceptedPortfolioShareUpdate(data *schema.ResourceDat
 
 func resourceServiceCatalogAcceptedPortfolioShareDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ServiceCatalog::AcceptedPortfolioShare", data, meta)
+}
+
+func resourceServiceCatalogAcceptedPortfolioShareCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -22,7 +22,8 @@ func ResourceApiGatewayStage() *schema.Resource {
 		Create: resourceApiGatewayStageCreate,
 		Update: resourceApiGatewayStageUpdate,
 		Delete: resourceApiGatewayStageDelete,
-		
+		CustomizeDiff: resourceApiGatewayStageCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"access_log_setting": {
 				Type: schema.TypeList,
@@ -114,4 +115,8 @@ func resourceApiGatewayStageUpdate(data *schema.ResourceData, meta interface{}) 
 
 func resourceApiGatewayStageDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGateway::Stage", data, meta)
+}
+
+func resourceApiGatewayStageCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

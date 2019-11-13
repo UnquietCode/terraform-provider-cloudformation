@@ -21,7 +21,8 @@ func ResourceApiGatewayVpcLink() *schema.Resource {
 		Create: resourceApiGatewayVpcLinkCreate,
 		Update: resourceApiGatewayVpcLinkUpdate,
 		Delete: resourceApiGatewayVpcLinkDelete,
-		
+		CustomizeDiff: resourceApiGatewayVpcLinkCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -63,4 +64,8 @@ func resourceApiGatewayVpcLinkUpdate(data *schema.ResourceData, meta interface{}
 
 func resourceApiGatewayVpcLinkDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGateway::VpcLink", data, meta)
+}
+
+func resourceApiGatewayVpcLinkCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

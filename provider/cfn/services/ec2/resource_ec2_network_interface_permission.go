@@ -21,7 +21,8 @@ func ResourceEC2NetworkInterfacePermission() *schema.Resource {
 		Create: resourceEC2NetworkInterfacePermissionCreate,
 		Update: resourceEC2NetworkInterfacePermissionUpdate,
 		Delete: resourceEC2NetworkInterfacePermissionDelete,
-		
+		CustomizeDiff: resourceEC2NetworkInterfacePermissionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"aws_account_id": {
 				Type: schema.TypeString,
@@ -62,4 +63,8 @@ func resourceEC2NetworkInterfacePermissionUpdate(data *schema.ResourceData, meta
 
 func resourceEC2NetworkInterfacePermissionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::NetworkInterfacePermission", data, meta)
+}
+
+func resourceEC2NetworkInterfacePermissionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

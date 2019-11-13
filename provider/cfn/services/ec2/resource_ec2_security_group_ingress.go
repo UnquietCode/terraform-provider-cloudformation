@@ -21,7 +21,8 @@ func ResourceEC2SecurityGroupIngress() *schema.Resource {
 		Create: resourceEC2SecurityGroupIngressCreate,
 		Update: resourceEC2SecurityGroupIngressUpdate,
 		Delete: resourceEC2SecurityGroupIngressDelete,
-		
+		CustomizeDiff: resourceEC2SecurityGroupIngressCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"cidr_ip": {
 				Type: schema.TypeString,
@@ -98,4 +99,8 @@ func resourceEC2SecurityGroupIngressUpdate(data *schema.ResourceData, meta inter
 
 func resourceEC2SecurityGroupIngressDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::SecurityGroupIngress", data, meta)
+}
+
+func resourceEC2SecurityGroupIngressCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

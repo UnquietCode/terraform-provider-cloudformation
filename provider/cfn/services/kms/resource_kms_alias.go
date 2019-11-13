@@ -21,7 +21,8 @@ func ResourceKMSAlias() *schema.Resource {
 		Create: resourceKMSAliasCreate,
 		Update: resourceKMSAliasUpdate,
 		Delete: resourceKMSAliasDelete,
-		
+		CustomizeDiff: resourceKMSAliasCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"alias_name": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceKMSAliasUpdate(data *schema.ResourceData, meta interface{}) error {
 
 func resourceKMSAliasDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::KMS::Alias", data, meta)
+}
+
+func resourceKMSAliasCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceGreengrassLoggerDefinitionVersion() *schema.Resource {
 		Create: resourceGreengrassLoggerDefinitionVersionCreate,
 		Update: resourceGreengrassLoggerDefinitionVersionUpdate,
 		Delete: resourceGreengrassLoggerDefinitionVersionDelete,
-		
+		CustomizeDiff: resourceGreengrassLoggerDefinitionVersionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"logger_definition_id": {
 				Type: schema.TypeString,
@@ -59,4 +60,8 @@ func resourceGreengrassLoggerDefinitionVersionUpdate(data *schema.ResourceData, 
 
 func resourceGreengrassLoggerDefinitionVersionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Greengrass::LoggerDefinitionVersion", data, meta)
+}
+
+func resourceGreengrassLoggerDefinitionVersionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

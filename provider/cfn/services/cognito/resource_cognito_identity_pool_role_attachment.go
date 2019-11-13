@@ -21,7 +21,8 @@ func ResourceCognitoIdentityPoolRoleAttachment() *schema.Resource {
 		Create: resourceCognitoIdentityPoolRoleAttachmentCreate,
 		Update: resourceCognitoIdentityPoolRoleAttachmentUpdate,
 		Delete: resourceCognitoIdentityPoolRoleAttachmentDelete,
-		
+		CustomizeDiff: resourceCognitoIdentityPoolRoleAttachmentCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"role_mappings": {
 				Type: schema.TypeMap,
@@ -62,4 +63,8 @@ func resourceCognitoIdentityPoolRoleAttachmentUpdate(data *schema.ResourceData, 
 
 func resourceCognitoIdentityPoolRoleAttachmentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Cognito::IdentityPoolRoleAttachment", data, meta)
+}
+
+func resourceCognitoIdentityPoolRoleAttachmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

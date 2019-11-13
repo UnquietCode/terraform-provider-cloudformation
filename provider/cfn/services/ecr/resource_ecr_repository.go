@@ -22,7 +22,8 @@ func ResourceECRRepository() *schema.Resource {
 		Create: resourceECRRepositoryCreate,
 		Update: resourceECRRepositoryUpdate,
 		Delete: resourceECRRepositoryDelete,
-		
+		CustomizeDiff: resourceECRRepositoryCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"lifecycle_policy": {
 				Type: schema.TypeList,
@@ -70,4 +71,8 @@ func resourceECRRepositoryUpdate(data *schema.ResourceData, meta interface{}) er
 
 func resourceECRRepositoryDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ECR::Repository", data, meta)
+}
+
+func resourceECRRepositoryCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

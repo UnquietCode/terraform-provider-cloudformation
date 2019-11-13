@@ -21,7 +21,8 @@ func ResourceEC2NetworkAclEntry() *schema.Resource {
 		Create: resourceEC2NetworkAclEntryCreate,
 		Update: resourceEC2NetworkAclEntryUpdate,
 		Delete: resourceEC2NetworkAclEntryDelete,
-		
+		CustomizeDiff: resourceEC2NetworkAclEntryCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"cidr_block": {
 				Type: schema.TypeString,
@@ -90,4 +91,8 @@ func resourceEC2NetworkAclEntryUpdate(data *schema.ResourceData, meta interface{
 
 func resourceEC2NetworkAclEntryDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::NetworkAclEntry", data, meta)
+}
+
+func resourceEC2NetworkAclEntryCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

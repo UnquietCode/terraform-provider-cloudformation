@@ -21,7 +21,8 @@ func ResourceEC2Host() *schema.Resource {
 		Create: resourceEC2HostCreate,
 		Update: resourceEC2HostUpdate,
 		Delete: resourceEC2HostDelete,
-		
+		CustomizeDiff: resourceEC2HostCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"auto_placement": {
 				Type: schema.TypeString,
@@ -66,4 +67,8 @@ func resourceEC2HostUpdate(data *schema.ResourceData, meta interface{}) error {
 
 func resourceEC2HostDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::Host", data, meta)
+}
+
+func resourceEC2HostCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

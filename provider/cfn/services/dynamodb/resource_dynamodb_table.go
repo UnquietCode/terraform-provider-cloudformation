@@ -22,7 +22,8 @@ func ResourceDynamoDBTable() *schema.Resource {
 		Create: resourceDynamoDBTableCreate,
 		Update: resourceDynamoDBTableUpdate,
 		Delete: resourceDynamoDBTableDelete,
-		
+		CustomizeDiff: resourceDynamoDBTableCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"attribute_definitions": {
 				Type: schema.TypeList,
@@ -114,4 +115,8 @@ func resourceDynamoDBTableUpdate(data *schema.ResourceData, meta interface{}) er
 
 func resourceDynamoDBTableDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::DynamoDB::Table", data, meta)
+}
+
+func resourceDynamoDBTableCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

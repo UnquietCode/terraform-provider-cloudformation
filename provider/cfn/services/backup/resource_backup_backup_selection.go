@@ -21,7 +21,8 @@ func ResourceBackupBackupSelection() *schema.Resource {
 		Create: resourceBackupBackupSelectionCreate,
 		Update: resourceBackupBackupSelectionUpdate,
 		Delete: resourceBackupBackupSelectionDelete,
-		
+		CustomizeDiff: resourceBackupBackupSelectionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"backup_selection": {
 				Type: schema.TypeList,
@@ -60,4 +61,8 @@ func resourceBackupBackupSelectionUpdate(data *schema.ResourceData, meta interfa
 
 func resourceBackupBackupSelectionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Backup::BackupSelection", data, meta)
+}
+
+func resourceBackupBackupSelectionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

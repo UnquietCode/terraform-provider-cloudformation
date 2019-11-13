@@ -21,7 +21,8 @@ func ResourceLambdaAlias() *schema.Resource {
 		Create: resourceLambdaAliasCreate,
 		Update: resourceLambdaAliasUpdate,
 		Delete: resourceLambdaAliasDelete,
-		
+		CustomizeDiff: resourceLambdaAliasCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -72,4 +73,8 @@ func resourceLambdaAliasUpdate(data *schema.ResourceData, meta interface{}) erro
 
 func resourceLambdaAliasDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Lambda::Alias", data, meta)
+}
+
+func resourceLambdaAliasCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

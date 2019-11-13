@@ -21,7 +21,8 @@ func ResourcePinpointPushTemplate() *schema.Resource {
 		Create: resourcePinpointPushTemplateCreate,
 		Update: resourcePinpointPushTemplateUpdate,
 		Delete: resourcePinpointPushTemplateDelete,
-		
+		CustomizeDiff: resourcePinpointPushTemplateCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"gcm": {
 				Type: schema.TypeList,
@@ -88,4 +89,8 @@ func resourcePinpointPushTemplateUpdate(data *schema.ResourceData, meta interfac
 
 func resourcePinpointPushTemplateDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Pinpoint::PushTemplate", data, meta)
+}
+
+func resourcePinpointPushTemplateCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

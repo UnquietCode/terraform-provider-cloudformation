@@ -22,7 +22,8 @@ func ResourceEC2TransitGateway() *schema.Resource {
 		Create: resourceEC2TransitGatewayCreate,
 		Update: resourceEC2TransitGatewayUpdate,
 		Delete: resourceEC2TransitGatewayDelete,
-		
+		CustomizeDiff: resourceEC2TransitGatewayCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"default_route_table_propagation": {
 				Type: schema.TypeString,
@@ -84,4 +85,8 @@ func resourceEC2TransitGatewayUpdate(data *schema.ResourceData, meta interface{}
 
 func resourceEC2TransitGatewayDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::TransitGateway", data, meta)
+}
+
+func resourceEC2TransitGatewayCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceEC2VPCGatewayAttachment() *schema.Resource {
 		Create: resourceEC2VPCGatewayAttachmentCreate,
 		Update: resourceEC2VPCGatewayAttachmentUpdate,
 		Delete: resourceEC2VPCGatewayAttachmentDelete,
-		
+		CustomizeDiff: resourceEC2VPCGatewayAttachmentCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"internet_gateway_id": {
 				Type: schema.TypeString,
@@ -62,4 +63,8 @@ func resourceEC2VPCGatewayAttachmentUpdate(data *schema.ResourceData, meta inter
 
 func resourceEC2VPCGatewayAttachmentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::VPCGatewayAttachment", data, meta)
+}
+
+func resourceEC2VPCGatewayAttachmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceServiceCatalogStackSetConstraint() *schema.Resource {
 		Create: resourceServiceCatalogStackSetConstraintCreate,
 		Update: resourceServiceCatalogStackSetConstraintUpdate,
 		Delete: resourceServiceCatalogStackSetConstraintDelete,
-		
+		CustomizeDiff: resourceServiceCatalogStackSetConstraintCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -88,4 +89,8 @@ func resourceServiceCatalogStackSetConstraintUpdate(data *schema.ResourceData, m
 
 func resourceServiceCatalogStackSetConstraintDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ServiceCatalog::StackSetConstraint", data, meta)
+}
+
+func resourceServiceCatalogStackSetConstraintCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

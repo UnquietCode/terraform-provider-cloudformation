@@ -21,7 +21,8 @@ func ResourceEC2SpotFleet() *schema.Resource {
 		Create: resourceEC2SpotFleetCreate,
 		Update: resourceEC2SpotFleetUpdate,
 		Delete: resourceEC2SpotFleetDelete,
-		
+		CustomizeDiff: resourceEC2SpotFleetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"spot_fleet_request_config_data": {
 				Type: schema.TypeList,
@@ -56,4 +57,8 @@ func resourceEC2SpotFleetUpdate(data *schema.ResourceData, meta interface{}) err
 
 func resourceEC2SpotFleetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::SpotFleet", data, meta)
+}
+
+func resourceEC2SpotFleetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

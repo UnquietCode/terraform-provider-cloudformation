@@ -22,7 +22,8 @@ func ResourceCodeCommitRepository() *schema.Resource {
 		Create: resourceCodeCommitRepositoryCreate,
 		Update: resourceCodeCommitRepositoryUpdate,
 		Delete: resourceCodeCommitRepositoryDelete,
-		
+		CustomizeDiff: resourceCodeCommitRepositoryCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"repository_name": {
 				Type: schema.TypeString,
@@ -75,4 +76,8 @@ func resourceCodeCommitRepositoryUpdate(data *schema.ResourceData, meta interfac
 
 func resourceCodeCommitRepositoryDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CodeCommit::Repository", data, meta)
+}
+
+func resourceCodeCommitRepositoryCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

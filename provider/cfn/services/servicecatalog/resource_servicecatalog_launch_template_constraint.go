@@ -21,7 +21,8 @@ func ResourceServiceCatalogLaunchTemplateConstraint() *schema.Resource {
 		Create: resourceServiceCatalogLaunchTemplateConstraintCreate,
 		Update: resourceServiceCatalogLaunchTemplateConstraintUpdate,
 		Delete: resourceServiceCatalogLaunchTemplateConstraintDelete,
-		
+		CustomizeDiff: resourceServiceCatalogLaunchTemplateConstraintCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -70,4 +71,8 @@ func resourceServiceCatalogLaunchTemplateConstraintUpdate(data *schema.ResourceD
 
 func resourceServiceCatalogLaunchTemplateConstraintDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ServiceCatalog::LaunchTemplateConstraint", data, meta)
+}
+
+func resourceServiceCatalogLaunchTemplateConstraintCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

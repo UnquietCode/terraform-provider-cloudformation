@@ -21,7 +21,8 @@ func ResourceWAFWebACL() *schema.Resource {
 		Create: resourceWAFWebACLCreate,
 		Update: resourceWAFWebACLUpdate,
 		Delete: resourceWAFWebACLDelete,
-		
+		CustomizeDiff: resourceWAFWebACLCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"default_action": {
 				Type: schema.TypeList,
@@ -69,4 +70,8 @@ func resourceWAFWebACLUpdate(data *schema.ResourceData, meta interface{}) error 
 
 func resourceWAFWebACLDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::WAF::WebACL", data, meta)
+}
+
+func resourceWAFWebACLCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

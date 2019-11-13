@@ -21,7 +21,8 @@ func ResourceLambdaVersion() *schema.Resource {
 		Create: resourceLambdaVersionCreate,
 		Update: resourceLambdaVersionUpdate,
 		Delete: resourceLambdaVersionDelete,
-		
+		CustomizeDiff: resourceLambdaVersionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"code_sha256": {
 				Type: schema.TypeString,
@@ -62,4 +63,8 @@ func resourceLambdaVersionUpdate(data *schema.ResourceData, meta interface{}) er
 
 func resourceLambdaVersionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Lambda::Version", data, meta)
+}
+
+func resourceLambdaVersionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

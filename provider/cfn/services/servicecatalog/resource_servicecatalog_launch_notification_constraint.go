@@ -21,7 +21,8 @@ func ResourceServiceCatalogLaunchNotificationConstraint() *schema.Resource {
 		Create: resourceServiceCatalogLaunchNotificationConstraintCreate,
 		Update: resourceServiceCatalogLaunchNotificationConstraintUpdate,
 		Delete: resourceServiceCatalogLaunchNotificationConstraintDelete,
-		
+		CustomizeDiff: resourceServiceCatalogLaunchNotificationConstraintCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -71,4 +72,8 @@ func resourceServiceCatalogLaunchNotificationConstraintUpdate(data *schema.Resou
 
 func resourceServiceCatalogLaunchNotificationConstraintDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ServiceCatalog::LaunchNotificationConstraint", data, meta)
+}
+
+func resourceServiceCatalogLaunchNotificationConstraintCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

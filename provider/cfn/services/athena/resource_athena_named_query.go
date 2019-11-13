@@ -21,7 +21,8 @@ func ResourceAthenaNamedQuery() *schema.Resource {
 		Create: resourceAthenaNamedQueryCreate,
 		Update: resourceAthenaNamedQueryUpdate,
 		Delete: resourceAthenaNamedQueryDelete,
-		
+		CustomizeDiff: resourceAthenaNamedQueryCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -66,4 +67,8 @@ func resourceAthenaNamedQueryUpdate(data *schema.ResourceData, meta interface{})
 
 func resourceAthenaNamedQueryDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Athena::NamedQuery", data, meta)
+}
+
+func resourceAthenaNamedQueryCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -22,7 +22,8 @@ func ResourceIoTAnalyticsDatastore() *schema.Resource {
 		Create: resourceIoTAnalyticsDatastoreCreate,
 		Update: resourceIoTAnalyticsDatastoreUpdate,
 		Delete: resourceIoTAnalyticsDatastoreDelete,
-		
+		CustomizeDiff: resourceIoTAnalyticsDatastoreCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"datastore_storage": {
 				Type: schema.TypeList,
@@ -72,4 +73,8 @@ func resourceIoTAnalyticsDatastoreUpdate(data *schema.ResourceData, meta interfa
 
 func resourceIoTAnalyticsDatastoreDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IoTAnalytics::Datastore", data, meta)
+}
+
+func resourceIoTAnalyticsDatastoreCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

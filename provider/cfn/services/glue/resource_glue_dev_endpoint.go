@@ -21,7 +21,8 @@ func ResourceGlueDevEndpoint() *schema.Resource {
 		Create: resourceGlueDevEndpointCreate,
 		Update: resourceGlueDevEndpointUpdate,
 		Delete: resourceGlueDevEndpointDelete,
-		
+		CustomizeDiff: resourceGlueDevEndpointCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"extra_jars_s3_path": {
 				Type: schema.TypeString,
@@ -107,4 +108,8 @@ func resourceGlueDevEndpointUpdate(data *schema.ResourceData, meta interface{}) 
 
 func resourceGlueDevEndpointDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Glue::DevEndpoint", data, meta)
+}
+
+func resourceGlueDevEndpointCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

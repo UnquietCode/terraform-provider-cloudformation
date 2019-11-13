@@ -21,7 +21,8 @@ func ResourceEC2SubnetNetworkAclAssociation() *schema.Resource {
 		Create: resourceEC2SubnetNetworkAclAssociationCreate,
 		Update: resourceEC2SubnetNetworkAclAssociationUpdate,
 		Delete: resourceEC2SubnetNetworkAclAssociationDelete,
-		
+		CustomizeDiff: resourceEC2SubnetNetworkAclAssociationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"network_acl_id": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceEC2SubnetNetworkAclAssociationUpdate(data *schema.ResourceData, met
 
 func resourceEC2SubnetNetworkAclAssociationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::SubnetNetworkAclAssociation", data, meta)
+}
+
+func resourceEC2SubnetNetworkAclAssociationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceIoTThingsGraphFlowTemplate() *schema.Resource {
 		Create: resourceIoTThingsGraphFlowTemplateCreate,
 		Update: resourceIoTThingsGraphFlowTemplateUpdate,
 		Delete: resourceIoTThingsGraphFlowTemplateDelete,
-		
+		CustomizeDiff: resourceIoTThingsGraphFlowTemplateCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"compatible_namespace_version": {
 				Type: schema.TypeFloat,
@@ -60,4 +61,8 @@ func resourceIoTThingsGraphFlowTemplateUpdate(data *schema.ResourceData, meta in
 
 func resourceIoTThingsGraphFlowTemplateDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IoTThingsGraph::FlowTemplate", data, meta)
+}
+
+func resourceIoTThingsGraphFlowTemplateCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

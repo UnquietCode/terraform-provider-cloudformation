@@ -21,7 +21,8 @@ func ResourceDAXParameterGroup() *schema.Resource {
 		Create: resourceDAXParameterGroupCreate,
 		Update: resourceDAXParameterGroupUpdate,
 		Delete: resourceDAXParameterGroupDelete,
-		
+		CustomizeDiff: resourceDAXParameterGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"parameter_name_values": {
 				Type: schema.TypeMap,
@@ -62,4 +63,8 @@ func resourceDAXParameterGroupUpdate(data *schema.ResourceData, meta interface{}
 
 func resourceDAXParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::DAX::ParameterGroup", data, meta)
+}
+
+func resourceDAXParameterGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

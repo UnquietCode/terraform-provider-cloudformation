@@ -21,7 +21,8 @@ func ResourceCloudWatchAnomalyDetector() *schema.Resource {
 		Create: resourceCloudWatchAnomalyDetectorCreate,
 		Update: resourceCloudWatchAnomalyDetectorUpdate,
 		Delete: resourceCloudWatchAnomalyDetectorDelete,
-		
+		CustomizeDiff: resourceCloudWatchAnomalyDetectorCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"metric_name": {
 				Type: schema.TypeString,
@@ -73,4 +74,8 @@ func resourceCloudWatchAnomalyDetectorUpdate(data *schema.ResourceData, meta int
 
 func resourceCloudWatchAnomalyDetectorDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CloudWatch::AnomalyDetector", data, meta)
+}
+
+func resourceCloudWatchAnomalyDetectorCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

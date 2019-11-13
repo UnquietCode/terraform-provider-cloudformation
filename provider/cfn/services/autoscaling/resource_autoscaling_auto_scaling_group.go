@@ -21,7 +21,8 @@ func ResourceAutoScalingAutoScalingGroup() *schema.Resource {
 		Create: resourceAutoScalingAutoScalingGroupCreate,
 		Update: resourceAutoScalingAutoScalingGroupUpdate,
 		Delete: resourceAutoScalingAutoScalingGroupDelete,
-		
+		CustomizeDiff: resourceAutoScalingAutoScalingGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"auto_scaling_group_name": {
 				Type: schema.TypeString,
@@ -153,4 +154,8 @@ func resourceAutoScalingAutoScalingGroupUpdate(data *schema.ResourceData, meta i
 
 func resourceAutoScalingAutoScalingGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AutoScaling::AutoScalingGroup", data, meta)
+}
+
+func resourceAutoScalingAutoScalingGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

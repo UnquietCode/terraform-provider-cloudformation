@@ -22,7 +22,8 @@ func ResourceDocDBDBClusterParameterGroup() *schema.Resource {
 		Create: resourceDocDBDBClusterParameterGroupCreate,
 		Update: resourceDocDBDBClusterParameterGroupUpdate,
 		Delete: resourceDocDBDBClusterParameterGroupDelete,
-		
+		CustomizeDiff: resourceDocDBDBClusterParameterGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -72,4 +73,8 @@ func resourceDocDBDBClusterParameterGroupUpdate(data *schema.ResourceData, meta 
 
 func resourceDocDBDBClusterParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::DocDB::DBClusterParameterGroup", data, meta)
+}
+
+func resourceDocDBDBClusterParameterGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

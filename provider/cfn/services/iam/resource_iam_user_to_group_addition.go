@@ -21,7 +21,8 @@ func ResourceIAMUserToGroupAddition() *schema.Resource {
 		Create: resourceIAMUserToGroupAdditionCreate,
 		Update: resourceIAMUserToGroupAdditionUpdate,
 		Delete: resourceIAMUserToGroupAdditionDelete,
-		
+		CustomizeDiff: resourceIAMUserToGroupAdditionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"group_name": {
 				Type: schema.TypeString,
@@ -59,4 +60,8 @@ func resourceIAMUserToGroupAdditionUpdate(data *schema.ResourceData, meta interf
 
 func resourceIAMUserToGroupAdditionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IAM::UserToGroupAddition", data, meta)
+}
+
+func resourceIAMUserToGroupAdditionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

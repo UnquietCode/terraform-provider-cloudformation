@@ -21,7 +21,8 @@ func ResourceServiceCatalogTagOption() *schema.Resource {
 		Create: resourceServiceCatalogTagOptionCreate,
 		Update: resourceServiceCatalogTagOptionUpdate,
 		Delete: resourceServiceCatalogTagOptionDelete,
-		
+		CustomizeDiff: resourceServiceCatalogTagOptionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"active": {
 				Type: schema.TypeBool,
@@ -62,4 +63,8 @@ func resourceServiceCatalogTagOptionUpdate(data *schema.ResourceData, meta inter
 
 func resourceServiceCatalogTagOptionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ServiceCatalog::TagOption", data, meta)
+}
+
+func resourceServiceCatalogTagOptionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

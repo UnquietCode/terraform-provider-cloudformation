@@ -21,7 +21,8 @@ func ResourceApiGatewayDocumentationVersion() *schema.Resource {
 		Create: resourceApiGatewayDocumentationVersionCreate,
 		Update: resourceApiGatewayDocumentationVersionUpdate,
 		Delete: resourceApiGatewayDocumentationVersionDelete,
-		
+		CustomizeDiff: resourceApiGatewayDocumentationVersionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -62,4 +63,8 @@ func resourceApiGatewayDocumentationVersionUpdate(data *schema.ResourceData, met
 
 func resourceApiGatewayDocumentationVersionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGateway::DocumentationVersion", data, meta)
+}
+
+func resourceApiGatewayDocumentationVersionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

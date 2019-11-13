@@ -21,7 +21,8 @@ func ResourceWAFByteMatchSet() *schema.Resource {
 		Create: resourceWAFByteMatchSetCreate,
 		Update: resourceWAFByteMatchSetUpdate,
 		Delete: resourceWAFByteMatchSetDelete,
-		
+		CustomizeDiff: resourceWAFByteMatchSetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"byte_match_tuples": {
 				Type: schema.TypeSet,
@@ -59,4 +60,8 @@ func resourceWAFByteMatchSetUpdate(data *schema.ResourceData, meta interface{}) 
 
 func resourceWAFByteMatchSetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::WAF::ByteMatchSet", data, meta)
+}
+
+func resourceWAFByteMatchSetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

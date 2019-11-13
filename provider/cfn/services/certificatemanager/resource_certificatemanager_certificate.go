@@ -22,7 +22,8 @@ func ResourceCertificateManagerCertificate() *schema.Resource {
 		Create: resourceCertificateManagerCertificateCreate,
 		Update: resourceCertificateManagerCertificateUpdate,
 		Delete: resourceCertificateManagerCertificateDelete,
-		
+		CustomizeDiff: resourceCertificateManagerCertificateCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"domain_name": {
 				Type: schema.TypeString,
@@ -75,4 +76,8 @@ func resourceCertificateManagerCertificateUpdate(data *schema.ResourceData, meta
 
 func resourceCertificateManagerCertificateDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CertificateManager::Certificate", data, meta)
+}
+
+func resourceCertificateManagerCertificateCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

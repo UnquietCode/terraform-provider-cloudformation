@@ -21,7 +21,8 @@ func ResourceRoboMakerFleet() *schema.Resource {
 		Create: resourceRoboMakerFleetCreate,
 		Update: resourceRoboMakerFleetUpdate,
 		Delete: resourceRoboMakerFleetDelete,
-		
+		CustomizeDiff: resourceRoboMakerFleetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"tags": {
 				Type: schema.TypeMap,
@@ -58,4 +59,8 @@ func resourceRoboMakerFleetUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceRoboMakerFleetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::RoboMaker::Fleet", data, meta)
+}
+
+func resourceRoboMakerFleetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

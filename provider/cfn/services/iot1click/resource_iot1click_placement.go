@@ -21,7 +21,8 @@ func ResourceIoT1ClickPlacement() *schema.Resource {
 		Create: resourceIoT1ClickPlacementCreate,
 		Update: resourceIoT1ClickPlacementUpdate,
 		Delete: resourceIoT1ClickPlacementDelete,
-		
+		CustomizeDiff: resourceIoT1ClickPlacementCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"placement_name": {
 				Type: schema.TypeString,
@@ -66,4 +67,8 @@ func resourceIoT1ClickPlacementUpdate(data *schema.ResourceData, meta interface{
 
 func resourceIoT1ClickPlacementDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IoT1Click::Placement", data, meta)
+}
+
+func resourceIoT1ClickPlacementCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

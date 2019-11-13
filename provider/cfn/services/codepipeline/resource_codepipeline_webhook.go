@@ -21,7 +21,8 @@ func ResourceCodePipelineWebhook() *schema.Resource {
 		Create: resourceCodePipelineWebhookCreate,
 		Update: resourceCodePipelineWebhookUpdate,
 		Delete: resourceCodePipelineWebhookDelete,
-		
+		CustomizeDiff: resourceCodePipelineWebhookCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"authentication_configuration": {
 				Type: schema.TypeList,
@@ -85,4 +86,8 @@ func resourceCodePipelineWebhookUpdate(data *schema.ResourceData, meta interface
 
 func resourceCodePipelineWebhookDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CodePipeline::Webhook", data, meta)
+}
+
+func resourceCodePipelineWebhookCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

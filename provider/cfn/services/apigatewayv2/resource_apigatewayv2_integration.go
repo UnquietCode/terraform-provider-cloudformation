@@ -21,7 +21,8 @@ func ResourceApiGatewayV2Integration() *schema.Resource {
 		Create: resourceApiGatewayV2IntegrationCreate,
 		Update: resourceApiGatewayV2IntegrationUpdate,
 		Delete: resourceApiGatewayV2IntegrationDelete,
-		
+		CustomizeDiff: resourceApiGatewayV2IntegrationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -102,4 +103,8 @@ func resourceApiGatewayV2IntegrationUpdate(data *schema.ResourceData, meta inter
 
 func resourceApiGatewayV2IntegrationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGatewayV2::Integration", data, meta)
+}
+
+func resourceApiGatewayV2IntegrationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

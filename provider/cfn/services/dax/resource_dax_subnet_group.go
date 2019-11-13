@@ -21,7 +21,8 @@ func ResourceDAXSubnetGroup() *schema.Resource {
 		Create: resourceDAXSubnetGroupCreate,
 		Update: resourceDAXSubnetGroupUpdate,
 		Delete: resourceDAXSubnetGroupDelete,
-		
+		CustomizeDiff: resourceDAXSubnetGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -63,4 +64,8 @@ func resourceDAXSubnetGroupUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceDAXSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::DAX::SubnetGroup", data, meta)
+}
+
+func resourceDAXSubnetGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceIAMPolicy() *schema.Resource {
 		Create: resourceIAMPolicyCreate,
 		Update: resourceIAMPolicyUpdate,
 		Delete: resourceIAMPolicyDelete,
-		
+		CustomizeDiff: resourceIAMPolicyCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"groups": {
 				Type: schema.TypeList,
@@ -73,4 +74,8 @@ func resourceIAMPolicyUpdate(data *schema.ResourceData, meta interface{}) error 
 
 func resourceIAMPolicyDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IAM::Policy", data, meta)
+}
+
+func resourceIAMPolicyCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

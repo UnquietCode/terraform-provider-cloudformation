@@ -22,7 +22,8 @@ func ResourceElastiCacheReplicationGroup() *schema.Resource {
 		Create: resourceElastiCacheReplicationGroupCreate,
 		Update: resourceElastiCacheReplicationGroupUpdate,
 		Delete: resourceElastiCacheReplicationGroupDelete,
-		
+		CustomizeDiff: resourceElastiCacheReplicationGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"at_rest_encryption_enabled": {
 				Type: schema.TypeBool,
@@ -181,4 +182,8 @@ func resourceElastiCacheReplicationGroupUpdate(data *schema.ResourceData, meta i
 
 func resourceElastiCacheReplicationGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ElastiCache::ReplicationGroup", data, meta)
+}
+
+func resourceElastiCacheReplicationGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

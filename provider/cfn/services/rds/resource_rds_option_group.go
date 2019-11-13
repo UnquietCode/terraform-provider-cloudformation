@@ -22,7 +22,8 @@ func ResourceRDSOptionGroup() *schema.Resource {
 		Create: resourceRDSOptionGroupCreate,
 		Update: resourceRDSOptionGroupUpdate,
 		Delete: resourceRDSOptionGroupDelete,
-		
+		CustomizeDiff: resourceRDSOptionGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"engine_name": {
 				Type: schema.TypeString,
@@ -73,4 +74,8 @@ func resourceRDSOptionGroupUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceRDSOptionGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::RDS::OptionGroup", data, meta)
+}
+
+func resourceRDSOptionGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

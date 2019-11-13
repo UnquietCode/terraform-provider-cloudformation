@@ -22,7 +22,8 @@ func ResourceElasticLoadBalancingV2TargetGroup() *schema.Resource {
 		Create: resourceElasticLoadBalancingV2TargetGroupCreate,
 		Update: resourceElasticLoadBalancingV2TargetGroupUpdate,
 		Delete: resourceElasticLoadBalancingV2TargetGroupDelete,
-		
+		CustomizeDiff: resourceElasticLoadBalancingV2TargetGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"health_check_enabled": {
 				Type: schema.TypeBool,
@@ -124,4 +125,8 @@ func resourceElasticLoadBalancingV2TargetGroupUpdate(data *schema.ResourceData, 
 
 func resourceElasticLoadBalancingV2TargetGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ElasticLoadBalancingV2::TargetGroup", data, meta)
+}
+
+func resourceElasticLoadBalancingV2TargetGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

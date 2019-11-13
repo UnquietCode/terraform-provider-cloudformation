@@ -22,7 +22,8 @@ func ResourceCloudFormationStack() *schema.Resource {
 		Create: resourceCloudFormationStackCreate,
 		Update: resourceCloudFormationStackUpdate,
 		Delete: resourceCloudFormationStackDelete,
-		
+		CustomizeDiff: resourceCloudFormationStackCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"notification_ar_ns": {
 				Type: schema.TypeSet,
@@ -75,4 +76,8 @@ func resourceCloudFormationStackUpdate(data *schema.ResourceData, meta interface
 
 func resourceCloudFormationStackDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CloudFormation::Stack", data, meta)
+}
+
+func resourceCloudFormationStackCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceApiGatewayAccount() *schema.Resource {
 		Create: resourceApiGatewayAccountCreate,
 		Update: resourceApiGatewayAccountUpdate,
 		Delete: resourceApiGatewayAccountDelete,
-		
+		CustomizeDiff: resourceApiGatewayAccountCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"cloud_watch_role_arn": {
 				Type: schema.TypeString,
@@ -54,4 +55,8 @@ func resourceApiGatewayAccountUpdate(data *schema.ResourceData, meta interface{}
 
 func resourceApiGatewayAccountDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGateway::Account", data, meta)
+}
+
+func resourceApiGatewayAccountCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

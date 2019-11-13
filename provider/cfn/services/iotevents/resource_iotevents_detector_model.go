@@ -22,7 +22,8 @@ func ResourceIoTEventsDetectorModel() *schema.Resource {
 		Create: resourceIoTEventsDetectorModelCreate,
 		Update: resourceIoTEventsDetectorModelUpdate,
 		Delete: resourceIoTEventsDetectorModelDelete,
-		
+		CustomizeDiff: resourceIoTEventsDetectorModelCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"detector_model_definition": {
 				Type: schema.TypeList,
@@ -78,4 +79,8 @@ func resourceIoTEventsDetectorModelUpdate(data *schema.ResourceData, meta interf
 
 func resourceIoTEventsDetectorModelDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IoTEvents::DetectorModel", data, meta)
+}
+
+func resourceIoTEventsDetectorModelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

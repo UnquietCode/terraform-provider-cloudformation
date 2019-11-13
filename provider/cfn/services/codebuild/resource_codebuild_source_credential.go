@@ -21,7 +21,8 @@ func ResourceCodeBuildSourceCredential() *schema.Resource {
 		Create: resourceCodeBuildSourceCredentialCreate,
 		Update: resourceCodeBuildSourceCredentialUpdate,
 		Delete: resourceCodeBuildSourceCredentialDelete,
-		
+		CustomizeDiff: resourceCodeBuildSourceCredentialCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"server_type": {
 				Type: schema.TypeString,
@@ -66,4 +67,8 @@ func resourceCodeBuildSourceCredentialUpdate(data *schema.ResourceData, meta int
 
 func resourceCodeBuildSourceCredentialDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CodeBuild::SourceCredential", data, meta)
+}
+
+func resourceCodeBuildSourceCredentialCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

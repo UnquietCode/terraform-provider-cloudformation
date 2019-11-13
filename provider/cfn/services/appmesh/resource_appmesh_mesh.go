@@ -22,7 +22,8 @@ func ResourceAppMeshMesh() *schema.Resource {
 		Create: resourceAppMeshMeshCreate,
 		Update: resourceAppMeshMeshUpdate,
 		Delete: resourceAppMeshMeshDelete,
-		
+		CustomizeDiff: resourceAppMeshMeshCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"mesh_name": {
 				Type: schema.TypeString,
@@ -66,4 +67,8 @@ func resourceAppMeshMeshUpdate(data *schema.ResourceData, meta interface{}) erro
 
 func resourceAppMeshMeshDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AppMesh::Mesh", data, meta)
+}
+
+func resourceAppMeshMeshCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

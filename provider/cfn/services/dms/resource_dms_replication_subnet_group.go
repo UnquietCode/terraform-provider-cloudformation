@@ -22,7 +22,8 @@ func ResourceDMSReplicationSubnetGroup() *schema.Resource {
 		Create: resourceDMSReplicationSubnetGroupCreate,
 		Update: resourceDMSReplicationSubnetGroupUpdate,
 		Delete: resourceDMSReplicationSubnetGroupDelete,
-		
+		CustomizeDiff: resourceDMSReplicationSubnetGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"replication_subnet_group_description": {
 				Type: schema.TypeString,
@@ -69,4 +70,8 @@ func resourceDMSReplicationSubnetGroupUpdate(data *schema.ResourceData, meta int
 
 func resourceDMSReplicationSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::DMS::ReplicationSubnetGroup", data, meta)
+}
+
+func resourceDMSReplicationSubnetGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

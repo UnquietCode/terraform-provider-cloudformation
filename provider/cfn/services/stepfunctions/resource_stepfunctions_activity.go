@@ -21,7 +21,8 @@ func ResourceStepFunctionsActivity() *schema.Resource {
 		Create: resourceStepFunctionsActivityCreate,
 		Update: resourceStepFunctionsActivityUpdate,
 		Delete: resourceStepFunctionsActivityDelete,
-		
+		CustomizeDiff: resourceStepFunctionsActivityCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"tags": {
 				Type: schema.TypeList,
@@ -59,4 +60,8 @@ func resourceStepFunctionsActivityUpdate(data *schema.ResourceData, meta interfa
 
 func resourceStepFunctionsActivityDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::StepFunctions::Activity", data, meta)
+}
+
+func resourceStepFunctionsActivityCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

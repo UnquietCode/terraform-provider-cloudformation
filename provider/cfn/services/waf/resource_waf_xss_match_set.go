@@ -21,7 +21,8 @@ func ResourceWAFXssMatchSet() *schema.Resource {
 		Create: resourceWAFXssMatchSetCreate,
 		Update: resourceWAFXssMatchSetUpdate,
 		Delete: resourceWAFXssMatchSetDelete,
-		
+		CustomizeDiff: resourceWAFXssMatchSetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"name": {
 				Type: schema.TypeString,
@@ -59,4 +60,8 @@ func resourceWAFXssMatchSetUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceWAFXssMatchSetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::WAF::XssMatchSet", data, meta)
+}
+
+func resourceWAFXssMatchSetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

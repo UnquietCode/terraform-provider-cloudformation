@@ -21,7 +21,8 @@ func ResourceServiceCatalogPortfolioShare() *schema.Resource {
 		Create: resourceServiceCatalogPortfolioShareCreate,
 		Update: resourceServiceCatalogPortfolioShareUpdate,
 		Delete: resourceServiceCatalogPortfolioShareDelete,
-		
+		CustomizeDiff: resourceServiceCatalogPortfolioShareCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"account_id": {
 				Type: schema.TypeString,
@@ -62,4 +63,8 @@ func resourceServiceCatalogPortfolioShareUpdate(data *schema.ResourceData, meta 
 
 func resourceServiceCatalogPortfolioShareDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ServiceCatalog::PortfolioShare", data, meta)
+}
+
+func resourceServiceCatalogPortfolioShareCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

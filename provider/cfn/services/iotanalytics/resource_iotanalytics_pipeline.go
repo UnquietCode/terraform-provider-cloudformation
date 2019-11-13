@@ -22,7 +22,8 @@ func ResourceIoTAnalyticsPipeline() *schema.Resource {
 		Create: resourceIoTAnalyticsPipelineCreate,
 		Update: resourceIoTAnalyticsPipelineUpdate,
 		Delete: resourceIoTAnalyticsPipelineDelete,
-		
+		CustomizeDiff: resourceIoTAnalyticsPipelineCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"pipeline_name": {
 				Type: schema.TypeString,
@@ -65,4 +66,8 @@ func resourceIoTAnalyticsPipelineUpdate(data *schema.ResourceData, meta interfac
 
 func resourceIoTAnalyticsPipelineDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IoTAnalytics::Pipeline", data, meta)
+}
+
+func resourceIoTAnalyticsPipelineCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

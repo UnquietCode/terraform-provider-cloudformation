@@ -22,7 +22,8 @@ func ResourceSageMakerEndpoint() *schema.Resource {
 		Create: resourceSageMakerEndpointCreate,
 		Update: resourceSageMakerEndpointUpdate,
 		Delete: resourceSageMakerEndpointDelete,
-		
+		CustomizeDiff: resourceSageMakerEndpointCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"endpoint_name": {
 				Type: schema.TypeString,
@@ -64,4 +65,8 @@ func resourceSageMakerEndpointUpdate(data *schema.ResourceData, meta interface{}
 
 func resourceSageMakerEndpointDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SageMaker::Endpoint", data, meta)
+}
+
+func resourceSageMakerEndpointCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

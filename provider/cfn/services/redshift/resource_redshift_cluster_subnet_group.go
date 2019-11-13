@@ -22,7 +22,8 @@ func ResourceRedshiftClusterSubnetGroup() *schema.Resource {
 		Create: resourceRedshiftClusterSubnetGroupCreate,
 		Update: resourceRedshiftClusterSubnetGroupUpdate,
 		Delete: resourceRedshiftClusterSubnetGroupDelete,
-		
+		CustomizeDiff: resourceRedshiftClusterSubnetGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -65,4 +66,8 @@ func resourceRedshiftClusterSubnetGroupUpdate(data *schema.ResourceData, meta in
 
 func resourceRedshiftClusterSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Redshift::ClusterSubnetGroup", data, meta)
+}
+
+func resourceRedshiftClusterSubnetGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

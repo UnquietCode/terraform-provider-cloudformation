@@ -21,7 +21,8 @@ func ResourceLambdaPermission() *schema.Resource {
 		Create: resourceLambdaPermissionCreate,
 		Update: resourceLambdaPermissionUpdate,
 		Delete: resourceLambdaPermissionDelete,
-		
+		CustomizeDiff: resourceLambdaPermissionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"action": {
 				Type: schema.TypeString,
@@ -74,4 +75,8 @@ func resourceLambdaPermissionUpdate(data *schema.ResourceData, meta interface{})
 
 func resourceLambdaPermissionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Lambda::Permission", data, meta)
+}
+
+func resourceLambdaPermissionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

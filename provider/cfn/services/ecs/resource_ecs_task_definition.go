@@ -22,7 +22,8 @@ func ResourceECSTaskDefinition() *schema.Resource {
 		Create: resourceECSTaskDefinitionCreate,
 		Update: resourceECSTaskDefinitionUpdate,
 		Delete: resourceECSTaskDefinitionDelete,
-		
+		CustomizeDiff: resourceECSTaskDefinitionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"container_definitions": {
 				Type: schema.TypeSet,
@@ -115,4 +116,8 @@ func resourceECSTaskDefinitionUpdate(data *schema.ResourceData, meta interface{}
 
 func resourceECSTaskDefinitionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ECS::TaskDefinition", data, meta)
+}
+
+func resourceECSTaskDefinitionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

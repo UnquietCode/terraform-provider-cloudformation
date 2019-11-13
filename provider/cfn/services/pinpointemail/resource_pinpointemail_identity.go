@@ -21,7 +21,8 @@ func ResourcePinpointEmailIdentity() *schema.Resource {
 		Create: resourcePinpointEmailIdentityCreate,
 		Update: resourcePinpointEmailIdentityUpdate,
 		Delete: resourcePinpointEmailIdentityDelete,
-		
+		CustomizeDiff: resourcePinpointEmailIdentityCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"feedback_forwarding_enabled": {
 				Type: schema.TypeBool,
@@ -73,4 +74,8 @@ func resourcePinpointEmailIdentityUpdate(data *schema.ResourceData, meta interfa
 
 func resourcePinpointEmailIdentityDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::PinpointEmail::Identity", data, meta)
+}
+
+func resourcePinpointEmailIdentityCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

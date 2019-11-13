@@ -21,7 +21,8 @@ func ResourcePinpointEmailChannel() *schema.Resource {
 		Create: resourcePinpointEmailChannelCreate,
 		Update: resourcePinpointEmailChannelUpdate,
 		Delete: resourcePinpointEmailChannelDelete,
-		
+		CustomizeDiff: resourcePinpointEmailChannelCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"configuration_set": {
 				Type: schema.TypeString,
@@ -74,4 +75,8 @@ func resourcePinpointEmailChannelUpdate(data *schema.ResourceData, meta interfac
 
 func resourcePinpointEmailChannelDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Pinpoint::EmailChannel", data, meta)
+}
+
+func resourcePinpointEmailChannelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

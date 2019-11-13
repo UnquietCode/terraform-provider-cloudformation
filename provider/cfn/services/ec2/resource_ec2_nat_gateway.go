@@ -22,7 +22,8 @@ func ResourceEC2NatGateway() *schema.Resource {
 		Create: resourceEC2NatGatewayCreate,
 		Update: resourceEC2NatGatewayUpdate,
 		Delete: resourceEC2NatGatewayDelete,
-		
+		CustomizeDiff: resourceEC2NatGatewayCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"allocation_id": {
 				Type: schema.TypeString,
@@ -64,4 +65,8 @@ func resourceEC2NatGatewayUpdate(data *schema.ResourceData, meta interface{}) er
 
 func resourceEC2NatGatewayDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::NatGateway", data, meta)
+}
+
+func resourceEC2NatGatewayCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

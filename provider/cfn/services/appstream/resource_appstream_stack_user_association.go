@@ -21,7 +21,8 @@ func ResourceAppStreamStackUserAssociation() *schema.Resource {
 		Create: resourceAppStreamStackUserAssociationCreate,
 		Update: resourceAppStreamStackUserAssociationUpdate,
 		Delete: resourceAppStreamStackUserAssociationDelete,
-		
+		CustomizeDiff: resourceAppStreamStackUserAssociationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"send_email_notification": {
 				Type: schema.TypeBool,
@@ -66,4 +67,8 @@ func resourceAppStreamStackUserAssociationUpdate(data *schema.ResourceData, meta
 
 func resourceAppStreamStackUserAssociationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AppStream::StackUserAssociation", data, meta)
+}
+
+func resourceAppStreamStackUserAssociationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

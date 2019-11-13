@@ -22,7 +22,8 @@ func ResourceDMSReplicationInstance() *schema.Resource {
 		Create: resourceDMSReplicationInstanceCreate,
 		Update: resourceDMSReplicationInstanceUpdate,
 		Delete: resourceDMSReplicationInstanceDelete,
-		
+		CustomizeDiff: resourceDMSReplicationInstanceCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"replication_instance_identifier": {
 				Type: schema.TypeString,
@@ -109,4 +110,8 @@ func resourceDMSReplicationInstanceUpdate(data *schema.ResourceData, meta interf
 
 func resourceDMSReplicationInstanceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::DMS::ReplicationInstance", data, meta)
+}
+
+func resourceDMSReplicationInstanceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

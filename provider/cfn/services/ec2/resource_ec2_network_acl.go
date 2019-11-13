@@ -22,7 +22,8 @@ func ResourceEC2NetworkAcl() *schema.Resource {
 		Create: resourceEC2NetworkAclCreate,
 		Update: resourceEC2NetworkAclUpdate,
 		Delete: resourceEC2NetworkAclDelete,
-		
+		CustomizeDiff: resourceEC2NetworkAclCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"tags": {
 				Type: schema.TypeList,
@@ -60,4 +61,8 @@ func resourceEC2NetworkAclUpdate(data *schema.ResourceData, meta interface{}) er
 
 func resourceEC2NetworkAclDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::NetworkAcl", data, meta)
+}
+
+func resourceEC2NetworkAclCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

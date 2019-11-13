@@ -21,7 +21,8 @@ func ResourceEC2Route() *schema.Resource {
 		Create: resourceEC2RouteCreate,
 		Update: resourceEC2RouteUpdate,
 		Delete: resourceEC2RouteDelete,
-		
+		CustomizeDiff: resourceEC2RouteCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"destination_cidr_block": {
 				Type: schema.TypeString,
@@ -90,4 +91,8 @@ func resourceEC2RouteUpdate(data *schema.ResourceData, meta interface{}) error {
 
 func resourceEC2RouteDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::Route", data, meta)
+}
+
+func resourceEC2RouteCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

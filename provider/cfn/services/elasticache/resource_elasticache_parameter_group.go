@@ -21,7 +21,8 @@ func ResourceElastiCacheParameterGroup() *schema.Resource {
 		Create: resourceElastiCacheParameterGroupCreate,
 		Update: resourceElastiCacheParameterGroupUpdate,
 		Delete: resourceElastiCacheParameterGroupDelete,
-		
+		CustomizeDiff: resourceElastiCacheParameterGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"cache_parameter_group_family": {
 				Type: schema.TypeString,
@@ -63,4 +64,8 @@ func resourceElastiCacheParameterGroupUpdate(data *schema.ResourceData, meta int
 
 func resourceElastiCacheParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ElastiCache::ParameterGroup", data, meta)
+}
+
+func resourceElastiCacheParameterGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

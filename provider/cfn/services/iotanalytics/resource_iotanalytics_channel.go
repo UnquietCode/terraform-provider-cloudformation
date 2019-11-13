@@ -22,7 +22,8 @@ func ResourceIoTAnalyticsChannel() *schema.Resource {
 		Create: resourceIoTAnalyticsChannelCreate,
 		Update: resourceIoTAnalyticsChannelUpdate,
 		Delete: resourceIoTAnalyticsChannelDelete,
-		
+		CustomizeDiff: resourceIoTAnalyticsChannelCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"channel_name": {
 				Type: schema.TypeString,
@@ -72,4 +73,8 @@ func resourceIoTAnalyticsChannelUpdate(data *schema.ResourceData, meta interface
 
 func resourceIoTAnalyticsChannelDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IoTAnalytics::Channel", data, meta)
+}
+
+func resourceIoTAnalyticsChannelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

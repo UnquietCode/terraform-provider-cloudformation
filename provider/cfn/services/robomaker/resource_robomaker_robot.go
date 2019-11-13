@@ -21,7 +21,8 @@ func ResourceRoboMakerRobot() *schema.Resource {
 		Create: resourceRoboMakerRobotCreate,
 		Update: resourceRoboMakerRobotUpdate,
 		Delete: resourceRoboMakerRobotDelete,
-		
+		CustomizeDiff: resourceRoboMakerRobotCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"fleet": {
 				Type: schema.TypeString,
@@ -70,4 +71,8 @@ func resourceRoboMakerRobotUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceRoboMakerRobotDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::RoboMaker::Robot", data, meta)
+}
+
+func resourceRoboMakerRobotCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

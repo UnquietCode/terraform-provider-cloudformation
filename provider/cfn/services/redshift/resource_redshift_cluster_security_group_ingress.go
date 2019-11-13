@@ -21,7 +21,8 @@ func ResourceRedshiftClusterSecurityGroupIngress() *schema.Resource {
 		Create: resourceRedshiftClusterSecurityGroupIngressCreate,
 		Update: resourceRedshiftClusterSecurityGroupIngressUpdate,
 		Delete: resourceRedshiftClusterSecurityGroupIngressDelete,
-		
+		CustomizeDiff: resourceRedshiftClusterSecurityGroupIngressCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"cidrip": {
 				Type: schema.TypeString,
@@ -66,4 +67,8 @@ func resourceRedshiftClusterSecurityGroupIngressUpdate(data *schema.ResourceData
 
 func resourceRedshiftClusterSecurityGroupIngressDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Redshift::ClusterSecurityGroupIngress", data, meta)
+}
+
+func resourceRedshiftClusterSecurityGroupIngressCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

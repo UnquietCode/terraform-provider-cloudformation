@@ -21,7 +21,8 @@ func ResourceServiceCatalogPortfolioPrincipalAssociation() *schema.Resource {
 		Create: resourceServiceCatalogPortfolioPrincipalAssociationCreate,
 		Update: resourceServiceCatalogPortfolioPrincipalAssociationUpdate,
 		Delete: resourceServiceCatalogPortfolioPrincipalAssociationDelete,
-		
+		CustomizeDiff: resourceServiceCatalogPortfolioPrincipalAssociationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"principal_arn": {
 				Type: schema.TypeString,
@@ -66,4 +67,8 @@ func resourceServiceCatalogPortfolioPrincipalAssociationUpdate(data *schema.Reso
 
 func resourceServiceCatalogPortfolioPrincipalAssociationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ServiceCatalog::PortfolioPrincipalAssociation", data, meta)
+}
+
+func resourceServiceCatalogPortfolioPrincipalAssociationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

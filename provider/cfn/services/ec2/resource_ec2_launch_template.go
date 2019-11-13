@@ -21,7 +21,8 @@ func ResourceEC2LaunchTemplate() *schema.Resource {
 		Create: resourceEC2LaunchTemplateCreate,
 		Update: resourceEC2LaunchTemplateUpdate,
 		Delete: resourceEC2LaunchTemplateDelete,
-		
+		CustomizeDiff: resourceEC2LaunchTemplateCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"launch_template_name": {
 				Type: schema.TypeString,
@@ -60,4 +61,8 @@ func resourceEC2LaunchTemplateUpdate(data *schema.ResourceData, meta interface{}
 
 func resourceEC2LaunchTemplateDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::LaunchTemplate", data, meta)
+}
+
+func resourceEC2LaunchTemplateCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

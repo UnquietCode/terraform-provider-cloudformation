@@ -21,7 +21,8 @@ func ResourceWAFRegionalSizeConstraintSet() *schema.Resource {
 		Create: resourceWAFRegionalSizeConstraintSetCreate,
 		Update: resourceWAFRegionalSizeConstraintSetUpdate,
 		Delete: resourceWAFRegionalSizeConstraintSetDelete,
-		
+		CustomizeDiff: resourceWAFRegionalSizeConstraintSetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"size_constraints": {
 				Type: schema.TypeList,
@@ -59,4 +60,8 @@ func resourceWAFRegionalSizeConstraintSetUpdate(data *schema.ResourceData, meta 
 
 func resourceWAFRegionalSizeConstraintSetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::WAFRegional::SizeConstraintSet", data, meta)
+}
+
+func resourceWAFRegionalSizeConstraintSetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

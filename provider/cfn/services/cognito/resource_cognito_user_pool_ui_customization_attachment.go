@@ -21,7 +21,8 @@ func ResourceCognitoUserPoolUICustomizationAttachment() *schema.Resource {
 		Create: resourceCognitoUserPoolUICustomizationAttachmentCreate,
 		Update: resourceCognitoUserPoolUICustomizationAttachmentUpdate,
 		Delete: resourceCognitoUserPoolUICustomizationAttachmentDelete,
-		
+		CustomizeDiff: resourceCognitoUserPoolUICustomizationAttachmentCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"css": {
 				Type: schema.TypeString,
@@ -62,4 +63,8 @@ func resourceCognitoUserPoolUICustomizationAttachmentUpdate(data *schema.Resourc
 
 func resourceCognitoUserPoolUICustomizationAttachmentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Cognito::UserPoolUICustomizationAttachment", data, meta)
+}
+
+func resourceCognitoUserPoolUICustomizationAttachmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

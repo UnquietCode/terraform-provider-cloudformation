@@ -21,7 +21,8 @@ func ResourceDMSCertificate() *schema.Resource {
 		Create: resourceDMSCertificateCreate,
 		Update: resourceDMSCertificateUpdate,
 		Delete: resourceDMSCertificateDelete,
-		
+		CustomizeDiff: resourceDMSCertificateCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"certificate_identifier": {
 				Type: schema.TypeString,
@@ -62,4 +63,8 @@ func resourceDMSCertificateUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceDMSCertificateDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::DMS::Certificate", data, meta)
+}
+
+func resourceDMSCertificateCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

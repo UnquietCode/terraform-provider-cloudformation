@@ -21,7 +21,8 @@ func ResourceEC2VPCCidrBlock() *schema.Resource {
 		Create: resourceEC2VPCCidrBlockCreate,
 		Update: resourceEC2VPCCidrBlockUpdate,
 		Delete: resourceEC2VPCCidrBlockDelete,
-		
+		CustomizeDiff: resourceEC2VPCCidrBlockCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"amazon_provided_ipv6_cidr_block": {
 				Type: schema.TypeBool,
@@ -62,4 +63,8 @@ func resourceEC2VPCCidrBlockUpdate(data *schema.ResourceData, meta interface{}) 
 
 func resourceEC2VPCCidrBlockDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::VPCCidrBlock", data, meta)
+}
+
+func resourceEC2VPCCidrBlockCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

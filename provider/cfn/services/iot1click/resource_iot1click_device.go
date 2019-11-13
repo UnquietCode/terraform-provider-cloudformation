@@ -21,7 +21,8 @@ func ResourceIoT1ClickDevice() *schema.Resource {
 		Create: resourceIoT1ClickDeviceCreate,
 		Update: resourceIoT1ClickDeviceUpdate,
 		Delete: resourceIoT1ClickDeviceDelete,
-		
+		CustomizeDiff: resourceIoT1ClickDeviceCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"device_id": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceIoT1ClickDeviceUpdate(data *schema.ResourceData, meta interface{}) 
 
 func resourceIoT1ClickDeviceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IoT1Click::Device", data, meta)
+}
+
+func resourceIoT1ClickDeviceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -22,7 +22,8 @@ func ResourceRDSDBClusterParameterGroup() *schema.Resource {
 		Create: resourceRDSDBClusterParameterGroupCreate,
 		Update: resourceRDSDBClusterParameterGroupUpdate,
 		Delete: resourceRDSDBClusterParameterGroupDelete,
-		
+		CustomizeDiff: resourceRDSDBClusterParameterGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -68,4 +69,8 @@ func resourceRDSDBClusterParameterGroupUpdate(data *schema.ResourceData, meta in
 
 func resourceRDSDBClusterParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::RDS::DBClusterParameterGroup", data, meta)
+}
+
+func resourceRDSDBClusterParameterGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceGlueClassifier() *schema.Resource {
 		Create: resourceGlueClassifierCreate,
 		Update: resourceGlueClassifierUpdate,
 		Delete: resourceGlueClassifierDelete,
-		
+		CustomizeDiff: resourceGlueClassifierCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"xml_classifier": {
 				Type: schema.TypeList,
@@ -74,4 +75,8 @@ func resourceGlueClassifierUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceGlueClassifierDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Glue::Classifier", data, meta)
+}
+
+func resourceGlueClassifierCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

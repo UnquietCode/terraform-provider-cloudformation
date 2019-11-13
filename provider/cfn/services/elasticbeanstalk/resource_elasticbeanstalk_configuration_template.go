@@ -21,7 +21,8 @@ func ResourceElasticBeanstalkConfigurationTemplate() *schema.Resource {
 		Create: resourceElasticBeanstalkConfigurationTemplateCreate,
 		Update: resourceElasticBeanstalkConfigurationTemplateUpdate,
 		Delete: resourceElasticBeanstalkConfigurationTemplateDelete,
-		
+		CustomizeDiff: resourceElasticBeanstalkConfigurationTemplateCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"application_name": {
 				Type: schema.TypeString,
@@ -81,4 +82,8 @@ func resourceElasticBeanstalkConfigurationTemplateUpdate(data *schema.ResourceDa
 
 func resourceElasticBeanstalkConfigurationTemplateDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ElasticBeanstalk::ConfigurationTemplate", data, meta)
+}
+
+func resourceElasticBeanstalkConfigurationTemplateCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

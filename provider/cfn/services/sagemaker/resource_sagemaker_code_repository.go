@@ -21,7 +21,8 @@ func ResourceSageMakerCodeRepository() *schema.Resource {
 		Create: resourceSageMakerCodeRepositoryCreate,
 		Update: resourceSageMakerCodeRepositoryUpdate,
 		Delete: resourceSageMakerCodeRepositoryDelete,
-		
+		CustomizeDiff: resourceSageMakerCodeRepositoryCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"code_repository_name": {
 				Type: schema.TypeString,
@@ -60,4 +61,8 @@ func resourceSageMakerCodeRepositoryUpdate(data *schema.ResourceData, meta inter
 
 func resourceSageMakerCodeRepositoryDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SageMaker::CodeRepository", data, meta)
+}
+
+func resourceSageMakerCodeRepositoryCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceStepFunctionsStateMachine() *schema.Resource {
 		Create: resourceStepFunctionsStateMachineCreate,
 		Update: resourceStepFunctionsStateMachineUpdate,
 		Delete: resourceStepFunctionsStateMachineDelete,
-		
+		CustomizeDiff: resourceStepFunctionsStateMachineCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"definition_string": {
 				Type: schema.TypeString,
@@ -67,4 +68,8 @@ func resourceStepFunctionsStateMachineUpdate(data *schema.ResourceData, meta int
 
 func resourceStepFunctionsStateMachineDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::StepFunctions::StateMachine", data, meta)
+}
+
+func resourceStepFunctionsStateMachineCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

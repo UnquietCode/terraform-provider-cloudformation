@@ -21,7 +21,8 @@ func ResourceAppStreamUser() *schema.Resource {
 		Create: resourceAppStreamUserCreate,
 		Update: resourceAppStreamUserUpdate,
 		Delete: resourceAppStreamUserDelete,
-		
+		CustomizeDiff: resourceAppStreamUserCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"user_name": {
 				Type: schema.TypeString,
@@ -70,4 +71,8 @@ func resourceAppStreamUserUpdate(data *schema.ResourceData, meta interface{}) er
 
 func resourceAppStreamUserDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::AppStream::User", data, meta)
+}
+
+func resourceAppStreamUserCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

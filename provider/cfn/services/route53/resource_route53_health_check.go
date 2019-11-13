@@ -21,7 +21,8 @@ func ResourceRoute53HealthCheck() *schema.Resource {
 		Create: resourceRoute53HealthCheckCreate,
 		Update: resourceRoute53HealthCheckUpdate,
 		Delete: resourceRoute53HealthCheckDelete,
-		
+		CustomizeDiff: resourceRoute53HealthCheckCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"health_check_config": {
 				Type: schema.TypeList,
@@ -61,4 +62,8 @@ func resourceRoute53HealthCheckUpdate(data *schema.ResourceData, meta interface{
 
 func resourceRoute53HealthCheckDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Route53::HealthCheck", data, meta)
+}
+
+func resourceRoute53HealthCheckCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

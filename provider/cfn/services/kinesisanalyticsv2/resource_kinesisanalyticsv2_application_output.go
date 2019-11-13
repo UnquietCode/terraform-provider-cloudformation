@@ -21,7 +21,8 @@ func ResourceKinesisAnalyticsV2ApplicationOutput() *schema.Resource {
 		Create: resourceKinesisAnalyticsV2ApplicationOutputCreate,
 		Update: resourceKinesisAnalyticsV2ApplicationOutputUpdate,
 		Delete: resourceKinesisAnalyticsV2ApplicationOutputDelete,
-		
+		CustomizeDiff: resourceKinesisAnalyticsV2ApplicationOutputCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"application_name": {
 				Type: schema.TypeString,
@@ -60,4 +61,8 @@ func resourceKinesisAnalyticsV2ApplicationOutputUpdate(data *schema.ResourceData
 
 func resourceKinesisAnalyticsV2ApplicationOutputDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::KinesisAnalyticsV2::ApplicationOutput", data, meta)
+}
+
+func resourceKinesisAnalyticsV2ApplicationOutputCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

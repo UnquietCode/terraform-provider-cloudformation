@@ -22,7 +22,8 @@ func ResourceNeptuneDBSubnetGroup() *schema.Resource {
 		Create: resourceNeptuneDBSubnetGroupCreate,
 		Update: resourceNeptuneDBSubnetGroupUpdate,
 		Delete: resourceNeptuneDBSubnetGroupDelete,
-		
+		CustomizeDiff: resourceNeptuneDBSubnetGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"db_subnet_group_name": {
 				Type: schema.TypeString,
@@ -69,4 +70,8 @@ func resourceNeptuneDBSubnetGroupUpdate(data *schema.ResourceData, meta interfac
 
 func resourceNeptuneDBSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Neptune::DBSubnetGroup", data, meta)
+}
+
+func resourceNeptuneDBSubnetGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

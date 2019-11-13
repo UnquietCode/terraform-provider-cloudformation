@@ -22,7 +22,8 @@ func ResourceRoute53ResolverResolverEndpoint() *schema.Resource {
 		Create: resourceRoute53ResolverResolverEndpointCreate,
 		Update: resourceRoute53ResolverResolverEndpointUpdate,
 		Delete: resourceRoute53ResolverResolverEndpointDelete,
-		
+		CustomizeDiff: resourceRoute53ResolverResolverEndpointCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"ip_addresses": {
 				Type: schema.TypeList,
@@ -74,4 +75,8 @@ func resourceRoute53ResolverResolverEndpointUpdate(data *schema.ResourceData, me
 
 func resourceRoute53ResolverResolverEndpointDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Route53Resolver::ResolverEndpoint", data, meta)
+}
+
+func resourceRoute53ResolverResolverEndpointCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

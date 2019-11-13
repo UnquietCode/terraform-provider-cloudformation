@@ -22,7 +22,8 @@ func ResourceRAMResourceShare() *schema.Resource {
 		Create: resourceRAMResourceShareCreate,
 		Update: resourceRAMResourceShareUpdate,
 		Delete: resourceRAMResourceShareDelete,
-		
+		CustomizeDiff: resourceRAMResourceShareCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"principals": {
 				Type: schema.TypeList,
@@ -74,4 +75,8 @@ func resourceRAMResourceShareUpdate(data *schema.ResourceData, meta interface{})
 
 func resourceRAMResourceShareDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::RAM::ResourceShare", data, meta)
+}
+
+func resourceRAMResourceShareCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

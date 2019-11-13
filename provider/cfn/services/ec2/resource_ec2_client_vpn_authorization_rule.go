@@ -21,7 +21,8 @@ func ResourceEC2ClientVpnAuthorizationRule() *schema.Resource {
 		Create: resourceEC2ClientVpnAuthorizationRuleCreate,
 		Update: resourceEC2ClientVpnAuthorizationRuleUpdate,
 		Delete: resourceEC2ClientVpnAuthorizationRuleDelete,
-		
+		CustomizeDiff: resourceEC2ClientVpnAuthorizationRuleCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"client_vpn_endpoint_id": {
 				Type: schema.TypeString,
@@ -70,4 +71,8 @@ func resourceEC2ClientVpnAuthorizationRuleUpdate(data *schema.ResourceData, meta
 
 func resourceEC2ClientVpnAuthorizationRuleDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::ClientVpnAuthorizationRule", data, meta)
+}
+
+func resourceEC2ClientVpnAuthorizationRuleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

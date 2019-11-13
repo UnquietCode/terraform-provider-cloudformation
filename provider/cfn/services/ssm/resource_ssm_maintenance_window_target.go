@@ -21,7 +21,8 @@ func ResourceSSMMaintenanceWindowTarget() *schema.Resource {
 		Create: resourceSSMMaintenanceWindowTargetCreate,
 		Update: resourceSSMMaintenanceWindowTargetUpdate,
 		Delete: resourceSSMMaintenanceWindowTargetDelete,
-		
+		CustomizeDiff: resourceSSMMaintenanceWindowTargetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"owner_information": {
 				Type: schema.TypeString,
@@ -75,4 +76,8 @@ func resourceSSMMaintenanceWindowTargetUpdate(data *schema.ResourceData, meta in
 
 func resourceSSMMaintenanceWindowTargetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SSM::MaintenanceWindowTarget", data, meta)
+}
+
+func resourceSSMMaintenanceWindowTargetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

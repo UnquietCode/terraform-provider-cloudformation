@@ -21,7 +21,8 @@ func ResourceApiGatewayApiKey() *schema.Resource {
 		Create: resourceApiGatewayApiKeyCreate,
 		Update: resourceApiGatewayApiKeyUpdate,
 		Delete: resourceApiGatewayApiKeyDelete,
-		
+		CustomizeDiff: resourceApiGatewayApiKeyCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"customer_id": {
 				Type: schema.TypeString,
@@ -79,4 +80,8 @@ func resourceApiGatewayApiKeyUpdate(data *schema.ResourceData, meta interface{})
 
 func resourceApiGatewayApiKeyDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGateway::ApiKey", data, meta)
+}
+
+func resourceApiGatewayApiKeyCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

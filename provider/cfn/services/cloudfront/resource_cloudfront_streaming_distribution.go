@@ -22,7 +22,8 @@ func ResourceCloudFrontStreamingDistribution() *schema.Resource {
 		Create: resourceCloudFrontStreamingDistributionCreate,
 		Update: resourceCloudFrontStreamingDistributionUpdate,
 		Delete: resourceCloudFrontStreamingDistributionDelete,
-		
+		CustomizeDiff: resourceCloudFrontStreamingDistributionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"streaming_distribution_config": {
 				Type: schema.TypeList,
@@ -62,4 +63,8 @@ func resourceCloudFrontStreamingDistributionUpdate(data *schema.ResourceData, me
 
 func resourceCloudFrontStreamingDistributionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CloudFront::StreamingDistribution", data, meta)
+}
+
+func resourceCloudFrontStreamingDistributionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

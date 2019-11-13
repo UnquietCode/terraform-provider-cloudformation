@@ -21,7 +21,8 @@ func ResourceLogsLogStream() *schema.Resource {
 		Create: resourceLogsLogStreamCreate,
 		Update: resourceLogsLogStreamUpdate,
 		Delete: resourceLogsLogStreamDelete,
-		
+		CustomizeDiff: resourceLogsLogStreamCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"log_group_name": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceLogsLogStreamUpdate(data *schema.ResourceData, meta interface{}) er
 
 func resourceLogsLogStreamDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Logs::LogStream", data, meta)
+}
+
+func resourceLogsLogStreamCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

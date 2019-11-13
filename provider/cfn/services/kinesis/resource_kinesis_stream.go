@@ -22,7 +22,8 @@ func ResourceKinesisStream() *schema.Resource {
 		Create: resourceKinesisStreamCreate,
 		Update: resourceKinesisStreamUpdate,
 		Delete: resourceKinesisStreamDelete,
-		
+		CustomizeDiff: resourceKinesisStreamCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"name": {
 				Type: schema.TypeString,
@@ -74,4 +75,8 @@ func resourceKinesisStreamUpdate(data *schema.ResourceData, meta interface{}) er
 
 func resourceKinesisStreamDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Kinesis::Stream", data, meta)
+}
+
+func resourceKinesisStreamCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

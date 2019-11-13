@@ -22,7 +22,8 @@ func ResourceTransferUser() *schema.Resource {
 		Create: resourceTransferUserCreate,
 		Update: resourceTransferUserUpdate,
 		Delete: resourceTransferUserDelete,
-		
+		CustomizeDiff: resourceTransferUserCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"policy": {
 				Type: schema.TypeString,
@@ -81,4 +82,8 @@ func resourceTransferUserUpdate(data *schema.ResourceData, meta interface{}) err
 
 func resourceTransferUserDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Transfer::User", data, meta)
+}
+
+func resourceTransferUserCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

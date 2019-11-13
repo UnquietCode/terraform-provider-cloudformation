@@ -21,7 +21,8 @@ func ResourcePinpointGCMChannel() *schema.Resource {
 		Create: resourcePinpointGCMChannelCreate,
 		Update: resourcePinpointGCMChannelUpdate,
 		Delete: resourcePinpointGCMChannelDelete,
-		
+		CustomizeDiff: resourcePinpointGCMChannelCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"api_key": {
 				Type: schema.TypeString,
@@ -62,4 +63,8 @@ func resourcePinpointGCMChannelUpdate(data *schema.ResourceData, meta interface{
 
 func resourcePinpointGCMChannelDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Pinpoint::GCMChannel", data, meta)
+}
+
+func resourcePinpointGCMChannelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

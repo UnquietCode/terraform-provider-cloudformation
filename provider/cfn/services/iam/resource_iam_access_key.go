@@ -21,7 +21,8 @@ func ResourceIAMAccessKey() *schema.Resource {
 		Create: resourceIAMAccessKeyCreate,
 		Update: resourceIAMAccessKeyUpdate,
 		Delete: resourceIAMAccessKeyDelete,
-		
+		CustomizeDiff: resourceIAMAccessKeyCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"serial": {
 				Type: schema.TypeInt,
@@ -62,4 +63,8 @@ func resourceIAMAccessKeyUpdate(data *schema.ResourceData, meta interface{}) err
 
 func resourceIAMAccessKeyDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IAM::AccessKey", data, meta)
+}
+
+func resourceIAMAccessKeyCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

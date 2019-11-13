@@ -21,7 +21,8 @@ func ResourceSQSQueuePolicy() *schema.Resource {
 		Create: resourceSQSQueuePolicyCreate,
 		Update: resourceSQSQueuePolicyUpdate,
 		Delete: resourceSQSQueuePolicyDelete,
-		
+		CustomizeDiff: resourceSQSQueuePolicyCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"policy_document": {
 				Type: schema.TypeMap,
@@ -59,4 +60,8 @@ func resourceSQSQueuePolicyUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceSQSQueuePolicyDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SQS::QueuePolicy", data, meta)
+}
+
+func resourceSQSQueuePolicyCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceConfigConfigurationRecorder() *schema.Resource {
 		Create: resourceConfigConfigurationRecorderCreate,
 		Update: resourceConfigConfigurationRecorderUpdate,
 		Delete: resourceConfigConfigurationRecorderDelete,
-		
+		CustomizeDiff: resourceConfigConfigurationRecorderCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"name": {
 				Type: schema.TypeString,
@@ -64,4 +65,8 @@ func resourceConfigConfigurationRecorderUpdate(data *schema.ResourceData, meta i
 
 func resourceConfigConfigurationRecorderDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Config::ConfigurationRecorder", data, meta)
+}
+
+func resourceConfigConfigurationRecorderCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

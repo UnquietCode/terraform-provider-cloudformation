@@ -21,7 +21,8 @@ func ResourceDirectoryServiceMicrosoftAD() *schema.Resource {
 		Create: resourceDirectoryServiceMicrosoftADCreate,
 		Update: resourceDirectoryServiceMicrosoftADUpdate,
 		Delete: resourceDirectoryServiceMicrosoftADDelete,
-		
+		CustomizeDiff: resourceDirectoryServiceMicrosoftADCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"create_alias": {
 				Type: schema.TypeBool,
@@ -80,4 +81,8 @@ func resourceDirectoryServiceMicrosoftADUpdate(data *schema.ResourceData, meta i
 
 func resourceDirectoryServiceMicrosoftADDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::DirectoryService::MicrosoftAD", data, meta)
+}
+
+func resourceDirectoryServiceMicrosoftADCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

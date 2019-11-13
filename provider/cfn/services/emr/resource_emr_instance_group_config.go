@@ -21,7 +21,8 @@ func ResourceEMRInstanceGroupConfig() *schema.Resource {
 		Create: resourceEMRInstanceGroupConfigCreate,
 		Update: resourceEMRInstanceGroupConfigUpdate,
 		Delete: resourceEMRInstanceGroupConfigDelete,
-		
+		CustomizeDiff: resourceEMRInstanceGroupConfigCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"auto_scaling_policy": {
 				Type: schema.TypeList,
@@ -95,4 +96,8 @@ func resourceEMRInstanceGroupConfigUpdate(data *schema.ResourceData, meta interf
 
 func resourceEMRInstanceGroupConfigDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EMR::InstanceGroupConfig", data, meta)
+}
+
+func resourceEMRInstanceGroupConfigCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourcePinpointCampaign() *schema.Resource {
 		Create: resourcePinpointCampaignCreate,
 		Update: resourcePinpointCampaignUpdate,
 		Delete: resourcePinpointCampaignDelete,
-		
+		CustomizeDiff: resourcePinpointCampaignCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -119,4 +120,8 @@ func resourcePinpointCampaignUpdate(data *schema.ResourceData, meta interface{})
 
 func resourcePinpointCampaignDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Pinpoint::Campaign", data, meta)
+}
+
+func resourcePinpointCampaignCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

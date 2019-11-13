@@ -22,7 +22,8 @@ func ResourceS3Bucket() *schema.Resource {
 		Create: resourceS3BucketCreate,
 		Update: resourceS3BucketUpdate,
 		Delete: resourceS3BucketDelete,
-		
+		CustomizeDiff: resourceS3BucketCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"accelerate_configuration": {
 				Type: schema.TypeList,
@@ -149,4 +150,8 @@ func resourceS3BucketUpdate(data *schema.ResourceData, meta interface{}) error {
 
 func resourceS3BucketDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::S3::Bucket", data, meta)
+}
+
+func resourceS3BucketCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

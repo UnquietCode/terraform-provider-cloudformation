@@ -21,7 +21,8 @@ func ResourceSESTemplate() *schema.Resource {
 		Create: resourceSESTemplateCreate,
 		Update: resourceSESTemplateUpdate,
 		Delete: resourceSESTemplateDelete,
-		
+		CustomizeDiff: resourceSESTemplateCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"template": {
 				Type: schema.TypeList,
@@ -56,4 +57,8 @@ func resourceSESTemplateUpdate(data *schema.ResourceData, meta interface{}) erro
 
 func resourceSESTemplateDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SES::Template", data, meta)
+}
+
+func resourceSESTemplateCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

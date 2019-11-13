@@ -21,7 +21,8 @@ func ResourceGlueDataCatalogEncryptionSettings() *schema.Resource {
 		Create: resourceGlueDataCatalogEncryptionSettingsCreate,
 		Update: resourceGlueDataCatalogEncryptionSettingsUpdate,
 		Delete: resourceGlueDataCatalogEncryptionSettingsDelete,
-		
+		CustomizeDiff: resourceGlueDataCatalogEncryptionSettingsCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"data_catalog_encryption_settings": {
 				Type: schema.TypeList,
@@ -60,4 +61,8 @@ func resourceGlueDataCatalogEncryptionSettingsUpdate(data *schema.ResourceData, 
 
 func resourceGlueDataCatalogEncryptionSettingsDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Glue::DataCatalogEncryptionSettings", data, meta)
+}
+
+func resourceGlueDataCatalogEncryptionSettingsCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

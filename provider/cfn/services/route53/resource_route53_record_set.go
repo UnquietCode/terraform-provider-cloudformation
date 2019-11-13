@@ -21,7 +21,8 @@ func ResourceRoute53RecordSet() *schema.Resource {
 		Create: resourceRoute53RecordSetCreate,
 		Update: resourceRoute53RecordSetUpdate,
 		Delete: resourceRoute53RecordSetDelete,
-		
+		CustomizeDiff: resourceRoute53RecordSetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"alias_target": {
 				Type: schema.TypeList,
@@ -115,4 +116,8 @@ func resourceRoute53RecordSetUpdate(data *schema.ResourceData, meta interface{})
 
 func resourceRoute53RecordSetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Route53::RecordSet", data, meta)
+}
+
+func resourceRoute53RecordSetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -22,7 +22,8 @@ func ResourceRDSDBSecurityGroup() *schema.Resource {
 		Create: resourceRDSDBSecurityGroupCreate,
 		Update: resourceRDSDBSecurityGroupUpdate,
 		Delete: resourceRDSDBSecurityGroupDelete,
-		
+		CustomizeDiff: resourceRDSDBSecurityGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"db_security_group_ingress": {
 				Type: schema.TypeSet,
@@ -69,4 +70,8 @@ func resourceRDSDBSecurityGroupUpdate(data *schema.ResourceData, meta interface{
 
 func resourceRDSDBSecurityGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::RDS::DBSecurityGroup", data, meta)
+}
+
+func resourceRDSDBSecurityGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

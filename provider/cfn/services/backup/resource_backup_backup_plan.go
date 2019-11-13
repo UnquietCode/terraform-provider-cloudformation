@@ -21,7 +21,8 @@ func ResourceBackupBackupPlan() *schema.Resource {
 		Create: resourceBackupBackupPlanCreate,
 		Update: resourceBackupBackupPlanUpdate,
 		Delete: resourceBackupBackupPlanDelete,
-		
+		CustomizeDiff: resourceBackupBackupPlanCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"backup_plan": {
 				Type: schema.TypeList,
@@ -60,4 +61,8 @@ func resourceBackupBackupPlanUpdate(data *schema.ResourceData, meta interface{})
 
 func resourceBackupBackupPlanDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Backup::BackupPlan", data, meta)
+}
+
+func resourceBackupBackupPlanCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

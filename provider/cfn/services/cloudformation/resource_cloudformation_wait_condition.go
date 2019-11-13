@@ -21,7 +21,8 @@ func ResourceCloudFormationWaitCondition() *schema.Resource {
 		Create: resourceCloudFormationWaitConditionCreate,
 		Update: resourceCloudFormationWaitConditionUpdate,
 		Delete: resourceCloudFormationWaitConditionDelete,
-		
+		CustomizeDiff: resourceCloudFormationWaitConditionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"the_count": {
 				Type: schema.TypeInt,
@@ -62,4 +63,8 @@ func resourceCloudFormationWaitConditionUpdate(data *schema.ResourceData, meta i
 
 func resourceCloudFormationWaitConditionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CloudFormation::WaitCondition", data, meta)
+}
+
+func resourceCloudFormationWaitConditionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

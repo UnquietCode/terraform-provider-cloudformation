@@ -21,7 +21,8 @@ func ResourceElasticBeanstalkApplicationVersion() *schema.Resource {
 		Create: resourceElasticBeanstalkApplicationVersionCreate,
 		Update: resourceElasticBeanstalkApplicationVersionUpdate,
 		Delete: resourceElasticBeanstalkApplicationVersionDelete,
-		
+		CustomizeDiff: resourceElasticBeanstalkApplicationVersionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"application_name": {
 				Type: schema.TypeString,
@@ -64,4 +65,8 @@ func resourceElasticBeanstalkApplicationVersionUpdate(data *schema.ResourceData,
 
 func resourceElasticBeanstalkApplicationVersionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ElasticBeanstalk::ApplicationVersion", data, meta)
+}
+
+func resourceElasticBeanstalkApplicationVersionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

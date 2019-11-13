@@ -22,7 +22,8 @@ func ResourceECSService() *schema.Resource {
 		Create: resourceECSServiceCreate,
 		Update: resourceECSServiceUpdate,
 		Delete: resourceECSServiceDelete,
-		
+		CustomizeDiff: resourceECSServiceCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"cluster": {
 				Type: schema.TypeString,
@@ -132,4 +133,8 @@ func resourceECSServiceUpdate(data *schema.ResourceData, meta interface{}) error
 
 func resourceECSServiceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ECS::Service", data, meta)
+}
+
+func resourceECSServiceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

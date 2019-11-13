@@ -21,7 +21,8 @@ func ResourceLakeFormationDataLakeSettings() *schema.Resource {
 		Create: resourceLakeFormationDataLakeSettingsCreate,
 		Update: resourceLakeFormationDataLakeSettingsUpdate,
 		Delete: resourceLakeFormationDataLakeSettingsDelete,
-		
+		CustomizeDiff: resourceLakeFormationDataLakeSettingsCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"admins": {
 				Type: schema.TypeList,
@@ -56,4 +57,8 @@ func resourceLakeFormationDataLakeSettingsUpdate(data *schema.ResourceData, meta
 
 func resourceLakeFormationDataLakeSettingsDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::LakeFormation::DataLakeSettings", data, meta)
+}
+
+func resourceLakeFormationDataLakeSettingsCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceCloudWatchDashboard() *schema.Resource {
 		Create: resourceCloudWatchDashboardCreate,
 		Update: resourceCloudWatchDashboardUpdate,
 		Delete: resourceCloudWatchDashboardDelete,
-		
+		CustomizeDiff: resourceCloudWatchDashboardCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"dashboard_name": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceCloudWatchDashboardUpdate(data *schema.ResourceData, meta interface
 
 func resourceCloudWatchDashboardDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CloudWatch::Dashboard", data, meta)
+}
+
+func resourceCloudWatchDashboardCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceIoTPolicyPrincipalAttachment() *schema.Resource {
 		Create: resourceIoTPolicyPrincipalAttachmentCreate,
 		Update: resourceIoTPolicyPrincipalAttachmentUpdate,
 		Delete: resourceIoTPolicyPrincipalAttachmentDelete,
-		
+		CustomizeDiff: resourceIoTPolicyPrincipalAttachmentCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"policy_name": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceIoTPolicyPrincipalAttachmentUpdate(data *schema.ResourceData, meta 
 
 func resourceIoTPolicyPrincipalAttachmentDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IoT::PolicyPrincipalAttachment", data, meta)
+}
+
+func resourceIoTPolicyPrincipalAttachmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

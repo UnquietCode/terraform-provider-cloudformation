@@ -21,7 +21,8 @@ func ResourceConfigAggregationAuthorization() *schema.Resource {
 		Create: resourceConfigAggregationAuthorizationCreate,
 		Update: resourceConfigAggregationAuthorizationUpdate,
 		Delete: resourceConfigAggregationAuthorizationDelete,
-		
+		CustomizeDiff: resourceConfigAggregationAuthorizationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"authorized_account_id": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceConfigAggregationAuthorizationUpdate(data *schema.ResourceData, met
 
 func resourceConfigAggregationAuthorizationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Config::AggregationAuthorization", data, meta)
+}
+
+func resourceConfigAggregationAuthorizationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

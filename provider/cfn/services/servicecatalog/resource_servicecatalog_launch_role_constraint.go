@@ -21,7 +21,8 @@ func ResourceServiceCatalogLaunchRoleConstraint() *schema.Resource {
 		Create: resourceServiceCatalogLaunchRoleConstraintCreate,
 		Update: resourceServiceCatalogLaunchRoleConstraintUpdate,
 		Delete: resourceServiceCatalogLaunchRoleConstraintDelete,
-		
+		CustomizeDiff: resourceServiceCatalogLaunchRoleConstraintCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -70,4 +71,8 @@ func resourceServiceCatalogLaunchRoleConstraintUpdate(data *schema.ResourceData,
 
 func resourceServiceCatalogLaunchRoleConstraintDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ServiceCatalog::LaunchRoleConstraint", data, meta)
+}
+
+func resourceServiceCatalogLaunchRoleConstraintCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

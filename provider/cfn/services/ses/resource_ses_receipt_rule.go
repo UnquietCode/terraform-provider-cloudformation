@@ -21,7 +21,8 @@ func ResourceSESReceiptRule() *schema.Resource {
 		Create: resourceSESReceiptRuleCreate,
 		Update: resourceSESReceiptRuleUpdate,
 		Delete: resourceSESReceiptRuleDelete,
-		
+		CustomizeDiff: resourceSESReceiptRuleCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"after": {
 				Type: schema.TypeString,
@@ -64,4 +65,8 @@ func resourceSESReceiptRuleUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceSESReceiptRuleDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SES::ReceiptRule", data, meta)
+}
+
+func resourceSESReceiptRuleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

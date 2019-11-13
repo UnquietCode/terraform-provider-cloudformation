@@ -21,7 +21,8 @@ func ResourceEventsRule() *schema.Resource {
 		Create: resourceEventsRuleCreate,
 		Update: resourceEventsRuleUpdate,
 		Delete: resourceEventsRuleDelete,
-		
+		CustomizeDiff: resourceEventsRuleCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -79,4 +80,8 @@ func resourceEventsRuleUpdate(data *schema.ResourceData, meta interface{}) error
 
 func resourceEventsRuleDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Events::Rule", data, meta)
+}
+
+func resourceEventsRuleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

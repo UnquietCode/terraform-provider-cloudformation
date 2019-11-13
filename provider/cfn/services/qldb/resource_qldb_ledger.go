@@ -22,7 +22,8 @@ func ResourceQLDBLedger() *schema.Resource {
 		Create: resourceQLDBLedgerCreate,
 		Update: resourceQLDBLedgerUpdate,
 		Delete: resourceQLDBLedgerDelete,
-		
+		CustomizeDiff: resourceQLDBLedgerCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"permissions_mode": {
 				Type: schema.TypeString,
@@ -68,4 +69,8 @@ func resourceQLDBLedgerUpdate(data *schema.ResourceData, meta interface{}) error
 
 func resourceQLDBLedgerDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::QLDB::Ledger", data, meta)
+}
+
+func resourceQLDBLedgerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceRoute53RecordSetGroup() *schema.Resource {
 		Create: resourceRoute53RecordSetGroupCreate,
 		Update: resourceRoute53RecordSetGroupUpdate,
 		Delete: resourceRoute53RecordSetGroupDelete,
-		
+		CustomizeDiff: resourceRoute53RecordSetGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"comment": {
 				Type: schema.TypeString,
@@ -67,4 +68,8 @@ func resourceRoute53RecordSetGroupUpdate(data *schema.ResourceData, meta interfa
 
 func resourceRoute53RecordSetGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Route53::RecordSetGroup", data, meta)
+}
+
+func resourceRoute53RecordSetGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

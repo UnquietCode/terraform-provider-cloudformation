@@ -21,7 +21,8 @@ func ResourceCodePipelineCustomActionType() *schema.Resource {
 		Create: resourceCodePipelineCustomActionTypeCreate,
 		Update: resourceCodePipelineCustomActionTypeUpdate,
 		Delete: resourceCodePipelineCustomActionTypeDelete,
-		
+		CustomizeDiff: resourceCodePipelineCustomActionTypeCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"category": {
 				Type: schema.TypeString,
@@ -85,4 +86,8 @@ func resourceCodePipelineCustomActionTypeUpdate(data *schema.ResourceData, meta 
 
 func resourceCodePipelineCustomActionTypeDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CodePipeline::CustomActionType", data, meta)
+}
+
+func resourceCodePipelineCustomActionTypeCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

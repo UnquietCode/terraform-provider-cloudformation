@@ -21,7 +21,8 @@ func ResourceApiGatewayMethod() *schema.Resource {
 		Create: resourceApiGatewayMethodCreate,
 		Update: resourceApiGatewayMethodUpdate,
 		Delete: resourceApiGatewayMethodDelete,
-		
+		CustomizeDiff: resourceApiGatewayMethodCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"api_key_required": {
 				Type: schema.TypeBool,
@@ -109,4 +110,8 @@ func resourceApiGatewayMethodUpdate(data *schema.ResourceData, meta interface{})
 
 func resourceApiGatewayMethodDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApiGateway::Method", data, meta)
+}
+
+func resourceApiGatewayMethodCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

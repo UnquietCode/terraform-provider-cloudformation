@@ -22,7 +22,8 @@ func ResourceIAMRole() *schema.Resource {
 		Create: resourceIAMRoleCreate,
 		Update: resourceIAMRoleUpdate,
 		Delete: resourceIAMRoleDelete,
-		
+		CustomizeDiff: resourceIAMRoleCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"assume_role_policy_document": {
 				Type: schema.TypeMap,
@@ -91,4 +92,8 @@ func resourceIAMRoleUpdate(data *schema.ResourceData, meta interface{}) error {
 
 func resourceIAMRoleDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IAM::Role", data, meta)
+}
+
+func resourceIAMRoleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

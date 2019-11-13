@@ -21,7 +21,8 @@ func ResourceMSKCluster() *schema.Resource {
 		Create: resourceMSKClusterCreate,
 		Update: resourceMSKClusterUpdate,
 		Delete: resourceMSKClusterDelete,
-		
+		CustomizeDiff: resourceMSKClusterCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"broker_node_group_info": {
 				Type: schema.TypeList,
@@ -94,4 +95,8 @@ func resourceMSKClusterUpdate(data *schema.ResourceData, meta interface{}) error
 
 func resourceMSKClusterDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::MSK::Cluster", data, meta)
+}
+
+func resourceMSKClusterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

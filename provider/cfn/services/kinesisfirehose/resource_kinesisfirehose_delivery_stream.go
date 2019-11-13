@@ -21,7 +21,8 @@ func ResourceKinesisFirehoseDeliveryStream() *schema.Resource {
 		Create: resourceKinesisFirehoseDeliveryStreamCreate,
 		Update: resourceKinesisFirehoseDeliveryStreamUpdate,
 		Delete: resourceKinesisFirehoseDeliveryStreamDelete,
-		
+		CustomizeDiff: resourceKinesisFirehoseDeliveryStreamCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"delivery_stream_name": {
 				Type: schema.TypeString,
@@ -94,4 +95,8 @@ func resourceKinesisFirehoseDeliveryStreamUpdate(data *schema.ResourceData, meta
 
 func resourceKinesisFirehoseDeliveryStreamDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::KinesisFirehose::DeliveryStream", data, meta)
+}
+
+func resourceKinesisFirehoseDeliveryStreamCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

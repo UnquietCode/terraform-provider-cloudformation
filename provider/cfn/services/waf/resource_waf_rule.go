@@ -21,7 +21,8 @@ func ResourceWAFRule() *schema.Resource {
 		Create: resourceWAFRuleCreate,
 		Update: resourceWAFRuleUpdate,
 		Delete: resourceWAFRuleDelete,
-		
+		CustomizeDiff: resourceWAFRuleCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"metric_name": {
 				Type: schema.TypeString,
@@ -63,4 +64,8 @@ func resourceWAFRuleUpdate(data *schema.ResourceData, meta interface{}) error {
 
 func resourceWAFRuleDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::WAF::Rule", data, meta)
+}
+
+func resourceWAFRuleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

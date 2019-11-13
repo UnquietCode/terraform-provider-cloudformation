@@ -21,7 +21,8 @@ func ResourceApplicationAutoScalingScalableTarget() *schema.Resource {
 		Create: resourceApplicationAutoScalingScalableTargetCreate,
 		Update: resourceApplicationAutoScalingScalableTargetUpdate,
 		Delete: resourceApplicationAutoScalingScalableTargetDelete,
-		
+		CustomizeDiff: resourceApplicationAutoScalingScalableTargetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"max_capacity": {
 				Type: schema.TypeInt,
@@ -85,4 +86,8 @@ func resourceApplicationAutoScalingScalableTargetUpdate(data *schema.ResourceDat
 
 func resourceApplicationAutoScalingScalableTargetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::ApplicationAutoScaling::ScalableTarget", data, meta)
+}
+
+func resourceApplicationAutoScalingScalableTargetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

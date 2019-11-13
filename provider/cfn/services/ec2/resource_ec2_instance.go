@@ -22,7 +22,8 @@ func ResourceEC2Instance() *schema.Resource {
 		Create: resourceEC2InstanceCreate,
 		Update: resourceEC2InstanceUpdate,
 		Delete: resourceEC2InstanceDelete,
-		
+		CustomizeDiff: resourceEC2InstanceCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"additional_info": {
 				Type: schema.TypeString,
@@ -208,4 +209,8 @@ func resourceEC2InstanceUpdate(data *schema.ResourceData, meta interface{}) erro
 
 func resourceEC2InstanceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::Instance", data, meta)
+}
+
+func resourceEC2InstanceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

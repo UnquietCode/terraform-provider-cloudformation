@@ -22,7 +22,8 @@ func ResourceAmplifyBranch() *schema.Resource {
 		Create: resourceAmplifyBranchCreate,
 		Update: resourceAmplifyBranchUpdate,
 		Delete: resourceAmplifyBranchDelete,
-		
+		CustomizeDiff: resourceAmplifyBranchCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -99,4 +100,8 @@ func resourceAmplifyBranchUpdate(data *schema.ResourceData, meta interface{}) er
 
 func resourceAmplifyBranchDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Amplify::Branch", data, meta)
+}
+
+func resourceAmplifyBranchCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

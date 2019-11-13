@@ -21,7 +21,8 @@ func ResourceGlueConnection() *schema.Resource {
 		Create: resourceGlueConnectionCreate,
 		Update: resourceGlueConnectionUpdate,
 		Delete: resourceGlueConnectionDelete,
-		
+		CustomizeDiff: resourceGlueConnectionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"connection_input": {
 				Type: schema.TypeList,
@@ -60,4 +61,8 @@ func resourceGlueConnectionUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceGlueConnectionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Glue::Connection", data, meta)
+}
+
+func resourceGlueConnectionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

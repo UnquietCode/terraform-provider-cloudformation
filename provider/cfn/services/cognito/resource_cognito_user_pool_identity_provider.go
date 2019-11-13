@@ -21,7 +21,8 @@ func ResourceCognitoUserPoolIdentityProvider() *schema.Resource {
 		Create: resourceCognitoUserPoolIdentityProviderCreate,
 		Update: resourceCognitoUserPoolIdentityProviderUpdate,
 		Delete: resourceCognitoUserPoolIdentityProviderDelete,
-		
+		CustomizeDiff: resourceCognitoUserPoolIdentityProviderCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"provider_name": {
 				Type: schema.TypeString,
@@ -75,4 +76,8 @@ func resourceCognitoUserPoolIdentityProviderUpdate(data *schema.ResourceData, me
 
 func resourceCognitoUserPoolIdentityProviderDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Cognito::UserPoolIdentityProvider", data, meta)
+}
+
+func resourceCognitoUserPoolIdentityProviderCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

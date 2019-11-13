@@ -21,7 +21,8 @@ func ResourceCloudWatchAlarm() *schema.Resource {
 		Create: resourceCloudWatchAlarmCreate,
 		Update: resourceCloudWatchAlarmUpdate,
 		Delete: resourceCloudWatchAlarmDelete,
-		
+		CustomizeDiff: resourceCloudWatchAlarmCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"actions_enabled": {
 				Type: schema.TypeBool,
@@ -139,4 +140,8 @@ func resourceCloudWatchAlarmUpdate(data *schema.ResourceData, meta interface{}) 
 
 func resourceCloudWatchAlarmDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::CloudWatch::Alarm", data, meta)
+}
+
+func resourceCloudWatchAlarmCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

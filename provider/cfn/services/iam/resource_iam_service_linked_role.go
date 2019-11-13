@@ -21,7 +21,8 @@ func ResourceIAMServiceLinkedRole() *schema.Resource {
 		Create: resourceIAMServiceLinkedRoleCreate,
 		Update: resourceIAMServiceLinkedRoleUpdate,
 		Delete: resourceIAMServiceLinkedRoleDelete,
-		
+		CustomizeDiff: resourceIAMServiceLinkedRoleCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"custom_suffix": {
 				Type: schema.TypeString,
@@ -62,4 +63,8 @@ func resourceIAMServiceLinkedRoleUpdate(data *schema.ResourceData, meta interfac
 
 func resourceIAMServiceLinkedRoleDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IAM::ServiceLinkedRole", data, meta)
+}
+
+func resourceIAMServiceLinkedRoleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

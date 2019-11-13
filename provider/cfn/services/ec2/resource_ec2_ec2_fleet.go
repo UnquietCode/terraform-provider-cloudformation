@@ -21,7 +21,8 @@ func ResourceEC2EC2Fleet() *schema.Resource {
 		Create: resourceEC2EC2FleetCreate,
 		Update: resourceEC2EC2FleetUpdate,
 		Delete: resourceEC2EC2FleetDelete,
-		
+		CustomizeDiff: resourceEC2EC2FleetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"target_capacity_specification": {
 				Type: schema.TypeList,
@@ -102,4 +103,8 @@ func resourceEC2EC2FleetUpdate(data *schema.ResourceData, meta interface{}) erro
 
 func resourceEC2EC2FleetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::EC2Fleet", data, meta)
+}
+
+func resourceEC2EC2FleetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

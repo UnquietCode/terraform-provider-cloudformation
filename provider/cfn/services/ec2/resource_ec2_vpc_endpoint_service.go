@@ -21,7 +21,8 @@ func ResourceEC2VPCEndpointService() *schema.Resource {
 		Create: resourceEC2VPCEndpointServiceCreate,
 		Update: resourceEC2VPCEndpointServiceUpdate,
 		Delete: resourceEC2VPCEndpointServiceDelete,
-		
+		CustomizeDiff: resourceEC2VPCEndpointServiceCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"network_load_balancer_arns": {
 				Type: schema.TypeList,
@@ -59,4 +60,8 @@ func resourceEC2VPCEndpointServiceUpdate(data *schema.ResourceData, meta interfa
 
 func resourceEC2VPCEndpointServiceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::VPCEndpointService", data, meta)
+}
+
+func resourceEC2VPCEndpointServiceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceEC2VPCEndpointServicePermissions() *schema.Resource {
 		Create: resourceEC2VPCEndpointServicePermissionsCreate,
 		Update: resourceEC2VPCEndpointServicePermissionsUpdate,
 		Delete: resourceEC2VPCEndpointServicePermissionsDelete,
-		
+		CustomizeDiff: resourceEC2VPCEndpointServicePermissionsCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"allowed_principals": {
 				Type: schema.TypeList,
@@ -59,4 +60,8 @@ func resourceEC2VPCEndpointServicePermissionsUpdate(data *schema.ResourceData, m
 
 func resourceEC2VPCEndpointServicePermissionsDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::VPCEndpointServicePermissions", data, meta)
+}
+
+func resourceEC2VPCEndpointServicePermissionsCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

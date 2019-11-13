@@ -21,7 +21,8 @@ func ResourceEventsEventBus() *schema.Resource {
 		Create: resourceEventsEventBusCreate,
 		Update: resourceEventsEventBusUpdate,
 		Delete: resourceEventsEventBusDelete,
-		
+		CustomizeDiff: resourceEventsEventBusCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"event_source_name": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceEventsEventBusUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceEventsEventBusDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Events::EventBus", data, meta)
+}
+
+func resourceEventsEventBusCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

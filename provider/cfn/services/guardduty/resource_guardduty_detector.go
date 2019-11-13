@@ -21,7 +21,8 @@ func ResourceGuardDutyDetector() *schema.Resource {
 		Create: resourceGuardDutyDetectorCreate,
 		Update: resourceGuardDutyDetectorUpdate,
 		Delete: resourceGuardDutyDetectorDelete,
-		
+		CustomizeDiff: resourceGuardDutyDetectorCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"finding_publishing_frequency": {
 				Type: schema.TypeString,
@@ -58,4 +59,8 @@ func resourceGuardDutyDetectorUpdate(data *schema.ResourceData, meta interface{}
 
 func resourceGuardDutyDetectorDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::GuardDuty::Detector", data, meta)
+}
+
+func resourceGuardDutyDetectorCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

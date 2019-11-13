@@ -22,7 +22,8 @@ func ResourceSageMakerNotebookInstance() *schema.Resource {
 		Create: resourceSageMakerNotebookInstanceCreate,
 		Update: resourceSageMakerNotebookInstanceUpdate,
 		Delete: resourceSageMakerNotebookInstanceDelete,
-		
+		CustomizeDiff: resourceSageMakerNotebookInstanceCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"kms_key_id": {
 				Type: schema.TypeString,
@@ -111,4 +112,8 @@ func resourceSageMakerNotebookInstanceUpdate(data *schema.ResourceData, meta int
 
 func resourceSageMakerNotebookInstanceDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SageMaker::NotebookInstance", data, meta)
+}
+
+func resourceSageMakerNotebookInstanceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

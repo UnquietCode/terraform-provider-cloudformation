@@ -21,7 +21,8 @@ func ResourceBatchJobDefinition() *schema.Resource {
 		Create: resourceBatchJobDefinitionCreate,
 		Update: resourceBatchJobDefinitionUpdate,
 		Delete: resourceBatchJobDefinitionDelete,
-		
+		CustomizeDiff: resourceBatchJobDefinitionCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"type": {
 				Type: schema.TypeString,
@@ -86,4 +87,8 @@ func resourceBatchJobDefinitionUpdate(data *schema.ResourceData, meta interface{
 
 func resourceBatchJobDefinitionDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Batch::JobDefinition", data, meta)
+}
+
+func resourceBatchJobDefinitionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

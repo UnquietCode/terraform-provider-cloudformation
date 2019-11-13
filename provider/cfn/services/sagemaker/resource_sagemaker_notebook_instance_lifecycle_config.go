@@ -21,7 +21,8 @@ func ResourceSageMakerNotebookInstanceLifecycleConfig() *schema.Resource {
 		Create: resourceSageMakerNotebookInstanceLifecycleConfigCreate,
 		Update: resourceSageMakerNotebookInstanceLifecycleConfigUpdate,
 		Delete: resourceSageMakerNotebookInstanceLifecycleConfigDelete,
-		
+		CustomizeDiff: resourceSageMakerNotebookInstanceLifecycleConfigCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"on_start": {
 				Type: schema.TypeList,
@@ -64,4 +65,8 @@ func resourceSageMakerNotebookInstanceLifecycleConfigUpdate(data *schema.Resourc
 
 func resourceSageMakerNotebookInstanceLifecycleConfigDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SageMaker::NotebookInstanceLifecycleConfig", data, meta)
+}
+
+func resourceSageMakerNotebookInstanceLifecycleConfigCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

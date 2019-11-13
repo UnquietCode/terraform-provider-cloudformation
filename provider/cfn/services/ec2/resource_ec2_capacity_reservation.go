@@ -21,7 +21,8 @@ func ResourceEC2CapacityReservation() *schema.Resource {
 		Create: resourceEC2CapacityReservationCreate,
 		Update: resourceEC2CapacityReservationUpdate,
 		Delete: resourceEC2CapacityReservationDelete,
-		
+		CustomizeDiff: resourceEC2CapacityReservationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"tenancy": {
 				Type: schema.TypeString,
@@ -95,4 +96,8 @@ func resourceEC2CapacityReservationUpdate(data *schema.ResourceData, meta interf
 
 func resourceEC2CapacityReservationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::CapacityReservation", data, meta)
+}
+
+func resourceEC2CapacityReservationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

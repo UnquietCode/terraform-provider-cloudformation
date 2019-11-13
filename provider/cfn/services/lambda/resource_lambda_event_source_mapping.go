@@ -21,7 +21,8 @@ func ResourceLambdaEventSourceMapping() *schema.Resource {
 		Create: resourceLambdaEventSourceMappingCreate,
 		Update: resourceLambdaEventSourceMappingUpdate,
 		Delete: resourceLambdaEventSourceMappingDelete,
-		
+		CustomizeDiff: resourceLambdaEventSourceMappingCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"batch_size": {
 				Type: schema.TypeInt,
@@ -74,4 +75,8 @@ func resourceLambdaEventSourceMappingUpdate(data *schema.ResourceData, meta inte
 
 func resourceLambdaEventSourceMappingDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Lambda::EventSourceMapping", data, meta)
+}
+
+func resourceLambdaEventSourceMappingCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceBatchJobQueue() *schema.Resource {
 		Create: resourceBatchJobQueueCreate,
 		Update: resourceBatchJobQueueUpdate,
 		Delete: resourceBatchJobQueueDelete,
-		
+		CustomizeDiff: resourceBatchJobQueueCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"compute_environment_order": {
 				Type: schema.TypeList,
@@ -67,4 +68,8 @@ func resourceBatchJobQueueUpdate(data *schema.ResourceData, meta interface{}) er
 
 func resourceBatchJobQueueDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Batch::JobQueue", data, meta)
+}
+
+func resourceBatchJobQueueCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

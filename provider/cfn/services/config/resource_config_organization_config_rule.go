@@ -21,7 +21,8 @@ func ResourceConfigOrganizationConfigRule() *schema.Resource {
 		Create: resourceConfigOrganizationConfigRuleCreate,
 		Update: resourceConfigOrganizationConfigRuleUpdate,
 		Delete: resourceConfigOrganizationConfigRuleDelete,
-		
+		CustomizeDiff: resourceConfigOrganizationConfigRuleCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"organization_managed_rule_metadata": {
 				Type: schema.TypeList,
@@ -71,4 +72,8 @@ func resourceConfigOrganizationConfigRuleUpdate(data *schema.ResourceData, meta 
 
 func resourceConfigOrganizationConfigRuleDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Config::OrganizationConfigRule", data, meta)
+}
+
+func resourceConfigOrganizationConfigRuleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceIAMManagedPolicy() *schema.Resource {
 		Create: resourceIAMManagedPolicyCreate,
 		Update: resourceIAMManagedPolicyUpdate,
 		Delete: resourceIAMManagedPolicyDelete,
-		
+		CustomizeDiff: resourceIAMManagedPolicyCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -82,4 +83,8 @@ func resourceIAMManagedPolicyUpdate(data *schema.ResourceData, meta interface{})
 
 func resourceIAMManagedPolicyDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IAM::ManagedPolicy", data, meta)
+}
+
+func resourceIAMManagedPolicyCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

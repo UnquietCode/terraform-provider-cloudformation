@@ -21,7 +21,8 @@ func ResourcePinpointAPNSVoipSandboxChannel() *schema.Resource {
 		Create: resourcePinpointAPNSVoipSandboxChannelCreate,
 		Update: resourcePinpointAPNSVoipSandboxChannelUpdate,
 		Delete: resourcePinpointAPNSVoipSandboxChannelDelete,
-		
+		CustomizeDiff: resourcePinpointAPNSVoipSandboxChannelCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"bundle_id": {
 				Type: schema.TypeString,
@@ -86,4 +87,8 @@ func resourcePinpointAPNSVoipSandboxChannelUpdate(data *schema.ResourceData, met
 
 func resourcePinpointAPNSVoipSandboxChannelDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Pinpoint::APNSVoipSandboxChannel", data, meta)
+}
+
+func resourcePinpointAPNSVoipSandboxChannelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceGuardDutyThreatIntelSet() *schema.Resource {
 		Create: resourceGuardDutyThreatIntelSetCreate,
 		Update: resourceGuardDutyThreatIntelSetUpdate,
 		Delete: resourceGuardDutyThreatIntelSetDelete,
-		
+		CustomizeDiff: resourceGuardDutyThreatIntelSetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"format": {
 				Type: schema.TypeString,
@@ -70,4 +71,8 @@ func resourceGuardDutyThreatIntelSetUpdate(data *schema.ResourceData, meta inter
 
 func resourceGuardDutyThreatIntelSetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::GuardDuty::ThreatIntelSet", data, meta)
+}
+
+func resourceGuardDutyThreatIntelSetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

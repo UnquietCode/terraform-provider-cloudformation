@@ -22,7 +22,8 @@ func ResourceEC2SecurityGroup() *schema.Resource {
 		Create: resourceEC2SecurityGroupCreate,
 		Update: resourceEC2SecurityGroupUpdate,
 		Delete: resourceEC2SecurityGroupDelete,
-		
+		CustomizeDiff: resourceEC2SecurityGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"group_description": {
 				Type: schema.TypeString,
@@ -78,4 +79,8 @@ func resourceEC2SecurityGroupUpdate(data *schema.ResourceData, meta interface{})
 
 func resourceEC2SecurityGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::SecurityGroup", data, meta)
+}
+
+func resourceEC2SecurityGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -22,7 +22,8 @@ func ResourceRDSDBSubnetGroup() *schema.Resource {
 		Create: resourceRDSDBSubnetGroupCreate,
 		Update: resourceRDSDBSubnetGroupUpdate,
 		Delete: resourceRDSDBSubnetGroupDelete,
-		
+		CustomizeDiff: resourceRDSDBSubnetGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"db_subnet_group_description": {
 				Type: schema.TypeString,
@@ -70,4 +71,8 @@ func resourceRDSDBSubnetGroupUpdate(data *schema.ResourceData, meta interface{})
 
 func resourceRDSDBSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::RDS::DBSubnetGroup", data, meta)
+}
+
+func resourceRDSDBSubnetGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

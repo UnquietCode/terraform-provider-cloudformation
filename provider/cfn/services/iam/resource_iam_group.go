@@ -21,7 +21,8 @@ func ResourceIAMGroup() *schema.Resource {
 		Create: resourceIAMGroupCreate,
 		Update: resourceIAMGroupUpdate,
 		Delete: resourceIAMGroupDelete,
-		
+		CustomizeDiff: resourceIAMGroupCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"group_name": {
 				Type: schema.TypeString,
@@ -69,4 +70,8 @@ func resourceIAMGroupUpdate(data *schema.ResourceData, meta interface{}) error {
 
 func resourceIAMGroupDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IAM::Group", data, meta)
+}
+
+func resourceIAMGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

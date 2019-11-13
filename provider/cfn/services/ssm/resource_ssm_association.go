@@ -21,7 +21,8 @@ func ResourceSSMAssociation() *schema.Resource {
 		Create: resourceSSMAssociationCreate,
 		Update: resourceSSMAssociationUpdate,
 		Delete: resourceSSMAssociationDelete,
-		
+		CustomizeDiff: resourceSSMAssociationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"association_name": {
 				Type: schema.TypeString,
@@ -86,4 +87,8 @@ func resourceSSMAssociationUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceSSMAssociationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::SSM::Association", data, meta)
+}
+
+func resourceSSMAssociationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -22,7 +22,8 @@ func ResourceEC2RouteTable() *schema.Resource {
 		Create: resourceEC2RouteTableCreate,
 		Update: resourceEC2RouteTableUpdate,
 		Delete: resourceEC2RouteTableDelete,
-		
+		CustomizeDiff: resourceEC2RouteTableCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"tags": {
 				Type: schema.TypeList,
@@ -60,4 +61,8 @@ func resourceEC2RouteTableUpdate(data *schema.ResourceData, meta interface{}) er
 
 func resourceEC2RouteTableDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::RouteTable", data, meta)
+}
+
+func resourceEC2RouteTableCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceEC2VPCEndpointConnectionNotification() *schema.Resource {
 		Create: resourceEC2VPCEndpointConnectionNotificationCreate,
 		Update: resourceEC2VPCEndpointConnectionNotificationUpdate,
 		Delete: resourceEC2VPCEndpointConnectionNotificationDelete,
-		
+		CustomizeDiff: resourceEC2VPCEndpointConnectionNotificationCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"connection_events": {
 				Type: schema.TypeList,
@@ -67,4 +68,8 @@ func resourceEC2VPCEndpointConnectionNotificationUpdate(data *schema.ResourceDat
 
 func resourceEC2VPCEndpointConnectionNotificationDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::VPCEndpointConnectionNotification", data, meta)
+}
+
+func resourceEC2VPCEndpointConnectionNotificationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceDAXCluster() *schema.Resource {
 		Create: resourceDAXClusterCreate,
 		Update: resourceDAXClusterUpdate,
 		Delete: resourceDAXClusterDelete,
-		
+		CustomizeDiff: resourceDAXClusterCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"sse_specification": {
 				Type: schema.TypeList,
@@ -106,4 +107,8 @@ func resourceDAXClusterUpdate(data *schema.ResourceData, meta interface{}) error
 
 func resourceDAXClusterDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::DAX::Cluster", data, meta)
+}
+
+func resourceDAXClusterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

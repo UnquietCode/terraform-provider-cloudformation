@@ -21,7 +21,8 @@ func ResourceConfigConfigRule() *schema.Resource {
 		Create: resourceConfigConfigRuleCreate,
 		Update: resourceConfigConfigRuleUpdate,
 		Delete: resourceConfigConfigRuleDelete,
-		
+		CustomizeDiff: resourceConfigConfigRuleCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"config_rule_name": {
 				Type: schema.TypeString,
@@ -78,4 +79,8 @@ func resourceConfigConfigRuleUpdate(data *schema.ResourceData, meta interface{})
 
 func resourceConfigConfigRuleDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Config::ConfigRule", data, meta)
+}
+
+func resourceConfigConfigRuleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

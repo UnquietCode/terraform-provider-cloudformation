@@ -22,7 +22,8 @@ func ResourceDMSReplicationTask() *schema.Resource {
 		Create: resourceDMSReplicationTaskCreate,
 		Update: resourceDMSReplicationTaskUpdate,
 		Delete: resourceDMSReplicationTaskDelete,
-		
+		CustomizeDiff: resourceDMSReplicationTaskCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"replication_task_settings": {
 				Type: schema.TypeString,
@@ -96,4 +97,8 @@ func resourceDMSReplicationTaskUpdate(data *schema.ResourceData, meta interface{
 
 func resourceDMSReplicationTaskDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::DMS::ReplicationTask", data, meta)
+}
+
+func resourceDMSReplicationTaskCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

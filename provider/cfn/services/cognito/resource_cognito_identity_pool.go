@@ -21,7 +21,8 @@ func ResourceCognitoIdentityPool() *schema.Resource {
 		Create: resourceCognitoIdentityPoolCreate,
 		Update: resourceCognitoIdentityPoolUpdate,
 		Delete: resourceCognitoIdentityPoolDelete,
-		
+		CustomizeDiff: resourceCognitoIdentityPoolCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"push_sync": {
 				Type: schema.TypeList,
@@ -97,4 +98,8 @@ func resourceCognitoIdentityPoolUpdate(data *schema.ResourceData, meta interface
 
 func resourceCognitoIdentityPoolDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::Cognito::IdentityPool", data, meta)
+}
+
+func resourceCognitoIdentityPoolCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

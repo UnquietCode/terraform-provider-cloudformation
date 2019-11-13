@@ -21,7 +21,8 @@ func ResourceIoTPolicy() *schema.Resource {
 		Create: resourceIoTPolicyCreate,
 		Update: resourceIoTPolicyUpdate,
 		Delete: resourceIoTPolicyDelete,
-		
+		CustomizeDiff: resourceIoTPolicyCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"policy_document": {
 				Type: schema.TypeMap,
@@ -58,4 +59,8 @@ func resourceIoTPolicyUpdate(data *schema.ResourceData, meta interface{}) error 
 
 func resourceIoTPolicyDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IoT::Policy", data, meta)
+}
+
+func resourceIoTPolicyCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceDirectoryServiceSimpleAD() *schema.Resource {
 		Create: resourceDirectoryServiceSimpleADCreate,
 		Update: resourceDirectoryServiceSimpleADUpdate,
 		Delete: resourceDirectoryServiceSimpleADDelete,
-		
+		CustomizeDiff: resourceDirectoryServiceSimpleADCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"create_alias": {
 				Type: schema.TypeBool,
@@ -84,4 +85,8 @@ func resourceDirectoryServiceSimpleADUpdate(data *schema.ResourceData, meta inte
 
 func resourceDirectoryServiceSimpleADDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::DirectoryService::SimpleAD", data, meta)
+}
+
+func resourceDirectoryServiceSimpleADCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceGuardDutyMember() *schema.Resource {
 		Create: resourceGuardDutyMemberCreate,
 		Update: resourceGuardDutyMemberUpdate,
 		Delete: resourceGuardDutyMemberDelete,
-		
+		CustomizeDiff: resourceGuardDutyMemberCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"status": {
 				Type: schema.TypeString,
@@ -74,4 +75,8 @@ func resourceGuardDutyMemberUpdate(data *schema.ResourceData, meta interface{}) 
 
 func resourceGuardDutyMemberDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::GuardDuty::Member", data, meta)
+}
+
+func resourceGuardDutyMemberCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

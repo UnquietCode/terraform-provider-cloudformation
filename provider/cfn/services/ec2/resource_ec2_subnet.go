@@ -22,7 +22,8 @@ func ResourceEC2Subnet() *schema.Resource {
 		Create: resourceEC2SubnetCreate,
 		Update: resourceEC2SubnetUpdate,
 		Delete: resourceEC2SubnetDelete,
-		
+		CustomizeDiff: resourceEC2SubnetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"assign_ipv6_address_on_creation": {
 				Type: schema.TypeBool,
@@ -80,4 +81,8 @@ func resourceEC2SubnetUpdate(data *schema.ResourceData, meta interface{}) error 
 
 func resourceEC2SubnetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::Subnet", data, meta)
+}
+
+func resourceEC2SubnetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

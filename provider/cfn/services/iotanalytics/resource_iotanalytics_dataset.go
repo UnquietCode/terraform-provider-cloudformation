@@ -22,7 +22,8 @@ func ResourceIoTAnalyticsDataset() *schema.Resource {
 		Create: resourceIoTAnalyticsDatasetCreate,
 		Update: resourceIoTAnalyticsDatasetUpdate,
 		Delete: resourceIoTAnalyticsDatasetDelete,
-		
+		CustomizeDiff: resourceIoTAnalyticsDatasetCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"actions": {
 				Type: schema.TypeList,
@@ -87,4 +88,8 @@ func resourceIoTAnalyticsDatasetUpdate(data *schema.ResourceData, meta interface
 
 func resourceIoTAnalyticsDatasetDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IoTAnalytics::Dataset", data, meta)
+}
+
+func resourceIoTAnalyticsDatasetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

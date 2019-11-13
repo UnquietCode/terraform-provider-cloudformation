@@ -21,7 +21,8 @@ func ResourceIAMUser() *schema.Resource {
 		Create: resourceIAMUserCreate,
 		Update: resourceIAMUserUpdate,
 		Delete: resourceIAMUserDelete,
-		
+		CustomizeDiff: resourceIAMUserCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"groups": {
 				Type: schema.TypeList,
@@ -84,4 +85,8 @@ func resourceIAMUserUpdate(data *schema.ResourceData, meta interface{}) error {
 
 func resourceIAMUserDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::IAM::User", data, meta)
+}
+
+func resourceIAMUserCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

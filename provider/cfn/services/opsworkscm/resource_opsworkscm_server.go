@@ -21,7 +21,8 @@ func ResourceOpsWorksCMServer() *schema.Resource {
 		Create: resourceOpsWorksCMServerCreate,
 		Update: resourceOpsWorksCMServerUpdate,
 		Delete: resourceOpsWorksCMServerDelete,
-		
+		CustomizeDiff: resourceOpsWorksCMServerCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"key_pair": {
 				Type: schema.TypeString,
@@ -121,4 +122,8 @@ func resourceOpsWorksCMServerUpdate(data *schema.ResourceData, meta interface{})
 
 func resourceOpsWorksCMServerDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::OpsWorksCM::Server", data, meta)
+}
+
+func resourceOpsWorksCMServerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

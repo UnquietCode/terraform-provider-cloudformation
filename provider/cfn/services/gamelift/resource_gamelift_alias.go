@@ -21,7 +21,8 @@ func ResourceGameLiftAlias() *schema.Resource {
 		Create: resourceGameLiftAliasCreate,
 		Update: resourceGameLiftAliasUpdate,
 		Delete: resourceGameLiftAliasDelete,
-		
+		CustomizeDiff: resourceGameLiftAliasCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,
@@ -64,4 +65,8 @@ func resourceGameLiftAliasUpdate(data *schema.ResourceData, meta interface{}) er
 
 func resourceGameLiftAliasDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::GameLift::Alias", data, meta)
+}
+
+func resourceGameLiftAliasCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

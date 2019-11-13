@@ -21,7 +21,8 @@ func ResourceEC2ClientVpnRoute() *schema.Resource {
 		Create: resourceEC2ClientVpnRouteCreate,
 		Update: resourceEC2ClientVpnRouteUpdate,
 		Delete: resourceEC2ClientVpnRouteDelete,
-		
+		CustomizeDiff: resourceEC2ClientVpnRouteCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"client_vpn_endpoint_id": {
 				Type: schema.TypeString,
@@ -66,4 +67,8 @@ func resourceEC2ClientVpnRouteUpdate(data *schema.ResourceData, meta interface{}
 
 func resourceEC2ClientVpnRouteDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::EC2::ClientVpnRoute", data, meta)
+}
+
+func resourceEC2ClientVpnRouteCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }

@@ -21,7 +21,8 @@ func ResourceOpsWorksVolume() *schema.Resource {
 		Create: resourceOpsWorksVolumeCreate,
 		Update: resourceOpsWorksVolumeUpdate,
 		Delete: resourceOpsWorksVolumeDelete,
-		
+		CustomizeDiff: resourceOpsWorksVolumeCustomizeDiff,
+
 		Schema: map[string]*schema.Schema{
 			"ec2_volume_id": {
 				Type: schema.TypeString,
@@ -66,4 +67,8 @@ func resourceOpsWorksVolumeUpdate(data *schema.ResourceData, meta interface{}) e
 
 func resourceOpsWorksVolumeDelete(data *schema.ResourceData, meta interface{}) error {
 	return plugin.ResourceDelete("AWS::OpsWorks::Volume", data, meta)
+}
+
+func resourceOpsWorksVolumeCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
+	return plugin.ResourceCustomizeDiff(data, meta)
 }
