@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 13-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 14-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -65,3 +65,4 @@ func resourceWAFByteMatchSetDelete(data *schema.ResourceData, meta interface{}) 
 func resourceWAFByteMatchSetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
 	return plugin.ResourceCustomizeDiff(data, meta)
 }
+
