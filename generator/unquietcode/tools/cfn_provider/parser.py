@@ -61,27 +61,15 @@ def handle_property(*, package, service, outer_name, inner_name, data):
 
 
 def handle_resource(*, service, package, resource_name, cfn_type, resource_data):
-    attributes = {}
-        
-    # resource attributes
-    resource_attributes = resource_data.get("Attributes", {})
-    
-    for attribute_name, attribute_data in resource_attributes.items():
-        attribute = handle_resource_attribute(
-            resource_name=resource_name,
-            documentation_link=resource_data['Documentation'],
-            attribute_name=attribute_name,
-            attribute_data=attribute_data,
-        )
-        # attributes[attribute.name] = attribute
     
     # resource properties (clobbers attributes with same name)
     resource_properties = resource_data['Properties']
+    attributes = {}
     
     for property_name, property_data in resource_properties.items():
         
         # computable if an attribute exists and it is not required
-        computed = property_name in resource_attributes \
+        computed = property_name in resource_properties \
                and property_data.get('Required') is not True
         
         attribute = handle_resource_property(
@@ -94,18 +82,18 @@ def handle_resource(*, service, package, resource_name, cfn_type, resource_data)
         )
         attributes[attribute.name] = attribute
     
-    # special attributes
-    if 'LogicalId' in attributes:
-        raise Exception('attribute name collision')
-        
-    attributes['LogicalId'] = ResourceAttribute(
-        name='LogicalId',
-        type=simple_primitive("String"),
-        required=True,
-        computed=False,
-        will_replace=True,
-        documentation_link='https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resources-section-structure.html',
-    )
+    # resource attributes
+    # resource_attributes = resource_data.get("Attributes", {})
+    # attributes = {}
+    # 
+    # for attribute_name, attribute_data in resource_attributes.items():
+    #     attribute = handle_resource_attribute(
+    #         resource_name=resource_name,
+    #         documentation_link=attribute_data.get('Documentation'),
+    #         attribute_name=attribute_name,
+    #         attribute_data=attribute_data,
+    #     )
+    #     attributes[attribute.name] = attribute
     
     resource = Resource(
         name=f"{service}{resource_name}",

@@ -4,6 +4,15 @@ from datetime import date
 from unquietcode.tools.cfn_provider.models import ComplexType
 from unquietcode.tools.cfn_provider.utils import snake_caps
 
+from unquietcode.tools.cfn_provider.golang.code_model import (
+    # GoPackage,
+    SourceFile,
+	GoParameter,
+    GoFunction,
+)
+from unquietcode.tools.cfn_provider.golang.code_writer import write_file_to_string
+
+
 # TODO make this dynamic
 PROVIDER_VERSION = '0.0'
 
@@ -14,15 +23,15 @@ PROJECT_URL = "https://github.com/UnquietCode/terraform-provider-cloudformation"
 
 RESOURCE_ATTRIBUTE_TEMPLATE = Template(
 """
-			"${name}": {
-				Type: ${type},
-				Elem: ${elem},
-				Required: ${required},
-				Optional: ${optional},
-				ForceNew: ${force_replace},
-				MaxItems: ${max_items},
-				Set: ${set_function},
-			},
+		"${name}": {
+			Type: ${type},
+			Elem: ${elem},
+			Required: ${required},
+			Optional: ${optional},
+			ForceNew: ${force_replace},
+			MaxItems: ${max_items},
+			Set: ${set_function},
+		},
 """[1:])
 
 
@@ -140,7 +149,20 @@ func Resource${name}() *schema.Resource {
 		CustomizeDiff: resource${name}CustomizeDiff,
 
 		Schema: map[string]*schema.Schema{
-${attributes}
+			"logical_id": {
+				Type: schema.TypeString,
+				Required: true,
+				ForceNew: true,
+			},
+			"properties": {
+				Type: schema.TypeMap,
+				${property_line}: true,
+				Elem: &schema.Resource{
+					Schema: map[string]*schema.Schema{
+${properties}
+					},
+				},
+			},
 		},
 	}
 }
@@ -171,8 +193,10 @@ func resource${name}CustomizeDiff(data *schema.ResourceDiff, meta interface{}) e
 """[1:])
 
 
-
-def render_resource_template(*, cfn_version, imports, package_name, resource_name, cfn_type, attributes, documentation_link):
+def render_resource_template(*, cfn_version, imports, resource):
+	package_name = resource.package.name
+	attributes = resource.attributes.values()
+	
 	rendered_attributes = [
 		_render_attribute_template(package_name=package_name, schema_name=None, attribute=attribute)
 		for attribute in attributes
@@ -180,7 +204,6 @@ def render_resource_template(*, cfn_version, imports, package_name, resource_nam
 	rendered_attributes = '\n'.join(rendered_attributes)
 	
 	# Terraform requires that we check for the case of non-updatable resources
-	# TODO computable
 	updatable = False
 	
 	# at least one attribute will not force a replacement
@@ -190,12 +213,13 @@ def render_resource_template(*, cfn_version, imports, package_name, resource_nam
 			break
 	
 	rendered = RESOURCE_TEMPLATE.substitute(dict(
-		header=_header_stanza(cfn_version, documentation_link),
+		header=_header_stanza(cfn_version, resource.documentation_link),
 		package=package_name,
-		name=resource_name,
-		cfn_type=cfn_type,
-		attributes=rendered_attributes,
-		update_line=f"resource{resource_name}Update" if updatable else DEAD_LINE,
+		name=resource.name,
+		cfn_type=resource.cfn_type,
+		properties=rendered_attributes,
+		property_line="Required" if updatable else "Optional",
+		update_line=f"resource{resource.name}Update" if updatable else DEAD_LINE,
 		imports=_imports_stanza(imports)
 	))
 	
@@ -204,57 +228,74 @@ def render_resource_template(*, cfn_version, imports, package_name, resource_nam
 	
 
 
-PROPERTY_TEMPLATE = Template(
+PROPERTY_FUNCTION_BODY = Template(
 """
-${header}
+var count int64 = 0
 
-package ${package}
-
-import (
-	"strconv"
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-${imports}
-)
-
-func ${prefix}${name}(extras...string) *schema.Resource {
-	var count int64 = 0
-	
-	if len(extras) > 0 {
-		if i, err := strconv.ParseInt(extras[0], 10, 32); err == nil {
-			count = i
-		}
+if len(extras) > 0 {
+	if i, err := strconv.ParseInt(extras[0], 10, 32); err == nil {
+		count = i
 	}
-	
-	if count >= ${max_recursion} {
-		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
-	}
-	
-	return &schema.Resource{
-		Schema: map[string]*schema.Schema{
+}
+
+if count >= ${max_recursion} {
+	return &schema.Resource{ Schema: map[string]*schema.Schema{} }
+}
+
+return &schema.Resource{
+	Schema: map[string]*schema.Schema{
 ${attributes}
-		},
-	}
+	},
 }
 """[1:])
 
 
 def render_property_template(*, cfn_version, package_name, property_name, attributes, imports, documentation_link):
+	import_lines = [f"github.com/unquietcode/terraform-cfn-provider/{i}" for i in sorted(imports)]
+	import_lines.extend([
+		"strconv",
+		"github.com/hashicorp/terraform-plugin-sdk/helper/schema",
+	])
+	
+	function_name = 'property' if property_name != 'Tag' else 'Property'
+	function_name += property_name
+	
 	rendered_attributes = [
 		_render_attribute_template(package_name=package_name, schema_name=property_name, attribute=attribute)
 		for attribute in attributes
 	]
 	rendered_attributes = '\n'.join(rendered_attributes)
 	
-	rendered = PROPERTY_TEMPLATE.substitute(dict(
-		header=_header_stanza(cfn_version, documentation_link),
-		package=package_name,
-		prefix='property' if property_name != 'Tag' else 'Property',
-		name=property_name,
+	function_body = PROPERTY_FUNCTION_BODY.substitute(dict(
 		attributes=rendered_attributes,
-		imports=_imports_stanza(imports),
 		max_recursion=MAX_PROPERTY_RECURSION,
 	))
 	
+	functions = [
+		GoFunction(
+			name=function_name,
+			parameters=[
+				GoParameter(
+					name="extras",
+					type="string",
+					varargs=True,
+				)
+			],
+		    return_types=[
+				"*schema.Resource"
+		    ],
+			body=function_body,
+		)
+	]
+	
+	code_file = SourceFile(
+	    header=_header_stanza(cfn_version, documentation_link),
+	    package_name=package_name,
+	    imports=import_lines,
+	    declarations=functions,
+	)
+	
+	rendered = write_file_to_string(code_file)
 	rendered = _remove_dead_lines(rendered)
 	return rendered
 
