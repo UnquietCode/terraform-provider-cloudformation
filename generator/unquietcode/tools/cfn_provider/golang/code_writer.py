@@ -56,7 +56,7 @@ class CodeWriter:
             s._write_line("import (")
             s._indent()
             
-            for i in source_file.imports:
+            for i in sorted(source_file.imports):
                 s._write_line(f'"{i}"')
             
             s._dedent()
@@ -67,6 +67,7 @@ class CodeWriter:
                 
             for declaration in source_file.declarations:
                 declaration.write(s)
+                s << "\n"
     
     
     def write_function(s, function: GoFunction):

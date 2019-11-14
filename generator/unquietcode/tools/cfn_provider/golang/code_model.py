@@ -1,7 +1,7 @@
 # from enum import Enum, auto, unique
 # from collections import defaultdict
 from typing import List
-from dataclasses import dataclass#, asdict, field
+from dataclasses import dataclass, field #, asdict, field
 
 
 @dataclass(frozen=True)
@@ -14,9 +14,9 @@ class GoParameter:
 @dataclass(frozen=True)
 class GoFunction:
     name: str
-    return_types: List[str]
-    parameters: List[GoParameter]
     body: str
+    parameters: List[GoParameter] = field(default_factory=lambda: [])
+    return_types: List[str] = field(default_factory=lambda: [])
     
     def write(self, writer):
         writer.write_function(self)

@@ -119,6 +119,9 @@ def _header_stanza(cfn_version, documentation_link):
 		schema_version=cfn_version,
 		documentation_link=documentation_link or PROJECT_URL,
 	))
+
+def _import_prefix(i):
+	return f"github.com/unquietcode/terraform-cfn-provider/{i}"
 	
 
 def _imports_stanza(imports):
@@ -128,72 +131,43 @@ def _imports_stanza(imports):
 	return import_lines or DEAD_LINE
 
 
-RESOURCE_TEMPLATE = Template(
+RESOURCE_FUNCTION_TEMPLATE = Template(
 """
-${header}
+return &schema.Resource{
+	Exists: resource${name}Exists,
+	Read:   resource${name}Read,
+	Create: resource${name}Create,
+	Update: ${update_line},
+	Delete: resource${name}Delete,
+	CustomizeDiff: resource${name}CustomizeDiff,
 
-package ${package}
-
-import (
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-${imports}
-)
-
-func Resource${name}() *schema.Resource {
-	return &schema.Resource{
-		Exists: resource${name}Exists,
-		Read:   resource${name}Read,
-		Create: resource${name}Create,
-		Update: ${update_line},
-		Delete: resource${name}Delete,
-		CustomizeDiff: resource${name}CustomizeDiff,
-
-		Schema: map[string]*schema.Schema{
-			"logical_id": {
-				Type: schema.TypeString,
-				Required: true,
-				ForceNew: true,
-			},
-			"properties": {
-				Type: schema.TypeMap,
-				${property_line}: true,
-				Elem: &schema.Resource{
-					Schema: map[string]*schema.Schema{
+	Schema: map[string]*schema.Schema{
+		"logical_id": {
+			Type: schema.TypeString,
+			Required: true,
+			ForceNew: true,
+		},
+		"properties": {
+			Type: schema.TypeMap,
+			${property_line}: true,
+			Elem: &schema.Resource{
+				Schema: map[string]*schema.Schema{
 ${properties}
-					},
 				},
 			},
 		},
-	}
-}
-
-func resource${name}Exists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
-}
-
-func resource${name}Read(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("${cfn_type}", Resource${name}(), data, meta)
-}
-
-func resource${name}Create(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("${cfn_type}", Resource${name}(), data, meta)
-}
-
-func resource${name}Update(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("${cfn_type}", Resource${name}(), data, meta)
-}
-
-func resource${name}Delete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("${cfn_type}", data, meta)
-}
-
-func resource${name}CustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff(data, meta)
+	},
 }
 """[1:])
 
 
 def render_resource_template(*, cfn_version, imports, resource):
+	import_lines = [ _import_prefix(i) for i in imports ]
+	import_lines.extend([
+		"github.com/hashicorp/terraform-plugin-sdk/helper/schema",
+	])
+	
+	resource_name = resource.name
 	package_name = resource.package.name
 	attributes = resource.attributes.values()
 	
@@ -212,20 +186,126 @@ def render_resource_template(*, cfn_version, imports, resource):
 			updatable = True
 			break
 	
-	rendered = RESOURCE_TEMPLATE.substitute(dict(
-		header=_header_stanza(cfn_version, resource.documentation_link),
-		package=package_name,
-		name=resource.name,
-		cfn_type=resource.cfn_type,
+	function_body = RESOURCE_FUNCTION_TEMPLATE.substitute(dict(
+		name=resource_name,
 		properties=rendered_attributes,
 		property_line="Required" if updatable else "Optional",
 		update_line=f"resource{resource.name}Update" if updatable else DEAD_LINE,
-		imports=_imports_stanza(imports)
-	))
+	))	
 	
+	functions = [
+		GoFunction(
+			name=f"Resource{resource_name}",
+			parameters=[],
+		    return_types=[
+				"*schema.Resource"
+		    ],
+			body=function_body,
+		),
+		GoFunction(
+			name=f"resource{resource_name}Exists",
+			parameters=[
+				GoParameter(
+					name="data",
+					type="*schema.ResourceData",
+				),
+				GoParameter(
+					name="meta",
+					type="interface{}"
+				),
+			],
+			return_types=["bool", "error"],
+			body="return plugin.ResourceExists(data, meta)",
+		),
+		GoFunction(
+			name=f"resource{resource_name}Read",
+			parameters=[
+				GoParameter(
+					name="data",
+					type="*schema.ResourceData",
+				),
+				GoParameter(
+					name="meta",
+					type="interface{}"
+				),
+			],
+			return_types=["error"],
+			body=f'return plugin.ResourceRead("{resource.cfn_type}", Resource{resource_name}(), data, meta)',
+		),
+		GoFunction(
+			name=f"resource{resource_name}Create",
+			parameters=[
+				GoParameter(
+					name="data",
+					type="*schema.ResourceData",
+				),
+				GoParameter(
+					name="meta",
+					type="interface{}"
+				),
+			],
+			return_types=["error"],
+			body=f'return plugin.ResourceCreate("{resource.cfn_type}", Resource{resource_name}(), data, meta)',
+		),
+		GoFunction(
+			name=f"resource{resource_name}Update",
+			parameters=[
+				GoParameter(
+					name="data",
+					type="*schema.ResourceData",
+				),
+				GoParameter(
+					name="meta",
+					type="interface{}"
+				),
+			],
+			return_types=["error"],
+			body=f'return plugin.ResourceUpdate("{resource.cfn_type}", Resource{resource_name}(), data, meta)',
+		),
+		GoFunction(
+			name=f"resource{resource_name}Delete",
+			parameters=[
+				GoParameter(
+					name="data",
+					type="*schema.ResourceData",
+				),
+				GoParameter(
+					name="meta",
+					type="interface{}"
+				),
+			],
+			return_types=["error"],
+			body=f'return plugin.ResourceDelete("{resource.cfn_type}", data, meta)',
+		),
+		GoFunction(
+			name=f"resource{resource_name}CustomizeDiff",
+			parameters=[
+				GoParameter(
+					name="data",
+					type="*schema.ResourceDiff",
+				),
+				GoParameter(
+					name="meta",
+					type="interface{}"
+				),
+			],
+			return_types=["error"],
+			body="return plugin.ResourceCustomizeDiff(data, meta)",
+		),
+		
+	]
+	
+	code_file = SourceFile(
+	    header=_header_stanza(cfn_version, resource.documentation_link),
+	    package_name=package_name,
+	    imports=import_lines,
+	    declarations=functions,
+	)	
+	
+	rendered = write_file_to_string(code_file)
 	rendered = _remove_dead_lines(rendered)
 	return rendered
-	
+
 
 
 PROPERTY_FUNCTION_BODY = Template(
@@ -251,7 +331,7 @@ ${attributes}
 
 
 def render_property_template(*, cfn_version, package_name, property_name, attributes, imports, documentation_link):
-	import_lines = [f"github.com/unquietcode/terraform-cfn-provider/{i}" for i in sorted(imports)]
+	import_lines = [ _import_prefix(i) for i in imports ]
 	import_lines.extend([
 		"strconv",
 		"github.com/hashicorp/terraform-plugin-sdk/helper/schema",
