@@ -17,12 +17,12 @@ import (
 func ResourceApiGatewayAccount() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayAccountExists,
-		Read:   resourceApiGatewayAccountRead,
+		Read: resourceApiGatewayAccountRead,
 		Create: resourceApiGatewayAccountCreate,
 		Update: resourceApiGatewayAccountUpdate,
 		Delete: resourceApiGatewayAccountDelete,
 		CustomizeDiff: resourceApiGatewayAccountCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"cloud_watch_role_arn": {
 				Type: schema.TypeString,

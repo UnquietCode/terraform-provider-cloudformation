@@ -17,12 +17,12 @@ import (
 func ResourcePinpointEmailTemplate() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointEmailTemplateExists,
-		Read:   resourcePinpointEmailTemplateRead,
+		Read: resourcePinpointEmailTemplateRead,
 		Create: resourcePinpointEmailTemplateCreate,
 		Update: resourcePinpointEmailTemplateUpdate,
 		Delete: resourcePinpointEmailTemplateDelete,
 		CustomizeDiff: resourcePinpointEmailTemplateCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"html_part": {
 				Type: schema.TypeString,

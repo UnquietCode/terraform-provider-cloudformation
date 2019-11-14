@@ -17,12 +17,12 @@ import (
 func ResourceEC2VPCEndpointService() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPCEndpointServiceExists,
-		Read:   resourceEC2VPCEndpointServiceRead,
+		Read: resourceEC2VPCEndpointServiceRead,
 		Create: resourceEC2VPCEndpointServiceCreate,
 		Update: resourceEC2VPCEndpointServiceUpdate,
 		Delete: resourceEC2VPCEndpointServiceDelete,
 		CustomizeDiff: resourceEC2VPCEndpointServiceCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"network_load_balancer_arns": {
 				Type: schema.TypeList,

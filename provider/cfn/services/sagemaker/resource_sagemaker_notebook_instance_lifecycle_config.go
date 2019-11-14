@@ -17,12 +17,12 @@ import (
 func ResourceSageMakerNotebookInstanceLifecycleConfig() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSageMakerNotebookInstanceLifecycleConfigExists,
-		Read:   resourceSageMakerNotebookInstanceLifecycleConfigRead,
+		Read: resourceSageMakerNotebookInstanceLifecycleConfigRead,
 		Create: resourceSageMakerNotebookInstanceLifecycleConfigCreate,
 		Update: resourceSageMakerNotebookInstanceLifecycleConfigUpdate,
 		Delete: resourceSageMakerNotebookInstanceLifecycleConfigDelete,
 		CustomizeDiff: resourceSageMakerNotebookInstanceLifecycleConfigCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"on_start": {
 				Type: schema.TypeList,

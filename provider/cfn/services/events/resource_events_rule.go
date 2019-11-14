@@ -17,12 +17,12 @@ import (
 func ResourceEventsRule() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEventsRuleExists,
-		Read:   resourceEventsRuleRead,
+		Read: resourceEventsRuleRead,
 		Create: resourceEventsRuleCreate,
 		Update: resourceEventsRuleUpdate,
 		Delete: resourceEventsRuleDelete,
 		CustomizeDiff: resourceEventsRuleCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

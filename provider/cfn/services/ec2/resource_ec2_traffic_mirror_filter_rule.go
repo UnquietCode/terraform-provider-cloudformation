@@ -17,12 +17,12 @@ import (
 func ResourceEC2TrafficMirrorFilterRule() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2TrafficMirrorFilterRuleExists,
-		Read:   resourceEC2TrafficMirrorFilterRuleRead,
+		Read: resourceEC2TrafficMirrorFilterRuleRead,
 		Create: resourceEC2TrafficMirrorFilterRuleCreate,
 		Update: resourceEC2TrafficMirrorFilterRuleUpdate,
 		Delete: resourceEC2TrafficMirrorFilterRuleDelete,
 		CustomizeDiff: resourceEC2TrafficMirrorFilterRuleCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"destination_port_range": {
 				Type: schema.TypeList,

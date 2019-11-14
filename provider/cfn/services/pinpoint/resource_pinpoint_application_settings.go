@@ -17,12 +17,12 @@ import (
 func ResourcePinpointApplicationSettings() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointApplicationSettingsExists,
-		Read:   resourcePinpointApplicationSettingsRead,
+		Read: resourcePinpointApplicationSettingsRead,
 		Create: resourcePinpointApplicationSettingsCreate,
 		Update: resourcePinpointApplicationSettingsUpdate,
 		Delete: resourcePinpointApplicationSettingsDelete,
 		CustomizeDiff: resourcePinpointApplicationSettingsCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"quiet_time": {
 				Type: schema.TypeList,

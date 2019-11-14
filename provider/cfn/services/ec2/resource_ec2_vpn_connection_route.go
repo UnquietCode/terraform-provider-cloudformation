@@ -17,12 +17,12 @@ import (
 func ResourceEC2VPNConnectionRoute() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPNConnectionRouteExists,
-		Read:   resourceEC2VPNConnectionRouteRead,
+		Read: resourceEC2VPNConnectionRouteRead,
 		Create: resourceEC2VPNConnectionRouteCreate,
 		Update: resourceEC2VPNConnectionRouteUpdate,
 		Delete: resourceEC2VPNConnectionRouteDelete,
 		CustomizeDiff: resourceEC2VPNConnectionRouteCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"destination_cidr_block": {
 				Type: schema.TypeString,

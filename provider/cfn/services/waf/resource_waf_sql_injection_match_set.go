@@ -17,12 +17,12 @@ import (
 func ResourceWAFSqlInjectionMatchSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFSqlInjectionMatchSetExists,
-		Read:   resourceWAFSqlInjectionMatchSetRead,
+		Read: resourceWAFSqlInjectionMatchSetRead,
 		Create: resourceWAFSqlInjectionMatchSetCreate,
 		Update: resourceWAFSqlInjectionMatchSetUpdate,
 		Delete: resourceWAFSqlInjectionMatchSetDelete,
 		CustomizeDiff: resourceWAFSqlInjectionMatchSetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"name": {
 				Type: schema.TypeString,

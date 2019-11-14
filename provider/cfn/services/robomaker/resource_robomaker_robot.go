@@ -17,12 +17,12 @@ import (
 func ResourceRoboMakerRobot() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRoboMakerRobotExists,
-		Read:   resourceRoboMakerRobotRead,
+		Read: resourceRoboMakerRobotRead,
 		Create: resourceRoboMakerRobotCreate,
 		Update: resourceRoboMakerRobotUpdate,
 		Delete: resourceRoboMakerRobotDelete,
 		CustomizeDiff: resourceRoboMakerRobotCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"fleet": {
 				Type: schema.TypeString,

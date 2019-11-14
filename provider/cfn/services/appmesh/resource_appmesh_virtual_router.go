@@ -18,12 +18,12 @@ import (
 func ResourceAppMeshVirtualRouter() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppMeshVirtualRouterExists,
-		Read:   resourceAppMeshVirtualRouterRead,
+		Read: resourceAppMeshVirtualRouterRead,
 		Create: resourceAppMeshVirtualRouterCreate,
 		Update: resourceAppMeshVirtualRouterUpdate,
 		Delete: resourceAppMeshVirtualRouterDelete,
 		CustomizeDiff: resourceAppMeshVirtualRouterCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"mesh_name": {
 				Type: schema.TypeString,

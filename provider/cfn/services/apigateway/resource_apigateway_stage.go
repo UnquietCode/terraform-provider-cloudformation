@@ -18,12 +18,12 @@ import (
 func ResourceApiGatewayStage() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayStageExists,
-		Read:   resourceApiGatewayStageRead,
+		Read: resourceApiGatewayStageRead,
 		Create: resourceApiGatewayStageCreate,
 		Update: resourceApiGatewayStageUpdate,
 		Delete: resourceApiGatewayStageDelete,
 		CustomizeDiff: resourceApiGatewayStageCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"access_log_setting": {
 				Type: schema.TypeList,

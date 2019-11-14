@@ -17,12 +17,12 @@ import (
 func ResourceElastiCacheSecurityGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElastiCacheSecurityGroupExists,
-		Read:   resourceElastiCacheSecurityGroupRead,
+		Read: resourceElastiCacheSecurityGroupRead,
 		Create: resourceElastiCacheSecurityGroupCreate,
 		Update: resourceElastiCacheSecurityGroupUpdate,
 		Delete: resourceElastiCacheSecurityGroupDelete,
 		CustomizeDiff: resourceElastiCacheSecurityGroupCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

@@ -17,12 +17,12 @@ import (
 func ResourceGuardDutyDetector() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGuardDutyDetectorExists,
-		Read:   resourceGuardDutyDetectorRead,
+		Read: resourceGuardDutyDetectorRead,
 		Create: resourceGuardDutyDetectorCreate,
 		Update: resourceGuardDutyDetectorUpdate,
 		Delete: resourceGuardDutyDetectorDelete,
 		CustomizeDiff: resourceGuardDutyDetectorCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"finding_publishing_frequency": {
 				Type: schema.TypeString,

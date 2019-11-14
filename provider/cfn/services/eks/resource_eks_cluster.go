@@ -17,12 +17,12 @@ import (
 func ResourceEKSCluster() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEKSClusterExists,
-		Read:   resourceEKSClusterRead,
+		Read: resourceEKSClusterRead,
 		Create: resourceEKSClusterCreate,
 		Update: resourceEKSClusterUpdate,
 		Delete: resourceEKSClusterDelete,
 		CustomizeDiff: resourceEKSClusterCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"version": {
 				Type: schema.TypeString,

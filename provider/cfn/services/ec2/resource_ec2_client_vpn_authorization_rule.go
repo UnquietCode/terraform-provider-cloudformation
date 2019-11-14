@@ -17,12 +17,12 @@ import (
 func ResourceEC2ClientVpnAuthorizationRule() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2ClientVpnAuthorizationRuleExists,
-		Read:   resourceEC2ClientVpnAuthorizationRuleRead,
+		Read: resourceEC2ClientVpnAuthorizationRuleRead,
 		Create: resourceEC2ClientVpnAuthorizationRuleCreate,
 		Update: resourceEC2ClientVpnAuthorizationRuleUpdate,
 		Delete: resourceEC2ClientVpnAuthorizationRuleDelete,
 		CustomizeDiff: resourceEC2ClientVpnAuthorizationRuleCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"client_vpn_endpoint_id": {
 				Type: schema.TypeString,

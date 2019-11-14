@@ -26,7 +26,6 @@ func propertyScalingPolicyTargetTrackingScalingPolicyConfiguration(extras...stri
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
-	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"customized_metric_specification": {

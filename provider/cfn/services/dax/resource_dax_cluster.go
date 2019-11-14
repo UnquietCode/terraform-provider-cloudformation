@@ -17,12 +17,12 @@ import (
 func ResourceDAXCluster() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDAXClusterExists,
-		Read:   resourceDAXClusterRead,
+		Read: resourceDAXClusterRead,
 		Create: resourceDAXClusterCreate,
 		Update: resourceDAXClusterUpdate,
 		Delete: resourceDAXClusterDelete,
 		CustomizeDiff: resourceDAXClusterCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"sse_specification": {
 				Type: schema.TypeList,

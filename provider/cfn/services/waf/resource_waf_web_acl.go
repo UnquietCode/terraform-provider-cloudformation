@@ -17,12 +17,12 @@ import (
 func ResourceWAFWebACL() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFWebACLExists,
-		Read:   resourceWAFWebACLRead,
+		Read: resourceWAFWebACLRead,
 		Create: resourceWAFWebACLCreate,
 		Update: resourceWAFWebACLUpdate,
 		Delete: resourceWAFWebACLDelete,
 		CustomizeDiff: resourceWAFWebACLCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"default_action": {
 				Type: schema.TypeList,

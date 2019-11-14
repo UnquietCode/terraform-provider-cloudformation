@@ -18,12 +18,12 @@ import (
 func ResourceAmplifyApp() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAmplifyAppExists,
-		Read:   resourceAmplifyAppRead,
+		Read: resourceAmplifyAppRead,
 		Create: resourceAmplifyAppCreate,
 		Update: resourceAmplifyAppUpdate,
 		Delete: resourceAmplifyAppDelete,
 		CustomizeDiff: resourceAmplifyAppCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"auto_branch_creation_config": {
 				Type: schema.TypeList,

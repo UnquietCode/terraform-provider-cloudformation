@@ -18,12 +18,12 @@ import (
 func ResourceEC2NatGateway() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2NatGatewayExists,
-		Read:   resourceEC2NatGatewayRead,
+		Read: resourceEC2NatGatewayRead,
 		Create: resourceEC2NatGatewayCreate,
 		Update: resourceEC2NatGatewayUpdate,
 		Delete: resourceEC2NatGatewayDelete,
 		CustomizeDiff: resourceEC2NatGatewayCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"allocation_id": {
 				Type: schema.TypeString,

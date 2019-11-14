@@ -18,12 +18,12 @@ import (
 func ResourceNeptuneDBClusterParameterGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceNeptuneDBClusterParameterGroupExists,
-		Read:   resourceNeptuneDBClusterParameterGroupRead,
+		Read: resourceNeptuneDBClusterParameterGroupRead,
 		Create: resourceNeptuneDBClusterParameterGroupCreate,
 		Update: resourceNeptuneDBClusterParameterGroupUpdate,
 		Delete: resourceNeptuneDBClusterParameterGroupDelete,
 		CustomizeDiff: resourceNeptuneDBClusterParameterGroupCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

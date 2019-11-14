@@ -18,12 +18,12 @@ import (
 func ResourceDMSReplicationSubnetGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDMSReplicationSubnetGroupExists,
-		Read:   resourceDMSReplicationSubnetGroupRead,
+		Read: resourceDMSReplicationSubnetGroupRead,
 		Create: resourceDMSReplicationSubnetGroupCreate,
 		Update: resourceDMSReplicationSubnetGroupUpdate,
 		Delete: resourceDMSReplicationSubnetGroupDelete,
 		CustomizeDiff: resourceDMSReplicationSubnetGroupCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"replication_subnet_group_description": {
 				Type: schema.TypeString,

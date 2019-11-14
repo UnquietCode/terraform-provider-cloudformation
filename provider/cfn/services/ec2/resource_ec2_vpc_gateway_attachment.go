@@ -17,12 +17,12 @@ import (
 func ResourceEC2VPCGatewayAttachment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPCGatewayAttachmentExists,
-		Read:   resourceEC2VPCGatewayAttachmentRead,
+		Read: resourceEC2VPCGatewayAttachmentRead,
 		Create: resourceEC2VPCGatewayAttachmentCreate,
 		Update: resourceEC2VPCGatewayAttachmentUpdate,
 		Delete: resourceEC2VPCGatewayAttachmentDelete,
 		CustomizeDiff: resourceEC2VPCGatewayAttachmentCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"internet_gateway_id": {
 				Type: schema.TypeString,

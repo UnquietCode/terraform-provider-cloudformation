@@ -17,12 +17,12 @@ import (
 func ResourceManagedBlockchainNode() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceManagedBlockchainNodeExists,
-		Read:   resourceManagedBlockchainNodeRead,
+		Read: resourceManagedBlockchainNodeRead,
 		Create: resourceManagedBlockchainNodeCreate,
 		Update: resourceManagedBlockchainNodeUpdate,
 		Delete: resourceManagedBlockchainNodeDelete,
 		CustomizeDiff: resourceManagedBlockchainNodeCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"member_id": {
 				Type: schema.TypeString,

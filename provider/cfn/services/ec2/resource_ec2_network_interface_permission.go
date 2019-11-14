@@ -17,12 +17,12 @@ import (
 func ResourceEC2NetworkInterfacePermission() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2NetworkInterfacePermissionExists,
-		Read:   resourceEC2NetworkInterfacePermissionRead,
+		Read: resourceEC2NetworkInterfacePermissionRead,
 		Create: resourceEC2NetworkInterfacePermissionCreate,
 		Update: resourceEC2NetworkInterfacePermissionUpdate,
 		Delete: resourceEC2NetworkInterfacePermissionDelete,
 		CustomizeDiff: resourceEC2NetworkInterfacePermissionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"aws_account_id": {
 				Type: schema.TypeString,

@@ -18,12 +18,12 @@ import (
 func ResourceRoute53ResolverResolverEndpoint() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRoute53ResolverResolverEndpointExists,
-		Read:   resourceRoute53ResolverResolverEndpointRead,
+		Read: resourceRoute53ResolverResolverEndpointRead,
 		Create: resourceRoute53ResolverResolverEndpointCreate,
 		Update: resourceRoute53ResolverResolverEndpointUpdate,
 		Delete: resourceRoute53ResolverResolverEndpointDelete,
 		CustomizeDiff: resourceRoute53ResolverResolverEndpointCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"ip_addresses": {
 				Type: schema.TypeList,

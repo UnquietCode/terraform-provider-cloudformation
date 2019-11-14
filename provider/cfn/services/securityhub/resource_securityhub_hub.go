@@ -17,12 +17,12 @@ import (
 func ResourceSecurityHubHub() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSecurityHubHubExists,
-		Read:   resourceSecurityHubHubRead,
+		Read: resourceSecurityHubHubRead,
 		Create: resourceSecurityHubHubCreate,
 		Update: resourceSecurityHubHubUpdate,
 		Delete: resourceSecurityHubHubDelete,
 		CustomizeDiff: resourceSecurityHubHubCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"tags": {
 				Type: schema.TypeMap,

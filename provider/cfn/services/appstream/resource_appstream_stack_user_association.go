@@ -17,12 +17,12 @@ import (
 func ResourceAppStreamStackUserAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppStreamStackUserAssociationExists,
-		Read:   resourceAppStreamStackUserAssociationRead,
+		Read: resourceAppStreamStackUserAssociationRead,
 		Create: resourceAppStreamStackUserAssociationCreate,
 		Update: resourceAppStreamStackUserAssociationUpdate,
 		Delete: resourceAppStreamStackUserAssociationDelete,
 		CustomizeDiff: resourceAppStreamStackUserAssociationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"send_email_notification": {
 				Type: schema.TypeBool,

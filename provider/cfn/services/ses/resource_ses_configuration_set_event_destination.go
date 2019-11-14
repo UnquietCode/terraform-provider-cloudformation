@@ -17,12 +17,12 @@ import (
 func ResourceSESConfigurationSetEventDestination() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSESConfigurationSetEventDestinationExists,
-		Read:   resourceSESConfigurationSetEventDestinationRead,
+		Read: resourceSESConfigurationSetEventDestinationRead,
 		Create: resourceSESConfigurationSetEventDestinationCreate,
 		Update: resourceSESConfigurationSetEventDestinationUpdate,
 		Delete: resourceSESConfigurationSetEventDestinationDelete,
 		CustomizeDiff: resourceSESConfigurationSetEventDestinationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"configuration_set_name": {
 				Type: schema.TypeString,

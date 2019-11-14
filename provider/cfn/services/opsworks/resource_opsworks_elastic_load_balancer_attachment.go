@@ -17,12 +17,12 @@ import (
 func ResourceOpsWorksElasticLoadBalancerAttachment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceOpsWorksElasticLoadBalancerAttachmentExists,
-		Read:   resourceOpsWorksElasticLoadBalancerAttachmentRead,
+		Read: resourceOpsWorksElasticLoadBalancerAttachmentRead,
 		Create: resourceOpsWorksElasticLoadBalancerAttachmentCreate,
 		Update: resourceOpsWorksElasticLoadBalancerAttachmentUpdate,
 		Delete: resourceOpsWorksElasticLoadBalancerAttachmentDelete,
 		CustomizeDiff: resourceOpsWorksElasticLoadBalancerAttachmentCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"elastic_load_balancer_name": {
 				Type: schema.TypeString,

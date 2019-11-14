@@ -18,12 +18,12 @@ import (
 func ResourceEC2TransitGatewayAttachment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2TransitGatewayAttachmentExists,
-		Read:   resourceEC2TransitGatewayAttachmentRead,
+		Read: resourceEC2TransitGatewayAttachmentRead,
 		Create: resourceEC2TransitGatewayAttachmentCreate,
 		Update: resourceEC2TransitGatewayAttachmentUpdate,
 		Delete: resourceEC2TransitGatewayAttachmentDelete,
 		CustomizeDiff: resourceEC2TransitGatewayAttachmentCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"transit_gateway_id": {
 				Type: schema.TypeString,

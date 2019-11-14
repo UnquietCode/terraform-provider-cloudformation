@@ -18,12 +18,12 @@ import (
 func ResourceOpsWorksStack() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceOpsWorksStackExists,
-		Read:   resourceOpsWorksStackRead,
+		Read: resourceOpsWorksStackRead,
 		Create: resourceOpsWorksStackCreate,
 		Update: resourceOpsWorksStackUpdate,
 		Delete: resourceOpsWorksStackDelete,
 		CustomizeDiff: resourceOpsWorksStackCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"agent_version": {
 				Type: schema.TypeString,

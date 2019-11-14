@@ -17,12 +17,12 @@ import (
 func ResourceDirectoryServiceMicrosoftAD() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDirectoryServiceMicrosoftADExists,
-		Read:   resourceDirectoryServiceMicrosoftADRead,
+		Read: resourceDirectoryServiceMicrosoftADRead,
 		Create: resourceDirectoryServiceMicrosoftADCreate,
 		Update: resourceDirectoryServiceMicrosoftADUpdate,
 		Delete: resourceDirectoryServiceMicrosoftADDelete,
 		CustomizeDiff: resourceDirectoryServiceMicrosoftADCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"create_alias": {
 				Type: schema.TypeBool,

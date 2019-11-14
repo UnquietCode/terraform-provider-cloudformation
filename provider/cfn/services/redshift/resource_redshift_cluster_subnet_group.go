@@ -18,12 +18,12 @@ import (
 func ResourceRedshiftClusterSubnetGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRedshiftClusterSubnetGroupExists,
-		Read:   resourceRedshiftClusterSubnetGroupRead,
+		Read: resourceRedshiftClusterSubnetGroupRead,
 		Create: resourceRedshiftClusterSubnetGroupCreate,
 		Update: resourceRedshiftClusterSubnetGroupUpdate,
 		Delete: resourceRedshiftClusterSubnetGroupDelete,
 		CustomizeDiff: resourceRedshiftClusterSubnetGroupCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

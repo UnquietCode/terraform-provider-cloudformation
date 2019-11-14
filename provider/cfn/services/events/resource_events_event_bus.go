@@ -17,12 +17,12 @@ import (
 func ResourceEventsEventBus() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEventsEventBusExists,
-		Read:   resourceEventsEventBusRead,
+		Read: resourceEventsEventBusRead,
 		Create: resourceEventsEventBusCreate,
 		Update: resourceEventsEventBusUpdate,
 		Delete: resourceEventsEventBusDelete,
 		CustomizeDiff: resourceEventsEventBusCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"event_source_name": {
 				Type: schema.TypeString,

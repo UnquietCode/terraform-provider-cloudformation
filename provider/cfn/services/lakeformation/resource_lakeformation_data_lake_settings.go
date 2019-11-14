@@ -17,12 +17,12 @@ import (
 func ResourceLakeFormationDataLakeSettings() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLakeFormationDataLakeSettingsExists,
-		Read:   resourceLakeFormationDataLakeSettingsRead,
+		Read: resourceLakeFormationDataLakeSettingsRead,
 		Create: resourceLakeFormationDataLakeSettingsCreate,
 		Update: resourceLakeFormationDataLakeSettingsUpdate,
 		Delete: resourceLakeFormationDataLakeSettingsDelete,
 		CustomizeDiff: resourceLakeFormationDataLakeSettingsCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"admins": {
 				Type: schema.TypeList,

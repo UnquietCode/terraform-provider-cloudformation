@@ -17,12 +17,12 @@ import (
 func ResourceAppSyncDataSource() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppSyncDataSourceExists,
-		Read:   resourceAppSyncDataSourceRead,
+		Read: resourceAppSyncDataSourceRead,
 		Create: resourceAppSyncDataSourceCreate,
 		Update: resourceAppSyncDataSourceUpdate,
 		Delete: resourceAppSyncDataSourceDelete,
 		CustomizeDiff: resourceAppSyncDataSourceCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"type": {
 				Type: schema.TypeString,

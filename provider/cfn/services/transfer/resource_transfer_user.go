@@ -18,12 +18,12 @@ import (
 func ResourceTransferUser() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceTransferUserExists,
-		Read:   resourceTransferUserRead,
+		Read: resourceTransferUserRead,
 		Create: resourceTransferUserCreate,
 		Update: resourceTransferUserUpdate,
 		Delete: resourceTransferUserDelete,
 		CustomizeDiff: resourceTransferUserCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"policy": {
 				Type: schema.TypeString,

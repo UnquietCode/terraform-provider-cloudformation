@@ -18,12 +18,12 @@ import (
 func ResourceCertificateManagerCertificate() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCertificateManagerCertificateExists,
-		Read:   resourceCertificateManagerCertificateRead,
+		Read: resourceCertificateManagerCertificateRead,
 		Create: resourceCertificateManagerCertificateCreate,
 		Update: resourceCertificateManagerCertificateUpdate,
 		Delete: resourceCertificateManagerCertificateDelete,
 		CustomizeDiff: resourceCertificateManagerCertificateCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"domain_name": {
 				Type: schema.TypeString,

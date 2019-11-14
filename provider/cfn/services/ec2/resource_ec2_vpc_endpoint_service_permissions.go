@@ -17,12 +17,12 @@ import (
 func ResourceEC2VPCEndpointServicePermissions() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPCEndpointServicePermissionsExists,
-		Read:   resourceEC2VPCEndpointServicePermissionsRead,
+		Read: resourceEC2VPCEndpointServicePermissionsRead,
 		Create: resourceEC2VPCEndpointServicePermissionsCreate,
 		Update: resourceEC2VPCEndpointServicePermissionsUpdate,
 		Delete: resourceEC2VPCEndpointServicePermissionsDelete,
 		CustomizeDiff: resourceEC2VPCEndpointServicePermissionsCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"allowed_principals": {
 				Type: schema.TypeList,

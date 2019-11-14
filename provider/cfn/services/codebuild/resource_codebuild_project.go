@@ -18,12 +18,12 @@ import (
 func ResourceCodeBuildProject() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCodeBuildProjectExists,
-		Read:   resourceCodeBuildProjectRead,
+		Read: resourceCodeBuildProjectRead,
 		Create: resourceCodeBuildProjectCreate,
 		Update: resourceCodeBuildProjectUpdate,
 		Delete: resourceCodeBuildProjectDelete,
 		CustomizeDiff: resourceCodeBuildProjectCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

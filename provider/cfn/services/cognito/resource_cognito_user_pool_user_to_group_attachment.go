@@ -17,12 +17,12 @@ import (
 func ResourceCognitoUserPoolUserToGroupAttachment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCognitoUserPoolUserToGroupAttachmentExists,
-		Read:   resourceCognitoUserPoolUserToGroupAttachmentRead,
+		Read: resourceCognitoUserPoolUserToGroupAttachmentRead,
 		Create: resourceCognitoUserPoolUserToGroupAttachmentCreate,
 		Update: resourceCognitoUserPoolUserToGroupAttachmentUpdate,
 		Delete: resourceCognitoUserPoolUserToGroupAttachmentDelete,
 		CustomizeDiff: resourceCognitoUserPoolUserToGroupAttachmentCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"group_name": {
 				Type: schema.TypeString,

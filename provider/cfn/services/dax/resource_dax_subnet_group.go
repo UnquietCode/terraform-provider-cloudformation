@@ -17,12 +17,12 @@ import (
 func ResourceDAXSubnetGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDAXSubnetGroupExists,
-		Read:   resourceDAXSubnetGroupRead,
+		Read: resourceDAXSubnetGroupRead,
 		Create: resourceDAXSubnetGroupCreate,
 		Update: resourceDAXSubnetGroupUpdate,
 		Delete: resourceDAXSubnetGroupDelete,
 		CustomizeDiff: resourceDAXSubnetGroupCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

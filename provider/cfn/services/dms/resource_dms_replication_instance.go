@@ -18,12 +18,12 @@ import (
 func ResourceDMSReplicationInstance() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDMSReplicationInstanceExists,
-		Read:   resourceDMSReplicationInstanceRead,
+		Read: resourceDMSReplicationInstanceRead,
 		Create: resourceDMSReplicationInstanceCreate,
 		Update: resourceDMSReplicationInstanceUpdate,
 		Delete: resourceDMSReplicationInstanceDelete,
 		CustomizeDiff: resourceDMSReplicationInstanceCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"replication_instance_identifier": {
 				Type: schema.TypeString,

@@ -17,12 +17,12 @@ import (
 func ResourceSDBDomain() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSDBDomainExists,
-		Read:   resourceSDBDomainRead,
+		Read: resourceSDBDomainRead,
 		Create: resourceSDBDomainCreate,
 		Update: resourceSDBDomainUpdate,
 		Delete: resourceSDBDomainDelete,
 		CustomizeDiff: resourceSDBDomainCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

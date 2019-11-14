@@ -17,12 +17,12 @@ import (
 func ResourcePinpointSmsTemplate() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointSmsTemplateExists,
-		Read:   resourcePinpointSmsTemplateRead,
+		Read: resourcePinpointSmsTemplateRead,
 		Create: resourcePinpointSmsTemplateCreate,
 		Update: resourcePinpointSmsTemplateUpdate,
 		Delete: resourcePinpointSmsTemplateDelete,
 		CustomizeDiff: resourcePinpointSmsTemplateCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"template_name": {
 				Type: schema.TypeString,

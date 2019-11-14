@@ -18,12 +18,12 @@ import (
 func ResourceServiceCatalogCloudFormationProduct() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogCloudFormationProductExists,
-		Read:   resourceServiceCatalogCloudFormationProductRead,
+		Read: resourceServiceCatalogCloudFormationProductRead,
 		Create: resourceServiceCatalogCloudFormationProductCreate,
 		Update: resourceServiceCatalogCloudFormationProductUpdate,
 		Delete: resourceServiceCatalogCloudFormationProductDelete,
 		CustomizeDiff: resourceServiceCatalogCloudFormationProductCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"owner": {
 				Type: schema.TypeString,

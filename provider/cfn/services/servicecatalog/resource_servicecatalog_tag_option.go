@@ -17,12 +17,12 @@ import (
 func ResourceServiceCatalogTagOption() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogTagOptionExists,
-		Read:   resourceServiceCatalogTagOptionRead,
+		Read: resourceServiceCatalogTagOptionRead,
 		Create: resourceServiceCatalogTagOptionCreate,
 		Update: resourceServiceCatalogTagOptionUpdate,
 		Delete: resourceServiceCatalogTagOptionDelete,
 		CustomizeDiff: resourceServiceCatalogTagOptionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"active": {
 				Type: schema.TypeBool,

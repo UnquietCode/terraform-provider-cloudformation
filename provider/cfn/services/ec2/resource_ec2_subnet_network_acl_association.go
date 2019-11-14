@@ -17,12 +17,12 @@ import (
 func ResourceEC2SubnetNetworkAclAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2SubnetNetworkAclAssociationExists,
-		Read:   resourceEC2SubnetNetworkAclAssociationRead,
+		Read: resourceEC2SubnetNetworkAclAssociationRead,
 		Create: resourceEC2SubnetNetworkAclAssociationCreate,
 		Update: resourceEC2SubnetNetworkAclAssociationUpdate,
 		Delete: resourceEC2SubnetNetworkAclAssociationDelete,
 		CustomizeDiff: resourceEC2SubnetNetworkAclAssociationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"network_acl_id": {
 				Type: schema.TypeString,

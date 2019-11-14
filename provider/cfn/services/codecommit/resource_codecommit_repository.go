@@ -18,12 +18,12 @@ import (
 func ResourceCodeCommitRepository() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCodeCommitRepositoryExists,
-		Read:   resourceCodeCommitRepositoryRead,
+		Read: resourceCodeCommitRepositoryRead,
 		Create: resourceCodeCommitRepositoryCreate,
 		Update: resourceCodeCommitRepositoryUpdate,
 		Delete: resourceCodeCommitRepositoryDelete,
 		CustomizeDiff: resourceCodeCommitRepositoryCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"repository_name": {
 				Type: schema.TypeString,

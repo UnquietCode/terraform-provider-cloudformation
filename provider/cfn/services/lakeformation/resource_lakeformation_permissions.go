@@ -17,12 +17,12 @@ import (
 func ResourceLakeFormationPermissions() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLakeFormationPermissionsExists,
-		Read:   resourceLakeFormationPermissionsRead,
+		Read: resourceLakeFormationPermissionsRead,
 		Create: resourceLakeFormationPermissionsCreate,
 		Update: resourceLakeFormationPermissionsUpdate,
 		Delete: resourceLakeFormationPermissionsDelete,
 		CustomizeDiff: resourceLakeFormationPermissionsCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"data_lake_principal": {
 				Type: schema.TypeList,

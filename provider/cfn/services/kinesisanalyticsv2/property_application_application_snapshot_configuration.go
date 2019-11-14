@@ -26,7 +26,6 @@ func propertyApplicationApplicationSnapshotConfiguration(extras...string) *schem
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
-	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"snapshots_enabled": {

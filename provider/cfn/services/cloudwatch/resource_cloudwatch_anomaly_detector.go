@@ -17,12 +17,12 @@ import (
 func ResourceCloudWatchAnomalyDetector() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCloudWatchAnomalyDetectorExists,
-		Read:   resourceCloudWatchAnomalyDetectorRead,
+		Read: resourceCloudWatchAnomalyDetectorRead,
 		Create: resourceCloudWatchAnomalyDetectorCreate,
 		Update: resourceCloudWatchAnomalyDetectorUpdate,
 		Delete: resourceCloudWatchAnomalyDetectorDelete,
 		CustomizeDiff: resourceCloudWatchAnomalyDetectorCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"metric_name": {
 				Type: schema.TypeString,

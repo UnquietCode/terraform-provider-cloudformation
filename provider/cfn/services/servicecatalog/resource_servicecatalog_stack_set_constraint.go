@@ -17,12 +17,12 @@ import (
 func ResourceServiceCatalogStackSetConstraint() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogStackSetConstraintExists,
-		Read:   resourceServiceCatalogStackSetConstraintRead,
+		Read: resourceServiceCatalogStackSetConstraintRead,
 		Create: resourceServiceCatalogStackSetConstraintCreate,
 		Update: resourceServiceCatalogStackSetConstraintUpdate,
 		Delete: resourceServiceCatalogStackSetConstraintDelete,
 		CustomizeDiff: resourceServiceCatalogStackSetConstraintCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

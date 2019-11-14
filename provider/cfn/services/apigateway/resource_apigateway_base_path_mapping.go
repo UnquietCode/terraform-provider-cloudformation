@@ -17,12 +17,12 @@ import (
 func ResourceApiGatewayBasePathMapping() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayBasePathMappingExists,
-		Read:   resourceApiGatewayBasePathMappingRead,
+		Read: resourceApiGatewayBasePathMappingRead,
 		Create: resourceApiGatewayBasePathMappingCreate,
 		Update: resourceApiGatewayBasePathMappingUpdate,
 		Delete: resourceApiGatewayBasePathMappingDelete,
 		CustomizeDiff: resourceApiGatewayBasePathMappingCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"base_path": {
 				Type: schema.TypeString,

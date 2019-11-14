@@ -17,12 +17,12 @@ import (
 func ResourceEMRInstanceFleetConfig() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEMRInstanceFleetConfigExists,
-		Read:   resourceEMRInstanceFleetConfigRead,
+		Read: resourceEMRInstanceFleetConfigRead,
 		Create: resourceEMRInstanceFleetConfigCreate,
 		Update: resourceEMRInstanceFleetConfigUpdate,
 		Delete: resourceEMRInstanceFleetConfigDelete,
 		CustomizeDiff: resourceEMRInstanceFleetConfigCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"cluster_id": {
 				Type: schema.TypeString,

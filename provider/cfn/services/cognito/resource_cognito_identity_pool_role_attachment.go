@@ -17,12 +17,12 @@ import (
 func ResourceCognitoIdentityPoolRoleAttachment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCognitoIdentityPoolRoleAttachmentExists,
-		Read:   resourceCognitoIdentityPoolRoleAttachmentRead,
+		Read: resourceCognitoIdentityPoolRoleAttachmentRead,
 		Create: resourceCognitoIdentityPoolRoleAttachmentCreate,
 		Update: resourceCognitoIdentityPoolRoleAttachmentUpdate,
 		Delete: resourceCognitoIdentityPoolRoleAttachmentDelete,
 		CustomizeDiff: resourceCognitoIdentityPoolRoleAttachmentCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"role_mappings": {
 				Type: schema.TypeMap,

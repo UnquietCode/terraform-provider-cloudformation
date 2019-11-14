@@ -17,12 +17,12 @@ import (
 func ResourceIoTTopicRule() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoTTopicRuleExists,
-		Read:   resourceIoTTopicRuleRead,
+		Read: resourceIoTTopicRuleRead,
 		Create: resourceIoTTopicRuleCreate,
 		Update: resourceIoTTopicRuleUpdate,
 		Delete: resourceIoTTopicRuleDelete,
 		CustomizeDiff: resourceIoTTopicRuleCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"rule_name": {
 				Type: schema.TypeString,

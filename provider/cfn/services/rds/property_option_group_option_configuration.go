@@ -26,7 +26,6 @@ func propertyOptionGroupOptionConfiguration(extras...string) *schema.Resource {
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
-	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"db_security_group_memberships": {

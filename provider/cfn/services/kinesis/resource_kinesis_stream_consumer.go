@@ -17,12 +17,12 @@ import (
 func ResourceKinesisStreamConsumer() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceKinesisStreamConsumerExists,
-		Read:   resourceKinesisStreamConsumerRead,
+		Read: resourceKinesisStreamConsumerRead,
 		Create: resourceKinesisStreamConsumerCreate,
 		Update: resourceKinesisStreamConsumerUpdate,
 		Delete: resourceKinesisStreamConsumerDelete,
 		CustomizeDiff: resourceKinesisStreamConsumerCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"consumer_name": {
 				Type: schema.TypeString,

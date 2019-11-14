@@ -17,12 +17,12 @@ import (
 func ResourceS3BucketPolicy() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceS3BucketPolicyExists,
-		Read:   resourceS3BucketPolicyRead,
+		Read: resourceS3BucketPolicyRead,
 		Create: resourceS3BucketPolicyCreate,
 		Update: resourceS3BucketPolicyUpdate,
 		Delete: resourceS3BucketPolicyDelete,
 		CustomizeDiff: resourceS3BucketPolicyCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"bucket": {
 				Type: schema.TypeString,

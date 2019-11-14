@@ -17,12 +17,12 @@ import (
 func ResourceCodePipelinePipeline() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCodePipelinePipelineExists,
-		Read:   resourceCodePipelinePipelineRead,
+		Read: resourceCodePipelinePipelineRead,
 		Create: resourceCodePipelinePipelineCreate,
 		Update: resourceCodePipelinePipelineUpdate,
 		Delete: resourceCodePipelinePipelineDelete,
 		CustomizeDiff: resourceCodePipelinePipelineCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"artifact_store": {
 				Type: schema.TypeList,

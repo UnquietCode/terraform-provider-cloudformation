@@ -17,12 +17,12 @@ import (
 func ResourceAmazonMQConfigurationAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAmazonMQConfigurationAssociationExists,
-		Read:   resourceAmazonMQConfigurationAssociationRead,
+		Read: resourceAmazonMQConfigurationAssociationRead,
 		Create: resourceAmazonMQConfigurationAssociationCreate,
 		Update: resourceAmazonMQConfigurationAssociationUpdate,
 		Delete: resourceAmazonMQConfigurationAssociationDelete,
 		CustomizeDiff: resourceAmazonMQConfigurationAssociationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"broker": {
 				Type: schema.TypeString,

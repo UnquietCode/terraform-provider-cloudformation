@@ -17,12 +17,12 @@ import (
 func ResourceAppStreamUser() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppStreamUserExists,
-		Read:   resourceAppStreamUserRead,
+		Read: resourceAppStreamUserRead,
 		Create: resourceAppStreamUserCreate,
 		Update: resourceAppStreamUserUpdate,
 		Delete: resourceAppStreamUserDelete,
 		CustomizeDiff: resourceAppStreamUserCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"user_name": {
 				Type: schema.TypeString,

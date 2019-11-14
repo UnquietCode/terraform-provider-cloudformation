@@ -17,12 +17,12 @@ import (
 func ResourceMediaLiveInput() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceMediaLiveInputExists,
-		Read:   resourceMediaLiveInputRead,
+		Read: resourceMediaLiveInputRead,
 		Create: resourceMediaLiveInputCreate,
 		Update: resourceMediaLiveInputUpdate,
 		Delete: resourceMediaLiveInputDelete,
 		CustomizeDiff: resourceMediaLiveInputCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"type": {
 				Type: schema.TypeString,

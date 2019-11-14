@@ -18,12 +18,12 @@ import (
 func ResourceSecretsManagerSecret() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSecretsManagerSecretExists,
-		Read:   resourceSecretsManagerSecretRead,
+		Read: resourceSecretsManagerSecretRead,
 		Create: resourceSecretsManagerSecretCreate,
 		Update: resourceSecretsManagerSecretUpdate,
 		Delete: resourceSecretsManagerSecretDelete,
 		CustomizeDiff: resourceSecretsManagerSecretCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

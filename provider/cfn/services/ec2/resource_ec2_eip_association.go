@@ -17,12 +17,12 @@ import (
 func ResourceEC2EIPAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2EIPAssociationExists,
-		Read:   resourceEC2EIPAssociationRead,
+		Read: resourceEC2EIPAssociationRead,
 		Create: resourceEC2EIPAssociationCreate,
 		Update: resourceEC2EIPAssociationUpdate,
 		Delete: resourceEC2EIPAssociationDelete,
 		CustomizeDiff: resourceEC2EIPAssociationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"allocation_id": {
 				Type: schema.TypeString,

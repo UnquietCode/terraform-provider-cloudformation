@@ -18,12 +18,12 @@ import (
 func ResourceRDSDBSubnetGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRDSDBSubnetGroupExists,
-		Read:   resourceRDSDBSubnetGroupRead,
+		Read: resourceRDSDBSubnetGroupRead,
 		Create: resourceRDSDBSubnetGroupCreate,
 		Update: resourceRDSDBSubnetGroupUpdate,
 		Delete: resourceRDSDBSubnetGroupDelete,
 		CustomizeDiff: resourceRDSDBSubnetGroupCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"db_subnet_group_description": {
 				Type: schema.TypeString,

@@ -17,12 +17,12 @@ import (
 func ResourceApplicationAutoScalingScalingPolicy() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApplicationAutoScalingScalingPolicyExists,
-		Read:   resourceApplicationAutoScalingScalingPolicyRead,
+		Read: resourceApplicationAutoScalingScalingPolicyRead,
 		Create: resourceApplicationAutoScalingScalingPolicyCreate,
 		Update: resourceApplicationAutoScalingScalingPolicyUpdate,
 		Delete: resourceApplicationAutoScalingScalingPolicyDelete,
 		CustomizeDiff: resourceApplicationAutoScalingScalingPolicyCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"policy_name": {
 				Type: schema.TypeString,

@@ -17,12 +17,12 @@ import (
 func ResourceDLMLifecyclePolicy() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDLMLifecyclePolicyExists,
-		Read:   resourceDLMLifecyclePolicyRead,
+		Read: resourceDLMLifecyclePolicyRead,
 		Create: resourceDLMLifecyclePolicyCreate,
 		Update: resourceDLMLifecyclePolicyUpdate,
 		Delete: resourceDLMLifecyclePolicyDelete,
 		CustomizeDiff: resourceDLMLifecyclePolicyCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"execution_role_arn": {
 				Type: schema.TypeString,

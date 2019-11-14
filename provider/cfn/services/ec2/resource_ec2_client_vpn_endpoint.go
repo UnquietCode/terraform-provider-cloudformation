@@ -17,12 +17,12 @@ import (
 func ResourceEC2ClientVpnEndpoint() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2ClientVpnEndpointExists,
-		Read:   resourceEC2ClientVpnEndpointRead,
+		Read: resourceEC2ClientVpnEndpointRead,
 		Create: resourceEC2ClientVpnEndpointCreate,
 		Update: resourceEC2ClientVpnEndpointUpdate,
 		Delete: resourceEC2ClientVpnEndpointDelete,
 		CustomizeDiff: resourceEC2ClientVpnEndpointCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"client_cidr_block": {
 				Type: schema.TypeString,

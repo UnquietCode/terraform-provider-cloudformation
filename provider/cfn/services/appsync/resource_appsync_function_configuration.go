@@ -17,12 +17,12 @@ import (
 func ResourceAppSyncFunctionConfiguration() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppSyncFunctionConfigurationExists,
-		Read:   resourceAppSyncFunctionConfigurationRead,
+		Read: resourceAppSyncFunctionConfigurationRead,
 		Create: resourceAppSyncFunctionConfigurationCreate,
 		Update: resourceAppSyncFunctionConfigurationUpdate,
 		Delete: resourceAppSyncFunctionConfigurationDelete,
 		CustomizeDiff: resourceAppSyncFunctionConfigurationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"response_mapping_template_s3_location": {
 				Type: schema.TypeString,

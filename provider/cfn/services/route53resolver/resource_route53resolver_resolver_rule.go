@@ -18,12 +18,12 @@ import (
 func ResourceRoute53ResolverResolverRule() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRoute53ResolverResolverRuleExists,
-		Read:   resourceRoute53ResolverResolverRuleRead,
+		Read: resourceRoute53ResolverResolverRuleRead,
 		Create: resourceRoute53ResolverResolverRuleCreate,
 		Update: resourceRoute53ResolverResolverRuleUpdate,
 		Delete: resourceRoute53ResolverResolverRuleDelete,
 		CustomizeDiff: resourceRoute53ResolverResolverRuleCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"resolver_endpoint_id": {
 				Type: schema.TypeString,

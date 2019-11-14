@@ -17,12 +17,12 @@ import (
 func ResourceEC2PlacementGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2PlacementGroupExists,
-		Read:   resourceEC2PlacementGroupRead,
+		Read: resourceEC2PlacementGroupRead,
 		Create: resourceEC2PlacementGroupCreate,
 		Update: resourceEC2PlacementGroupUpdate,
 		Delete: resourceEC2PlacementGroupDelete,
 		CustomizeDiff: resourceEC2PlacementGroupCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"strategy": {
 				Type: schema.TypeString,

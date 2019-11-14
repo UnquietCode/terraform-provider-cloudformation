@@ -26,7 +26,6 @@ func propertyStreamingDistributionStreamingDistributionConfig(extras...string) *
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
-	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"logging": {

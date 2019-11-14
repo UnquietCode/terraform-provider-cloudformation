@@ -18,12 +18,12 @@ import (
 func ResourceSSMMaintenanceWindow() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSSMMaintenanceWindowExists,
-		Read:   resourceSSMMaintenanceWindowRead,
+		Read: resourceSSMMaintenanceWindowRead,
 		Create: resourceSSMMaintenanceWindowCreate,
 		Update: resourceSSMMaintenanceWindowUpdate,
 		Delete: resourceSSMMaintenanceWindowDelete,
 		CustomizeDiff: resourceSSMMaintenanceWindowCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"start_date": {
 				Type: schema.TypeString,

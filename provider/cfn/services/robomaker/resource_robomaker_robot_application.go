@@ -17,12 +17,12 @@ import (
 func ResourceRoboMakerRobotApplication() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRoboMakerRobotApplicationExists,
-		Read:   resourceRoboMakerRobotApplicationRead,
+		Read: resourceRoboMakerRobotApplicationRead,
 		Create: resourceRoboMakerRobotApplicationCreate,
 		Update: resourceRoboMakerRobotApplicationUpdate,
 		Delete: resourceRoboMakerRobotApplicationDelete,
 		CustomizeDiff: resourceRoboMakerRobotApplicationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"current_revision_id": {
 				Type: schema.TypeString,

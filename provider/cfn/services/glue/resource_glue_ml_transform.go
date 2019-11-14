@@ -17,12 +17,12 @@ import (
 func ResourceGlueMLTransform() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGlueMLTransformExists,
-		Read:   resourceGlueMLTransformRead,
+		Read: resourceGlueMLTransformRead,
 		Create: resourceGlueMLTransformCreate,
 		Update: resourceGlueMLTransformUpdate,
 		Delete: resourceGlueMLTransformDelete,
 		CustomizeDiff: resourceGlueMLTransformCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"role": {
 				Type: schema.TypeString,

@@ -17,12 +17,12 @@ import (
 func ResourceOpsWorksCMServer() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceOpsWorksCMServerExists,
-		Read:   resourceOpsWorksCMServerRead,
+		Read: resourceOpsWorksCMServerRead,
 		Create: resourceOpsWorksCMServerCreate,
 		Update: resourceOpsWorksCMServerUpdate,
 		Delete: resourceOpsWorksCMServerDelete,
 		CustomizeDiff: resourceOpsWorksCMServerCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"key_pair": {
 				Type: schema.TypeString,

@@ -18,12 +18,12 @@ import (
 func ResourceNeptuneDBCluster() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceNeptuneDBClusterExists,
-		Read:   resourceNeptuneDBClusterRead,
+		Read: resourceNeptuneDBClusterRead,
 		Create: resourceNeptuneDBClusterCreate,
 		Update: resourceNeptuneDBClusterUpdate,
 		Delete: resourceNeptuneDBClusterDelete,
 		CustomizeDiff: resourceNeptuneDBClusterCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"storage_encrypted": {
 				Type: schema.TypeBool,

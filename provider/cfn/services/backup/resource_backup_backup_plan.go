@@ -17,12 +17,12 @@ import (
 func ResourceBackupBackupPlan() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceBackupBackupPlanExists,
-		Read:   resourceBackupBackupPlanRead,
+		Read: resourceBackupBackupPlanRead,
 		Create: resourceBackupBackupPlanCreate,
 		Update: resourceBackupBackupPlanUpdate,
 		Delete: resourceBackupBackupPlanDelete,
 		CustomizeDiff: resourceBackupBackupPlanCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"backup_plan": {
 				Type: schema.TypeList,

@@ -17,12 +17,12 @@ import (
 func ResourceServiceCatalogPortfolioShare() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogPortfolioShareExists,
-		Read:   resourceServiceCatalogPortfolioShareRead,
+		Read: resourceServiceCatalogPortfolioShareRead,
 		Create: resourceServiceCatalogPortfolioShareCreate,
 		Update: resourceServiceCatalogPortfolioShareUpdate,
 		Delete: resourceServiceCatalogPortfolioShareDelete,
 		CustomizeDiff: resourceServiceCatalogPortfolioShareCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"account_id": {
 				Type: schema.TypeString,

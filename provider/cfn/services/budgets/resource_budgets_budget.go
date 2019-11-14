@@ -17,12 +17,12 @@ import (
 func ResourceBudgetsBudget() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceBudgetsBudgetExists,
-		Read:   resourceBudgetsBudgetRead,
+		Read: resourceBudgetsBudgetRead,
 		Create: resourceBudgetsBudgetCreate,
 		Update: resourceBudgetsBudgetUpdate,
 		Delete: resourceBudgetsBudgetDelete,
 		CustomizeDiff: resourceBudgetsBudgetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"notifications_with_subscribers": {
 				Type: schema.TypeList,

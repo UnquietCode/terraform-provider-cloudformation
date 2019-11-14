@@ -18,12 +18,12 @@ import (
 func ResourceServiceCatalogPortfolio() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogPortfolioExists,
-		Read:   resourceServiceCatalogPortfolioRead,
+		Read: resourceServiceCatalogPortfolioRead,
 		Create: resourceServiceCatalogPortfolioCreate,
 		Update: resourceServiceCatalogPortfolioUpdate,
 		Delete: resourceServiceCatalogPortfolioDelete,
 		CustomizeDiff: resourceServiceCatalogPortfolioCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"provider_name": {
 				Type: schema.TypeString,

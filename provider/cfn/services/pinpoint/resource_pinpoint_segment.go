@@ -17,12 +17,12 @@ import (
 func ResourcePinpointSegment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointSegmentExists,
-		Read:   resourcePinpointSegmentRead,
+		Read: resourcePinpointSegmentRead,
 		Create: resourcePinpointSegmentCreate,
 		Update: resourcePinpointSegmentUpdate,
 		Delete: resourcePinpointSegmentDelete,
 		CustomizeDiff: resourcePinpointSegmentCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"segment_groups": {
 				Type: schema.TypeList,

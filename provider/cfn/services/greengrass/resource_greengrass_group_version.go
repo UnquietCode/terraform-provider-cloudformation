@@ -17,12 +17,12 @@ import (
 func ResourceGreengrassGroupVersion() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGreengrassGroupVersionExists,
-		Read:   resourceGreengrassGroupVersionRead,
+		Read: resourceGreengrassGroupVersionRead,
 		Create: resourceGreengrassGroupVersionCreate,
 		Update: resourceGreengrassGroupVersionUpdate,
 		Delete: resourceGreengrassGroupVersionDelete,
 		CustomizeDiff: resourceGreengrassGroupVersionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"logger_definition_version_arn": {
 				Type: schema.TypeString,

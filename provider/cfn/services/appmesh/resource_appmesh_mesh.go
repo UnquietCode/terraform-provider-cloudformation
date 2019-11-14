@@ -18,12 +18,12 @@ import (
 func ResourceAppMeshMesh() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppMeshMeshExists,
-		Read:   resourceAppMeshMeshRead,
+		Read: resourceAppMeshMeshRead,
 		Create: resourceAppMeshMeshCreate,
 		Update: resourceAppMeshMeshUpdate,
 		Delete: resourceAppMeshMeshDelete,
 		CustomizeDiff: resourceAppMeshMeshCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"mesh_name": {
 				Type: schema.TypeString,

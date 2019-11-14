@@ -17,12 +17,12 @@ import (
 func ResourceAppStreamDirectoryConfig() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppStreamDirectoryConfigExists,
-		Read:   resourceAppStreamDirectoryConfigRead,
+		Read: resourceAppStreamDirectoryConfigRead,
 		Create: resourceAppStreamDirectoryConfigCreate,
 		Update: resourceAppStreamDirectoryConfigUpdate,
 		Delete: resourceAppStreamDirectoryConfigDelete,
 		CustomizeDiff: resourceAppStreamDirectoryConfigCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"organizational_unit_distinguished_names": {
 				Type: schema.TypeList,

@@ -17,12 +17,12 @@ import (
 func ResourceAmplifyDomain() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAmplifyDomainExists,
-		Read:   resourceAmplifyDomainRead,
+		Read: resourceAmplifyDomainRead,
 		Create: resourceAmplifyDomainCreate,
 		Update: resourceAmplifyDomainUpdate,
 		Delete: resourceAmplifyDomainDelete,
 		CustomizeDiff: resourceAmplifyDomainCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"sub_domain_settings": {
 				Type: schema.TypeList,

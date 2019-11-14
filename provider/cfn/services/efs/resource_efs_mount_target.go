@@ -17,12 +17,12 @@ import (
 func ResourceEFSMountTarget() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEFSMountTargetExists,
-		Read:   resourceEFSMountTargetRead,
+		Read: resourceEFSMountTargetRead,
 		Create: resourceEFSMountTargetCreate,
 		Update: resourceEFSMountTargetUpdate,
 		Delete: resourceEFSMountTargetDelete,
 		CustomizeDiff: resourceEFSMountTargetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"file_system_id": {
 				Type: schema.TypeString,

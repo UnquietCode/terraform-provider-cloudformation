@@ -18,12 +18,12 @@ import (
 func ResourceECSService() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceECSServiceExists,
-		Read:   resourceECSServiceRead,
+		Read: resourceECSServiceRead,
 		Create: resourceECSServiceCreate,
 		Update: resourceECSServiceUpdate,
 		Delete: resourceECSServiceDelete,
 		CustomizeDiff: resourceECSServiceCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"cluster": {
 				Type: schema.TypeString,

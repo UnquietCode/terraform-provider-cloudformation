@@ -17,12 +17,12 @@ import (
 func ResourceGameLiftAlias() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGameLiftAliasExists,
-		Read:   resourceGameLiftAliasRead,
+		Read: resourceGameLiftAliasRead,
 		Create: resourceGameLiftAliasCreate,
 		Update: resourceGameLiftAliasUpdate,
 		Delete: resourceGameLiftAliasDelete,
 		CustomizeDiff: resourceGameLiftAliasCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

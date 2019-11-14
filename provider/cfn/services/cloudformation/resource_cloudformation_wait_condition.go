@@ -17,12 +17,12 @@ import (
 func ResourceCloudFormationWaitCondition() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCloudFormationWaitConditionExists,
-		Read:   resourceCloudFormationWaitConditionRead,
+		Read: resourceCloudFormationWaitConditionRead,
 		Create: resourceCloudFormationWaitConditionCreate,
 		Update: resourceCloudFormationWaitConditionUpdate,
 		Delete: resourceCloudFormationWaitConditionDelete,
 		CustomizeDiff: resourceCloudFormationWaitConditionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"the_count": {
 				Type: schema.TypeInt,

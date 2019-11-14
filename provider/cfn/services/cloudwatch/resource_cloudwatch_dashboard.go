@@ -17,12 +17,12 @@ import (
 func ResourceCloudWatchDashboard() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCloudWatchDashboardExists,
-		Read:   resourceCloudWatchDashboardRead,
+		Read: resourceCloudWatchDashboardRead,
 		Create: resourceCloudWatchDashboardCreate,
 		Update: resourceCloudWatchDashboardUpdate,
 		Delete: resourceCloudWatchDashboardDelete,
 		CustomizeDiff: resourceCloudWatchDashboardCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"dashboard_name": {
 				Type: schema.TypeString,

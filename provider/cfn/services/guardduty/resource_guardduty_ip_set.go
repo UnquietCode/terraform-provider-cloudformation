@@ -17,12 +17,12 @@ import (
 func ResourceGuardDutyIPSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGuardDutyIPSetExists,
-		Read:   resourceGuardDutyIPSetRead,
+		Read: resourceGuardDutyIPSetRead,
 		Create: resourceGuardDutyIPSetCreate,
 		Update: resourceGuardDutyIPSetUpdate,
 		Delete: resourceGuardDutyIPSetDelete,
 		CustomizeDiff: resourceGuardDutyIPSetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"format": {
 				Type: schema.TypeString,

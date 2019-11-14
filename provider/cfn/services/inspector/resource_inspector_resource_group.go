@@ -18,12 +18,12 @@ import (
 func ResourceInspectorResourceGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceInspectorResourceGroupExists,
-		Read:   resourceInspectorResourceGroupRead,
+		Read: resourceInspectorResourceGroupRead,
 		Create: resourceInspectorResourceGroupCreate,
 		Update: resourceInspectorResourceGroupUpdate,
 		Delete: resourceInspectorResourceGroupDelete,
 		CustomizeDiff: resourceInspectorResourceGroupCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"resource_group_tags": {
 				Type: schema.TypeList,

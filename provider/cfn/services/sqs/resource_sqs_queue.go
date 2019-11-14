@@ -18,12 +18,12 @@ import (
 func ResourceSQSQueue() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSQSQueueExists,
-		Read:   resourceSQSQueueRead,
+		Read: resourceSQSQueueRead,
 		Create: resourceSQSQueueCreate,
 		Update: resourceSQSQueueUpdate,
 		Delete: resourceSQSQueueDelete,
 		CustomizeDiff: resourceSQSQueueCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"content_based_deduplication": {
 				Type: schema.TypeBool,

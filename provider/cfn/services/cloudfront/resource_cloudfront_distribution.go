@@ -18,12 +18,12 @@ import (
 func ResourceCloudFrontDistribution() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCloudFrontDistributionExists,
-		Read:   resourceCloudFrontDistributionRead,
+		Read: resourceCloudFrontDistributionRead,
 		Create: resourceCloudFrontDistributionCreate,
 		Update: resourceCloudFrontDistributionUpdate,
 		Delete: resourceCloudFrontDistributionDelete,
 		CustomizeDiff: resourceCloudFrontDistributionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"distribution_config": {
 				Type: schema.TypeList,

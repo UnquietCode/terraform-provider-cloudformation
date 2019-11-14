@@ -17,12 +17,12 @@ import (
 func ResourceWAFRegionalSizeConstraintSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFRegionalSizeConstraintSetExists,
-		Read:   resourceWAFRegionalSizeConstraintSetRead,
+		Read: resourceWAFRegionalSizeConstraintSetRead,
 		Create: resourceWAFRegionalSizeConstraintSetCreate,
 		Update: resourceWAFRegionalSizeConstraintSetUpdate,
 		Delete: resourceWAFRegionalSizeConstraintSetDelete,
 		CustomizeDiff: resourceWAFRegionalSizeConstraintSetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"size_constraints": {
 				Type: schema.TypeList,

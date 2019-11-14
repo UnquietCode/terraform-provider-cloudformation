@@ -17,12 +17,12 @@ import (
 func ResourceAppSyncGraphQLApi() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppSyncGraphQLApiExists,
-		Read:   resourceAppSyncGraphQLApiRead,
+		Read: resourceAppSyncGraphQLApiRead,
 		Create: resourceAppSyncGraphQLApiCreate,
 		Update: resourceAppSyncGraphQLApiUpdate,
 		Delete: resourceAppSyncGraphQLApiDelete,
 		CustomizeDiff: resourceAppSyncGraphQLApiCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"open_id_connect_config": {
 				Type: schema.TypeList,

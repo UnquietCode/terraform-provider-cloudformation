@@ -18,12 +18,12 @@ import (
 func ResourceRDSDBClusterParameterGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRDSDBClusterParameterGroupExists,
-		Read:   resourceRDSDBClusterParameterGroupRead,
+		Read: resourceRDSDBClusterParameterGroupRead,
 		Create: resourceRDSDBClusterParameterGroupCreate,
 		Update: resourceRDSDBClusterParameterGroupUpdate,
 		Delete: resourceRDSDBClusterParameterGroupDelete,
 		CustomizeDiff: resourceRDSDBClusterParameterGroupCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

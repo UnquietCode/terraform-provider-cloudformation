@@ -17,12 +17,12 @@ import (
 func ResourceServiceDiscoveryHttpNamespace() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceDiscoveryHttpNamespaceExists,
-		Read:   resourceServiceDiscoveryHttpNamespaceRead,
+		Read: resourceServiceDiscoveryHttpNamespaceRead,
 		Create: resourceServiceDiscoveryHttpNamespaceCreate,
 		Update: resourceServiceDiscoveryHttpNamespaceUpdate,
 		Delete: resourceServiceDiscoveryHttpNamespaceDelete,
 		CustomizeDiff: resourceServiceDiscoveryHttpNamespaceCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

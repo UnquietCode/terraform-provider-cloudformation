@@ -17,12 +17,12 @@ import (
 func ResourceSQSQueuePolicy() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSQSQueuePolicyExists,
-		Read:   resourceSQSQueuePolicyRead,
+		Read: resourceSQSQueuePolicyRead,
 		Create: resourceSQSQueuePolicyCreate,
 		Update: resourceSQSQueuePolicyUpdate,
 		Delete: resourceSQSQueuePolicyDelete,
 		CustomizeDiff: resourceSQSQueuePolicyCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"policy_document": {
 				Type: schema.TypeMap,

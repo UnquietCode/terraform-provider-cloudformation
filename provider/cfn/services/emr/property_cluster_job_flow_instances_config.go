@@ -26,7 +26,6 @@ func propertyClusterJobFlowInstancesConfig(extras...string) *schema.Resource {
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
-	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"additional_master_security_groups": {

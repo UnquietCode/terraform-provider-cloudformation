@@ -18,12 +18,12 @@ import (
 func ResourceIoTAnalyticsDataset() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoTAnalyticsDatasetExists,
-		Read:   resourceIoTAnalyticsDatasetRead,
+		Read: resourceIoTAnalyticsDatasetRead,
 		Create: resourceIoTAnalyticsDatasetCreate,
 		Update: resourceIoTAnalyticsDatasetUpdate,
 		Delete: resourceIoTAnalyticsDatasetDelete,
 		CustomizeDiff: resourceIoTAnalyticsDatasetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"actions": {
 				Type: schema.TypeList,

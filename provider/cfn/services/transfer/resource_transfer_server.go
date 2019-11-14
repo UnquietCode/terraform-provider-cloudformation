@@ -18,12 +18,12 @@ import (
 func ResourceTransferServer() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceTransferServerExists,
-		Read:   resourceTransferServerRead,
+		Read: resourceTransferServerRead,
 		Create: resourceTransferServerCreate,
 		Update: resourceTransferServerUpdate,
 		Delete: resourceTransferServerDelete,
 		CustomizeDiff: resourceTransferServerCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"logging_role": {
 				Type: schema.TypeString,

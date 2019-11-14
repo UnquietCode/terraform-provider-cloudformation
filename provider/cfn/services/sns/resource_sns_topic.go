@@ -17,12 +17,12 @@ import (
 func ResourceSNSTopic() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSNSTopicExists,
-		Read:   resourceSNSTopicRead,
+		Read: resourceSNSTopicRead,
 		Create: resourceSNSTopicCreate,
 		Update: resourceSNSTopicUpdate,
 		Delete: resourceSNSTopicDelete,
 		CustomizeDiff: resourceSNSTopicCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"display_name": {
 				Type: schema.TypeString,

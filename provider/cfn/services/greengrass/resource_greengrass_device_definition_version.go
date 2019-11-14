@@ -17,12 +17,12 @@ import (
 func ResourceGreengrassDeviceDefinitionVersion() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGreengrassDeviceDefinitionVersionExists,
-		Read:   resourceGreengrassDeviceDefinitionVersionRead,
+		Read: resourceGreengrassDeviceDefinitionVersionRead,
 		Create: resourceGreengrassDeviceDefinitionVersionCreate,
 		Update: resourceGreengrassDeviceDefinitionVersionUpdate,
 		Delete: resourceGreengrassDeviceDefinitionVersionDelete,
 		CustomizeDiff: resourceGreengrassDeviceDefinitionVersionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"device_definition_id": {
 				Type: schema.TypeString,

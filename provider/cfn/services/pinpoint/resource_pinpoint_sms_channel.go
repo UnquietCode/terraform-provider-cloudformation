@@ -17,12 +17,12 @@ import (
 func ResourcePinpointSMSChannel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointSMSChannelExists,
-		Read:   resourcePinpointSMSChannelRead,
+		Read: resourcePinpointSMSChannelRead,
 		Create: resourcePinpointSMSChannelCreate,
 		Update: resourcePinpointSMSChannelUpdate,
 		Delete: resourcePinpointSMSChannelDelete,
 		CustomizeDiff: resourcePinpointSMSChannelCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"short_code": {
 				Type: schema.TypeString,

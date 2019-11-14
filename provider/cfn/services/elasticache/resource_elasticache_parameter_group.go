@@ -17,12 +17,12 @@ import (
 func ResourceElastiCacheParameterGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElastiCacheParameterGroupExists,
-		Read:   resourceElastiCacheParameterGroupRead,
+		Read: resourceElastiCacheParameterGroupRead,
 		Create: resourceElastiCacheParameterGroupCreate,
 		Update: resourceElastiCacheParameterGroupUpdate,
 		Delete: resourceElastiCacheParameterGroupDelete,
 		CustomizeDiff: resourceElastiCacheParameterGroupCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"cache_parameter_group_family": {
 				Type: schema.TypeString,

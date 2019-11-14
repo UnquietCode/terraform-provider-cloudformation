@@ -17,12 +17,12 @@ import (
 func ResourceWAFRegionalRule() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFRegionalRuleExists,
-		Read:   resourceWAFRegionalRuleRead,
+		Read: resourceWAFRegionalRuleRead,
 		Create: resourceWAFRegionalRuleCreate,
 		Update: resourceWAFRegionalRuleUpdate,
 		Delete: resourceWAFRegionalRuleDelete,
 		CustomizeDiff: resourceWAFRegionalRuleCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"metric_name": {
 				Type: schema.TypeString,

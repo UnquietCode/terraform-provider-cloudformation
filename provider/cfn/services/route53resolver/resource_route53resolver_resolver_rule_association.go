@@ -17,12 +17,12 @@ import (
 func ResourceRoute53ResolverResolverRuleAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRoute53ResolverResolverRuleAssociationExists,
-		Read:   resourceRoute53ResolverResolverRuleAssociationRead,
+		Read: resourceRoute53ResolverResolverRuleAssociationRead,
 		Create: resourceRoute53ResolverResolverRuleAssociationCreate,
 		Update: resourceRoute53ResolverResolverRuleAssociationUpdate,
 		Delete: resourceRoute53ResolverResolverRuleAssociationDelete,
 		CustomizeDiff: resourceRoute53ResolverResolverRuleAssociationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"vpc_id": {
 				Type: schema.TypeString,

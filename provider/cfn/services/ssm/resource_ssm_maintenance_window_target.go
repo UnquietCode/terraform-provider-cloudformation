@@ -17,12 +17,12 @@ import (
 func ResourceSSMMaintenanceWindowTarget() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSSMMaintenanceWindowTargetExists,
-		Read:   resourceSSMMaintenanceWindowTargetRead,
+		Read: resourceSSMMaintenanceWindowTargetRead,
 		Create: resourceSSMMaintenanceWindowTargetCreate,
 		Update: resourceSSMMaintenanceWindowTargetUpdate,
 		Delete: resourceSSMMaintenanceWindowTargetDelete,
 		CustomizeDiff: resourceSSMMaintenanceWindowTargetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"owner_information": {
 				Type: schema.TypeString,

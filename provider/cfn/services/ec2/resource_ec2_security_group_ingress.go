@@ -17,12 +17,12 @@ import (
 func ResourceEC2SecurityGroupIngress() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2SecurityGroupIngressExists,
-		Read:   resourceEC2SecurityGroupIngressRead,
+		Read: resourceEC2SecurityGroupIngressRead,
 		Create: resourceEC2SecurityGroupIngressCreate,
 		Update: resourceEC2SecurityGroupIngressUpdate,
 		Delete: resourceEC2SecurityGroupIngressDelete,
 		CustomizeDiff: resourceEC2SecurityGroupIngressCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"cidr_ip": {
 				Type: schema.TypeString,

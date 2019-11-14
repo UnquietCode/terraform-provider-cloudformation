@@ -17,12 +17,12 @@ import (
 func ResourceEFSFileSystem() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEFSFileSystemExists,
-		Read:   resourceEFSFileSystemRead,
+		Read: resourceEFSFileSystemRead,
 		Create: resourceEFSFileSystemCreate,
 		Update: resourceEFSFileSystemUpdate,
 		Delete: resourceEFSFileSystemDelete,
 		CustomizeDiff: resourceEFSFileSystemCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"encrypted": {
 				Type: schema.TypeBool,

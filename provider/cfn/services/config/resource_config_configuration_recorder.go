@@ -17,12 +17,12 @@ import (
 func ResourceConfigConfigurationRecorder() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceConfigConfigurationRecorderExists,
-		Read:   resourceConfigConfigurationRecorderRead,
+		Read: resourceConfigConfigurationRecorderRead,
 		Create: resourceConfigConfigurationRecorderCreate,
 		Update: resourceConfigConfigurationRecorderUpdate,
 		Delete: resourceConfigConfigurationRecorderDelete,
 		CustomizeDiff: resourceConfigConfigurationRecorderCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"name": {
 				Type: schema.TypeString,

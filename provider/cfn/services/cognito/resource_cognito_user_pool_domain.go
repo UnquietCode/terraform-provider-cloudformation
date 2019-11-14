@@ -17,12 +17,12 @@ import (
 func ResourceCognitoUserPoolDomain() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCognitoUserPoolDomainExists,
-		Read:   resourceCognitoUserPoolDomainRead,
+		Read: resourceCognitoUserPoolDomainRead,
 		Create: resourceCognitoUserPoolDomainCreate,
 		Update: resourceCognitoUserPoolDomainUpdate,
 		Delete: resourceCognitoUserPoolDomainDelete,
 		CustomizeDiff: resourceCognitoUserPoolDomainCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"user_pool_id": {
 				Type: schema.TypeString,

@@ -17,12 +17,12 @@ import (
 func ResourcePinpointApp() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointAppExists,
-		Read:   resourcePinpointAppRead,
+		Read: resourcePinpointAppRead,
 		Create: resourcePinpointAppCreate,
 		Update: resourcePinpointAppUpdate,
 		Delete: resourcePinpointAppDelete,
 		CustomizeDiff: resourcePinpointAppCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"tags": {
 				Type: schema.TypeMap,

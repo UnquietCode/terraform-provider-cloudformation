@@ -17,12 +17,12 @@ import (
 func ResourceConfigAggregationAuthorization() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceConfigAggregationAuthorizationExists,
-		Read:   resourceConfigAggregationAuthorizationRead,
+		Read: resourceConfigAggregationAuthorizationRead,
 		Create: resourceConfigAggregationAuthorizationCreate,
 		Update: resourceConfigAggregationAuthorizationUpdate,
 		Delete: resourceConfigAggregationAuthorizationDelete,
 		CustomizeDiff: resourceConfigAggregationAuthorizationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"authorized_account_id": {
 				Type: schema.TypeString,

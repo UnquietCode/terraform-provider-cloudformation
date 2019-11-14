@@ -17,12 +17,12 @@ import (
 func ResourceConfigConfigurationAggregator() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceConfigConfigurationAggregatorExists,
-		Read:   resourceConfigConfigurationAggregatorRead,
+		Read: resourceConfigConfigurationAggregatorRead,
 		Create: resourceConfigConfigurationAggregatorCreate,
 		Update: resourceConfigConfigurationAggregatorUpdate,
 		Delete: resourceConfigConfigurationAggregatorDelete,
 		CustomizeDiff: resourceConfigConfigurationAggregatorCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"account_aggregation_sources": {
 				Type: schema.TypeList,

@@ -17,12 +17,12 @@ import (
 func ResourceIAMUserToGroupAddition() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIAMUserToGroupAdditionExists,
-		Read:   resourceIAMUserToGroupAdditionRead,
+		Read: resourceIAMUserToGroupAdditionRead,
 		Create: resourceIAMUserToGroupAdditionCreate,
 		Update: resourceIAMUserToGroupAdditionUpdate,
 		Delete: resourceIAMUserToGroupAdditionDelete,
 		CustomizeDiff: resourceIAMUserToGroupAdditionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"group_name": {
 				Type: schema.TypeString,

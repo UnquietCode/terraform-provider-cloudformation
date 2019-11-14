@@ -17,12 +17,12 @@ import (
 func ResourceCognitoUserPoolClient() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCognitoUserPoolClientExists,
-		Read:   resourceCognitoUserPoolClientRead,
+		Read: resourceCognitoUserPoolClientRead,
 		Create: resourceCognitoUserPoolClientCreate,
 		Update: resourceCognitoUserPoolClientUpdate,
 		Delete: resourceCognitoUserPoolClientDelete,
 		CustomizeDiff: resourceCognitoUserPoolClientCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"analytics_configuration": {
 				Type: schema.TypeList,

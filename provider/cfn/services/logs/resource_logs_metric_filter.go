@@ -17,12 +17,12 @@ import (
 func ResourceLogsMetricFilter() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLogsMetricFilterExists,
-		Read:   resourceLogsMetricFilterRead,
+		Read: resourceLogsMetricFilterRead,
 		Create: resourceLogsMetricFilterCreate,
 		Update: resourceLogsMetricFilterUpdate,
 		Delete: resourceLogsMetricFilterDelete,
 		CustomizeDiff: resourceLogsMetricFilterCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"filter_pattern": {
 				Type: schema.TypeString,

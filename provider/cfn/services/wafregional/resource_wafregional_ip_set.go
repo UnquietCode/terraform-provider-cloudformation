@@ -17,12 +17,12 @@ import (
 func ResourceWAFRegionalIPSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFRegionalIPSetExists,
-		Read:   resourceWAFRegionalIPSetRead,
+		Read: resourceWAFRegionalIPSetRead,
 		Create: resourceWAFRegionalIPSetCreate,
 		Update: resourceWAFRegionalIPSetUpdate,
 		Delete: resourceWAFRegionalIPSetDelete,
 		CustomizeDiff: resourceWAFRegionalIPSetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"ip_set_descriptors": {
 				Type: schema.TypeList,

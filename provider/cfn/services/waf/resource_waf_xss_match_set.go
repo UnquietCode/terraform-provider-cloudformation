@@ -17,12 +17,12 @@ import (
 func ResourceWAFXssMatchSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFXssMatchSetExists,
-		Read:   resourceWAFXssMatchSetRead,
+		Read: resourceWAFXssMatchSetRead,
 		Create: resourceWAFXssMatchSetCreate,
 		Update: resourceWAFXssMatchSetUpdate,
 		Delete: resourceWAFXssMatchSetDelete,
 		CustomizeDiff: resourceWAFXssMatchSetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"name": {
 				Type: schema.TypeString,

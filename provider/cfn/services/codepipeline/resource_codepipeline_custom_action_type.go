@@ -17,12 +17,12 @@ import (
 func ResourceCodePipelineCustomActionType() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCodePipelineCustomActionTypeExists,
-		Read:   resourceCodePipelineCustomActionTypeRead,
+		Read: resourceCodePipelineCustomActionTypeRead,
 		Create: resourceCodePipelineCustomActionTypeCreate,
 		Update: resourceCodePipelineCustomActionTypeUpdate,
 		Delete: resourceCodePipelineCustomActionTypeDelete,
 		CustomizeDiff: resourceCodePipelineCustomActionTypeCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"category": {
 				Type: schema.TypeString,

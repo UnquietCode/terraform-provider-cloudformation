@@ -17,12 +17,12 @@ import (
 func ResourceEC2Host() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2HostExists,
-		Read:   resourceEC2HostRead,
+		Read: resourceEC2HostRead,
 		Create: resourceEC2HostCreate,
 		Update: resourceEC2HostUpdate,
 		Delete: resourceEC2HostDelete,
 		CustomizeDiff: resourceEC2HostCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"auto_placement": {
 				Type: schema.TypeString,

@@ -17,12 +17,12 @@ import (
 func ResourceWAFRegionalByteMatchSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFRegionalByteMatchSetExists,
-		Read:   resourceWAFRegionalByteMatchSetRead,
+		Read: resourceWAFRegionalByteMatchSetRead,
 		Create: resourceWAFRegionalByteMatchSetCreate,
 		Update: resourceWAFRegionalByteMatchSetUpdate,
 		Delete: resourceWAFRegionalByteMatchSetDelete,
 		CustomizeDiff: resourceWAFRegionalByteMatchSetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"byte_match_tuples": {
 				Type: schema.TypeList,

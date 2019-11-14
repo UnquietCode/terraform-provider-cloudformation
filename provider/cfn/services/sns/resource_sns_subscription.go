@@ -17,12 +17,12 @@ import (
 func ResourceSNSSubscription() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSNSSubscriptionExists,
-		Read:   resourceSNSSubscriptionRead,
+		Read: resourceSNSSubscriptionRead,
 		Create: resourceSNSSubscriptionCreate,
 		Update: resourceSNSSubscriptionUpdate,
 		Delete: resourceSNSSubscriptionDelete,
 		CustomizeDiff: resourceSNSSubscriptionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"delivery_policy": {
 				Type: schema.TypeMap,

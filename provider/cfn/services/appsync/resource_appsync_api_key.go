@@ -17,12 +17,12 @@ import (
 func ResourceAppSyncApiKey() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppSyncApiKeyExists,
-		Read:   resourceAppSyncApiKeyRead,
+		Read: resourceAppSyncApiKeyRead,
 		Create: resourceAppSyncApiKeyCreate,
 		Update: resourceAppSyncApiKeyUpdate,
 		Delete: resourceAppSyncApiKeyDelete,
 		CustomizeDiff: resourceAppSyncApiKeyCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

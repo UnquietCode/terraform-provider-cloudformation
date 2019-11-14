@@ -18,12 +18,12 @@ import (
 func ResourceEC2Volume() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VolumeExists,
-		Read:   resourceEC2VolumeRead,
+		Read: resourceEC2VolumeRead,
 		Create: resourceEC2VolumeCreate,
 		Update: resourceEC2VolumeUpdate,
 		Delete: resourceEC2VolumeDelete,
 		CustomizeDiff: resourceEC2VolumeCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"auto_enable_io": {
 				Type: schema.TypeBool,

@@ -17,12 +17,12 @@ import (
 func ResourceApiGatewayDocumentationVersion() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayDocumentationVersionExists,
-		Read:   resourceApiGatewayDocumentationVersionRead,
+		Read: resourceApiGatewayDocumentationVersionRead,
 		Create: resourceApiGatewayDocumentationVersionCreate,
 		Update: resourceApiGatewayDocumentationVersionUpdate,
 		Delete: resourceApiGatewayDocumentationVersionDelete,
 		CustomizeDiff: resourceApiGatewayDocumentationVersionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

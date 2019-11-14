@@ -17,12 +17,12 @@ import (
 func ResourceSSMResourceDataSync() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSSMResourceDataSyncExists,
-		Read:   resourceSSMResourceDataSyncRead,
+		Read: resourceSSMResourceDataSyncRead,
 		Create: resourceSSMResourceDataSyncCreate,
 		Update: resourceSSMResourceDataSyncUpdate,
 		Delete: resourceSSMResourceDataSyncDelete,
 		CustomizeDiff: resourceSSMResourceDataSyncCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"kms_key_arn": {
 				Type: schema.TypeString,

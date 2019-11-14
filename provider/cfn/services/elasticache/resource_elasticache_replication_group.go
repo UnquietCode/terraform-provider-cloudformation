@@ -18,12 +18,12 @@ import (
 func ResourceElastiCacheReplicationGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElastiCacheReplicationGroupExists,
-		Read:   resourceElastiCacheReplicationGroupRead,
+		Read: resourceElastiCacheReplicationGroupRead,
 		Create: resourceElastiCacheReplicationGroupCreate,
 		Update: resourceElastiCacheReplicationGroupUpdate,
 		Delete: resourceElastiCacheReplicationGroupDelete,
 		CustomizeDiff: resourceElastiCacheReplicationGroupCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"at_rest_encryption_enabled": {
 				Type: schema.TypeBool,

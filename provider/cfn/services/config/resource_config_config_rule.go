@@ -17,12 +17,12 @@ import (
 func ResourceConfigConfigRule() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceConfigConfigRuleExists,
-		Read:   resourceConfigConfigRuleRead,
+		Read: resourceConfigConfigRuleRead,
 		Create: resourceConfigConfigRuleCreate,
 		Update: resourceConfigConfigRuleUpdate,
 		Delete: resourceConfigConfigRuleDelete,
 		CustomizeDiff: resourceConfigConfigRuleCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"config_rule_name": {
 				Type: schema.TypeString,

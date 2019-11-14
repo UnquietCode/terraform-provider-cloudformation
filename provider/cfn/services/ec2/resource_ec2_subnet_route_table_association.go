@@ -17,12 +17,12 @@ import (
 func ResourceEC2SubnetRouteTableAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2SubnetRouteTableAssociationExists,
-		Read:   resourceEC2SubnetRouteTableAssociationRead,
+		Read: resourceEC2SubnetRouteTableAssociationRead,
 		Create: resourceEC2SubnetRouteTableAssociationCreate,
 		Update: resourceEC2SubnetRouteTableAssociationUpdate,
 		Delete: resourceEC2SubnetRouteTableAssociationDelete,
 		CustomizeDiff: resourceEC2SubnetRouteTableAssociationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"route_table_id": {
 				Type: schema.TypeString,

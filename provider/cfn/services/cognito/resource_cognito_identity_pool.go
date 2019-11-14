@@ -17,12 +17,12 @@ import (
 func ResourceCognitoIdentityPool() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCognitoIdentityPoolExists,
-		Read:   resourceCognitoIdentityPoolRead,
+		Read: resourceCognitoIdentityPoolRead,
 		Create: resourceCognitoIdentityPoolCreate,
 		Update: resourceCognitoIdentityPoolUpdate,
 		Delete: resourceCognitoIdentityPoolDelete,
 		CustomizeDiff: resourceCognitoIdentityPoolCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"push_sync": {
 				Type: schema.TypeList,

@@ -17,12 +17,12 @@ import (
 func ResourceApiGatewayDomainName() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayDomainNameExists,
-		Read:   resourceApiGatewayDomainNameRead,
+		Read: resourceApiGatewayDomainNameRead,
 		Create: resourceApiGatewayDomainNameCreate,
 		Update: resourceApiGatewayDomainNameUpdate,
 		Delete: resourceApiGatewayDomainNameDelete,
 		CustomizeDiff: resourceApiGatewayDomainNameCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"certificate_arn": {
 				Type: schema.TypeString,

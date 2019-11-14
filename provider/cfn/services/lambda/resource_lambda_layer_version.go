@@ -17,12 +17,12 @@ import (
 func ResourceLambdaLayerVersion() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLambdaLayerVersionExists,
-		Read:   resourceLambdaLayerVersionRead,
+		Read: resourceLambdaLayerVersionRead,
 		Create: resourceLambdaLayerVersionCreate,
 		Update: resourceLambdaLayerVersionUpdate,
 		Delete: resourceLambdaLayerVersionDelete,
 		CustomizeDiff: resourceLambdaLayerVersionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"compatible_runtimes": {
 				Type: schema.TypeList,

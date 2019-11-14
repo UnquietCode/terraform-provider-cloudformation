@@ -18,12 +18,12 @@ import (
 func ResourceEC2NetworkInterface() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2NetworkInterfaceExists,
-		Read:   resourceEC2NetworkInterfaceRead,
+		Read: resourceEC2NetworkInterfaceRead,
 		Create: resourceEC2NetworkInterfaceCreate,
 		Update: resourceEC2NetworkInterfaceUpdate,
 		Delete: resourceEC2NetworkInterfaceDelete,
 		CustomizeDiff: resourceEC2NetworkInterfaceCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

@@ -17,12 +17,12 @@ import (
 func ResourceStepFunctionsStateMachine() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceStepFunctionsStateMachineExists,
-		Read:   resourceStepFunctionsStateMachineRead,
+		Read: resourceStepFunctionsStateMachineRead,
 		Create: resourceStepFunctionsStateMachineCreate,
 		Update: resourceStepFunctionsStateMachineUpdate,
 		Delete: resourceStepFunctionsStateMachineDelete,
 		CustomizeDiff: resourceStepFunctionsStateMachineCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"definition_string": {
 				Type: schema.TypeString,

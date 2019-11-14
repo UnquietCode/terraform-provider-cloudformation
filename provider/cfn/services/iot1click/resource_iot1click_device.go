@@ -17,12 +17,12 @@ import (
 func ResourceIoT1ClickDevice() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoT1ClickDeviceExists,
-		Read:   resourceIoT1ClickDeviceRead,
+		Read: resourceIoT1ClickDeviceRead,
 		Create: resourceIoT1ClickDeviceCreate,
 		Update: resourceIoT1ClickDeviceUpdate,
 		Delete: resourceIoT1ClickDeviceDelete,
 		CustomizeDiff: resourceIoT1ClickDeviceCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"device_id": {
 				Type: schema.TypeString,

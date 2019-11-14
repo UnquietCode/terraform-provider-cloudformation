@@ -17,12 +17,12 @@ import (
 func ResourceRoboMakerFleet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRoboMakerFleetExists,
-		Read:   resourceRoboMakerFleetRead,
+		Read: resourceRoboMakerFleetRead,
 		Create: resourceRoboMakerFleetCreate,
 		Update: resourceRoboMakerFleetUpdate,
 		Delete: resourceRoboMakerFleetDelete,
 		CustomizeDiff: resourceRoboMakerFleetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"tags": {
 				Type: schema.TypeMap,

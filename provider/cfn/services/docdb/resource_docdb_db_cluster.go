@@ -18,12 +18,12 @@ import (
 func ResourceDocDBDBCluster() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDocDBDBClusterExists,
-		Read:   resourceDocDBDBClusterRead,
+		Read: resourceDocDBDBClusterRead,
 		Create: resourceDocDBDBClusterCreate,
 		Update: resourceDocDBDBClusterUpdate,
 		Delete: resourceDocDBDBClusterDelete,
 		CustomizeDiff: resourceDocDBDBClusterCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"storage_encrypted": {
 				Type: schema.TypeBool,

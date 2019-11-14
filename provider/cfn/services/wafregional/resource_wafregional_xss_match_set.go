@@ -17,12 +17,12 @@ import (
 func ResourceWAFRegionalXssMatchSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFRegionalXssMatchSetExists,
-		Read:   resourceWAFRegionalXssMatchSetRead,
+		Read: resourceWAFRegionalXssMatchSetRead,
 		Create: resourceWAFRegionalXssMatchSetCreate,
 		Update: resourceWAFRegionalXssMatchSetUpdate,
 		Delete: resourceWAFRegionalXssMatchSetDelete,
 		CustomizeDiff: resourceWAFRegionalXssMatchSetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"xss_match_tuples": {
 				Type: schema.TypeList,

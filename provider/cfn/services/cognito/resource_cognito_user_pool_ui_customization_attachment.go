@@ -17,12 +17,12 @@ import (
 func ResourceCognitoUserPoolUICustomizationAttachment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCognitoUserPoolUICustomizationAttachmentExists,
-		Read:   resourceCognitoUserPoolUICustomizationAttachmentRead,
+		Read: resourceCognitoUserPoolUICustomizationAttachmentRead,
 		Create: resourceCognitoUserPoolUICustomizationAttachmentCreate,
 		Update: resourceCognitoUserPoolUICustomizationAttachmentUpdate,
 		Delete: resourceCognitoUserPoolUICustomizationAttachmentDelete,
 		CustomizeDiff: resourceCognitoUserPoolUICustomizationAttachmentCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"css": {
 				Type: schema.TypeString,

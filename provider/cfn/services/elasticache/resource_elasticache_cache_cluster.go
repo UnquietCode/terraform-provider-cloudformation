@@ -18,12 +18,12 @@ import (
 func ResourceElastiCacheCacheCluster() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElastiCacheCacheClusterExists,
-		Read:   resourceElastiCacheCacheClusterRead,
+		Read: resourceElastiCacheCacheClusterRead,
 		Create: resourceElastiCacheCacheClusterCreate,
 		Update: resourceElastiCacheCacheClusterUpdate,
 		Delete: resourceElastiCacheCacheClusterDelete,
 		CustomizeDiff: resourceElastiCacheCacheClusterCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"az_mode": {
 				Type: schema.TypeString,

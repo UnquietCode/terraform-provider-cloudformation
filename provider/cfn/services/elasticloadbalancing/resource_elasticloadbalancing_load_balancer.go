@@ -18,12 +18,12 @@ import (
 func ResourceElasticLoadBalancingLoadBalancer() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElasticLoadBalancingLoadBalancerExists,
-		Read:   resourceElasticLoadBalancingLoadBalancerRead,
+		Read: resourceElasticLoadBalancingLoadBalancerRead,
 		Create: resourceElasticLoadBalancingLoadBalancerCreate,
 		Update: resourceElasticLoadBalancingLoadBalancerUpdate,
 		Delete: resourceElasticLoadBalancingLoadBalancerDelete,
 		CustomizeDiff: resourceElasticLoadBalancingLoadBalancerCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"access_logging_policy": {
 				Type: schema.TypeList,

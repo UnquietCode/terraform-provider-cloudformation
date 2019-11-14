@@ -18,12 +18,12 @@ import (
 func ResourceNeptuneDBInstance() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceNeptuneDBInstanceExists,
-		Read:   resourceNeptuneDBInstanceRead,
+		Read: resourceNeptuneDBInstanceRead,
 		Create: resourceNeptuneDBInstanceCreate,
 		Update: resourceNeptuneDBInstanceUpdate,
 		Delete: resourceNeptuneDBInstanceDelete,
 		CustomizeDiff: resourceNeptuneDBInstanceCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"db_parameter_group_name": {
 				Type: schema.TypeString,

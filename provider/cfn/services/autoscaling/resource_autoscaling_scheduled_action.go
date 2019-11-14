@@ -17,12 +17,12 @@ import (
 func ResourceAutoScalingScheduledAction() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAutoScalingScheduledActionExists,
-		Read:   resourceAutoScalingScheduledActionRead,
+		Read: resourceAutoScalingScheduledActionRead,
 		Create: resourceAutoScalingScheduledActionCreate,
 		Update: resourceAutoScalingScheduledActionUpdate,
 		Delete: resourceAutoScalingScheduledActionDelete,
 		CustomizeDiff: resourceAutoScalingScheduledActionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"auto_scaling_group_name": {
 				Type: schema.TypeString,

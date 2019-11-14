@@ -17,12 +17,12 @@ import (
 func ResourceIAMPolicy() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIAMPolicyExists,
-		Read:   resourceIAMPolicyRead,
+		Read: resourceIAMPolicyRead,
 		Create: resourceIAMPolicyCreate,
 		Update: resourceIAMPolicyUpdate,
 		Delete: resourceIAMPolicyDelete,
 		CustomizeDiff: resourceIAMPolicyCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"groups": {
 				Type: schema.TypeList,

@@ -17,12 +17,12 @@ import (
 func ResourceEC2VPCCidrBlock() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPCCidrBlockExists,
-		Read:   resourceEC2VPCCidrBlockRead,
+		Read: resourceEC2VPCCidrBlockRead,
 		Create: resourceEC2VPCCidrBlockCreate,
 		Update: resourceEC2VPCCidrBlockUpdate,
 		Delete: resourceEC2VPCCidrBlockDelete,
 		CustomizeDiff: resourceEC2VPCCidrBlockCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"amazon_provided_ipv6_cidr_block": {
 				Type: schema.TypeBool,

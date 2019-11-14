@@ -18,12 +18,12 @@ import (
 func ResourceRDSDBInstance() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRDSDBInstanceExists,
-		Read:   resourceRDSDBInstanceRead,
+		Read: resourceRDSDBInstanceRead,
 		Create: resourceRDSDBInstanceCreate,
 		Update: resourceRDSDBInstanceUpdate,
 		Delete: resourceRDSDBInstanceDelete,
 		CustomizeDiff: resourceRDSDBInstanceCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"allocated_storage": {
 				Type: schema.TypeString,

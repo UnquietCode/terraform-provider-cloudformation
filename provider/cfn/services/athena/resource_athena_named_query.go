@@ -17,12 +17,12 @@ import (
 func ResourceAthenaNamedQuery() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAthenaNamedQueryExists,
-		Read:   resourceAthenaNamedQueryRead,
+		Read: resourceAthenaNamedQueryRead,
 		Create: resourceAthenaNamedQueryCreate,
 		Update: resourceAthenaNamedQueryUpdate,
 		Delete: resourceAthenaNamedQueryDelete,
 		CustomizeDiff: resourceAthenaNamedQueryCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

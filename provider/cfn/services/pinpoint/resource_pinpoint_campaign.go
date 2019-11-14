@@ -17,12 +17,12 @@ import (
 func ResourcePinpointCampaign() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointCampaignExists,
-		Read:   resourcePinpointCampaignRead,
+		Read: resourcePinpointCampaignRead,
 		Create: resourcePinpointCampaignCreate,
 		Update: resourcePinpointCampaignUpdate,
 		Delete: resourcePinpointCampaignDelete,
 		CustomizeDiff: resourcePinpointCampaignCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

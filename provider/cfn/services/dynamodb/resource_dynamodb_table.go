@@ -18,12 +18,12 @@ import (
 func ResourceDynamoDBTable() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDynamoDBTableExists,
-		Read:   resourceDynamoDBTableRead,
+		Read: resourceDynamoDBTableRead,
 		Create: resourceDynamoDBTableCreate,
 		Update: resourceDynamoDBTableUpdate,
 		Delete: resourceDynamoDBTableDelete,
 		CustomizeDiff: resourceDynamoDBTableCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"attribute_definitions": {
 				Type: schema.TypeList,

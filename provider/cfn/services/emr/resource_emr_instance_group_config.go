@@ -17,12 +17,12 @@ import (
 func ResourceEMRInstanceGroupConfig() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEMRInstanceGroupConfigExists,
-		Read:   resourceEMRInstanceGroupConfigRead,
+		Read: resourceEMRInstanceGroupConfigRead,
 		Create: resourceEMRInstanceGroupConfigCreate,
 		Update: resourceEMRInstanceGroupConfigUpdate,
 		Delete: resourceEMRInstanceGroupConfigDelete,
 		CustomizeDiff: resourceEMRInstanceGroupConfigCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"auto_scaling_policy": {
 				Type: schema.TypeList,

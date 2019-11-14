@@ -17,12 +17,12 @@ import (
 func ResourcePinpointEmailChannel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointEmailChannelExists,
-		Read:   resourcePinpointEmailChannelRead,
+		Read: resourcePinpointEmailChannelRead,
 		Create: resourcePinpointEmailChannelCreate,
 		Update: resourcePinpointEmailChannelUpdate,
 		Delete: resourcePinpointEmailChannelDelete,
 		CustomizeDiff: resourcePinpointEmailChannelCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"configuration_set": {
 				Type: schema.TypeString,

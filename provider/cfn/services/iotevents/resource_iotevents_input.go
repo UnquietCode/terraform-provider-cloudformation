@@ -18,12 +18,12 @@ import (
 func ResourceIoTEventsInput() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoTEventsInputExists,
-		Read:   resourceIoTEventsInputRead,
+		Read: resourceIoTEventsInputRead,
 		Create: resourceIoTEventsInputCreate,
 		Update: resourceIoTEventsInputUpdate,
 		Delete: resourceIoTEventsInputDelete,
 		CustomizeDiff: resourceIoTEventsInputCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"input_definition": {
 				Type: schema.TypeList,

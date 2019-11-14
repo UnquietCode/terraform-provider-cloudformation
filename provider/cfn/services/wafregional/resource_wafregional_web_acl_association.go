@@ -17,12 +17,12 @@ import (
 func ResourceWAFRegionalWebACLAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFRegionalWebACLAssociationExists,
-		Read:   resourceWAFRegionalWebACLAssociationRead,
+		Read: resourceWAFRegionalWebACLAssociationRead,
 		Create: resourceWAFRegionalWebACLAssociationCreate,
 		Update: resourceWAFRegionalWebACLAssociationUpdate,
 		Delete: resourceWAFRegionalWebACLAssociationDelete,
 		CustomizeDiff: resourceWAFRegionalWebACLAssociationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"resource_arn": {
 				Type: schema.TypeString,

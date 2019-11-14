@@ -17,12 +17,12 @@ import (
 func ResourceApiGatewayV2DomainName() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayV2DomainNameExists,
-		Read:   resourceApiGatewayV2DomainNameRead,
+		Read: resourceApiGatewayV2DomainNameRead,
 		Create: resourceApiGatewayV2DomainNameCreate,
 		Update: resourceApiGatewayV2DomainNameUpdate,
 		Delete: resourceApiGatewayV2DomainNameDelete,
 		CustomizeDiff: resourceApiGatewayV2DomainNameCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"domain_name": {
 				Type: schema.TypeString,

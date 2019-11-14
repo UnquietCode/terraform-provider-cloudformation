@@ -17,12 +17,12 @@ import (
 func ResourceEC2EgressOnlyInternetGateway() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2EgressOnlyInternetGatewayExists,
-		Read:   resourceEC2EgressOnlyInternetGatewayRead,
+		Read: resourceEC2EgressOnlyInternetGatewayRead,
 		Create: resourceEC2EgressOnlyInternetGatewayCreate,
 		Update: resourceEC2EgressOnlyInternetGatewayUpdate,
 		Delete: resourceEC2EgressOnlyInternetGatewayDelete,
 		CustomizeDiff: resourceEC2EgressOnlyInternetGatewayCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"vpc_id": {
 				Type: schema.TypeString,

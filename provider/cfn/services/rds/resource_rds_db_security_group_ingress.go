@@ -17,12 +17,12 @@ import (
 func ResourceRDSDBSecurityGroupIngress() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRDSDBSecurityGroupIngressExists,
-		Read:   resourceRDSDBSecurityGroupIngressRead,
+		Read: resourceRDSDBSecurityGroupIngressRead,
 		Create: resourceRDSDBSecurityGroupIngressCreate,
 		Update: resourceRDSDBSecurityGroupIngressUpdate,
 		Delete: resourceRDSDBSecurityGroupIngressDelete,
 		CustomizeDiff: resourceRDSDBSecurityGroupIngressCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"cidrip": {
 				Type: schema.TypeString,

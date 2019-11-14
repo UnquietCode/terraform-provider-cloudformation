@@ -18,12 +18,12 @@ import (
 func ResourceDMSEventSubscription() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDMSEventSubscriptionExists,
-		Read:   resourceDMSEventSubscriptionRead,
+		Read: resourceDMSEventSubscriptionRead,
 		Create: resourceDMSEventSubscriptionCreate,
 		Update: resourceDMSEventSubscriptionUpdate,
 		Delete: resourceDMSEventSubscriptionDelete,
 		CustomizeDiff: resourceDMSEventSubscriptionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"source_type": {
 				Type: schema.TypeString,

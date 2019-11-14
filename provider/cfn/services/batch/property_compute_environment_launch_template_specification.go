@@ -26,7 +26,6 @@ func propertyComputeEnvironmentLaunchTemplateSpecification(extras...string) *sch
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
-	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"launch_template_name": {

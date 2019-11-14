@@ -17,12 +17,12 @@ import (
 func ResourceLambdaLayerVersionPermission() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLambdaLayerVersionPermissionExists,
-		Read:   resourceLambdaLayerVersionPermissionRead,
+		Read: resourceLambdaLayerVersionPermissionRead,
 		Create: resourceLambdaLayerVersionPermissionCreate,
 		Update: resourceLambdaLayerVersionPermissionUpdate,
 		Delete: resourceLambdaLayerVersionPermissionDelete,
 		CustomizeDiff: resourceLambdaLayerVersionPermissionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"action": {
 				Type: schema.TypeString,

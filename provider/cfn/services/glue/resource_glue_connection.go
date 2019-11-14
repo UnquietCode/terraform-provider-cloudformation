@@ -17,12 +17,12 @@ import (
 func ResourceGlueConnection() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGlueConnectionExists,
-		Read:   resourceGlueConnectionRead,
+		Read: resourceGlueConnectionRead,
 		Create: resourceGlueConnectionCreate,
 		Update: resourceGlueConnectionUpdate,
 		Delete: resourceGlueConnectionDelete,
 		CustomizeDiff: resourceGlueConnectionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"connection_input": {
 				Type: schema.TypeList,

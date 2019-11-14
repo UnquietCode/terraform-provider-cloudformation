@@ -17,12 +17,12 @@ import (
 func ResourceEC2VPCEndpointConnectionNotification() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPCEndpointConnectionNotificationExists,
-		Read:   resourceEC2VPCEndpointConnectionNotificationRead,
+		Read: resourceEC2VPCEndpointConnectionNotificationRead,
 		Create: resourceEC2VPCEndpointConnectionNotificationCreate,
 		Update: resourceEC2VPCEndpointConnectionNotificationUpdate,
 		Delete: resourceEC2VPCEndpointConnectionNotificationDelete,
 		CustomizeDiff: resourceEC2VPCEndpointConnectionNotificationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"connection_events": {
 				Type: schema.TypeList,

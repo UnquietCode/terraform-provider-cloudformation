@@ -17,12 +17,12 @@ import (
 func ResourceIAMServiceLinkedRole() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIAMServiceLinkedRoleExists,
-		Read:   resourceIAMServiceLinkedRoleRead,
+		Read: resourceIAMServiceLinkedRoleRead,
 		Create: resourceIAMServiceLinkedRoleCreate,
 		Update: resourceIAMServiceLinkedRoleUpdate,
 		Delete: resourceIAMServiceLinkedRoleDelete,
 		CustomizeDiff: resourceIAMServiceLinkedRoleCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"custom_suffix": {
 				Type: schema.TypeString,

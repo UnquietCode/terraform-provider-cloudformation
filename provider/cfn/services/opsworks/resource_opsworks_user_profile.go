@@ -17,12 +17,12 @@ import (
 func ResourceOpsWorksUserProfile() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceOpsWorksUserProfileExists,
-		Read:   resourceOpsWorksUserProfileRead,
+		Read: resourceOpsWorksUserProfileRead,
 		Create: resourceOpsWorksUserProfileCreate,
 		Update: resourceOpsWorksUserProfileUpdate,
 		Delete: resourceOpsWorksUserProfileDelete,
 		CustomizeDiff: resourceOpsWorksUserProfileCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"allow_self_management": {
 				Type: schema.TypeBool,

@@ -18,12 +18,12 @@ import (
 func ResourceElasticsearchDomain() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElasticsearchDomainExists,
-		Read:   resourceElasticsearchDomainRead,
+		Read: resourceElasticsearchDomainRead,
 		Create: resourceElasticsearchDomainCreate,
 		Update: resourceElasticsearchDomainUpdate,
 		Delete: resourceElasticsearchDomainDelete,
 		CustomizeDiff: resourceElasticsearchDomainCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"access_policies": {
 				Type: schema.TypeMap,

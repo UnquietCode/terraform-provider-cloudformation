@@ -17,12 +17,12 @@ import (
 func ResourcePinpointVoiceChannel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointVoiceChannelExists,
-		Read:   resourcePinpointVoiceChannelRead,
+		Read: resourcePinpointVoiceChannelRead,
 		Create: resourcePinpointVoiceChannelCreate,
 		Update: resourcePinpointVoiceChannelUpdate,
 		Delete: resourcePinpointVoiceChannelDelete,
 		CustomizeDiff: resourcePinpointVoiceChannelCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"enabled": {
 				Type: schema.TypeBool,

@@ -18,12 +18,12 @@ import (
 func ResourceAppStreamStack() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppStreamStackExists,
-		Read:   resourceAppStreamStackRead,
+		Read: resourceAppStreamStackRead,
 		Create: resourceAppStreamStackCreate,
 		Update: resourceAppStreamStackUpdate,
 		Delete: resourceAppStreamStackDelete,
 		CustomizeDiff: resourceAppStreamStackCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"application_settings": {
 				Type: schema.TypeList,

@@ -17,12 +17,12 @@ import (
 func ResourceIAMManagedPolicy() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIAMManagedPolicyExists,
-		Read:   resourceIAMManagedPolicyRead,
+		Read: resourceIAMManagedPolicyRead,
 		Create: resourceIAMManagedPolicyCreate,
 		Update: resourceIAMManagedPolicyUpdate,
 		Delete: resourceIAMManagedPolicyDelete,
 		CustomizeDiff: resourceIAMManagedPolicyCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

@@ -18,12 +18,12 @@ import (
 func ResourceDocDBDBInstance() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDocDBDBInstanceExists,
-		Read:   resourceDocDBDBInstanceRead,
+		Read: resourceDocDBDBInstanceRead,
 		Create: resourceDocDBDBInstanceCreate,
 		Update: resourceDocDBDBInstanceUpdate,
 		Delete: resourceDocDBDBInstanceDelete,
 		CustomizeDiff: resourceDocDBDBInstanceCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"db_instance_class": {
 				Type: schema.TypeString,

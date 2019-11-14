@@ -17,12 +17,12 @@ import (
 func ResourceIoT1ClickProject() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoT1ClickProjectExists,
-		Read:   resourceIoT1ClickProjectRead,
+		Read: resourceIoT1ClickProjectRead,
 		Create: resourceIoT1ClickProjectCreate,
 		Update: resourceIoT1ClickProjectUpdate,
 		Delete: resourceIoT1ClickProjectDelete,
 		CustomizeDiff: resourceIoT1ClickProjectCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

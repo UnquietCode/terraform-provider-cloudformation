@@ -17,12 +17,12 @@ import (
 func ResourceSSMAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSSMAssociationExists,
-		Read:   resourceSSMAssociationRead,
+		Read: resourceSSMAssociationRead,
 		Create: resourceSSMAssociationCreate,
 		Update: resourceSSMAssociationUpdate,
 		Delete: resourceSSMAssociationDelete,
 		CustomizeDiff: resourceSSMAssociationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"association_name": {
 				Type: schema.TypeString,

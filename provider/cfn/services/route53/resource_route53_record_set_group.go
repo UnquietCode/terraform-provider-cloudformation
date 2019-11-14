@@ -17,12 +17,12 @@ import (
 func ResourceRoute53RecordSetGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRoute53RecordSetGroupExists,
-		Read:   resourceRoute53RecordSetGroupRead,
+		Read: resourceRoute53RecordSetGroupRead,
 		Create: resourceRoute53RecordSetGroupCreate,
 		Update: resourceRoute53RecordSetGroupUpdate,
 		Delete: resourceRoute53RecordSetGroupDelete,
 		CustomizeDiff: resourceRoute53RecordSetGroupCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"comment": {
 				Type: schema.TypeString,

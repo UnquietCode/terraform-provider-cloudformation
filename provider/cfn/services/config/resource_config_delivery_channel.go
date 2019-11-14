@@ -17,12 +17,12 @@ import (
 func ResourceConfigDeliveryChannel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceConfigDeliveryChannelExists,
-		Read:   resourceConfigDeliveryChannelRead,
+		Read: resourceConfigDeliveryChannelRead,
 		Create: resourceConfigDeliveryChannelCreate,
 		Update: resourceConfigDeliveryChannelUpdate,
 		Delete: resourceConfigDeliveryChannelDelete,
 		CustomizeDiff: resourceConfigDeliveryChannelCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"config_snapshot_delivery_properties": {
 				Type: schema.TypeList,

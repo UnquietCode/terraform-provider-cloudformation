@@ -17,12 +17,12 @@ import (
 func ResourceGluePartition() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGluePartitionExists,
-		Read:   resourceGluePartitionRead,
+		Read: resourceGluePartitionRead,
 		Create: resourceGluePartitionCreate,
 		Update: resourceGluePartitionUpdate,
 		Delete: resourceGluePartitionDelete,
 		CustomizeDiff: resourceGluePartitionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"table_name": {
 				Type: schema.TypeString,

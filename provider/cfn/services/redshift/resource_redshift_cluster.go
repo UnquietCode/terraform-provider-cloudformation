@@ -18,12 +18,12 @@ import (
 func ResourceRedshiftCluster() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRedshiftClusterExists,
-		Read:   resourceRedshiftClusterRead,
+		Read: resourceRedshiftClusterRead,
 		Create: resourceRedshiftClusterCreate,
 		Update: resourceRedshiftClusterUpdate,
 		Delete: resourceRedshiftClusterDelete,
 		CustomizeDiff: resourceRedshiftClusterCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"allow_version_upgrade": {
 				Type: schema.TypeBool,

@@ -17,12 +17,12 @@ import (
 func ResourcePinpointADMChannel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointADMChannelExists,
-		Read:   resourcePinpointADMChannelRead,
+		Read: resourcePinpointADMChannelRead,
 		Create: resourcePinpointADMChannelCreate,
 		Update: resourcePinpointADMChannelUpdate,
 		Delete: resourcePinpointADMChannelDelete,
 		CustomizeDiff: resourcePinpointADMChannelCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"client_secret": {
 				Type: schema.TypeString,

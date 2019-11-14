@@ -17,12 +17,12 @@ import (
 func ResourceCloudFormationMacro() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCloudFormationMacroExists,
-		Read:   resourceCloudFormationMacroRead,
+		Read: resourceCloudFormationMacroRead,
 		Create: resourceCloudFormationMacroCreate,
 		Update: resourceCloudFormationMacroUpdate,
 		Delete: resourceCloudFormationMacroDelete,
 		CustomizeDiff: resourceCloudFormationMacroCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

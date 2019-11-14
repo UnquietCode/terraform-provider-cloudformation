@@ -17,12 +17,12 @@ import (
 func ResourcePinpointEmailConfigurationSetEventDestination() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointEmailConfigurationSetEventDestinationExists,
-		Read:   resourcePinpointEmailConfigurationSetEventDestinationRead,
+		Read: resourcePinpointEmailConfigurationSetEventDestinationRead,
 		Create: resourcePinpointEmailConfigurationSetEventDestinationCreate,
 		Update: resourcePinpointEmailConfigurationSetEventDestinationUpdate,
 		Delete: resourcePinpointEmailConfigurationSetEventDestinationDelete,
 		CustomizeDiff: resourcePinpointEmailConfigurationSetEventDestinationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"event_destination_name": {
 				Type: schema.TypeString,

@@ -17,12 +17,12 @@ import (
 func ResourceApiGatewayUsagePlanKey() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayUsagePlanKeyExists,
-		Read:   resourceApiGatewayUsagePlanKeyRead,
+		Read: resourceApiGatewayUsagePlanKeyRead,
 		Create: resourceApiGatewayUsagePlanKeyCreate,
 		Update: resourceApiGatewayUsagePlanKeyUpdate,
 		Delete: resourceApiGatewayUsagePlanKeyDelete,
 		CustomizeDiff: resourceApiGatewayUsagePlanKeyCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"key_id": {
 				Type: schema.TypeString,

@@ -17,12 +17,12 @@ import (
 func ResourceMediaLiveInputSecurityGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceMediaLiveInputSecurityGroupExists,
-		Read:   resourceMediaLiveInputSecurityGroupRead,
+		Read: resourceMediaLiveInputSecurityGroupRead,
 		Create: resourceMediaLiveInputSecurityGroupCreate,
 		Update: resourceMediaLiveInputSecurityGroupUpdate,
 		Delete: resourceMediaLiveInputSecurityGroupDelete,
 		CustomizeDiff: resourceMediaLiveInputSecurityGroupCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"whitelist_rules": {
 				Type: schema.TypeList,

@@ -18,12 +18,12 @@ import (
 func ResourceRDSOptionGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRDSOptionGroupExists,
-		Read:   resourceRDSOptionGroupRead,
+		Read: resourceRDSOptionGroupRead,
 		Create: resourceRDSOptionGroupCreate,
 		Update: resourceRDSOptionGroupUpdate,
 		Delete: resourceRDSOptionGroupDelete,
 		CustomizeDiff: resourceRDSOptionGroupCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"engine_name": {
 				Type: schema.TypeString,

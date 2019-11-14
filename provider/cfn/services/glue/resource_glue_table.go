@@ -17,12 +17,12 @@ import (
 func ResourceGlueTable() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGlueTableExists,
-		Read:   resourceGlueTableRead,
+		Read: resourceGlueTableRead,
 		Create: resourceGlueTableCreate,
 		Update: resourceGlueTableUpdate,
 		Delete: resourceGlueTableDelete,
 		CustomizeDiff: resourceGlueTableCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"table_input": {
 				Type: schema.TypeList,

@@ -18,12 +18,12 @@ import (
 func ResourceLambdaFunction() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLambdaFunctionExists,
-		Read:   resourceLambdaFunctionRead,
+		Read: resourceLambdaFunctionRead,
 		Create: resourceLambdaFunctionCreate,
 		Update: resourceLambdaFunctionUpdate,
 		Delete: resourceLambdaFunctionDelete,
 		CustomizeDiff: resourceLambdaFunctionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"code": {
 				Type: schema.TypeList,

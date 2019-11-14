@@ -18,12 +18,12 @@ import (
 func ResourceIAMRole() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIAMRoleExists,
-		Read:   resourceIAMRoleRead,
+		Read: resourceIAMRoleRead,
 		Create: resourceIAMRoleCreate,
 		Update: resourceIAMRoleUpdate,
 		Delete: resourceIAMRoleDelete,
 		CustomizeDiff: resourceIAMRoleCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"assume_role_policy_document": {
 				Type: schema.TypeMap,

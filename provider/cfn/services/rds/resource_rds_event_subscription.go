@@ -17,12 +17,12 @@ import (
 func ResourceRDSEventSubscription() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRDSEventSubscriptionExists,
-		Read:   resourceRDSEventSubscriptionRead,
+		Read: resourceRDSEventSubscriptionRead,
 		Create: resourceRDSEventSubscriptionCreate,
 		Update: resourceRDSEventSubscriptionUpdate,
 		Delete: resourceRDSEventSubscriptionDelete,
 		CustomizeDiff: resourceRDSEventSubscriptionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"enabled": {
 				Type: schema.TypeBool,

@@ -17,12 +17,12 @@ import (
 func ResourceSageMakerCodeRepository() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSageMakerCodeRepositoryExists,
-		Read:   resourceSageMakerCodeRepositoryRead,
+		Read: resourceSageMakerCodeRepositoryRead,
 		Create: resourceSageMakerCodeRepositoryCreate,
 		Update: resourceSageMakerCodeRepositoryUpdate,
 		Delete: resourceSageMakerCodeRepositoryDelete,
 		CustomizeDiff: resourceSageMakerCodeRepositoryCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"code_repository_name": {
 				Type: schema.TypeString,

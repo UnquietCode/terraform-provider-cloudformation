@@ -17,12 +17,12 @@ import (
 func ResourceWAFRule() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFRuleExists,
-		Read:   resourceWAFRuleRead,
+		Read: resourceWAFRuleRead,
 		Create: resourceWAFRuleCreate,
 		Update: resourceWAFRuleUpdate,
 		Delete: resourceWAFRuleDelete,
 		CustomizeDiff: resourceWAFRuleCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"metric_name": {
 				Type: schema.TypeString,

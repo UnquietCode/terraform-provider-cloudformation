@@ -18,12 +18,12 @@ import (
 func ResourceEC2TrafficMirrorSession() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2TrafficMirrorSessionExists,
-		Read:   resourceEC2TrafficMirrorSessionRead,
+		Read: resourceEC2TrafficMirrorSessionRead,
 		Create: resourceEC2TrafficMirrorSessionCreate,
 		Update: resourceEC2TrafficMirrorSessionUpdate,
 		Delete: resourceEC2TrafficMirrorSessionDelete,
 		CustomizeDiff: resourceEC2TrafficMirrorSessionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"traffic_mirror_target_id": {
 				Type: schema.TypeString,

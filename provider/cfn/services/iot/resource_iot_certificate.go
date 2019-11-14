@@ -17,12 +17,12 @@ import (
 func ResourceIoTCertificate() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoTCertificateExists,
-		Read:   resourceIoTCertificateRead,
+		Read: resourceIoTCertificateRead,
 		Create: resourceIoTCertificateCreate,
 		Update: resourceIoTCertificateUpdate,
 		Delete: resourceIoTCertificateDelete,
 		CustomizeDiff: resourceIoTCertificateCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"certificate_signing_request": {
 				Type: schema.TypeString,

@@ -17,12 +17,12 @@ import (
 func ResourceStepFunctionsActivity() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceStepFunctionsActivityExists,
-		Read:   resourceStepFunctionsActivityRead,
+		Read: resourceStepFunctionsActivityRead,
 		Create: resourceStepFunctionsActivityCreate,
 		Update: resourceStepFunctionsActivityUpdate,
 		Delete: resourceStepFunctionsActivityDelete,
 		CustomizeDiff: resourceStepFunctionsActivityCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"tags": {
 				Type: schema.TypeList,

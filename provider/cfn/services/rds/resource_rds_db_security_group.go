@@ -18,12 +18,12 @@ import (
 func ResourceRDSDBSecurityGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRDSDBSecurityGroupExists,
-		Read:   resourceRDSDBSecurityGroupRead,
+		Read: resourceRDSDBSecurityGroupRead,
 		Create: resourceRDSDBSecurityGroupCreate,
 		Update: resourceRDSDBSecurityGroupUpdate,
 		Delete: resourceRDSDBSecurityGroupDelete,
 		CustomizeDiff: resourceRDSDBSecurityGroupCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"db_security_group_ingress": {
 				Type: schema.TypeSet,

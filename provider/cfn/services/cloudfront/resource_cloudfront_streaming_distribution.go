@@ -18,12 +18,12 @@ import (
 func ResourceCloudFrontStreamingDistribution() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCloudFrontStreamingDistributionExists,
-		Read:   resourceCloudFrontStreamingDistributionRead,
+		Read: resourceCloudFrontStreamingDistributionRead,
 		Create: resourceCloudFrontStreamingDistributionCreate,
 		Update: resourceCloudFrontStreamingDistributionUpdate,
 		Delete: resourceCloudFrontStreamingDistributionDelete,
 		CustomizeDiff: resourceCloudFrontStreamingDistributionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"streaming_distribution_config": {
 				Type: schema.TypeList,

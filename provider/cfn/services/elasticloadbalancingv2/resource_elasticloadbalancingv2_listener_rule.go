@@ -17,12 +17,12 @@ import (
 func ResourceElasticLoadBalancingV2ListenerRule() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElasticLoadBalancingV2ListenerRuleExists,
-		Read:   resourceElasticLoadBalancingV2ListenerRuleRead,
+		Read: resourceElasticLoadBalancingV2ListenerRuleRead,
 		Create: resourceElasticLoadBalancingV2ListenerRuleCreate,
 		Update: resourceElasticLoadBalancingV2ListenerRuleUpdate,
 		Delete: resourceElasticLoadBalancingV2ListenerRuleDelete,
 		CustomizeDiff: resourceElasticLoadBalancingV2ListenerRuleCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"actions": {
 				Type: schema.TypeSet,

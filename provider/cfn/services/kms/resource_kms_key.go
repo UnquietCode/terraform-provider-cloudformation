@@ -18,12 +18,12 @@ import (
 func ResourceKMSKey() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceKMSKeyExists,
-		Read:   resourceKMSKeyRead,
+		Read: resourceKMSKeyRead,
 		Create: resourceKMSKeyCreate,
 		Update: resourceKMSKeyUpdate,
 		Delete: resourceKMSKeyDelete,
 		CustomizeDiff: resourceKMSKeyCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

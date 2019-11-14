@@ -17,12 +17,12 @@ import (
 func ResourceLogsLogStream() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLogsLogStreamExists,
-		Read:   resourceLogsLogStreamRead,
+		Read: resourceLogsLogStreamRead,
 		Create: resourceLogsLogStreamCreate,
 		Update: resourceLogsLogStreamUpdate,
 		Delete: resourceLogsLogStreamDelete,
 		CustomizeDiff: resourceLogsLogStreamCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"log_group_name": {
 				Type: schema.TypeString,

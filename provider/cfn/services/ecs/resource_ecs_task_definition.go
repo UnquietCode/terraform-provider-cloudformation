@@ -18,12 +18,12 @@ import (
 func ResourceECSTaskDefinition() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceECSTaskDefinitionExists,
-		Read:   resourceECSTaskDefinitionRead,
+		Read: resourceECSTaskDefinitionRead,
 		Create: resourceECSTaskDefinitionCreate,
 		Update: resourceECSTaskDefinitionUpdate,
 		Delete: resourceECSTaskDefinitionDelete,
 		CustomizeDiff: resourceECSTaskDefinitionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"container_definitions": {
 				Type: schema.TypeSet,

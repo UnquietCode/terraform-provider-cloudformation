@@ -17,12 +17,12 @@ import (
 func ResourceGuardDutyFilter() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGuardDutyFilterExists,
-		Read:   resourceGuardDutyFilterRead,
+		Read: resourceGuardDutyFilterRead,
 		Create: resourceGuardDutyFilterCreate,
 		Update: resourceGuardDutyFilterUpdate,
 		Delete: resourceGuardDutyFilterDelete,
 		CustomizeDiff: resourceGuardDutyFilterCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"action": {
 				Type: schema.TypeString,

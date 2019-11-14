@@ -18,12 +18,12 @@ import (
 func ResourceEC2VPNGateway() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPNGatewayExists,
-		Read:   resourceEC2VPNGatewayRead,
+		Read: resourceEC2VPNGatewayRead,
 		Create: resourceEC2VPNGatewayCreate,
 		Update: resourceEC2VPNGatewayUpdate,
 		Delete: resourceEC2VPNGatewayDelete,
 		CustomizeDiff: resourceEC2VPNGatewayCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"amazon_side_asn": {
 				Type: schema.TypeInt,

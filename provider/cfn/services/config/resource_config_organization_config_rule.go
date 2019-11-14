@@ -17,12 +17,12 @@ import (
 func ResourceConfigOrganizationConfigRule() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceConfigOrganizationConfigRuleExists,
-		Read:   resourceConfigOrganizationConfigRuleRead,
+		Read: resourceConfigOrganizationConfigRuleRead,
 		Create: resourceConfigOrganizationConfigRuleCreate,
 		Update: resourceConfigOrganizationConfigRuleUpdate,
 		Delete: resourceConfigOrganizationConfigRuleDelete,
 		CustomizeDiff: resourceConfigOrganizationConfigRuleCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"organization_managed_rule_metadata": {
 				Type: schema.TypeList,

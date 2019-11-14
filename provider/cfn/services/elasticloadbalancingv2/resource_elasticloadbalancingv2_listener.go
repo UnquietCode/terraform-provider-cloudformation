@@ -17,12 +17,12 @@ import (
 func ResourceElasticLoadBalancingV2Listener() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElasticLoadBalancingV2ListenerExists,
-		Read:   resourceElasticLoadBalancingV2ListenerRead,
+		Read: resourceElasticLoadBalancingV2ListenerRead,
 		Create: resourceElasticLoadBalancingV2ListenerCreate,
 		Update: resourceElasticLoadBalancingV2ListenerUpdate,
 		Delete: resourceElasticLoadBalancingV2ListenerDelete,
 		CustomizeDiff: resourceElasticLoadBalancingV2ListenerCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"certificates": {
 				Type: schema.TypeSet,

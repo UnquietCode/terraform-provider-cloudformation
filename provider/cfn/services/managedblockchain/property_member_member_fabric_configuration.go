@@ -26,7 +26,6 @@ func propertyMemberMemberFabricConfiguration(extras...string) *schema.Resource {
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
-	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"admin_username": {

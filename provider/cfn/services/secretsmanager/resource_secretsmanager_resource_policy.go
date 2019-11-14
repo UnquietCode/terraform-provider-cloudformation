@@ -17,12 +17,12 @@ import (
 func ResourceSecretsManagerResourcePolicy() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSecretsManagerResourcePolicyExists,
-		Read:   resourceSecretsManagerResourcePolicyRead,
+		Read: resourceSecretsManagerResourcePolicyRead,
 		Create: resourceSecretsManagerResourcePolicyCreate,
 		Update: resourceSecretsManagerResourcePolicyUpdate,
 		Delete: resourceSecretsManagerResourcePolicyDelete,
 		CustomizeDiff: resourceSecretsManagerResourcePolicyCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"secret_id": {
 				Type: schema.TypeString,

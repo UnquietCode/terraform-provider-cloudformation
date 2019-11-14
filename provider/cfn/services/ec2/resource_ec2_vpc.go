@@ -18,12 +18,12 @@ import (
 func ResourceEC2VPC() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPCExists,
-		Read:   resourceEC2VPCRead,
+		Read: resourceEC2VPCRead,
 		Create: resourceEC2VPCCreate,
 		Update: resourceEC2VPCUpdate,
 		Delete: resourceEC2VPCDelete,
 		CustomizeDiff: resourceEC2VPCCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"cidr_block": {
 				Type: schema.TypeString,

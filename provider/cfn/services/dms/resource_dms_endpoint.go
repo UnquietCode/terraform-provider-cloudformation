@@ -18,12 +18,12 @@ import (
 func ResourceDMSEndpoint() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDMSEndpointExists,
-		Read:   resourceDMSEndpointRead,
+		Read: resourceDMSEndpointRead,
 		Create: resourceDMSEndpointCreate,
 		Update: resourceDMSEndpointUpdate,
 		Delete: resourceDMSEndpointDelete,
 		CustomizeDiff: resourceDMSEndpointCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"kms_key_id": {
 				Type: schema.TypeString,

@@ -17,12 +17,12 @@ import (
 func ResourceLogsDestination() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLogsDestinationExists,
-		Read:   resourceLogsDestinationRead,
+		Read: resourceLogsDestinationRead,
 		Create: resourceLogsDestinationCreate,
 		Update: resourceLogsDestinationUpdate,
 		Delete: resourceLogsDestinationDelete,
 		CustomizeDiff: resourceLogsDestinationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"destination_name": {
 				Type: schema.TypeString,

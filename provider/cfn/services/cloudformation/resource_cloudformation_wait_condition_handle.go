@@ -17,11 +17,11 @@ import (
 func ResourceCloudFormationWaitConditionHandle() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCloudFormationWaitConditionHandleExists,
-		Read:   resourceCloudFormationWaitConditionHandleRead,
+		Read: resourceCloudFormationWaitConditionHandleRead,
 		Create: resourceCloudFormationWaitConditionHandleCreate,
 		Delete: resourceCloudFormationWaitConditionHandleDelete,
 		CustomizeDiff: resourceCloudFormationWaitConditionHandleCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"logical_id": {
 				Type: schema.TypeString,

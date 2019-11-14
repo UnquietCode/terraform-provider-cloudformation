@@ -17,12 +17,12 @@ import (
 func ResourceCloudFrontCloudFrontOriginAccessIdentity() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCloudFrontCloudFrontOriginAccessIdentityExists,
-		Read:   resourceCloudFrontCloudFrontOriginAccessIdentityRead,
+		Read: resourceCloudFrontCloudFrontOriginAccessIdentityRead,
 		Create: resourceCloudFrontCloudFrontOriginAccessIdentityCreate,
 		Update: resourceCloudFrontCloudFrontOriginAccessIdentityUpdate,
 		Delete: resourceCloudFrontCloudFrontOriginAccessIdentityDelete,
 		CustomizeDiff: resourceCloudFrontCloudFrontOriginAccessIdentityCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"cloud_front_origin_access_identity_config": {
 				Type: schema.TypeList,

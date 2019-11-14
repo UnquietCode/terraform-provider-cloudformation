@@ -17,12 +17,12 @@ import (
 func ResourceEC2SpotFleet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2SpotFleetExists,
-		Read:   resourceEC2SpotFleetRead,
+		Read: resourceEC2SpotFleetRead,
 		Create: resourceEC2SpotFleetCreate,
 		Update: resourceEC2SpotFleetUpdate,
 		Delete: resourceEC2SpotFleetDelete,
 		CustomizeDiff: resourceEC2SpotFleetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"spot_fleet_request_config_data": {
 				Type: schema.TypeList,

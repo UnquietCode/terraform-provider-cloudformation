@@ -17,12 +17,12 @@ import (
 func ResourceLambdaPermission() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLambdaPermissionExists,
-		Read:   resourceLambdaPermissionRead,
+		Read: resourceLambdaPermissionRead,
 		Create: resourceLambdaPermissionCreate,
 		Update: resourceLambdaPermissionUpdate,
 		Delete: resourceLambdaPermissionDelete,
 		CustomizeDiff: resourceLambdaPermissionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"action": {
 				Type: schema.TypeString,

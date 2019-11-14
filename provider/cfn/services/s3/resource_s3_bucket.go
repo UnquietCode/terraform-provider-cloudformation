@@ -18,12 +18,12 @@ import (
 func ResourceS3Bucket() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceS3BucketExists,
-		Read:   resourceS3BucketRead,
+		Read: resourceS3BucketRead,
 		Create: resourceS3BucketCreate,
 		Update: resourceS3BucketUpdate,
 		Delete: resourceS3BucketDelete,
 		CustomizeDiff: resourceS3BucketCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"accelerate_configuration": {
 				Type: schema.TypeList,

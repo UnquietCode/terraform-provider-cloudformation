@@ -17,12 +17,12 @@ import (
 func ResourceInspectorAssessmentTarget() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceInspectorAssessmentTargetExists,
-		Read:   resourceInspectorAssessmentTargetRead,
+		Read: resourceInspectorAssessmentTargetRead,
 		Create: resourceInspectorAssessmentTargetCreate,
 		Update: resourceInspectorAssessmentTargetUpdate,
 		Delete: resourceInspectorAssessmentTargetDelete,
 		CustomizeDiff: resourceInspectorAssessmentTargetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"assessment_target_name": {
 				Type: schema.TypeString,

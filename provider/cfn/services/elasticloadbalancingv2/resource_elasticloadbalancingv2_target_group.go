@@ -18,12 +18,12 @@ import (
 func ResourceElasticLoadBalancingV2TargetGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElasticLoadBalancingV2TargetGroupExists,
-		Read:   resourceElasticLoadBalancingV2TargetGroupRead,
+		Read: resourceElasticLoadBalancingV2TargetGroupRead,
 		Create: resourceElasticLoadBalancingV2TargetGroupCreate,
 		Update: resourceElasticLoadBalancingV2TargetGroupUpdate,
 		Delete: resourceElasticLoadBalancingV2TargetGroupDelete,
 		CustomizeDiff: resourceElasticLoadBalancingV2TargetGroupCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"health_check_enabled": {
 				Type: schema.TypeBool,

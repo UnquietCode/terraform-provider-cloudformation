@@ -17,12 +17,12 @@ import (
 func ResourceServiceCatalogLaunchTemplateConstraint() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogLaunchTemplateConstraintExists,
-		Read:   resourceServiceCatalogLaunchTemplateConstraintRead,
+		Read: resourceServiceCatalogLaunchTemplateConstraintRead,
 		Create: resourceServiceCatalogLaunchTemplateConstraintCreate,
 		Update: resourceServiceCatalogLaunchTemplateConstraintUpdate,
 		Delete: resourceServiceCatalogLaunchTemplateConstraintDelete,
 		CustomizeDiff: resourceServiceCatalogLaunchTemplateConstraintCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

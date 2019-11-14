@@ -17,12 +17,12 @@ import (
 func ResourceServiceDiscoveryPrivateDnsNamespace() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceDiscoveryPrivateDnsNamespaceExists,
-		Read:   resourceServiceDiscoveryPrivateDnsNamespaceRead,
+		Read: resourceServiceDiscoveryPrivateDnsNamespaceRead,
 		Create: resourceServiceDiscoveryPrivateDnsNamespaceCreate,
 		Update: resourceServiceDiscoveryPrivateDnsNamespaceUpdate,
 		Delete: resourceServiceDiscoveryPrivateDnsNamespaceDelete,
 		CustomizeDiff: resourceServiceDiscoveryPrivateDnsNamespaceCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

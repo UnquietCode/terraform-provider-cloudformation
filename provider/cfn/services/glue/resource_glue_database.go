@@ -17,12 +17,12 @@ import (
 func ResourceGlueDatabase() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGlueDatabaseExists,
-		Read:   resourceGlueDatabaseRead,
+		Read: resourceGlueDatabaseRead,
 		Create: resourceGlueDatabaseCreate,
 		Update: resourceGlueDatabaseUpdate,
 		Delete: resourceGlueDatabaseDelete,
 		CustomizeDiff: resourceGlueDatabaseCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"database_input": {
 				Type: schema.TypeList,

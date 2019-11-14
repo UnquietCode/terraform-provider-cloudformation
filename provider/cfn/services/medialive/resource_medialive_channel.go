@@ -17,12 +17,12 @@ import (
 func ResourceMediaLiveChannel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceMediaLiveChannelExists,
-		Read:   resourceMediaLiveChannelRead,
+		Read: resourceMediaLiveChannelRead,
 		Create: resourceMediaLiveChannelCreate,
 		Update: resourceMediaLiveChannelUpdate,
 		Delete: resourceMediaLiveChannelDelete,
 		CustomizeDiff: resourceMediaLiveChannelCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"input_attachments": {
 				Type: schema.TypeList,

@@ -18,12 +18,12 @@ import (
 func ResourceSSMPatchBaseline() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSSMPatchBaselineExists,
-		Read:   resourceSSMPatchBaselineRead,
+		Read: resourceSSMPatchBaselineRead,
 		Create: resourceSSMPatchBaselineCreate,
 		Update: resourceSSMPatchBaselineUpdate,
 		Delete: resourceSSMPatchBaselineDelete,
 		CustomizeDiff: resourceSSMPatchBaselineCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"operating_system": {
 				Type: schema.TypeString,

@@ -17,12 +17,12 @@ import (
 func ResourceKinesisAnalyticsV2ApplicationReferenceDataSource() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceKinesisAnalyticsV2ApplicationReferenceDataSourceExists,
-		Read:   resourceKinesisAnalyticsV2ApplicationReferenceDataSourceRead,
+		Read: resourceKinesisAnalyticsV2ApplicationReferenceDataSourceRead,
 		Create: resourceKinesisAnalyticsV2ApplicationReferenceDataSourceCreate,
 		Update: resourceKinesisAnalyticsV2ApplicationReferenceDataSourceUpdate,
 		Delete: resourceKinesisAnalyticsV2ApplicationReferenceDataSourceDelete,
 		CustomizeDiff: resourceKinesisAnalyticsV2ApplicationReferenceDataSourceCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"application_name": {
 				Type: schema.TypeString,

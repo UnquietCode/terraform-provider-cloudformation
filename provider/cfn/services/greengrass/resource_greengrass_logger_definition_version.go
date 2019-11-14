@@ -17,12 +17,12 @@ import (
 func ResourceGreengrassLoggerDefinitionVersion() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGreengrassLoggerDefinitionVersionExists,
-		Read:   resourceGreengrassLoggerDefinitionVersionRead,
+		Read: resourceGreengrassLoggerDefinitionVersionRead,
 		Create: resourceGreengrassLoggerDefinitionVersionCreate,
 		Update: resourceGreengrassLoggerDefinitionVersionUpdate,
 		Delete: resourceGreengrassLoggerDefinitionVersionDelete,
 		CustomizeDiff: resourceGreengrassLoggerDefinitionVersionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"logger_definition_id": {
 				Type: schema.TypeString,

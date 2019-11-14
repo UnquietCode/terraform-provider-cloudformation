@@ -17,12 +17,12 @@ import (
 func ResourceGlueDataCatalogEncryptionSettings() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGlueDataCatalogEncryptionSettingsExists,
-		Read:   resourceGlueDataCatalogEncryptionSettingsRead,
+		Read: resourceGlueDataCatalogEncryptionSettingsRead,
 		Create: resourceGlueDataCatalogEncryptionSettingsCreate,
 		Update: resourceGlueDataCatalogEncryptionSettingsUpdate,
 		Delete: resourceGlueDataCatalogEncryptionSettingsDelete,
 		CustomizeDiff: resourceGlueDataCatalogEncryptionSettingsCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"data_catalog_encryption_settings": {
 				Type: schema.TypeList,

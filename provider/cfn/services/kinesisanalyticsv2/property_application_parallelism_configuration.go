@@ -26,7 +26,6 @@ func propertyApplicationParallelismConfiguration(extras...string) *schema.Resour
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
-	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"configuration_type": {

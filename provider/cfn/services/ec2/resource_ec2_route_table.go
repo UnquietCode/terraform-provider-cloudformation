@@ -18,12 +18,12 @@ import (
 func ResourceEC2RouteTable() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2RouteTableExists,
-		Read:   resourceEC2RouteTableRead,
+		Read: resourceEC2RouteTableRead,
 		Create: resourceEC2RouteTableCreate,
 		Update: resourceEC2RouteTableUpdate,
 		Delete: resourceEC2RouteTableDelete,
 		CustomizeDiff: resourceEC2RouteTableCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"tags": {
 				Type: schema.TypeList,

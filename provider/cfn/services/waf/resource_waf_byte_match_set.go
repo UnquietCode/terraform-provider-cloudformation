@@ -17,12 +17,12 @@ import (
 func ResourceWAFByteMatchSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFByteMatchSetExists,
-		Read:   resourceWAFByteMatchSetRead,
+		Read: resourceWAFByteMatchSetRead,
 		Create: resourceWAFByteMatchSetCreate,
 		Update: resourceWAFByteMatchSetUpdate,
 		Delete: resourceWAFByteMatchSetDelete,
 		CustomizeDiff: resourceWAFByteMatchSetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"byte_match_tuples": {
 				Type: schema.TypeSet,

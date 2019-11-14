@@ -17,12 +17,12 @@ import (
 func ResourceEC2Route() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2RouteExists,
-		Read:   resourceEC2RouteRead,
+		Read: resourceEC2RouteRead,
 		Create: resourceEC2RouteCreate,
 		Update: resourceEC2RouteUpdate,
 		Delete: resourceEC2RouteDelete,
 		CustomizeDiff: resourceEC2RouteCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"destination_cidr_block": {
 				Type: schema.TypeString,

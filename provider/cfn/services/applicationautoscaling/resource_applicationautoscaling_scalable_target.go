@@ -17,12 +17,12 @@ import (
 func ResourceApplicationAutoScalingScalableTarget() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApplicationAutoScalingScalableTargetExists,
-		Read:   resourceApplicationAutoScalingScalableTargetRead,
+		Read: resourceApplicationAutoScalingScalableTargetRead,
 		Create: resourceApplicationAutoScalingScalableTargetCreate,
 		Update: resourceApplicationAutoScalingScalableTargetUpdate,
 		Delete: resourceApplicationAutoScalingScalableTargetDelete,
 		CustomizeDiff: resourceApplicationAutoScalingScalableTargetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"max_capacity": {
 				Type: schema.TypeInt,

@@ -17,12 +17,12 @@ import (
 func ResourceSESTemplate() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSESTemplateExists,
-		Read:   resourceSESTemplateRead,
+		Read: resourceSESTemplateRead,
 		Create: resourceSESTemplateCreate,
 		Update: resourceSESTemplateUpdate,
 		Delete: resourceSESTemplateDelete,
 		CustomizeDiff: resourceSESTemplateCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"template": {
 				Type: schema.TypeList,

@@ -17,12 +17,12 @@ import (
 func ResourceAppStreamStackFleetAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppStreamStackFleetAssociationExists,
-		Read:   resourceAppStreamStackFleetAssociationRead,
+		Read: resourceAppStreamStackFleetAssociationRead,
 		Create: resourceAppStreamStackFleetAssociationCreate,
 		Update: resourceAppStreamStackFleetAssociationUpdate,
 		Delete: resourceAppStreamStackFleetAssociationDelete,
 		CustomizeDiff: resourceAppStreamStackFleetAssociationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"fleet_name": {
 				Type: schema.TypeString,

@@ -18,12 +18,12 @@ import (
 func ResourceDocDBDBSubnetGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDocDBDBSubnetGroupExists,
-		Read:   resourceDocDBDBSubnetGroupRead,
+		Read: resourceDocDBDBSubnetGroupRead,
 		Create: resourceDocDBDBSubnetGroupCreate,
 		Update: resourceDocDBDBSubnetGroupUpdate,
 		Delete: resourceDocDBDBSubnetGroupDelete,
 		CustomizeDiff: resourceDocDBDBSubnetGroupCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"db_subnet_group_name": {
 				Type: schema.TypeString,

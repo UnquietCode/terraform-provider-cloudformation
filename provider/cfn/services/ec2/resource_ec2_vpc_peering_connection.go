@@ -18,12 +18,12 @@ import (
 func ResourceEC2VPCPeeringConnection() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPCPeeringConnectionExists,
-		Read:   resourceEC2VPCPeeringConnectionRead,
+		Read: resourceEC2VPCPeeringConnectionRead,
 		Create: resourceEC2VPCPeeringConnectionCreate,
 		Update: resourceEC2VPCPeeringConnectionUpdate,
 		Delete: resourceEC2VPCPeeringConnectionDelete,
 		CustomizeDiff: resourceEC2VPCPeeringConnectionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"peer_owner_id": {
 				Type: schema.TypeString,

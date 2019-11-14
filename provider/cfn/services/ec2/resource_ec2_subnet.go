@@ -18,12 +18,12 @@ import (
 func ResourceEC2Subnet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2SubnetExists,
-		Read:   resourceEC2SubnetRead,
+		Read: resourceEC2SubnetRead,
 		Create: resourceEC2SubnetCreate,
 		Update: resourceEC2SubnetUpdate,
 		Delete: resourceEC2SubnetDelete,
 		CustomizeDiff: resourceEC2SubnetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"assign_ipv6_address_on_creation": {
 				Type: schema.TypeBool,

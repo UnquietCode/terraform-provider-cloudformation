@@ -17,12 +17,12 @@ import (
 func ResourceRedshiftClusterSecurityGroupIngress() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRedshiftClusterSecurityGroupIngressExists,
-		Read:   resourceRedshiftClusterSecurityGroupIngressRead,
+		Read: resourceRedshiftClusterSecurityGroupIngressRead,
 		Create: resourceRedshiftClusterSecurityGroupIngressCreate,
 		Update: resourceRedshiftClusterSecurityGroupIngressUpdate,
 		Delete: resourceRedshiftClusterSecurityGroupIngressDelete,
 		CustomizeDiff: resourceRedshiftClusterSecurityGroupIngressCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"cidrip": {
 				Type: schema.TypeString,

@@ -17,12 +17,12 @@ import (
 func ResourceGameLiftBuild() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGameLiftBuildExists,
-		Read:   resourceGameLiftBuildRead,
+		Read: resourceGameLiftBuildRead,
 		Create: resourceGameLiftBuildCreate,
 		Update: resourceGameLiftBuildUpdate,
 		Delete: resourceGameLiftBuildDelete,
 		CustomizeDiff: resourceGameLiftBuildCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"name": {
 				Type: schema.TypeString,

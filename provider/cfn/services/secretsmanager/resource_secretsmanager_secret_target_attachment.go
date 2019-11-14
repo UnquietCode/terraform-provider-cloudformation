@@ -17,12 +17,12 @@ import (
 func ResourceSecretsManagerSecretTargetAttachment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSecretsManagerSecretTargetAttachmentExists,
-		Read:   resourceSecretsManagerSecretTargetAttachmentRead,
+		Read: resourceSecretsManagerSecretTargetAttachmentRead,
 		Create: resourceSecretsManagerSecretTargetAttachmentCreate,
 		Update: resourceSecretsManagerSecretTargetAttachmentUpdate,
 		Delete: resourceSecretsManagerSecretTargetAttachmentDelete,
 		CustomizeDiff: resourceSecretsManagerSecretTargetAttachmentCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"secret_id": {
 				Type: schema.TypeString,

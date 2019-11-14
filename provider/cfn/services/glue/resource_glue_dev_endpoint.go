@@ -17,12 +17,12 @@ import (
 func ResourceGlueDevEndpoint() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGlueDevEndpointExists,
-		Read:   resourceGlueDevEndpointRead,
+		Read: resourceGlueDevEndpointRead,
 		Create: resourceGlueDevEndpointCreate,
 		Update: resourceGlueDevEndpointUpdate,
 		Delete: resourceGlueDevEndpointDelete,
 		CustomizeDiff: resourceGlueDevEndpointCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"extra_jars_s3_path": {
 				Type: schema.TypeString,

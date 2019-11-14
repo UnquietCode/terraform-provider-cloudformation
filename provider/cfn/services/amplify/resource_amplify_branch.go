@@ -18,12 +18,12 @@ import (
 func ResourceAmplifyBranch() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAmplifyBranchExists,
-		Read:   resourceAmplifyBranchRead,
+		Read: resourceAmplifyBranchRead,
 		Create: resourceAmplifyBranchCreate,
 		Update: resourceAmplifyBranchUpdate,
 		Delete: resourceAmplifyBranchDelete,
 		CustomizeDiff: resourceAmplifyBranchCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

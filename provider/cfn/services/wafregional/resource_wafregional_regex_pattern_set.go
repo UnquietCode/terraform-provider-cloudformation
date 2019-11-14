@@ -17,12 +17,12 @@ import (
 func ResourceWAFRegionalRegexPatternSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFRegionalRegexPatternSetExists,
-		Read:   resourceWAFRegionalRegexPatternSetRead,
+		Read: resourceWAFRegionalRegexPatternSetRead,
 		Create: resourceWAFRegionalRegexPatternSetCreate,
 		Update: resourceWAFRegionalRegexPatternSetUpdate,
 		Delete: resourceWAFRegionalRegexPatternSetDelete,
 		CustomizeDiff: resourceWAFRegionalRegexPatternSetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"regex_pattern_strings": {
 				Type: schema.TypeList,

@@ -26,7 +26,6 @@ func propertyDeliveryStreamDeserializer(extras...string) *schema.Resource {
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
-	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"hive_json_ser_de": {

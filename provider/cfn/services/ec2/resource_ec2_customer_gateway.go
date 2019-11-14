@@ -18,12 +18,12 @@ import (
 func ResourceEC2CustomerGateway() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2CustomerGatewayExists,
-		Read:   resourceEC2CustomerGatewayRead,
+		Read: resourceEC2CustomerGatewayRead,
 		Create: resourceEC2CustomerGatewayCreate,
 		Update: resourceEC2CustomerGatewayUpdate,
 		Delete: resourceEC2CustomerGatewayDelete,
 		CustomizeDiff: resourceEC2CustomerGatewayCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"bgp_asn": {
 				Type: schema.TypeInt,

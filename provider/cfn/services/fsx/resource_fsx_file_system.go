@@ -18,12 +18,12 @@ import (
 func ResourceFSxFileSystem() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceFSxFileSystemExists,
-		Read:   resourceFSxFileSystemRead,
+		Read: resourceFSxFileSystemRead,
 		Create: resourceFSxFileSystemCreate,
 		Update: resourceFSxFileSystemUpdate,
 		Delete: resourceFSxFileSystemDelete,
 		CustomizeDiff: resourceFSxFileSystemCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"kms_key_id": {
 				Type: schema.TypeString,

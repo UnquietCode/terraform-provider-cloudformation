@@ -18,12 +18,12 @@ import (
 func ResourceAppStreamFleet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppStreamFleetExists,
-		Read:   resourceAppStreamFleetRead,
+		Read: resourceAppStreamFleetRead,
 		Create: resourceAppStreamFleetCreate,
 		Update: resourceAppStreamFleetUpdate,
 		Delete: resourceAppStreamFleetDelete,
 		CustomizeDiff: resourceAppStreamFleetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

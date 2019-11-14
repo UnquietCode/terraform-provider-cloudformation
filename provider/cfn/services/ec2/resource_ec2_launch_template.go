@@ -17,12 +17,12 @@ import (
 func ResourceEC2LaunchTemplate() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2LaunchTemplateExists,
-		Read:   resourceEC2LaunchTemplateRead,
+		Read: resourceEC2LaunchTemplateRead,
 		Create: resourceEC2LaunchTemplateCreate,
 		Update: resourceEC2LaunchTemplateUpdate,
 		Delete: resourceEC2LaunchTemplateDelete,
 		CustomizeDiff: resourceEC2LaunchTemplateCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"launch_template_name": {
 				Type: schema.TypeString,

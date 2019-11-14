@@ -17,12 +17,12 @@ import (
 func ResourceLambdaVersion() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLambdaVersionExists,
-		Read:   resourceLambdaVersionRead,
+		Read: resourceLambdaVersionRead,
 		Create: resourceLambdaVersionCreate,
 		Update: resourceLambdaVersionUpdate,
 		Delete: resourceLambdaVersionDelete,
 		CustomizeDiff: resourceLambdaVersionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"code_sha256": {
 				Type: schema.TypeString,

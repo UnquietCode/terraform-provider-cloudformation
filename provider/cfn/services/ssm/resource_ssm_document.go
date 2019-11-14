@@ -18,12 +18,12 @@ import (
 func ResourceSSMDocument() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSSMDocumentExists,
-		Read:   resourceSSMDocumentRead,
+		Read: resourceSSMDocumentRead,
 		Create: resourceSSMDocumentCreate,
 		Update: resourceSSMDocumentUpdate,
 		Delete: resourceSSMDocumentDelete,
 		CustomizeDiff: resourceSSMDocumentCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"content": {
 				Type: schema.TypeMap,

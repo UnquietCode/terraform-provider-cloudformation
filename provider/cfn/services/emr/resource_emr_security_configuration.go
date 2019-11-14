@@ -17,12 +17,12 @@ import (
 func ResourceEMRSecurityConfiguration() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEMRSecurityConfigurationExists,
-		Read:   resourceEMRSecurityConfigurationRead,
+		Read: resourceEMRSecurityConfigurationRead,
 		Create: resourceEMRSecurityConfigurationCreate,
 		Update: resourceEMRSecurityConfigurationUpdate,
 		Delete: resourceEMRSecurityConfigurationDelete,
 		CustomizeDiff: resourceEMRSecurityConfigurationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"name": {
 				Type: schema.TypeString,

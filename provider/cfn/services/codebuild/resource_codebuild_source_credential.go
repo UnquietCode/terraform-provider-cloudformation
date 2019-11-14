@@ -17,12 +17,12 @@ import (
 func ResourceCodeBuildSourceCredential() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCodeBuildSourceCredentialExists,
-		Read:   resourceCodeBuildSourceCredentialRead,
+		Read: resourceCodeBuildSourceCredentialRead,
 		Create: resourceCodeBuildSourceCredentialCreate,
 		Update: resourceCodeBuildSourceCredentialUpdate,
 		Delete: resourceCodeBuildSourceCredentialDelete,
 		CustomizeDiff: resourceCodeBuildSourceCredentialCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"server_type": {
 				Type: schema.TypeString,

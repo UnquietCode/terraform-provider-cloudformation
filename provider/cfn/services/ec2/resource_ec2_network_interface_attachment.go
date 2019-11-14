@@ -17,12 +17,12 @@ import (
 func ResourceEC2NetworkInterfaceAttachment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2NetworkInterfaceAttachmentExists,
-		Read:   resourceEC2NetworkInterfaceAttachmentRead,
+		Read: resourceEC2NetworkInterfaceAttachmentRead,
 		Create: resourceEC2NetworkInterfaceAttachmentCreate,
 		Update: resourceEC2NetworkInterfaceAttachmentUpdate,
 		Delete: resourceEC2NetworkInterfaceAttachmentDelete,
 		CustomizeDiff: resourceEC2NetworkInterfaceAttachmentCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"delete_on_termination": {
 				Type: schema.TypeBool,

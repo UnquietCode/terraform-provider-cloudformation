@@ -17,12 +17,12 @@ import (
 func ResourceRoboMakerSimulationApplication() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRoboMakerSimulationApplicationExists,
-		Read:   resourceRoboMakerSimulationApplicationRead,
+		Read: resourceRoboMakerSimulationApplicationRead,
 		Create: resourceRoboMakerSimulationApplicationCreate,
 		Update: resourceRoboMakerSimulationApplicationUpdate,
 		Delete: resourceRoboMakerSimulationApplicationDelete,
 		CustomizeDiff: resourceRoboMakerSimulationApplicationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"rendering_engine": {
 				Type: schema.TypeList,

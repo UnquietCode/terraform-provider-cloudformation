@@ -17,12 +17,12 @@ import (
 func ResourceServiceCatalogLaunchRoleConstraint() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogLaunchRoleConstraintExists,
-		Read:   resourceServiceCatalogLaunchRoleConstraintRead,
+		Read: resourceServiceCatalogLaunchRoleConstraintRead,
 		Create: resourceServiceCatalogLaunchRoleConstraintCreate,
 		Update: resourceServiceCatalogLaunchRoleConstraintUpdate,
 		Delete: resourceServiceCatalogLaunchRoleConstraintDelete,
 		CustomizeDiff: resourceServiceCatalogLaunchRoleConstraintCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

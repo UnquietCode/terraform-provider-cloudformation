@@ -17,12 +17,12 @@ import (
 func ResourceDAXParameterGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDAXParameterGroupExists,
-		Read:   resourceDAXParameterGroupRead,
+		Read: resourceDAXParameterGroupRead,
 		Create: resourceDAXParameterGroupCreate,
 		Update: resourceDAXParameterGroupUpdate,
 		Delete: resourceDAXParameterGroupDelete,
 		CustomizeDiff: resourceDAXParameterGroupCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"parameter_name_values": {
 				Type: schema.TypeMap,

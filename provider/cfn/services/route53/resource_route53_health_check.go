@@ -17,12 +17,12 @@ import (
 func ResourceRoute53HealthCheck() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRoute53HealthCheckExists,
-		Read:   resourceRoute53HealthCheckRead,
+		Read: resourceRoute53HealthCheckRead,
 		Create: resourceRoute53HealthCheckCreate,
 		Update: resourceRoute53HealthCheckUpdate,
 		Delete: resourceRoute53HealthCheckDelete,
 		CustomizeDiff: resourceRoute53HealthCheckCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"health_check_config": {
 				Type: schema.TypeList,

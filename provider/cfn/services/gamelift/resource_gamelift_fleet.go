@@ -17,12 +17,12 @@ import (
 func ResourceGameLiftFleet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGameLiftFleetExists,
-		Read:   resourceGameLiftFleetRead,
+		Read: resourceGameLiftFleetRead,
 		Create: resourceGameLiftFleetCreate,
 		Update: resourceGameLiftFleetUpdate,
 		Delete: resourceGameLiftFleetDelete,
 		CustomizeDiff: resourceGameLiftFleetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"build_id": {
 				Type: schema.TypeString,

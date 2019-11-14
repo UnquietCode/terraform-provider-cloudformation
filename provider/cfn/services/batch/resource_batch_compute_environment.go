@@ -17,12 +17,12 @@ import (
 func ResourceBatchComputeEnvironment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceBatchComputeEnvironmentExists,
-		Read:   resourceBatchComputeEnvironmentRead,
+		Read: resourceBatchComputeEnvironmentRead,
 		Create: resourceBatchComputeEnvironmentCreate,
 		Update: resourceBatchComputeEnvironmentUpdate,
 		Delete: resourceBatchComputeEnvironmentDelete,
 		CustomizeDiff: resourceBatchComputeEnvironmentCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"type": {
 				Type: schema.TypeString,

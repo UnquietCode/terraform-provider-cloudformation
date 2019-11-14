@@ -26,7 +26,6 @@ func propertySpotFleetInstanceNetworkInterfaceSpecification(extras...string) *sc
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
-	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"associate_public_ip_address": {

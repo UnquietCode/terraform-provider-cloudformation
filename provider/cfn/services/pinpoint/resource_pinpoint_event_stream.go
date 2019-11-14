@@ -17,12 +17,12 @@ import (
 func ResourcePinpointEventStream() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointEventStreamExists,
-		Read:   resourcePinpointEventStreamRead,
+		Read: resourcePinpointEventStreamRead,
 		Create: resourcePinpointEventStreamCreate,
 		Update: resourcePinpointEventStreamUpdate,
 		Delete: resourcePinpointEventStreamDelete,
 		CustomizeDiff: resourcePinpointEventStreamCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"application_id": {
 				Type: schema.TypeString,

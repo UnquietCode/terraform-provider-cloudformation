@@ -18,12 +18,12 @@ import (
 func ResourceSageMakerModel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSageMakerModelExists,
-		Read:   resourceSageMakerModelRead,
+		Read: resourceSageMakerModelRead,
 		Create: resourceSageMakerModelCreate,
 		Update: resourceSageMakerModelUpdate,
 		Delete: resourceSageMakerModelDelete,
 		CustomizeDiff: resourceSageMakerModelCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"execution_role_arn": {
 				Type: schema.TypeString,

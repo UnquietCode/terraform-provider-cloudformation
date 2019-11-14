@@ -17,12 +17,12 @@ import (
 func ResourcePinpointGCMChannel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointGCMChannelExists,
-		Read:   resourcePinpointGCMChannelRead,
+		Read: resourcePinpointGCMChannelRead,
 		Create: resourcePinpointGCMChannelCreate,
 		Update: resourcePinpointGCMChannelUpdate,
 		Delete: resourcePinpointGCMChannelDelete,
 		CustomizeDiff: resourcePinpointGCMChannelCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"api_key": {
 				Type: schema.TypeString,

@@ -17,12 +17,12 @@ import (
 func ResourceSSMParameter() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSSMParameterExists,
-		Read:   resourceSSMParameterRead,
+		Read: resourceSSMParameterRead,
 		Create: resourceSSMParameterCreate,
 		Update: resourceSSMParameterUpdate,
 		Delete: resourceSSMParameterDelete,
 		CustomizeDiff: resourceSSMParameterCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"type": {
 				Type: schema.TypeString,

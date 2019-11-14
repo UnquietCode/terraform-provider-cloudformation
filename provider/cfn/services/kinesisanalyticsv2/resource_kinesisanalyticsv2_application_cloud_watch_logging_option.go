@@ -17,12 +17,12 @@ import (
 func ResourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOption() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionExists,
-		Read:   resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionRead,
+		Read: resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionRead,
 		Create: resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionCreate,
 		Update: resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionUpdate,
 		Delete: resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionDelete,
 		CustomizeDiff: resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"application_name": {
 				Type: schema.TypeString,

@@ -17,12 +17,12 @@ import (
 func ResourceCognitoUserPoolGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCognitoUserPoolGroupExists,
-		Read:   resourceCognitoUserPoolGroupRead,
+		Read: resourceCognitoUserPoolGroupRead,
 		Create: resourceCognitoUserPoolGroupCreate,
 		Update: resourceCognitoUserPoolGroupUpdate,
 		Delete: resourceCognitoUserPoolGroupDelete,
 		CustomizeDiff: resourceCognitoUserPoolGroupCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"group_name": {
 				Type: schema.TypeString,

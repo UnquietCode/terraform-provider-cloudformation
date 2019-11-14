@@ -18,12 +18,12 @@ import (
 func ResourceECRRepository() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceECRRepositoryExists,
-		Read:   resourceECRRepositoryRead,
+		Read: resourceECRRepositoryRead,
 		Create: resourceECRRepositoryCreate,
 		Update: resourceECRRepositoryUpdate,
 		Delete: resourceECRRepositoryDelete,
 		CustomizeDiff: resourceECRRepositoryCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"lifecycle_policy": {
 				Type: schema.TypeList,

@@ -17,12 +17,12 @@ import (
 func ResourceRoute53RecordSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRoute53RecordSetExists,
-		Read:   resourceRoute53RecordSetRead,
+		Read: resourceRoute53RecordSetRead,
 		Create: resourceRoute53RecordSetCreate,
 		Update: resourceRoute53RecordSetUpdate,
 		Delete: resourceRoute53RecordSetDelete,
 		CustomizeDiff: resourceRoute53RecordSetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"alias_target": {
 				Type: schema.TypeList,

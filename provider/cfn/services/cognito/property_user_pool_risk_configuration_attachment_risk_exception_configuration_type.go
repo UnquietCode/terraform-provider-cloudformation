@@ -26,7 +26,6 @@ func propertyUserPoolRiskConfigurationAttachmentRiskExceptionConfigurationType(e
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
-	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"blocked_ip_range_list": {

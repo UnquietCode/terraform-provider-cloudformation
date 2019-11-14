@@ -18,12 +18,12 @@ import (
 func ResourceCloudFormationStack() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCloudFormationStackExists,
-		Read:   resourceCloudFormationStackRead,
+		Read: resourceCloudFormationStackRead,
 		Create: resourceCloudFormationStackCreate,
 		Update: resourceCloudFormationStackUpdate,
 		Delete: resourceCloudFormationStackDelete,
 		CustomizeDiff: resourceCloudFormationStackCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"notification_ar_ns": {
 				Type: schema.TypeSet,

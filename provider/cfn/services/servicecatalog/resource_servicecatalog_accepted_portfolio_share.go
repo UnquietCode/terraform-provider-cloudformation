@@ -17,12 +17,12 @@ import (
 func ResourceServiceCatalogAcceptedPortfolioShare() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogAcceptedPortfolioShareExists,
-		Read:   resourceServiceCatalogAcceptedPortfolioShareRead,
+		Read: resourceServiceCatalogAcceptedPortfolioShareRead,
 		Create: resourceServiceCatalogAcceptedPortfolioShareCreate,
 		Update: resourceServiceCatalogAcceptedPortfolioShareUpdate,
 		Delete: resourceServiceCatalogAcceptedPortfolioShareDelete,
 		CustomizeDiff: resourceServiceCatalogAcceptedPortfolioShareCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"accept_language": {
 				Type: schema.TypeString,

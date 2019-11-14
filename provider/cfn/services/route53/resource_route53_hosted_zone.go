@@ -17,12 +17,12 @@ import (
 func ResourceRoute53HostedZone() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRoute53HostedZoneExists,
-		Read:   resourceRoute53HostedZoneRead,
+		Read: resourceRoute53HostedZoneRead,
 		Create: resourceRoute53HostedZoneCreate,
 		Update: resourceRoute53HostedZoneUpdate,
 		Delete: resourceRoute53HostedZoneDelete,
 		CustomizeDiff: resourceRoute53HostedZoneCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"hosted_zone_config": {
 				Type: schema.TypeList,

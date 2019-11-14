@@ -17,12 +17,12 @@ import (
 func ResourceCodeStarGitHubRepository() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCodeStarGitHubRepositoryExists,
-		Read:   resourceCodeStarGitHubRepositoryRead,
+		Read: resourceCodeStarGitHubRepositoryRead,
 		Create: resourceCodeStarGitHubRepositoryCreate,
 		Update: resourceCodeStarGitHubRepositoryUpdate,
 		Delete: resourceCodeStarGitHubRepositoryDelete,
 		CustomizeDiff: resourceCodeStarGitHubRepositoryCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"enable_issues": {
 				Type: schema.TypeBool,

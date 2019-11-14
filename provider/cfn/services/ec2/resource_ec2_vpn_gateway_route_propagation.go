@@ -17,12 +17,12 @@ import (
 func ResourceEC2VPNGatewayRoutePropagation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPNGatewayRoutePropagationExists,
-		Read:   resourceEC2VPNGatewayRoutePropagationRead,
+		Read: resourceEC2VPNGatewayRoutePropagationRead,
 		Create: resourceEC2VPNGatewayRoutePropagationCreate,
 		Update: resourceEC2VPNGatewayRoutePropagationUpdate,
 		Delete: resourceEC2VPNGatewayRoutePropagationDelete,
 		CustomizeDiff: resourceEC2VPNGatewayRoutePropagationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"route_table_ids": {
 				Type: schema.TypeList,

@@ -17,12 +17,12 @@ import (
 func ResourceCognitoUserPoolRiskConfigurationAttachment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCognitoUserPoolRiskConfigurationAttachmentExists,
-		Read:   resourceCognitoUserPoolRiskConfigurationAttachmentRead,
+		Read: resourceCognitoUserPoolRiskConfigurationAttachmentRead,
 		Create: resourceCognitoUserPoolRiskConfigurationAttachmentCreate,
 		Update: resourceCognitoUserPoolRiskConfigurationAttachmentUpdate,
 		Delete: resourceCognitoUserPoolRiskConfigurationAttachmentDelete,
 		CustomizeDiff: resourceCognitoUserPoolRiskConfigurationAttachmentCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"compromised_credentials_risk_configuration": {
 				Type: schema.TypeList,

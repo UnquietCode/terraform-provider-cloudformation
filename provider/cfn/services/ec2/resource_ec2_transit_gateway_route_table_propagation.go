@@ -17,12 +17,12 @@ import (
 func ResourceEC2TransitGatewayRouteTablePropagation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2TransitGatewayRouteTablePropagationExists,
-		Read:   resourceEC2TransitGatewayRouteTablePropagationRead,
+		Read: resourceEC2TransitGatewayRouteTablePropagationRead,
 		Create: resourceEC2TransitGatewayRouteTablePropagationCreate,
 		Update: resourceEC2TransitGatewayRouteTablePropagationUpdate,
 		Delete: resourceEC2TransitGatewayRouteTablePropagationDelete,
 		CustomizeDiff: resourceEC2TransitGatewayRouteTablePropagationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"transit_gateway_route_table_id": {
 				Type: schema.TypeString,

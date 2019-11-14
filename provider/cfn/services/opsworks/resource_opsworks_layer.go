@@ -18,12 +18,12 @@ import (
 func ResourceOpsWorksLayer() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceOpsWorksLayerExists,
-		Read:   resourceOpsWorksLayerRead,
+		Read: resourceOpsWorksLayerRead,
 		Create: resourceOpsWorksLayerCreate,
 		Update: resourceOpsWorksLayerUpdate,
 		Delete: resourceOpsWorksLayerDelete,
 		CustomizeDiff: resourceOpsWorksLayerCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"attributes": {
 				Type: schema.TypeMap,

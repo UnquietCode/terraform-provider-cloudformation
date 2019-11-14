@@ -17,12 +17,12 @@ import (
 func ResourceAppSyncGraphQLSchema() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppSyncGraphQLSchemaExists,
-		Read:   resourceAppSyncGraphQLSchemaRead,
+		Read: resourceAppSyncGraphQLSchemaRead,
 		Create: resourceAppSyncGraphQLSchemaCreate,
 		Update: resourceAppSyncGraphQLSchemaUpdate,
 		Delete: resourceAppSyncGraphQLSchemaDelete,
 		CustomizeDiff: resourceAppSyncGraphQLSchemaCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"definition": {
 				Type: schema.TypeString,

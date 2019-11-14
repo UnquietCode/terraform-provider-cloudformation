@@ -18,12 +18,12 @@ import (
 func ResourceElasticBeanstalkEnvironment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElasticBeanstalkEnvironmentExists,
-		Read:   resourceElasticBeanstalkEnvironmentRead,
+		Read: resourceElasticBeanstalkEnvironmentRead,
 		Create: resourceElasticBeanstalkEnvironmentCreate,
 		Update: resourceElasticBeanstalkEnvironmentUpdate,
 		Delete: resourceElasticBeanstalkEnvironmentDelete,
 		CustomizeDiff: resourceElasticBeanstalkEnvironmentCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"application_name": {
 				Type: schema.TypeString,

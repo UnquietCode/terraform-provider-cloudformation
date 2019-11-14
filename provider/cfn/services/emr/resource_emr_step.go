@@ -17,12 +17,12 @@ import (
 func ResourceEMRStep() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEMRStepExists,
-		Read:   resourceEMRStepRead,
+		Read: resourceEMRStepRead,
 		Create: resourceEMRStepCreate,
 		Update: resourceEMRStepUpdate,
 		Delete: resourceEMRStepDelete,
 		CustomizeDiff: resourceEMRStepCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"action_on_failure": {
 				Type: schema.TypeString,

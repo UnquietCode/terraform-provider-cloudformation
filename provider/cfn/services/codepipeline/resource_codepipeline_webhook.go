@@ -17,12 +17,12 @@ import (
 func ResourceCodePipelineWebhook() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCodePipelineWebhookExists,
-		Read:   resourceCodePipelineWebhookRead,
+		Read: resourceCodePipelineWebhookRead,
 		Create: resourceCodePipelineWebhookCreate,
 		Update: resourceCodePipelineWebhookUpdate,
 		Delete: resourceCodePipelineWebhookDelete,
 		CustomizeDiff: resourceCodePipelineWebhookCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"authentication_configuration": {
 				Type: schema.TypeList,

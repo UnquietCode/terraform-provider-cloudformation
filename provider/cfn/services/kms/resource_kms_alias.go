@@ -17,12 +17,12 @@ import (
 func ResourceKMSAlias() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceKMSAliasExists,
-		Read:   resourceKMSAliasRead,
+		Read: resourceKMSAliasRead,
 		Create: resourceKMSAliasCreate,
 		Update: resourceKMSAliasUpdate,
 		Delete: resourceKMSAliasDelete,
 		CustomizeDiff: resourceKMSAliasCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"alias_name": {
 				Type: schema.TypeString,

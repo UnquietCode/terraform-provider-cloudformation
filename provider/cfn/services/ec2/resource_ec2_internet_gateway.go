@@ -18,12 +18,12 @@ import (
 func ResourceEC2InternetGateway() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2InternetGatewayExists,
-		Read:   resourceEC2InternetGatewayRead,
+		Read: resourceEC2InternetGatewayRead,
 		Create: resourceEC2InternetGatewayCreate,
 		Update: resourceEC2InternetGatewayUpdate,
 		Delete: resourceEC2InternetGatewayDelete,
 		CustomizeDiff: resourceEC2InternetGatewayCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"tags": {
 				Type: schema.TypeList,

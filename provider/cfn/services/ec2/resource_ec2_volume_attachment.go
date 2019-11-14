@@ -17,12 +17,12 @@ import (
 func ResourceEC2VolumeAttachment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VolumeAttachmentExists,
-		Read:   resourceEC2VolumeAttachmentRead,
+		Read: resourceEC2VolumeAttachmentRead,
 		Create: resourceEC2VolumeAttachmentCreate,
 		Update: resourceEC2VolumeAttachmentUpdate,
 		Delete: resourceEC2VolumeAttachmentDelete,
 		CustomizeDiff: resourceEC2VolumeAttachmentCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"device": {
 				Type: schema.TypeString,

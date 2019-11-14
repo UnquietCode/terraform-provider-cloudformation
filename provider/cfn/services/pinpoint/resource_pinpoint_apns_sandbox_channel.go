@@ -17,12 +17,12 @@ import (
 func ResourcePinpointAPNSSandboxChannel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointAPNSSandboxChannelExists,
-		Read:   resourcePinpointAPNSSandboxChannelRead,
+		Read: resourcePinpointAPNSSandboxChannelRead,
 		Create: resourcePinpointAPNSSandboxChannelCreate,
 		Update: resourcePinpointAPNSSandboxChannelUpdate,
 		Delete: resourcePinpointAPNSSandboxChannelDelete,
 		CustomizeDiff: resourcePinpointAPNSSandboxChannelCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"bundle_id": {
 				Type: schema.TypeString,

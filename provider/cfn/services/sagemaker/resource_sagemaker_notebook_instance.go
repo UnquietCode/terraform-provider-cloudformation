@@ -18,12 +18,12 @@ import (
 func ResourceSageMakerNotebookInstance() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSageMakerNotebookInstanceExists,
-		Read:   resourceSageMakerNotebookInstanceRead,
+		Read: resourceSageMakerNotebookInstanceRead,
 		Create: resourceSageMakerNotebookInstanceCreate,
 		Update: resourceSageMakerNotebookInstanceUpdate,
 		Delete: resourceSageMakerNotebookInstanceDelete,
 		CustomizeDiff: resourceSageMakerNotebookInstanceCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"kms_key_id": {
 				Type: schema.TypeString,

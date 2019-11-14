@@ -17,12 +17,12 @@ import (
 func ResourceIoTThingsGraphFlowTemplate() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoTThingsGraphFlowTemplateExists,
-		Read:   resourceIoTThingsGraphFlowTemplateRead,
+		Read: resourceIoTThingsGraphFlowTemplateRead,
 		Create: resourceIoTThingsGraphFlowTemplateCreate,
 		Update: resourceIoTThingsGraphFlowTemplateUpdate,
 		Delete: resourceIoTThingsGraphFlowTemplateDelete,
 		CustomizeDiff: resourceIoTThingsGraphFlowTemplateCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"compatible_namespace_version": {
 				Type: schema.TypeFloat,

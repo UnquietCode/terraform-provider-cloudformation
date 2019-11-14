@@ -17,12 +17,12 @@ import (
 func ResourceApiGatewayV2Model() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayV2ModelExists,
-		Read:   resourceApiGatewayV2ModelRead,
+		Read: resourceApiGatewayV2ModelRead,
 		Create: resourceApiGatewayV2ModelCreate,
 		Update: resourceApiGatewayV2ModelUpdate,
 		Delete: resourceApiGatewayV2ModelDelete,
 		CustomizeDiff: resourceApiGatewayV2ModelCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

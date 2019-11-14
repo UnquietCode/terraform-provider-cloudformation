@@ -17,12 +17,12 @@ import (
 func ResourceServiceCatalogLaunchNotificationConstraint() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogLaunchNotificationConstraintExists,
-		Read:   resourceServiceCatalogLaunchNotificationConstraintRead,
+		Read: resourceServiceCatalogLaunchNotificationConstraintRead,
 		Create: resourceServiceCatalogLaunchNotificationConstraintCreate,
 		Update: resourceServiceCatalogLaunchNotificationConstraintUpdate,
 		Delete: resourceServiceCatalogLaunchNotificationConstraintDelete,
 		CustomizeDiff: resourceServiceCatalogLaunchNotificationConstraintCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

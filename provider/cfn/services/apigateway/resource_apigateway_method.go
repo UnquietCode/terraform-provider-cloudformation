@@ -17,12 +17,12 @@ import (
 func ResourceApiGatewayMethod() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayMethodExists,
-		Read:   resourceApiGatewayMethodRead,
+		Read: resourceApiGatewayMethodRead,
 		Create: resourceApiGatewayMethodCreate,
 		Update: resourceApiGatewayMethodUpdate,
 		Delete: resourceApiGatewayMethodDelete,
 		CustomizeDiff: resourceApiGatewayMethodCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"api_key_required": {
 				Type: schema.TypeBool,

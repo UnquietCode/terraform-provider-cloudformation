@@ -17,12 +17,12 @@ import (
 func ResourceApiGatewayAuthorizer() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayAuthorizerExists,
-		Read:   resourceApiGatewayAuthorizerRead,
+		Read: resourceApiGatewayAuthorizerRead,
 		Create: resourceApiGatewayAuthorizerCreate,
 		Update: resourceApiGatewayAuthorizerUpdate,
 		Delete: resourceApiGatewayAuthorizerDelete,
 		CustomizeDiff: resourceApiGatewayAuthorizerCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"auth_type": {
 				Type: schema.TypeString,

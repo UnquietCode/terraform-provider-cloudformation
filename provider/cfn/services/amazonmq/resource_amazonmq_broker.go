@@ -17,12 +17,12 @@ import (
 func ResourceAmazonMQBroker() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAmazonMQBrokerExists,
-		Read:   resourceAmazonMQBrokerRead,
+		Read: resourceAmazonMQBrokerRead,
 		Create: resourceAmazonMQBrokerCreate,
 		Update: resourceAmazonMQBrokerUpdate,
 		Delete: resourceAmazonMQBrokerDelete,
 		CustomizeDiff: resourceAmazonMQBrokerCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"security_groups": {
 				Type: schema.TypeList,

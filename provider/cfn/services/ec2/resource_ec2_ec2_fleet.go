@@ -17,12 +17,12 @@ import (
 func ResourceEC2EC2Fleet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2EC2FleetExists,
-		Read:   resourceEC2EC2FleetRead,
+		Read: resourceEC2EC2FleetRead,
 		Create: resourceEC2EC2FleetCreate,
 		Update: resourceEC2EC2FleetUpdate,
 		Delete: resourceEC2EC2FleetDelete,
 		CustomizeDiff: resourceEC2EC2FleetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"target_capacity_specification": {
 				Type: schema.TypeList,

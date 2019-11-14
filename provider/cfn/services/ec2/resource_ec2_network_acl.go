@@ -18,12 +18,12 @@ import (
 func ResourceEC2NetworkAcl() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2NetworkAclExists,
-		Read:   resourceEC2NetworkAclRead,
+		Read: resourceEC2NetworkAclRead,
 		Create: resourceEC2NetworkAclCreate,
 		Update: resourceEC2NetworkAclUpdate,
 		Delete: resourceEC2NetworkAclDelete,
 		CustomizeDiff: resourceEC2NetworkAclCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"tags": {
 				Type: schema.TypeList,

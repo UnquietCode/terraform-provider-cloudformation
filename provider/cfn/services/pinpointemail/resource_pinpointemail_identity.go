@@ -17,12 +17,12 @@ import (
 func ResourcePinpointEmailIdentity() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointEmailIdentityExists,
-		Read:   resourcePinpointEmailIdentityRead,
+		Read: resourcePinpointEmailIdentityRead,
 		Create: resourcePinpointEmailIdentityCreate,
 		Update: resourcePinpointEmailIdentityUpdate,
 		Delete: resourcePinpointEmailIdentityDelete,
 		CustomizeDiff: resourcePinpointEmailIdentityCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"feedback_forwarding_enabled": {
 				Type: schema.TypeBool,

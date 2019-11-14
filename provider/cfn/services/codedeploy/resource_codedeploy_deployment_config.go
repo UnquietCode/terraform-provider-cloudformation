@@ -17,12 +17,12 @@ import (
 func ResourceCodeDeployDeploymentConfig() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCodeDeployDeploymentConfigExists,
-		Read:   resourceCodeDeployDeploymentConfigRead,
+		Read: resourceCodeDeployDeploymentConfigRead,
 		Create: resourceCodeDeployDeploymentConfigCreate,
 		Update: resourceCodeDeployDeploymentConfigUpdate,
 		Delete: resourceCodeDeployDeploymentConfigDelete,
 		CustomizeDiff: resourceCodeDeployDeploymentConfigCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"deployment_config_name": {
 				Type: schema.TypeString,

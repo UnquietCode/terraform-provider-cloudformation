@@ -17,12 +17,12 @@ import (
 func ResourceLambdaAlias() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLambdaAliasExists,
-		Read:   resourceLambdaAliasRead,
+		Read: resourceLambdaAliasRead,
 		Create: resourceLambdaAliasCreate,
 		Update: resourceLambdaAliasUpdate,
 		Delete: resourceLambdaAliasDelete,
 		CustomizeDiff: resourceLambdaAliasCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

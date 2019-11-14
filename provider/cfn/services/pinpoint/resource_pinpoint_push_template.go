@@ -17,12 +17,12 @@ import (
 func ResourcePinpointPushTemplate() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointPushTemplateExists,
-		Read:   resourcePinpointPushTemplateRead,
+		Read: resourcePinpointPushTemplateRead,
 		Create: resourcePinpointPushTemplateCreate,
 		Update: resourcePinpointPushTemplateUpdate,
 		Delete: resourcePinpointPushTemplateDelete,
 		CustomizeDiff: resourcePinpointPushTemplateCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"gcm": {
 				Type: schema.TypeList,

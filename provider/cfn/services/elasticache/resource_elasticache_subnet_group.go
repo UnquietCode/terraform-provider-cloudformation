@@ -17,12 +17,12 @@ import (
 func ResourceElastiCacheSubnetGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElastiCacheSubnetGroupExists,
-		Read:   resourceElastiCacheSubnetGroupRead,
+		Read: resourceElastiCacheSubnetGroupRead,
 		Create: resourceElastiCacheSubnetGroupCreate,
 		Update: resourceElastiCacheSubnetGroupUpdate,
 		Delete: resourceElastiCacheSubnetGroupDelete,
 		CustomizeDiff: resourceElastiCacheSubnetGroupCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"cache_subnet_group_name": {
 				Type: schema.TypeString,

@@ -17,12 +17,12 @@ import (
 func ResourceAutoScalingLifecycleHook() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAutoScalingLifecycleHookExists,
-		Read:   resourceAutoScalingLifecycleHookRead,
+		Read: resourceAutoScalingLifecycleHookRead,
 		Create: resourceAutoScalingLifecycleHookCreate,
 		Update: resourceAutoScalingLifecycleHookUpdate,
 		Delete: resourceAutoScalingLifecycleHookDelete,
 		CustomizeDiff: resourceAutoScalingLifecycleHookCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"auto_scaling_group_name": {
 				Type: schema.TypeString,

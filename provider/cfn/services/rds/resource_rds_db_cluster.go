@@ -18,12 +18,12 @@ import (
 func ResourceRDSDBCluster() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRDSDBClusterExists,
-		Read:   resourceRDSDBClusterRead,
+		Read: resourceRDSDBClusterRead,
 		Create: resourceRDSDBClusterCreate,
 		Update: resourceRDSDBClusterUpdate,
 		Delete: resourceRDSDBClusterDelete,
 		CustomizeDiff: resourceRDSDBClusterCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"associated_roles": {
 				Type: schema.TypeSet,

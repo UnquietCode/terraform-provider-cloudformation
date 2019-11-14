@@ -17,12 +17,12 @@ import (
 func ResourceBatchJobQueue() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceBatchJobQueueExists,
-		Read:   resourceBatchJobQueueRead,
+		Read: resourceBatchJobQueueRead,
 		Create: resourceBatchJobQueueCreate,
 		Update: resourceBatchJobQueueUpdate,
 		Delete: resourceBatchJobQueueDelete,
 		CustomizeDiff: resourceBatchJobQueueCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"compute_environment_order": {
 				Type: schema.TypeList,

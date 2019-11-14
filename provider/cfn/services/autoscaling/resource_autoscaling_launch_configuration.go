@@ -17,12 +17,12 @@ import (
 func ResourceAutoScalingLaunchConfiguration() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAutoScalingLaunchConfigurationExists,
-		Read:   resourceAutoScalingLaunchConfigurationRead,
+		Read: resourceAutoScalingLaunchConfigurationRead,
 		Create: resourceAutoScalingLaunchConfigurationCreate,
 		Update: resourceAutoScalingLaunchConfigurationUpdate,
 		Delete: resourceAutoScalingLaunchConfigurationDelete,
 		CustomizeDiff: resourceAutoScalingLaunchConfigurationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"associate_public_ip_address": {
 				Type: schema.TypeBool,

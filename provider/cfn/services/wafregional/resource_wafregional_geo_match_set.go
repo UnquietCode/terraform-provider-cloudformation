@@ -17,12 +17,12 @@ import (
 func ResourceWAFRegionalGeoMatchSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFRegionalGeoMatchSetExists,
-		Read:   resourceWAFRegionalGeoMatchSetRead,
+		Read: resourceWAFRegionalGeoMatchSetRead,
 		Create: resourceWAFRegionalGeoMatchSetCreate,
 		Update: resourceWAFRegionalGeoMatchSetUpdate,
 		Delete: resourceWAFRegionalGeoMatchSetDelete,
 		CustomizeDiff: resourceWAFRegionalGeoMatchSetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"geo_match_constraints": {
 				Type: schema.TypeList,

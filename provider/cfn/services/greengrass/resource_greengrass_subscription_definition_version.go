@@ -17,12 +17,12 @@ import (
 func ResourceGreengrassSubscriptionDefinitionVersion() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGreengrassSubscriptionDefinitionVersionExists,
-		Read:   resourceGreengrassSubscriptionDefinitionVersionRead,
+		Read: resourceGreengrassSubscriptionDefinitionVersionRead,
 		Create: resourceGreengrassSubscriptionDefinitionVersionCreate,
 		Update: resourceGreengrassSubscriptionDefinitionVersionUpdate,
 		Delete: resourceGreengrassSubscriptionDefinitionVersionDelete,
 		CustomizeDiff: resourceGreengrassSubscriptionDefinitionVersionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"subscription_definition_id": {
 				Type: schema.TypeString,

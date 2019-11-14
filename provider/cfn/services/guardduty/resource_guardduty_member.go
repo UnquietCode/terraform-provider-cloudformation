@@ -17,12 +17,12 @@ import (
 func ResourceGuardDutyMember() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGuardDutyMemberExists,
-		Read:   resourceGuardDutyMemberRead,
+		Read: resourceGuardDutyMemberRead,
 		Create: resourceGuardDutyMemberCreate,
 		Update: resourceGuardDutyMemberUpdate,
 		Delete: resourceGuardDutyMemberDelete,
 		CustomizeDiff: resourceGuardDutyMemberCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"status": {
 				Type: schema.TypeString,

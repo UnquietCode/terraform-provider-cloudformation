@@ -17,12 +17,12 @@ import (
 func ResourceSNSTopicPolicy() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSNSTopicPolicyExists,
-		Read:   resourceSNSTopicPolicyRead,
+		Read: resourceSNSTopicPolicyRead,
 		Create: resourceSNSTopicPolicyCreate,
 		Update: resourceSNSTopicPolicyUpdate,
 		Delete: resourceSNSTopicPolicyDelete,
 		CustomizeDiff: resourceSNSTopicPolicyCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"policy_document": {
 				Type: schema.TypeMap,

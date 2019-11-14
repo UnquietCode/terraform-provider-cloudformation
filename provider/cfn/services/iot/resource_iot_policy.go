@@ -17,12 +17,12 @@ import (
 func ResourceIoTPolicy() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoTPolicyExists,
-		Read:   resourceIoTPolicyRead,
+		Read: resourceIoTPolicyRead,
 		Create: resourceIoTPolicyCreate,
 		Update: resourceIoTPolicyUpdate,
 		Delete: resourceIoTPolicyDelete,
 		CustomizeDiff: resourceIoTPolicyCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"policy_document": {
 				Type: schema.TypeMap,

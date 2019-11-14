@@ -17,12 +17,12 @@ import (
 func ResourceGlueSecurityConfiguration() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGlueSecurityConfigurationExists,
-		Read:   resourceGlueSecurityConfigurationRead,
+		Read: resourceGlueSecurityConfigurationRead,
 		Create: resourceGlueSecurityConfigurationCreate,
 		Update: resourceGlueSecurityConfigurationUpdate,
 		Delete: resourceGlueSecurityConfigurationDelete,
 		CustomizeDiff: resourceGlueSecurityConfigurationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"encryption_configuration": {
 				Type: schema.TypeList,

@@ -17,12 +17,12 @@ import (
 func ResourceLakeFormationResource() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLakeFormationResourceExists,
-		Read:   resourceLakeFormationResourceRead,
+		Read: resourceLakeFormationResourceRead,
 		Create: resourceLakeFormationResourceCreate,
 		Update: resourceLakeFormationResourceUpdate,
 		Delete: resourceLakeFormationResourceDelete,
 		CustomizeDiff: resourceLakeFormationResourceCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"resource_arn": {
 				Type: schema.TypeString,

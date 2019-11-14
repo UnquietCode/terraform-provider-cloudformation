@@ -17,12 +17,12 @@ import (
 func ResourceGreengrassCoreDefinitionVersion() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGreengrassCoreDefinitionVersionExists,
-		Read:   resourceGreengrassCoreDefinitionVersionRead,
+		Read: resourceGreengrassCoreDefinitionVersionRead,
 		Create: resourceGreengrassCoreDefinitionVersionCreate,
 		Update: resourceGreengrassCoreDefinitionVersionUpdate,
 		Delete: resourceGreengrassCoreDefinitionVersionDelete,
 		CustomizeDiff: resourceGreengrassCoreDefinitionVersionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"cores": {
 				Type: schema.TypeList,

@@ -17,12 +17,12 @@ import (
 func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCodeDeployDeploymentGroupExists,
-		Read:   resourceCodeDeployDeploymentGroupRead,
+		Read: resourceCodeDeployDeploymentGroupRead,
 		Create: resourceCodeDeployDeploymentGroupCreate,
 		Update: resourceCodeDeployDeploymentGroupUpdate,
 		Delete: resourceCodeDeployDeploymentGroupDelete,
 		CustomizeDiff: resourceCodeDeployDeploymentGroupCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"alarm_configuration": {
 				Type: schema.TypeList,

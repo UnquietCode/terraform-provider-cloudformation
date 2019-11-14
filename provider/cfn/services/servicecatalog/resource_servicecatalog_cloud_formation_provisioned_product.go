@@ -18,12 +18,12 @@ import (
 func ResourceServiceCatalogCloudFormationProvisionedProduct() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogCloudFormationProvisionedProductExists,
-		Read:   resourceServiceCatalogCloudFormationProvisionedProductRead,
+		Read: resourceServiceCatalogCloudFormationProvisionedProductRead,
 		Create: resourceServiceCatalogCloudFormationProvisionedProductCreate,
 		Update: resourceServiceCatalogCloudFormationProvisionedProductUpdate,
 		Delete: resourceServiceCatalogCloudFormationProvisionedProductDelete,
 		CustomizeDiff: resourceServiceCatalogCloudFormationProvisionedProductCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"path_id": {
 				Type: schema.TypeString,

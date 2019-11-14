@@ -18,12 +18,12 @@ import (
 func ResourceElasticLoadBalancingV2LoadBalancer() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElasticLoadBalancingV2LoadBalancerExists,
-		Read:   resourceElasticLoadBalancingV2LoadBalancerRead,
+		Read: resourceElasticLoadBalancingV2LoadBalancerRead,
 		Create: resourceElasticLoadBalancingV2LoadBalancerCreate,
 		Update: resourceElasticLoadBalancingV2LoadBalancerUpdate,
 		Delete: resourceElasticLoadBalancingV2LoadBalancerDelete,
 		CustomizeDiff: resourceElasticLoadBalancingV2LoadBalancerCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"ip_address_type": {
 				Type: schema.TypeString,

@@ -17,12 +17,12 @@ import (
 func ResourceBackupBackupVault() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceBackupBackupVaultExists,
-		Read:   resourceBackupBackupVaultRead,
+		Read: resourceBackupBackupVaultRead,
 		Create: resourceBackupBackupVaultCreate,
 		Update: resourceBackupBackupVaultUpdate,
 		Delete: resourceBackupBackupVaultDelete,
 		CustomizeDiff: resourceBackupBackupVaultCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"backup_vault_tags": {
 				Type: schema.TypeMap,

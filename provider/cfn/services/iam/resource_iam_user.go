@@ -17,12 +17,12 @@ import (
 func ResourceIAMUser() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIAMUserExists,
-		Read:   resourceIAMUserRead,
+		Read: resourceIAMUserRead,
 		Create: resourceIAMUserCreate,
 		Update: resourceIAMUserUpdate,
 		Delete: resourceIAMUserDelete,
 		CustomizeDiff: resourceIAMUserCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"groups": {
 				Type: schema.TypeList,

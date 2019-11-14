@@ -17,12 +17,12 @@ import (
 func ResourceServiceDiscoveryInstance() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceDiscoveryInstanceExists,
-		Read:   resourceServiceDiscoveryInstanceRead,
+		Read: resourceServiceDiscoveryInstanceRead,
 		Create: resourceServiceDiscoveryInstanceCreate,
 		Update: resourceServiceDiscoveryInstanceUpdate,
 		Delete: resourceServiceDiscoveryInstanceDelete,
 		CustomizeDiff: resourceServiceDiscoveryInstanceCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"instance_attributes": {
 				Type: schema.TypeMap,

@@ -17,12 +17,12 @@ import (
 func ResourceSESReceiptRule() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSESReceiptRuleExists,
-		Read:   resourceSESReceiptRuleRead,
+		Read: resourceSESReceiptRuleRead,
 		Create: resourceSESReceiptRuleCreate,
 		Update: resourceSESReceiptRuleUpdate,
 		Delete: resourceSESReceiptRuleDelete,
 		CustomizeDiff: resourceSESReceiptRuleCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"after": {
 				Type: schema.TypeString,

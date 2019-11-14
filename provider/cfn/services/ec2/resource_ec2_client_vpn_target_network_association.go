@@ -17,12 +17,12 @@ import (
 func ResourceEC2ClientVpnTargetNetworkAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2ClientVpnTargetNetworkAssociationExists,
-		Read:   resourceEC2ClientVpnTargetNetworkAssociationRead,
+		Read: resourceEC2ClientVpnTargetNetworkAssociationRead,
 		Create: resourceEC2ClientVpnTargetNetworkAssociationCreate,
 		Update: resourceEC2ClientVpnTargetNetworkAssociationUpdate,
 		Delete: resourceEC2ClientVpnTargetNetworkAssociationDelete,
 		CustomizeDiff: resourceEC2ClientVpnTargetNetworkAssociationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"client_vpn_endpoint_id": {
 				Type: schema.TypeString,

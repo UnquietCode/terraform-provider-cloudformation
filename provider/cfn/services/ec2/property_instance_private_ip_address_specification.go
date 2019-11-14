@@ -26,7 +26,6 @@ func propertyInstancePrivateIpAddressSpecification(extras...string) *schema.Reso
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
-	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"primary": {

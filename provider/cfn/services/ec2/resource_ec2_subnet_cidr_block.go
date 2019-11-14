@@ -17,12 +17,12 @@ import (
 func ResourceEC2SubnetCidrBlock() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2SubnetCidrBlockExists,
-		Read:   resourceEC2SubnetCidrBlockRead,
+		Read: resourceEC2SubnetCidrBlockRead,
 		Create: resourceEC2SubnetCidrBlockCreate,
 		Update: resourceEC2SubnetCidrBlockUpdate,
 		Delete: resourceEC2SubnetCidrBlockDelete,
 		CustomizeDiff: resourceEC2SubnetCidrBlockCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"ipv6_cidr_block": {
 				Type: schema.TypeString,

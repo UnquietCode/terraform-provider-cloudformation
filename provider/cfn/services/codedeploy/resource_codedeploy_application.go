@@ -17,12 +17,12 @@ import (
 func ResourceCodeDeployApplication() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCodeDeployApplicationExists,
-		Read:   resourceCodeDeployApplicationRead,
+		Read: resourceCodeDeployApplicationRead,
 		Create: resourceCodeDeployApplicationCreate,
 		Update: resourceCodeDeployApplicationUpdate,
 		Delete: resourceCodeDeployApplicationDelete,
 		CustomizeDiff: resourceCodeDeployApplicationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"application_name": {
 				Type: schema.TypeString,

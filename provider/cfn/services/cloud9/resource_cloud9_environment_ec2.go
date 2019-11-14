@@ -17,12 +17,12 @@ import (
 func ResourceCloud9EnvironmentEC2() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCloud9EnvironmentEC2Exists,
-		Read:   resourceCloud9EnvironmentEC2Read,
+		Read: resourceCloud9EnvironmentEC2Read,
 		Create: resourceCloud9EnvironmentEC2Create,
 		Update: resourceCloud9EnvironmentEC2Update,
 		Delete: resourceCloud9EnvironmentEC2Delete,
 		CustomizeDiff: resourceCloud9EnvironmentEC2CustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"repositories": {
 				Type: schema.TypeList,

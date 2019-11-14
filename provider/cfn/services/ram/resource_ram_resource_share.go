@@ -18,12 +18,12 @@ import (
 func ResourceRAMResourceShare() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRAMResourceShareExists,
-		Read:   resourceRAMResourceShareRead,
+		Read: resourceRAMResourceShareRead,
 		Create: resourceRAMResourceShareCreate,
 		Update: resourceRAMResourceShareUpdate,
 		Delete: resourceRAMResourceShareDelete,
 		CustomizeDiff: resourceRAMResourceShareCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"principals": {
 				Type: schema.TypeList,

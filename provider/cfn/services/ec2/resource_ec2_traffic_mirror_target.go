@@ -18,12 +18,12 @@ import (
 func ResourceEC2TrafficMirrorTarget() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2TrafficMirrorTargetExists,
-		Read:   resourceEC2TrafficMirrorTargetRead,
+		Read: resourceEC2TrafficMirrorTargetRead,
 		Create: resourceEC2TrafficMirrorTargetCreate,
 		Update: resourceEC2TrafficMirrorTargetUpdate,
 		Delete: resourceEC2TrafficMirrorTargetDelete,
 		CustomizeDiff: resourceEC2TrafficMirrorTargetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"network_load_balancer_arn": {
 				Type: schema.TypeString,

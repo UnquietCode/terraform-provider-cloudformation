@@ -17,12 +17,12 @@ import (
 func ResourceApiGatewayVpcLink() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayVpcLinkExists,
-		Read:   resourceApiGatewayVpcLinkRead,
+		Read: resourceApiGatewayVpcLinkRead,
 		Create: resourceApiGatewayVpcLinkCreate,
 		Update: resourceApiGatewayVpcLinkUpdate,
 		Delete: resourceApiGatewayVpcLinkDelete,
 		CustomizeDiff: resourceApiGatewayVpcLinkCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

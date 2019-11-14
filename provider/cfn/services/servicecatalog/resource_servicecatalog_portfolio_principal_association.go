@@ -17,12 +17,12 @@ import (
 func ResourceServiceCatalogPortfolioPrincipalAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogPortfolioPrincipalAssociationExists,
-		Read:   resourceServiceCatalogPortfolioPrincipalAssociationRead,
+		Read: resourceServiceCatalogPortfolioPrincipalAssociationRead,
 		Create: resourceServiceCatalogPortfolioPrincipalAssociationCreate,
 		Update: resourceServiceCatalogPortfolioPrincipalAssociationUpdate,
 		Delete: resourceServiceCatalogPortfolioPrincipalAssociationDelete,
 		CustomizeDiff: resourceServiceCatalogPortfolioPrincipalAssociationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"principal_arn": {
 				Type: schema.TypeString,

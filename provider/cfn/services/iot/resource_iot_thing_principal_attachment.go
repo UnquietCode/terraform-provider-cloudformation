@@ -17,12 +17,12 @@ import (
 func ResourceIoTThingPrincipalAttachment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoTThingPrincipalAttachmentExists,
-		Read:   resourceIoTThingPrincipalAttachmentRead,
+		Read: resourceIoTThingPrincipalAttachmentRead,
 		Create: resourceIoTThingPrincipalAttachmentCreate,
 		Update: resourceIoTThingPrincipalAttachmentUpdate,
 		Delete: resourceIoTThingPrincipalAttachmentDelete,
 		CustomizeDiff: resourceIoTThingPrincipalAttachmentCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"principal": {
 				Type: schema.TypeString,

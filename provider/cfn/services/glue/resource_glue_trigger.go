@@ -17,12 +17,12 @@ import (
 func ResourceGlueTrigger() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGlueTriggerExists,
-		Read:   resourceGlueTriggerRead,
+		Read: resourceGlueTriggerRead,
 		Create: resourceGlueTriggerCreate,
 		Update: resourceGlueTriggerUpdate,
 		Delete: resourceGlueTriggerDelete,
 		CustomizeDiff: resourceGlueTriggerCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"type": {
 				Type: schema.TypeString,

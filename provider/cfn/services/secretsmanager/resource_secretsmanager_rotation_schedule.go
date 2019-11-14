@@ -17,12 +17,12 @@ import (
 func ResourceSecretsManagerRotationSchedule() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSecretsManagerRotationScheduleExists,
-		Read:   resourceSecretsManagerRotationScheduleRead,
+		Read: resourceSecretsManagerRotationScheduleRead,
 		Create: resourceSecretsManagerRotationScheduleCreate,
 		Update: resourceSecretsManagerRotationScheduleUpdate,
 		Delete: resourceSecretsManagerRotationScheduleDelete,
 		CustomizeDiff: resourceSecretsManagerRotationScheduleCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"secret_id": {
 				Type: schema.TypeString,

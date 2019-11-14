@@ -17,12 +17,12 @@ import (
 func ResourceWAFRegionalSqlInjectionMatchSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFRegionalSqlInjectionMatchSetExists,
-		Read:   resourceWAFRegionalSqlInjectionMatchSetRead,
+		Read: resourceWAFRegionalSqlInjectionMatchSetRead,
 		Create: resourceWAFRegionalSqlInjectionMatchSetCreate,
 		Update: resourceWAFRegionalSqlInjectionMatchSetUpdate,
 		Delete: resourceWAFRegionalSqlInjectionMatchSetDelete,
 		CustomizeDiff: resourceWAFRegionalSqlInjectionMatchSetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"sql_injection_match_tuples": {
 				Type: schema.TypeList,

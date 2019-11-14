@@ -26,7 +26,6 @@ func propertyResourceDefinitionS3MachineLearningModelResourceData(extras...strin
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
-	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"destination_path": {

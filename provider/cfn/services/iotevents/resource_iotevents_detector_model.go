@@ -18,12 +18,12 @@ import (
 func ResourceIoTEventsDetectorModel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoTEventsDetectorModelExists,
-		Read:   resourceIoTEventsDetectorModelRead,
+		Read: resourceIoTEventsDetectorModelRead,
 		Create: resourceIoTEventsDetectorModelCreate,
 		Update: resourceIoTEventsDetectorModelUpdate,
 		Delete: resourceIoTEventsDetectorModelDelete,
 		CustomizeDiff: resourceIoTEventsDetectorModelCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"detector_model_definition": {
 				Type: schema.TypeList,

@@ -17,12 +17,12 @@ import (
 func ResourceServiceDiscoveryPublicDnsNamespace() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceDiscoveryPublicDnsNamespaceExists,
-		Read:   resourceServiceDiscoveryPublicDnsNamespaceRead,
+		Read: resourceServiceDiscoveryPublicDnsNamespaceRead,
 		Create: resourceServiceDiscoveryPublicDnsNamespaceCreate,
 		Update: resourceServiceDiscoveryPublicDnsNamespaceUpdate,
 		Delete: resourceServiceDiscoveryPublicDnsNamespaceDelete,
 		CustomizeDiff: resourceServiceDiscoveryPublicDnsNamespaceCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

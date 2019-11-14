@@ -18,12 +18,12 @@ import (
 func ResourceAppStreamImageBuilder() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppStreamImageBuilderExists,
-		Read:   resourceAppStreamImageBuilderRead,
+		Read: resourceAppStreamImageBuilderRead,
 		Create: resourceAppStreamImageBuilderCreate,
 		Update: resourceAppStreamImageBuilderUpdate,
 		Delete: resourceAppStreamImageBuilderDelete,
 		CustomizeDiff: resourceAppStreamImageBuilderCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"image_name": {
 				Type: schema.TypeString,

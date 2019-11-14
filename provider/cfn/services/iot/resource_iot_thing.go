@@ -17,12 +17,12 @@ import (
 func ResourceIoTThing() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoTThingExists,
-		Read:   resourceIoTThingRead,
+		Read: resourceIoTThingRead,
 		Create: resourceIoTThingCreate,
 		Update: resourceIoTThingUpdate,
 		Delete: resourceIoTThingDelete,
 		CustomizeDiff: resourceIoTThingCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"attribute_payload": {
 				Type: schema.TypeList,

@@ -18,12 +18,12 @@ import (
 func ResourceIoTAnalyticsChannel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoTAnalyticsChannelExists,
-		Read:   resourceIoTAnalyticsChannelRead,
+		Read: resourceIoTAnalyticsChannelRead,
 		Create: resourceIoTAnalyticsChannelCreate,
 		Update: resourceIoTAnalyticsChannelUpdate,
 		Delete: resourceIoTAnalyticsChannelDelete,
 		CustomizeDiff: resourceIoTAnalyticsChannelCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"channel_name": {
 				Type: schema.TypeString,

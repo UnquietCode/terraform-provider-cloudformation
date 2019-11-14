@@ -17,12 +17,12 @@ import (
 func ResourceApiGatewayRequestValidator() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayRequestValidatorExists,
-		Read:   resourceApiGatewayRequestValidatorRead,
+		Read: resourceApiGatewayRequestValidatorRead,
 		Create: resourceApiGatewayRequestValidatorCreate,
 		Update: resourceApiGatewayRequestValidatorUpdate,
 		Delete: resourceApiGatewayRequestValidatorDelete,
 		CustomizeDiff: resourceApiGatewayRequestValidatorCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"name": {
 				Type: schema.TypeString,

@@ -17,12 +17,12 @@ import (
 func ResourceWAFIPSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFIPSetExists,
-		Read:   resourceWAFIPSetRead,
+		Read: resourceWAFIPSetRead,
 		Create: resourceWAFIPSetCreate,
 		Update: resourceWAFIPSetUpdate,
 		Delete: resourceWAFIPSetDelete,
 		CustomizeDiff: resourceWAFIPSetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"ip_set_descriptors": {
 				Type: schema.TypeSet,

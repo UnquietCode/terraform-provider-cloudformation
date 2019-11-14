@@ -17,12 +17,12 @@ import (
 func ResourceCloudFormationCustomResource() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCloudFormationCustomResourceExists,
-		Read:   resourceCloudFormationCustomResourceRead,
+		Read: resourceCloudFormationCustomResourceRead,
 		Create: resourceCloudFormationCustomResourceCreate,
 		Update: resourceCloudFormationCustomResourceUpdate,
 		Delete: resourceCloudFormationCustomResourceDelete,
 		CustomizeDiff: resourceCloudFormationCustomResourceCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"service_token": {
 				Type: schema.TypeString,

@@ -17,12 +17,12 @@ import (
 func ResourceSESReceiptFilter() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSESReceiptFilterExists,
-		Read:   resourceSESReceiptFilterRead,
+		Read: resourceSESReceiptFilterRead,
 		Create: resourceSESReceiptFilterCreate,
 		Update: resourceSESReceiptFilterUpdate,
 		Delete: resourceSESReceiptFilterDelete,
 		CustomizeDiff: resourceSESReceiptFilterCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"filter": {
 				Type: schema.TypeList,

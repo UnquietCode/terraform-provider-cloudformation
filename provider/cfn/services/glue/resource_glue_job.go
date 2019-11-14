@@ -17,12 +17,12 @@ import (
 func ResourceGlueJob() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGlueJobExists,
-		Read:   resourceGlueJobRead,
+		Read: resourceGlueJobRead,
 		Create: resourceGlueJobCreate,
 		Update: resourceGlueJobUpdate,
 		Delete: resourceGlueJobDelete,
 		CustomizeDiff: resourceGlueJobCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"connections": {
 				Type: schema.TypeList,

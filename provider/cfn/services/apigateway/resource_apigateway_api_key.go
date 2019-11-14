@@ -17,12 +17,12 @@ import (
 func ResourceApiGatewayApiKey() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayApiKeyExists,
-		Read:   resourceApiGatewayApiKeyRead,
+		Read: resourceApiGatewayApiKeyRead,
 		Create: resourceApiGatewayApiKeyCreate,
 		Update: resourceApiGatewayApiKeyUpdate,
 		Delete: resourceApiGatewayApiKeyDelete,
 		CustomizeDiff: resourceApiGatewayApiKeyCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"customer_id": {
 				Type: schema.TypeString,

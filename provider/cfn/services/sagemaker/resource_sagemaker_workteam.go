@@ -18,12 +18,12 @@ import (
 func ResourceSageMakerWorkteam() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSageMakerWorkteamExists,
-		Read:   resourceSageMakerWorkteamRead,
+		Read: resourceSageMakerWorkteamRead,
 		Create: resourceSageMakerWorkteamCreate,
 		Update: resourceSageMakerWorkteamUpdate,
 		Delete: resourceSageMakerWorkteamDelete,
 		CustomizeDiff: resourceSageMakerWorkteamCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

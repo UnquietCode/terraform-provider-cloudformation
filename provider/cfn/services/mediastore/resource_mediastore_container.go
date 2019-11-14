@@ -17,12 +17,12 @@ import (
 func ResourceMediaStoreContainer() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceMediaStoreContainerExists,
-		Read:   resourceMediaStoreContainerRead,
+		Read: resourceMediaStoreContainerRead,
 		Create: resourceMediaStoreContainerCreate,
 		Update: resourceMediaStoreContainerUpdate,
 		Delete: resourceMediaStoreContainerDelete,
 		CustomizeDiff: resourceMediaStoreContainerCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"policy": {
 				Type: schema.TypeString,

@@ -17,12 +17,12 @@ import (
 func ResourceIoT1ClickPlacement() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoT1ClickPlacementExists,
-		Read:   resourceIoT1ClickPlacementRead,
+		Read: resourceIoT1ClickPlacementRead,
 		Create: resourceIoT1ClickPlacementCreate,
 		Update: resourceIoT1ClickPlacementUpdate,
 		Delete: resourceIoT1ClickPlacementDelete,
 		CustomizeDiff: resourceIoT1ClickPlacementCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"placement_name": {
 				Type: schema.TypeString,

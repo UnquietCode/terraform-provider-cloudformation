@@ -17,12 +17,12 @@ import (
 func ResourceEC2VPCEndpoint() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPCEndpointExists,
-		Read:   resourceEC2VPCEndpointRead,
+		Read: resourceEC2VPCEndpointRead,
 		Create: resourceEC2VPCEndpointCreate,
 		Update: resourceEC2VPCEndpointUpdate,
 		Delete: resourceEC2VPCEndpointDelete,
 		CustomizeDiff: resourceEC2VPCEndpointCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"policy_document": {
 				Type: schema.TypeMap,

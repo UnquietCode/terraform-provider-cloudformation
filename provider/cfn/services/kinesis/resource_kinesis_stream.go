@@ -18,12 +18,12 @@ import (
 func ResourceKinesisStream() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceKinesisStreamExists,
-		Read:   resourceKinesisStreamRead,
+		Read: resourceKinesisStreamRead,
 		Create: resourceKinesisStreamCreate,
 		Update: resourceKinesisStreamUpdate,
 		Delete: resourceKinesisStreamDelete,
 		CustomizeDiff: resourceKinesisStreamCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"name": {
 				Type: schema.TypeString,

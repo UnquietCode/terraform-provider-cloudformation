@@ -18,12 +18,12 @@ import (
 func ResourceDMSReplicationTask() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDMSReplicationTaskExists,
-		Read:   resourceDMSReplicationTaskRead,
+		Read: resourceDMSReplicationTaskRead,
 		Create: resourceDMSReplicationTaskCreate,
 		Update: resourceDMSReplicationTaskUpdate,
 		Delete: resourceDMSReplicationTaskDelete,
 		CustomizeDiff: resourceDMSReplicationTaskCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"replication_task_settings": {
 				Type: schema.TypeString,

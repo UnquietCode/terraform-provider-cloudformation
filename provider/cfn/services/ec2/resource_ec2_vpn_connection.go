@@ -18,12 +18,12 @@ import (
 func ResourceEC2VPNConnection() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPNConnectionExists,
-		Read:   resourceEC2VPNConnectionRead,
+		Read: resourceEC2VPNConnectionRead,
 		Create: resourceEC2VPNConnectionCreate,
 		Update: resourceEC2VPNConnectionUpdate,
 		Delete: resourceEC2VPNConnectionDelete,
 		CustomizeDiff: resourceEC2VPNConnectionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"customer_gateway_id": {
 				Type: schema.TypeString,

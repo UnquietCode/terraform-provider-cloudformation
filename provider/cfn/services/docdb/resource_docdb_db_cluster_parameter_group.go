@@ -18,12 +18,12 @@ import (
 func ResourceDocDBDBClusterParameterGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDocDBDBClusterParameterGroupExists,
-		Read:   resourceDocDBDBClusterParameterGroupRead,
+		Read: resourceDocDBDBClusterParameterGroupRead,
 		Create: resourceDocDBDBClusterParameterGroupCreate,
 		Update: resourceDocDBDBClusterParameterGroupUpdate,
 		Delete: resourceDocDBDBClusterParameterGroupDelete,
 		CustomizeDiff: resourceDocDBDBClusterParameterGroupCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

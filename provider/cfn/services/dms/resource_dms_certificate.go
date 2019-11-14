@@ -17,12 +17,12 @@ import (
 func ResourceDMSCertificate() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDMSCertificateExists,
-		Read:   resourceDMSCertificateRead,
+		Read: resourceDMSCertificateRead,
 		Create: resourceDMSCertificateCreate,
 		Update: resourceDMSCertificateUpdate,
 		Delete: resourceDMSCertificateDelete,
 		CustomizeDiff: resourceDMSCertificateCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"certificate_identifier": {
 				Type: schema.TypeString,

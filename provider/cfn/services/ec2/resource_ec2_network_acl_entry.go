@@ -17,12 +17,12 @@ import (
 func ResourceEC2NetworkAclEntry() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2NetworkAclEntryExists,
-		Read:   resourceEC2NetworkAclEntryRead,
+		Read: resourceEC2NetworkAclEntryRead,
 		Create: resourceEC2NetworkAclEntryCreate,
 		Update: resourceEC2NetworkAclEntryUpdate,
 		Delete: resourceEC2NetworkAclEntryDelete,
 		CustomizeDiff: resourceEC2NetworkAclEntryCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"cidr_block": {
 				Type: schema.TypeString,

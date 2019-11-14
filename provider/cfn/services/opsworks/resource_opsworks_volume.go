@@ -17,12 +17,12 @@ import (
 func ResourceOpsWorksVolume() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceOpsWorksVolumeExists,
-		Read:   resourceOpsWorksVolumeRead,
+		Read: resourceOpsWorksVolumeRead,
 		Create: resourceOpsWorksVolumeCreate,
 		Update: resourceOpsWorksVolumeUpdate,
 		Delete: resourceOpsWorksVolumeDelete,
 		CustomizeDiff: resourceOpsWorksVolumeCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"ec2_volume_id": {
 				Type: schema.TypeString,

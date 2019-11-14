@@ -17,12 +17,12 @@ import (
 func ResourceBatchJobDefinition() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceBatchJobDefinitionExists,
-		Read:   resourceBatchJobDefinitionRead,
+		Read: resourceBatchJobDefinitionRead,
 		Create: resourceBatchJobDefinitionCreate,
 		Update: resourceBatchJobDefinitionUpdate,
 		Delete: resourceBatchJobDefinitionDelete,
 		CustomizeDiff: resourceBatchJobDefinitionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"type": {
 				Type: schema.TypeString,

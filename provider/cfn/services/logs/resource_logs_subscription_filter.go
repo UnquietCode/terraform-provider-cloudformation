@@ -17,12 +17,12 @@ import (
 func ResourceLogsSubscriptionFilter() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLogsSubscriptionFilterExists,
-		Read:   resourceLogsSubscriptionFilterRead,
+		Read: resourceLogsSubscriptionFilterRead,
 		Create: resourceLogsSubscriptionFilterCreate,
 		Update: resourceLogsSubscriptionFilterUpdate,
 		Delete: resourceLogsSubscriptionFilterDelete,
 		CustomizeDiff: resourceLogsSubscriptionFilterCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"destination_arn": {
 				Type: schema.TypeString,

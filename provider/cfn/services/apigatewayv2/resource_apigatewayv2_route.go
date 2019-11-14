@@ -17,12 +17,12 @@ import (
 func ResourceApiGatewayV2Route() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayV2RouteExists,
-		Read:   resourceApiGatewayV2RouteRead,
+		Read: resourceApiGatewayV2RouteRead,
 		Create: resourceApiGatewayV2RouteCreate,
 		Update: resourceApiGatewayV2RouteUpdate,
 		Delete: resourceApiGatewayV2RouteDelete,
 		CustomizeDiff: resourceApiGatewayV2RouteCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"target": {
 				Type: schema.TypeString,

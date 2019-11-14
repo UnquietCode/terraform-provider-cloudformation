@@ -17,12 +17,12 @@ import (
 func ResourceCloudWatchAlarm() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCloudWatchAlarmExists,
-		Read:   resourceCloudWatchAlarmRead,
+		Read: resourceCloudWatchAlarmRead,
 		Create: resourceCloudWatchAlarmCreate,
 		Update: resourceCloudWatchAlarmUpdate,
 		Delete: resourceCloudWatchAlarmDelete,
 		CustomizeDiff: resourceCloudWatchAlarmCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"actions_enabled": {
 				Type: schema.TypeBool,

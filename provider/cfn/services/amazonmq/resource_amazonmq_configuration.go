@@ -17,12 +17,12 @@ import (
 func ResourceAmazonMQConfiguration() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAmazonMQConfigurationExists,
-		Read:   resourceAmazonMQConfigurationRead,
+		Read: resourceAmazonMQConfigurationRead,
 		Create: resourceAmazonMQConfigurationCreate,
 		Update: resourceAmazonMQConfigurationUpdate,
 		Delete: resourceAmazonMQConfigurationDelete,
 		CustomizeDiff: resourceAmazonMQConfigurationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"engine_version": {
 				Type: schema.TypeString,

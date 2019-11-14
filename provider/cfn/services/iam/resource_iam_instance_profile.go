@@ -17,12 +17,12 @@ import (
 func ResourceIAMInstanceProfile() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIAMInstanceProfileExists,
-		Read:   resourceIAMInstanceProfileRead,
+		Read: resourceIAMInstanceProfileRead,
 		Create: resourceIAMInstanceProfileCreate,
 		Update: resourceIAMInstanceProfileUpdate,
 		Delete: resourceIAMInstanceProfileDelete,
 		CustomizeDiff: resourceIAMInstanceProfileCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"instance_profile_name": {
 				Type: schema.TypeString,

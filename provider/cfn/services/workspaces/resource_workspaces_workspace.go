@@ -18,12 +18,12 @@ import (
 func ResourceWorkSpacesWorkspace() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWorkSpacesWorkspaceExists,
-		Read:   resourceWorkSpacesWorkspaceRead,
+		Read: resourceWorkSpacesWorkspaceRead,
 		Create: resourceWorkSpacesWorkspaceCreate,
 		Update: resourceWorkSpacesWorkspaceUpdate,
 		Delete: resourceWorkSpacesWorkspaceDelete,
 		CustomizeDiff: resourceWorkSpacesWorkspaceCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"bundle_id": {
 				Type: schema.TypeString,

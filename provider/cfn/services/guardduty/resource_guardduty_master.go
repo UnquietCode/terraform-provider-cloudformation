@@ -17,12 +17,12 @@ import (
 func ResourceGuardDutyMaster() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGuardDutyMasterExists,
-		Read:   resourceGuardDutyMasterRead,
+		Read: resourceGuardDutyMasterRead,
 		Create: resourceGuardDutyMasterCreate,
 		Update: resourceGuardDutyMasterUpdate,
 		Delete: resourceGuardDutyMasterDelete,
 		CustomizeDiff: resourceGuardDutyMasterCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"detector_id": {
 				Type: schema.TypeString,

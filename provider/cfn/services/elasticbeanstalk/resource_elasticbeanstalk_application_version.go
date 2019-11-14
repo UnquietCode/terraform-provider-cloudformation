@@ -17,12 +17,12 @@ import (
 func ResourceElasticBeanstalkApplicationVersion() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElasticBeanstalkApplicationVersionExists,
-		Read:   resourceElasticBeanstalkApplicationVersionRead,
+		Read: resourceElasticBeanstalkApplicationVersionRead,
 		Create: resourceElasticBeanstalkApplicationVersionCreate,
 		Update: resourceElasticBeanstalkApplicationVersionUpdate,
 		Delete: resourceElasticBeanstalkApplicationVersionDelete,
 		CustomizeDiff: resourceElasticBeanstalkApplicationVersionCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"application_name": {
 				Type: schema.TypeString,

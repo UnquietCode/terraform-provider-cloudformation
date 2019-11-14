@@ -26,7 +26,6 @@ func propertyChannelChannelStorage(extras...string) *schema.Resource {
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
-	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"customer_managed_s3": {

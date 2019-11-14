@@ -17,12 +17,12 @@ import (
 func ResourceApiGatewayV2Authorizer() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayV2AuthorizerExists,
-		Read:   resourceApiGatewayV2AuthorizerRead,
+		Read: resourceApiGatewayV2AuthorizerRead,
 		Create: resourceApiGatewayV2AuthorizerCreate,
 		Update: resourceApiGatewayV2AuthorizerUpdate,
 		Delete: resourceApiGatewayV2AuthorizerDelete,
 		CustomizeDiff: resourceApiGatewayV2AuthorizerCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"identity_validation_expression": {
 				Type: schema.TypeString,

@@ -17,12 +17,12 @@ import (
 func ResourceMSKCluster() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceMSKClusterExists,
-		Read:   resourceMSKClusterRead,
+		Read: resourceMSKClusterRead,
 		Create: resourceMSKClusterCreate,
 		Update: resourceMSKClusterUpdate,
 		Delete: resourceMSKClusterDelete,
 		CustomizeDiff: resourceMSKClusterCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"broker_node_group_info": {
 				Type: schema.TypeList,

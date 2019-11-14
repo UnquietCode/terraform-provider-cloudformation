@@ -17,12 +17,12 @@ import (
 func ResourceEC2EIP() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2EIPExists,
-		Read:   resourceEC2EIPRead,
+		Read: resourceEC2EIPRead,
 		Create: resourceEC2EIPCreate,
 		Update: resourceEC2EIPUpdate,
 		Delete: resourceEC2EIPDelete,
 		CustomizeDiff: resourceEC2EIPCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"domain": {
 				Type: schema.TypeString,

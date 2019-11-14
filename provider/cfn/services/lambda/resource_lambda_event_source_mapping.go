@@ -17,12 +17,12 @@ import (
 func ResourceLambdaEventSourceMapping() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLambdaEventSourceMappingExists,
-		Read:   resourceLambdaEventSourceMappingRead,
+		Read: resourceLambdaEventSourceMappingRead,
 		Create: resourceLambdaEventSourceMappingCreate,
 		Update: resourceLambdaEventSourceMappingUpdate,
 		Delete: resourceLambdaEventSourceMappingDelete,
 		CustomizeDiff: resourceLambdaEventSourceMappingCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"batch_size": {
 				Type: schema.TypeInt,

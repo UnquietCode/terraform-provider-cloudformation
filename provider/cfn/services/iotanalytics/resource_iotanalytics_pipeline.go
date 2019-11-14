@@ -18,12 +18,12 @@ import (
 func ResourceIoTAnalyticsPipeline() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoTAnalyticsPipelineExists,
-		Read:   resourceIoTAnalyticsPipelineRead,
+		Read: resourceIoTAnalyticsPipelineRead,
 		Create: resourceIoTAnalyticsPipelineCreate,
 		Update: resourceIoTAnalyticsPipelineUpdate,
 		Delete: resourceIoTAnalyticsPipelineDelete,
 		CustomizeDiff: resourceIoTAnalyticsPipelineCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"pipeline_name": {
 				Type: schema.TypeString,

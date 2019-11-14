@@ -17,12 +17,12 @@ import (
 func ResourceApiGatewayUsagePlan() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayUsagePlanExists,
-		Read:   resourceApiGatewayUsagePlanRead,
+		Read: resourceApiGatewayUsagePlanRead,
 		Create: resourceApiGatewayUsagePlanCreate,
 		Update: resourceApiGatewayUsagePlanUpdate,
 		Delete: resourceApiGatewayUsagePlanDelete,
 		CustomizeDiff: resourceApiGatewayUsagePlanCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"api_stages": {
 				Type: schema.TypeSet,

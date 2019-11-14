@@ -17,12 +17,12 @@ import (
 func ResourceServiceCatalogTagOptionAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogTagOptionAssociationExists,
-		Read:   resourceServiceCatalogTagOptionAssociationRead,
+		Read: resourceServiceCatalogTagOptionAssociationRead,
 		Create: resourceServiceCatalogTagOptionAssociationCreate,
 		Update: resourceServiceCatalogTagOptionAssociationUpdate,
 		Delete: resourceServiceCatalogTagOptionAssociationDelete,
 		CustomizeDiff: resourceServiceCatalogTagOptionAssociationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"tag_option_id": {
 				Type: schema.TypeString,

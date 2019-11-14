@@ -17,12 +17,12 @@ import (
 func ResourceEC2VPCDHCPOptionsAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPCDHCPOptionsAssociationExists,
-		Read:   resourceEC2VPCDHCPOptionsAssociationRead,
+		Read: resourceEC2VPCDHCPOptionsAssociationRead,
 		Create: resourceEC2VPCDHCPOptionsAssociationCreate,
 		Update: resourceEC2VPCDHCPOptionsAssociationUpdate,
 		Delete: resourceEC2VPCDHCPOptionsAssociationDelete,
 		CustomizeDiff: resourceEC2VPCDHCPOptionsAssociationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"dhcp_options_id": {
 				Type: schema.TypeString,

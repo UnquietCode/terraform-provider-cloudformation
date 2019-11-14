@@ -17,12 +17,12 @@ import (
 func ResourceApiGatewayDeployment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayDeploymentExists,
-		Read:   resourceApiGatewayDeploymentRead,
+		Read: resourceApiGatewayDeploymentRead,
 		Create: resourceApiGatewayDeploymentCreate,
 		Update: resourceApiGatewayDeploymentUpdate,
 		Delete: resourceApiGatewayDeploymentDelete,
 		CustomizeDiff: resourceApiGatewayDeploymentCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"deployment_canary_settings": {
 				Type: schema.TypeList,

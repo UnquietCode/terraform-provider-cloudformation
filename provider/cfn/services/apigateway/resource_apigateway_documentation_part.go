@@ -17,12 +17,12 @@ import (
 func ResourceApiGatewayDocumentationPart() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayDocumentationPartExists,
-		Read:   resourceApiGatewayDocumentationPartRead,
+		Read: resourceApiGatewayDocumentationPartRead,
 		Create: resourceApiGatewayDocumentationPartCreate,
 		Update: resourceApiGatewayDocumentationPartUpdate,
 		Delete: resourceApiGatewayDocumentationPartDelete,
 		CustomizeDiff: resourceApiGatewayDocumentationPartCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"location": {
 				Type: schema.TypeList,

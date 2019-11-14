@@ -18,12 +18,12 @@ import (
 func ResourceSageMakerEndpoint() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSageMakerEndpointExists,
-		Read:   resourceSageMakerEndpointRead,
+		Read: resourceSageMakerEndpointRead,
 		Create: resourceSageMakerEndpointCreate,
 		Update: resourceSageMakerEndpointUpdate,
 		Delete: resourceSageMakerEndpointDelete,
 		CustomizeDiff: resourceSageMakerEndpointCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"endpoint_name": {
 				Type: schema.TypeString,

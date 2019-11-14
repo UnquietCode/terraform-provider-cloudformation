@@ -17,12 +17,12 @@ import (
 func ResourceGlueCrawler() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGlueCrawlerExists,
-		Read:   resourceGlueCrawlerRead,
+		Read: resourceGlueCrawlerRead,
 		Create: resourceGlueCrawlerCreate,
 		Update: resourceGlueCrawlerUpdate,
 		Delete: resourceGlueCrawlerDelete,
 		CustomizeDiff: resourceGlueCrawlerCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"role": {
 				Type: schema.TypeString,

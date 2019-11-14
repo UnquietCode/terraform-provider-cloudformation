@@ -17,12 +17,12 @@ import (
 func ResourceDataPipelinePipeline() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDataPipelinePipelineExists,
-		Read:   resourceDataPipelinePipelineRead,
+		Read: resourceDataPipelinePipelineRead,
 		Create: resourceDataPipelinePipelineCreate,
 		Update: resourceDataPipelinePipelineUpdate,
 		Delete: resourceDataPipelinePipelineDelete,
 		CustomizeDiff: resourceDataPipelinePipelineCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"activate": {
 				Type: schema.TypeBool,

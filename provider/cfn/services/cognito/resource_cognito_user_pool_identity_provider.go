@@ -17,12 +17,12 @@ import (
 func ResourceCognitoUserPoolIdentityProvider() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCognitoUserPoolIdentityProviderExists,
-		Read:   resourceCognitoUserPoolIdentityProviderRead,
+		Read: resourceCognitoUserPoolIdentityProviderRead,
 		Create: resourceCognitoUserPoolIdentityProviderCreate,
 		Update: resourceCognitoUserPoolIdentityProviderUpdate,
 		Delete: resourceCognitoUserPoolIdentityProviderDelete,
 		CustomizeDiff: resourceCognitoUserPoolIdentityProviderCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"provider_name": {
 				Type: schema.TypeString,

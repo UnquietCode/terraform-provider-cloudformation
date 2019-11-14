@@ -17,12 +17,12 @@ import (
 func ResourceApiGatewayClientCertificate() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayClientCertificateExists,
-		Read:   resourceApiGatewayClientCertificateRead,
+		Read: resourceApiGatewayClientCertificateRead,
 		Create: resourceApiGatewayClientCertificateCreate,
 		Update: resourceApiGatewayClientCertificateUpdate,
 		Delete: resourceApiGatewayClientCertificateDelete,
 		CustomizeDiff: resourceApiGatewayClientCertificateCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

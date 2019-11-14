@@ -18,12 +18,12 @@ import (
 func ResourceRedshiftClusterParameterGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRedshiftClusterParameterGroupExists,
-		Read:   resourceRedshiftClusterParameterGroupRead,
+		Read: resourceRedshiftClusterParameterGroupRead,
 		Create: resourceRedshiftClusterParameterGroupCreate,
 		Update: resourceRedshiftClusterParameterGroupUpdate,
 		Delete: resourceRedshiftClusterParameterGroupDelete,
 		CustomizeDiff: resourceRedshiftClusterParameterGroupCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

@@ -17,12 +17,12 @@ import (
 func ResourceSSMMaintenanceWindowTask() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSSMMaintenanceWindowTaskExists,
-		Read:   resourceSSMMaintenanceWindowTaskRead,
+		Read: resourceSSMMaintenanceWindowTaskRead,
 		Create: resourceSSMMaintenanceWindowTaskCreate,
 		Update: resourceSSMMaintenanceWindowTaskUpdate,
 		Delete: resourceSSMMaintenanceWindowTaskDelete,
 		CustomizeDiff: resourceSSMMaintenanceWindowTaskCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"max_errors": {
 				Type: schema.TypeString,

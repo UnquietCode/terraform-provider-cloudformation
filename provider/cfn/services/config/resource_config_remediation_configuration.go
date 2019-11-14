@@ -17,12 +17,12 @@ import (
 func ResourceConfigRemediationConfiguration() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceConfigRemediationConfigurationExists,
-		Read:   resourceConfigRemediationConfigurationRead,
+		Read: resourceConfigRemediationConfigurationRead,
 		Create: resourceConfigRemediationConfigurationCreate,
 		Update: resourceConfigRemediationConfigurationUpdate,
 		Delete: resourceConfigRemediationConfigurationDelete,
 		CustomizeDiff: resourceConfigRemediationConfigurationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"target_version": {
 				Type: schema.TypeString,

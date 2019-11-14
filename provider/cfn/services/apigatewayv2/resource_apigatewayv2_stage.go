@@ -17,12 +17,12 @@ import (
 func ResourceApiGatewayV2Stage() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayV2StageExists,
-		Read:   resourceApiGatewayV2StageRead,
+		Read: resourceApiGatewayV2StageRead,
 		Create: resourceApiGatewayV2StageCreate,
 		Update: resourceApiGatewayV2StageUpdate,
 		Delete: resourceApiGatewayV2StageDelete,
 		CustomizeDiff: resourceApiGatewayV2StageCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"client_certificate_id": {
 				Type: schema.TypeString,

@@ -26,7 +26,6 @@ func propertyScalingPlanPredefinedLoadMetricSpecification(extras...string) *sche
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
-	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"predefined_load_metric_type": {

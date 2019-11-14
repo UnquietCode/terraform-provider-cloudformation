@@ -17,12 +17,12 @@ import (
 func ResourceApiGatewayRestApi() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayRestApiExists,
-		Read:   resourceApiGatewayRestApiRead,
+		Read: resourceApiGatewayRestApiRead,
 		Create: resourceApiGatewayRestApiCreate,
 		Update: resourceApiGatewayRestApiUpdate,
 		Delete: resourceApiGatewayRestApiDelete,
 		CustomizeDiff: resourceApiGatewayRestApiCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"api_key_source_type": {
 				Type: schema.TypeString,

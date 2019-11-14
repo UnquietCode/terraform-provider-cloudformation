@@ -17,12 +17,12 @@ import (
 func ResourcePinpointEmailDedicatedIpPool() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointEmailDedicatedIpPoolExists,
-		Read:   resourcePinpointEmailDedicatedIpPoolRead,
+		Read: resourcePinpointEmailDedicatedIpPoolRead,
 		Create: resourcePinpointEmailDedicatedIpPoolCreate,
 		Update: resourcePinpointEmailDedicatedIpPoolUpdate,
 		Delete: resourcePinpointEmailDedicatedIpPoolDelete,
 		CustomizeDiff: resourcePinpointEmailDedicatedIpPoolCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"pool_name": {
 				Type: schema.TypeString,

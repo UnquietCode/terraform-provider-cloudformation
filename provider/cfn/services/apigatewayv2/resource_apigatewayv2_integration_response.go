@@ -17,12 +17,12 @@ import (
 func ResourceApiGatewayV2IntegrationResponse() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayV2IntegrationResponseExists,
-		Read:   resourceApiGatewayV2IntegrationResponseRead,
+		Read: resourceApiGatewayV2IntegrationResponseRead,
 		Create: resourceApiGatewayV2IntegrationResponseCreate,
 		Update: resourceApiGatewayV2IntegrationResponseUpdate,
 		Delete: resourceApiGatewayV2IntegrationResponseDelete,
 		CustomizeDiff: resourceApiGatewayV2IntegrationResponseCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"response_templates": {
 				Type: schema.TypeMap,

@@ -17,12 +17,12 @@ import (
 func ResourceAutoScalingPlansScalingPlan() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAutoScalingPlansScalingPlanExists,
-		Read:   resourceAutoScalingPlansScalingPlanRead,
+		Read: resourceAutoScalingPlansScalingPlanRead,
 		Create: resourceAutoScalingPlansScalingPlanCreate,
 		Update: resourceAutoScalingPlansScalingPlanUpdate,
 		Delete: resourceAutoScalingPlansScalingPlanDelete,
 		CustomizeDiff: resourceAutoScalingPlansScalingPlanCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"application_source": {
 				Type: schema.TypeList,

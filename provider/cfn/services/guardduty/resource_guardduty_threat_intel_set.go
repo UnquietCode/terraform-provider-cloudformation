@@ -17,12 +17,12 @@ import (
 func ResourceGuardDutyThreatIntelSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGuardDutyThreatIntelSetExists,
-		Read:   resourceGuardDutyThreatIntelSetRead,
+		Read: resourceGuardDutyThreatIntelSetRead,
 		Create: resourceGuardDutyThreatIntelSetCreate,
 		Update: resourceGuardDutyThreatIntelSetUpdate,
 		Delete: resourceGuardDutyThreatIntelSetDelete,
 		CustomizeDiff: resourceGuardDutyThreatIntelSetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"format": {
 				Type: schema.TypeString,

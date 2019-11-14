@@ -18,12 +18,12 @@ import (
 func ResourceQLDBLedger() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceQLDBLedgerExists,
-		Read:   resourceQLDBLedgerRead,
+		Read: resourceQLDBLedgerRead,
 		Create: resourceQLDBLedgerCreate,
 		Update: resourceQLDBLedgerUpdate,
 		Delete: resourceQLDBLedgerDelete,
 		CustomizeDiff: resourceQLDBLedgerCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"permissions_mode": {
 				Type: schema.TypeString,

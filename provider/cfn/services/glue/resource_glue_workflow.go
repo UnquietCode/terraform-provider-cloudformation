@@ -17,12 +17,12 @@ import (
 func ResourceGlueWorkflow() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGlueWorkflowExists,
-		Read:   resourceGlueWorkflowRead,
+		Read: resourceGlueWorkflowRead,
 		Create: resourceGlueWorkflowCreate,
 		Update: resourceGlueWorkflowUpdate,
 		Delete: resourceGlueWorkflowDelete,
 		CustomizeDiff: resourceGlueWorkflowCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

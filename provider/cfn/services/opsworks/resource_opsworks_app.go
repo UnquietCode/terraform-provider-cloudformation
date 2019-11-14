@@ -17,12 +17,12 @@ import (
 func ResourceOpsWorksApp() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceOpsWorksAppExists,
-		Read:   resourceOpsWorksAppRead,
+		Read: resourceOpsWorksAppRead,
 		Create: resourceOpsWorksAppCreate,
 		Update: resourceOpsWorksAppUpdate,
 		Delete: resourceOpsWorksAppDelete,
 		CustomizeDiff: resourceOpsWorksAppCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"app_source": {
 				Type: schema.TypeList,

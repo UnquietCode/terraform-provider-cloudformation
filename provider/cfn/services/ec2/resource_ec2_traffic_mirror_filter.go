@@ -18,12 +18,12 @@ import (
 func ResourceEC2TrafficMirrorFilter() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2TrafficMirrorFilterExists,
-		Read:   resourceEC2TrafficMirrorFilterRead,
+		Read: resourceEC2TrafficMirrorFilterRead,
 		Create: resourceEC2TrafficMirrorFilterCreate,
 		Update: resourceEC2TrafficMirrorFilterUpdate,
 		Delete: resourceEC2TrafficMirrorFilterDelete,
 		CustomizeDiff: resourceEC2TrafficMirrorFilterCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"description": {
 				Type: schema.TypeString,

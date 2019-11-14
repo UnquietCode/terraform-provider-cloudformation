@@ -17,12 +17,12 @@ import (
 func ResourceElastiCacheSecurityGroupIngress() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElastiCacheSecurityGroupIngressExists,
-		Read:   resourceElastiCacheSecurityGroupIngressRead,
+		Read: resourceElastiCacheSecurityGroupIngressRead,
 		Create: resourceElastiCacheSecurityGroupIngressCreate,
 		Update: resourceElastiCacheSecurityGroupIngressUpdate,
 		Delete: resourceElastiCacheSecurityGroupIngressDelete,
 		CustomizeDiff: resourceElastiCacheSecurityGroupIngressCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"cache_security_group_name": {
 				Type: schema.TypeString,

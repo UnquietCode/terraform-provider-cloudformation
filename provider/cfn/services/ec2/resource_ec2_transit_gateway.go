@@ -18,12 +18,12 @@ import (
 func ResourceEC2TransitGateway() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2TransitGatewayExists,
-		Read:   resourceEC2TransitGatewayRead,
+		Read: resourceEC2TransitGatewayRead,
 		Create: resourceEC2TransitGatewayCreate,
 		Update: resourceEC2TransitGatewayUpdate,
 		Delete: resourceEC2TransitGatewayDelete,
 		CustomizeDiff: resourceEC2TransitGatewayCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"default_route_table_propagation": {
 				Type: schema.TypeString,

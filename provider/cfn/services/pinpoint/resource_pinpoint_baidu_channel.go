@@ -17,12 +17,12 @@ import (
 func ResourcePinpointBaiduChannel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointBaiduChannelExists,
-		Read:   resourcePinpointBaiduChannelRead,
+		Read: resourcePinpointBaiduChannelRead,
 		Create: resourcePinpointBaiduChannelCreate,
 		Update: resourcePinpointBaiduChannelUpdate,
 		Delete: resourcePinpointBaiduChannelDelete,
 		CustomizeDiff: resourcePinpointBaiduChannelCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"secret_key": {
 				Type: schema.TypeString,

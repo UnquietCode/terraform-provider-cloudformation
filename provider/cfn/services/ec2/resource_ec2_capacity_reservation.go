@@ -17,12 +17,12 @@ import (
 func ResourceEC2CapacityReservation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2CapacityReservationExists,
-		Read:   resourceEC2CapacityReservationRead,
+		Read: resourceEC2CapacityReservationRead,
 		Create: resourceEC2CapacityReservationCreate,
 		Update: resourceEC2CapacityReservationUpdate,
 		Delete: resourceEC2CapacityReservationDelete,
 		CustomizeDiff: resourceEC2CapacityReservationCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"tenancy": {
 				Type: schema.TypeString,

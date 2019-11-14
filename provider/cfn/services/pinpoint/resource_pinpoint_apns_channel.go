@@ -17,12 +17,12 @@ import (
 func ResourcePinpointAPNSChannel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointAPNSChannelExists,
-		Read:   resourcePinpointAPNSChannelRead,
+		Read: resourcePinpointAPNSChannelRead,
 		Create: resourcePinpointAPNSChannelCreate,
 		Update: resourcePinpointAPNSChannelUpdate,
 		Delete: resourcePinpointAPNSChannelDelete,
 		CustomizeDiff: resourcePinpointAPNSChannelCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"bundle_id": {
 				Type: schema.TypeString,

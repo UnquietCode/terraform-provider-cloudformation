@@ -18,12 +18,12 @@ import (
 func ResourceCloudTrailTrail() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCloudTrailTrailExists,
-		Read:   resourceCloudTrailTrailRead,
+		Read: resourceCloudTrailTrailRead,
 		Create: resourceCloudTrailTrailCreate,
 		Update: resourceCloudTrailTrailUpdate,
 		Delete: resourceCloudTrailTrailDelete,
 		CustomizeDiff: resourceCloudTrailTrailCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"cloud_watch_logs_log_group_arn": {
 				Type: schema.TypeString,

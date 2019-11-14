@@ -17,12 +17,12 @@ import (
 func ResourceIAMAccessKey() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIAMAccessKeyExists,
-		Read:   resourceIAMAccessKeyRead,
+		Read: resourceIAMAccessKeyRead,
 		Create: resourceIAMAccessKeyCreate,
 		Update: resourceIAMAccessKeyUpdate,
 		Delete: resourceIAMAccessKeyDelete,
 		CustomizeDiff: resourceIAMAccessKeyCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"serial": {
 				Type: schema.TypeInt,

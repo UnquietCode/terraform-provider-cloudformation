@@ -18,12 +18,12 @@ import (
 func ResourceEC2SecurityGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2SecurityGroupExists,
-		Read:   resourceEC2SecurityGroupRead,
+		Read: resourceEC2SecurityGroupRead,
 		Create: resourceEC2SecurityGroupCreate,
 		Update: resourceEC2SecurityGroupUpdate,
 		Delete: resourceEC2SecurityGroupDelete,
 		CustomizeDiff: resourceEC2SecurityGroupCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"group_description": {
 				Type: schema.TypeString,

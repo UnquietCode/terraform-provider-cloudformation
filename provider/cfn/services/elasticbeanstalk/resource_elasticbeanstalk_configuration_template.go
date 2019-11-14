@@ -17,12 +17,12 @@ import (
 func ResourceElasticBeanstalkConfigurationTemplate() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElasticBeanstalkConfigurationTemplateExists,
-		Read:   resourceElasticBeanstalkConfigurationTemplateRead,
+		Read: resourceElasticBeanstalkConfigurationTemplateRead,
 		Create: resourceElasticBeanstalkConfigurationTemplateCreate,
 		Update: resourceElasticBeanstalkConfigurationTemplateUpdate,
 		Delete: resourceElasticBeanstalkConfigurationTemplateDelete,
 		CustomizeDiff: resourceElasticBeanstalkConfigurationTemplateCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"application_name": {
 				Type: schema.TypeString,

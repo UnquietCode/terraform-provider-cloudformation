@@ -17,12 +17,12 @@ import (
 func ResourceSESConfigurationSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSESConfigurationSetExists,
-		Read:   resourceSESConfigurationSetRead,
+		Read: resourceSESConfigurationSetRead,
 		Create: resourceSESConfigurationSetCreate,
 		Update: resourceSESConfigurationSetUpdate,
 		Delete: resourceSESConfigurationSetDelete,
 		CustomizeDiff: resourceSESConfigurationSetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"name": {
 				Type: schema.TypeString,

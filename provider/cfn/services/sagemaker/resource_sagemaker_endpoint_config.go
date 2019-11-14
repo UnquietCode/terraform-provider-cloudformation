@@ -18,12 +18,12 @@ import (
 func ResourceSageMakerEndpointConfig() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSageMakerEndpointConfigExists,
-		Read:   resourceSageMakerEndpointConfigRead,
+		Read: resourceSageMakerEndpointConfigRead,
 		Create: resourceSageMakerEndpointConfigCreate,
 		Update: resourceSageMakerEndpointConfigUpdate,
 		Delete: resourceSageMakerEndpointConfigDelete,
 		CustomizeDiff: resourceSageMakerEndpointConfigCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"production_variants": {
 				Type: schema.TypeList,

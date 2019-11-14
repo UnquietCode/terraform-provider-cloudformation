@@ -26,7 +26,6 @@ func propertyDeliveryStreamSplunkDestinationConfiguration(extras...string) *sche
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
-	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"cloud_watch_logging_options": {

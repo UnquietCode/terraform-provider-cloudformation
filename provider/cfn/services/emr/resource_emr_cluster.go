@@ -18,12 +18,12 @@ import (
 func ResourceEMRCluster() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEMRClusterExists,
-		Read:   resourceEMRClusterRead,
+		Read: resourceEMRClusterRead,
 		Create: resourceEMRClusterCreate,
 		Update: resourceEMRClusterUpdate,
 		Delete: resourceEMRClusterDelete,
 		CustomizeDiff: resourceEMRClusterCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"additional_info": {
 				Type: schema.TypeMap,

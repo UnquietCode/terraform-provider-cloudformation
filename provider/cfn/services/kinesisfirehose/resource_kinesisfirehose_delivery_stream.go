@@ -17,12 +17,12 @@ import (
 func ResourceKinesisFirehoseDeliveryStream() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceKinesisFirehoseDeliveryStreamExists,
-		Read:   resourceKinesisFirehoseDeliveryStreamRead,
+		Read: resourceKinesisFirehoseDeliveryStreamRead,
 		Create: resourceKinesisFirehoseDeliveryStreamCreate,
 		Update: resourceKinesisFirehoseDeliveryStreamUpdate,
 		Delete: resourceKinesisFirehoseDeliveryStreamDelete,
 		CustomizeDiff: resourceKinesisFirehoseDeliveryStreamCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"delivery_stream_name": {
 				Type: schema.TypeString,

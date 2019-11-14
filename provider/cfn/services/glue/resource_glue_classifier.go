@@ -17,12 +17,12 @@ import (
 func ResourceGlueClassifier() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGlueClassifierExists,
-		Read:   resourceGlueClassifierRead,
+		Read: resourceGlueClassifierRead,
 		Create: resourceGlueClassifierCreate,
 		Update: resourceGlueClassifierUpdate,
 		Delete: resourceGlueClassifierDelete,
 		CustomizeDiff: resourceGlueClassifierCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"xml_classifier": {
 				Type: schema.TypeList,

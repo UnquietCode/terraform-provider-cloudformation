@@ -18,12 +18,12 @@ import (
 func ResourceEC2Instance() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2InstanceExists,
-		Read:   resourceEC2InstanceRead,
+		Read: resourceEC2InstanceRead,
 		Create: resourceEC2InstanceCreate,
 		Update: resourceEC2InstanceUpdate,
 		Delete: resourceEC2InstanceDelete,
 		CustomizeDiff: resourceEC2InstanceCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"additional_info": {
 				Type: schema.TypeString,

@@ -17,12 +17,12 @@ import (
 func ResourceWAFSizeConstraintSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFSizeConstraintSetExists,
-		Read:   resourceWAFSizeConstraintSetRead,
+		Read: resourceWAFSizeConstraintSetRead,
 		Create: resourceWAFSizeConstraintSetCreate,
 		Update: resourceWAFSizeConstraintSetUpdate,
 		Delete: resourceWAFSizeConstraintSetDelete,
 		CustomizeDiff: resourceWAFSizeConstraintSetCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"name": {
 				Type: schema.TypeString,

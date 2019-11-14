@@ -17,12 +17,12 @@ import (
 func ResourceCognitoUserPoolUser() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCognitoUserPoolUserExists,
-		Read:   resourceCognitoUserPoolUserRead,
+		Read: resourceCognitoUserPoolUserRead,
 		Create: resourceCognitoUserPoolUserCreate,
 		Update: resourceCognitoUserPoolUserUpdate,
 		Delete: resourceCognitoUserPoolUserDelete,
 		CustomizeDiff: resourceCognitoUserPoolUserCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"validation_data": {
 				Type: schema.TypeList,

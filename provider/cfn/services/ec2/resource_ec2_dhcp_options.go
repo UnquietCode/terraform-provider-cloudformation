@@ -18,12 +18,12 @@ import (
 func ResourceEC2DHCPOptions() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2DHCPOptionsExists,
-		Read:   resourceEC2DHCPOptionsRead,
+		Read: resourceEC2DHCPOptionsRead,
 		Create: resourceEC2DHCPOptionsCreate,
 		Update: resourceEC2DHCPOptionsUpdate,
 		Delete: resourceEC2DHCPOptionsDelete,
 		CustomizeDiff: resourceEC2DHCPOptionsCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"domain_name": {
 				Type: schema.TypeString,

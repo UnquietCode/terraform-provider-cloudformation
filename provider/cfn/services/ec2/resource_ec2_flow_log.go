@@ -17,12 +17,12 @@ import (
 func ResourceEC2FlowLog() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2FlowLogExists,
-		Read:   resourceEC2FlowLogRead,
+		Read: resourceEC2FlowLogRead,
 		Create: resourceEC2FlowLogCreate,
 		Update: resourceEC2FlowLogUpdate,
 		Delete: resourceEC2FlowLogDelete,
 		CustomizeDiff: resourceEC2FlowLogCustomizeDiff,
-
+		
 		Schema: map[string]*schema.Schema{
 			"deliver_logs_permission_arn": {
 				Type: schema.TypeString,
