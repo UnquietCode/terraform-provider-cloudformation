@@ -9,6 +9,9 @@ from unquietcode.tools.cfn_provider.golang.code_model import (
     SourceFile,
 	GoParameter,
     GoFunction,
+	GoMapLiteral,
+	GoStructLiteral,
+	ReturnExpression,
 )
 from unquietcode.tools.cfn_provider.golang.code_writer import write_file_to_string
 
@@ -49,7 +52,7 @@ def _remove_dead_lines(content):
 	return content
 
 
-def _render_attribute_template(*, package_name, schema_name, attribute):
+def _generate_attribute_struct(*, package_name, schema_name, attribute):
 	attribute_type = attribute.type.type
 	
 	if isinstance(attribute_type, ComplexType):
@@ -83,20 +86,27 @@ def _render_attribute_template(*, package_name, schema_name, attribute):
 		call = '()' if recursive is not True else '(strconv.Itoa(int(count + 1)))'
 		attribute_elem = f'{package_prefix}{ae_property_prefix}{attribute_elem.name}{call}'
 	
-	rendered = RESOURCE_ATTRIBUTE_TEMPLATE.substitute(dict(
-		name=snake_caps(attribute.name),
-		type=attribute_type,
-		elem=attribute_elem or DEAD_LINE,
-		# computed="true" if attribute.computed is True else DEAD_LINE,
-		required="true" if attribute.required is True else DEAD_LINE,
-		optional="true" if attribute.required is not True and attribute.required is not None else DEAD_LINE,
-		force_replace="true" if attribute.will_replace is True else DEAD_LINE,
-		max_items=attribute.type.max_items or DEAD_LINE,
-		set_function=attribute.type.set_function or DEAD_LINE,
-	))
+	name = snake_caps(attribute.name)
 	
-	rendered = _remove_dead_lines(rendered)
-	return rendered
+	struct = GoStructLiteral(
+		type="",
+		fields={
+			"Type": attribute_type,
+		}
+	)
+	
+	def add_field(name, condition, value):
+		if condition:
+			struct.fields[name] = value
+	
+	add_field("Elem", attribute_elem, attribute_elem)
+	add_field("Required", attribute.required is True, "true")
+	add_field("Optional", attribute.required is not True and attribute.required is not None, "true")
+	add_field("ForceNew", attribute.will_replace is True, "true")
+	add_field("MaxItems", attribute.type.max_items is not None, attribute.type.max_items)
+	add_field("Set", attribute.type.set_function, attribute.type.set_function)
+	
+	return name, struct
 
 
 HEADER_TEMPLATE = Template(
@@ -131,36 +141,6 @@ def _imports_stanza(imports):
 	return import_lines or DEAD_LINE
 
 
-RESOURCE_FUNCTION_TEMPLATE = Template(
-"""
-return &schema.Resource{
-	Exists: resource${name}Exists,
-	Read:   resource${name}Read,
-	Create: resource${name}Create,
-	Update: ${update_line},
-	Delete: resource${name}Delete,
-	CustomizeDiff: resource${name}CustomizeDiff,
-
-	Schema: map[string]*schema.Schema{
-		"logical_id": {
-			Type: schema.TypeString,
-			Required: true,
-			ForceNew: true,
-		},
-		"properties": {
-			Type: schema.TypeMap,
-			${property_line}: true,
-			Elem: &schema.Resource{
-				Schema: map[string]*schema.Schema{
-${properties}
-				},
-			},
-		},
-	},
-}
-"""[1:])
-
-
 def render_resource_template(*, cfn_version, imports, resource):
 	import_lines = [ _import_prefix(i) for i in imports ]
 	import_lines.extend([
@@ -171,11 +151,10 @@ def render_resource_template(*, cfn_version, imports, resource):
 	package_name = resource.package.name
 	attributes = resource.attributes.values()
 	
-	rendered_attributes = [
-		_render_attribute_template(package_name=package_name, schema_name=None, attribute=attribute)
+	attribute_structs = [
+		_generate_attribute_struct(package_name=package_name, schema_name=None, attribute=attribute)
 		for attribute in attributes
 	]
-	rendered_attributes = '\n'.join(rendered_attributes)
 	
 	# Terraform requires that we check for the case of non-updatable resources
 	updatable = False
@@ -186,12 +165,28 @@ def render_resource_template(*, cfn_version, imports, resource):
 			updatable = True
 			break
 	
-	function_body = RESOURCE_FUNCTION_TEMPLATE.substitute(dict(
-		name=resource_name,
-		properties=rendered_attributes,
-		property_line="Required" if updatable else "Optional",
-		update_line=f"resource{resource.name}Update" if updatable else DEAD_LINE,
-	))	
+	resource_struct = GoStructLiteral(
+		type="&schema.Resource",
+		fields={
+			"Exists": f"resource{resource_name}Exists",
+			"Read": f"resource{resource_name}Read",
+			"Create": f"resource{resource_name}Create",
+			"Update": f"resource{resource_name}Update",
+			"Delete": f"resource{resource_name}Delete",
+			"CustomizeDiff": f"resource{resource_name}CustomizeDiff",
+		}
+	)
+	
+	if not updatable:
+		del resource_struct.fields["Update"]
+
+	resource_struct.fields["Schema"] = GoMapLiteral(
+		key_type="string",
+		value_type="*schema.Schema",
+		fields={ name:value for name,value in attribute_structs },
+	)
+	
+	# property_line="Required" if updatable else "Optional",
 	
 	functions = [
 		GoFunction(
@@ -200,99 +195,62 @@ def render_resource_template(*, cfn_version, imports, resource):
 		    return_types=[
 				"*schema.Resource"
 		    ],
-			body=function_body,
+			body=[ReturnExpression(resource_struct)],
 		),
 		GoFunction(
 			name=f"resource{resource_name}Exists",
 			parameters=[
-				GoParameter(
-					name="data",
-					type="*schema.ResourceData",
-				),
-				GoParameter(
-					name="meta",
-					type="interface{}"
-				),
+				GoParameter(name="data", type="*schema.ResourceData"),
+				GoParameter(name="meta", type="interface{}"),
 			],
 			return_types=["bool", "error"],
-			body="return plugin.ResourceExists(data, meta)",
+			body=["return plugin.ResourceExists(data, meta)"],
 		),
 		GoFunction(
 			name=f"resource{resource_name}Read",
 			parameters=[
-				GoParameter(
-					name="data",
-					type="*schema.ResourceData",
-				),
-				GoParameter(
-					name="meta",
-					type="interface{}"
-				),
+				GoParameter(name="data", type="*schema.ResourceData"),
+				GoParameter(name="meta", type="interface{}"),
 			],
 			return_types=["error"],
-			body=f'return plugin.ResourceRead("{resource.cfn_type}", Resource{resource_name}(), data, meta)',
+			body=[f'return plugin.ResourceRead("{resource.cfn_type}", Resource{resource_name}(), data, meta)'],
 		),
 		GoFunction(
 			name=f"resource{resource_name}Create",
 			parameters=[
-				GoParameter(
-					name="data",
-					type="*schema.ResourceData",
-				),
-				GoParameter(
-					name="meta",
-					type="interface{}"
-				),
+				GoParameter(name="data", type="*schema.ResourceData"),
+				GoParameter(name="meta", type="interface{}"),
 			],
 			return_types=["error"],
-			body=f'return plugin.ResourceCreate("{resource.cfn_type}", Resource{resource_name}(), data, meta)',
+			body=[f'return plugin.ResourceCreate("{resource.cfn_type}", Resource{resource_name}(), data, meta)'],
 		),
 		GoFunction(
 			name=f"resource{resource_name}Update",
 			parameters=[
-				GoParameter(
-					name="data",
-					type="*schema.ResourceData",
-				),
-				GoParameter(
-					name="meta",
-					type="interface{}"
-				),
+				GoParameter(name="data", type="*schema.ResourceData"),
+				GoParameter(name="meta", type="interface{}"),
 			],
 			return_types=["error"],
-			body=f'return plugin.ResourceUpdate("{resource.cfn_type}", Resource{resource_name}(), data, meta)',
+			body=[f'return plugin.ResourceUpdate("{resource.cfn_type}", Resource{resource_name}(), data, meta)'],
 		),
 		GoFunction(
 			name=f"resource{resource_name}Delete",
 			parameters=[
-				GoParameter(
-					name="data",
-					type="*schema.ResourceData",
-				),
-				GoParameter(
-					name="meta",
-					type="interface{}"
-				),
+				GoParameter(name="data", type="*schema.ResourceData"),
+				GoParameter(name="meta", type="interface{}"),
 			],
 			return_types=["error"],
-			body=f'return plugin.ResourceDelete("{resource.cfn_type}", data, meta)',
+			body=[f'return plugin.ResourceDelete("{resource.cfn_type}", data, meta)'],
 		),
 		GoFunction(
 			name=f"resource{resource_name}CustomizeDiff",
 			parameters=[
-				GoParameter(
-					name="data",
-					type="*schema.ResourceDiff",
-				),
-				GoParameter(
-					name="meta",
-					type="interface{}"
-				),
+				GoParameter(name="data", type="*schema.ResourceDiff"),
+				GoParameter(name="meta", type="interface{}"),
 			],
 			return_types=["error"],
-			body="return plugin.ResourceCustomizeDiff(data, meta)",
+			body=["return plugin.ResourceCustomizeDiff(data, meta)"],
 		),
-		
 	]
 	
 	code_file = SourceFile(
@@ -321,12 +279,6 @@ if len(extras) > 0 {
 if count >= ${max_recursion} {
 	return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 }
-
-return &schema.Resource{
-	Schema: map[string]*schema.Schema{
-${attributes}
-	},
-}
 """[1:])
 
 
@@ -340,14 +292,22 @@ def render_property_template(*, cfn_version, package_name, property_name, attrib
 	function_name = 'property' if property_name != 'Tag' else 'Property'
 	function_name += property_name
 	
-	rendered_attributes = [
-		_render_attribute_template(package_name=package_name, schema_name=property_name, attribute=attribute)
+	attribute_structs = [
+		_generate_attribute_struct(package_name=package_name, schema_name=property_name, attribute=attribute)
 		for attribute in attributes
 	]
-	rendered_attributes = '\n'.join(rendered_attributes)
+	
+	resource_struct = GoStructLiteral(
+		type="&schema.Resource",
+	)
+	
+	resource_struct.fields["Schema"] = GoMapLiteral(
+		key_type="string",
+		value_type="*schema.Schema",
+		fields={ name:value for name,value in attribute_structs },
+	)
 	
 	function_body = PROPERTY_FUNCTION_BODY.substitute(dict(
-		attributes=rendered_attributes,
 		max_recursion=MAX_PROPERTY_RECURSION,
 	))
 	
@@ -364,7 +324,7 @@ def render_property_template(*, cfn_version, package_name, property_name, attrib
 		    return_types=[
 				"*schema.Resource"
 		    ],
-			body=function_body,
+			body=[function_body, ReturnExpression(resource_struct)],
 		)
 	]
 	

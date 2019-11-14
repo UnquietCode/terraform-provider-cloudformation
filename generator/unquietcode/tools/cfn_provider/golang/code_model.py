@@ -5,6 +5,27 @@ from dataclasses import dataclass, field #, asdict, field
 
 
 @dataclass(frozen=True)
+class CodeElement:
+    pass
+
+
+@dataclass(frozen=True)
+class ReturnExpression(CodeElement):
+    expression: any
+
+    def write(self, writer):
+        writer.write_return_expression(self)
+
+
+@dataclass(frozen=True)
+class LiteralExpression(CodeElement):
+    expression: str
+
+    def write(self, writer):
+        writer.write_literal(self)
+
+
+@dataclass(frozen=True)
 class GoParameter:
     name: str
     type: str
@@ -12,15 +33,38 @@ class GoParameter:
 
 
 @dataclass(frozen=True)
-class GoFunction:
+class GoFunction(CodeElement):
     name: str
-    body: str
+    body: List[str] = field(default_factory=lambda: [])
     parameters: List[GoParameter] = field(default_factory=lambda: [])
     return_types: List[str] = field(default_factory=lambda: [])
     
     def write(self, writer):
         writer.write_function(self)
-        
+
+
+# https://golang.org/ref/spec#Composite_literals
+@dataclass(frozen=True)
+class GoStructLiteral(CodeElement):
+    type: str
+    fields: dict = field(default_factory=lambda: {})
+    aligned: bool = False
+    
+    def write(self, writer):
+        writer.write_struct_literal(self)
+
+
+# https://golang.org/ref/spec#Composite_literals
+@dataclass(frozen=True)
+class GoMapLiteral(CodeElement):
+    key_type: str
+    value_type: str
+    fields: dict = field(default_factory=lambda: {})
+    
+    def write(self, writer):
+        writer.write_map_literal(self)
+
+
 
 # https://golang.org/ref/spec#Source_file_organization
 @dataclass(frozen=True)
