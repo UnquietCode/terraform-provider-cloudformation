@@ -28,17 +28,22 @@ PROJECT_URL = "https://github.com/UnquietCode/terraform-provider-cloudformation"
 
 def _generate_attribute_struct(*, package_name, schema_name, attribute):
 	attribute_type = attribute.type.type
+	name = snake_caps(attribute.name)
 	
 	if isinstance(attribute_type, ComplexType):
 		at_property_prefix = 'property'
+		at_name = attribute_type.name
 		
 		if attribute_type.package.full_path == 'cfn/misc':
 			at_property_prefix = 'Property'
+			
+			if at_name == 'Tag':
+				return (name, attribute.name), LiteralExpression("misc.PropertyTags()")
 		
 		if attribute_type == f"property{schema_name}":
 			print("recursion")
 		
-		attribute_type = f'{at_property_prefix}{attribute_type.name}()'
+		attribute_type = f'{at_property_prefix}{at_name}()'
 
 	attribute_elem = attribute.type.element_type
 	
@@ -53,15 +58,17 @@ def _generate_attribute_struct(*, package_name, schema_name, attribute):
 				recursive = True
 	
 		ae_property_prefix = 'property'
+		ae_name = attribute_elem.name
 		
 		if attribute_elem.package.full_path == 'cfn/misc':
 			ae_property_prefix = 'Property'
+			
+			if ae_name == 'Tag':
+				return (name, attribute.name), LiteralExpression("misc.PropertyTags()")
 		
 		call = '()' if recursive is not True else '(strconv.Itoa(int(count + 1)))'
-		attribute_elem = f'{package_prefix}{ae_property_prefix}{attribute_elem.name}{call}'
-	
-	name = snake_caps(attribute.name)
-	
+		attribute_elem = f'{package_prefix}{ae_property_prefix}{ae_name}{call}'
+		
 	struct = GoStructLiteral(
 		type="",
 		fields={
@@ -277,6 +284,7 @@ if len(extras) > 0 {
 if count >= ${max_recursion} {
 	return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 }
+
 """[1:])
 
 
