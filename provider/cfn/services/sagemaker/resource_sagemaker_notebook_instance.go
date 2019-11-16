@@ -17,23 +17,6 @@ import (
 
 const sageMakerNotebookInstanceType string = "AWS::SageMaker::NotebookInstance"
 
-var sageMakerNotebookInstanceProperties map[string]string = map[string]string{
-	"kms_key_id": "KmsKeyId",
-	"volume_size_in_gb": "VolumeSizeInGB",
-	"additional_code_repositories": "AdditionalCodeRepositories",
-	"default_code_repository": "DefaultCodeRepository",
-	"direct_internet_access": "DirectInternetAccess",
-	"accelerator_types": "AcceleratorTypes",
-	"subnet_id": "SubnetId",
-	"security_group_ids": "SecurityGroupIds",
-	"role_arn": "RoleArn",
-	"root_access": "RootAccess",
-	"notebook_instance_name": "NotebookInstanceName",
-	"instance_type": "InstanceType",
-	"lifecycle_config_name": "LifecycleConfigName",
-	"tags": "Tags",
-}
-
 func ResourceSageMakerNotebookInstance() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSageMakerNotebookInstanceExists,
@@ -118,11 +101,11 @@ func resourceSageMakerNotebookInstanceRead(data *schema.ResourceData, meta inter
 }
 
 func resourceSageMakerNotebookInstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(sageMakerNotebookInstanceType, ResourceSageMakerNotebookInstance(), data, sageMakerNotebookInstanceProperties, meta)
+	return plugin.ResourceCreate(sageMakerNotebookInstanceType, ResourceSageMakerNotebookInstance(), data, meta)
 }
 
 func resourceSageMakerNotebookInstanceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(sageMakerNotebookInstanceType, ResourceSageMakerNotebookInstance(), data, sageMakerNotebookInstanceProperties, meta)
+	return plugin.ResourceUpdate(sageMakerNotebookInstanceType, ResourceSageMakerNotebookInstance(), data, meta)
 }
 
 func resourceSageMakerNotebookInstanceDelete(data *schema.ResourceData, meta interface{}) error {

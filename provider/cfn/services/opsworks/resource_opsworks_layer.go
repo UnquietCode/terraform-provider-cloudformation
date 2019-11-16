@@ -17,28 +17,6 @@ import (
 
 const opsWorksLayerType string = "AWS::OpsWorks::Layer"
 
-var opsWorksLayerProperties map[string]string = map[string]string{
-	"attributes": "Attributes",
-	"auto_assign_elastic_ips": "AutoAssignElasticIps",
-	"auto_assign_public_ips": "AutoAssignPublicIps",
-	"custom_instance_profile_arn": "CustomInstanceProfileArn",
-	"custom_json": "CustomJson",
-	"custom_recipes": "CustomRecipes",
-	"custom_security_group_ids": "CustomSecurityGroupIds",
-	"enable_auto_healing": "EnableAutoHealing",
-	"install_updates_on_boot": "InstallUpdatesOnBoot",
-	"lifecycle_event_configuration": "LifecycleEventConfiguration",
-	"load_based_auto_scaling": "LoadBasedAutoScaling",
-	"name": "Name",
-	"packages": "Packages",
-	"shortname": "Shortname",
-	"stack_id": "StackId",
-	"tags": "Tags",
-	"type": "Type",
-	"use_ebs_optimized_instances": "UseEbsOptimizedInstances",
-	"volume_configurations": "VolumeConfigurations",
-}
-
 func ResourceOpsWorksLayer() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceOpsWorksLayerExists,
@@ -150,11 +128,11 @@ func resourceOpsWorksLayerRead(data *schema.ResourceData, meta interface{}) erro
 }
 
 func resourceOpsWorksLayerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(opsWorksLayerType, ResourceOpsWorksLayer(), data, opsWorksLayerProperties, meta)
+	return plugin.ResourceCreate(opsWorksLayerType, ResourceOpsWorksLayer(), data, meta)
 }
 
 func resourceOpsWorksLayerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(opsWorksLayerType, ResourceOpsWorksLayer(), data, opsWorksLayerProperties, meta)
+	return plugin.ResourceUpdate(opsWorksLayerType, ResourceOpsWorksLayer(), data, meta)
 }
 
 func resourceOpsWorksLayerDelete(data *schema.ResourceData, meta interface{}) error {

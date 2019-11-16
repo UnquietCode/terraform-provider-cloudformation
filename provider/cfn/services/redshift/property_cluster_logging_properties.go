@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var clusterLoggingPropertiesProperties map[string]string = map[string]string{
-	"bucket_name": "BucketName",
-	"s3_key_prefix": "S3KeyPrefix",
-}
-
 func propertyClusterLoggingProperties(extras...string) *schema.Resource {
 	var count int64 = 0
 	

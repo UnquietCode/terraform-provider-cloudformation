@@ -16,14 +16,6 @@ import (
 
 const apiGatewayV2ModelType string = "AWS::ApiGatewayV2::Model"
 
-var apiGatewayV2ModelProperties map[string]string = map[string]string{
-	"description": "Description",
-	"content_type": "ContentType",
-	"schema": "Schema",
-	"api_id": "ApiId",
-	"name": "Name",
-}
-
 func ResourceApiGatewayV2Model() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayV2ModelExists,
@@ -72,11 +64,11 @@ func resourceApiGatewayV2ModelRead(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceApiGatewayV2ModelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayV2ModelType, ResourceApiGatewayV2Model(), data, apiGatewayV2ModelProperties, meta)
+	return plugin.ResourceCreate(apiGatewayV2ModelType, ResourceApiGatewayV2Model(), data, meta)
 }
 
 func resourceApiGatewayV2ModelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayV2ModelType, ResourceApiGatewayV2Model(), data, apiGatewayV2ModelProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayV2ModelType, ResourceApiGatewayV2Model(), data, meta)
 }
 
 func resourceApiGatewayV2ModelDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var patchBaselineRuleProperties map[string]string = map[string]string{
-	"enable_non_security": "EnableNonSecurity",
-	"patch_filter_group": "PatchFilterGroup",
-	"approve_after_days": "ApproveAfterDays",
-	"compliance_level": "ComplianceLevel",
-}
-
 func propertyPatchBaselineRule(extras...string) *schema.Resource {
 	var count int64 = 0
 	

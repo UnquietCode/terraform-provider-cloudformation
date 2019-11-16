@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var dataSourceHttpConfigProperties map[string]string = map[string]string{
-	"endpoint": "Endpoint",
-	"authorization_config": "AuthorizationConfig",
-}
-
 func propertyDataSourceHttpConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var distributionLoggingProperties map[string]string = map[string]string{
-	"include_cookies": "IncludeCookies",
-	"bucket": "Bucket",
-	"prefix": "Prefix",
-}
-
 func propertyDistributionLogging(extras...string) *schema.Resource {
 	var count int64 = 0
 	

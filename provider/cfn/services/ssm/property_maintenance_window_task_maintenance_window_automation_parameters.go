@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var maintenanceWindowTaskMaintenanceWindowAutomationParametersProperties map[string]string = map[string]string{
-	"parameters": "Parameters",
-	"document_version": "DocumentVersion",
-}
-
 func propertyMaintenanceWindowTaskMaintenanceWindowAutomationParameters(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -17,44 +17,6 @@ import (
 
 const eC2InstanceType string = "AWS::EC2::Instance"
 
-var eC2InstanceProperties map[string]string = map[string]string{
-	"additional_info": "AdditionalInfo",
-	"affinity": "Affinity",
-	"availability_zone": "AvailabilityZone",
-	"block_device_mappings": "BlockDeviceMappings",
-	"cpu_options": "CpuOptions",
-	"credit_specification": "CreditSpecification",
-	"disable_api_termination": "DisableApiTermination",
-	"ebs_optimized": "EbsOptimized",
-	"elastic_gpu_specifications": "ElasticGpuSpecifications",
-	"elastic_inference_accelerators": "ElasticInferenceAccelerators",
-	"host_id": "HostId",
-	"iam_instance_profile": "IamInstanceProfile",
-	"image_id": "ImageId",
-	"instance_initiated_shutdown_behavior": "InstanceInitiatedShutdownBehavior",
-	"instance_type": "InstanceType",
-	"ipv6_address_count": "Ipv6AddressCount",
-	"ipv6_addresses": "Ipv6Addresses",
-	"kernel_id": "KernelId",
-	"key_name": "KeyName",
-	"launch_template": "LaunchTemplate",
-	"license_specifications": "LicenseSpecifications",
-	"monitoring": "Monitoring",
-	"network_interfaces": "NetworkInterfaces",
-	"placement_group_name": "PlacementGroupName",
-	"private_ip_address": "PrivateIpAddress",
-	"ramdisk_id": "RamdiskId",
-	"security_group_ids": "SecurityGroupIds",
-	"security_groups": "SecurityGroups",
-	"source_dest_check": "SourceDestCheck",
-	"ssm_associations": "SsmAssociations",
-	"subnet_id": "SubnetId",
-	"tags": "Tags",
-	"tenancy": "Tenancy",
-	"user_data": "UserData",
-	"volumes": "Volumes",
-}
-
 func ResourceEC2Instance() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2InstanceExists,
@@ -236,11 +198,11 @@ func resourceEC2InstanceRead(data *schema.ResourceData, meta interface{}) error 
 }
 
 func resourceEC2InstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2InstanceType, ResourceEC2Instance(), data, eC2InstanceProperties, meta)
+	return plugin.ResourceCreate(eC2InstanceType, ResourceEC2Instance(), data, meta)
 }
 
 func resourceEC2InstanceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2InstanceType, ResourceEC2Instance(), data, eC2InstanceProperties, meta)
+	return plugin.ResourceUpdate(eC2InstanceType, ResourceEC2Instance(), data, meta)
 }
 
 func resourceEC2InstanceDelete(data *schema.ResourceData, meta interface{}) error {

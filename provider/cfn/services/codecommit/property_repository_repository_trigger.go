@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var repositoryRepositoryTriggerProperties map[string]string = map[string]string{
-	"events": "Events",
-	"branches": "Branches",
-	"custom_data": "CustomData",
-	"destination_arn": "DestinationArn",
-	"name": "Name",
-}
-
 func propertyRepositoryRepositoryTrigger(extras...string) *schema.Resource {
 	var count int64 = 0
 	

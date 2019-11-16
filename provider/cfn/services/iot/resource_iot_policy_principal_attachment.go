@@ -16,11 +16,6 @@ import (
 
 const ioTPolicyPrincipalAttachmentType string = "AWS::IoT::PolicyPrincipalAttachment"
 
-var ioTPolicyPrincipalAttachmentProperties map[string]string = map[string]string{
-	"policy_name": "PolicyName",
-	"principal": "Principal",
-}
-
 func ResourceIoTPolicyPrincipalAttachment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoTPolicyPrincipalAttachmentExists,
@@ -57,11 +52,11 @@ func resourceIoTPolicyPrincipalAttachmentRead(data *schema.ResourceData, meta in
 }
 
 func resourceIoTPolicyPrincipalAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(ioTPolicyPrincipalAttachmentType, ResourceIoTPolicyPrincipalAttachment(), data, ioTPolicyPrincipalAttachmentProperties, meta)
+	return plugin.ResourceCreate(ioTPolicyPrincipalAttachmentType, ResourceIoTPolicyPrincipalAttachment(), data, meta)
 }
 
 func resourceIoTPolicyPrincipalAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(ioTPolicyPrincipalAttachmentType, ResourceIoTPolicyPrincipalAttachment(), data, ioTPolicyPrincipalAttachmentProperties, meta)
+	return plugin.ResourceUpdate(ioTPolicyPrincipalAttachmentType, ResourceIoTPolicyPrincipalAttachment(), data, meta)
 }
 
 func resourceIoTPolicyPrincipalAttachmentDelete(data *schema.ResourceData, meta interface{}) error {

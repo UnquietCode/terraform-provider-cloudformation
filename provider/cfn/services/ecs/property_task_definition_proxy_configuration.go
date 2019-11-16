@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var taskDefinitionProxyConfigurationProperties map[string]string = map[string]string{
-	"container_name": "ContainerName",
-	"proxy_configuration_properties": "ProxyConfigurationProperties",
-	"type": "Type",
-}
-
 func propertyTaskDefinitionProxyConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

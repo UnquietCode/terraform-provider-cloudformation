@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var memberVotingPolicyProperties map[string]string = map[string]string{
-	"approval_threshold_policy": "ApprovalThresholdPolicy",
-}
-
 func propertyMemberVotingPolicy(extras...string) *schema.Resource {
 	var count int64 = 0
 	

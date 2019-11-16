@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var appEnvironmentVariableProperties map[string]string = map[string]string{
-	"key": "Key",
-	"secure": "Secure",
-	"value": "Value",
-}
-
 func propertyAppEnvironmentVariable(extras...string) *schema.Resource {
 	var count int64 = 0
 	

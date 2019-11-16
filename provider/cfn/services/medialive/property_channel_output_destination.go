@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var channelOutputDestinationProperties map[string]string = map[string]string{
-	"id": "Id",
-	"settings": "Settings",
-	"media_package_settings": "MediaPackageSettings",
-}
-
 func propertyChannelOutputDestination(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var launchTemplateCreditSpecificationProperties map[string]string = map[string]string{
-	"cpu_credits": "CpuCredits",
-}
-
 func propertyLaunchTemplateCreditSpecification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

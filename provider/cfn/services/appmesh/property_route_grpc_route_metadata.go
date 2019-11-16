@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var routeGrpcRouteMetadataProperties map[string]string = map[string]string{
-	"invert": "Invert",
-	"name": "Name",
-	"match": "Match",
-}
-
 func propertyRouteGrpcRouteMetadata(extras...string) *schema.Resource {
 	var count int64 = 0
 	

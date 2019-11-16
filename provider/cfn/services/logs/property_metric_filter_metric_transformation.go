@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var metricFilterMetricTransformationProperties map[string]string = map[string]string{
-	"default_value": "DefaultValue",
-	"metric_name": "MetricName",
-	"metric_namespace": "MetricNamespace",
-	"metric_value": "MetricValue",
-}
-
 func propertyMetricFilterMetricTransformation(extras...string) *schema.Resource {
 	var count int64 = 0
 	

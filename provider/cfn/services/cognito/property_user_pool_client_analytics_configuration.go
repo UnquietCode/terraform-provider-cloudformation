@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var userPoolClientAnalyticsConfigurationProperties map[string]string = map[string]string{
-	"user_data_shared": "UserDataShared",
-	"external_id": "ExternalId",
-	"application_id": "ApplicationId",
-	"role_arn": "RoleArn",
-}
-
 func propertyUserPoolClientAnalyticsConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

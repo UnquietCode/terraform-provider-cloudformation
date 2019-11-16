@@ -16,30 +16,6 @@ import (
 
 const opsWorksInstanceType string = "AWS::OpsWorks::Instance"
 
-var opsWorksInstanceProperties map[string]string = map[string]string{
-	"agent_version": "AgentVersion",
-	"ami_id": "AmiId",
-	"architecture": "Architecture",
-	"auto_scaling_type": "AutoScalingType",
-	"availability_zone": "AvailabilityZone",
-	"block_device_mappings": "BlockDeviceMappings",
-	"ebs_optimized": "EbsOptimized",
-	"elastic_ips": "ElasticIps",
-	"hostname": "Hostname",
-	"install_updates_on_boot": "InstallUpdatesOnBoot",
-	"instance_type": "InstanceType",
-	"layer_ids": "LayerIds",
-	"os": "Os",
-	"root_device_type": "RootDeviceType",
-	"ssh_key_name": "SshKeyName",
-	"stack_id": "StackId",
-	"subnet_id": "SubnetId",
-	"tenancy": "Tenancy",
-	"time_based_auto_scaling": "TimeBasedAutoScaling",
-	"virtualization_type": "VirtualizationType",
-	"volumes": "Volumes",
-}
-
 func ResourceOpsWorksInstance() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceOpsWorksInstanceExists,
@@ -160,11 +136,11 @@ func resourceOpsWorksInstanceRead(data *schema.ResourceData, meta interface{}) e
 }
 
 func resourceOpsWorksInstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(opsWorksInstanceType, ResourceOpsWorksInstance(), data, opsWorksInstanceProperties, meta)
+	return plugin.ResourceCreate(opsWorksInstanceType, ResourceOpsWorksInstance(), data, meta)
 }
 
 func resourceOpsWorksInstanceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(opsWorksInstanceType, ResourceOpsWorksInstance(), data, opsWorksInstanceProperties, meta)
+	return plugin.ResourceUpdate(opsWorksInstanceType, ResourceOpsWorksInstance(), data, meta)
 }
 
 func resourceOpsWorksInstanceDelete(data *schema.ResourceData, meta interface{}) error {

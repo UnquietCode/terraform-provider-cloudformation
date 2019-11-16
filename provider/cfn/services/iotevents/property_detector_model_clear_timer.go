@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var detectorModelClearTimerProperties map[string]string = map[string]string{
-	"timer_name": "TimerName",
-}
-
 func propertyDetectorModelClearTimer(extras...string) *schema.Resource {
 	var count int64 = 0
 	

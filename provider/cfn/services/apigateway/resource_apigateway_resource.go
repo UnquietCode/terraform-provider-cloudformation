@@ -16,12 +16,6 @@ import (
 
 const apiGatewayResourceType string = "AWS::ApiGateway::Resource"
 
-var apiGatewayResourceProperties map[string]string = map[string]string{
-	"parent_id": "ParentId",
-	"path_part": "PathPart",
-	"rest_api_id": "RestApiId",
-}
-
 func ResourceApiGatewayResource() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayResourceExists,
@@ -62,11 +56,11 @@ func resourceApiGatewayResourceRead(data *schema.ResourceData, meta interface{})
 }
 
 func resourceApiGatewayResourceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayResourceType, ResourceApiGatewayResource(), data, apiGatewayResourceProperties, meta)
+	return plugin.ResourceCreate(apiGatewayResourceType, ResourceApiGatewayResource(), data, meta)
 }
 
 func resourceApiGatewayResourceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayResourceType, ResourceApiGatewayResource(), data, apiGatewayResourceProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayResourceType, ResourceApiGatewayResource(), data, meta)
 }
 
 func resourceApiGatewayResourceDelete(data *schema.ResourceData, meta interface{}) error {

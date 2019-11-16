@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var taskDefinitionDockerVolumeConfigurationProperties map[string]string = map[string]string{
-	"autoprovision": "Autoprovision",
-	"driver": "Driver",
-	"driver_opts": "DriverOpts",
-	"labels": "Labels",
-	"scope": "Scope",
-}
-
 func propertyTaskDefinitionDockerVolumeConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

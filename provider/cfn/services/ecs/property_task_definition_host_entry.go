@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var taskDefinitionHostEntryProperties map[string]string = map[string]string{
-	"hostname": "Hostname",
-	"ip_address": "IpAddress",
-}
-
 func propertyTaskDefinitionHostEntry(extras...string) *schema.Resource {
 	var count int64 = 0
 	

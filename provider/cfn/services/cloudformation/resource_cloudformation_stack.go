@@ -17,14 +17,6 @@ import (
 
 const cloudFormationStackType string = "AWS::CloudFormation::Stack"
 
-var cloudFormationStackProperties map[string]string = map[string]string{
-	"notification_ar_ns": "NotificationARNs",
-	"parameters": "Parameters",
-	"tags": "Tags",
-	"template_url": "TemplateURL",
-	"timeout_in_minutes": "TimeoutInMinutes",
-}
-
 func ResourceCloudFormationStack() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCloudFormationStackExists,
@@ -73,11 +65,11 @@ func resourceCloudFormationStackRead(data *schema.ResourceData, meta interface{}
 }
 
 func resourceCloudFormationStackCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(cloudFormationStackType, ResourceCloudFormationStack(), data, cloudFormationStackProperties, meta)
+	return plugin.ResourceCreate(cloudFormationStackType, ResourceCloudFormationStack(), data, meta)
 }
 
 func resourceCloudFormationStackUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(cloudFormationStackType, ResourceCloudFormationStack(), data, cloudFormationStackProperties, meta)
+	return plugin.ResourceUpdate(cloudFormationStackType, ResourceCloudFormationStack(), data, meta)
 }
 
 func resourceCloudFormationStackDelete(data *schema.ResourceData, meta interface{}) error {

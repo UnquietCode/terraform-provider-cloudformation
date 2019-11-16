@@ -16,21 +16,6 @@ import (
 
 const apiGatewayV2RouteType string = "AWS::ApiGatewayV2::Route"
 
-var apiGatewayV2RouteProperties map[string]string = map[string]string{
-	"target": "Target",
-	"route_response_selection_expression": "RouteResponseSelectionExpression",
-	"authorizer_id": "AuthorizerId",
-	"request_models": "RequestModels",
-	"operation_name": "OperationName",
-	"authorization_scopes": "AuthorizationScopes",
-	"api_key_required": "ApiKeyRequired",
-	"route_key": "RouteKey",
-	"authorization_type": "AuthorizationType",
-	"model_selection_expression": "ModelSelectionExpression",
-	"api_id": "ApiId",
-	"request_parameters": "RequestParameters",
-}
-
 func ResourceApiGatewayV2Route() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayV2RouteExists,
@@ -108,11 +93,11 @@ func resourceApiGatewayV2RouteRead(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceApiGatewayV2RouteCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayV2RouteType, ResourceApiGatewayV2Route(), data, apiGatewayV2RouteProperties, meta)
+	return plugin.ResourceCreate(apiGatewayV2RouteType, ResourceApiGatewayV2Route(), data, meta)
 }
 
 func resourceApiGatewayV2RouteUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayV2RouteType, ResourceApiGatewayV2Route(), data, apiGatewayV2RouteProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayV2RouteType, ResourceApiGatewayV2Route(), data, meta)
 }
 
 func resourceApiGatewayV2RouteDelete(data *schema.ResourceData, meta interface{}) error {

@@ -16,17 +16,6 @@ import (
 
 const directoryServiceSimpleADType string = "AWS::DirectoryService::SimpleAD"
 
-var directoryServiceSimpleADProperties map[string]string = map[string]string{
-	"create_alias": "CreateAlias",
-	"description": "Description",
-	"enable_sso": "EnableSso",
-	"name": "Name",
-	"password": "Password",
-	"short_name": "ShortName",
-	"size": "Size",
-	"vpc_settings": "VpcSettings",
-}
-
 func ResourceDirectoryServiceSimpleAD() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDirectoryServiceSimpleADExists,
@@ -89,11 +78,11 @@ func resourceDirectoryServiceSimpleADRead(data *schema.ResourceData, meta interf
 }
 
 func resourceDirectoryServiceSimpleADCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(directoryServiceSimpleADType, ResourceDirectoryServiceSimpleAD(), data, directoryServiceSimpleADProperties, meta)
+	return plugin.ResourceCreate(directoryServiceSimpleADType, ResourceDirectoryServiceSimpleAD(), data, meta)
 }
 
 func resourceDirectoryServiceSimpleADUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(directoryServiceSimpleADType, ResourceDirectoryServiceSimpleAD(), data, directoryServiceSimpleADProperties, meta)
+	return plugin.ResourceUpdate(directoryServiceSimpleADType, ResourceDirectoryServiceSimpleAD(), data, meta)
 }
 
 func resourceDirectoryServiceSimpleADDelete(data *schema.ResourceData, meta interface{}) error {

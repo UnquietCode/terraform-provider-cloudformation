@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketAnalyticsConfigurationProperties map[string]string = map[string]string{
-	"id": "Id",
-	"prefix": "Prefix",
-	"storage_class_analysis": "StorageClassAnalysis",
-	"tag_filters": "TagFilters",
-}
-
 func propertyBucketAnalyticsConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

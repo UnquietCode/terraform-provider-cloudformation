@@ -14,16 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketInventoryConfigurationProperties map[string]string = map[string]string{
-	"destination": "Destination",
-	"enabled": "Enabled",
-	"id": "Id",
-	"included_object_versions": "IncludedObjectVersions",
-	"optional_fields": "OptionalFields",
-	"prefix": "Prefix",
-	"schedule_frequency": "ScheduleFrequency",
-}
-
 func propertyBucketInventoryConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

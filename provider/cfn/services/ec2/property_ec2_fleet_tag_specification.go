@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var eC2FleetTagSpecificationProperties map[string]string = map[string]string{
-	"resource_type": "ResourceType",
-	"tags": "Tags",
-}
-
 func propertyEC2FleetTagSpecification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

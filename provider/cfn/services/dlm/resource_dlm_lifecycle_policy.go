@@ -16,13 +16,6 @@ import (
 
 const dLMLifecyclePolicyType string = "AWS::DLM::LifecyclePolicy"
 
-var dLMLifecyclePolicyProperties map[string]string = map[string]string{
-	"execution_role_arn": "ExecutionRoleArn",
-	"description": "Description",
-	"state": "State",
-	"policy_details": "PolicyDetails",
-}
-
 func ResourceDLMLifecyclePolicy() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDLMLifecyclePolicyExists,
@@ -69,11 +62,11 @@ func resourceDLMLifecyclePolicyRead(data *schema.ResourceData, meta interface{})
 }
 
 func resourceDLMLifecyclePolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(dLMLifecyclePolicyType, ResourceDLMLifecyclePolicy(), data, dLMLifecyclePolicyProperties, meta)
+	return plugin.ResourceCreate(dLMLifecyclePolicyType, ResourceDLMLifecyclePolicy(), data, meta)
 }
 
 func resourceDLMLifecyclePolicyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(dLMLifecyclePolicyType, ResourceDLMLifecyclePolicy(), data, dLMLifecyclePolicyProperties, meta)
+	return plugin.ResourceUpdate(dLMLifecyclePolicyType, ResourceDLMLifecyclePolicy(), data, meta)
 }
 
 func resourceDLMLifecyclePolicyDelete(data *schema.ResourceData, meta interface{}) error {

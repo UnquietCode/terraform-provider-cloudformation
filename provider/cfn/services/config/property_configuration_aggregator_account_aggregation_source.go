@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var configurationAggregatorAccountAggregationSourceProperties map[string]string = map[string]string{
-	"all_aws_regions": "AllAwsRegions",
-	"aws_regions": "AwsRegions",
-	"account_ids": "AccountIds",
-}
-
 func propertyConfigurationAggregatorAccountAggregationSource(extras...string) *schema.Resource {
 	var count int64 = 0
 	

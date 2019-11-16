@@ -16,15 +16,6 @@ import (
 
 const guardDutyFilterType string = "AWS::GuardDuty::Filter"
 
-var guardDutyFilterProperties map[string]string = map[string]string{
-	"action": "Action",
-	"description": "Description",
-	"detector_id": "DetectorId",
-	"finding_criteria": "FindingCriteria",
-	"rank": "Rank",
-	"name": "Name",
-}
-
 func ResourceGuardDutyFilter() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGuardDutyFilterExists,
@@ -79,11 +70,11 @@ func resourceGuardDutyFilterRead(data *schema.ResourceData, meta interface{}) er
 }
 
 func resourceGuardDutyFilterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(guardDutyFilterType, ResourceGuardDutyFilter(), data, guardDutyFilterProperties, meta)
+	return plugin.ResourceCreate(guardDutyFilterType, ResourceGuardDutyFilter(), data, meta)
 }
 
 func resourceGuardDutyFilterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(guardDutyFilterType, ResourceGuardDutyFilter(), data, guardDutyFilterProperties, meta)
+	return plugin.ResourceUpdate(guardDutyFilterType, ResourceGuardDutyFilter(), data, meta)
 }
 
 func resourceGuardDutyFilterDelete(data *schema.ResourceData, meta interface{}) error {

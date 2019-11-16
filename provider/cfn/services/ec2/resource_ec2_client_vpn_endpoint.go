@@ -16,18 +16,6 @@ import (
 
 const eC2ClientVpnEndpointType string = "AWS::EC2::ClientVpnEndpoint"
 
-var eC2ClientVpnEndpointProperties map[string]string = map[string]string{
-	"client_cidr_block": "ClientCidrBlock",
-	"connection_log_options": "ConnectionLogOptions",
-	"split_tunnel": "SplitTunnel",
-	"description": "Description",
-	"tag_specifications": "TagSpecifications",
-	"authentication_options": "AuthenticationOptions",
-	"server_certificate_arn": "ServerCertificateArn",
-	"dns_servers": "DnsServers",
-	"transport_protocol": "TransportProtocol",
-}
-
 func ResourceEC2ClientVpnEndpoint() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2ClientVpnEndpointExists,
@@ -97,11 +85,11 @@ func resourceEC2ClientVpnEndpointRead(data *schema.ResourceData, meta interface{
 }
 
 func resourceEC2ClientVpnEndpointCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2ClientVpnEndpointType, ResourceEC2ClientVpnEndpoint(), data, eC2ClientVpnEndpointProperties, meta)
+	return plugin.ResourceCreate(eC2ClientVpnEndpointType, ResourceEC2ClientVpnEndpoint(), data, meta)
 }
 
 func resourceEC2ClientVpnEndpointUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2ClientVpnEndpointType, ResourceEC2ClientVpnEndpoint(), data, eC2ClientVpnEndpointProperties, meta)
+	return plugin.ResourceUpdate(eC2ClientVpnEndpointType, ResourceEC2ClientVpnEndpoint(), data, meta)
 }
 
 func resourceEC2ClientVpnEndpointDelete(data *schema.ResourceData, meta interface{}) error {

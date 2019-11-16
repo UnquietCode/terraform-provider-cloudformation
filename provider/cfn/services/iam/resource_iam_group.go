@@ -16,13 +16,6 @@ import (
 
 const iAMGroupType string = "AWS::IAM::Group"
 
-var iAMGroupProperties map[string]string = map[string]string{
-	"group_name": "GroupName",
-	"managed_policy_arns": "ManagedPolicyArns",
-	"path": "Path",
-	"policies": "Policies",
-}
-
 func ResourceIAMGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIAMGroupExists,
@@ -70,11 +63,11 @@ func resourceIAMGroupRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceIAMGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(iAMGroupType, ResourceIAMGroup(), data, iAMGroupProperties, meta)
+	return plugin.ResourceCreate(iAMGroupType, ResourceIAMGroup(), data, meta)
 }
 
 func resourceIAMGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(iAMGroupType, ResourceIAMGroup(), data, iAMGroupProperties, meta)
+	return plugin.ResourceUpdate(iAMGroupType, ResourceIAMGroup(), data, meta)
 }
 
 func resourceIAMGroupDelete(data *schema.ResourceData, meta interface{}) error {

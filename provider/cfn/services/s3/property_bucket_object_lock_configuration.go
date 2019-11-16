@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketObjectLockConfigurationProperties map[string]string = map[string]string{
-	"object_lock_enabled": "ObjectLockEnabled",
-	"rule": "Rule",
-}
-
 func propertyBucketObjectLockConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

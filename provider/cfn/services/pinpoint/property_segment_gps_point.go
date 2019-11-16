@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var segmentGPSPointProperties map[string]string = map[string]string{
-	"range_in_kilometers": "RangeInKilometers",
-	"coordinates": "Coordinates",
-}
-
 func propertySegmentGPSPoint(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,10 +16,6 @@ import (
 
 const apiGatewayClientCertificateType string = "AWS::ApiGateway::ClientCertificate"
 
-var apiGatewayClientCertificateProperties map[string]string = map[string]string{
-	"description": "Description",
-}
-
 func ResourceApiGatewayClientCertificate() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayClientCertificateExists,
@@ -52,11 +48,11 @@ func resourceApiGatewayClientCertificateRead(data *schema.ResourceData, meta int
 }
 
 func resourceApiGatewayClientCertificateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayClientCertificateType, ResourceApiGatewayClientCertificate(), data, apiGatewayClientCertificateProperties, meta)
+	return plugin.ResourceCreate(apiGatewayClientCertificateType, ResourceApiGatewayClientCertificate(), data, meta)
 }
 
 func resourceApiGatewayClientCertificateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayClientCertificateType, ResourceApiGatewayClientCertificate(), data, apiGatewayClientCertificateProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayClientCertificateType, ResourceApiGatewayClientCertificate(), data, meta)
 }
 
 func resourceApiGatewayClientCertificateDelete(data *schema.ResourceData, meta interface{}) error {

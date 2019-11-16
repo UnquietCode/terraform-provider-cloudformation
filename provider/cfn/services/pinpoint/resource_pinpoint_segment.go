@@ -16,14 +16,6 @@ import (
 
 const pinpointSegmentType string = "AWS::Pinpoint::Segment"
 
-var pinpointSegmentProperties map[string]string = map[string]string{
-	"segment_groups": "SegmentGroups",
-	"dimensions": "Dimensions",
-	"application_id": "ApplicationId",
-	"tags": "Tags",
-	"name": "Name",
-}
-
 func ResourcePinpointSegment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointSegmentExists,
@@ -76,11 +68,11 @@ func resourcePinpointSegmentRead(data *schema.ResourceData, meta interface{}) er
 }
 
 func resourcePinpointSegmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(pinpointSegmentType, ResourcePinpointSegment(), data, pinpointSegmentProperties, meta)
+	return plugin.ResourceCreate(pinpointSegmentType, ResourcePinpointSegment(), data, meta)
 }
 
 func resourcePinpointSegmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(pinpointSegmentType, ResourcePinpointSegment(), data, pinpointSegmentProperties, meta)
+	return plugin.ResourceUpdate(pinpointSegmentType, ResourcePinpointSegment(), data, meta)
 }
 
 func resourcePinpointSegmentDelete(data *schema.ResourceData, meta interface{}) error {

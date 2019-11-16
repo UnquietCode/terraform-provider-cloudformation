@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketServerSideEncryptionByDefaultProperties map[string]string = map[string]string{
-	"kms_master_key_id": "KMSMasterKeyID",
-	"sse_algorithm": "SSEAlgorithm",
-}
-
 func propertyBucketServerSideEncryptionByDefault(extras...string) *schema.Resource {
 	var count int64 = 0
 	

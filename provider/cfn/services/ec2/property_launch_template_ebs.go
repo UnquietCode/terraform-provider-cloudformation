@@ -14,16 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var launchTemplateEbsProperties map[string]string = map[string]string{
-	"snapshot_id": "SnapshotId",
-	"volume_type": "VolumeType",
-	"kms_key_id": "KmsKeyId",
-	"encrypted": "Encrypted",
-	"iops": "Iops",
-	"volume_size": "VolumeSize",
-	"delete_on_termination": "DeleteOnTermination",
-}
-
 func propertyLaunchTemplateEbs(extras...string) *schema.Resource {
 	var count int64 = 0
 	

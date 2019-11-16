@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var appBasicAuthConfigProperties map[string]string = map[string]string{
-	"username": "Username",
-	"enable_basic_auth": "EnableBasicAuth",
-	"password": "Password",
-}
-
 func propertyAppBasicAuthConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

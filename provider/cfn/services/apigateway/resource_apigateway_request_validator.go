@@ -16,13 +16,6 @@ import (
 
 const apiGatewayRequestValidatorType string = "AWS::ApiGateway::RequestValidator"
 
-var apiGatewayRequestValidatorProperties map[string]string = map[string]string{
-	"name": "Name",
-	"rest_api_id": "RestApiId",
-	"validate_request_body": "ValidateRequestBody",
-	"validate_request_parameters": "ValidateRequestParameters",
-}
-
 func ResourceApiGatewayRequestValidator() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayRequestValidatorExists,
@@ -67,11 +60,11 @@ func resourceApiGatewayRequestValidatorRead(data *schema.ResourceData, meta inte
 }
 
 func resourceApiGatewayRequestValidatorCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayRequestValidatorType, ResourceApiGatewayRequestValidator(), data, apiGatewayRequestValidatorProperties, meta)
+	return plugin.ResourceCreate(apiGatewayRequestValidatorType, ResourceApiGatewayRequestValidator(), data, meta)
 }
 
 func resourceApiGatewayRequestValidatorUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayRequestValidatorType, ResourceApiGatewayRequestValidator(), data, apiGatewayRequestValidatorProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayRequestValidatorType, ResourceApiGatewayRequestValidator(), data, meta)
 }
 
 func resourceApiGatewayRequestValidatorDelete(data *schema.ResourceData, meta interface{}) error {

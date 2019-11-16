@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var graphQLApiLogConfigProperties map[string]string = map[string]string{
-	"cloud_watch_logs_role_arn": "CloudWatchLogsRoleArn",
-	"exclude_verbose_content": "ExcludeVerboseContent",
-	"field_log_level": "FieldLogLevel",
-}
-
 func propertyGraphQLApiLogConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

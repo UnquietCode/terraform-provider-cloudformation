@@ -16,11 +16,6 @@ import (
 
 const amazonMQConfigurationAssociationType string = "AWS::AmazonMQ::ConfigurationAssociation"
 
-var amazonMQConfigurationAssociationProperties map[string]string = map[string]string{
-	"broker": "Broker",
-	"configuration": "Configuration",
-}
-
 func ResourceAmazonMQConfigurationAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAmazonMQConfigurationAssociationExists,
@@ -59,11 +54,11 @@ func resourceAmazonMQConfigurationAssociationRead(data *schema.ResourceData, met
 }
 
 func resourceAmazonMQConfigurationAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(amazonMQConfigurationAssociationType, ResourceAmazonMQConfigurationAssociation(), data, amazonMQConfigurationAssociationProperties, meta)
+	return plugin.ResourceCreate(amazonMQConfigurationAssociationType, ResourceAmazonMQConfigurationAssociation(), data, meta)
 }
 
 func resourceAmazonMQConfigurationAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(amazonMQConfigurationAssociationType, ResourceAmazonMQConfigurationAssociation(), data, amazonMQConfigurationAssociationProperties, meta)
+	return plugin.ResourceUpdate(amazonMQConfigurationAssociationType, ResourceAmazonMQConfigurationAssociation(), data, meta)
 }
 
 func resourceAmazonMQConfigurationAssociationDelete(data *schema.ResourceData, meta interface{}) error {

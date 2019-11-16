@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var instanceFleetConfigInstanceFleetProvisioningSpecificationsProperties map[string]string = map[string]string{
-	"spot_specification": "SpotSpecification",
-}
-
 func propertyInstanceFleetConfigInstanceFleetProvisioningSpecifications(extras...string) *schema.Resource {
 	var count int64 = 0
 	

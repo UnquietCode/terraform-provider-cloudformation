@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var taskDefinitionVolumeProperties map[string]string = map[string]string{
-	"docker_volume_configuration": "DockerVolumeConfiguration",
-	"host": "Host",
-	"name": "Name",
-}
-
 func propertyTaskDefinitionVolume(extras...string) *schema.Resource {
 	var count int64 = 0
 	

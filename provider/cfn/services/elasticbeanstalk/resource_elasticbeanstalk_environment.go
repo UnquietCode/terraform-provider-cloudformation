@@ -17,20 +17,6 @@ import (
 
 const elasticBeanstalkEnvironmentType string = "AWS::ElasticBeanstalk::Environment"
 
-var elasticBeanstalkEnvironmentProperties map[string]string = map[string]string{
-	"application_name": "ApplicationName",
-	"cname_prefix": "CNAMEPrefix",
-	"description": "Description",
-	"environment_name": "EnvironmentName",
-	"option_settings": "OptionSettings",
-	"platform_arn": "PlatformArn",
-	"solution_stack_name": "SolutionStackName",
-	"tags": "Tags",
-	"template_name": "TemplateName",
-	"tier": "Tier",
-	"version_label": "VersionLabel",
-}
-
 func ResourceElasticBeanstalkEnvironment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElasticBeanstalkEnvironmentExists,
@@ -103,11 +89,11 @@ func resourceElasticBeanstalkEnvironmentRead(data *schema.ResourceData, meta int
 }
 
 func resourceElasticBeanstalkEnvironmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(elasticBeanstalkEnvironmentType, ResourceElasticBeanstalkEnvironment(), data, elasticBeanstalkEnvironmentProperties, meta)
+	return plugin.ResourceCreate(elasticBeanstalkEnvironmentType, ResourceElasticBeanstalkEnvironment(), data, meta)
 }
 
 func resourceElasticBeanstalkEnvironmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(elasticBeanstalkEnvironmentType, ResourceElasticBeanstalkEnvironment(), data, elasticBeanstalkEnvironmentProperties, meta)
+	return plugin.ResourceUpdate(elasticBeanstalkEnvironmentType, ResourceElasticBeanstalkEnvironment(), data, meta)
 }
 
 func resourceElasticBeanstalkEnvironmentDelete(data *schema.ResourceData, meta interface{}) error {

@@ -16,11 +16,6 @@ import (
 
 const pinpointAppType string = "AWS::Pinpoint::App"
 
-var pinpointAppProperties map[string]string = map[string]string{
-	"tags": "Tags",
-	"name": "Name",
-}
-
 func ResourcePinpointApp() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointAppExists,
@@ -57,11 +52,11 @@ func resourcePinpointAppRead(data *schema.ResourceData, meta interface{}) error 
 }
 
 func resourcePinpointAppCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(pinpointAppType, ResourcePinpointApp(), data, pinpointAppProperties, meta)
+	return plugin.ResourceCreate(pinpointAppType, ResourcePinpointApp(), data, meta)
 }
 
 func resourcePinpointAppUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(pinpointAppType, ResourcePinpointApp(), data, pinpointAppProperties, meta)
+	return plugin.ResourceUpdate(pinpointAppType, ResourcePinpointApp(), data, meta)
 }
 
 func resourcePinpointAppDelete(data *schema.ResourceData, meta interface{}) error {

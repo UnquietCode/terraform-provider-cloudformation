@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var serviceDnsConfigProperties map[string]string = map[string]string{
-	"dns_records": "DnsRecords",
-	"routing_policy": "RoutingPolicy",
-	"namespace_id": "NamespaceId",
-}
-
 func propertyServiceDnsConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

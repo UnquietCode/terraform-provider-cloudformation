@@ -16,13 +16,6 @@ import (
 
 const redshiftClusterSecurityGroupIngressType string = "AWS::Redshift::ClusterSecurityGroupIngress"
 
-var redshiftClusterSecurityGroupIngressProperties map[string]string = map[string]string{
-	"cidrip": "CIDRIP",
-	"cluster_security_group_name": "ClusterSecurityGroupName",
-	"ec2_security_group_name": "EC2SecurityGroupName",
-	"ec2_security_group_owner_id": "EC2SecurityGroupOwnerId",
-}
-
 func ResourceRedshiftClusterSecurityGroupIngress() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRedshiftClusterSecurityGroupIngressExists,
@@ -67,11 +60,11 @@ func resourceRedshiftClusterSecurityGroupIngressRead(data *schema.ResourceData, 
 }
 
 func resourceRedshiftClusterSecurityGroupIngressCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(redshiftClusterSecurityGroupIngressType, ResourceRedshiftClusterSecurityGroupIngress(), data, redshiftClusterSecurityGroupIngressProperties, meta)
+	return plugin.ResourceCreate(redshiftClusterSecurityGroupIngressType, ResourceRedshiftClusterSecurityGroupIngress(), data, meta)
 }
 
 func resourceRedshiftClusterSecurityGroupIngressUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(redshiftClusterSecurityGroupIngressType, ResourceRedshiftClusterSecurityGroupIngress(), data, redshiftClusterSecurityGroupIngressProperties, meta)
+	return plugin.ResourceUpdate(redshiftClusterSecurityGroupIngressType, ResourceRedshiftClusterSecurityGroupIngress(), data, meta)
 }
 
 func resourceRedshiftClusterSecurityGroupIngressDelete(data *schema.ResourceData, meta interface{}) error {

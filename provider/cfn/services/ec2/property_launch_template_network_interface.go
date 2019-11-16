@@ -14,22 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var launchTemplateNetworkInterfaceProperties map[string]string = map[string]string{
-	"description": "Description",
-	"private_ip_address": "PrivateIpAddress",
-	"private_ip_addresses": "PrivateIpAddresses",
-	"secondary_private_ip_address_count": "SecondaryPrivateIpAddressCount",
-	"device_index": "DeviceIndex",
-	"subnet_id": "SubnetId",
-	"ipv6_addresses": "Ipv6Addresses",
-	"associate_public_ip_address": "AssociatePublicIpAddress",
-	"network_interface_id": "NetworkInterfaceId",
-	"interface_type": "InterfaceType",
-	"ipv6_address_count": "Ipv6AddressCount",
-	"groups": "Groups",
-	"delete_on_termination": "DeleteOnTermination",
-}
-
 func propertyLaunchTemplateNetworkInterface(extras...string) *schema.Resource {
 	var count int64 = 0
 	

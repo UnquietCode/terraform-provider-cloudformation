@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var instanceFleetConfigVolumeSpecificationProperties map[string]string = map[string]string{
-	"iops": "Iops",
-	"size_in_gb": "SizeInGB",
-	"volume_type": "VolumeType",
-}
-
 func propertyInstanceFleetConfigVolumeSpecification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

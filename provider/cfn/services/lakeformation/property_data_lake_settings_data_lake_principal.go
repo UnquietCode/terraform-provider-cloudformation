@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var dataLakeSettingsDataLakePrincipalProperties map[string]string = map[string]string{
-	"data_lake_principal_identifier": "DataLakePrincipalIdentifier",
-}
-
 func propertyDataLakeSettingsDataLakePrincipal(extras...string) *schema.Resource {
 	var count int64 = 0
 	

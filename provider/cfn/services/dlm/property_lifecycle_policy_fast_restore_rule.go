@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var lifecyclePolicyFastRestoreRuleProperties map[string]string = map[string]string{
-	"availability_zones": "AvailabilityZones",
-	"the_count": "TheCount",
-}
-
 func propertyLifecyclePolicyFastRestoreRule(extras...string) *schema.Resource {
 	var count int64 = 0
 	

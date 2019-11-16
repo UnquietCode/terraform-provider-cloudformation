@@ -16,16 +16,6 @@ import (
 
 const apiGatewayApiKeyType string = "AWS::ApiGateway::ApiKey"
 
-var apiGatewayApiKeyProperties map[string]string = map[string]string{
-	"customer_id": "CustomerId",
-	"description": "Description",
-	"enabled": "Enabled",
-	"generate_distinct_id": "GenerateDistinctId",
-	"name": "Name",
-	"stage_keys": "StageKeys",
-	"value": "Value",
-}
-
 func ResourceApiGatewayApiKey() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayApiKeyExists,
@@ -83,11 +73,11 @@ func resourceApiGatewayApiKeyRead(data *schema.ResourceData, meta interface{}) e
 }
 
 func resourceApiGatewayApiKeyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayApiKeyType, ResourceApiGatewayApiKey(), data, apiGatewayApiKeyProperties, meta)
+	return plugin.ResourceCreate(apiGatewayApiKeyType, ResourceApiGatewayApiKey(), data, meta)
 }
 
 func resourceApiGatewayApiKeyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayApiKeyType, ResourceApiGatewayApiKey(), data, apiGatewayApiKeyProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayApiKeyType, ResourceApiGatewayApiKey(), data, meta)
 }
 
 func resourceApiGatewayApiKeyDelete(data *schema.ResourceData, meta interface{}) error {

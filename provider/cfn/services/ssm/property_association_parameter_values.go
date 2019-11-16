@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var associationParameterValuesProperties map[string]string = map[string]string{
-	"parameter_values": "ParameterValues",
-}
-
 func propertyAssociationParameterValues(extras...string) *schema.Resource {
 	var count int64 = 0
 	

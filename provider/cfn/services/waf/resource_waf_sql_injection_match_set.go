@@ -16,11 +16,6 @@ import (
 
 const wAFSqlInjectionMatchSetType string = "AWS::WAF::SqlInjectionMatchSet"
 
-var wAFSqlInjectionMatchSetProperties map[string]string = map[string]string{
-	"name": "Name",
-	"sql_injection_match_tuples": "SqlInjectionMatchTuples",
-}
-
 func ResourceWAFSqlInjectionMatchSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFSqlInjectionMatchSetExists,
@@ -58,11 +53,11 @@ func resourceWAFSqlInjectionMatchSetRead(data *schema.ResourceData, meta interfa
 }
 
 func resourceWAFSqlInjectionMatchSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(wAFSqlInjectionMatchSetType, ResourceWAFSqlInjectionMatchSet(), data, wAFSqlInjectionMatchSetProperties, meta)
+	return plugin.ResourceCreate(wAFSqlInjectionMatchSetType, ResourceWAFSqlInjectionMatchSet(), data, meta)
 }
 
 func resourceWAFSqlInjectionMatchSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(wAFSqlInjectionMatchSetType, ResourceWAFSqlInjectionMatchSet(), data, wAFSqlInjectionMatchSetProperties, meta)
+	return plugin.ResourceUpdate(wAFSqlInjectionMatchSetType, ResourceWAFSqlInjectionMatchSet(), data, meta)
 }
 
 func resourceWAFSqlInjectionMatchSetDelete(data *schema.ResourceData, meta interface{}) error {

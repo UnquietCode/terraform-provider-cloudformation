@@ -16,11 +16,6 @@ import (
 
 const backupBackupSelectionType string = "AWS::Backup::BackupSelection"
 
-var backupBackupSelectionProperties map[string]string = map[string]string{
-	"backup_selection": "BackupSelection",
-	"backup_plan_id": "BackupPlanId",
-}
-
 func ResourceBackupBackupSelection() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceBackupBackupSelectionExists,
@@ -59,11 +54,11 @@ func resourceBackupBackupSelectionRead(data *schema.ResourceData, meta interface
 }
 
 func resourceBackupBackupSelectionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(backupBackupSelectionType, ResourceBackupBackupSelection(), data, backupBackupSelectionProperties, meta)
+	return plugin.ResourceCreate(backupBackupSelectionType, ResourceBackupBackupSelection(), data, meta)
 }
 
 func resourceBackupBackupSelectionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(backupBackupSelectionType, ResourceBackupBackupSelection(), data, backupBackupSelectionProperties, meta)
+	return plugin.ResourceUpdate(backupBackupSelectionType, ResourceBackupBackupSelection(), data, meta)
 }
 
 func resourceBackupBackupSelectionDelete(data *schema.ResourceData, meta interface{}) error {

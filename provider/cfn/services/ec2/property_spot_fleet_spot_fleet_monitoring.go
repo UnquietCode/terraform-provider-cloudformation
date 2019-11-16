@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var spotFleetSpotFleetMonitoringProperties map[string]string = map[string]string{
-	"enabled": "Enabled",
-}
-
 func propertySpotFleetSpotFleetMonitoring(extras...string) *schema.Resource {
 	var count int64 = 0
 	

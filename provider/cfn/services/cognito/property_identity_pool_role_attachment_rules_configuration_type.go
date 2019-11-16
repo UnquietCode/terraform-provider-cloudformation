@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var identityPoolRoleAttachmentRulesConfigurationTypeProperties map[string]string = map[string]string{
-	"rules": "Rules",
-}
-
 func propertyIdentityPoolRoleAttachmentRulesConfigurationType(extras...string) *schema.Resource {
 	var count int64 = 0
 	

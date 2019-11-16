@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var configurationSetEventDestinationSnsDestinationProperties map[string]string = map[string]string{
-	"topic_arn": "TopicArn",
-}
-
 func propertyConfigurationSetEventDestinationSnsDestination(extras...string) *schema.Resource {
 	var count int64 = 0
 	

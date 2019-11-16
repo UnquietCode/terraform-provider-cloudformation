@@ -16,11 +16,6 @@ import (
 
 const kinesisAnalyticsApplicationOutputType string = "AWS::KinesisAnalytics::ApplicationOutput"
 
-var kinesisAnalyticsApplicationOutputProperties map[string]string = map[string]string{
-	"application_name": "ApplicationName",
-	"output": "Output",
-}
-
 func ResourceKinesisAnalyticsApplicationOutput() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceKinesisAnalyticsApplicationOutputExists,
@@ -59,11 +54,11 @@ func resourceKinesisAnalyticsApplicationOutputRead(data *schema.ResourceData, me
 }
 
 func resourceKinesisAnalyticsApplicationOutputCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(kinesisAnalyticsApplicationOutputType, ResourceKinesisAnalyticsApplicationOutput(), data, kinesisAnalyticsApplicationOutputProperties, meta)
+	return plugin.ResourceCreate(kinesisAnalyticsApplicationOutputType, ResourceKinesisAnalyticsApplicationOutput(), data, meta)
 }
 
 func resourceKinesisAnalyticsApplicationOutputUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(kinesisAnalyticsApplicationOutputType, ResourceKinesisAnalyticsApplicationOutput(), data, kinesisAnalyticsApplicationOutputProperties, meta)
+	return plugin.ResourceUpdate(kinesisAnalyticsApplicationOutputType, ResourceKinesisAnalyticsApplicationOutput(), data, meta)
 }
 
 func resourceKinesisAnalyticsApplicationOutputDelete(data *schema.ResourceData, meta interface{}) error {

@@ -16,11 +16,6 @@ import (
 
 const glueDatabaseType string = "AWS::Glue::Database"
 
-var glueDatabaseProperties map[string]string = map[string]string{
-	"database_input": "DatabaseInput",
-	"catalog_id": "CatalogId",
-}
-
 func ResourceGlueDatabase() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGlueDatabaseExists,
@@ -59,11 +54,11 @@ func resourceGlueDatabaseRead(data *schema.ResourceData, meta interface{}) error
 }
 
 func resourceGlueDatabaseCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(glueDatabaseType, ResourceGlueDatabase(), data, glueDatabaseProperties, meta)
+	return plugin.ResourceCreate(glueDatabaseType, ResourceGlueDatabase(), data, meta)
 }
 
 func resourceGlueDatabaseUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(glueDatabaseType, ResourceGlueDatabase(), data, glueDatabaseProperties, meta)
+	return plugin.ResourceUpdate(glueDatabaseType, ResourceGlueDatabase(), data, meta)
 }
 
 func resourceGlueDatabaseDelete(data *schema.ResourceData, meta interface{}) error {

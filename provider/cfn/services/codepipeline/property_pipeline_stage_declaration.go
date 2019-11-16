@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var pipelineStageDeclarationProperties map[string]string = map[string]string{
-	"actions": "Actions",
-	"blockers": "Blockers",
-	"name": "Name",
-}
-
 func propertyPipelineStageDeclaration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

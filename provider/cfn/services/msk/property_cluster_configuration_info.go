@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var clusterConfigurationInfoProperties map[string]string = map[string]string{
-	"revision": "Revision",
-	"arn": "Arn",
-}
-
 func propertyClusterConfigurationInfo(extras...string) *schema.Resource {
 	var count int64 = 0
 	

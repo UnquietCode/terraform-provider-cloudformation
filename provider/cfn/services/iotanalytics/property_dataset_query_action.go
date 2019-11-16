@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var datasetQueryActionProperties map[string]string = map[string]string{
-	"filters": "Filters",
-	"sql_query": "SqlQuery",
-}
-
 func propertyDatasetQueryAction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

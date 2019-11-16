@@ -16,12 +16,6 @@ import (
 
 const glueTableType string = "AWS::Glue::Table"
 
-var glueTableProperties map[string]string = map[string]string{
-	"table_input": "TableInput",
-	"database_name": "DatabaseName",
-	"catalog_id": "CatalogId",
-}
-
 func ResourceGlueTable() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGlueTableExists,
@@ -64,11 +58,11 @@ func resourceGlueTableRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceGlueTableCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(glueTableType, ResourceGlueTable(), data, glueTableProperties, meta)
+	return plugin.ResourceCreate(glueTableType, ResourceGlueTable(), data, meta)
 }
 
 func resourceGlueTableUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(glueTableType, ResourceGlueTable(), data, glueTableProperties, meta)
+	return plugin.ResourceUpdate(glueTableType, ResourceGlueTable(), data, meta)
 }
 
 func resourceGlueTableDelete(data *schema.ResourceData, meta interface{}) error {

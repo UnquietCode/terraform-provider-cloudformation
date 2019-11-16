@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var modelContainerDefinitionProperties map[string]string = map[string]string{
-	"container_hostname": "ContainerHostname",
-	"environment": "Environment",
-	"model_data_url": "ModelDataUrl",
-	"image": "Image",
-}
-
 func propertyModelContainerDefinition(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var userLoginProfileProperties map[string]string = map[string]string{
-	"password": "Password",
-	"password_reset_required": "PasswordResetRequired",
-}
-
 func propertyUserLoginProfile(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var projectRegistryCredentialProperties map[string]string = map[string]string{
-	"credential": "Credential",
-	"credential_provider": "CredentialProvider",
-}
-
 func propertyProjectRegistryCredential(extras...string) *schema.Resource {
 	var count int64 = 0
 	

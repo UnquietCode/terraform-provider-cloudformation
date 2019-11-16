@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var backupPlanLifecycleResourceTypeProperties map[string]string = map[string]string{
-	"delete_after_days": "DeleteAfterDays",
-	"move_to_cold_storage_after_days": "MoveToColdStorageAfterDays",
-}
-
 func propertyBackupPlanLifecycleResourceType(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var userPoolResourceServerResourceServerScopeTypeProperties map[string]string = map[string]string{
-	"scope_name": "ScopeName",
-	"scope_description": "ScopeDescription",
-}
-
 func propertyUserPoolResourceServerResourceServerScopeType(extras...string) *schema.Resource {
 	var count int64 = 0
 	

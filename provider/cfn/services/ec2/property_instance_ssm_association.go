@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var instanceSsmAssociationProperties map[string]string = map[string]string{
-	"association_parameters": "AssociationParameters",
-	"document_name": "DocumentName",
-}
-
 func propertyInstanceSsmAssociation(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,13 +16,6 @@ import (
 
 const lakeFormationPermissionsType string = "AWS::LakeFormation::Permissions"
 
-var lakeFormationPermissionsProperties map[string]string = map[string]string{
-	"data_lake_principal": "DataLakePrincipal",
-	"resource": "Resource",
-	"permissions": "Permissions",
-	"permissions_with_grant_option": "PermissionsWithGrantOption",
-}
-
 func ResourceLakeFormationPermissions() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLakeFormationPermissionsExists,
@@ -73,11 +66,11 @@ func resourceLakeFormationPermissionsRead(data *schema.ResourceData, meta interf
 }
 
 func resourceLakeFormationPermissionsCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(lakeFormationPermissionsType, ResourceLakeFormationPermissions(), data, lakeFormationPermissionsProperties, meta)
+	return plugin.ResourceCreate(lakeFormationPermissionsType, ResourceLakeFormationPermissions(), data, meta)
 }
 
 func resourceLakeFormationPermissionsUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(lakeFormationPermissionsType, ResourceLakeFormationPermissions(), data, lakeFormationPermissionsProperties, meta)
+	return plugin.ResourceUpdate(lakeFormationPermissionsType, ResourceLakeFormationPermissions(), data, meta)
 }
 
 func resourceLakeFormationPermissionsDelete(data *schema.ResourceData, meta interface{}) error {

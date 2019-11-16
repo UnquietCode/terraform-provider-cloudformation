@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var loggerDefinitionLoggerDefinitionVersionProperties map[string]string = map[string]string{
-	"loggers": "Loggers",
-}
-
 func propertyLoggerDefinitionLoggerDefinitionVersion(extras...string) *schema.Resource {
 	var count int64 = 0
 	

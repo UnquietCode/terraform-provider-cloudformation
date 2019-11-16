@@ -16,15 +16,6 @@ import (
 
 const cognitoUserPoolIdentityProviderType string = "AWS::Cognito::UserPoolIdentityProvider"
 
-var cognitoUserPoolIdentityProviderProperties map[string]string = map[string]string{
-	"provider_name": "ProviderName",
-	"user_pool_id": "UserPoolId",
-	"attribute_mapping": "AttributeMapping",
-	"provider_details": "ProviderDetails",
-	"provider_type": "ProviderType",
-	"idp_identifiers": "IdpIdentifiers",
-}
-
 func ResourceCognitoUserPoolIdentityProvider() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCognitoUserPoolIdentityProviderExists,
@@ -78,11 +69,11 @@ func resourceCognitoUserPoolIdentityProviderRead(data *schema.ResourceData, meta
 }
 
 func resourceCognitoUserPoolIdentityProviderCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(cognitoUserPoolIdentityProviderType, ResourceCognitoUserPoolIdentityProvider(), data, cognitoUserPoolIdentityProviderProperties, meta)
+	return plugin.ResourceCreate(cognitoUserPoolIdentityProviderType, ResourceCognitoUserPoolIdentityProvider(), data, meta)
 }
 
 func resourceCognitoUserPoolIdentityProviderUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(cognitoUserPoolIdentityProviderType, ResourceCognitoUserPoolIdentityProvider(), data, cognitoUserPoolIdentityProviderProperties, meta)
+	return plugin.ResourceUpdate(cognitoUserPoolIdentityProviderType, ResourceCognitoUserPoolIdentityProvider(), data, meta)
 }
 
 func resourceCognitoUserPoolIdentityProviderDelete(data *schema.ResourceData, meta interface{}) error {

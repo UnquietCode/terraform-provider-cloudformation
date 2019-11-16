@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var channelCaptionSelectorProperties map[string]string = map[string]string{
-	"language_code": "LanguageCode",
-	"selector_settings": "SelectorSettings",
-	"name": "Name",
-}
-
 func propertyChannelCaptionSelector(extras...string) *schema.Resource {
 	var count int64 = 0
 	

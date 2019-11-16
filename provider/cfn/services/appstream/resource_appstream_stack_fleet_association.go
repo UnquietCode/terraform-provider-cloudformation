@@ -16,11 +16,6 @@ import (
 
 const appStreamStackFleetAssociationType string = "AWS::AppStream::StackFleetAssociation"
 
-var appStreamStackFleetAssociationProperties map[string]string = map[string]string{
-	"fleet_name": "FleetName",
-	"stack_name": "StackName",
-}
-
 func ResourceAppStreamStackFleetAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppStreamStackFleetAssociationExists,
@@ -57,11 +52,11 @@ func resourceAppStreamStackFleetAssociationRead(data *schema.ResourceData, meta 
 }
 
 func resourceAppStreamStackFleetAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(appStreamStackFleetAssociationType, ResourceAppStreamStackFleetAssociation(), data, appStreamStackFleetAssociationProperties, meta)
+	return plugin.ResourceCreate(appStreamStackFleetAssociationType, ResourceAppStreamStackFleetAssociation(), data, meta)
 }
 
 func resourceAppStreamStackFleetAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(appStreamStackFleetAssociationType, ResourceAppStreamStackFleetAssociation(), data, appStreamStackFleetAssociationProperties, meta)
+	return plugin.ResourceUpdate(appStreamStackFleetAssociationType, ResourceAppStreamStackFleetAssociation(), data, meta)
 }
 
 func resourceAppStreamStackFleetAssociationDelete(data *schema.ResourceData, meta interface{}) error {

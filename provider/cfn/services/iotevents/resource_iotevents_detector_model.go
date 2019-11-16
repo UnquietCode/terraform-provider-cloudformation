@@ -17,15 +17,6 @@ import (
 
 const ioTEventsDetectorModelType string = "AWS::IoTEvents::DetectorModel"
 
-var ioTEventsDetectorModelProperties map[string]string = map[string]string{
-	"detector_model_definition": "DetectorModelDefinition",
-	"detector_model_name": "DetectorModelName",
-	"detector_model_description": "DetectorModelDescription",
-	"key": "Key",
-	"role_arn": "RoleArn",
-	"tags": "Tags",
-}
-
 func ResourceIoTEventsDetectorModel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoTEventsDetectorModelExists,
@@ -77,11 +68,11 @@ func resourceIoTEventsDetectorModelRead(data *schema.ResourceData, meta interfac
 }
 
 func resourceIoTEventsDetectorModelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(ioTEventsDetectorModelType, ResourceIoTEventsDetectorModel(), data, ioTEventsDetectorModelProperties, meta)
+	return plugin.ResourceCreate(ioTEventsDetectorModelType, ResourceIoTEventsDetectorModel(), data, meta)
 }
 
 func resourceIoTEventsDetectorModelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(ioTEventsDetectorModelType, ResourceIoTEventsDetectorModel(), data, ioTEventsDetectorModelProperties, meta)
+	return plugin.ResourceUpdate(ioTEventsDetectorModelType, ResourceIoTEventsDetectorModel(), data, meta)
 }
 
 func resourceIoTEventsDetectorModelDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var iPSetIPSetDescriptorProperties map[string]string = map[string]string{
-	"type": "Type",
-	"value": "Value",
-}
-
 func propertyIPSetIPSetDescriptor(extras...string) *schema.Resource {
 	var count int64 = 0
 	

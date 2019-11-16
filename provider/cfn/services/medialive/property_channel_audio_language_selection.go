@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var channelAudioLanguageSelectionProperties map[string]string = map[string]string{
-	"language_code": "LanguageCode",
-	"language_selection_policy": "LanguageSelectionPolicy",
-}
-
 func propertyChannelAudioLanguageSelection(extras...string) *schema.Resource {
 	var count int64 = 0
 	

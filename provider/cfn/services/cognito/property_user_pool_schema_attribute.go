@@ -14,16 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var userPoolSchemaAttributeProperties map[string]string = map[string]string{
-	"developer_only_attribute": "DeveloperOnlyAttribute",
-	"mutable": "Mutable",
-	"attribute_data_type": "AttributeDataType",
-	"string_attribute_constraints": "StringAttributeConstraints",
-	"required": "Required",
-	"number_attribute_constraints": "NumberAttributeConstraints",
-	"name": "Name",
-}
-
 func propertyUserPoolSchemaAttribute(extras...string) *schema.Resource {
 	var count int64 = 0
 	

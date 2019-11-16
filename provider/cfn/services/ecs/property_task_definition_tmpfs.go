@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var taskDefinitionTmpfsProperties map[string]string = map[string]string{
-	"container_path": "ContainerPath",
-	"mount_options": "MountOptions",
-	"size": "Size",
-}
-
 func propertyTaskDefinitionTmpfs(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,18 +16,6 @@ import (
 
 const serviceCatalogStackSetConstraintType string = "AWS::ServiceCatalog::StackSetConstraint"
 
-var serviceCatalogStackSetConstraintProperties map[string]string = map[string]string{
-	"description": "Description",
-	"stack_instance_control": "StackInstanceControl",
-	"accept_language": "AcceptLanguage",
-	"portfolio_id": "PortfolioId",
-	"product_id": "ProductId",
-	"region_list": "RegionList",
-	"admin_role": "AdminRole",
-	"account_list": "AccountList",
-	"execution_role": "ExecutionRole",
-}
-
 func ResourceServiceCatalogStackSetConstraint() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogStackSetConstraintExists,
@@ -94,11 +82,11 @@ func resourceServiceCatalogStackSetConstraintRead(data *schema.ResourceData, met
 }
 
 func resourceServiceCatalogStackSetConstraintCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(serviceCatalogStackSetConstraintType, ResourceServiceCatalogStackSetConstraint(), data, serviceCatalogStackSetConstraintProperties, meta)
+	return plugin.ResourceCreate(serviceCatalogStackSetConstraintType, ResourceServiceCatalogStackSetConstraint(), data, meta)
 }
 
 func resourceServiceCatalogStackSetConstraintUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(serviceCatalogStackSetConstraintType, ResourceServiceCatalogStackSetConstraint(), data, serviceCatalogStackSetConstraintProperties, meta)
+	return plugin.ResourceUpdate(serviceCatalogStackSetConstraintType, ResourceServiceCatalogStackSetConstraint(), data, meta)
 }
 
 func resourceServiceCatalogStackSetConstraintDelete(data *schema.ResourceData, meta interface{}) error {

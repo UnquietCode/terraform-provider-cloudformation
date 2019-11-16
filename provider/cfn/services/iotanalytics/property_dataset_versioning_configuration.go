@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var datasetVersioningConfigurationProperties map[string]string = map[string]string{
-	"max_versions": "MaxVersions",
-	"unlimited": "Unlimited",
-}
-
 func propertyDatasetVersioningConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

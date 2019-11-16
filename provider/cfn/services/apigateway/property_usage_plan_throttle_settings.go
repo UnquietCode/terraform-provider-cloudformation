@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var usagePlanThrottleSettingsProperties map[string]string = map[string]string{
-	"burst_limit": "BurstLimit",
-	"rate_limit": "RateLimit",
-}
-
 func propertyUsagePlanThrottleSettings(extras...string) *schema.Resource {
 	var count int64 = 0
 	

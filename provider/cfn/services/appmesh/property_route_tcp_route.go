@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var routeTcpRouteProperties map[string]string = map[string]string{
-	"action": "Action",
-}
-
 func propertyRouteTcpRoute(extras...string) *schema.Resource {
 	var count int64 = 0
 	

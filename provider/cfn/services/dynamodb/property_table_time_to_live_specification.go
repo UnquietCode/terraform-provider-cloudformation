@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var tableTimeToLiveSpecificationProperties map[string]string = map[string]string{
-	"attribute_name": "AttributeName",
-	"enabled": "Enabled",
-}
-
 func propertyTableTimeToLiveSpecification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

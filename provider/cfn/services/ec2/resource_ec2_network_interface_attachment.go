@@ -16,13 +16,6 @@ import (
 
 const eC2NetworkInterfaceAttachmentType string = "AWS::EC2::NetworkInterfaceAttachment"
 
-var eC2NetworkInterfaceAttachmentProperties map[string]string = map[string]string{
-	"delete_on_termination": "DeleteOnTermination",
-	"device_index": "DeviceIndex",
-	"instance_id": "InstanceId",
-	"network_interface_id": "NetworkInterfaceId",
-}
-
 func ResourceEC2NetworkInterfaceAttachment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2NetworkInterfaceAttachmentExists,
@@ -67,11 +60,11 @@ func resourceEC2NetworkInterfaceAttachmentRead(data *schema.ResourceData, meta i
 }
 
 func resourceEC2NetworkInterfaceAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2NetworkInterfaceAttachmentType, ResourceEC2NetworkInterfaceAttachment(), data, eC2NetworkInterfaceAttachmentProperties, meta)
+	return plugin.ResourceCreate(eC2NetworkInterfaceAttachmentType, ResourceEC2NetworkInterfaceAttachment(), data, meta)
 }
 
 func resourceEC2NetworkInterfaceAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2NetworkInterfaceAttachmentType, ResourceEC2NetworkInterfaceAttachment(), data, eC2NetworkInterfaceAttachmentProperties, meta)
+	return plugin.ResourceUpdate(eC2NetworkInterfaceAttachmentType, ResourceEC2NetworkInterfaceAttachment(), data, meta)
 }
 
 func resourceEC2NetworkInterfaceAttachmentDelete(data *schema.ResourceData, meta interface{}) error {

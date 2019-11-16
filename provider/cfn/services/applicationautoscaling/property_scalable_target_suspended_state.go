@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var scalableTargetSuspendedStateProperties map[string]string = map[string]string{
-	"dynamic_scaling_in_suspended": "DynamicScalingInSuspended",
-	"dynamic_scaling_out_suspended": "DynamicScalingOutSuspended",
-	"scheduled_scaling_suspended": "ScheduledScalingSuspended",
-}
-
 func propertyScalableTargetSuspendedState(extras...string) *schema.Resource {
 	var count int64 = 0
 	

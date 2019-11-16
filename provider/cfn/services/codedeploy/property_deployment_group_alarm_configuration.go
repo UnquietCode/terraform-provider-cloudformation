@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deploymentGroupAlarmConfigurationProperties map[string]string = map[string]string{
-	"alarms": "Alarms",
-	"enabled": "Enabled",
-	"ignore_poll_alarm_failure": "IgnorePollAlarmFailure",
-}
-
 func propertyDeploymentGroupAlarmConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

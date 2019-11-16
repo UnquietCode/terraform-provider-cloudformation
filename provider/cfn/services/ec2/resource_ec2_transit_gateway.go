@@ -17,17 +17,6 @@ import (
 
 const eC2TransitGatewayType string = "AWS::EC2::TransitGateway"
 
-var eC2TransitGatewayProperties map[string]string = map[string]string{
-	"default_route_table_propagation": "DefaultRouteTablePropagation",
-	"description": "Description",
-	"auto_accept_shared_attachments": "AutoAcceptSharedAttachments",
-	"default_route_table_association": "DefaultRouteTableAssociation",
-	"vpn_ecmp_support": "VpnEcmpSupport",
-	"dns_support": "DnsSupport",
-	"amazon_side_asn": "AmazonSideAsn",
-	"tags": "Tags",
-}
-
 func ResourceEC2TransitGateway() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2TransitGatewayExists,
@@ -85,11 +74,11 @@ func resourceEC2TransitGatewayRead(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceEC2TransitGatewayCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2TransitGatewayType, ResourceEC2TransitGateway(), data, eC2TransitGatewayProperties, meta)
+	return plugin.ResourceCreate(eC2TransitGatewayType, ResourceEC2TransitGateway(), data, meta)
 }
 
 func resourceEC2TransitGatewayUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2TransitGatewayType, ResourceEC2TransitGateway(), data, eC2TransitGatewayProperties, meta)
+	return plugin.ResourceUpdate(eC2TransitGatewayType, ResourceEC2TransitGateway(), data, meta)
 }
 
 func resourceEC2TransitGatewayDelete(data *schema.ResourceData, meta interface{}) error {

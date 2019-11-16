@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var stackUserSettingProperties map[string]string = map[string]string{
-	"action": "Action",
-	"permission": "Permission",
-}
-
 func propertyStackUserSetting(extras...string) *schema.Resource {
 	var count int64 = 0
 	

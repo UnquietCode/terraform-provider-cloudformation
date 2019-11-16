@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var topicRuleCloudwatchMetricActionProperties map[string]string = map[string]string{
-	"metric_name": "MetricName",
-	"metric_namespace": "MetricNamespace",
-	"metric_timestamp": "MetricTimestamp",
-	"metric_unit": "MetricUnit",
-	"metric_value": "MetricValue",
-	"role_arn": "RoleArn",
-}
-
 func propertyTopicRuleCloudwatchMetricAction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

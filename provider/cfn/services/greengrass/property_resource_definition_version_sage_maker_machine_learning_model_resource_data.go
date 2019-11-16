@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var resourceDefinitionVersionSageMakerMachineLearningModelResourceDataProperties map[string]string = map[string]string{
-	"destination_path": "DestinationPath",
-	"sage_maker_job_arn": "SageMakerJobArn",
-}
-
 func propertyResourceDefinitionVersionSageMakerMachineLearningModelResourceData(extras...string) *schema.Resource {
 	var count int64 = 0
 	

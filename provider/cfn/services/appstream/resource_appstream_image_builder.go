@@ -17,20 +17,6 @@ import (
 
 const appStreamImageBuilderType string = "AWS::AppStream::ImageBuilder"
 
-var appStreamImageBuilderProperties map[string]string = map[string]string{
-	"image_name": "ImageName",
-	"description": "Description",
-	"vpc_config": "VpcConfig",
-	"enable_default_internet_access": "EnableDefaultInternetAccess",
-	"display_name": "DisplayName",
-	"domain_join_info": "DomainJoinInfo",
-	"appstream_agent_version": "AppstreamAgentVersion",
-	"instance_type": "InstanceType",
-	"tags": "Tags",
-	"name": "Name",
-	"image_arn": "ImageArn",
-}
-
 func ResourceAppStreamImageBuilder() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppStreamImageBuilderExists,
@@ -104,11 +90,11 @@ func resourceAppStreamImageBuilderRead(data *schema.ResourceData, meta interface
 }
 
 func resourceAppStreamImageBuilderCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(appStreamImageBuilderType, ResourceAppStreamImageBuilder(), data, appStreamImageBuilderProperties, meta)
+	return plugin.ResourceCreate(appStreamImageBuilderType, ResourceAppStreamImageBuilder(), data, meta)
 }
 
 func resourceAppStreamImageBuilderUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(appStreamImageBuilderType, ResourceAppStreamImageBuilder(), data, appStreamImageBuilderProperties, meta)
+	return plugin.ResourceUpdate(appStreamImageBuilderType, ResourceAppStreamImageBuilder(), data, meta)
 }
 
 func resourceAppStreamImageBuilderDelete(data *schema.ResourceData, meta interface{}) error {

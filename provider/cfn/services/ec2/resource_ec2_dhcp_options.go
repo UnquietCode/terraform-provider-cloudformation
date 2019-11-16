@@ -17,15 +17,6 @@ import (
 
 const eC2DHCPOptionsType string = "AWS::EC2::DHCPOptions"
 
-var eC2DHCPOptionsProperties map[string]string = map[string]string{
-	"domain_name": "DomainName",
-	"domain_name_servers": "DomainNameServers",
-	"netbios_name_servers": "NetbiosNameServers",
-	"netbios_node_type": "NetbiosNodeType",
-	"ntp_servers": "NtpServers",
-	"tags": "Tags",
-}
-
 func ResourceEC2DHCPOptions() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2DHCPOptionsExists,
@@ -80,11 +71,11 @@ func resourceEC2DHCPOptionsRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceEC2DHCPOptionsCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2DHCPOptionsType, ResourceEC2DHCPOptions(), data, eC2DHCPOptionsProperties, meta)
+	return plugin.ResourceCreate(eC2DHCPOptionsType, ResourceEC2DHCPOptions(), data, meta)
 }
 
 func resourceEC2DHCPOptionsUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2DHCPOptionsType, ResourceEC2DHCPOptions(), data, eC2DHCPOptionsProperties, meta)
+	return plugin.ResourceUpdate(eC2DHCPOptionsType, ResourceEC2DHCPOptions(), data, meta)
 }
 
 func resourceEC2DHCPOptionsDelete(data *schema.ResourceData, meta interface{}) error {

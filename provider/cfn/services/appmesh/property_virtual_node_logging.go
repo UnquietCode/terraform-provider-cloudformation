@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var virtualNodeLoggingProperties map[string]string = map[string]string{
-	"access_log": "AccessLog",
-}
-
 func propertyVirtualNodeLogging(extras...string) *schema.Resource {
 	var count int64 = 0
 	

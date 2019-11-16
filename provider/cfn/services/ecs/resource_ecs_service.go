@@ -17,27 +17,6 @@ import (
 
 const eCSServiceType string = "AWS::ECS::Service"
 
-var eCSServiceProperties map[string]string = map[string]string{
-	"cluster": "Cluster",
-	"deployment_configuration": "DeploymentConfiguration",
-	"desired_count": "DesiredCount",
-	"enable_ecs_managed_tags": "EnableECSManagedTags",
-	"health_check_grace_period_seconds": "HealthCheckGracePeriodSeconds",
-	"launch_type": "LaunchType",
-	"load_balancers": "LoadBalancers",
-	"network_configuration": "NetworkConfiguration",
-	"placement_constraints": "PlacementConstraints",
-	"placement_strategies": "PlacementStrategies",
-	"platform_version": "PlatformVersion",
-	"propagate_tags": "PropagateTags",
-	"role": "Role",
-	"scheduling_strategy": "SchedulingStrategy",
-	"service_name": "ServiceName",
-	"service_registries": "ServiceRegistries",
-	"tags": "Tags",
-	"task_definition": "TaskDefinition",
-}
-
 func ResourceECSService() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceECSServiceExists,
@@ -143,11 +122,11 @@ func resourceECSServiceRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceECSServiceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eCSServiceType, ResourceECSService(), data, eCSServiceProperties, meta)
+	return plugin.ResourceCreate(eCSServiceType, ResourceECSService(), data, meta)
 }
 
 func resourceECSServiceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eCSServiceType, ResourceECSService(), data, eCSServiceProperties, meta)
+	return plugin.ResourceUpdate(eCSServiceType, ResourceECSService(), data, meta)
 }
 
 func resourceECSServiceDelete(data *schema.ResourceData, meta interface{}) error {

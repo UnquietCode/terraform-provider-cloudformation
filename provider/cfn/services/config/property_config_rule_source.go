@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var configRuleSourceProperties map[string]string = map[string]string{
-	"owner": "Owner",
-	"source_details": "SourceDetails",
-	"source_identifier": "SourceIdentifier",
-}
-
 func propertyConfigRuleSource(extras...string) *schema.Resource {
 	var count int64 = 0
 	

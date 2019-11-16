@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var domainNameEndpointConfigurationProperties map[string]string = map[string]string{
-	"types": "Types",
-}
-
 func propertyDomainNameEndpointConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

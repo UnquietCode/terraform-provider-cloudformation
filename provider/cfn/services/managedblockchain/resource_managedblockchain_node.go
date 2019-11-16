@@ -16,12 +16,6 @@ import (
 
 const managedBlockchainNodeType string = "AWS::ManagedBlockchain::Node"
 
-var managedBlockchainNodeProperties map[string]string = map[string]string{
-	"member_id": "MemberId",
-	"network_id": "NetworkId",
-	"node_configuration": "NodeConfiguration",
-}
-
 func ResourceManagedBlockchainNode() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceManagedBlockchainNodeExists,
@@ -64,11 +58,11 @@ func resourceManagedBlockchainNodeRead(data *schema.ResourceData, meta interface
 }
 
 func resourceManagedBlockchainNodeCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(managedBlockchainNodeType, ResourceManagedBlockchainNode(), data, managedBlockchainNodeProperties, meta)
+	return plugin.ResourceCreate(managedBlockchainNodeType, ResourceManagedBlockchainNode(), data, meta)
 }
 
 func resourceManagedBlockchainNodeUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(managedBlockchainNodeType, ResourceManagedBlockchainNode(), data, managedBlockchainNodeProperties, meta)
+	return plugin.ResourceUpdate(managedBlockchainNodeType, ResourceManagedBlockchainNode(), data, meta)
 }
 
 func resourceManagedBlockchainNodeDelete(data *schema.ResourceData, meta interface{}) error {

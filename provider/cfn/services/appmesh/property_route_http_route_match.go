@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var routeHttpRouteMatchProperties map[string]string = map[string]string{
-	"scheme": "Scheme",
-	"headers": "Headers",
-	"prefix": "Prefix",
-	"method": "Method",
-}
-
 func propertyRouteHttpRouteMatch(extras...string) *schema.Resource {
 	var count int64 = 0
 	

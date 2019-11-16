@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var budgetNotificationProperties map[string]string = map[string]string{
-	"comparison_operator": "ComparisonOperator",
-	"notification_type": "NotificationType",
-	"threshold": "Threshold",
-	"threshold_type": "ThresholdType",
-}
-
 func propertyBudgetNotification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

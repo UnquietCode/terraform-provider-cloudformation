@@ -16,11 +16,6 @@ import (
 
 const ioTTopicRuleType string = "AWS::IoT::TopicRule"
 
-var ioTTopicRuleProperties map[string]string = map[string]string{
-	"rule_name": "RuleName",
-	"topic_rule_payload": "TopicRulePayload",
-}
-
 func ResourceIoTTopicRule() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoTTopicRuleExists,
@@ -59,11 +54,11 @@ func resourceIoTTopicRuleRead(data *schema.ResourceData, meta interface{}) error
 }
 
 func resourceIoTTopicRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(ioTTopicRuleType, ResourceIoTTopicRule(), data, ioTTopicRuleProperties, meta)
+	return plugin.ResourceCreate(ioTTopicRuleType, ResourceIoTTopicRule(), data, meta)
 }
 
 func resourceIoTTopicRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(ioTTopicRuleType, ResourceIoTTopicRule(), data, ioTTopicRuleProperties, meta)
+	return plugin.ResourceUpdate(ioTTopicRuleType, ResourceIoTTopicRule(), data, meta)
 }
 
 func resourceIoTTopicRuleDelete(data *schema.ResourceData, meta interface{}) error {

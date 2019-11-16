@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var dataCatalogEncryptionSettingsEncryptionAtRestProperties map[string]string = map[string]string{
-	"catalog_encryption_mode": "CatalogEncryptionMode",
-	"sse_aws_kms_key_id": "SseAwsKmsKeyId",
-}
-
 func propertyDataCatalogEncryptionSettingsEncryptionAtRest(extras...string) *schema.Resource {
 	var count int64 = 0
 	

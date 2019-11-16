@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var imageBuilderVpcConfigProperties map[string]string = map[string]string{
-	"security_group_ids": "SecurityGroupIds",
-	"subnet_ids": "SubnetIds",
-}
-
 func propertyImageBuilderVpcConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

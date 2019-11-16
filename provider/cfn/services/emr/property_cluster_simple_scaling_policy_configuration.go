@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var clusterSimpleScalingPolicyConfigurationProperties map[string]string = map[string]string{
-	"adjustment_type": "AdjustmentType",
-	"cool_down": "CoolDown",
-	"scaling_adjustment": "ScalingAdjustment",
-}
-
 func propertyClusterSimpleScalingPolicyConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -17,19 +17,6 @@ import (
 
 const sSMMaintenanceWindowType string = "AWS::SSM::MaintenanceWindow"
 
-var sSMMaintenanceWindowProperties map[string]string = map[string]string{
-	"start_date": "StartDate",
-	"description": "Description",
-	"allow_unassociated_targets": "AllowUnassociatedTargets",
-	"cutoff": "Cutoff",
-	"schedule": "Schedule",
-	"duration": "Duration",
-	"end_date": "EndDate",
-	"tags": "Tags",
-	"name": "Name",
-	"schedule_timezone": "ScheduleTimezone",
-}
-
 func ResourceSSMMaintenanceWindow() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSSMMaintenanceWindowExists,
@@ -95,11 +82,11 @@ func resourceSSMMaintenanceWindowRead(data *schema.ResourceData, meta interface{
 }
 
 func resourceSSMMaintenanceWindowCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(sSMMaintenanceWindowType, ResourceSSMMaintenanceWindow(), data, sSMMaintenanceWindowProperties, meta)
+	return plugin.ResourceCreate(sSMMaintenanceWindowType, ResourceSSMMaintenanceWindow(), data, meta)
 }
 
 func resourceSSMMaintenanceWindowUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(sSMMaintenanceWindowType, ResourceSSMMaintenanceWindow(), data, sSMMaintenanceWindowProperties, meta)
+	return plugin.ResourceUpdate(sSMMaintenanceWindowType, ResourceSSMMaintenanceWindow(), data, meta)
 }
 
 func resourceSSMMaintenanceWindowDelete(data *schema.ResourceData, meta interface{}) error {

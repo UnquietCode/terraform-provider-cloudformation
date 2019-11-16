@@ -16,14 +16,6 @@ import (
 
 const serviceCatalogLaunchTemplateConstraintType string = "AWS::ServiceCatalog::LaunchTemplateConstraint"
 
-var serviceCatalogLaunchTemplateConstraintProperties map[string]string = map[string]string{
-	"description": "Description",
-	"accept_language": "AcceptLanguage",
-	"portfolio_id": "PortfolioId",
-	"product_id": "ProductId",
-	"rules": "Rules",
-}
-
 func ResourceServiceCatalogLaunchTemplateConstraint() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogLaunchTemplateConstraintExists,
@@ -72,11 +64,11 @@ func resourceServiceCatalogLaunchTemplateConstraintRead(data *schema.ResourceDat
 }
 
 func resourceServiceCatalogLaunchTemplateConstraintCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(serviceCatalogLaunchTemplateConstraintType, ResourceServiceCatalogLaunchTemplateConstraint(), data, serviceCatalogLaunchTemplateConstraintProperties, meta)
+	return plugin.ResourceCreate(serviceCatalogLaunchTemplateConstraintType, ResourceServiceCatalogLaunchTemplateConstraint(), data, meta)
 }
 
 func resourceServiceCatalogLaunchTemplateConstraintUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(serviceCatalogLaunchTemplateConstraintType, ResourceServiceCatalogLaunchTemplateConstraint(), data, serviceCatalogLaunchTemplateConstraintProperties, meta)
+	return plugin.ResourceUpdate(serviceCatalogLaunchTemplateConstraintType, ResourceServiceCatalogLaunchTemplateConstraint(), data, meta)
 }
 
 func resourceServiceCatalogLaunchTemplateConstraintDelete(data *schema.ResourceData, meta interface{}) error {

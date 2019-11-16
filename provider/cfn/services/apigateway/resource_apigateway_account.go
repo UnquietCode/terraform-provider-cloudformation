@@ -16,10 +16,6 @@ import (
 
 const apiGatewayAccountType string = "AWS::ApiGateway::Account"
 
-var apiGatewayAccountProperties map[string]string = map[string]string{
-	"cloud_watch_role_arn": "CloudWatchRoleArn",
-}
-
 func ResourceApiGatewayAccount() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayAccountExists,
@@ -52,11 +48,11 @@ func resourceApiGatewayAccountRead(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceApiGatewayAccountCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayAccountType, ResourceApiGatewayAccount(), data, apiGatewayAccountProperties, meta)
+	return plugin.ResourceCreate(apiGatewayAccountType, ResourceApiGatewayAccount(), data, meta)
 }
 
 func resourceApiGatewayAccountUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayAccountType, ResourceApiGatewayAccount(), data, apiGatewayAccountProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayAccountType, ResourceApiGatewayAccount(), data, meta)
 }
 
 func resourceApiGatewayAccountDelete(data *schema.ResourceData, meta interface{}) error {

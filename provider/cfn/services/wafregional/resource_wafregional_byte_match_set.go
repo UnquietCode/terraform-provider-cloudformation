@@ -16,11 +16,6 @@ import (
 
 const wAFRegionalByteMatchSetType string = "AWS::WAFRegional::ByteMatchSet"
 
-var wAFRegionalByteMatchSetProperties map[string]string = map[string]string{
-	"byte_match_tuples": "ByteMatchTuples",
-	"name": "Name",
-}
-
 func ResourceWAFRegionalByteMatchSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFRegionalByteMatchSetExists,
@@ -58,11 +53,11 @@ func resourceWAFRegionalByteMatchSetRead(data *schema.ResourceData, meta interfa
 }
 
 func resourceWAFRegionalByteMatchSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(wAFRegionalByteMatchSetType, ResourceWAFRegionalByteMatchSet(), data, wAFRegionalByteMatchSetProperties, meta)
+	return plugin.ResourceCreate(wAFRegionalByteMatchSetType, ResourceWAFRegionalByteMatchSet(), data, meta)
 }
 
 func resourceWAFRegionalByteMatchSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(wAFRegionalByteMatchSetType, ResourceWAFRegionalByteMatchSet(), data, wAFRegionalByteMatchSetProperties, meta)
+	return plugin.ResourceUpdate(wAFRegionalByteMatchSetType, ResourceWAFRegionalByteMatchSet(), data, meta)
 }
 
 func resourceWAFRegionalByteMatchSetDelete(data *schema.ResourceData, meta interface{}) error {

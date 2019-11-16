@@ -16,13 +16,6 @@ import (
 
 const eC2ClientVpnRouteType string = "AWS::EC2::ClientVpnRoute"
 
-var eC2ClientVpnRouteProperties map[string]string = map[string]string{
-	"client_vpn_endpoint_id": "ClientVpnEndpointId",
-	"target_vpc_subnet_id": "TargetVpcSubnetId",
-	"description": "Description",
-	"destination_cidr_block": "DestinationCidrBlock",
-}
-
 func ResourceEC2ClientVpnRoute() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2ClientVpnRouteExists,
@@ -67,11 +60,11 @@ func resourceEC2ClientVpnRouteRead(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceEC2ClientVpnRouteCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2ClientVpnRouteType, ResourceEC2ClientVpnRoute(), data, eC2ClientVpnRouteProperties, meta)
+	return plugin.ResourceCreate(eC2ClientVpnRouteType, ResourceEC2ClientVpnRoute(), data, meta)
 }
 
 func resourceEC2ClientVpnRouteUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2ClientVpnRouteType, ResourceEC2ClientVpnRoute(), data, eC2ClientVpnRouteProperties, meta)
+	return plugin.ResourceUpdate(eC2ClientVpnRouteType, ResourceEC2ClientVpnRoute(), data, meta)
 }
 
 func resourceEC2ClientVpnRouteDelete(data *schema.ResourceData, meta interface{}) error {

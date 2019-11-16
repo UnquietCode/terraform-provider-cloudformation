@@ -16,11 +16,6 @@ import (
 
 const iAMUserToGroupAdditionType string = "AWS::IAM::UserToGroupAddition"
 
-var iAMUserToGroupAdditionProperties map[string]string = map[string]string{
-	"group_name": "GroupName",
-	"users": "Users",
-}
-
 func ResourceIAMUserToGroupAddition() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIAMUserToGroupAdditionExists,
@@ -58,11 +53,11 @@ func resourceIAMUserToGroupAdditionRead(data *schema.ResourceData, meta interfac
 }
 
 func resourceIAMUserToGroupAdditionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(iAMUserToGroupAdditionType, ResourceIAMUserToGroupAddition(), data, iAMUserToGroupAdditionProperties, meta)
+	return plugin.ResourceCreate(iAMUserToGroupAdditionType, ResourceIAMUserToGroupAddition(), data, meta)
 }
 
 func resourceIAMUserToGroupAdditionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(iAMUserToGroupAdditionType, ResourceIAMUserToGroupAddition(), data, iAMUserToGroupAdditionProperties, meta)
+	return plugin.ResourceUpdate(iAMUserToGroupAdditionType, ResourceIAMUserToGroupAddition(), data, meta)
 }
 
 func resourceIAMUserToGroupAdditionDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var ruleEcsParametersProperties map[string]string = map[string]string{
-	"group": "Group",
-	"launch_type": "LaunchType",
-	"network_configuration": "NetworkConfiguration",
-	"platform_version": "PlatformVersion",
-	"task_count": "TaskCount",
-	"task_definition_arn": "TaskDefinitionArn",
-}
-
 func propertyRuleEcsParameters(extras...string) *schema.Resource {
 	var count int64 = 0
 	

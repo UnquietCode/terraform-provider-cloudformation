@@ -17,14 +17,6 @@ import (
 
 const codeCommitRepositoryType string = "AWS::CodeCommit::Repository"
 
-var codeCommitRepositoryProperties map[string]string = map[string]string{
-	"repository_name": "RepositoryName",
-	"triggers": "Triggers",
-	"code": "Code",
-	"repository_description": "RepositoryDescription",
-	"tags": "Tags",
-}
-
 func ResourceCodeCommitRepository() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCodeCommitRepositoryExists,
@@ -73,11 +65,11 @@ func resourceCodeCommitRepositoryRead(data *schema.ResourceData, meta interface{
 }
 
 func resourceCodeCommitRepositoryCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(codeCommitRepositoryType, ResourceCodeCommitRepository(), data, codeCommitRepositoryProperties, meta)
+	return plugin.ResourceCreate(codeCommitRepositoryType, ResourceCodeCommitRepository(), data, meta)
 }
 
 func resourceCodeCommitRepositoryUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(codeCommitRepositoryType, ResourceCodeCommitRepository(), data, codeCommitRepositoryProperties, meta)
+	return plugin.ResourceUpdate(codeCommitRepositoryType, ResourceCodeCommitRepository(), data, meta)
 }
 
 func resourceCodeCommitRepositoryDelete(data *schema.ResourceData, meta interface{}) error {

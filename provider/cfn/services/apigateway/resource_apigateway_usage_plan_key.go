@@ -16,12 +16,6 @@ import (
 
 const apiGatewayUsagePlanKeyType string = "AWS::ApiGateway::UsagePlanKey"
 
-var apiGatewayUsagePlanKeyProperties map[string]string = map[string]string{
-	"key_id": "KeyId",
-	"key_type": "KeyType",
-	"usage_plan_id": "UsagePlanId",
-}
-
 func ResourceApiGatewayUsagePlanKey() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayUsagePlanKeyExists,
@@ -62,11 +56,11 @@ func resourceApiGatewayUsagePlanKeyRead(data *schema.ResourceData, meta interfac
 }
 
 func resourceApiGatewayUsagePlanKeyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayUsagePlanKeyType, ResourceApiGatewayUsagePlanKey(), data, apiGatewayUsagePlanKeyProperties, meta)
+	return plugin.ResourceCreate(apiGatewayUsagePlanKeyType, ResourceApiGatewayUsagePlanKey(), data, meta)
 }
 
 func resourceApiGatewayUsagePlanKeyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayUsagePlanKeyType, ResourceApiGatewayUsagePlanKey(), data, apiGatewayUsagePlanKeyProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayUsagePlanKeyType, ResourceApiGatewayUsagePlanKey(), data, meta)
 }
 
 func resourceApiGatewayUsagePlanKeyDelete(data *schema.ResourceData, meta interface{}) error {

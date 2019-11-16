@@ -16,11 +16,6 @@ import (
 
 const greengrassSubscriptionDefinitionVersionType string = "AWS::Greengrass::SubscriptionDefinitionVersion"
 
-var greengrassSubscriptionDefinitionVersionProperties map[string]string = map[string]string{
-	"subscription_definition_id": "SubscriptionDefinitionId",
-	"subscriptions": "Subscriptions",
-}
-
 func ResourceGreengrassSubscriptionDefinitionVersion() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGreengrassSubscriptionDefinitionVersionExists,
@@ -58,11 +53,11 @@ func resourceGreengrassSubscriptionDefinitionVersionRead(data *schema.ResourceDa
 }
 
 func resourceGreengrassSubscriptionDefinitionVersionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(greengrassSubscriptionDefinitionVersionType, ResourceGreengrassSubscriptionDefinitionVersion(), data, greengrassSubscriptionDefinitionVersionProperties, meta)
+	return plugin.ResourceCreate(greengrassSubscriptionDefinitionVersionType, ResourceGreengrassSubscriptionDefinitionVersion(), data, meta)
 }
 
 func resourceGreengrassSubscriptionDefinitionVersionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(greengrassSubscriptionDefinitionVersionType, ResourceGreengrassSubscriptionDefinitionVersion(), data, greengrassSubscriptionDefinitionVersionProperties, meta)
+	return plugin.ResourceUpdate(greengrassSubscriptionDefinitionVersionType, ResourceGreengrassSubscriptionDefinitionVersion(), data, meta)
 }
 
 func resourceGreengrassSubscriptionDefinitionVersionDelete(data *schema.ResourceData, meta interface{}) error {

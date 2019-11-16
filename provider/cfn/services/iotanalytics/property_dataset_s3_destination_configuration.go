@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var datasetS3DestinationConfigurationProperties map[string]string = map[string]string{
-	"glue_configuration": "GlueConfiguration",
-	"bucket": "Bucket",
-	"key": "Key",
-	"role_arn": "RoleArn",
-}
-
 func propertyDatasetS3DestinationConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

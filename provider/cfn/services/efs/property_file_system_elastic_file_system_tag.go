@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var fileSystemElasticFileSystemTagProperties map[string]string = map[string]string{
-	"key": "Key",
-	"value": "Value",
-}
-
 func propertyFileSystemElasticFileSystemTag(extras...string) *schema.Resource {
 	var count int64 = 0
 	

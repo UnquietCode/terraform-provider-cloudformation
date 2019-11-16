@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var detectorModelOnExitProperties map[string]string = map[string]string{
-	"events": "Events",
-}
-
 func propertyDetectorModelOnExit(extras...string) *schema.Resource {
 	var count int64 = 0
 	

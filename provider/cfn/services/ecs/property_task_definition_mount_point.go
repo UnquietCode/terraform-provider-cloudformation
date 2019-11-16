@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var taskDefinitionMountPointProperties map[string]string = map[string]string{
-	"container_path": "ContainerPath",
-	"read_only": "ReadOnly",
-	"source_volume": "SourceVolume",
-}
-
 func propertyTaskDefinitionMountPoint(extras...string) *schema.Resource {
 	var count int64 = 0
 	

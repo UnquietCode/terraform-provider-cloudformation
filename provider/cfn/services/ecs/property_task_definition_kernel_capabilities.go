@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var taskDefinitionKernelCapabilitiesProperties map[string]string = map[string]string{
-	"add": "Add",
-	"drop": "Drop",
-}
-
 func propertyTaskDefinitionKernelCapabilities(extras...string) *schema.Resource {
 	var count int64 = 0
 	

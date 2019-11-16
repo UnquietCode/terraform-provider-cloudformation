@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var stackRdsDbInstanceProperties map[string]string = map[string]string{
-	"db_password": "DbPassword",
-	"db_user": "DbUser",
-	"rds_db_instance_arn": "RdsDbInstanceArn",
-}
-
 func propertyStackRdsDbInstance(extras...string) *schema.Resource {
 	var count int64 = 0
 	

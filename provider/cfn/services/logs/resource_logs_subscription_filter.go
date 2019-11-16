@@ -16,13 +16,6 @@ import (
 
 const logsSubscriptionFilterType string = "AWS::Logs::SubscriptionFilter"
 
-var logsSubscriptionFilterProperties map[string]string = map[string]string{
-	"destination_arn": "DestinationArn",
-	"filter_pattern": "FilterPattern",
-	"log_group_name": "LogGroupName",
-	"role_arn": "RoleArn",
-}
-
 func ResourceLogsSubscriptionFilter() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLogsSubscriptionFilterExists,
@@ -67,11 +60,11 @@ func resourceLogsSubscriptionFilterRead(data *schema.ResourceData, meta interfac
 }
 
 func resourceLogsSubscriptionFilterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(logsSubscriptionFilterType, ResourceLogsSubscriptionFilter(), data, logsSubscriptionFilterProperties, meta)
+	return plugin.ResourceCreate(logsSubscriptionFilterType, ResourceLogsSubscriptionFilter(), data, meta)
 }
 
 func resourceLogsSubscriptionFilterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(logsSubscriptionFilterType, ResourceLogsSubscriptionFilter(), data, logsSubscriptionFilterProperties, meta)
+	return plugin.ResourceUpdate(logsSubscriptionFilterType, ResourceLogsSubscriptionFilter(), data, meta)
 }
 
 func resourceLogsSubscriptionFilterDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var networkInterfacePrivateIpAddressSpecificationProperties map[string]string = map[string]string{
-	"primary": "Primary",
-	"private_ip_address": "PrivateIpAddress",
-}
-
 func propertyNetworkInterfacePrivateIpAddressSpecification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

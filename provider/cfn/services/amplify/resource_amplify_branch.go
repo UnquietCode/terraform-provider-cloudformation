@@ -17,20 +17,6 @@ import (
 
 const amplifyBranchType string = "AWS::Amplify::Branch"
 
-var amplifyBranchProperties map[string]string = map[string]string{
-	"description": "Description",
-	"environment_variables": "EnvironmentVariables",
-	"app_id": "AppId",
-	"pull_request_environment_name": "PullRequestEnvironmentName",
-	"enable_pull_request_preview": "EnablePullRequestPreview",
-	"enable_auto_build": "EnableAutoBuild",
-	"build_spec": "BuildSpec",
-	"stage": "Stage",
-	"branch_name": "BranchName",
-	"basic_auth_config": "BasicAuthConfig",
-	"tags": "Tags",
-}
-
 func ResourceAmplifyBranch() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAmplifyBranchExists,
@@ -103,11 +89,11 @@ func resourceAmplifyBranchRead(data *schema.ResourceData, meta interface{}) erro
 }
 
 func resourceAmplifyBranchCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(amplifyBranchType, ResourceAmplifyBranch(), data, amplifyBranchProperties, meta)
+	return plugin.ResourceCreate(amplifyBranchType, ResourceAmplifyBranch(), data, meta)
 }
 
 func resourceAmplifyBranchUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(amplifyBranchType, ResourceAmplifyBranch(), data, amplifyBranchProperties, meta)
+	return plugin.ResourceUpdate(amplifyBranchType, ResourceAmplifyBranch(), data, meta)
 }
 
 func resourceAmplifyBranchDelete(data *schema.ResourceData, meta interface{}) error {

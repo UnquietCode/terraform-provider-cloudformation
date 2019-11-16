@@ -16,13 +16,6 @@ import (
 
 const codeBuildSourceCredentialType string = "AWS::CodeBuild::SourceCredential"
 
-var codeBuildSourceCredentialProperties map[string]string = map[string]string{
-	"server_type": "ServerType",
-	"username": "Username",
-	"token": "Token",
-	"auth_type": "AuthType",
-}
-
 func ResourceCodeBuildSourceCredential() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCodeBuildSourceCredentialExists,
@@ -67,11 +60,11 @@ func resourceCodeBuildSourceCredentialRead(data *schema.ResourceData, meta inter
 }
 
 func resourceCodeBuildSourceCredentialCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(codeBuildSourceCredentialType, ResourceCodeBuildSourceCredential(), data, codeBuildSourceCredentialProperties, meta)
+	return plugin.ResourceCreate(codeBuildSourceCredentialType, ResourceCodeBuildSourceCredential(), data, meta)
 }
 
 func resourceCodeBuildSourceCredentialUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(codeBuildSourceCredentialType, ResourceCodeBuildSourceCredential(), data, codeBuildSourceCredentialProperties, meta)
+	return plugin.ResourceUpdate(codeBuildSourceCredentialType, ResourceCodeBuildSourceCredential(), data, meta)
 }
 
 func resourceCodeBuildSourceCredentialDelete(data *schema.ResourceData, meta interface{}) error {

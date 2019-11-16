@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deploymentGroupTriggerConfigProperties map[string]string = map[string]string{
-	"trigger_events": "TriggerEvents",
-	"trigger_name": "TriggerName",
-	"trigger_target_arn": "TriggerTargetArn",
-}
-
 func propertyDeploymentGroupTriggerConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

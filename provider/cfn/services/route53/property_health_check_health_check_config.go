@@ -14,25 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var healthCheckHealthCheckConfigProperties map[string]string = map[string]string{
-	"alarm_identifier": "AlarmIdentifier",
-	"child_health_checks": "ChildHealthChecks",
-	"enable_sni": "EnableSNI",
-	"failure_threshold": "FailureThreshold",
-	"fully_qualified_domain_name": "FullyQualifiedDomainName",
-	"health_threshold": "HealthThreshold",
-	"ip_address": "IPAddress",
-	"insufficient_data_health_status": "InsufficientDataHealthStatus",
-	"inverted": "Inverted",
-	"measure_latency": "MeasureLatency",
-	"port": "Port",
-	"regions": "Regions",
-	"request_interval": "RequestInterval",
-	"resource_path": "ResourcePath",
-	"search_string": "SearchString",
-	"type": "Type",
-}
-
 func propertyHealthCheckHealthCheckConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

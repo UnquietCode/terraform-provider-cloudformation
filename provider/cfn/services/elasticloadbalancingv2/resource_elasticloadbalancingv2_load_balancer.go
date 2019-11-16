@@ -17,18 +17,6 @@ import (
 
 const elasticLoadBalancingV2LoadBalancerType string = "AWS::ElasticLoadBalancingV2::LoadBalancer"
 
-var elasticLoadBalancingV2LoadBalancerProperties map[string]string = map[string]string{
-	"ip_address_type": "IpAddressType",
-	"load_balancer_attributes": "LoadBalancerAttributes",
-	"name": "Name",
-	"scheme": "Scheme",
-	"security_groups": "SecurityGroups",
-	"subnet_mappings": "SubnetMappings",
-	"subnets": "Subnets",
-	"tags": "Tags",
-	"type": "Type",
-}
-
 func ResourceElasticLoadBalancingV2LoadBalancer() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElasticLoadBalancingV2LoadBalancerExists,
@@ -96,11 +84,11 @@ func resourceElasticLoadBalancingV2LoadBalancerRead(data *schema.ResourceData, m
 }
 
 func resourceElasticLoadBalancingV2LoadBalancerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(elasticLoadBalancingV2LoadBalancerType, ResourceElasticLoadBalancingV2LoadBalancer(), data, elasticLoadBalancingV2LoadBalancerProperties, meta)
+	return plugin.ResourceCreate(elasticLoadBalancingV2LoadBalancerType, ResourceElasticLoadBalancingV2LoadBalancer(), data, meta)
 }
 
 func resourceElasticLoadBalancingV2LoadBalancerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(elasticLoadBalancingV2LoadBalancerType, ResourceElasticLoadBalancingV2LoadBalancer(), data, elasticLoadBalancingV2LoadBalancerProperties, meta)
+	return plugin.ResourceUpdate(elasticLoadBalancingV2LoadBalancerType, ResourceElasticLoadBalancingV2LoadBalancer(), data, meta)
 }
 
 func resourceElasticLoadBalancingV2LoadBalancerDelete(data *schema.ResourceData, meta interface{}) error {

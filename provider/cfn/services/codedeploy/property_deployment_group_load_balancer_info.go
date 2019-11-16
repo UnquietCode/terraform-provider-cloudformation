@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deploymentGroupLoadBalancerInfoProperties map[string]string = map[string]string{
-	"elb_info_list": "ElbInfoList",
-	"target_group_info_list": "TargetGroupInfoList",
-}
-
 func propertyDeploymentGroupLoadBalancerInfo(extras...string) *schema.Resource {
 	var count int64 = 0
 	

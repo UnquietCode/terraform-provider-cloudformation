@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var serverEndpointDetailsProperties map[string]string = map[string]string{
-	"vpc_endpoint_id": "VpcEndpointId",
-}
-
 func propertyServerEndpointDetails(extras...string) *schema.Resource {
 	var count int64 = 0
 	

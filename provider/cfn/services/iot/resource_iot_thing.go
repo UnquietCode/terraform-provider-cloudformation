@@ -16,11 +16,6 @@ import (
 
 const ioTThingType string = "AWS::IoT::Thing"
 
-var ioTThingProperties map[string]string = map[string]string{
-	"attribute_payload": "AttributePayload",
-	"thing_name": "ThingName",
-}
-
 func ResourceIoTThing() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoTThingExists,
@@ -59,11 +54,11 @@ func resourceIoTThingRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceIoTThingCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(ioTThingType, ResourceIoTThing(), data, ioTThingProperties, meta)
+	return plugin.ResourceCreate(ioTThingType, ResourceIoTThing(), data, meta)
 }
 
 func resourceIoTThingUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(ioTThingType, ResourceIoTThing(), data, ioTThingProperties, meta)
+	return plugin.ResourceUpdate(ioTThingType, ResourceIoTThing(), data, meta)
 }
 
 func resourceIoTThingDelete(data *schema.ResourceData, meta interface{}) error {

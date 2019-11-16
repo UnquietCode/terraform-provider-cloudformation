@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var detectorModelSqsProperties map[string]string = map[string]string{
-	"use_base64": "UseBase64",
-	"queue_url": "QueueUrl",
-}
-
 func propertyDetectorModelSqs(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var domainSubDomainSettingProperties map[string]string = map[string]string{
-	"prefix": "Prefix",
-	"branch_name": "BranchName",
-}
-
 func propertyDomainSubDomainSetting(extras...string) *schema.Resource {
 	var count int64 = 0
 	

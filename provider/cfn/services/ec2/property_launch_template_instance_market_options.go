@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var launchTemplateInstanceMarketOptionsProperties map[string]string = map[string]string{
-	"spot_options": "SpotOptions",
-	"market_type": "MarketType",
-}
-
 func propertyLaunchTemplateInstanceMarketOptions(extras...string) *schema.Resource {
 	var count int64 = 0
 	

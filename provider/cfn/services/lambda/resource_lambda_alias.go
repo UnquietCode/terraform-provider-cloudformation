@@ -16,14 +16,6 @@ import (
 
 const lambdaAliasType string = "AWS::Lambda::Alias"
 
-var lambdaAliasProperties map[string]string = map[string]string{
-	"description": "Description",
-	"function_name": "FunctionName",
-	"function_version": "FunctionVersion",
-	"name": "Name",
-	"routing_config": "RoutingConfig",
-}
-
 func ResourceLambdaAlias() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLambdaAliasExists,
@@ -74,11 +66,11 @@ func resourceLambdaAliasRead(data *schema.ResourceData, meta interface{}) error 
 }
 
 func resourceLambdaAliasCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(lambdaAliasType, ResourceLambdaAlias(), data, lambdaAliasProperties, meta)
+	return plugin.ResourceCreate(lambdaAliasType, ResourceLambdaAlias(), data, meta)
 }
 
 func resourceLambdaAliasUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(lambdaAliasType, ResourceLambdaAlias(), data, lambdaAliasProperties, meta)
+	return plugin.ResourceUpdate(lambdaAliasType, ResourceLambdaAlias(), data, meta)
 }
 
 func resourceLambdaAliasDelete(data *schema.ResourceData, meta interface{}) error {

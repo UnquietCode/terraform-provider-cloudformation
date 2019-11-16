@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var partitionSkewedInfoProperties map[string]string = map[string]string{
-	"skewed_column_names": "SkewedColumnNames",
-	"skewed_column_values": "SkewedColumnValues",
-	"skewed_column_value_location_maps": "SkewedColumnValueLocationMaps",
-}
-
 func propertyPartitionSkewedInfo(extras...string) *schema.Resource {
 	var count int64 = 0
 	

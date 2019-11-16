@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var campaignCampaignHookProperties map[string]string = map[string]string{
-	"mode": "Mode",
-	"web_url": "WebUrl",
-	"lambda_function_name": "LambdaFunctionName",
-}
-
 func propertyCampaignCampaignHook(extras...string) *schema.Resource {
 	var count int64 = 0
 	

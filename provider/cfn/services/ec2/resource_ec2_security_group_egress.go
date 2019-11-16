@@ -16,18 +16,6 @@ import (
 
 const eC2SecurityGroupEgressType string = "AWS::EC2::SecurityGroupEgress"
 
-var eC2SecurityGroupEgressProperties map[string]string = map[string]string{
-	"cidr_ip": "CidrIp",
-	"cidr_ipv6": "CidrIpv6",
-	"description": "Description",
-	"destination_prefix_list_id": "DestinationPrefixListId",
-	"destination_security_group_id": "DestinationSecurityGroupId",
-	"from_port": "FromPort",
-	"group_id": "GroupId",
-	"ip_protocol": "IpProtocol",
-	"to_port": "ToPort",
-}
-
 func ResourceEC2SecurityGroupEgress() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2SecurityGroupEgressExists,
@@ -92,11 +80,11 @@ func resourceEC2SecurityGroupEgressRead(data *schema.ResourceData, meta interfac
 }
 
 func resourceEC2SecurityGroupEgressCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2SecurityGroupEgressType, ResourceEC2SecurityGroupEgress(), data, eC2SecurityGroupEgressProperties, meta)
+	return plugin.ResourceCreate(eC2SecurityGroupEgressType, ResourceEC2SecurityGroupEgress(), data, meta)
 }
 
 func resourceEC2SecurityGroupEgressUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2SecurityGroupEgressType, ResourceEC2SecurityGroupEgress(), data, eC2SecurityGroupEgressProperties, meta)
+	return plugin.ResourceUpdate(eC2SecurityGroupEgressType, ResourceEC2SecurityGroupEgress(), data, meta)
 }
 
 func resourceEC2SecurityGroupEgressDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var layerAutoScalingThresholdsProperties map[string]string = map[string]string{
-	"cpu_threshold": "CpuThreshold",
-	"ignore_metrics_time": "IgnoreMetricsTime",
-	"instance_count": "InstanceCount",
-	"load_threshold": "LoadThreshold",
-	"memory_threshold": "MemoryThreshold",
-	"thresholds_wait_time": "ThresholdsWaitTime",
-}
-
 func propertyLayerAutoScalingThresholds(extras...string) *schema.Resource {
 	var count int64 = 0
 	

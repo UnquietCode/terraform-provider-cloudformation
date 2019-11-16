@@ -17,12 +17,6 @@ import (
 
 const eC2TrafficMirrorFilterType string = "AWS::EC2::TrafficMirrorFilter"
 
-var eC2TrafficMirrorFilterProperties map[string]string = map[string]string{
-	"description": "Description",
-	"network_services": "NetworkServices",
-	"tags": "Tags",
-}
-
 func ResourceEC2TrafficMirrorFilter() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2TrafficMirrorFilterExists,
@@ -61,11 +55,11 @@ func resourceEC2TrafficMirrorFilterRead(data *schema.ResourceData, meta interfac
 }
 
 func resourceEC2TrafficMirrorFilterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2TrafficMirrorFilterType, ResourceEC2TrafficMirrorFilter(), data, eC2TrafficMirrorFilterProperties, meta)
+	return plugin.ResourceCreate(eC2TrafficMirrorFilterType, ResourceEC2TrafficMirrorFilter(), data, meta)
 }
 
 func resourceEC2TrafficMirrorFilterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2TrafficMirrorFilterType, ResourceEC2TrafficMirrorFilter(), data, eC2TrafficMirrorFilterProperties, meta)
+	return plugin.ResourceUpdate(eC2TrafficMirrorFilterType, ResourceEC2TrafficMirrorFilter(), data, meta)
 }
 
 func resourceEC2TrafficMirrorFilterDelete(data *schema.ResourceData, meta interface{}) error {

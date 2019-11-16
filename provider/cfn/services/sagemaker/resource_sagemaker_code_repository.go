@@ -16,11 +16,6 @@ import (
 
 const sageMakerCodeRepositoryType string = "AWS::SageMaker::CodeRepository"
 
-var sageMakerCodeRepositoryProperties map[string]string = map[string]string{
-	"code_repository_name": "CodeRepositoryName",
-	"git_config": "GitConfig",
-}
-
 func ResourceSageMakerCodeRepository() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSageMakerCodeRepositoryExists,
@@ -59,11 +54,11 @@ func resourceSageMakerCodeRepositoryRead(data *schema.ResourceData, meta interfa
 }
 
 func resourceSageMakerCodeRepositoryCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(sageMakerCodeRepositoryType, ResourceSageMakerCodeRepository(), data, sageMakerCodeRepositoryProperties, meta)
+	return plugin.ResourceCreate(sageMakerCodeRepositoryType, ResourceSageMakerCodeRepository(), data, meta)
 }
 
 func resourceSageMakerCodeRepositoryUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(sageMakerCodeRepositoryType, ResourceSageMakerCodeRepository(), data, sageMakerCodeRepositoryProperties, meta)
+	return plugin.ResourceUpdate(sageMakerCodeRepositoryType, ResourceSageMakerCodeRepository(), data, meta)
 }
 
 func resourceSageMakerCodeRepositoryDelete(data *schema.ResourceData, meta interface{}) error {

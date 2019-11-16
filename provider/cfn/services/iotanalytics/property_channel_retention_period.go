@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var channelRetentionPeriodProperties map[string]string = map[string]string{
-	"number_of_days": "NumberOfDays",
-	"unlimited": "Unlimited",
-}
-
 func propertyChannelRetentionPeriod(extras...string) *schema.Resource {
 	var count int64 = 0
 	

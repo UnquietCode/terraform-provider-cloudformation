@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var fleetIpPermissionProperties map[string]string = map[string]string{
-	"from_port": "FromPort",
-	"ip_range": "IpRange",
-	"protocol": "Protocol",
-	"to_port": "ToPort",
-}
-
 func propertyFleetIpPermission(extras...string) *schema.Resource {
 	var count int64 = 0
 	

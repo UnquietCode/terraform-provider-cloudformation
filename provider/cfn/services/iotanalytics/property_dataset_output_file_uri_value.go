@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var datasetOutputFileUriValueProperties map[string]string = map[string]string{
-	"file_name": "FileName",
-}
-
 func propertyDatasetOutputFileUriValue(extras...string) *schema.Resource {
 	var count int64 = 0
 	

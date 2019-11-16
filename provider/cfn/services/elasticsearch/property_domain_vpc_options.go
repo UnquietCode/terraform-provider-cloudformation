@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var domainVPCOptionsProperties map[string]string = map[string]string{
-	"security_group_ids": "SecurityGroupIds",
-	"subnet_ids": "SubnetIds",
-}
-
 func propertyDomainVPCOptions(extras...string) *schema.Resource {
 	var count int64 = 0
 	

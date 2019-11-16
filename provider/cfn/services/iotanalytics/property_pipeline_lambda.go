@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var pipelineLambdaProperties map[string]string = map[string]string{
-	"batch_size": "BatchSize",
-	"next": "Next",
-	"lambda_name": "LambdaName",
-	"name": "Name",
-}
-
 func propertyPipelineLambda(extras...string) *schema.Resource {
 	var count int64 = 0
 	

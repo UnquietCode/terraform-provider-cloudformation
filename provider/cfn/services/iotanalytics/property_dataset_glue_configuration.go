@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var datasetGlueConfigurationProperties map[string]string = map[string]string{
-	"table_name": "TableName",
-	"database_name": "DatabaseName",
-}
-
 func propertyDatasetGlueConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

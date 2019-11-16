@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var receiptRuleWorkmailActionProperties map[string]string = map[string]string{
-	"topic_arn": "TopicArn",
-	"organization_arn": "OrganizationArn",
-}
-
 func propertyReceiptRuleWorkmailAction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

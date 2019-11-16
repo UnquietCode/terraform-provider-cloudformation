@@ -17,12 +17,6 @@ import (
 
 const eC2VPNGatewayType string = "AWS::EC2::VPNGateway"
 
-var eC2VPNGatewayProperties map[string]string = map[string]string{
-	"amazon_side_asn": "AmazonSideAsn",
-	"tags": "Tags",
-	"type": "Type",
-}
-
 func ResourceEC2VPNGateway() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPNGatewayExists,
@@ -60,11 +54,11 @@ func resourceEC2VPNGatewayRead(data *schema.ResourceData, meta interface{}) erro
 }
 
 func resourceEC2VPNGatewayCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2VPNGatewayType, ResourceEC2VPNGateway(), data, eC2VPNGatewayProperties, meta)
+	return plugin.ResourceCreate(eC2VPNGatewayType, ResourceEC2VPNGateway(), data, meta)
 }
 
 func resourceEC2VPNGatewayUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2VPNGatewayType, ResourceEC2VPNGateway(), data, eC2VPNGatewayProperties, meta)
+	return plugin.ResourceUpdate(eC2VPNGatewayType, ResourceEC2VPNGateway(), data, meta)
 }
 
 func resourceEC2VPNGatewayDelete(data *schema.ResourceData, meta interface{}) error {

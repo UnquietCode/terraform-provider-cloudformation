@@ -16,11 +16,6 @@ import (
 
 const ioTCertificateType string = "AWS::IoT::Certificate"
 
-var ioTCertificateProperties map[string]string = map[string]string{
-	"certificate_signing_request": "CertificateSigningRequest",
-	"status": "Status",
-}
-
 func ResourceIoTCertificate() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoTCertificateExists,
@@ -57,11 +52,11 @@ func resourceIoTCertificateRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceIoTCertificateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(ioTCertificateType, ResourceIoTCertificate(), data, ioTCertificateProperties, meta)
+	return plugin.ResourceCreate(ioTCertificateType, ResourceIoTCertificate(), data, meta)
 }
 
 func resourceIoTCertificateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(ioTCertificateType, ResourceIoTCertificate(), data, ioTCertificateProperties, meta)
+	return plugin.ResourceUpdate(ioTCertificateType, ResourceIoTCertificate(), data, meta)
 }
 
 func resourceIoTCertificateDelete(data *schema.ResourceData, meta interface{}) error {

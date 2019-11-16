@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var campaignWriteTreatmentResourceProperties map[string]string = map[string]string{
-	"treatment_description": "TreatmentDescription",
-	"message_configuration": "MessageConfiguration",
-	"schedule": "Schedule",
-	"size_percent": "SizePercent",
-	"treatment_name": "TreatmentName",
-}
-
 func propertyCampaignWriteTreatmentResource(extras...string) *schema.Resource {
 	var count int64 = 0
 	

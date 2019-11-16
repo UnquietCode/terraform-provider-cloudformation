@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationApplicationCodeConfigurationProperties map[string]string = map[string]string{
-	"code_content_type": "CodeContentType",
-	"code_content": "CodeContent",
-}
-
 func propertyApplicationApplicationCodeConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

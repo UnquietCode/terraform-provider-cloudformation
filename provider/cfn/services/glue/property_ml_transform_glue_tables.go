@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var mLTransformGlueTablesProperties map[string]string = map[string]string{
-	"connection_name": "ConnectionName",
-	"table_name": "TableName",
-	"database_name": "DatabaseName",
-	"catalog_id": "CatalogId",
-}
-
 func propertyMLTransformGlueTables(extras...string) *schema.Resource {
 	var count int64 = 0
 	

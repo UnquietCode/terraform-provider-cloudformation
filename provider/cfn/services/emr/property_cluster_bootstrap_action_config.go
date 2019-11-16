@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var clusterBootstrapActionConfigProperties map[string]string = map[string]string{
-	"name": "Name",
-	"script_bootstrap_action": "ScriptBootstrapAction",
-}
-
 func propertyClusterBootstrapActionConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

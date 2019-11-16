@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var healthCheckAlarmIdentifierProperties map[string]string = map[string]string{
-	"name": "Name",
-	"region": "Region",
-}
-
 func propertyHealthCheckAlarmIdentifier(extras...string) *schema.Resource {
 	var count int64 = 0
 	

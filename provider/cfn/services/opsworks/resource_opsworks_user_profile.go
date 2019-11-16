@@ -16,13 +16,6 @@ import (
 
 const opsWorksUserProfileType string = "AWS::OpsWorks::UserProfile"
 
-var opsWorksUserProfileProperties map[string]string = map[string]string{
-	"allow_self_management": "AllowSelfManagement",
-	"iam_user_arn": "IamUserArn",
-	"ssh_public_key": "SshPublicKey",
-	"ssh_username": "SshUsername",
-}
-
 func ResourceOpsWorksUserProfile() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceOpsWorksUserProfileExists,
@@ -67,11 +60,11 @@ func resourceOpsWorksUserProfileRead(data *schema.ResourceData, meta interface{}
 }
 
 func resourceOpsWorksUserProfileCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(opsWorksUserProfileType, ResourceOpsWorksUserProfile(), data, opsWorksUserProfileProperties, meta)
+	return plugin.ResourceCreate(opsWorksUserProfileType, ResourceOpsWorksUserProfile(), data, meta)
 }
 
 func resourceOpsWorksUserProfileUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(opsWorksUserProfileType, ResourceOpsWorksUserProfile(), data, opsWorksUserProfileProperties, meta)
+	return plugin.ResourceUpdate(opsWorksUserProfileType, ResourceOpsWorksUserProfile(), data, meta)
 }
 
 func resourceOpsWorksUserProfileDelete(data *schema.ResourceData, meta interface{}) error {

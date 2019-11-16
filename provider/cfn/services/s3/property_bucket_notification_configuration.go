@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketNotificationConfigurationProperties map[string]string = map[string]string{
-	"lambda_configurations": "LambdaConfigurations",
-	"queue_configurations": "QueueConfigurations",
-	"topic_configurations": "TopicConfigurations",
-}
-
 func propertyBucketNotificationConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

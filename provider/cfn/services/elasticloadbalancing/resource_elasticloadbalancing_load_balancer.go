@@ -17,25 +17,6 @@ import (
 
 const elasticLoadBalancingLoadBalancerType string = "AWS::ElasticLoadBalancing::LoadBalancer"
 
-var elasticLoadBalancingLoadBalancerProperties map[string]string = map[string]string{
-	"access_logging_policy": "AccessLoggingPolicy",
-	"app_cookie_stickiness_policy": "AppCookieStickinessPolicy",
-	"availability_zones": "AvailabilityZones",
-	"connection_draining_policy": "ConnectionDrainingPolicy",
-	"connection_settings": "ConnectionSettings",
-	"cross_zone": "CrossZone",
-	"health_check": "HealthCheck",
-	"instances": "Instances",
-	"lb_cookie_stickiness_policy": "LBCookieStickinessPolicy",
-	"listeners": "Listeners",
-	"load_balancer_name": "LoadBalancerName",
-	"policies": "Policies",
-	"scheme": "Scheme",
-	"security_groups": "SecurityGroups",
-	"subnets": "Subnets",
-	"tags": "Tags",
-}
-
 func ResourceElasticLoadBalancingLoadBalancer() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElasticLoadBalancingLoadBalancerExists,
@@ -145,11 +126,11 @@ func resourceElasticLoadBalancingLoadBalancerRead(data *schema.ResourceData, met
 }
 
 func resourceElasticLoadBalancingLoadBalancerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(elasticLoadBalancingLoadBalancerType, ResourceElasticLoadBalancingLoadBalancer(), data, elasticLoadBalancingLoadBalancerProperties, meta)
+	return plugin.ResourceCreate(elasticLoadBalancingLoadBalancerType, ResourceElasticLoadBalancingLoadBalancer(), data, meta)
 }
 
 func resourceElasticLoadBalancingLoadBalancerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(elasticLoadBalancingLoadBalancerType, ResourceElasticLoadBalancingLoadBalancer(), data, elasticLoadBalancingLoadBalancerProperties, meta)
+	return plugin.ResourceUpdate(elasticLoadBalancingLoadBalancerType, ResourceElasticLoadBalancingLoadBalancer(), data, meta)
 }
 
 func resourceElasticLoadBalancingLoadBalancerDelete(data *schema.ResourceData, meta interface{}) error {

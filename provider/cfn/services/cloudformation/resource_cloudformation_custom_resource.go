@@ -16,10 +16,6 @@ import (
 
 const cloudFormationCustomResourceType string = "AWS::CloudFormation::CustomResource"
 
-var cloudFormationCustomResourceProperties map[string]string = map[string]string{
-	"service_token": "ServiceToken",
-}
-
 func ResourceCloudFormationCustomResource() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCloudFormationCustomResourceExists,
@@ -52,11 +48,11 @@ func resourceCloudFormationCustomResourceRead(data *schema.ResourceData, meta in
 }
 
 func resourceCloudFormationCustomResourceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(cloudFormationCustomResourceType, ResourceCloudFormationCustomResource(), data, cloudFormationCustomResourceProperties, meta)
+	return plugin.ResourceCreate(cloudFormationCustomResourceType, ResourceCloudFormationCustomResource(), data, meta)
 }
 
 func resourceCloudFormationCustomResourceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(cloudFormationCustomResourceType, ResourceCloudFormationCustomResource(), data, cloudFormationCustomResourceProperties, meta)
+	return plugin.ResourceUpdate(cloudFormationCustomResourceType, ResourceCloudFormationCustomResource(), data, meta)
 }
 
 func resourceCloudFormationCustomResourceDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var usagePlanApiStageProperties map[string]string = map[string]string{
-	"api_id": "ApiId",
-	"stage": "Stage",
-	"throttle": "Throttle",
-}
-
 func propertyUsagePlanApiStage(extras...string) *schema.Resource {
 	var count int64 = 0
 	

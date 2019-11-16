@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var hostedZoneVPCProperties map[string]string = map[string]string{
-	"vpc_id": "VPCId",
-	"vpc_region": "VPCRegion",
-}
-
 func propertyHostedZoneVPC(extras...string) *schema.Resource {
 	var count int64 = 0
 	

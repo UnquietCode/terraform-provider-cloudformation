@@ -16,16 +16,6 @@ import (
 
 const eFSFileSystemType string = "AWS::EFS::FileSystem"
 
-var eFSFileSystemProperties map[string]string = map[string]string{
-	"encrypted": "Encrypted",
-	"file_system_tags": "FileSystemTags",
-	"kms_key_id": "KmsKeyId",
-	"lifecycle_policies": "LifecyclePolicies",
-	"performance_mode": "PerformanceMode",
-	"provisioned_throughput_in_mibps": "ProvisionedThroughputInMibps",
-	"throughput_mode": "ThroughputMode",
-}
-
 func ResourceEFSFileSystem() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEFSFileSystemExists,
@@ -84,11 +74,11 @@ func resourceEFSFileSystemRead(data *schema.ResourceData, meta interface{}) erro
 }
 
 func resourceEFSFileSystemCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eFSFileSystemType, ResourceEFSFileSystem(), data, eFSFileSystemProperties, meta)
+	return plugin.ResourceCreate(eFSFileSystemType, ResourceEFSFileSystem(), data, meta)
 }
 
 func resourceEFSFileSystemUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eFSFileSystemType, ResourceEFSFileSystem(), data, eFSFileSystemProperties, meta)
+	return plugin.ResourceUpdate(eFSFileSystemType, ResourceEFSFileSystem(), data, meta)
 }
 
 func resourceEFSFileSystemDelete(data *schema.ResourceData, meta interface{}) error {

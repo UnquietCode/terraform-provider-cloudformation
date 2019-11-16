@@ -16,21 +16,6 @@ import (
 
 const opsWorksAppType string = "AWS::OpsWorks::App"
 
-var opsWorksAppProperties map[string]string = map[string]string{
-	"app_source": "AppSource",
-	"attributes": "Attributes",
-	"data_sources": "DataSources",
-	"description": "Description",
-	"domains": "Domains",
-	"enable_ssl": "EnableSsl",
-	"environment": "Environment",
-	"name": "Name",
-	"shortname": "Shortname",
-	"ssl_configuration": "SslConfiguration",
-	"stack_id": "StackId",
-	"type": "Type",
-}
-
 func ResourceOpsWorksApp() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceOpsWorksAppExists,
@@ -115,11 +100,11 @@ func resourceOpsWorksAppRead(data *schema.ResourceData, meta interface{}) error 
 }
 
 func resourceOpsWorksAppCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(opsWorksAppType, ResourceOpsWorksApp(), data, opsWorksAppProperties, meta)
+	return plugin.ResourceCreate(opsWorksAppType, ResourceOpsWorksApp(), data, meta)
 }
 
 func resourceOpsWorksAppUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(opsWorksAppType, ResourceOpsWorksApp(), data, opsWorksAppProperties, meta)
+	return plugin.ResourceUpdate(opsWorksAppType, ResourceOpsWorksApp(), data, meta)
 }
 
 func resourceOpsWorksAppDelete(data *schema.ResourceData, meta interface{}) error {

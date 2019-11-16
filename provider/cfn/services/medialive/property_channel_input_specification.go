@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var channelInputSpecificationProperties map[string]string = map[string]string{
-	"codec": "Codec",
-	"maximum_bitrate": "MaximumBitrate",
-	"resolution": "Resolution",
-}
-
 func propertyChannelInputSpecification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

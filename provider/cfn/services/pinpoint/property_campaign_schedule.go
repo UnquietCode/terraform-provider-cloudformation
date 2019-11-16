@@ -14,16 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var campaignScheduleProperties map[string]string = map[string]string{
-	"time_zone": "TimeZone",
-	"quiet_time": "QuietTime",
-	"end_time": "EndTime",
-	"start_time": "StartTime",
-	"frequency": "Frequency",
-	"event_filter": "EventFilter",
-	"is_local_time": "IsLocalTime",
-}
-
 func propertyCampaignSchedule(extras...string) *schema.Resource {
 	var count int64 = 0
 	

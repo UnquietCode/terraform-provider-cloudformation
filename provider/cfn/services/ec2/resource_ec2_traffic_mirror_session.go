@@ -17,17 +17,6 @@ import (
 
 const eC2TrafficMirrorSessionType string = "AWS::EC2::TrafficMirrorSession"
 
-var eC2TrafficMirrorSessionProperties map[string]string = map[string]string{
-	"traffic_mirror_target_id": "TrafficMirrorTargetId",
-	"description": "Description",
-	"session_number": "SessionNumber",
-	"virtual_network_id": "VirtualNetworkId",
-	"packet_length": "PacketLength",
-	"network_interface_id": "NetworkInterfaceId",
-	"traffic_mirror_filter_id": "TrafficMirrorFilterId",
-	"tags": "Tags",
-}
-
 func ResourceEC2TrafficMirrorSession() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2TrafficMirrorSessionExists,
@@ -85,11 +74,11 @@ func resourceEC2TrafficMirrorSessionRead(data *schema.ResourceData, meta interfa
 }
 
 func resourceEC2TrafficMirrorSessionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2TrafficMirrorSessionType, ResourceEC2TrafficMirrorSession(), data, eC2TrafficMirrorSessionProperties, meta)
+	return plugin.ResourceCreate(eC2TrafficMirrorSessionType, ResourceEC2TrafficMirrorSession(), data, meta)
 }
 
 func resourceEC2TrafficMirrorSessionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2TrafficMirrorSessionType, ResourceEC2TrafficMirrorSession(), data, eC2TrafficMirrorSessionProperties, meta)
+	return plugin.ResourceUpdate(eC2TrafficMirrorSessionType, ResourceEC2TrafficMirrorSession(), data, meta)
 }
 
 func resourceEC2TrafficMirrorSessionDelete(data *schema.ResourceData, meta interface{}) error {

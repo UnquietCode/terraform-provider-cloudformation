@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var classifierJsonClassifierProperties map[string]string = map[string]string{
-	"json_path": "JsonPath",
-	"name": "Name",
-}
-
 func propertyClassifierJsonClassifier(extras...string) *schema.Resource {
 	var count int64 = 0
 	

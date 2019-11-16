@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var notebookInstanceLifecycleConfigNotebookInstanceLifecycleHookProperties map[string]string = map[string]string{
-	"content": "Content",
-}
-
 func propertyNotebookInstanceLifecycleConfigNotebookInstanceLifecycleHook(extras...string) *schema.Resource {
 	var count int64 = 0
 	

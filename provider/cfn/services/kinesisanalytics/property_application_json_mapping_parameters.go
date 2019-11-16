@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationJSONMappingParametersProperties map[string]string = map[string]string{
-	"record_row_path": "RecordRowPath",
-}
-
 func propertyApplicationJSONMappingParameters(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var crawlerDynamoDBTargetProperties map[string]string = map[string]string{
-	"path": "Path",
-}
-
 func propertyCrawlerDynamoDBTarget(extras...string) *schema.Resource {
 	var count int64 = 0
 	

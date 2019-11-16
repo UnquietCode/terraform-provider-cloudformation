@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var functionDefinitionExecutionProperties map[string]string = map[string]string{
-	"isolation_mode": "IsolationMode",
-	"run_as": "RunAs",
-}
-
 func propertyFunctionDefinitionExecution(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,10 +16,6 @@ import (
 
 const sDBDomainType string = "AWS::SDB::Domain"
 
-var sDBDomainProperties map[string]string = map[string]string{
-	"description": "Description",
-}
-
 func ResourceSDBDomain() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSDBDomainExists,
@@ -52,11 +48,11 @@ func resourceSDBDomainRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceSDBDomainCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(sDBDomainType, ResourceSDBDomain(), data, sDBDomainProperties, meta)
+	return plugin.ResourceCreate(sDBDomainType, ResourceSDBDomain(), data, meta)
 }
 
 func resourceSDBDomainUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(sDBDomainType, ResourceSDBDomain(), data, sDBDomainProperties, meta)
+	return plugin.ResourceUpdate(sDBDomainType, ResourceSDBDomain(), data, meta)
 }
 
 func resourceSDBDomainDelete(data *schema.ResourceData, meta interface{}) error {

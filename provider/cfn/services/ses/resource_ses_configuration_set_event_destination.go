@@ -16,11 +16,6 @@ import (
 
 const sESConfigurationSetEventDestinationType string = "AWS::SES::ConfigurationSetEventDestination"
 
-var sESConfigurationSetEventDestinationProperties map[string]string = map[string]string{
-	"configuration_set_name": "ConfigurationSetName",
-	"event_destination": "EventDestination",
-}
-
 func ResourceSESConfigurationSetEventDestination() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSESConfigurationSetEventDestinationExists,
@@ -59,11 +54,11 @@ func resourceSESConfigurationSetEventDestinationRead(data *schema.ResourceData, 
 }
 
 func resourceSESConfigurationSetEventDestinationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(sESConfigurationSetEventDestinationType, ResourceSESConfigurationSetEventDestination(), data, sESConfigurationSetEventDestinationProperties, meta)
+	return plugin.ResourceCreate(sESConfigurationSetEventDestinationType, ResourceSESConfigurationSetEventDestination(), data, meta)
 }
 
 func resourceSESConfigurationSetEventDestinationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(sESConfigurationSetEventDestinationType, ResourceSESConfigurationSetEventDestination(), data, sESConfigurationSetEventDestinationProperties, meta)
+	return plugin.ResourceUpdate(sESConfigurationSetEventDestinationType, ResourceSESConfigurationSetEventDestination(), data, meta)
 }
 
 func resourceSESConfigurationSetEventDestinationDelete(data *schema.ResourceData, meta interface{}) error {

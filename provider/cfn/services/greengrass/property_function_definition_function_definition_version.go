@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var functionDefinitionFunctionDefinitionVersionProperties map[string]string = map[string]string{
-	"default_config": "DefaultConfig",
-	"functions": "Functions",
-}
-
 func propertyFunctionDefinitionFunctionDefinitionVersion(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -17,14 +17,6 @@ import (
 
 const kinesisStreamType string = "AWS::Kinesis::Stream"
 
-var kinesisStreamProperties map[string]string = map[string]string{
-	"name": "Name",
-	"retention_period_hours": "RetentionPeriodHours",
-	"shard_count": "ShardCount",
-	"stream_encryption": "StreamEncryption",
-	"tags": "Tags",
-}
-
 func ResourceKinesisStream() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceKinesisStreamExists,
@@ -72,11 +64,11 @@ func resourceKinesisStreamRead(data *schema.ResourceData, meta interface{}) erro
 }
 
 func resourceKinesisStreamCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(kinesisStreamType, ResourceKinesisStream(), data, kinesisStreamProperties, meta)
+	return plugin.ResourceCreate(kinesisStreamType, ResourceKinesisStream(), data, meta)
 }
 
 func resourceKinesisStreamUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(kinesisStreamType, ResourceKinesisStream(), data, kinesisStreamProperties, meta)
+	return plugin.ResourceUpdate(kinesisStreamType, ResourceKinesisStream(), data, meta)
 }
 
 func resourceKinesisStreamDelete(data *schema.ResourceData, meta interface{}) error {

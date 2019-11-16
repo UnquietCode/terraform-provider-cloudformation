@@ -16,12 +16,6 @@ import (
 
 const apiGatewayV2DomainNameType string = "AWS::ApiGatewayV2::DomainName"
 
-var apiGatewayV2DomainNameProperties map[string]string = map[string]string{
-	"domain_name": "DomainName",
-	"domain_name_configurations": "DomainNameConfigurations",
-	"tags": "Tags",
-}
-
 func ResourceApiGatewayV2DomainName() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayV2DomainNameExists,
@@ -63,11 +57,11 @@ func resourceApiGatewayV2DomainNameRead(data *schema.ResourceData, meta interfac
 }
 
 func resourceApiGatewayV2DomainNameCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayV2DomainNameType, ResourceApiGatewayV2DomainName(), data, apiGatewayV2DomainNameProperties, meta)
+	return plugin.ResourceCreate(apiGatewayV2DomainNameType, ResourceApiGatewayV2DomainName(), data, meta)
 }
 
 func resourceApiGatewayV2DomainNameUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayV2DomainNameType, ResourceApiGatewayV2DomainName(), data, apiGatewayV2DomainNameProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayV2DomainNameType, ResourceApiGatewayV2DomainName(), data, meta)
 }
 
 func resourceApiGatewayV2DomainNameDelete(data *schema.ResourceData, meta interface{}) error {

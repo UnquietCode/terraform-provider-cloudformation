@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var connectorDefinitionVersionConnectorProperties map[string]string = map[string]string{
-	"connector_arn": "ConnectorArn",
-	"parameters": "Parameters",
-	"id": "Id",
-}
-
 func propertyConnectorDefinitionVersionConnector(extras...string) *schema.Resource {
 	var count int64 = 0
 	

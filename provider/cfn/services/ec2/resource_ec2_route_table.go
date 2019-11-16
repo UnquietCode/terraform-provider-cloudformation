@@ -17,11 +17,6 @@ import (
 
 const eC2RouteTableType string = "AWS::EC2::RouteTable"
 
-var eC2RouteTableProperties map[string]string = map[string]string{
-	"tags": "Tags",
-	"vpc_id": "VpcId",
-}
-
 func ResourceEC2RouteTable() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2RouteTableExists,
@@ -55,11 +50,11 @@ func resourceEC2RouteTableRead(data *schema.ResourceData, meta interface{}) erro
 }
 
 func resourceEC2RouteTableCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2RouteTableType, ResourceEC2RouteTable(), data, eC2RouteTableProperties, meta)
+	return plugin.ResourceCreate(eC2RouteTableType, ResourceEC2RouteTable(), data, meta)
 }
 
 func resourceEC2RouteTableUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2RouteTableType, ResourceEC2RouteTable(), data, eC2RouteTableProperties, meta)
+	return plugin.ResourceUpdate(eC2RouteTableType, ResourceEC2RouteTable(), data, meta)
 }
 
 func resourceEC2RouteTableDelete(data *schema.ResourceData, meta interface{}) error {

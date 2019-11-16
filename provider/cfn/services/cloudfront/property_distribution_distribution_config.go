@@ -14,24 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var distributionDistributionConfigProperties map[string]string = map[string]string{
-	"logging": "Logging",
-	"comment": "Comment",
-	"default_root_object": "DefaultRootObject",
-	"origins": "Origins",
-	"viewer_certificate": "ViewerCertificate",
-	"price_class": "PriceClass",
-	"default_cache_behavior": "DefaultCacheBehavior",
-	"custom_error_responses": "CustomErrorResponses",
-	"enabled": "Enabled",
-	"aliases": "Aliases",
-	"ipv6_enabled": "IPV6Enabled",
-	"web_acl_id": "WebACLId",
-	"http_version": "HttpVersion",
-	"restrictions": "Restrictions",
-	"cache_behaviors": "CacheBehaviors",
-}
-
 func propertyDistributionDistributionConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

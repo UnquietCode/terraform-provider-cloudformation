@@ -16,14 +16,6 @@ import (
 
 const pinpointEmailIdentityType string = "AWS::PinpointEmail::Identity"
 
-var pinpointEmailIdentityProperties map[string]string = map[string]string{
-	"feedback_forwarding_enabled": "FeedbackForwardingEnabled",
-	"dkim_signing_enabled": "DkimSigningEnabled",
-	"tags": "Tags",
-	"name": "Name",
-	"mail_from_attributes": "MailFromAttributes",
-}
-
 func ResourcePinpointEmailIdentity() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointEmailIdentityExists,
@@ -75,11 +67,11 @@ func resourcePinpointEmailIdentityRead(data *schema.ResourceData, meta interface
 }
 
 func resourcePinpointEmailIdentityCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(pinpointEmailIdentityType, ResourcePinpointEmailIdentity(), data, pinpointEmailIdentityProperties, meta)
+	return plugin.ResourceCreate(pinpointEmailIdentityType, ResourcePinpointEmailIdentity(), data, meta)
 }
 
 func resourcePinpointEmailIdentityUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(pinpointEmailIdentityType, ResourcePinpointEmailIdentity(), data, pinpointEmailIdentityProperties, meta)
+	return plugin.ResourceUpdate(pinpointEmailIdentityType, ResourcePinpointEmailIdentity(), data, meta)
 }
 
 func resourcePinpointEmailIdentityDelete(data *schema.ResourceData, meta interface{}) error {

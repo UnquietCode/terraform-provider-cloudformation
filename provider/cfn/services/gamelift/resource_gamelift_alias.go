@@ -16,12 +16,6 @@ import (
 
 const gameLiftAliasType string = "AWS::GameLift::Alias"
 
-var gameLiftAliasProperties map[string]string = map[string]string{
-	"description": "Description",
-	"name": "Name",
-	"routing_strategy": "RoutingStrategy",
-}
-
 func ResourceGameLiftAlias() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGameLiftAliasExists,
@@ -64,11 +58,11 @@ func resourceGameLiftAliasRead(data *schema.ResourceData, meta interface{}) erro
 }
 
 func resourceGameLiftAliasCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(gameLiftAliasType, ResourceGameLiftAlias(), data, gameLiftAliasProperties, meta)
+	return plugin.ResourceCreate(gameLiftAliasType, ResourceGameLiftAlias(), data, meta)
 }
 
 func resourceGameLiftAliasUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(gameLiftAliasType, ResourceGameLiftAlias(), data, gameLiftAliasProperties, meta)
+	return plugin.ResourceUpdate(gameLiftAliasType, ResourceGameLiftAlias(), data, meta)
 }
 
 func resourceGameLiftAliasDelete(data *schema.ResourceData, meta interface{}) error {

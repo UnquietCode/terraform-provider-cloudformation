@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var instanceElasticGpuSpecificationProperties map[string]string = map[string]string{
-	"type": "Type",
-}
-
 func propertyInstanceElasticGpuSpecification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

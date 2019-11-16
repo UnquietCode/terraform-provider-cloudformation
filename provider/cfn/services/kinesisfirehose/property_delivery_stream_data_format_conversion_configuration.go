@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deliveryStreamDataFormatConversionConfigurationProperties map[string]string = map[string]string{
-	"enabled": "Enabled",
-	"input_format_configuration": "InputFormatConfiguration",
-	"output_format_configuration": "OutputFormatConfiguration",
-	"schema_configuration": "SchemaConfiguration",
-}
-
 func propertyDeliveryStreamDataFormatConversionConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

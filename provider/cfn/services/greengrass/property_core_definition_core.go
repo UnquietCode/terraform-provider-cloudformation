@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var coreDefinitionCoreProperties map[string]string = map[string]string{
-	"sync_shadow": "SyncShadow",
-	"thing_arn": "ThingArn",
-	"id": "Id",
-	"certificate_arn": "CertificateArn",
-}
-
 func propertyCoreDefinitionCore(extras...string) *schema.Resource {
 	var count int64 = 0
 	

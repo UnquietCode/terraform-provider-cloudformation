@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var launchTemplateCpuOptionsProperties map[string]string = map[string]string{
-	"threads_per_core": "ThreadsPerCore",
-	"core_count": "CoreCount",
-}
-
 func propertyLaunchTemplateCpuOptions(extras...string) *schema.Resource {
 	var count int64 = 0
 	

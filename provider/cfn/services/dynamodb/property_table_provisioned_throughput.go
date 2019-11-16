@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var tableProvisionedThroughputProperties map[string]string = map[string]string{
-	"read_capacity_units": "ReadCapacityUnits",
-	"write_capacity_units": "WriteCapacityUnits",
-}
-
 func propertyTableProvisionedThroughput(extras...string) *schema.Resource {
 	var count int64 = 0
 	

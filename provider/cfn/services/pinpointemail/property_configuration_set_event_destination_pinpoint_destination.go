@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var configurationSetEventDestinationPinpointDestinationProperties map[string]string = map[string]string{
-	"application_arn": "ApplicationArn",
-}
-
 func propertyConfigurationSetEventDestinationPinpointDestination(extras...string) *schema.Resource {
 	var count int64 = 0
 	

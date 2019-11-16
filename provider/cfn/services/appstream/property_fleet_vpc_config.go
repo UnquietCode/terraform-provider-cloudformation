@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var fleetVpcConfigProperties map[string]string = map[string]string{
-	"subnet_ids": "SubnetIds",
-	"security_group_ids": "SecurityGroupIds",
-}
-
 func propertyFleetVpcConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

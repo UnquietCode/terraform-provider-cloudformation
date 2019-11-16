@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var resourceDefinitionVersionLocalDeviceResourceDataProperties map[string]string = map[string]string{
-	"source_path": "SourcePath",
-	"group_owner_setting": "GroupOwnerSetting",
-}
-
 func propertyResourceDefinitionVersionLocalDeviceResourceData(extras...string) *schema.Resource {
 	var count int64 = 0
 	

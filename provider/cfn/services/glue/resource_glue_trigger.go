@@ -16,18 +16,6 @@ import (
 
 const glueTriggerType string = "AWS::Glue::Trigger"
 
-var glueTriggerProperties map[string]string = map[string]string{
-	"type": "Type",
-	"start_on_creation": "StartOnCreation",
-	"description": "Description",
-	"actions": "Actions",
-	"workflow_name": "WorkflowName",
-	"schedule": "Schedule",
-	"tags": "Tags",
-	"name": "Name",
-	"predicate": "Predicate",
-}
-
 func ResourceGlueTrigger() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGlueTriggerExists,
@@ -95,11 +83,11 @@ func resourceGlueTriggerRead(data *schema.ResourceData, meta interface{}) error 
 }
 
 func resourceGlueTriggerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(glueTriggerType, ResourceGlueTrigger(), data, glueTriggerProperties, meta)
+	return plugin.ResourceCreate(glueTriggerType, ResourceGlueTrigger(), data, meta)
 }
 
 func resourceGlueTriggerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(glueTriggerType, ResourceGlueTrigger(), data, glueTriggerProperties, meta)
+	return plugin.ResourceUpdate(glueTriggerType, ResourceGlueTrigger(), data, meta)
 }
 
 func resourceGlueTriggerDelete(data *schema.ResourceData, meta interface{}) error {

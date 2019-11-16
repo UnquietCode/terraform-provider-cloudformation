@@ -17,20 +17,6 @@ import (
 
 const dMSReplicationTaskType string = "AWS::DMS::ReplicationTask"
 
-var dMSReplicationTaskProperties map[string]string = map[string]string{
-	"replication_task_settings": "ReplicationTaskSettings",
-	"table_mappings": "TableMappings",
-	"cdc_start_position": "CdcStartPosition",
-	"replication_task_identifier": "ReplicationTaskIdentifier",
-	"cdc_stop_position": "CdcStopPosition",
-	"source_endpoint_arn": "SourceEndpointArn",
-	"migration_type": "MigrationType",
-	"target_endpoint_arn": "TargetEndpointArn",
-	"replication_instance_arn": "ReplicationInstanceArn",
-	"tags": "Tags",
-	"cdc_start_time": "CdcStartTime",
-}
-
 func ResourceDMSReplicationTask() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDMSReplicationTaskExists,
@@ -100,11 +86,11 @@ func resourceDMSReplicationTaskRead(data *schema.ResourceData, meta interface{})
 }
 
 func resourceDMSReplicationTaskCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(dMSReplicationTaskType, ResourceDMSReplicationTask(), data, dMSReplicationTaskProperties, meta)
+	return plugin.ResourceCreate(dMSReplicationTaskType, ResourceDMSReplicationTask(), data, meta)
 }
 
 func resourceDMSReplicationTaskUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(dMSReplicationTaskType, ResourceDMSReplicationTask(), data, dMSReplicationTaskProperties, meta)
+	return plugin.ResourceUpdate(dMSReplicationTaskType, ResourceDMSReplicationTask(), data, meta)
 }
 
 func resourceDMSReplicationTaskDelete(data *schema.ResourceData, meta interface{}) error {

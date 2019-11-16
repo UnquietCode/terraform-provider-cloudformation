@@ -16,14 +16,6 @@ import (
 
 const cloudFormationMacroType string = "AWS::CloudFormation::Macro"
 
-var cloudFormationMacroProperties map[string]string = map[string]string{
-	"description": "Description",
-	"function_name": "FunctionName",
-	"log_group_name": "LogGroupName",
-	"log_role_arn": "LogRoleARN",
-	"name": "Name",
-}
-
 func ResourceCloudFormationMacro() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCloudFormationMacroExists,
@@ -72,11 +64,11 @@ func resourceCloudFormationMacroRead(data *schema.ResourceData, meta interface{}
 }
 
 func resourceCloudFormationMacroCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(cloudFormationMacroType, ResourceCloudFormationMacro(), data, cloudFormationMacroProperties, meta)
+	return plugin.ResourceCreate(cloudFormationMacroType, ResourceCloudFormationMacro(), data, meta)
 }
 
 func resourceCloudFormationMacroUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(cloudFormationMacroType, ResourceCloudFormationMacro(), data, cloudFormationMacroProperties, meta)
+	return plugin.ResourceUpdate(cloudFormationMacroType, ResourceCloudFormationMacro(), data, meta)
 }
 
 func resourceCloudFormationMacroDelete(data *schema.ResourceData, meta interface{}) error {

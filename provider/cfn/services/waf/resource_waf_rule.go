@@ -16,12 +16,6 @@ import (
 
 const wAFRuleType string = "AWS::WAF::Rule"
 
-var wAFRuleProperties map[string]string = map[string]string{
-	"metric_name": "MetricName",
-	"name": "Name",
-	"predicates": "Predicates",
-}
-
 func ResourceWAFRule() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFRuleExists,
@@ -63,11 +57,11 @@ func resourceWAFRuleRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceWAFRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(wAFRuleType, ResourceWAFRule(), data, wAFRuleProperties, meta)
+	return plugin.ResourceCreate(wAFRuleType, ResourceWAFRule(), data, meta)
 }
 
 func resourceWAFRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(wAFRuleType, ResourceWAFRule(), data, wAFRuleProperties, meta)
+	return plugin.ResourceUpdate(wAFRuleType, ResourceWAFRule(), data, meta)
 }
 
 func resourceWAFRuleDelete(data *schema.ResourceData, meta interface{}) error {

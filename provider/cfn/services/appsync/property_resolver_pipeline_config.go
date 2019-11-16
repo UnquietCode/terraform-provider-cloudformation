@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var resolverPipelineConfigProperties map[string]string = map[string]string{
-	"functions": "Functions",
-}
-
 func propertyResolverPipelineConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

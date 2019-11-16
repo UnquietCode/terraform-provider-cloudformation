@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var graphQLApiUserPoolConfigProperties map[string]string = map[string]string{
-	"app_id_client_regex": "AppIdClientRegex",
-	"user_pool_id": "UserPoolId",
-	"aws_region": "AwsRegion",
-	"default_action": "DefaultAction",
-}
-
 func propertyGraphQLApiUserPoolConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

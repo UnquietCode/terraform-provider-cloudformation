@@ -16,11 +16,6 @@ import (
 
 const serviceCatalogTagOptionAssociationType string = "AWS::ServiceCatalog::TagOptionAssociation"
 
-var serviceCatalogTagOptionAssociationProperties map[string]string = map[string]string{
-	"tag_option_id": "TagOptionId",
-	"resource_id": "ResourceId",
-}
-
 func ResourceServiceCatalogTagOptionAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogTagOptionAssociationExists,
@@ -57,11 +52,11 @@ func resourceServiceCatalogTagOptionAssociationRead(data *schema.ResourceData, m
 }
 
 func resourceServiceCatalogTagOptionAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(serviceCatalogTagOptionAssociationType, ResourceServiceCatalogTagOptionAssociation(), data, serviceCatalogTagOptionAssociationProperties, meta)
+	return plugin.ResourceCreate(serviceCatalogTagOptionAssociationType, ResourceServiceCatalogTagOptionAssociation(), data, meta)
 }
 
 func resourceServiceCatalogTagOptionAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(serviceCatalogTagOptionAssociationType, ResourceServiceCatalogTagOptionAssociation(), data, serviceCatalogTagOptionAssociationProperties, meta)
+	return plugin.ResourceUpdate(serviceCatalogTagOptionAssociationType, ResourceServiceCatalogTagOptionAssociation(), data, meta)
 }
 
 func resourceServiceCatalogTagOptionAssociationDelete(data *schema.ResourceData, meta interface{}) error {

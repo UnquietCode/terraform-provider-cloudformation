@@ -17,23 +17,6 @@ import (
 
 const dMSReplicationInstanceType string = "AWS::DMS::ReplicationInstance"
 
-var dMSReplicationInstanceProperties map[string]string = map[string]string{
-	"replication_instance_identifier": "ReplicationInstanceIdentifier",
-	"engine_version": "EngineVersion",
-	"kms_key_id": "KmsKeyId",
-	"availability_zone": "AvailabilityZone",
-	"preferred_maintenance_window": "PreferredMaintenanceWindow",
-	"auto_minor_version_upgrade": "AutoMinorVersionUpgrade",
-	"replication_subnet_group_identifier": "ReplicationSubnetGroupIdentifier",
-	"allocated_storage": "AllocatedStorage",
-	"vpc_security_group_ids": "VpcSecurityGroupIds",
-	"allow_major_version_upgrade": "AllowMajorVersionUpgrade",
-	"replication_instance_class": "ReplicationInstanceClass",
-	"publicly_accessible": "PubliclyAccessible",
-	"multi_az": "MultiAZ",
-	"tags": "Tags",
-}
-
 func ResourceDMSReplicationInstance() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDMSReplicationInstanceExists,
@@ -116,11 +99,11 @@ func resourceDMSReplicationInstanceRead(data *schema.ResourceData, meta interfac
 }
 
 func resourceDMSReplicationInstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(dMSReplicationInstanceType, ResourceDMSReplicationInstance(), data, dMSReplicationInstanceProperties, meta)
+	return plugin.ResourceCreate(dMSReplicationInstanceType, ResourceDMSReplicationInstance(), data, meta)
 }
 
 func resourceDMSReplicationInstanceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(dMSReplicationInstanceType, ResourceDMSReplicationInstance(), data, dMSReplicationInstanceProperties, meta)
+	return plugin.ResourceUpdate(dMSReplicationInstanceType, ResourceDMSReplicationInstance(), data, meta)
 }
 
 func resourceDMSReplicationInstanceDelete(data *schema.ResourceData, meta interface{}) error {

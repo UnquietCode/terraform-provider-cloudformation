@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var pipelineArtifactStoreMapProperties map[string]string = map[string]string{
-	"artifact_store": "ArtifactStore",
-	"region": "Region",
-}
-
 func propertyPipelineArtifactStoreMap(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,13 +16,6 @@ import (
 
 const glueClassifierType string = "AWS::Glue::Classifier"
 
-var glueClassifierProperties map[string]string = map[string]string{
-	"xml_classifier": "XMLClassifier",
-	"json_classifier": "JsonClassifier",
-	"csv_classifier": "CsvClassifier",
-	"grok_classifier": "GrokClassifier",
-}
-
 func ResourceGlueClassifier() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGlueClassifierExists,
@@ -75,11 +68,11 @@ func resourceGlueClassifierRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceGlueClassifierCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(glueClassifierType, ResourceGlueClassifier(), data, glueClassifierProperties, meta)
+	return plugin.ResourceCreate(glueClassifierType, ResourceGlueClassifier(), data, meta)
 }
 
 func resourceGlueClassifierUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(glueClassifierType, ResourceGlueClassifier(), data, glueClassifierProperties, meta)
+	return plugin.ResourceUpdate(glueClassifierType, ResourceGlueClassifier(), data, meta)
 }
 
 func resourceGlueClassifierDelete(data *schema.ResourceData, meta interface{}) error {

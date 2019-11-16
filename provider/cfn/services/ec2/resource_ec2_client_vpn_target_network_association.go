@@ -16,11 +16,6 @@ import (
 
 const eC2ClientVpnTargetNetworkAssociationType string = "AWS::EC2::ClientVpnTargetNetworkAssociation"
 
-var eC2ClientVpnTargetNetworkAssociationProperties map[string]string = map[string]string{
-	"client_vpn_endpoint_id": "ClientVpnEndpointId",
-	"subnet_id": "SubnetId",
-}
-
 func ResourceEC2ClientVpnTargetNetworkAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2ClientVpnTargetNetworkAssociationExists,
@@ -57,11 +52,11 @@ func resourceEC2ClientVpnTargetNetworkAssociationRead(data *schema.ResourceData,
 }
 
 func resourceEC2ClientVpnTargetNetworkAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2ClientVpnTargetNetworkAssociationType, ResourceEC2ClientVpnTargetNetworkAssociation(), data, eC2ClientVpnTargetNetworkAssociationProperties, meta)
+	return plugin.ResourceCreate(eC2ClientVpnTargetNetworkAssociationType, ResourceEC2ClientVpnTargetNetworkAssociation(), data, meta)
 }
 
 func resourceEC2ClientVpnTargetNetworkAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2ClientVpnTargetNetworkAssociationType, ResourceEC2ClientVpnTargetNetworkAssociation(), data, eC2ClientVpnTargetNetworkAssociationProperties, meta)
+	return plugin.ResourceUpdate(eC2ClientVpnTargetNetworkAssociationType, ResourceEC2ClientVpnTargetNetworkAssociation(), data, meta)
 }
 
 func resourceEC2ClientVpnTargetNetworkAssociationDelete(data *schema.ResourceData, meta interface{}) error {

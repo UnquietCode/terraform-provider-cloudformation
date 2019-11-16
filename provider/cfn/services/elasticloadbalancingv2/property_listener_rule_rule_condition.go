@@ -14,17 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var listenerRuleRuleConditionProperties map[string]string = map[string]string{
-	"field": "Field",
-	"host_header_config": "HostHeaderConfig",
-	"http_header_config": "HttpHeaderConfig",
-	"http_request_method_config": "HttpRequestMethodConfig",
-	"path_pattern_config": "PathPatternConfig",
-	"query_string_config": "QueryStringConfig",
-	"source_ip_config": "SourceIpConfig",
-	"values": "Values",
-}
-
 func propertyListenerRuleRuleCondition(extras...string) *schema.Resource {
 	var count int64 = 0
 	

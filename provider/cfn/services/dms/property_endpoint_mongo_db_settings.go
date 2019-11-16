@@ -14,20 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var endpointMongoDbSettingsProperties map[string]string = map[string]string{
-	"auth_source": "AuthSource",
-	"auth_mechanism": "AuthMechanism",
-	"username": "Username",
-	"docs_to_investigate": "DocsToInvestigate",
-	"server_name": "ServerName",
-	"port": "Port",
-	"extract_doc_id": "ExtractDocId",
-	"database_name": "DatabaseName",
-	"auth_type": "AuthType",
-	"password": "Password",
-	"nesting_level": "NestingLevel",
-}
-
 func propertyEndpointMongoDbSettings(extras...string) *schema.Resource {
 	var count int64 = 0
 	

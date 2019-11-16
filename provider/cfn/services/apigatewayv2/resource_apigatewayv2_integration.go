@@ -16,22 +16,6 @@ import (
 
 const apiGatewayV2IntegrationType string = "AWS::ApiGatewayV2::Integration"
 
-var apiGatewayV2IntegrationProperties map[string]string = map[string]string{
-	"description": "Description",
-	"template_selection_expression": "TemplateSelectionExpression",
-	"connection_type": "ConnectionType",
-	"integration_method": "IntegrationMethod",
-	"passthrough_behavior": "PassthroughBehavior",
-	"request_parameters": "RequestParameters",
-	"integration_uri": "IntegrationUri",
-	"credentials_arn": "CredentialsArn",
-	"request_templates": "RequestTemplates",
-	"timeout_in_millis": "TimeoutInMillis",
-	"content_handling_strategy": "ContentHandlingStrategy",
-	"api_id": "ApiId",
-	"integration_type": "IntegrationType",
-}
-
 func ResourceApiGatewayV2Integration() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayV2IntegrationExists,
@@ -112,11 +96,11 @@ func resourceApiGatewayV2IntegrationRead(data *schema.ResourceData, meta interfa
 }
 
 func resourceApiGatewayV2IntegrationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayV2IntegrationType, ResourceApiGatewayV2Integration(), data, apiGatewayV2IntegrationProperties, meta)
+	return plugin.ResourceCreate(apiGatewayV2IntegrationType, ResourceApiGatewayV2Integration(), data, meta)
 }
 
 func resourceApiGatewayV2IntegrationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayV2IntegrationType, ResourceApiGatewayV2Integration(), data, apiGatewayV2IntegrationProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayV2IntegrationType, ResourceApiGatewayV2Integration(), data, meta)
 }
 
 func resourceApiGatewayV2IntegrationDelete(data *schema.ResourceData, meta interface{}) error {

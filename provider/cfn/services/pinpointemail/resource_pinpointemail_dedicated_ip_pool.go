@@ -16,11 +16,6 @@ import (
 
 const pinpointEmailDedicatedIpPoolType string = "AWS::PinpointEmail::DedicatedIpPool"
 
-var pinpointEmailDedicatedIpPoolProperties map[string]string = map[string]string{
-	"pool_name": "PoolName",
-	"tags": "Tags",
-}
-
 func ResourcePinpointEmailDedicatedIpPool() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointEmailDedicatedIpPoolExists,
@@ -58,11 +53,11 @@ func resourcePinpointEmailDedicatedIpPoolRead(data *schema.ResourceData, meta in
 }
 
 func resourcePinpointEmailDedicatedIpPoolCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(pinpointEmailDedicatedIpPoolType, ResourcePinpointEmailDedicatedIpPool(), data, pinpointEmailDedicatedIpPoolProperties, meta)
+	return plugin.ResourceCreate(pinpointEmailDedicatedIpPoolType, ResourcePinpointEmailDedicatedIpPool(), data, meta)
 }
 
 func resourcePinpointEmailDedicatedIpPoolUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(pinpointEmailDedicatedIpPoolType, ResourcePinpointEmailDedicatedIpPool(), data, pinpointEmailDedicatedIpPoolProperties, meta)
+	return plugin.ResourceUpdate(pinpointEmailDedicatedIpPoolType, ResourcePinpointEmailDedicatedIpPool(), data, meta)
 }
 
 func resourcePinpointEmailDedicatedIpPoolDelete(data *schema.ResourceData, meta interface{}) error {

@@ -16,14 +16,6 @@ import (
 
 const configDeliveryChannelType string = "AWS::Config::DeliveryChannel"
 
-var configDeliveryChannelProperties map[string]string = map[string]string{
-	"config_snapshot_delivery_properties": "ConfigSnapshotDeliveryProperties",
-	"name": "Name",
-	"s3_bucket_name": "S3BucketName",
-	"s3_key_prefix": "S3KeyPrefix",
-	"sns_topic_arn": "SnsTopicARN",
-}
-
 func ResourceConfigDeliveryChannel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceConfigDeliveryChannelExists,
@@ -74,11 +66,11 @@ func resourceConfigDeliveryChannelRead(data *schema.ResourceData, meta interface
 }
 
 func resourceConfigDeliveryChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(configDeliveryChannelType, ResourceConfigDeliveryChannel(), data, configDeliveryChannelProperties, meta)
+	return plugin.ResourceCreate(configDeliveryChannelType, ResourceConfigDeliveryChannel(), data, meta)
 }
 
 func resourceConfigDeliveryChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(configDeliveryChannelType, ResourceConfigDeliveryChannel(), data, configDeliveryChannelProperties, meta)
+	return plugin.ResourceUpdate(configDeliveryChannelType, ResourceConfigDeliveryChannel(), data, meta)
 }
 
 func resourceConfigDeliveryChannelDelete(data *schema.ResourceData, meta interface{}) error {

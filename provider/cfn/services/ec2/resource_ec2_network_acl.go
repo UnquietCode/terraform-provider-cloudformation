@@ -17,11 +17,6 @@ import (
 
 const eC2NetworkAclType string = "AWS::EC2::NetworkAcl"
 
-var eC2NetworkAclProperties map[string]string = map[string]string{
-	"tags": "Tags",
-	"vpc_id": "VpcId",
-}
-
 func ResourceEC2NetworkAcl() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2NetworkAclExists,
@@ -55,11 +50,11 @@ func resourceEC2NetworkAclRead(data *schema.ResourceData, meta interface{}) erro
 }
 
 func resourceEC2NetworkAclCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2NetworkAclType, ResourceEC2NetworkAcl(), data, eC2NetworkAclProperties, meta)
+	return plugin.ResourceCreate(eC2NetworkAclType, ResourceEC2NetworkAcl(), data, meta)
 }
 
 func resourceEC2NetworkAclUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2NetworkAclType, ResourceEC2NetworkAcl(), data, eC2NetworkAclProperties, meta)
+	return plugin.ResourceUpdate(eC2NetworkAclType, ResourceEC2NetworkAcl(), data, meta)
 }
 
 func resourceEC2NetworkAclDelete(data *schema.ResourceData, meta interface{}) error {

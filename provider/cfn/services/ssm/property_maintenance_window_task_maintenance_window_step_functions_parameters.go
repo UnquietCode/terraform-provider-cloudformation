@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var maintenanceWindowTaskMaintenanceWindowStepFunctionsParametersProperties map[string]string = map[string]string{
-	"input": "Input",
-	"name": "Name",
-}
-
 func propertyMaintenanceWindowTaskMaintenanceWindowStepFunctionsParameters(extras...string) *schema.Resource {
 	var count int64 = 0
 	

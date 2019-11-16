@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var projectProjectTriggersProperties map[string]string = map[string]string{
-	"filter_groups": "FilterGroups",
-	"webhook": "Webhook",
-}
-
 func propertyProjectProjectTriggers(extras...string) *schema.Resource {
 	var count int64 = 0
 	

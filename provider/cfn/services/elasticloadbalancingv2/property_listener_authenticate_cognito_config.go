@@ -14,17 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var listenerAuthenticateCognitoConfigProperties map[string]string = map[string]string{
-	"authentication_request_extra_params": "AuthenticationRequestExtraParams",
-	"on_unauthenticated_request": "OnUnauthenticatedRequest",
-	"scope": "Scope",
-	"session_cookie_name": "SessionCookieName",
-	"session_timeout": "SessionTimeout",
-	"user_pool_arn": "UserPoolArn",
-	"user_pool_client_id": "UserPoolClientId",
-	"user_pool_domain": "UserPoolDomain",
-}
-
 func propertyListenerAuthenticateCognitoConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

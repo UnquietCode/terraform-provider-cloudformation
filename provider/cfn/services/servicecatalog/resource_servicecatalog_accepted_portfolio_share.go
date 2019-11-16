@@ -16,11 +16,6 @@ import (
 
 const serviceCatalogAcceptedPortfolioShareType string = "AWS::ServiceCatalog::AcceptedPortfolioShare"
 
-var serviceCatalogAcceptedPortfolioShareProperties map[string]string = map[string]string{
-	"accept_language": "AcceptLanguage",
-	"portfolio_id": "PortfolioId",
-}
-
 func ResourceServiceCatalogAcceptedPortfolioShare() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogAcceptedPortfolioShareExists,
@@ -57,11 +52,11 @@ func resourceServiceCatalogAcceptedPortfolioShareRead(data *schema.ResourceData,
 }
 
 func resourceServiceCatalogAcceptedPortfolioShareCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(serviceCatalogAcceptedPortfolioShareType, ResourceServiceCatalogAcceptedPortfolioShare(), data, serviceCatalogAcceptedPortfolioShareProperties, meta)
+	return plugin.ResourceCreate(serviceCatalogAcceptedPortfolioShareType, ResourceServiceCatalogAcceptedPortfolioShare(), data, meta)
 }
 
 func resourceServiceCatalogAcceptedPortfolioShareUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(serviceCatalogAcceptedPortfolioShareType, ResourceServiceCatalogAcceptedPortfolioShare(), data, serviceCatalogAcceptedPortfolioShareProperties, meta)
+	return plugin.ResourceUpdate(serviceCatalogAcceptedPortfolioShareType, ResourceServiceCatalogAcceptedPortfolioShare(), data, meta)
 }
 
 func resourceServiceCatalogAcceptedPortfolioShareDelete(data *schema.ResourceData, meta interface{}) error {

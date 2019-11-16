@@ -14,20 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var spotFleetInstanceNetworkInterfaceSpecificationProperties map[string]string = map[string]string{
-	"associate_public_ip_address": "AssociatePublicIpAddress",
-	"delete_on_termination": "DeleteOnTermination",
-	"description": "Description",
-	"device_index": "DeviceIndex",
-	"groups": "Groups",
-	"ipv6_address_count": "Ipv6AddressCount",
-	"ipv6_addresses": "Ipv6Addresses",
-	"network_interface_id": "NetworkInterfaceId",
-	"private_ip_addresses": "PrivateIpAddresses",
-	"secondary_private_ip_address_count": "SecondaryPrivateIpAddressCount",
-	"subnet_id": "SubnetId",
-}
-
 func propertySpotFleetInstanceNetworkInterfaceSpecification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

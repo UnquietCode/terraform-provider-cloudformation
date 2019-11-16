@@ -16,10 +16,6 @@ import (
 
 const lakeFormationDataLakeSettingsType string = "AWS::LakeFormation::DataLakeSettings"
 
-var lakeFormationDataLakeSettingsProperties map[string]string = map[string]string{
-	"admins": "Admins",
-}
-
 func ResourceLakeFormationDataLakeSettings() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLakeFormationDataLakeSettingsExists,
@@ -54,11 +50,11 @@ func resourceLakeFormationDataLakeSettingsRead(data *schema.ResourceData, meta i
 }
 
 func resourceLakeFormationDataLakeSettingsCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(lakeFormationDataLakeSettingsType, ResourceLakeFormationDataLakeSettings(), data, lakeFormationDataLakeSettingsProperties, meta)
+	return plugin.ResourceCreate(lakeFormationDataLakeSettingsType, ResourceLakeFormationDataLakeSettings(), data, meta)
 }
 
 func resourceLakeFormationDataLakeSettingsUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(lakeFormationDataLakeSettingsType, ResourceLakeFormationDataLakeSettings(), data, lakeFormationDataLakeSettingsProperties, meta)
+	return plugin.ResourceUpdate(lakeFormationDataLakeSettingsType, ResourceLakeFormationDataLakeSettings(), data, meta)
 }
 
 func resourceLakeFormationDataLakeSettingsDelete(data *schema.ResourceData, meta interface{}) error {

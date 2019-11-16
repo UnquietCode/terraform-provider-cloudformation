@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var appCustomRuleProperties map[string]string = map[string]string{
-	"condition": "Condition",
-	"status": "Status",
-	"target": "Target",
-	"source": "Source",
-}
-
 func propertyAppCustomRule(extras...string) *schema.Resource {
 	var count int64 = 0
 	

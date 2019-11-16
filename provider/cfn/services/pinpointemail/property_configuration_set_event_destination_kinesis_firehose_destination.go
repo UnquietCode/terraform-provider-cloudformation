@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var configurationSetEventDestinationKinesisFirehoseDestinationProperties map[string]string = map[string]string{
-	"delivery_stream_arn": "DeliveryStreamArn",
-	"iam_role_arn": "IamRoleArn",
-}
-
 func propertyConfigurationSetEventDestinationKinesisFirehoseDestination(extras...string) *schema.Resource {
 	var count int64 = 0
 	

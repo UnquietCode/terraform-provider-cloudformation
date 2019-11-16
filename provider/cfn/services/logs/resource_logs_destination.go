@@ -16,13 +16,6 @@ import (
 
 const logsDestinationType string = "AWS::Logs::Destination"
 
-var logsDestinationProperties map[string]string = map[string]string{
-	"destination_name": "DestinationName",
-	"destination_policy": "DestinationPolicy",
-	"role_arn": "RoleArn",
-	"target_arn": "TargetArn",
-}
-
 func ResourceLogsDestination() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLogsDestinationExists,
@@ -67,11 +60,11 @@ func resourceLogsDestinationRead(data *schema.ResourceData, meta interface{}) er
 }
 
 func resourceLogsDestinationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(logsDestinationType, ResourceLogsDestination(), data, logsDestinationProperties, meta)
+	return plugin.ResourceCreate(logsDestinationType, ResourceLogsDestination(), data, meta)
 }
 
 func resourceLogsDestinationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(logsDestinationType, ResourceLogsDestination(), data, logsDestinationProperties, meta)
+	return plugin.ResourceUpdate(logsDestinationType, ResourceLogsDestination(), data, meta)
 }
 
 func resourceLogsDestinationDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var spotFleetLoadBalancersConfigProperties map[string]string = map[string]string{
-	"classic_load_balancers_config": "ClassicLoadBalancersConfig",
-	"target_groups_config": "TargetGroupsConfig",
-}
-
 func propertySpotFleetLoadBalancersConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

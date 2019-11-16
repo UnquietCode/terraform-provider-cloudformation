@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var userPoolNumberAttributeConstraintsProperties map[string]string = map[string]string{
-	"min_value": "MinValue",
-	"max_value": "MaxValue",
-}
-
 func propertyUserPoolNumberAttributeConstraints(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var segmentDemographicProperties map[string]string = map[string]string{
-	"app_version": "AppVersion",
-	"device_type": "DeviceType",
-	"platform": "Platform",
-	"channel": "Channel",
-	"model": "Model",
-	"make": "Make",
-}
-
 func propertySegmentDemographic(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var userPoolRiskConfigurationAttachmentNotifyConfigurationTypeProperties map[string]string = map[string]string{
-	"block_email": "BlockEmail",
-	"reply_to": "ReplyTo",
-	"source_arn": "SourceArn",
-	"no_action_email": "NoActionEmail",
-	"from": "From",
-	"mfa_email": "MfaEmail",
-}
-
 func propertyUserPoolRiskConfigurationAttachmentNotifyConfigurationType(extras...string) *schema.Resource {
 	var count int64 = 0
 	

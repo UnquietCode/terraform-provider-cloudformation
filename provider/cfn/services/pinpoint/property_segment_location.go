@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var segmentLocationProperties map[string]string = map[string]string{
-	"gps_point": "GPSPoint",
-	"country": "Country",
-}
-
 func propertySegmentLocation(extras...string) *schema.Resource {
 	var count int64 = 0
 	

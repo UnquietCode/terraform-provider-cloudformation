@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var projectS3LogsConfigProperties map[string]string = map[string]string{
-	"status": "Status",
-	"encryption_disabled": "EncryptionDisabled",
-	"location": "Location",
-}
-
 func propertyProjectS3LogsConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,10 +16,6 @@ import (
 
 const sESTemplateType string = "AWS::SES::Template"
 
-var sESTemplateProperties map[string]string = map[string]string{
-	"template": "Template",
-}
-
 func ResourceSESTemplate() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSESTemplateExists,
@@ -54,11 +50,11 @@ func resourceSESTemplateRead(data *schema.ResourceData, meta interface{}) error 
 }
 
 func resourceSESTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(sESTemplateType, ResourceSESTemplate(), data, sESTemplateProperties, meta)
+	return plugin.ResourceCreate(sESTemplateType, ResourceSESTemplate(), data, meta)
 }
 
 func resourceSESTemplateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(sESTemplateType, ResourceSESTemplate(), data, sESTemplateProperties, meta)
+	return plugin.ResourceUpdate(sESTemplateType, ResourceSESTemplate(), data, meta)
 }
 
 func resourceSESTemplateDelete(data *schema.ResourceData, meta interface{}) error {

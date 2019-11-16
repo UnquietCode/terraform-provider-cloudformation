@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var brokerLogListProperties map[string]string = map[string]string{
-	"audit": "Audit",
-	"general": "General",
-}
-
 func propertyBrokerLogList(extras...string) *schema.Resource {
 	var count int64 = 0
 	

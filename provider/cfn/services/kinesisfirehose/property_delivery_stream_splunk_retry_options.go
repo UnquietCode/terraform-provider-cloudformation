@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deliveryStreamSplunkRetryOptionsProperties map[string]string = map[string]string{
-	"duration_in_seconds": "DurationInSeconds",
-}
-
 func propertyDeliveryStreamSplunkRetryOptions(extras...string) *schema.Resource {
 	var count int64 = 0
 	

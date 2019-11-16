@@ -16,11 +16,6 @@ import (
 
 const wAFSizeConstraintSetType string = "AWS::WAF::SizeConstraintSet"
 
-var wAFSizeConstraintSetProperties map[string]string = map[string]string{
-	"name": "Name",
-	"size_constraints": "SizeConstraints",
-}
-
 func ResourceWAFSizeConstraintSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFSizeConstraintSetExists,
@@ -58,11 +53,11 @@ func resourceWAFSizeConstraintSetRead(data *schema.ResourceData, meta interface{
 }
 
 func resourceWAFSizeConstraintSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(wAFSizeConstraintSetType, ResourceWAFSizeConstraintSet(), data, wAFSizeConstraintSetProperties, meta)
+	return plugin.ResourceCreate(wAFSizeConstraintSetType, ResourceWAFSizeConstraintSet(), data, meta)
 }
 
 func resourceWAFSizeConstraintSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(wAFSizeConstraintSetType, ResourceWAFSizeConstraintSet(), data, wAFSizeConstraintSetProperties, meta)
+	return plugin.ResourceUpdate(wAFSizeConstraintSetType, ResourceWAFSizeConstraintSet(), data, meta)
 }
 
 func resourceWAFSizeConstraintSetDelete(data *schema.ResourceData, meta interface{}) error {

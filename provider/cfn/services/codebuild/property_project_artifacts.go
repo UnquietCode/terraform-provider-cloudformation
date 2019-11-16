@@ -14,18 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var projectArtifactsProperties map[string]string = map[string]string{
-	"path": "Path",
-	"type": "Type",
-	"artifact_identifier": "ArtifactIdentifier",
-	"override_artifact_name": "OverrideArtifactName",
-	"packaging": "Packaging",
-	"encryption_disabled": "EncryptionDisabled",
-	"location": "Location",
-	"name": "Name",
-	"namespace_type": "NamespaceType",
-}
-
 func propertyProjectArtifacts(extras...string) *schema.Resource {
 	var count int64 = 0
 	

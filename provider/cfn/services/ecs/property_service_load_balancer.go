@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var serviceLoadBalancerProperties map[string]string = map[string]string{
-	"container_name": "ContainerName",
-	"container_port": "ContainerPort",
-	"load_balancer_name": "LoadBalancerName",
-	"target_group_arn": "TargetGroupArn",
-}
-
 func propertyServiceLoadBalancer(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,17 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var projectEnvironmentProperties map[string]string = map[string]string{
-	"type": "Type",
-	"environment_variables": "EnvironmentVariables",
-	"privileged_mode": "PrivilegedMode",
-	"image_pull_credentials_type": "ImagePullCredentialsType",
-	"image": "Image",
-	"registry_credential": "RegistryCredential",
-	"compute_type": "ComputeType",
-	"certificate": "Certificate",
-}
-
 func propertyProjectEnvironment(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var repositoryLifecyclePolicyProperties map[string]string = map[string]string{
-	"lifecycle_policy_text": "LifecyclePolicyText",
-	"registry_id": "RegistryId",
-}
-
 func propertyRepositoryLifecyclePolicy(extras...string) *schema.Resource {
 	var count int64 = 0
 	

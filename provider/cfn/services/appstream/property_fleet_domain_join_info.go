@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var fleetDomainJoinInfoProperties map[string]string = map[string]string{
-	"organizational_unit_distinguished_name": "OrganizationalUnitDistinguishedName",
-	"directory_name": "DirectoryName",
-}
-
 func propertyFleetDomainJoinInfo(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -17,13 +17,6 @@ import (
 
 const rDSDBParameterGroupType string = "AWS::RDS::DBParameterGroup"
 
-var rDSDBParameterGroupProperties map[string]string = map[string]string{
-	"description": "Description",
-	"family": "Family",
-	"parameters": "Parameters",
-	"tags": "Tags",
-}
-
 func ResourceRDSDBParameterGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRDSDBParameterGroupExists,
@@ -66,11 +59,11 @@ func resourceRDSDBParameterGroupRead(data *schema.ResourceData, meta interface{}
 }
 
 func resourceRDSDBParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(rDSDBParameterGroupType, ResourceRDSDBParameterGroup(), data, rDSDBParameterGroupProperties, meta)
+	return plugin.ResourceCreate(rDSDBParameterGroupType, ResourceRDSDBParameterGroup(), data, meta)
 }
 
 func resourceRDSDBParameterGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(rDSDBParameterGroupType, ResourceRDSDBParameterGroup(), data, rDSDBParameterGroupProperties, meta)
+	return plugin.ResourceUpdate(rDSDBParameterGroupType, ResourceRDSDBParameterGroup(), data, meta)
 }
 
 func resourceRDSDBParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {

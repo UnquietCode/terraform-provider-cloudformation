@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var campaignAttributeDimensionProperties map[string]string = map[string]string{
-	"attribute_type": "AttributeType",
-	"values": "Values",
-}
-
 func propertyCampaignAttributeDimension(extras...string) *schema.Resource {
 	var count int64 = 0
 	

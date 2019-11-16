@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var clusterScalingRuleProperties map[string]string = map[string]string{
-	"action": "Action",
-	"description": "Description",
-	"name": "Name",
-	"trigger": "Trigger",
-}
-
 func propertyClusterScalingRule(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var instanceGroupConfigScalingConstraintsProperties map[string]string = map[string]string{
-	"max_capacity": "MaxCapacity",
-	"min_capacity": "MinCapacity",
-}
-
 func propertyInstanceGroupConfigScalingConstraints(extras...string) *schema.Resource {
 	var count int64 = 0
 	

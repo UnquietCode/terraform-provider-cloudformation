@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var ruleRunCommandParametersProperties map[string]string = map[string]string{
-	"run_command_targets": "RunCommandTargets",
-}
-
 func propertyRuleRunCommandParameters(extras...string) *schema.Resource {
 	var count int64 = 0
 	

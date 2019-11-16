@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationKinesisStreamsInputProperties map[string]string = map[string]string{
-	"resource_arn": "ResourceARN",
-}
-
 func propertyApplicationKinesisStreamsInput(extras...string) *schema.Resource {
 	var count int64 = 0
 	

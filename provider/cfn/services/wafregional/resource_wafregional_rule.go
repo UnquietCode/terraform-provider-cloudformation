@@ -16,12 +16,6 @@ import (
 
 const wAFRegionalRuleType string = "AWS::WAFRegional::Rule"
 
-var wAFRegionalRuleProperties map[string]string = map[string]string{
-	"metric_name": "MetricName",
-	"predicates": "Predicates",
-	"name": "Name",
-}
-
 func ResourceWAFRegionalRule() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFRegionalRuleExists,
@@ -63,11 +57,11 @@ func resourceWAFRegionalRuleRead(data *schema.ResourceData, meta interface{}) er
 }
 
 func resourceWAFRegionalRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(wAFRegionalRuleType, ResourceWAFRegionalRule(), data, wAFRegionalRuleProperties, meta)
+	return plugin.ResourceCreate(wAFRegionalRuleType, ResourceWAFRegionalRule(), data, meta)
 }
 
 func resourceWAFRegionalRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(wAFRegionalRuleType, ResourceWAFRegionalRule(), data, wAFRegionalRuleProperties, meta)
+	return plugin.ResourceUpdate(wAFRegionalRuleType, ResourceWAFRegionalRule(), data, meta)
 }
 
 func resourceWAFRegionalRuleDelete(data *schema.ResourceData, meta interface{}) error {

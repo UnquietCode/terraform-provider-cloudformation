@@ -17,25 +17,6 @@ import (
 
 const lambdaFunctionType string = "AWS::Lambda::Function"
 
-var lambdaFunctionProperties map[string]string = map[string]string{
-	"code": "Code",
-	"dead_letter_config": "DeadLetterConfig",
-	"description": "Description",
-	"environment": "Environment",
-	"function_name": "FunctionName",
-	"handler": "Handler",
-	"kms_key_arn": "KmsKeyArn",
-	"layers": "Layers",
-	"memory_size": "MemorySize",
-	"reserved_concurrent_executions": "ReservedConcurrentExecutions",
-	"role": "Role",
-	"runtime": "Runtime",
-	"tags": "Tags",
-	"timeout": "Timeout",
-	"tracing_config": "TracingConfig",
-	"vpc_config": "VpcConfig",
-}
-
 func ResourceLambdaFunction() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLambdaFunctionExists,
@@ -137,11 +118,11 @@ func resourceLambdaFunctionRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceLambdaFunctionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(lambdaFunctionType, ResourceLambdaFunction(), data, lambdaFunctionProperties, meta)
+	return plugin.ResourceCreate(lambdaFunctionType, ResourceLambdaFunction(), data, meta)
 }
 
 func resourceLambdaFunctionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(lambdaFunctionType, ResourceLambdaFunction(), data, lambdaFunctionProperties, meta)
+	return plugin.ResourceUpdate(lambdaFunctionType, ResourceLambdaFunction(), data, meta)
 }
 
 func resourceLambdaFunctionDelete(data *schema.ResourceData, meta interface{}) error {

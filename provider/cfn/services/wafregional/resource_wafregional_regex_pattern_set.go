@@ -16,11 +16,6 @@ import (
 
 const wAFRegionalRegexPatternSetType string = "AWS::WAFRegional::RegexPatternSet"
 
-var wAFRegionalRegexPatternSetProperties map[string]string = map[string]string{
-	"regex_pattern_strings": "RegexPatternStrings",
-	"name": "Name",
-}
-
 func ResourceWAFRegionalRegexPatternSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFRegionalRegexPatternSetExists,
@@ -58,11 +53,11 @@ func resourceWAFRegionalRegexPatternSetRead(data *schema.ResourceData, meta inte
 }
 
 func resourceWAFRegionalRegexPatternSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(wAFRegionalRegexPatternSetType, ResourceWAFRegionalRegexPatternSet(), data, wAFRegionalRegexPatternSetProperties, meta)
+	return plugin.ResourceCreate(wAFRegionalRegexPatternSetType, ResourceWAFRegionalRegexPatternSet(), data, meta)
 }
 
 func resourceWAFRegionalRegexPatternSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(wAFRegionalRegexPatternSetType, ResourceWAFRegionalRegexPatternSet(), data, wAFRegionalRegexPatternSetProperties, meta)
+	return plugin.ResourceUpdate(wAFRegionalRegexPatternSetType, ResourceWAFRegionalRegexPatternSet(), data, meta)
 }
 
 func resourceWAFRegionalRegexPatternSetDelete(data *schema.ResourceData, meta interface{}) error {

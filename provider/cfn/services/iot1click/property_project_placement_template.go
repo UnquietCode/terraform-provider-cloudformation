@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var projectPlacementTemplateProperties map[string]string = map[string]string{
-	"device_templates": "DeviceTemplates",
-	"default_attributes": "DefaultAttributes",
-}
-
 func propertyProjectPlacementTemplate(extras...string) *schema.Resource {
 	var count int64 = 0
 	

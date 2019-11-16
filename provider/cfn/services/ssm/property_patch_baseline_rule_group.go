@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var patchBaselineRuleGroupProperties map[string]string = map[string]string{
-	"patch_rules": "PatchRules",
-}
-
 func propertyPatchBaselineRuleGroup(extras...string) *schema.Resource {
 	var count int64 = 0
 	

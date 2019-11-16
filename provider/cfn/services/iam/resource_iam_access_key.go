@@ -16,12 +16,6 @@ import (
 
 const iAMAccessKeyType string = "AWS::IAM::AccessKey"
 
-var iAMAccessKeyProperties map[string]string = map[string]string{
-	"serial": "Serial",
-	"status": "Status",
-	"user_name": "UserName",
-}
-
 func ResourceIAMAccessKey() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIAMAccessKeyExists,
@@ -62,11 +56,11 @@ func resourceIAMAccessKeyRead(data *schema.ResourceData, meta interface{}) error
 }
 
 func resourceIAMAccessKeyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(iAMAccessKeyType, ResourceIAMAccessKey(), data, iAMAccessKeyProperties, meta)
+	return plugin.ResourceCreate(iAMAccessKeyType, ResourceIAMAccessKey(), data, meta)
 }
 
 func resourceIAMAccessKeyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(iAMAccessKeyType, ResourceIAMAccessKey(), data, iAMAccessKeyProperties, meta)
+	return plugin.ResourceUpdate(iAMAccessKeyType, ResourceIAMAccessKey(), data, meta)
 }
 
 func resourceIAMAccessKeyDelete(data *schema.ResourceData, meta interface{}) error {

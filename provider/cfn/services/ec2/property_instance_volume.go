@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var instanceVolumeProperties map[string]string = map[string]string{
-	"device": "Device",
-	"volume_id": "VolumeId",
-}
-
 func propertyInstanceVolume(extras...string) *schema.Resource {
 	var count int64 = 0
 	

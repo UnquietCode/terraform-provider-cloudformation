@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deliveryStreamHiveJsonSerDeProperties map[string]string = map[string]string{
-	"timestamp_formats": "TimestampFormats",
-}
-
 func propertyDeliveryStreamHiveJsonSerDe(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var projectCloudWatchLogsConfigProperties map[string]string = map[string]string{
-	"status": "Status",
-	"group_name": "GroupName",
-	"stream_name": "StreamName",
-}
-
 func propertyProjectCloudWatchLogsConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var securityConfigurationCloudWatchEncryptionProperties map[string]string = map[string]string{
-	"kms_key_arn": "KmsKeyArn",
-	"cloud_watch_encryption_mode": "CloudWatchEncryptionMode",
-}
-
 func propertySecurityConfigurationCloudWatchEncryption(extras...string) *schema.Resource {
 	var count int64 = 0
 	

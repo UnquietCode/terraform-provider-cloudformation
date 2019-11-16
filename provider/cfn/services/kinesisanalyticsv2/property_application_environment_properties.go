@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationEnvironmentPropertiesProperties map[string]string = map[string]string{
-	"property_groups": "PropertyGroups",
-}
-
 func propertyApplicationEnvironmentProperties(extras...string) *schema.Resource {
 	var count int64 = 0
 	

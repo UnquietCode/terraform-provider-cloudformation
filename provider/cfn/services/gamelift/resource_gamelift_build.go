@@ -16,12 +16,6 @@ import (
 
 const gameLiftBuildType string = "AWS::GameLift::Build"
 
-var gameLiftBuildProperties map[string]string = map[string]string{
-	"name": "Name",
-	"storage_location": "StorageLocation",
-	"version": "Version",
-}
-
 func ResourceGameLiftBuild() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGameLiftBuildExists,
@@ -64,11 +58,11 @@ func resourceGameLiftBuildRead(data *schema.ResourceData, meta interface{}) erro
 }
 
 func resourceGameLiftBuildCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(gameLiftBuildType, ResourceGameLiftBuild(), data, gameLiftBuildProperties, meta)
+	return plugin.ResourceCreate(gameLiftBuildType, ResourceGameLiftBuild(), data, meta)
 }
 
 func resourceGameLiftBuildUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(gameLiftBuildType, ResourceGameLiftBuild(), data, gameLiftBuildProperties, meta)
+	return plugin.ResourceUpdate(gameLiftBuildType, ResourceGameLiftBuild(), data, meta)
 }
 
 func resourceGameLiftBuildDelete(data *schema.ResourceData, meta interface{}) error {

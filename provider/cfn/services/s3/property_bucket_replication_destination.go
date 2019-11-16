@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketReplicationDestinationProperties map[string]string = map[string]string{
-	"access_control_translation": "AccessControlTranslation",
-	"account": "Account",
-	"bucket": "Bucket",
-	"encryption_configuration": "EncryptionConfiguration",
-	"storage_class": "StorageClass",
-}
-
 func propertyBucketReplicationDestination(extras...string) *schema.Resource {
 	var count int64 = 0
 	

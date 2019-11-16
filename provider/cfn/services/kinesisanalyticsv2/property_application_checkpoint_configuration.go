@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationCheckpointConfigurationProperties map[string]string = map[string]string{
-	"configuration_type": "ConfigurationType",
-	"checkpoint_interval": "CheckpointInterval",
-	"min_pause_between_checkpoints": "MinPauseBetweenCheckpoints",
-	"checkpointing_enabled": "CheckpointingEnabled",
-}
-
 func propertyApplicationCheckpointConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

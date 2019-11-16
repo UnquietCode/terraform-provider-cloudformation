@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var filterConditionProperties map[string]string = map[string]string{
-	"lt": "Lt",
-	"gte": "Gte",
-	"neq": "Neq",
-	"eq": "Eq",
-	"lte": "Lte",
-}
-
 func propertyFilterCondition(extras...string) *schema.Resource {
 	var count int64 = 0
 	

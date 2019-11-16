@@ -16,15 +16,6 @@ import (
 
 const pinpointEmailConfigurationSetType string = "AWS::PinpointEmail::ConfigurationSet"
 
-var pinpointEmailConfigurationSetProperties map[string]string = map[string]string{
-	"sending_options": "SendingOptions",
-	"tracking_options": "TrackingOptions",
-	"reputation_options": "ReputationOptions",
-	"delivery_options": "DeliveryOptions",
-	"tags": "Tags",
-	"name": "Name",
-}
-
 func ResourcePinpointEmailConfigurationSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointEmailConfigurationSetExists,
@@ -86,11 +77,11 @@ func resourcePinpointEmailConfigurationSetRead(data *schema.ResourceData, meta i
 }
 
 func resourcePinpointEmailConfigurationSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(pinpointEmailConfigurationSetType, ResourcePinpointEmailConfigurationSet(), data, pinpointEmailConfigurationSetProperties, meta)
+	return plugin.ResourceCreate(pinpointEmailConfigurationSetType, ResourcePinpointEmailConfigurationSet(), data, meta)
 }
 
 func resourcePinpointEmailConfigurationSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(pinpointEmailConfigurationSetType, ResourcePinpointEmailConfigurationSet(), data, pinpointEmailConfigurationSetProperties, meta)
+	return plugin.ResourceUpdate(pinpointEmailConfigurationSetType, ResourcePinpointEmailConfigurationSet(), data, meta)
 }
 
 func resourcePinpointEmailConfigurationSetDelete(data *schema.ResourceData, meta interface{}) error {

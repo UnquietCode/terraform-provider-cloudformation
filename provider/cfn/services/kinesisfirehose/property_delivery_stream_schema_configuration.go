@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deliveryStreamSchemaConfigurationProperties map[string]string = map[string]string{
-	"catalog_id": "CatalogId",
-	"database_name": "DatabaseName",
-	"region": "Region",
-	"role_arn": "RoleARN",
-	"table_name": "TableName",
-	"version_id": "VersionId",
-}
-
 func propertyDeliveryStreamSchemaConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

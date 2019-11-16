@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var clusterTlsProperties map[string]string = map[string]string{
-	"certificate_authority_arn_list": "CertificateAuthorityArnList",
-}
-
 func propertyClusterTls(extras...string) *schema.Resource {
 	var count int64 = 0
 	

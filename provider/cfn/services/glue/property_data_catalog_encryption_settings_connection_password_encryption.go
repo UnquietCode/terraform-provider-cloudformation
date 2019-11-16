@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var dataCatalogEncryptionSettingsConnectionPasswordEncryptionProperties map[string]string = map[string]string{
-	"return_connection_password_encrypted": "ReturnConnectionPasswordEncrypted",
-	"kms_key_id": "KmsKeyId",
-}
-
 func propertyDataCatalogEncryptionSettingsConnectionPasswordEncryption(extras...string) *schema.Resource {
 	var count int64 = 0
 	

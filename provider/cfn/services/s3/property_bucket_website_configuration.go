@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketWebsiteConfigurationProperties map[string]string = map[string]string{
-	"error_document": "ErrorDocument",
-	"index_document": "IndexDocument",
-	"redirect_all_requests_to": "RedirectAllRequestsTo",
-	"routing_rules": "RoutingRules",
-}
-
 func propertyBucketWebsiteConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

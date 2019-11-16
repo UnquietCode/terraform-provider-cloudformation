@@ -16,27 +16,6 @@ import (
 
 const glueJobType string = "AWS::Glue::Job"
 
-var glueJobProperties map[string]string = map[string]string{
-	"connections": "Connections",
-	"max_retries": "MaxRetries",
-	"description": "Description",
-	"timeout": "Timeout",
-	"allocated_capacity": "AllocatedCapacity",
-	"name": "Name",
-	"role": "Role",
-	"default_arguments": "DefaultArguments",
-	"notification_property": "NotificationProperty",
-	"worker_type": "WorkerType",
-	"log_uri": "LogUri",
-	"command": "Command",
-	"glue_version": "GlueVersion",
-	"execution_property": "ExecutionProperty",
-	"security_configuration": "SecurityConfiguration",
-	"number_of_workers": "NumberOfWorkers",
-	"tags": "Tags",
-	"max_capacity": "MaxCapacity",
-}
-
 func ResourceGlueJob() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGlueJobExists,
@@ -145,11 +124,11 @@ func resourceGlueJobRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceGlueJobCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(glueJobType, ResourceGlueJob(), data, glueJobProperties, meta)
+	return plugin.ResourceCreate(glueJobType, ResourceGlueJob(), data, meta)
 }
 
 func resourceGlueJobUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(glueJobType, ResourceGlueJob(), data, glueJobProperties, meta)
+	return plugin.ResourceUpdate(glueJobType, ResourceGlueJob(), data, meta)
 }
 
 func resourceGlueJobDelete(data *schema.ResourceData, meta interface{}) error {

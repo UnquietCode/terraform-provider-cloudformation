@@ -17,16 +17,6 @@ import (
 
 const transferUserType string = "AWS::Transfer::User"
 
-var transferUserProperties map[string]string = map[string]string{
-	"policy": "Policy",
-	"role": "Role",
-	"home_directory": "HomeDirectory",
-	"server_id": "ServerId",
-	"user_name": "UserName",
-	"ssh_public_keys": "SshPublicKeys",
-	"tags": "Tags",
-}
-
 func ResourceTransferUser() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceTransferUserExists,
@@ -81,11 +71,11 @@ func resourceTransferUserRead(data *schema.ResourceData, meta interface{}) error
 }
 
 func resourceTransferUserCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(transferUserType, ResourceTransferUser(), data, transferUserProperties, meta)
+	return plugin.ResourceCreate(transferUserType, ResourceTransferUser(), data, meta)
 }
 
 func resourceTransferUserUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(transferUserType, ResourceTransferUser(), data, transferUserProperties, meta)
+	return plugin.ResourceUpdate(transferUserType, ResourceTransferUser(), data, meta)
 }
 
 func resourceTransferUserDelete(data *schema.ResourceData, meta interface{}) error {

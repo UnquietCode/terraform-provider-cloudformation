@@ -16,22 +16,6 @@ import (
 
 const sSMMaintenanceWindowTaskType string = "AWS::SSM::MaintenanceWindowTask"
 
-var sSMMaintenanceWindowTaskProperties map[string]string = map[string]string{
-	"max_errors": "MaxErrors",
-	"description": "Description",
-	"service_role_arn": "ServiceRoleArn",
-	"priority": "Priority",
-	"max_concurrency": "MaxConcurrency",
-	"targets": "Targets",
-	"name": "Name",
-	"task_arn": "TaskArn",
-	"task_invocation_parameters": "TaskInvocationParameters",
-	"window_id": "WindowId",
-	"task_parameters": "TaskParameters",
-	"task_type": "TaskType",
-	"logging_info": "LoggingInfo",
-}
-
 func ResourceSSMMaintenanceWindowTask() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSSMMaintenanceWindowTaskExists,
@@ -117,11 +101,11 @@ func resourceSSMMaintenanceWindowTaskRead(data *schema.ResourceData, meta interf
 }
 
 func resourceSSMMaintenanceWindowTaskCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(sSMMaintenanceWindowTaskType, ResourceSSMMaintenanceWindowTask(), data, sSMMaintenanceWindowTaskProperties, meta)
+	return plugin.ResourceCreate(sSMMaintenanceWindowTaskType, ResourceSSMMaintenanceWindowTask(), data, meta)
 }
 
 func resourceSSMMaintenanceWindowTaskUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(sSMMaintenanceWindowTaskType, ResourceSSMMaintenanceWindowTask(), data, sSMMaintenanceWindowTaskProperties, meta)
+	return plugin.ResourceUpdate(sSMMaintenanceWindowTaskType, ResourceSSMMaintenanceWindowTask(), data, meta)
 }
 
 func resourceSSMMaintenanceWindowTaskDelete(data *schema.ResourceData, meta interface{}) error {

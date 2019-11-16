@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var appDataSourceProperties map[string]string = map[string]string{
-	"arn": "Arn",
-	"database_name": "DatabaseName",
-	"type": "Type",
-}
-
 func propertyAppDataSource(extras...string) *schema.Resource {
 	var count int64 = 0
 	

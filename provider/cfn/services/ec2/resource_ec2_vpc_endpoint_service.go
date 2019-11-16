@@ -16,11 +16,6 @@ import (
 
 const eC2VPCEndpointServiceType string = "AWS::EC2::VPCEndpointService"
 
-var eC2VPCEndpointServiceProperties map[string]string = map[string]string{
-	"network_load_balancer_arns": "NetworkLoadBalancerArns",
-	"acceptance_required": "AcceptanceRequired",
-}
-
 func ResourceEC2VPCEndpointService() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPCEndpointServiceExists,
@@ -58,11 +53,11 @@ func resourceEC2VPCEndpointServiceRead(data *schema.ResourceData, meta interface
 }
 
 func resourceEC2VPCEndpointServiceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2VPCEndpointServiceType, ResourceEC2VPCEndpointService(), data, eC2VPCEndpointServiceProperties, meta)
+	return plugin.ResourceCreate(eC2VPCEndpointServiceType, ResourceEC2VPCEndpointService(), data, meta)
 }
 
 func resourceEC2VPCEndpointServiceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2VPCEndpointServiceType, ResourceEC2VPCEndpointService(), data, eC2VPCEndpointServiceProperties, meta)
+	return plugin.ResourceUpdate(eC2VPCEndpointServiceType, ResourceEC2VPCEndpointService(), data, meta)
 }
 
 func resourceEC2VPCEndpointServiceDelete(data *schema.ResourceData, meta interface{}) error {

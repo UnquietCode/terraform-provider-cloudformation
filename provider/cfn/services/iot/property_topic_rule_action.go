@@ -14,23 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var topicRuleActionProperties map[string]string = map[string]string{
-	"cloudwatch_alarm": "CloudwatchAlarm",
-	"cloudwatch_metric": "CloudwatchMetric",
-	"dynamo_db": "DynamoDB",
-	"dynamo_d_bv2": "DynamoDBv2",
-	"elasticsearch": "Elasticsearch",
-	"firehose": "Firehose",
-	"iot_analytics": "IotAnalytics",
-	"kinesis": "Kinesis",
-	"lambda": "Lambda",
-	"republish": "Republish",
-	"s3": "S3",
-	"sns": "Sns",
-	"sqs": "Sqs",
-	"step_functions": "StepFunctions",
-}
-
 func propertyTopicRuleAction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

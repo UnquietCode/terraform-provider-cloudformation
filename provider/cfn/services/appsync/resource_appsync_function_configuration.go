@@ -16,18 +16,6 @@ import (
 
 const appSyncFunctionConfigurationType string = "AWS::AppSync::FunctionConfiguration"
 
-var appSyncFunctionConfigurationProperties map[string]string = map[string]string{
-	"response_mapping_template_s3_location": "ResponseMappingTemplateS3Location",
-	"description": "Description",
-	"data_source_name": "DataSourceName",
-	"request_mapping_template": "RequestMappingTemplate",
-	"response_mapping_template": "ResponseMappingTemplate",
-	"function_version": "FunctionVersion",
-	"request_mapping_template_s3_location": "RequestMappingTemplateS3Location",
-	"api_id": "ApiId",
-	"name": "Name",
-}
-
 func ResourceAppSyncFunctionConfiguration() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppSyncFunctionConfigurationExists,
@@ -92,11 +80,11 @@ func resourceAppSyncFunctionConfigurationRead(data *schema.ResourceData, meta in
 }
 
 func resourceAppSyncFunctionConfigurationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(appSyncFunctionConfigurationType, ResourceAppSyncFunctionConfiguration(), data, appSyncFunctionConfigurationProperties, meta)
+	return plugin.ResourceCreate(appSyncFunctionConfigurationType, ResourceAppSyncFunctionConfiguration(), data, meta)
 }
 
 func resourceAppSyncFunctionConfigurationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(appSyncFunctionConfigurationType, ResourceAppSyncFunctionConfiguration(), data, appSyncFunctionConfigurationProperties, meta)
+	return plugin.ResourceUpdate(appSyncFunctionConfigurationType, ResourceAppSyncFunctionConfiguration(), data, meta)
 }
 
 func resourceAppSyncFunctionConfigurationDelete(data *schema.ResourceData, meta interface{}) error {

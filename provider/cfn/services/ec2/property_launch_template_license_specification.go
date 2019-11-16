@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var launchTemplateLicenseSpecificationProperties map[string]string = map[string]string{
-	"license_configuration_arn": "LicenseConfigurationArn",
-}
-
 func propertyLaunchTemplateLicenseSpecification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

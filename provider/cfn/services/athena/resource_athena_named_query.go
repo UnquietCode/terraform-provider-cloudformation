@@ -16,13 +16,6 @@ import (
 
 const athenaNamedQueryType string = "AWS::Athena::NamedQuery"
 
-var athenaNamedQueryProperties map[string]string = map[string]string{
-	"description": "Description",
-	"query_string": "QueryString",
-	"database": "Database",
-	"name": "Name",
-}
-
 func ResourceAthenaNamedQuery() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAthenaNamedQueryExists,
@@ -67,11 +60,11 @@ func resourceAthenaNamedQueryRead(data *schema.ResourceData, meta interface{}) e
 }
 
 func resourceAthenaNamedQueryCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(athenaNamedQueryType, ResourceAthenaNamedQuery(), data, athenaNamedQueryProperties, meta)
+	return plugin.ResourceCreate(athenaNamedQueryType, ResourceAthenaNamedQuery(), data, meta)
 }
 
 func resourceAthenaNamedQueryUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(athenaNamedQueryType, ResourceAthenaNamedQuery(), data, athenaNamedQueryProperties, meta)
+	return plugin.ResourceUpdate(athenaNamedQueryType, ResourceAthenaNamedQuery(), data, meta)
 }
 
 func resourceAthenaNamedQueryDelete(data *schema.ResourceData, meta interface{}) error {

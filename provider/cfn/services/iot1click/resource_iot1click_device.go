@@ -16,11 +16,6 @@ import (
 
 const ioT1ClickDeviceType string = "AWS::IoT1Click::Device"
 
-var ioT1ClickDeviceProperties map[string]string = map[string]string{
-	"device_id": "DeviceId",
-	"enabled": "Enabled",
-}
-
 func ResourceIoT1ClickDevice() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoT1ClickDeviceExists,
@@ -57,11 +52,11 @@ func resourceIoT1ClickDeviceRead(data *schema.ResourceData, meta interface{}) er
 }
 
 func resourceIoT1ClickDeviceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(ioT1ClickDeviceType, ResourceIoT1ClickDevice(), data, ioT1ClickDeviceProperties, meta)
+	return plugin.ResourceCreate(ioT1ClickDeviceType, ResourceIoT1ClickDevice(), data, meta)
 }
 
 func resourceIoT1ClickDeviceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(ioT1ClickDeviceType, ResourceIoT1ClickDevice(), data, ioT1ClickDeviceProperties, meta)
+	return plugin.ResourceUpdate(ioT1ClickDeviceType, ResourceIoT1ClickDevice(), data, meta)
 }
 
 func resourceIoT1ClickDeviceDelete(data *schema.ResourceData, meta interface{}) error {

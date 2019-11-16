@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deploymentGroupDeploymentStyleProperties map[string]string = map[string]string{
-	"deployment_option": "DeploymentOption",
-	"deployment_type": "DeploymentType",
-}
-
 func propertyDeploymentGroupDeploymentStyle(extras...string) *schema.Resource {
 	var count int64 = 0
 	

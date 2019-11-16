@@ -16,24 +16,6 @@ import (
 
 const codeDeployDeploymentGroupType string = "AWS::CodeDeploy::DeploymentGroup"
 
-var codeDeployDeploymentGroupProperties map[string]string = map[string]string{
-	"alarm_configuration": "AlarmConfiguration",
-	"application_name": "ApplicationName",
-	"auto_rollback_configuration": "AutoRollbackConfiguration",
-	"auto_scaling_groups": "AutoScalingGroups",
-	"deployment": "Deployment",
-	"deployment_config_name": "DeploymentConfigName",
-	"deployment_group_name": "DeploymentGroupName",
-	"deployment_style": "DeploymentStyle",
-	"ec2_tag_filters": "Ec2TagFilters",
-	"ec2_tag_set": "Ec2TagSet",
-	"load_balancer_info": "LoadBalancerInfo",
-	"on_premises_instance_tag_filters": "OnPremisesInstanceTagFilters",
-	"on_premises_tag_set": "OnPremisesTagSet",
-	"service_role_arn": "ServiceRoleArn",
-	"trigger_configurations": "TriggerConfigurations",
-}
-
 func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCodeDeployDeploymentGroupExists,
@@ -141,11 +123,11 @@ func resourceCodeDeployDeploymentGroupRead(data *schema.ResourceData, meta inter
 }
 
 func resourceCodeDeployDeploymentGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(codeDeployDeploymentGroupType, ResourceCodeDeployDeploymentGroup(), data, codeDeployDeploymentGroupProperties, meta)
+	return plugin.ResourceCreate(codeDeployDeploymentGroupType, ResourceCodeDeployDeploymentGroup(), data, meta)
 }
 
 func resourceCodeDeployDeploymentGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(codeDeployDeploymentGroupType, ResourceCodeDeployDeploymentGroup(), data, codeDeployDeploymentGroupProperties, meta)
+	return plugin.ResourceUpdate(codeDeployDeploymentGroupType, ResourceCodeDeployDeploymentGroup(), data, meta)
 }
 
 func resourceCodeDeployDeploymentGroupDelete(data *schema.ResourceData, meta interface{}) error {

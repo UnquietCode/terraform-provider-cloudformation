@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var webACLActivatedRuleProperties map[string]string = map[string]string{
-	"action": "Action",
-	"priority": "Priority",
-	"rule_id": "RuleId",
-}
-
 func propertyWebACLActivatedRule(extras...string) *schema.Resource {
 	var count int64 = 0
 	

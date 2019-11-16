@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var topicRuleStepFunctionsActionProperties map[string]string = map[string]string{
-	"execution_name_prefix": "ExecutionNamePrefix",
-	"role_arn": "RoleArn",
-	"state_machine_name": "StateMachineName",
-}
-
 func propertyTopicRuleStepFunctionsAction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

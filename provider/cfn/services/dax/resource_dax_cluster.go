@@ -16,22 +16,6 @@ import (
 
 const dAXClusterType string = "AWS::DAX::Cluster"
 
-var dAXClusterProperties map[string]string = map[string]string{
-	"sse_specification": "SSESpecification",
-	"description": "Description",
-	"replication_factor": "ReplicationFactor",
-	"parameter_group_name": "ParameterGroupName",
-	"availability_zones": "AvailabilityZones",
-	"iam_role_arn": "IAMRoleARN",
-	"subnet_group_name": "SubnetGroupName",
-	"preferred_maintenance_window": "PreferredMaintenanceWindow",
-	"notification_topic_arn": "NotificationTopicARN",
-	"security_group_ids": "SecurityGroupIds",
-	"node_type": "NodeType",
-	"cluster_name": "ClusterName",
-	"tags": "Tags",
-}
-
 func ResourceDAXCluster() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDAXClusterExists,
@@ -116,11 +100,11 @@ func resourceDAXClusterRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceDAXClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(dAXClusterType, ResourceDAXCluster(), data, dAXClusterProperties, meta)
+	return plugin.ResourceCreate(dAXClusterType, ResourceDAXCluster(), data, meta)
 }
 
 func resourceDAXClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(dAXClusterType, ResourceDAXCluster(), data, dAXClusterProperties, meta)
+	return plugin.ResourceUpdate(dAXClusterType, ResourceDAXCluster(), data, meta)
 }
 
 func resourceDAXClusterDelete(data *schema.ResourceData, meta interface{}) error {

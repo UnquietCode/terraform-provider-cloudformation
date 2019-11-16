@@ -14,18 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var projectSourceProperties map[string]string = map[string]string{
-	"type": "Type",
-	"report_build_status": "ReportBuildStatus",
-	"auth": "Auth",
-	"source_identifier": "SourceIdentifier",
-	"build_spec": "BuildSpec",
-	"git_clone_depth": "GitCloneDepth",
-	"git_submodules_config": "GitSubmodulesConfig",
-	"insecure_ssl": "InsecureSsl",
-	"location": "Location",
-}
-
 func propertyProjectSource(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var stageAccessLogSettingsProperties map[string]string = map[string]string{
-	"format": "Format",
-	"destination_arn": "DestinationArn",
-}
-
 func propertyStageAccessLogSettings(extras...string) *schema.Resource {
 	var count int64 = 0
 	

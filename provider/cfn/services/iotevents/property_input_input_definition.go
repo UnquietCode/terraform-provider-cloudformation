@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var inputInputDefinitionProperties map[string]string = map[string]string{
-	"attributes": "Attributes",
-}
-
 func propertyInputInputDefinition(extras...string) *schema.Resource {
 	var count int64 = 0
 	

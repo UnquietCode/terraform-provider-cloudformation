@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var channelInputAttachmentProperties map[string]string = map[string]string{
-	"input_attachment_name": "InputAttachmentName",
-	"input_id": "InputId",
-	"input_settings": "InputSettings",
-}
-
 func propertyChannelInputAttachment(extras...string) *schema.Resource {
 	var count int64 = 0
 	

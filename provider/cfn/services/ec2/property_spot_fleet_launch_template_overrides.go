@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var spotFleetLaunchTemplateOverridesProperties map[string]string = map[string]string{
-	"availability_zone": "AvailabilityZone",
-	"instance_type": "InstanceType",
-	"spot_price": "SpotPrice",
-	"subnet_id": "SubnetId",
-	"weighted_capacity": "WeightedCapacity",
-}
-
 func propertySpotFleetLaunchTemplateOverrides(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,12 +16,6 @@ import (
 
 const sageMakerNotebookInstanceLifecycleConfigType string = "AWS::SageMaker::NotebookInstanceLifecycleConfig"
 
-var sageMakerNotebookInstanceLifecycleConfigProperties map[string]string = map[string]string{
-	"on_start": "OnStart",
-	"notebook_instance_lifecycle_config_name": "NotebookInstanceLifecycleConfigName",
-	"on_create": "OnCreate",
-}
-
 func ResourceSageMakerNotebookInstanceLifecycleConfig() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSageMakerNotebookInstanceLifecycleConfigExists,
@@ -64,11 +58,11 @@ func resourceSageMakerNotebookInstanceLifecycleConfigRead(data *schema.ResourceD
 }
 
 func resourceSageMakerNotebookInstanceLifecycleConfigCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(sageMakerNotebookInstanceLifecycleConfigType, ResourceSageMakerNotebookInstanceLifecycleConfig(), data, sageMakerNotebookInstanceLifecycleConfigProperties, meta)
+	return plugin.ResourceCreate(sageMakerNotebookInstanceLifecycleConfigType, ResourceSageMakerNotebookInstanceLifecycleConfig(), data, meta)
 }
 
 func resourceSageMakerNotebookInstanceLifecycleConfigUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(sageMakerNotebookInstanceLifecycleConfigType, ResourceSageMakerNotebookInstanceLifecycleConfig(), data, sageMakerNotebookInstanceLifecycleConfigProperties, meta)
+	return plugin.ResourceUpdate(sageMakerNotebookInstanceLifecycleConfigType, ResourceSageMakerNotebookInstanceLifecycleConfig(), data, meta)
 }
 
 func resourceSageMakerNotebookInstanceLifecycleConfigDelete(data *schema.ResourceData, meta interface{}) error {

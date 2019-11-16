@@ -17,15 +17,6 @@ import (
 
 const eC2SecurityGroupType string = "AWS::EC2::SecurityGroup"
 
-var eC2SecurityGroupProperties map[string]string = map[string]string{
-	"group_description": "GroupDescription",
-	"group_name": "GroupName",
-	"security_group_egress": "SecurityGroupEgress",
-	"security_group_ingress": "SecurityGroupIngress",
-	"tags": "Tags",
-	"vpc_id": "VpcId",
-}
-
 func ResourceEC2SecurityGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2SecurityGroupExists,
@@ -77,11 +68,11 @@ func resourceEC2SecurityGroupRead(data *schema.ResourceData, meta interface{}) e
 }
 
 func resourceEC2SecurityGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2SecurityGroupType, ResourceEC2SecurityGroup(), data, eC2SecurityGroupProperties, meta)
+	return plugin.ResourceCreate(eC2SecurityGroupType, ResourceEC2SecurityGroup(), data, meta)
 }
 
 func resourceEC2SecurityGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2SecurityGroupType, ResourceEC2SecurityGroup(), data, eC2SecurityGroupProperties, meta)
+	return plugin.ResourceUpdate(eC2SecurityGroupType, ResourceEC2SecurityGroup(), data, meta)
 }
 
 func resourceEC2SecurityGroupDelete(data *schema.ResourceData, meta interface{}) error {

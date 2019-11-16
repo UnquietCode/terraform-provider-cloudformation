@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketLoggingConfigurationProperties map[string]string = map[string]string{
-	"destination_bucket_name": "DestinationBucketName",
-	"log_file_prefix": "LogFilePrefix",
-}
-
 func propertyBucketLoggingConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var routeWeightedTargetProperties map[string]string = map[string]string{
-	"virtual_node": "VirtualNode",
-	"weight": "Weight",
-}
-
 func propertyRouteWeightedTarget(extras...string) *schema.Resource {
 	var count int64 = 0
 	

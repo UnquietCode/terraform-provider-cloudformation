@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var taskDefinitionLinuxParametersProperties map[string]string = map[string]string{
-	"capabilities": "Capabilities",
-	"devices": "Devices",
-	"init_process_enabled": "InitProcessEnabled",
-	"shared_memory_size": "SharedMemorySize",
-	"tmpfs": "Tmpfs",
-}
-
 func propertyTaskDefinitionLinuxParameters(extras...string) *schema.Resource {
 	var count int64 = 0
 	

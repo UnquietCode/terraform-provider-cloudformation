@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var remediationConfigurationRemediationParameterValueProperties map[string]string = map[string]string{
-	"resource_value": "ResourceValue",
-	"static_value": "StaticValue",
-}
-
 func propertyRemediationConfigurationRemediationParameterValue(extras...string) *schema.Resource {
 	var count int64 = 0
 	

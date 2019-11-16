@@ -16,14 +16,6 @@ import (
 
 const pinpointEmailTemplateType string = "AWS::Pinpoint::EmailTemplate"
 
-var pinpointEmailTemplateProperties map[string]string = map[string]string{
-	"html_part": "HtmlPart",
-	"text_part": "TextPart",
-	"template_name": "TemplateName",
-	"subject": "Subject",
-	"tags": "Tags",
-}
-
 func ResourcePinpointEmailTemplate() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointEmailTemplateExists,
@@ -72,11 +64,11 @@ func resourcePinpointEmailTemplateRead(data *schema.ResourceData, meta interface
 }
 
 func resourcePinpointEmailTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(pinpointEmailTemplateType, ResourcePinpointEmailTemplate(), data, pinpointEmailTemplateProperties, meta)
+	return plugin.ResourceCreate(pinpointEmailTemplateType, ResourcePinpointEmailTemplate(), data, meta)
 }
 
 func resourcePinpointEmailTemplateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(pinpointEmailTemplateType, ResourcePinpointEmailTemplate(), data, pinpointEmailTemplateProperties, meta)
+	return plugin.ResourceUpdate(pinpointEmailTemplateType, ResourcePinpointEmailTemplate(), data, meta)
 }
 
 func resourcePinpointEmailTemplateDelete(data *schema.ResourceData, meta interface{}) error {

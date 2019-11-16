@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var backupPlanBackupPlanResourceTypeProperties map[string]string = map[string]string{
-	"backup_plan_name": "BackupPlanName",
-	"backup_plan_rule": "BackupPlanRule",
-}
-
 func propertyBackupPlanBackupPlanResourceType(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var autoScalingGroupNotificationConfigurationProperties map[string]string = map[string]string{
-	"notification_types": "NotificationTypes",
-	"topic_arn": "TopicARN",
-}
-
 func propertyAutoScalingGroupNotificationConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,11 +16,6 @@ import (
 
 const mediaLiveInputSecurityGroupType string = "AWS::MediaLive::InputSecurityGroup"
 
-var mediaLiveInputSecurityGroupProperties map[string]string = map[string]string{
-	"whitelist_rules": "WhitelistRules",
-	"tags": "Tags",
-}
-
 func ResourceMediaLiveInputSecurityGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceMediaLiveInputSecurityGroupExists,
@@ -58,11 +53,11 @@ func resourceMediaLiveInputSecurityGroupRead(data *schema.ResourceData, meta int
 }
 
 func resourceMediaLiveInputSecurityGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(mediaLiveInputSecurityGroupType, ResourceMediaLiveInputSecurityGroup(), data, mediaLiveInputSecurityGroupProperties, meta)
+	return plugin.ResourceCreate(mediaLiveInputSecurityGroupType, ResourceMediaLiveInputSecurityGroup(), data, meta)
 }
 
 func resourceMediaLiveInputSecurityGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(mediaLiveInputSecurityGroupType, ResourceMediaLiveInputSecurityGroup(), data, mediaLiveInputSecurityGroupProperties, meta)
+	return plugin.ResourceUpdate(mediaLiveInputSecurityGroupType, ResourceMediaLiveInputSecurityGroup(), data, meta)
 }
 
 func resourceMediaLiveInputSecurityGroupDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deliveryStreamDeserializerProperties map[string]string = map[string]string{
-	"hive_json_ser_de": "HiveJsonSerDe",
-	"open_x_json_ser_de": "OpenXJsonSerDe",
-}
-
 func propertyDeliveryStreamDeserializer(extras...string) *schema.Resource {
 	var count int64 = 0
 	

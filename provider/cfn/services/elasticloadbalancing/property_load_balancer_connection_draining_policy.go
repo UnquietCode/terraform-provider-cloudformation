@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var loadBalancerConnectionDrainingPolicyProperties map[string]string = map[string]string{
-	"enabled": "Enabled",
-	"timeout": "Timeout",
-}
-
 func propertyLoadBalancerConnectionDrainingPolicy(extras...string) *schema.Resource {
 	var count int64 = 0
 	

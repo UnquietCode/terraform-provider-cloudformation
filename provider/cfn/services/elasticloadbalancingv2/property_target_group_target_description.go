@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var targetGroupTargetDescriptionProperties map[string]string = map[string]string{
-	"availability_zone": "AvailabilityZone",
-	"id": "Id",
-	"port": "Port",
-}
-
 func propertyTargetGroupTargetDescription(extras...string) *schema.Resource {
 	var count int64 = 0
 	

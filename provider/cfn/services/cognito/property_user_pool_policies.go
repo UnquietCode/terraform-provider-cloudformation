@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var userPoolPoliciesProperties map[string]string = map[string]string{
-	"password_policy": "PasswordPolicy",
-}
-
 func propertyUserPoolPolicies(extras...string) *schema.Resource {
 	var count int64 = 0
 	

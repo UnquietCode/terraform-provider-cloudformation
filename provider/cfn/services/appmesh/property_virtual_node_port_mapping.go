@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var virtualNodePortMappingProperties map[string]string = map[string]string{
-	"port": "Port",
-	"protocol": "Protocol",
-}
-
 func propertyVirtualNodePortMapping(extras...string) *schema.Resource {
 	var count int64 = 0
 	

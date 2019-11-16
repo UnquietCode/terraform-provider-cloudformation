@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var taskDefinitionVolumeFromProperties map[string]string = map[string]string{
-	"read_only": "ReadOnly",
-	"source_container": "SourceContainer",
-}
-
 func propertyTaskDefinitionVolumeFrom(extras...string) *schema.Resource {
 	var count int64 = 0
 	

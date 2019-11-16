@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketAbortIncompleteMultipartUploadProperties map[string]string = map[string]string{
-	"days_after_initiation": "DaysAfterInitiation",
-}
-
 func propertyBucketAbortIncompleteMultipartUpload(extras...string) *schema.Resource {
 	var count int64 = 0
 	

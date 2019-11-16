@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var inputSecurityGroupInputWhitelistRuleCidrProperties map[string]string = map[string]string{
-	"cidr": "Cidr",
-}
-
 func propertyInputSecurityGroupInputWhitelistRuleCidr(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,10 +16,6 @@ import (
 
 const eC2EgressOnlyInternetGatewayType string = "AWS::EC2::EgressOnlyInternetGateway"
 
-var eC2EgressOnlyInternetGatewayProperties map[string]string = map[string]string{
-	"vpc_id": "VpcId",
-}
-
 func ResourceEC2EgressOnlyInternetGateway() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2EgressOnlyInternetGatewayExists,
@@ -52,11 +48,11 @@ func resourceEC2EgressOnlyInternetGatewayRead(data *schema.ResourceData, meta in
 }
 
 func resourceEC2EgressOnlyInternetGatewayCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2EgressOnlyInternetGatewayType, ResourceEC2EgressOnlyInternetGateway(), data, eC2EgressOnlyInternetGatewayProperties, meta)
+	return plugin.ResourceCreate(eC2EgressOnlyInternetGatewayType, ResourceEC2EgressOnlyInternetGateway(), data, meta)
 }
 
 func resourceEC2EgressOnlyInternetGatewayUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2EgressOnlyInternetGatewayType, ResourceEC2EgressOnlyInternetGateway(), data, eC2EgressOnlyInternetGatewayProperties, meta)
+	return plugin.ResourceUpdate(eC2EgressOnlyInternetGatewayType, ResourceEC2EgressOnlyInternetGateway(), data, meta)
 }
 
 func resourceEC2EgressOnlyInternetGatewayDelete(data *schema.ResourceData, meta interface{}) error {

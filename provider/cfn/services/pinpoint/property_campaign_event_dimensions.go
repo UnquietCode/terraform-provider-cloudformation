@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var campaignEventDimensionsProperties map[string]string = map[string]string{
-	"metrics": "Metrics",
-	"event_type": "EventType",
-	"attributes": "Attributes",
-}
-
 func propertyCampaignEventDimensions(extras...string) *schema.Resource {
 	var count int64 = 0
 	

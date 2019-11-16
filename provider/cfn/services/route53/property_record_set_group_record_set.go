@@ -14,24 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var recordSetGroupRecordSetProperties map[string]string = map[string]string{
-	"alias_target": "AliasTarget",
-	"comment": "Comment",
-	"failover": "Failover",
-	"geo_location": "GeoLocation",
-	"health_check_id": "HealthCheckId",
-	"hosted_zone_id": "HostedZoneId",
-	"hosted_zone_name": "HostedZoneName",
-	"multi_value_answer": "MultiValueAnswer",
-	"name": "Name",
-	"region": "Region",
-	"resource_records": "ResourceRecords",
-	"set_identifier": "SetIdentifier",
-	"ttl": "TTL",
-	"type": "Type",
-	"weight": "Weight",
-}
-
 func propertyRecordSetGroupRecordSet(extras...string) *schema.Resource {
 	var count int64 = 0
 	

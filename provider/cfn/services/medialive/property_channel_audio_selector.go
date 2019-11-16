@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var channelAudioSelectorProperties map[string]string = map[string]string{
-	"selector_settings": "SelectorSettings",
-	"name": "Name",
-}
-
 func propertyChannelAudioSelector(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,18 +16,6 @@ import (
 
 const mediaLiveInputType string = "AWS::MediaLive::Input"
 
-var mediaLiveInputProperties map[string]string = map[string]string{
-	"type": "Type",
-	"destinations": "Destinations",
-	"vpc": "Vpc",
-	"media_connect_flows": "MediaConnectFlows",
-	"input_security_groups": "InputSecurityGroups",
-	"sources": "Sources",
-	"role_arn": "RoleArn",
-	"tags": "Tags",
-	"name": "Name",
-}
-
 func ResourceMediaLiveInput() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceMediaLiveInputExists,
@@ -98,11 +86,11 @@ func resourceMediaLiveInputRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceMediaLiveInputCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(mediaLiveInputType, ResourceMediaLiveInput(), data, mediaLiveInputProperties, meta)
+	return plugin.ResourceCreate(mediaLiveInputType, ResourceMediaLiveInput(), data, meta)
 }
 
 func resourceMediaLiveInputUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(mediaLiveInputType, ResourceMediaLiveInput(), data, mediaLiveInputProperties, meta)
+	return plugin.ResourceUpdate(mediaLiveInputType, ResourceMediaLiveInput(), data, meta)
 }
 
 func resourceMediaLiveInputDelete(data *schema.ResourceData, meta interface{}) error {

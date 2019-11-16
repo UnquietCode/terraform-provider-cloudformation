@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationInputProperties map[string]string = map[string]string{
-	"name_prefix": "NamePrefix",
-	"input_schema": "InputSchema",
-	"kinesis_streams_input": "KinesisStreamsInput",
-	"kinesis_firehose_input": "KinesisFirehoseInput",
-	"input_processing_configuration": "InputProcessingConfiguration",
-	"input_parallelism": "InputParallelism",
-}
-
 func propertyApplicationInput(extras...string) *schema.Resource {
 	var count int64 = 0
 	

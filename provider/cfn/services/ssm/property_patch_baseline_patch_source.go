@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var patchBaselinePatchSourceProperties map[string]string = map[string]string{
-	"products": "Products",
-	"configuration": "Configuration",
-	"name": "Name",
-}
-
 func propertyPatchBaselinePatchSource(extras...string) *schema.Resource {
 	var count int64 = 0
 	

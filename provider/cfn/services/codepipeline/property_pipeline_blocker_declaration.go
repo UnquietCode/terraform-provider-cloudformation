@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var pipelineBlockerDeclarationProperties map[string]string = map[string]string{
-	"name": "Name",
-	"type": "Type",
-}
-
 func propertyPipelineBlockerDeclaration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

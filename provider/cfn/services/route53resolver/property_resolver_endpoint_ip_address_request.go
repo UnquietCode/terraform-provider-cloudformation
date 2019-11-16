@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var resolverEndpointIpAddressRequestProperties map[string]string = map[string]string{
-	"ip": "Ip",
-	"subnet_id": "SubnetId",
-}
-
 func propertyResolverEndpointIpAddressRequest(extras...string) *schema.Resource {
 	var count int64 = 0
 	

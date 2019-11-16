@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var trailEventSelectorProperties map[string]string = map[string]string{
-	"data_resources": "DataResources",
-	"include_management_events": "IncludeManagementEvents",
-	"read_write_type": "ReadWriteType",
-}
-
 func propertyTrailEventSelector(extras...string) *schema.Resource {
 	var count int64 = 0
 	

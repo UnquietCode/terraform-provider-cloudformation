@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var brokerUserProperties map[string]string = map[string]string{
-	"username": "Username",
-	"groups": "Groups",
-	"console_access": "ConsoleAccess",
-	"password": "Password",
-}
-
 func propertyBrokerUser(extras...string) *schema.Resource {
 	var count int64 = 0
 	

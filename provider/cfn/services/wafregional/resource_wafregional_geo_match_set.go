@@ -16,11 +16,6 @@ import (
 
 const wAFRegionalGeoMatchSetType string = "AWS::WAFRegional::GeoMatchSet"
 
-var wAFRegionalGeoMatchSetProperties map[string]string = map[string]string{
-	"geo_match_constraints": "GeoMatchConstraints",
-	"name": "Name",
-}
-
 func ResourceWAFRegionalGeoMatchSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFRegionalGeoMatchSetExists,
@@ -58,11 +53,11 @@ func resourceWAFRegionalGeoMatchSetRead(data *schema.ResourceData, meta interfac
 }
 
 func resourceWAFRegionalGeoMatchSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(wAFRegionalGeoMatchSetType, ResourceWAFRegionalGeoMatchSet(), data, wAFRegionalGeoMatchSetProperties, meta)
+	return plugin.ResourceCreate(wAFRegionalGeoMatchSetType, ResourceWAFRegionalGeoMatchSet(), data, meta)
 }
 
 func resourceWAFRegionalGeoMatchSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(wAFRegionalGeoMatchSetType, ResourceWAFRegionalGeoMatchSet(), data, wAFRegionalGeoMatchSetProperties, meta)
+	return plugin.ResourceUpdate(wAFRegionalGeoMatchSetType, ResourceWAFRegionalGeoMatchSet(), data, meta)
 }
 
 func resourceWAFRegionalGeoMatchSetDelete(data *schema.ResourceData, meta interface{}) error {

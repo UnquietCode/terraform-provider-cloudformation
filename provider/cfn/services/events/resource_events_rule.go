@@ -16,16 +16,6 @@ import (
 
 const eventsRuleType string = "AWS::Events::Rule"
 
-var eventsRuleProperties map[string]string = map[string]string{
-	"description": "Description",
-	"event_pattern": "EventPattern",
-	"name": "Name",
-	"role_arn": "RoleArn",
-	"schedule_expression": "ScheduleExpression",
-	"state": "State",
-	"targets": "Targets",
-}
-
 func ResourceEventsRule() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEventsRuleExists,
@@ -83,11 +73,11 @@ func resourceEventsRuleRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceEventsRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eventsRuleType, ResourceEventsRule(), data, eventsRuleProperties, meta)
+	return plugin.ResourceCreate(eventsRuleType, ResourceEventsRule(), data, meta)
 }
 
 func resourceEventsRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eventsRuleType, ResourceEventsRule(), data, eventsRuleProperties, meta)
+	return plugin.ResourceUpdate(eventsRuleType, ResourceEventsRule(), data, meta)
 }
 
 func resourceEventsRuleDelete(data *schema.ResourceData, meta interface{}) error {

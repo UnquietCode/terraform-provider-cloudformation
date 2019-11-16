@@ -14,16 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var virtualNodeHealthCheckProperties map[string]string = map[string]string{
-	"path": "Path",
-	"unhealthy_threshold": "UnhealthyThreshold",
-	"port": "Port",
-	"healthy_threshold": "HealthyThreshold",
-	"timeout_millis": "TimeoutMillis",
-	"protocol": "Protocol",
-	"interval_millis": "IntervalMillis",
-}
-
 func propertyVirtualNodeHealthCheck(extras...string) *schema.Resource {
 	var count int64 = 0
 	

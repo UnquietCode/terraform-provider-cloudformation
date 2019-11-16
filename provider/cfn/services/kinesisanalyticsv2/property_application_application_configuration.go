@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationApplicationConfigurationProperties map[string]string = map[string]string{
-	"application_code_configuration": "ApplicationCodeConfiguration",
-	"environment_properties": "EnvironmentProperties",
-	"flink_application_configuration": "FlinkApplicationConfiguration",
-	"sql_application_configuration": "SqlApplicationConfiguration",
-	"application_snapshot_configuration": "ApplicationSnapshotConfiguration",
-}
-
 func propertyApplicationApplicationConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

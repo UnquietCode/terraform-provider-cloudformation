@@ -16,27 +16,6 @@ import (
 
 const autoScalingLaunchConfigurationType string = "AWS::AutoScaling::LaunchConfiguration"
 
-var autoScalingLaunchConfigurationProperties map[string]string = map[string]string{
-	"associate_public_ip_address": "AssociatePublicIpAddress",
-	"block_device_mappings": "BlockDeviceMappings",
-	"classic_link_vpc_id": "ClassicLinkVPCId",
-	"classic_link_vpc_security_groups": "ClassicLinkVPCSecurityGroups",
-	"ebs_optimized": "EbsOptimized",
-	"iam_instance_profile": "IamInstanceProfile",
-	"image_id": "ImageId",
-	"instance_id": "InstanceId",
-	"instance_monitoring": "InstanceMonitoring",
-	"instance_type": "InstanceType",
-	"kernel_id": "KernelId",
-	"key_name": "KeyName",
-	"launch_configuration_name": "LaunchConfigurationName",
-	"placement_tenancy": "PlacementTenancy",
-	"ram_disk_id": "RamDiskId",
-	"security_groups": "SecurityGroups",
-	"spot_price": "SpotPrice",
-	"user_data": "UserData",
-}
-
 func ResourceAutoScalingLaunchConfiguration() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAutoScalingLaunchConfigurationExists,
@@ -142,11 +121,11 @@ func resourceAutoScalingLaunchConfigurationRead(data *schema.ResourceData, meta 
 }
 
 func resourceAutoScalingLaunchConfigurationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(autoScalingLaunchConfigurationType, ResourceAutoScalingLaunchConfiguration(), data, autoScalingLaunchConfigurationProperties, meta)
+	return plugin.ResourceCreate(autoScalingLaunchConfigurationType, ResourceAutoScalingLaunchConfiguration(), data, meta)
 }
 
 func resourceAutoScalingLaunchConfigurationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(autoScalingLaunchConfigurationType, ResourceAutoScalingLaunchConfiguration(), data, autoScalingLaunchConfigurationProperties, meta)
+	return plugin.ResourceUpdate(autoScalingLaunchConfigurationType, ResourceAutoScalingLaunchConfiguration(), data, meta)
 }
 
 func resourceAutoScalingLaunchConfigurationDelete(data *schema.ResourceData, meta interface{}) error {

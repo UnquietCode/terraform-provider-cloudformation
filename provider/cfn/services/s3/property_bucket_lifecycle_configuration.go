@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketLifecycleConfigurationProperties map[string]string = map[string]string{
-	"rules": "Rules",
-}
-
 func propertyBucketLifecycleConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

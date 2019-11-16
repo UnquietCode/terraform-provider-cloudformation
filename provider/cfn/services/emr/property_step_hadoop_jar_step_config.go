@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var stepHadoopJarStepConfigProperties map[string]string = map[string]string{
-	"args": "Args",
-	"jar": "Jar",
-	"main_class": "MainClass",
-	"step_properties": "StepProperties",
-}
-
 func propertyStepHadoopJarStepConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

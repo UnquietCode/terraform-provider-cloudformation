@@ -16,11 +16,6 @@ import (
 
 const wAFIPSetType string = "AWS::WAF::IPSet"
 
-var wAFIPSetProperties map[string]string = map[string]string{
-	"ip_set_descriptors": "IPSetDescriptors",
-	"name": "Name",
-}
-
 func ResourceWAFIPSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFIPSetExists,
@@ -58,11 +53,11 @@ func resourceWAFIPSetRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceWAFIPSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(wAFIPSetType, ResourceWAFIPSet(), data, wAFIPSetProperties, meta)
+	return plugin.ResourceCreate(wAFIPSetType, ResourceWAFIPSet(), data, meta)
 }
 
 func resourceWAFIPSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(wAFIPSetType, ResourceWAFIPSet(), data, wAFIPSetProperties, meta)
+	return plugin.ResourceUpdate(wAFIPSetType, ResourceWAFIPSet(), data, meta)
 }
 
 func resourceWAFIPSetDelete(data *schema.ResourceData, meta interface{}) error {

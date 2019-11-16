@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deploymentGroupAutoRollbackConfigurationProperties map[string]string = map[string]string{
-	"enabled": "Enabled",
-	"events": "Events",
-}
-
 func propertyDeploymentGroupAutoRollbackConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

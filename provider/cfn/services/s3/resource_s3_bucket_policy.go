@@ -16,11 +16,6 @@ import (
 
 const s3BucketPolicyType string = "AWS::S3::BucketPolicy"
 
-var s3BucketPolicyProperties map[string]string = map[string]string{
-	"bucket": "Bucket",
-	"policy_document": "PolicyDocument",
-}
-
 func ResourceS3BucketPolicy() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceS3BucketPolicyExists,
@@ -57,11 +52,11 @@ func resourceS3BucketPolicyRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceS3BucketPolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(s3BucketPolicyType, ResourceS3BucketPolicy(), data, s3BucketPolicyProperties, meta)
+	return plugin.ResourceCreate(s3BucketPolicyType, ResourceS3BucketPolicy(), data, meta)
 }
 
 func resourceS3BucketPolicyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(s3BucketPolicyType, ResourceS3BucketPolicy(), data, s3BucketPolicyProperties, meta)
+	return plugin.ResourceUpdate(s3BucketPolicyType, ResourceS3BucketPolicy(), data, meta)
 }
 
 func resourceS3BucketPolicyDelete(data *schema.ResourceData, meta interface{}) error {

@@ -16,13 +16,6 @@ import (
 
 const lambdaLayerVersionPermissionType string = "AWS::Lambda::LayerVersionPermission"
 
-var lambdaLayerVersionPermissionProperties map[string]string = map[string]string{
-	"action": "Action",
-	"layer_version_arn": "LayerVersionArn",
-	"organization_id": "OrganizationId",
-	"principal": "Principal",
-}
-
 func ResourceLambdaLayerVersionPermission() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLambdaLayerVersionPermissionExists,
@@ -67,11 +60,11 @@ func resourceLambdaLayerVersionPermissionRead(data *schema.ResourceData, meta in
 }
 
 func resourceLambdaLayerVersionPermissionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(lambdaLayerVersionPermissionType, ResourceLambdaLayerVersionPermission(), data, lambdaLayerVersionPermissionProperties, meta)
+	return plugin.ResourceCreate(lambdaLayerVersionPermissionType, ResourceLambdaLayerVersionPermission(), data, meta)
 }
 
 func resourceLambdaLayerVersionPermissionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(lambdaLayerVersionPermissionType, ResourceLambdaLayerVersionPermission(), data, lambdaLayerVersionPermissionProperties, meta)
+	return plugin.ResourceUpdate(lambdaLayerVersionPermissionType, ResourceLambdaLayerVersionPermission(), data, meta)
 }
 
 func resourceLambdaLayerVersionPermissionDelete(data *schema.ResourceData, meta interface{}) error {

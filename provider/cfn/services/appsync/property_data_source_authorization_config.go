@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var dataSourceAuthorizationConfigProperties map[string]string = map[string]string{
-	"aws_iam_config": "AwsIamConfig",
-	"authorization_type": "AuthorizationType",
-}
-
 func propertyDataSourceAuthorizationConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

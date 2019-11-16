@@ -16,13 +16,6 @@ import (
 
 const greengrassGroupType string = "AWS::Greengrass::Group"
 
-var greengrassGroupProperties map[string]string = map[string]string{
-	"initial_version": "InitialVersion",
-	"role_arn": "RoleArn",
-	"tags": "Tags",
-	"name": "Name",
-}
-
 func ResourceGreengrassGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGreengrassGroupExists,
@@ -69,11 +62,11 @@ func resourceGreengrassGroupRead(data *schema.ResourceData, meta interface{}) er
 }
 
 func resourceGreengrassGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(greengrassGroupType, ResourceGreengrassGroup(), data, greengrassGroupProperties, meta)
+	return plugin.ResourceCreate(greengrassGroupType, ResourceGreengrassGroup(), data, meta)
 }
 
 func resourceGreengrassGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(greengrassGroupType, ResourceGreengrassGroup(), data, greengrassGroupProperties, meta)
+	return plugin.ResourceUpdate(greengrassGroupType, ResourceGreengrassGroup(), data, meta)
 }
 
 func resourceGreengrassGroupDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var containerCorsRuleProperties map[string]string = map[string]string{
-	"allowed_methods": "AllowedMethods",
-	"allowed_origins": "AllowedOrigins",
-	"expose_headers": "ExposeHeaders",
-	"max_age_seconds": "MaxAgeSeconds",
-	"allowed_headers": "AllowedHeaders",
-}
-
 func propertyContainerCorsRule(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketRoutingRuleConditionProperties map[string]string = map[string]string{
-	"http_error_code_returned_equals": "HttpErrorCodeReturnedEquals",
-	"key_prefix_equals": "KeyPrefixEquals",
-}
-
 func propertyBucketRoutingRuleCondition(extras...string) *schema.Resource {
 	var count int64 = 0
 	

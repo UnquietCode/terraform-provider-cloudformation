@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var detectorModelSnsProperties map[string]string = map[string]string{
-	"target_arn": "TargetArn",
-}
-
 func propertyDetectorModelSns(extras...string) *schema.Resource {
 	var count int64 = 0
 	

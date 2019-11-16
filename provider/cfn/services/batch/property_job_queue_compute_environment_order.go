@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var jobQueueComputeEnvironmentOrderProperties map[string]string = map[string]string{
-	"compute_environment": "ComputeEnvironment",
-	"order": "Order",
-}
-
 func propertyJobQueueComputeEnvironmentOrder(extras...string) *schema.Resource {
 	var count int64 = 0
 	

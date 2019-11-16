@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var tableKeySchemaProperties map[string]string = map[string]string{
-	"attribute_name": "AttributeName",
-	"key_type": "KeyType",
-}
-
 func propertyTableKeySchema(extras...string) *schema.Resource {
 	var count int64 = 0
 	

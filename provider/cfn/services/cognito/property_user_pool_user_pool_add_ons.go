@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var userPoolUserPoolAddOnsProperties map[string]string = map[string]string{
-	"advanced_security_mode": "AdvancedSecurityMode",
-}
-
 func propertyUserPoolUserPoolAddOns(extras...string) *schema.Resource {
 	var count int64 = 0
 	

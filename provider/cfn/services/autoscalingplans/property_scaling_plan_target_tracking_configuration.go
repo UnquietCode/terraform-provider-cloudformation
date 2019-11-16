@@ -14,16 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var scalingPlanTargetTrackingConfigurationProperties map[string]string = map[string]string{
-	"scale_out_cooldown": "ScaleOutCooldown",
-	"target_value": "TargetValue",
-	"predefined_scaling_metric_specification": "PredefinedScalingMetricSpecification",
-	"disable_scale_in": "DisableScaleIn",
-	"scale_in_cooldown": "ScaleInCooldown",
-	"estimated_instance_warmup": "EstimatedInstanceWarmup",
-	"customized_scaling_metric_specification": "CustomizedScalingMetricSpecification",
-}
-
 func propertyScalingPlanTargetTrackingConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

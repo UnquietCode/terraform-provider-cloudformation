@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var clusterStorageInfoProperties map[string]string = map[string]string{
-	"ebs_storage_info": "EBSStorageInfo",
-}
-
 func propertyClusterStorageInfo(extras...string) *schema.Resource {
 	var count int64 = 0
 	

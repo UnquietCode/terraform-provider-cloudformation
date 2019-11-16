@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var alarmMetricDataQueryProperties map[string]string = map[string]string{
-	"expression": "Expression",
-	"id": "Id",
-	"label": "Label",
-	"metric_stat": "MetricStat",
-	"return_data": "ReturnData",
-}
-
 func propertyAlarmMetricDataQuery(extras...string) *schema.Resource {
 	var count int64 = 0
 	

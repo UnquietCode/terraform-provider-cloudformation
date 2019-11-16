@@ -17,27 +17,6 @@ import (
 
 const dMSEndpointType string = "AWS::DMS::Endpoint"
 
-var dMSEndpointProperties map[string]string = map[string]string{
-	"kms_key_id": "KmsKeyId",
-	"port": "Port",
-	"database_name": "DatabaseName",
-	"elasticsearch_settings": "ElasticsearchSettings",
-	"s3_settings": "S3Settings",
-	"engine_name": "EngineName",
-	"dynamo_db_settings": "DynamoDbSettings",
-	"kinesis_settings": "KinesisSettings",
-	"username": "Username",
-	"ssl_mode": "SslMode",
-	"server_name": "ServerName",
-	"extra_connection_attributes": "ExtraConnectionAttributes",
-	"endpoint_type": "EndpointType",
-	"tags": "Tags",
-	"endpoint_identifier": "EndpointIdentifier",
-	"password": "Password",
-	"certificate_arn": "CertificateArn",
-	"mongo_db_settings": "MongoDbSettings",
-}
-
 func ResourceDMSEndpoint() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDMSEndpointExists,
@@ -145,11 +124,11 @@ func resourceDMSEndpointRead(data *schema.ResourceData, meta interface{}) error 
 }
 
 func resourceDMSEndpointCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(dMSEndpointType, ResourceDMSEndpoint(), data, dMSEndpointProperties, meta)
+	return plugin.ResourceCreate(dMSEndpointType, ResourceDMSEndpoint(), data, meta)
 }
 
 func resourceDMSEndpointUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(dMSEndpointType, ResourceDMSEndpoint(), data, dMSEndpointProperties, meta)
+	return plugin.ResourceUpdate(dMSEndpointType, ResourceDMSEndpoint(), data, meta)
 }
 
 func resourceDMSEndpointDelete(data *schema.ResourceData, meta interface{}) error {

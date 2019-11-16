@@ -16,12 +16,6 @@ import (
 
 const amplifyDomainType string = "AWS::Amplify::Domain"
 
-var amplifyDomainProperties map[string]string = map[string]string{
-	"sub_domain_settings": "SubDomainSettings",
-	"app_id": "AppId",
-	"domain_name": "DomainName",
-}
-
 func ResourceAmplifyDomain() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAmplifyDomainExists,
@@ -63,11 +57,11 @@ func resourceAmplifyDomainRead(data *schema.ResourceData, meta interface{}) erro
 }
 
 func resourceAmplifyDomainCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(amplifyDomainType, ResourceAmplifyDomain(), data, amplifyDomainProperties, meta)
+	return plugin.ResourceCreate(amplifyDomainType, ResourceAmplifyDomain(), data, meta)
 }
 
 func resourceAmplifyDomainUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(amplifyDomainType, ResourceAmplifyDomain(), data, amplifyDomainProperties, meta)
+	return plugin.ResourceUpdate(amplifyDomainType, ResourceAmplifyDomain(), data, meta)
 }
 
 func resourceAmplifyDomainDelete(data *schema.ResourceData, meta interface{}) error {

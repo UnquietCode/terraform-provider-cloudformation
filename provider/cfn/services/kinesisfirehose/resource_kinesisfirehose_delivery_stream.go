@@ -16,17 +16,6 @@ import (
 
 const kinesisFirehoseDeliveryStreamType string = "AWS::KinesisFirehose::DeliveryStream"
 
-var kinesisFirehoseDeliveryStreamProperties map[string]string = map[string]string{
-	"delivery_stream_name": "DeliveryStreamName",
-	"delivery_stream_type": "DeliveryStreamType",
-	"elasticsearch_destination_configuration": "ElasticsearchDestinationConfiguration",
-	"extended_s3_destination_configuration": "ExtendedS3DestinationConfiguration",
-	"kinesis_stream_source_configuration": "KinesisStreamSourceConfiguration",
-	"redshift_destination_configuration": "RedshiftDestinationConfiguration",
-	"s3_destination_configuration": "S3DestinationConfiguration",
-	"splunk_destination_configuration": "SplunkDestinationConfiguration",
-}
-
 func ResourceKinesisFirehoseDeliveryStream() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceKinesisFirehoseDeliveryStreamExists,
@@ -99,11 +88,11 @@ func resourceKinesisFirehoseDeliveryStreamRead(data *schema.ResourceData, meta i
 }
 
 func resourceKinesisFirehoseDeliveryStreamCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(kinesisFirehoseDeliveryStreamType, ResourceKinesisFirehoseDeliveryStream(), data, kinesisFirehoseDeliveryStreamProperties, meta)
+	return plugin.ResourceCreate(kinesisFirehoseDeliveryStreamType, ResourceKinesisFirehoseDeliveryStream(), data, meta)
 }
 
 func resourceKinesisFirehoseDeliveryStreamUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(kinesisFirehoseDeliveryStreamType, ResourceKinesisFirehoseDeliveryStream(), data, kinesisFirehoseDeliveryStreamProperties, meta)
+	return plugin.ResourceUpdate(kinesisFirehoseDeliveryStreamType, ResourceKinesisFirehoseDeliveryStream(), data, meta)
 }
 
 func resourceKinesisFirehoseDeliveryStreamDelete(data *schema.ResourceData, meta interface{}) error {

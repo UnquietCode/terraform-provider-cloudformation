@@ -16,11 +16,6 @@ import (
 
 const kinesisAnalyticsV2ApplicationReferenceDataSourceType string = "AWS::KinesisAnalyticsV2::ApplicationReferenceDataSource"
 
-var kinesisAnalyticsV2ApplicationReferenceDataSourceProperties map[string]string = map[string]string{
-	"application_name": "ApplicationName",
-	"reference_data_source": "ReferenceDataSource",
-}
-
 func ResourceKinesisAnalyticsV2ApplicationReferenceDataSource() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceKinesisAnalyticsV2ApplicationReferenceDataSourceExists,
@@ -59,11 +54,11 @@ func resourceKinesisAnalyticsV2ApplicationReferenceDataSourceRead(data *schema.R
 }
 
 func resourceKinesisAnalyticsV2ApplicationReferenceDataSourceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(kinesisAnalyticsV2ApplicationReferenceDataSourceType, ResourceKinesisAnalyticsV2ApplicationReferenceDataSource(), data, kinesisAnalyticsV2ApplicationReferenceDataSourceProperties, meta)
+	return plugin.ResourceCreate(kinesisAnalyticsV2ApplicationReferenceDataSourceType, ResourceKinesisAnalyticsV2ApplicationReferenceDataSource(), data, meta)
 }
 
 func resourceKinesisAnalyticsV2ApplicationReferenceDataSourceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(kinesisAnalyticsV2ApplicationReferenceDataSourceType, ResourceKinesisAnalyticsV2ApplicationReferenceDataSource(), data, kinesisAnalyticsV2ApplicationReferenceDataSourceProperties, meta)
+	return plugin.ResourceUpdate(kinesisAnalyticsV2ApplicationReferenceDataSourceType, ResourceKinesisAnalyticsV2ApplicationReferenceDataSource(), data, meta)
 }
 
 func resourceKinesisAnalyticsV2ApplicationReferenceDataSourceDelete(data *schema.ResourceData, meta interface{}) error {

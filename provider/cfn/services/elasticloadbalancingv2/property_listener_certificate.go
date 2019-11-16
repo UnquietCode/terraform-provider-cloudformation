@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var listenerCertificateProperties map[string]string = map[string]string{
-	"certificate_arn": "CertificateArn",
-}
-
 func propertyListenerCertificate(extras...string) *schema.Resource {
 	var count int64 = 0
 	

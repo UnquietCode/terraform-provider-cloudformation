@@ -16,11 +16,6 @@ import (
 
 const kMSAliasType string = "AWS::KMS::Alias"
 
-var kMSAliasProperties map[string]string = map[string]string{
-	"alias_name": "AliasName",
-	"target_key_id": "TargetKeyId",
-}
-
 func ResourceKMSAlias() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceKMSAliasExists,
@@ -57,11 +52,11 @@ func resourceKMSAliasRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceKMSAliasCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(kMSAliasType, ResourceKMSAlias(), data, kMSAliasProperties, meta)
+	return plugin.ResourceCreate(kMSAliasType, ResourceKMSAlias(), data, meta)
 }
 
 func resourceKMSAliasUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(kMSAliasType, ResourceKMSAlias(), data, kMSAliasProperties, meta)
+	return plugin.ResourceUpdate(kMSAliasType, ResourceKMSAlias(), data, meta)
 }
 
 func resourceKMSAliasDelete(data *schema.ResourceData, meta interface{}) error {

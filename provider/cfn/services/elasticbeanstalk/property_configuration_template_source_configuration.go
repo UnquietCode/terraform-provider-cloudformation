@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var configurationTemplateSourceConfigurationProperties map[string]string = map[string]string{
-	"application_name": "ApplicationName",
-	"template_name": "TemplateName",
-}
-
 func propertyConfigurationTemplateSourceConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var triggerConditionProperties map[string]string = map[string]string{
-	"crawler_name": "CrawlerName",
-	"state": "State",
-	"crawl_state": "CrawlState",
-	"logical_operator": "LogicalOperator",
-	"job_name": "JobName",
-}
-
 func propertyTriggerCondition(extras...string) *schema.Resource {
 	var count int64 = 0
 	

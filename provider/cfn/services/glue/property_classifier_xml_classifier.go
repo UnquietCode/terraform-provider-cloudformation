@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var classifierXMLClassifierProperties map[string]string = map[string]string{
-	"row_tag": "RowTag",
-	"classification": "Classification",
-	"name": "Name",
-}
-
 func propertyClassifierXMLClassifier(extras...string) *schema.Resource {
 	var count int64 = 0
 	

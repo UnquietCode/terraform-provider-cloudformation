@@ -14,9 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var datastoreServiceManagedS3Properties map[string]string = map[string]string{
-}
-
 func propertyDatastoreServiceManagedS3(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var userPoolEmailConfigurationProperties map[string]string = map[string]string{
-	"reply_to_email_address": "ReplyToEmailAddress",
-	"email_sending_account": "EmailSendingAccount",
-	"source_arn": "SourceArn",
-}
-
 func propertyUserPoolEmailConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

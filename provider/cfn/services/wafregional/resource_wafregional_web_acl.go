@@ -16,13 +16,6 @@ import (
 
 const wAFRegionalWebACLType string = "AWS::WAFRegional::WebACL"
 
-var wAFRegionalWebACLProperties map[string]string = map[string]string{
-	"metric_name": "MetricName",
-	"default_action": "DefaultAction",
-	"rules": "Rules",
-	"name": "Name",
-}
-
 func ResourceWAFRegionalWebACL() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFRegionalWebACLExists,
@@ -70,11 +63,11 @@ func resourceWAFRegionalWebACLRead(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceWAFRegionalWebACLCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(wAFRegionalWebACLType, ResourceWAFRegionalWebACL(), data, wAFRegionalWebACLProperties, meta)
+	return plugin.ResourceCreate(wAFRegionalWebACLType, ResourceWAFRegionalWebACL(), data, meta)
 }
 
 func resourceWAFRegionalWebACLUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(wAFRegionalWebACLType, ResourceWAFRegionalWebACL(), data, wAFRegionalWebACLProperties, meta)
+	return plugin.ResourceUpdate(wAFRegionalWebACLType, ResourceWAFRegionalWebACL(), data, meta)
 }
 
 func resourceWAFRegionalWebACLDelete(data *schema.ResourceData, meta interface{}) error {

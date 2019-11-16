@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationReferenceDataSourceRecordColumnProperties map[string]string = map[string]string{
-	"mapping": "Mapping",
-	"sql_type": "SqlType",
-	"name": "Name",
-}
-
 func propertyApplicationReferenceDataSourceRecordColumn(extras...string) *schema.Resource {
 	var count int64 = 0
 	

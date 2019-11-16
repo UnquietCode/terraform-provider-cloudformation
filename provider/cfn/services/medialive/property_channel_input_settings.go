@@ -14,18 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var channelInputSettingsProperties map[string]string = map[string]string{
-	"deblock_filter": "DeblockFilter",
-	"filter_strength": "FilterStrength",
-	"input_filter": "InputFilter",
-	"source_end_behavior": "SourceEndBehavior",
-	"video_selector": "VideoSelector",
-	"audio_selectors": "AudioSelectors",
-	"caption_selectors": "CaptionSelectors",
-	"denoise_filter": "DenoiseFilter",
-	"network_input_settings": "NetworkInputSettings",
-}
-
 func propertyChannelInputSettings(extras...string) *schema.Resource {
 	var count int64 = 0
 	

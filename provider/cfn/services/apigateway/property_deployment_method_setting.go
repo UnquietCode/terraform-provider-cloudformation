@@ -14,19 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deploymentMethodSettingProperties map[string]string = map[string]string{
-	"cache_data_encrypted": "CacheDataEncrypted",
-	"cache_ttl_in_seconds": "CacheTtlInSeconds",
-	"caching_enabled": "CachingEnabled",
-	"data_trace_enabled": "DataTraceEnabled",
-	"http_method": "HttpMethod",
-	"logging_level": "LoggingLevel",
-	"metrics_enabled": "MetricsEnabled",
-	"resource_path": "ResourcePath",
-	"throttling_burst_limit": "ThrottlingBurstLimit",
-	"throttling_rate_limit": "ThrottlingRateLimit",
-}
-
 func propertyDeploymentMethodSetting(extras...string) *schema.Resource {
 	var count int64 = 0
 	

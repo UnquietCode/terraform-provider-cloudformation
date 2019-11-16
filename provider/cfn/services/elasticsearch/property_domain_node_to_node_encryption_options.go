@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var domainNodeToNodeEncryptionOptionsProperties map[string]string = map[string]string{
-	"enabled": "Enabled",
-}
-
 func propertyDomainNodeToNodeEncryptionOptions(extras...string) *schema.Resource {
 	var count int64 = 0
 	

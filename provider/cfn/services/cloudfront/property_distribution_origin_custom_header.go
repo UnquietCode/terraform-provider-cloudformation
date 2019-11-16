@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var distributionOriginCustomHeaderProperties map[string]string = map[string]string{
-	"header_value": "HeaderValue",
-	"header_name": "HeaderName",
-}
-
 func propertyDistributionOriginCustomHeader(extras...string) *schema.Resource {
 	var count int64 = 0
 	

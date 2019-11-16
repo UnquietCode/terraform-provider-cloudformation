@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var channelCaptionSelectorSettingsProperties map[string]string = map[string]string{
-	"dvb_sub_source_settings": "DvbSubSourceSettings",
-	"scte27_source_settings": "Scte27SourceSettings",
-	"arib_source_settings": "AribSourceSettings",
-	"embedded_source_settings": "EmbeddedSourceSettings",
-	"scte20_source_settings": "Scte20SourceSettings",
-	"teletext_source_settings": "TeletextSourceSettings",
-}
-
 func propertyChannelCaptionSelectorSettings(extras...string) *schema.Resource {
 	var count int64 = 0
 	

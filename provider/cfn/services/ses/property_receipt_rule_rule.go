@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var receiptRuleRuleProperties map[string]string = map[string]string{
-	"scan_enabled": "ScanEnabled",
-	"recipients": "Recipients",
-	"actions": "Actions",
-	"enabled": "Enabled",
-	"name": "Name",
-	"tls_policy": "TlsPolicy",
-}
-
 func propertyReceiptRuleRule(extras...string) *schema.Resource {
 	var count int64 = 0
 	

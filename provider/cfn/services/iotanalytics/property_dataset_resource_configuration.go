@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var datasetResourceConfigurationProperties map[string]string = map[string]string{
-	"volume_size_in_gb": "VolumeSizeInGB",
-	"compute_type": "ComputeType",
-}
-
 func propertyDatasetResourceConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

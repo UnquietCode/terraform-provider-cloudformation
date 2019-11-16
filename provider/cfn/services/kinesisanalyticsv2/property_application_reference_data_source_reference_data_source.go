@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationReferenceDataSourceReferenceDataSourceProperties map[string]string = map[string]string{
-	"reference_schema": "ReferenceSchema",
-	"table_name": "TableName",
-	"s3_reference_data_source": "S3ReferenceDataSource",
-}
-
 func propertyApplicationReferenceDataSourceReferenceDataSource(extras...string) *schema.Resource {
 	var count int64 = 0
 	

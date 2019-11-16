@@ -16,14 +16,6 @@ import (
 
 const rDSDBSecurityGroupIngressType string = "AWS::RDS::DBSecurityGroupIngress"
 
-var rDSDBSecurityGroupIngressProperties map[string]string = map[string]string{
-	"cidrip": "CIDRIP",
-	"db_security_group_name": "DBSecurityGroupName",
-	"ec2_security_group_id": "EC2SecurityGroupId",
-	"ec2_security_group_name": "EC2SecurityGroupName",
-	"ec2_security_group_owner_id": "EC2SecurityGroupOwnerId",
-}
-
 func ResourceRDSDBSecurityGroupIngress() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRDSDBSecurityGroupIngressExists,
@@ -72,11 +64,11 @@ func resourceRDSDBSecurityGroupIngressRead(data *schema.ResourceData, meta inter
 }
 
 func resourceRDSDBSecurityGroupIngressCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(rDSDBSecurityGroupIngressType, ResourceRDSDBSecurityGroupIngress(), data, rDSDBSecurityGroupIngressProperties, meta)
+	return plugin.ResourceCreate(rDSDBSecurityGroupIngressType, ResourceRDSDBSecurityGroupIngress(), data, meta)
 }
 
 func resourceRDSDBSecurityGroupIngressUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(rDSDBSecurityGroupIngressType, ResourceRDSDBSecurityGroupIngress(), data, rDSDBSecurityGroupIngressProperties, meta)
+	return plugin.ResourceUpdate(rDSDBSecurityGroupIngressType, ResourceRDSDBSecurityGroupIngress(), data, meta)
 }
 
 func resourceRDSDBSecurityGroupIngressDelete(data *schema.ResourceData, meta interface{}) error {

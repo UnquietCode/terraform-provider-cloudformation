@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var distributionForwardedValuesProperties map[string]string = map[string]string{
-	"cookies": "Cookies",
-	"headers": "Headers",
-	"query_string": "QueryString",
-	"query_string_cache_keys": "QueryStringCacheKeys",
-}
-
 func propertyDistributionForwardedValues(extras...string) *schema.Resource {
 	var count int64 = 0
 	

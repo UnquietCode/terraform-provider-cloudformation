@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var receiptRuleLambdaActionProperties map[string]string = map[string]string{
-	"function_arn": "FunctionArn",
-	"topic_arn": "TopicArn",
-	"invocation_type": "InvocationType",
-}
-
 func propertyReceiptRuleLambdaAction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

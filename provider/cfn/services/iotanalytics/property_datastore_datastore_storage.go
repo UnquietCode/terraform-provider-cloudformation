@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var datastoreDatastoreStorageProperties map[string]string = map[string]string{
-	"customer_managed_s3": "CustomerManagedS3",
-	"service_managed_s3": "ServiceManagedS3",
-}
-
 func propertyDatastoreDatastoreStorage(extras...string) *schema.Resource {
 	var count int64 = 0
 	

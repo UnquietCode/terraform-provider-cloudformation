@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationMonitoringConfigurationProperties map[string]string = map[string]string{
-	"configuration_type": "ConfigurationType",
-	"metrics_level": "MetricsLevel",
-	"log_level": "LogLevel",
-}
-
 func propertyApplicationMonitoringConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

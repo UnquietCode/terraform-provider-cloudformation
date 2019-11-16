@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var securityConfigurationJobBookmarksEncryptionProperties map[string]string = map[string]string{
-	"kms_key_arn": "KmsKeyArn",
-	"job_bookmarks_encryption_mode": "JobBookmarksEncryptionMode",
-}
-
 func propertySecurityConfigurationJobBookmarksEncryption(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -17,14 +17,6 @@ import (
 
 const rDSOptionGroupType string = "AWS::RDS::OptionGroup"
 
-var rDSOptionGroupProperties map[string]string = map[string]string{
-	"engine_name": "EngineName",
-	"major_engine_version": "MajorEngineVersion",
-	"option_configurations": "OptionConfigurations",
-	"option_group_description": "OptionGroupDescription",
-	"tags": "Tags",
-}
-
 func ResourceRDSOptionGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRDSOptionGroupExists,
@@ -71,11 +63,11 @@ func resourceRDSOptionGroupRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceRDSOptionGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(rDSOptionGroupType, ResourceRDSOptionGroup(), data, rDSOptionGroupProperties, meta)
+	return plugin.ResourceCreate(rDSOptionGroupType, ResourceRDSOptionGroup(), data, meta)
 }
 
 func resourceRDSOptionGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(rDSOptionGroupType, ResourceRDSOptionGroup(), data, rDSOptionGroupProperties, meta)
+	return plugin.ResourceUpdate(rDSOptionGroupType, ResourceRDSOptionGroup(), data, meta)
 }
 
 func resourceRDSOptionGroupDelete(data *schema.ResourceData, meta interface{}) error {

@@ -16,11 +16,6 @@ import (
 
 const configAggregationAuthorizationType string = "AWS::Config::AggregationAuthorization"
 
-var configAggregationAuthorizationProperties map[string]string = map[string]string{
-	"authorized_account_id": "AuthorizedAccountId",
-	"authorized_aws_region": "AuthorizedAwsRegion",
-}
-
 func ResourceConfigAggregationAuthorization() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceConfigAggregationAuthorizationExists,
@@ -57,11 +52,11 @@ func resourceConfigAggregationAuthorizationRead(data *schema.ResourceData, meta 
 }
 
 func resourceConfigAggregationAuthorizationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(configAggregationAuthorizationType, ResourceConfigAggregationAuthorization(), data, configAggregationAuthorizationProperties, meta)
+	return plugin.ResourceCreate(configAggregationAuthorizationType, ResourceConfigAggregationAuthorization(), data, meta)
 }
 
 func resourceConfigAggregationAuthorizationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(configAggregationAuthorizationType, ResourceConfigAggregationAuthorization(), data, configAggregationAuthorizationProperties, meta)
+	return plugin.ResourceUpdate(configAggregationAuthorizationType, ResourceConfigAggregationAuthorization(), data, meta)
 }
 
 func resourceConfigAggregationAuthorizationDelete(data *schema.ResourceData, meta interface{}) error {

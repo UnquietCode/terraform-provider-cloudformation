@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var configurationSetEventDestinationCloudWatchDestinationProperties map[string]string = map[string]string{
-	"dimension_configurations": "DimensionConfigurations",
-}
-
 func propertyConfigurationSetEventDestinationCloudWatchDestination(extras...string) *schema.Resource {
 	var count int64 = 0
 	

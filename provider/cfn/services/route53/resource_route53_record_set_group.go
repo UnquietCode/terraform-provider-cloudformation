@@ -16,13 +16,6 @@ import (
 
 const route53RecordSetGroupType string = "AWS::Route53::RecordSetGroup"
 
-var route53RecordSetGroupProperties map[string]string = map[string]string{
-	"comment": "Comment",
-	"hosted_zone_id": "HostedZoneId",
-	"hosted_zone_name": "HostedZoneName",
-	"record_sets": "RecordSets",
-}
-
 func ResourceRoute53RecordSetGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRoute53RecordSetGroupExists,
@@ -68,11 +61,11 @@ func resourceRoute53RecordSetGroupRead(data *schema.ResourceData, meta interface
 }
 
 func resourceRoute53RecordSetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(route53RecordSetGroupType, ResourceRoute53RecordSetGroup(), data, route53RecordSetGroupProperties, meta)
+	return plugin.ResourceCreate(route53RecordSetGroupType, ResourceRoute53RecordSetGroup(), data, meta)
 }
 
 func resourceRoute53RecordSetGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(route53RecordSetGroupType, ResourceRoute53RecordSetGroup(), data, route53RecordSetGroupProperties, meta)
+	return plugin.ResourceUpdate(route53RecordSetGroupType, ResourceRoute53RecordSetGroup(), data, meta)
 }
 
 func resourceRoute53RecordSetGroupDelete(data *schema.ResourceData, meta interface{}) error {

@@ -16,22 +16,6 @@ import (
 
 const apiGatewayMethodType string = "AWS::ApiGateway::Method"
 
-var apiGatewayMethodProperties map[string]string = map[string]string{
-	"api_key_required": "ApiKeyRequired",
-	"authorization_scopes": "AuthorizationScopes",
-	"authorization_type": "AuthorizationType",
-	"authorizer_id": "AuthorizerId",
-	"http_method": "HttpMethod",
-	"integration": "Integration",
-	"method_responses": "MethodResponses",
-	"operation_name": "OperationName",
-	"request_models": "RequestModels",
-	"request_parameters": "RequestParameters",
-	"request_validator_id": "RequestValidatorId",
-	"resource_id": "ResourceId",
-	"rest_api_id": "RestApiId",
-}
-
 func ResourceApiGatewayMethod() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayMethodExists,
@@ -119,11 +103,11 @@ func resourceApiGatewayMethodRead(data *schema.ResourceData, meta interface{}) e
 }
 
 func resourceApiGatewayMethodCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayMethodType, ResourceApiGatewayMethod(), data, apiGatewayMethodProperties, meta)
+	return plugin.ResourceCreate(apiGatewayMethodType, ResourceApiGatewayMethod(), data, meta)
 }
 
 func resourceApiGatewayMethodUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayMethodType, ResourceApiGatewayMethod(), data, apiGatewayMethodProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayMethodType, ResourceApiGatewayMethod(), data, meta)
 }
 
 func resourceApiGatewayMethodDelete(data *schema.ResourceData, meta interface{}) error {

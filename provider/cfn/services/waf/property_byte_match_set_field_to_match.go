@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var byteMatchSetFieldToMatchProperties map[string]string = map[string]string{
-	"data": "Data",
-	"type": "Type",
-}
-
 func propertyByteMatchSetFieldToMatch(extras...string) *schema.Resource {
 	var count int64 = 0
 	

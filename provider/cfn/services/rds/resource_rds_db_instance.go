@@ -17,59 +17,6 @@ import (
 
 const rDSDBInstanceType string = "AWS::RDS::DBInstance"
 
-var rDSDBInstanceProperties map[string]string = map[string]string{
-	"allocated_storage": "AllocatedStorage",
-	"allow_major_version_upgrade": "AllowMajorVersionUpgrade",
-	"associated_roles": "AssociatedRoles",
-	"auto_minor_version_upgrade": "AutoMinorVersionUpgrade",
-	"availability_zone": "AvailabilityZone",
-	"backup_retention_period": "BackupRetentionPeriod",
-	"character_set_name": "CharacterSetName",
-	"copy_tags_to_snapshot": "CopyTagsToSnapshot",
-	"db_cluster_identifier": "DBClusterIdentifier",
-	"db_instance_class": "DBInstanceClass",
-	"db_instance_identifier": "DBInstanceIdentifier",
-	"db_name": "DBName",
-	"db_parameter_group_name": "DBParameterGroupName",
-	"db_security_groups": "DBSecurityGroups",
-	"db_snapshot_identifier": "DBSnapshotIdentifier",
-	"db_subnet_group_name": "DBSubnetGroupName",
-	"delete_automated_backups": "DeleteAutomatedBackups",
-	"deletion_protection": "DeletionProtection",
-	"domain": "Domain",
-	"domain_iam_role_name": "DomainIAMRoleName",
-	"enable_cloudwatch_logs_exports": "EnableCloudwatchLogsExports",
-	"enable_iam_database_authentication": "EnableIAMDatabaseAuthentication",
-	"enable_performance_insights": "EnablePerformanceInsights",
-	"engine": "Engine",
-	"engine_version": "EngineVersion",
-	"iops": "Iops",
-	"kms_key_id": "KmsKeyId",
-	"license_model": "LicenseModel",
-	"master_user_password": "MasterUserPassword",
-	"master_username": "MasterUsername",
-	"monitoring_interval": "MonitoringInterval",
-	"monitoring_role_arn": "MonitoringRoleArn",
-	"multi_az": "MultiAZ",
-	"option_group_name": "OptionGroupName",
-	"performance_insights_kms_key_id": "PerformanceInsightsKMSKeyId",
-	"performance_insights_retention_period": "PerformanceInsightsRetentionPeriod",
-	"port": "Port",
-	"preferred_backup_window": "PreferredBackupWindow",
-	"preferred_maintenance_window": "PreferredMaintenanceWindow",
-	"processor_features": "ProcessorFeatures",
-	"promotion_tier": "PromotionTier",
-	"publicly_accessible": "PubliclyAccessible",
-	"source_db_instance_identifier": "SourceDBInstanceIdentifier",
-	"source_region": "SourceRegion",
-	"storage_encrypted": "StorageEncrypted",
-	"storage_type": "StorageType",
-	"tags": "Tags",
-	"timezone": "Timezone",
-	"use_default_processor_features": "UseDefaultProcessorFeatures",
-	"vpc_security_groups": "VPCSecurityGroups",
-}
-
 func ResourceRDSDBInstance() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRDSDBInstanceExists,
@@ -301,11 +248,11 @@ func resourceRDSDBInstanceRead(data *schema.ResourceData, meta interface{}) erro
 }
 
 func resourceRDSDBInstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(rDSDBInstanceType, ResourceRDSDBInstance(), data, rDSDBInstanceProperties, meta)
+	return plugin.ResourceCreate(rDSDBInstanceType, ResourceRDSDBInstance(), data, meta)
 }
 
 func resourceRDSDBInstanceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(rDSDBInstanceType, ResourceRDSDBInstance(), data, rDSDBInstanceProperties, meta)
+	return plugin.ResourceUpdate(rDSDBInstanceType, ResourceRDSDBInstance(), data, meta)
 }
 
 func resourceRDSDBInstanceDelete(data *schema.ResourceData, meta interface{}) error {

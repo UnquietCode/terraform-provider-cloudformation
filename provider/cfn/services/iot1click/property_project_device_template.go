@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var projectDeviceTemplateProperties map[string]string = map[string]string{
-	"device_type": "DeviceType",
-	"callback_overrides": "CallbackOverrides",
-}
-
 func propertyProjectDeviceTemplate(extras...string) *schema.Resource {
 	var count int64 = 0
 	

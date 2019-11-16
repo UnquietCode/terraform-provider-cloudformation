@@ -16,12 +16,6 @@ import (
 
 const apiGatewayDocumentationVersionType string = "AWS::ApiGateway::DocumentationVersion"
 
-var apiGatewayDocumentationVersionProperties map[string]string = map[string]string{
-	"description": "Description",
-	"documentation_version": "DocumentationVersion",
-	"rest_api_id": "RestApiId",
-}
-
 func ResourceApiGatewayDocumentationVersion() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayDocumentationVersionExists,
@@ -62,11 +56,11 @@ func resourceApiGatewayDocumentationVersionRead(data *schema.ResourceData, meta 
 }
 
 func resourceApiGatewayDocumentationVersionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayDocumentationVersionType, ResourceApiGatewayDocumentationVersion(), data, apiGatewayDocumentationVersionProperties, meta)
+	return plugin.ResourceCreate(apiGatewayDocumentationVersionType, ResourceApiGatewayDocumentationVersion(), data, meta)
 }
 
 func resourceApiGatewayDocumentationVersionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayDocumentationVersionType, ResourceApiGatewayDocumentationVersion(), data, apiGatewayDocumentationVersionProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayDocumentationVersionType, ResourceApiGatewayDocumentationVersion(), data, meta)
 }
 
 func resourceApiGatewayDocumentationVersionDelete(data *schema.ResourceData, meta interface{}) error {

@@ -16,11 +16,6 @@ import (
 
 const codeDeployApplicationType string = "AWS::CodeDeploy::Application"
 
-var codeDeployApplicationProperties map[string]string = map[string]string{
-	"application_name": "ApplicationName",
-	"compute_platform": "ComputePlatform",
-}
-
 func ResourceCodeDeployApplication() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCodeDeployApplicationExists,
@@ -57,11 +52,11 @@ func resourceCodeDeployApplicationRead(data *schema.ResourceData, meta interface
 }
 
 func resourceCodeDeployApplicationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(codeDeployApplicationType, ResourceCodeDeployApplication(), data, codeDeployApplicationProperties, meta)
+	return plugin.ResourceCreate(codeDeployApplicationType, ResourceCodeDeployApplication(), data, meta)
 }
 
 func resourceCodeDeployApplicationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(codeDeployApplicationType, ResourceCodeDeployApplication(), data, codeDeployApplicationProperties, meta)
+	return plugin.ResourceUpdate(codeDeployApplicationType, ResourceCodeDeployApplication(), data, meta)
 }
 
 func resourceCodeDeployApplicationDelete(data *schema.ResourceData, meta interface{}) error {

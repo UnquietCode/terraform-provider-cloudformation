@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var channelNetworkInputSettingsProperties map[string]string = map[string]string{
-	"server_validation": "ServerValidation",
-	"hls_input_settings": "HlsInputSettings",
-}
-
 func propertyChannelNetworkInputSettings(extras...string) *schema.Resource {
 	var count int64 = 0
 	

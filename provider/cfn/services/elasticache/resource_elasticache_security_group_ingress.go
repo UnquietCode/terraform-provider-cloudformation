@@ -16,12 +16,6 @@ import (
 
 const elastiCacheSecurityGroupIngressType string = "AWS::ElastiCache::SecurityGroupIngress"
 
-var elastiCacheSecurityGroupIngressProperties map[string]string = map[string]string{
-	"cache_security_group_name": "CacheSecurityGroupName",
-	"ec2_security_group_name": "EC2SecurityGroupName",
-	"ec2_security_group_owner_id": "EC2SecurityGroupOwnerId",
-}
-
 func ResourceElastiCacheSecurityGroupIngress() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElastiCacheSecurityGroupIngressExists,
@@ -62,11 +56,11 @@ func resourceElastiCacheSecurityGroupIngressRead(data *schema.ResourceData, meta
 }
 
 func resourceElastiCacheSecurityGroupIngressCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(elastiCacheSecurityGroupIngressType, ResourceElastiCacheSecurityGroupIngress(), data, elastiCacheSecurityGroupIngressProperties, meta)
+	return plugin.ResourceCreate(elastiCacheSecurityGroupIngressType, ResourceElastiCacheSecurityGroupIngress(), data, meta)
 }
 
 func resourceElastiCacheSecurityGroupIngressUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(elastiCacheSecurityGroupIngressType, ResourceElastiCacheSecurityGroupIngress(), data, elastiCacheSecurityGroupIngressProperties, meta)
+	return plugin.ResourceUpdate(elastiCacheSecurityGroupIngressType, ResourceElastiCacheSecurityGroupIngress(), data, meta)
 }
 
 func resourceElastiCacheSecurityGroupIngressDelete(data *schema.ResourceData, meta interface{}) error {

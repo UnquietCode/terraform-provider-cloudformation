@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var partitionColumnProperties map[string]string = map[string]string{
-	"comment": "Comment",
-	"type": "Type",
-	"name": "Name",
-}
-
 func propertyPartitionColumn(extras...string) *schema.Resource {
 	var count int64 = 0
 	

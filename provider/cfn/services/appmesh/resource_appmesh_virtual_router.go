@@ -17,13 +17,6 @@ import (
 
 const appMeshVirtualRouterType string = "AWS::AppMesh::VirtualRouter"
 
-var appMeshVirtualRouterProperties map[string]string = map[string]string{
-	"mesh_name": "MeshName",
-	"virtual_router_name": "VirtualRouterName",
-	"spec": "Spec",
-	"tags": "Tags",
-}
-
 func ResourceAppMeshVirtualRouter() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppMeshVirtualRouterExists,
@@ -67,11 +60,11 @@ func resourceAppMeshVirtualRouterRead(data *schema.ResourceData, meta interface{
 }
 
 func resourceAppMeshVirtualRouterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(appMeshVirtualRouterType, ResourceAppMeshVirtualRouter(), data, appMeshVirtualRouterProperties, meta)
+	return plugin.ResourceCreate(appMeshVirtualRouterType, ResourceAppMeshVirtualRouter(), data, meta)
 }
 
 func resourceAppMeshVirtualRouterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(appMeshVirtualRouterType, ResourceAppMeshVirtualRouter(), data, appMeshVirtualRouterProperties, meta)
+	return plugin.ResourceUpdate(appMeshVirtualRouterType, ResourceAppMeshVirtualRouter(), data, meta)
 }
 
 func resourceAppMeshVirtualRouterDelete(data *schema.ResourceData, meta interface{}) error {

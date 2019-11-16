@@ -16,11 +16,6 @@ import (
 
 const inspectorAssessmentTargetType string = "AWS::Inspector::AssessmentTarget"
 
-var inspectorAssessmentTargetProperties map[string]string = map[string]string{
-	"assessment_target_name": "AssessmentTargetName",
-	"resource_group_arn": "ResourceGroupArn",
-}
-
 func ResourceInspectorAssessmentTarget() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceInspectorAssessmentTargetExists,
@@ -57,11 +52,11 @@ func resourceInspectorAssessmentTargetRead(data *schema.ResourceData, meta inter
 }
 
 func resourceInspectorAssessmentTargetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(inspectorAssessmentTargetType, ResourceInspectorAssessmentTarget(), data, inspectorAssessmentTargetProperties, meta)
+	return plugin.ResourceCreate(inspectorAssessmentTargetType, ResourceInspectorAssessmentTarget(), data, meta)
 }
 
 func resourceInspectorAssessmentTargetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(inspectorAssessmentTargetType, ResourceInspectorAssessmentTarget(), data, inspectorAssessmentTargetProperties, meta)
+	return plugin.ResourceUpdate(inspectorAssessmentTargetType, ResourceInspectorAssessmentTarget(), data, meta)
 }
 
 func resourceInspectorAssessmentTargetDelete(data *schema.ResourceData, meta interface{}) error {

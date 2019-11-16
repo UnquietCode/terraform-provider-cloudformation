@@ -16,12 +16,6 @@ import (
 
 const cognitoIdentityPoolRoleAttachmentType string = "AWS::Cognito::IdentityPoolRoleAttachment"
 
-var cognitoIdentityPoolRoleAttachmentProperties map[string]string = map[string]string{
-	"role_mappings": "RoleMappings",
-	"identity_pool_id": "IdentityPoolId",
-	"roles": "Roles",
-}
-
 func ResourceCognitoIdentityPoolRoleAttachment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCognitoIdentityPoolRoleAttachmentExists,
@@ -62,11 +56,11 @@ func resourceCognitoIdentityPoolRoleAttachmentRead(data *schema.ResourceData, me
 }
 
 func resourceCognitoIdentityPoolRoleAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(cognitoIdentityPoolRoleAttachmentType, ResourceCognitoIdentityPoolRoleAttachment(), data, cognitoIdentityPoolRoleAttachmentProperties, meta)
+	return plugin.ResourceCreate(cognitoIdentityPoolRoleAttachmentType, ResourceCognitoIdentityPoolRoleAttachment(), data, meta)
 }
 
 func resourceCognitoIdentityPoolRoleAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(cognitoIdentityPoolRoleAttachmentType, ResourceCognitoIdentityPoolRoleAttachment(), data, cognitoIdentityPoolRoleAttachmentProperties, meta)
+	return plugin.ResourceUpdate(cognitoIdentityPoolRoleAttachmentType, ResourceCognitoIdentityPoolRoleAttachment(), data, meta)
 }
 
 func resourceCognitoIdentityPoolRoleAttachmentDelete(data *schema.ResourceData, meta interface{}) error {

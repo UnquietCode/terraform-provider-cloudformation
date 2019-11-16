@@ -16,11 +16,6 @@ import (
 
 const eC2VPNConnectionRouteType string = "AWS::EC2::VPNConnectionRoute"
 
-var eC2VPNConnectionRouteProperties map[string]string = map[string]string{
-	"destination_cidr_block": "DestinationCidrBlock",
-	"vpn_connection_id": "VpnConnectionId",
-}
-
 func ResourceEC2VPNConnectionRoute() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPNConnectionRouteExists,
@@ -57,11 +52,11 @@ func resourceEC2VPNConnectionRouteRead(data *schema.ResourceData, meta interface
 }
 
 func resourceEC2VPNConnectionRouteCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2VPNConnectionRouteType, ResourceEC2VPNConnectionRoute(), data, eC2VPNConnectionRouteProperties, meta)
+	return plugin.ResourceCreate(eC2VPNConnectionRouteType, ResourceEC2VPNConnectionRoute(), data, meta)
 }
 
 func resourceEC2VPNConnectionRouteUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2VPNConnectionRouteType, ResourceEC2VPNConnectionRoute(), data, eC2VPNConnectionRouteProperties, meta)
+	return plugin.ResourceUpdate(eC2VPNConnectionRouteType, ResourceEC2VPNConnectionRoute(), data, meta)
 }
 
 func resourceEC2VPNConnectionRouteDelete(data *schema.ResourceData, meta interface{}) error {

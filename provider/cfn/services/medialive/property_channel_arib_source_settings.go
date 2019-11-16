@@ -14,9 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var channelAribSourceSettingsProperties map[string]string = map[string]string{
-}
-
 func propertyChannelAribSourceSettings(extras...string) *schema.Resource {
 	var count int64 = 0
 	

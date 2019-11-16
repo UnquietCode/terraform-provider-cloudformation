@@ -16,11 +16,6 @@ import (
 
 const wAFRegionalXssMatchSetType string = "AWS::WAFRegional::XssMatchSet"
 
-var wAFRegionalXssMatchSetProperties map[string]string = map[string]string{
-	"xss_match_tuples": "XssMatchTuples",
-	"name": "Name",
-}
-
 func ResourceWAFRegionalXssMatchSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFRegionalXssMatchSetExists,
@@ -58,11 +53,11 @@ func resourceWAFRegionalXssMatchSetRead(data *schema.ResourceData, meta interfac
 }
 
 func resourceWAFRegionalXssMatchSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(wAFRegionalXssMatchSetType, ResourceWAFRegionalXssMatchSet(), data, wAFRegionalXssMatchSetProperties, meta)
+	return plugin.ResourceCreate(wAFRegionalXssMatchSetType, ResourceWAFRegionalXssMatchSet(), data, meta)
 }
 
 func resourceWAFRegionalXssMatchSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(wAFRegionalXssMatchSetType, ResourceWAFRegionalXssMatchSet(), data, wAFRegionalXssMatchSetProperties, meta)
+	return plugin.ResourceUpdate(wAFRegionalXssMatchSetType, ResourceWAFRegionalXssMatchSet(), data, meta)
 }
 
 func resourceWAFRegionalXssMatchSetDelete(data *schema.ResourceData, meta interface{}) error {

@@ -16,12 +16,6 @@ import (
 
 const pinpointSmsTemplateType string = "AWS::Pinpoint::SmsTemplate"
 
-var pinpointSmsTemplateProperties map[string]string = map[string]string{
-	"template_name": "TemplateName",
-	"body": "Body",
-	"tags": "Tags",
-}
-
 func ResourcePinpointSmsTemplate() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointSmsTemplateExists,
@@ -62,11 +56,11 @@ func resourcePinpointSmsTemplateRead(data *schema.ResourceData, meta interface{}
 }
 
 func resourcePinpointSmsTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(pinpointSmsTemplateType, ResourcePinpointSmsTemplate(), data, pinpointSmsTemplateProperties, meta)
+	return plugin.ResourceCreate(pinpointSmsTemplateType, ResourcePinpointSmsTemplate(), data, meta)
 }
 
 func resourcePinpointSmsTemplateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(pinpointSmsTemplateType, ResourcePinpointSmsTemplate(), data, pinpointSmsTemplateProperties, meta)
+	return plugin.ResourceUpdate(pinpointSmsTemplateType, ResourcePinpointSmsTemplate(), data, meta)
 }
 
 func resourcePinpointSmsTemplateDelete(data *schema.ResourceData, meta interface{}) error {

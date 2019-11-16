@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var scalableTargetScheduledActionProperties map[string]string = map[string]string{
-	"end_time": "EndTime",
-	"scalable_target_action": "ScalableTargetAction",
-	"schedule": "Schedule",
-	"scheduled_action_name": "ScheduledActionName",
-	"start_time": "StartTime",
-}
-
 func propertyScalableTargetScheduledAction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -17,15 +17,6 @@ import (
 
 const transferServerType string = "AWS::Transfer::Server"
 
-var transferServerProperties map[string]string = map[string]string{
-	"logging_role": "LoggingRole",
-	"identity_provider_details": "IdentityProviderDetails",
-	"endpoint_type": "EndpointType",
-	"endpoint_details": "EndpointDetails",
-	"identity_provider_type": "IdentityProviderType",
-	"tags": "Tags",
-}
-
 func ResourceTransferServer() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceTransferServerExists,
@@ -79,11 +70,11 @@ func resourceTransferServerRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceTransferServerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(transferServerType, ResourceTransferServer(), data, transferServerProperties, meta)
+	return plugin.ResourceCreate(transferServerType, ResourceTransferServer(), data, meta)
 }
 
 func resourceTransferServerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(transferServerType, ResourceTransferServer(), data, transferServerProperties, meta)
+	return plugin.ResourceUpdate(transferServerType, ResourceTransferServer(), data, meta)
 }
 
 func resourceTransferServerDelete(data *schema.ResourceData, meta interface{}) error {

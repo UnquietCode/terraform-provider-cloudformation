@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketPublicAccessBlockConfigurationProperties map[string]string = map[string]string{
-	"block_public_acls": "BlockPublicAcls",
-	"block_public_policy": "BlockPublicPolicy",
-	"ignore_public_acls": "IgnorePublicAcls",
-	"restrict_public_buckets": "RestrictPublicBuckets",
-}
-
 func propertyBucketPublicAccessBlockConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,11 +16,6 @@ import (
 
 const kinesisAnalyticsV2ApplicationCloudWatchLoggingOptionType string = "AWS::KinesisAnalyticsV2::ApplicationCloudWatchLoggingOption"
 
-var kinesisAnalyticsV2ApplicationCloudWatchLoggingOptionProperties map[string]string = map[string]string{
-	"application_name": "ApplicationName",
-	"cloud_watch_logging_option": "CloudWatchLoggingOption",
-}
-
 func ResourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOption() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionExists,
@@ -59,11 +54,11 @@ func resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionRead(data *sche
 }
 
 func resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(kinesisAnalyticsV2ApplicationCloudWatchLoggingOptionType, ResourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOption(), data, kinesisAnalyticsV2ApplicationCloudWatchLoggingOptionProperties, meta)
+	return plugin.ResourceCreate(kinesisAnalyticsV2ApplicationCloudWatchLoggingOptionType, ResourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOption(), data, meta)
 }
 
 func resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(kinesisAnalyticsV2ApplicationCloudWatchLoggingOptionType, ResourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOption(), data, kinesisAnalyticsV2ApplicationCloudWatchLoggingOptionProperties, meta)
+	return plugin.ResourceUpdate(kinesisAnalyticsV2ApplicationCloudWatchLoggingOptionType, ResourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOption(), data, meta)
 }
 
 func resourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOptionDelete(data *schema.ResourceData, meta interface{}) error {

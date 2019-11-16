@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var optionGroupOptionConfigurationProperties map[string]string = map[string]string{
-	"db_security_group_memberships": "DBSecurityGroupMemberships",
-	"option_name": "OptionName",
-	"option_settings": "OptionSettings",
-	"option_version": "OptionVersion",
-	"port": "Port",
-	"vpc_security_group_memberships": "VpcSecurityGroupMemberships",
-}
-
 func propertyOptionGroupOptionConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

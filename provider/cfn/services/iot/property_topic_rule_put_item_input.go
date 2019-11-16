@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var topicRulePutItemInputProperties map[string]string = map[string]string{
-	"table_name": "TableName",
-}
-
 func propertyTopicRulePutItemInput(extras...string) *schema.Resource {
 	var count int64 = 0
 	

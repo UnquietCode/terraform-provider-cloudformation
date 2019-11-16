@@ -16,12 +16,6 @@ import (
 
 const elastiCacheParameterGroupType string = "AWS::ElastiCache::ParameterGroup"
 
-var elastiCacheParameterGroupProperties map[string]string = map[string]string{
-	"cache_parameter_group_family": "CacheParameterGroupFamily",
-	"description": "Description",
-	"properties": "Properties",
-}
-
 func ResourceElastiCacheParameterGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElastiCacheParameterGroupExists,
@@ -63,11 +57,11 @@ func resourceElastiCacheParameterGroupRead(data *schema.ResourceData, meta inter
 }
 
 func resourceElastiCacheParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(elastiCacheParameterGroupType, ResourceElastiCacheParameterGroup(), data, elastiCacheParameterGroupProperties, meta)
+	return plugin.ResourceCreate(elastiCacheParameterGroupType, ResourceElastiCacheParameterGroup(), data, meta)
 }
 
 func resourceElastiCacheParameterGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(elastiCacheParameterGroupType, ResourceElastiCacheParameterGroup(), data, elastiCacheParameterGroupProperties, meta)
+	return plugin.ResourceUpdate(elastiCacheParameterGroupType, ResourceElastiCacheParameterGroup(), data, meta)
 }
 
 func resourceElastiCacheParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {

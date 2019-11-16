@@ -17,13 +17,6 @@ import (
 
 const rDSDBSecurityGroupType string = "AWS::RDS::DBSecurityGroup"
 
-var rDSDBSecurityGroupProperties map[string]string = map[string]string{
-	"db_security_group_ingress": "DBSecurityGroupIngress",
-	"ec2_vpc_id": "EC2VpcId",
-	"group_description": "GroupDescription",
-	"tags": "Tags",
-}
-
 func ResourceRDSDBSecurityGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRDSDBSecurityGroupExists,
@@ -66,11 +59,11 @@ func resourceRDSDBSecurityGroupRead(data *schema.ResourceData, meta interface{})
 }
 
 func resourceRDSDBSecurityGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(rDSDBSecurityGroupType, ResourceRDSDBSecurityGroup(), data, rDSDBSecurityGroupProperties, meta)
+	return plugin.ResourceCreate(rDSDBSecurityGroupType, ResourceRDSDBSecurityGroup(), data, meta)
 }
 
 func resourceRDSDBSecurityGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(rDSDBSecurityGroupType, ResourceRDSDBSecurityGroup(), data, rDSDBSecurityGroupProperties, meta)
+	return plugin.ResourceUpdate(rDSDBSecurityGroupType, ResourceRDSDBSecurityGroup(), data, meta)
 }
 
 func resourceRDSDBSecurityGroupDelete(data *schema.ResourceData, meta interface{}) error {

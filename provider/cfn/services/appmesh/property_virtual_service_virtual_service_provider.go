@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var virtualServiceVirtualServiceProviderProperties map[string]string = map[string]string{
-	"virtual_node": "VirtualNode",
-	"virtual_router": "VirtualRouter",
-}
-
 func propertyVirtualServiceVirtualServiceProvider(extras...string) *schema.Resource {
 	var count int64 = 0
 	

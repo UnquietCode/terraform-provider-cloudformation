@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var identityPoolCognitoStreamsProperties map[string]string = map[string]string{
-	"streaming_status": "StreamingStatus",
-	"stream_name": "StreamName",
-	"role_arn": "RoleArn",
-}
-
 func propertyIdentityPoolCognitoStreams(extras...string) *schema.Resource {
 	var count int64 = 0
 	

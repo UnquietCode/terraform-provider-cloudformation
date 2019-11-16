@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var sqlInjectionMatchSetSqlInjectionMatchTupleProperties map[string]string = map[string]string{
-	"field_to_match": "FieldToMatch",
-	"text_transformation": "TextTransformation",
-}
-
 func propertySqlInjectionMatchSetSqlInjectionMatchTuple(extras...string) *schema.Resource {
 	var count int64 = 0
 	

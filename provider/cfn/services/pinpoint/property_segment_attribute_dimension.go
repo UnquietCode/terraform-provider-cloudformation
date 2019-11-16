@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var segmentAttributeDimensionProperties map[string]string = map[string]string{
-	"attribute_type": "AttributeType",
-	"values": "Values",
-}
-
 func propertySegmentAttributeDimension(extras...string) *schema.Resource {
 	var count int64 = 0
 	

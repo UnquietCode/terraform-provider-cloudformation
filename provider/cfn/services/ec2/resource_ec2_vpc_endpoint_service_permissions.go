@@ -16,11 +16,6 @@ import (
 
 const eC2VPCEndpointServicePermissionsType string = "AWS::EC2::VPCEndpointServicePermissions"
 
-var eC2VPCEndpointServicePermissionsProperties map[string]string = map[string]string{
-	"allowed_principals": "AllowedPrincipals",
-	"service_id": "ServiceId",
-}
-
 func ResourceEC2VPCEndpointServicePermissions() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPCEndpointServicePermissionsExists,
@@ -58,11 +53,11 @@ func resourceEC2VPCEndpointServicePermissionsRead(data *schema.ResourceData, met
 }
 
 func resourceEC2VPCEndpointServicePermissionsCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2VPCEndpointServicePermissionsType, ResourceEC2VPCEndpointServicePermissions(), data, eC2VPCEndpointServicePermissionsProperties, meta)
+	return plugin.ResourceCreate(eC2VPCEndpointServicePermissionsType, ResourceEC2VPCEndpointServicePermissions(), data, meta)
 }
 
 func resourceEC2VPCEndpointServicePermissionsUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2VPCEndpointServicePermissionsType, ResourceEC2VPCEndpointServicePermissions(), data, eC2VPCEndpointServicePermissionsProperties, meta)
+	return plugin.ResourceUpdate(eC2VPCEndpointServicePermissionsType, ResourceEC2VPCEndpointServicePermissions(), data, meta)
 }
 
 func resourceEC2VPCEndpointServicePermissionsDelete(data *schema.ResourceData, meta interface{}) error {

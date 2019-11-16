@@ -16,12 +16,6 @@ import (
 
 const greengrassResourceDefinitionType string = "AWS::Greengrass::ResourceDefinition"
 
-var greengrassResourceDefinitionProperties map[string]string = map[string]string{
-	"initial_version": "InitialVersion",
-	"tags": "Tags",
-	"name": "Name",
-}
-
 func ResourceGreengrassResourceDefinition() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGreengrassResourceDefinitionExists,
@@ -64,11 +58,11 @@ func resourceGreengrassResourceDefinitionRead(data *schema.ResourceData, meta in
 }
 
 func resourceGreengrassResourceDefinitionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(greengrassResourceDefinitionType, ResourceGreengrassResourceDefinition(), data, greengrassResourceDefinitionProperties, meta)
+	return plugin.ResourceCreate(greengrassResourceDefinitionType, ResourceGreengrassResourceDefinition(), data, meta)
 }
 
 func resourceGreengrassResourceDefinitionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(greengrassResourceDefinitionType, ResourceGreengrassResourceDefinition(), data, greengrassResourceDefinitionProperties, meta)
+	return plugin.ResourceUpdate(greengrassResourceDefinitionType, ResourceGreengrassResourceDefinition(), data, meta)
 }
 
 func resourceGreengrassResourceDefinitionDelete(data *schema.ResourceData, meta interface{}) error {

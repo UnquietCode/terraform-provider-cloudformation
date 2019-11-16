@@ -16,11 +16,6 @@ import (
 
 const kinesisStreamConsumerType string = "AWS::Kinesis::StreamConsumer"
 
-var kinesisStreamConsumerProperties map[string]string = map[string]string{
-	"consumer_name": "ConsumerName",
-	"stream_arn": "StreamARN",
-}
-
 func ResourceKinesisStreamConsumer() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceKinesisStreamConsumerExists,
@@ -57,11 +52,11 @@ func resourceKinesisStreamConsumerRead(data *schema.ResourceData, meta interface
 }
 
 func resourceKinesisStreamConsumerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(kinesisStreamConsumerType, ResourceKinesisStreamConsumer(), data, kinesisStreamConsumerProperties, meta)
+	return plugin.ResourceCreate(kinesisStreamConsumerType, ResourceKinesisStreamConsumer(), data, meta)
 }
 
 func resourceKinesisStreamConsumerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(kinesisStreamConsumerType, ResourceKinesisStreamConsumer(), data, kinesisStreamConsumerProperties, meta)
+	return plugin.ResourceUpdate(kinesisStreamConsumerType, ResourceKinesisStreamConsumer(), data, meta)
 }
 
 func resourceKinesisStreamConsumerDelete(data *schema.ResourceData, meta interface{}) error {

@@ -17,13 +17,6 @@ import (
 
 const docDBDBSubnetGroupType string = "AWS::DocDB::DBSubnetGroup"
 
-var docDBDBSubnetGroupProperties map[string]string = map[string]string{
-	"db_subnet_group_name": "DBSubnetGroupName",
-	"db_subnet_group_description": "DBSubnetGroupDescription",
-	"subnet_ids": "SubnetIds",
-	"tags": "Tags",
-}
-
 func ResourceDocDBDBSubnetGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDocDBDBSubnetGroupExists,
@@ -66,11 +59,11 @@ func resourceDocDBDBSubnetGroupRead(data *schema.ResourceData, meta interface{})
 }
 
 func resourceDocDBDBSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(docDBDBSubnetGroupType, ResourceDocDBDBSubnetGroup(), data, docDBDBSubnetGroupProperties, meta)
+	return plugin.ResourceCreate(docDBDBSubnetGroupType, ResourceDocDBDBSubnetGroup(), data, meta)
 }
 
 func resourceDocDBDBSubnetGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(docDBDBSubnetGroupType, ResourceDocDBDBSubnetGroup(), data, docDBDBSubnetGroupProperties, meta)
+	return plugin.ResourceUpdate(docDBDBSubnetGroupType, ResourceDocDBDBSubnetGroup(), data, meta)
 }
 
 func resourceDocDBDBSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {

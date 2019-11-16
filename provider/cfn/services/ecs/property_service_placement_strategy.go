@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var servicePlacementStrategyProperties map[string]string = map[string]string{
-	"field": "Field",
-	"type": "Type",
-}
-
 func propertyServicePlacementStrategy(extras...string) *schema.Resource {
 	var count int64 = 0
 	

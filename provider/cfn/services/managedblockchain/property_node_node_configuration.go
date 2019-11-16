@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var nodeNodeConfigurationProperties map[string]string = map[string]string{
-	"availability_zone": "AvailabilityZone",
-	"instance_type": "InstanceType",
-}
-
 func propertyNodeNodeConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

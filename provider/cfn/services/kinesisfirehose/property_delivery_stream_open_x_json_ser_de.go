@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deliveryStreamOpenXJsonSerDeProperties map[string]string = map[string]string{
-	"case_insensitive": "CaseInsensitive",
-	"column_to_json_key_mappings": "ColumnToJsonKeyMappings",
-	"convert_dots_in_json_keys_to_underscores": "ConvertDotsInJsonKeysToUnderscores",
-}
-
 func propertyDeliveryStreamOpenXJsonSerDe(extras...string) *schema.Resource {
 	var count int64 = 0
 	

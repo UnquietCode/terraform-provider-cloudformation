@@ -17,34 +17,6 @@ import (
 
 const opsWorksStackType string = "AWS::OpsWorks::Stack"
 
-var opsWorksStackProperties map[string]string = map[string]string{
-	"agent_version": "AgentVersion",
-	"attributes": "Attributes",
-	"chef_configuration": "ChefConfiguration",
-	"clone_app_ids": "CloneAppIds",
-	"clone_permissions": "ClonePermissions",
-	"configuration_manager": "ConfigurationManager",
-	"custom_cookbooks_source": "CustomCookbooksSource",
-	"custom_json": "CustomJson",
-	"default_availability_zone": "DefaultAvailabilityZone",
-	"default_instance_profile_arn": "DefaultInstanceProfileArn",
-	"default_os": "DefaultOs",
-	"default_root_device_type": "DefaultRootDeviceType",
-	"default_ssh_key_name": "DefaultSshKeyName",
-	"default_subnet_id": "DefaultSubnetId",
-	"ecs_cluster_arn": "EcsClusterArn",
-	"elastic_ips": "ElasticIps",
-	"hostname_theme": "HostnameTheme",
-	"name": "Name",
-	"rds_db_instances": "RdsDbInstances",
-	"service_role_arn": "ServiceRoleArn",
-	"source_stack_id": "SourceStackId",
-	"tags": "Tags",
-	"use_custom_cookbooks": "UseCustomCookbooks",
-	"use_opsworks_security_groups": "UseOpsworksSecurityGroups",
-	"vpc_id": "VpcId",
-}
-
 func ResourceOpsWorksStack() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceOpsWorksStackExists,
@@ -181,11 +153,11 @@ func resourceOpsWorksStackRead(data *schema.ResourceData, meta interface{}) erro
 }
 
 func resourceOpsWorksStackCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(opsWorksStackType, ResourceOpsWorksStack(), data, opsWorksStackProperties, meta)
+	return plugin.ResourceCreate(opsWorksStackType, ResourceOpsWorksStack(), data, meta)
 }
 
 func resourceOpsWorksStackUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(opsWorksStackType, ResourceOpsWorksStack(), data, opsWorksStackProperties, meta)
+	return plugin.ResourceUpdate(opsWorksStackType, ResourceOpsWorksStack(), data, meta)
 }
 
 func resourceOpsWorksStackDelete(data *schema.ResourceData, meta interface{}) error {

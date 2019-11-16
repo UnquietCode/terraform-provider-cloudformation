@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var jobDefinitionNodeRangePropertyProperties map[string]string = map[string]string{
-	"container": "Container",
-	"target_nodes": "TargetNodes",
-}
-
 func propertyJobDefinitionNodeRangeProperty(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -17,14 +17,6 @@ import (
 
 const rAMResourceShareType string = "AWS::RAM::ResourceShare"
 
-var rAMResourceShareProperties map[string]string = map[string]string{
-	"principals": "Principals",
-	"allow_external_principals": "AllowExternalPrincipals",
-	"resource_arns": "ResourceArns",
-	"tags": "Tags",
-	"name": "Name",
-}
-
 func ResourceRAMResourceShare() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRAMResourceShareExists,
@@ -72,11 +64,11 @@ func resourceRAMResourceShareRead(data *schema.ResourceData, meta interface{}) e
 }
 
 func resourceRAMResourceShareCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(rAMResourceShareType, ResourceRAMResourceShare(), data, rAMResourceShareProperties, meta)
+	return plugin.ResourceCreate(rAMResourceShareType, ResourceRAMResourceShare(), data, meta)
 }
 
 func resourceRAMResourceShareUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(rAMResourceShareType, ResourceRAMResourceShare(), data, rAMResourceShareProperties, meta)
+	return plugin.ResourceUpdate(rAMResourceShareType, ResourceRAMResourceShare(), data, meta)
 }
 
 func resourceRAMResourceShareDelete(data *schema.ResourceData, meta interface{}) error {

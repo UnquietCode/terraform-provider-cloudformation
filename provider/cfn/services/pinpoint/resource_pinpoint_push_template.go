@@ -16,16 +16,6 @@ import (
 
 const pinpointPushTemplateType string = "AWS::Pinpoint::PushTemplate"
 
-var pinpointPushTemplateProperties map[string]string = map[string]string{
-	"gcm": "GCM",
-	"baidu": "Baidu",
-	"template_name": "TemplateName",
-	"adm": "ADM",
-	"apns": "APNS",
-	"default": "Default",
-	"tags": "Tags",
-}
-
 func ResourcePinpointPushTemplate() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointPushTemplateExists,
@@ -92,11 +82,11 @@ func resourcePinpointPushTemplateRead(data *schema.ResourceData, meta interface{
 }
 
 func resourcePinpointPushTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(pinpointPushTemplateType, ResourcePinpointPushTemplate(), data, pinpointPushTemplateProperties, meta)
+	return plugin.ResourceCreate(pinpointPushTemplateType, ResourcePinpointPushTemplate(), data, meta)
 }
 
 func resourcePinpointPushTemplateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(pinpointPushTemplateType, ResourcePinpointPushTemplate(), data, pinpointPushTemplateProperties, meta)
+	return plugin.ResourceUpdate(pinpointPushTemplateType, ResourcePinpointPushTemplate(), data, meta)
 }
 
 func resourcePinpointPushTemplateDelete(data *schema.ResourceData, meta interface{}) error {

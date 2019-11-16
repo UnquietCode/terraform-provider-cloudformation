@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationApplicationResourceLifecycleConfigProperties map[string]string = map[string]string{
-	"service_role": "ServiceRole",
-	"version_lifecycle_config": "VersionLifecycleConfig",
-}
-
 func propertyApplicationApplicationResourceLifecycleConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -17,13 +17,6 @@ import (
 
 const sageMakerEndpointConfigType string = "AWS::SageMaker::EndpointConfig"
 
-var sageMakerEndpointConfigProperties map[string]string = map[string]string{
-	"production_variants": "ProductionVariants",
-	"kms_key_id": "KmsKeyId",
-	"endpoint_config_name": "EndpointConfigName",
-	"tags": "Tags",
-}
-
 func ResourceSageMakerEndpointConfig() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSageMakerEndpointConfigExists,
@@ -66,11 +59,11 @@ func resourceSageMakerEndpointConfigRead(data *schema.ResourceData, meta interfa
 }
 
 func resourceSageMakerEndpointConfigCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(sageMakerEndpointConfigType, ResourceSageMakerEndpointConfig(), data, sageMakerEndpointConfigProperties, meta)
+	return plugin.ResourceCreate(sageMakerEndpointConfigType, ResourceSageMakerEndpointConfig(), data, meta)
 }
 
 func resourceSageMakerEndpointConfigUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(sageMakerEndpointConfigType, ResourceSageMakerEndpointConfig(), data, sageMakerEndpointConfigProperties, meta)
+	return plugin.ResourceUpdate(sageMakerEndpointConfigType, ResourceSageMakerEndpointConfig(), data, meta)
 }
 
 func resourceSageMakerEndpointConfigDelete(data *schema.ResourceData, meta interface{}) error {

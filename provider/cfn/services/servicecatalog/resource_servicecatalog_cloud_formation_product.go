@@ -17,19 +17,6 @@ import (
 
 const serviceCatalogCloudFormationProductType string = "AWS::ServiceCatalog::CloudFormationProduct"
 
-var serviceCatalogCloudFormationProductProperties map[string]string = map[string]string{
-	"owner": "Owner",
-	"support_description": "SupportDescription",
-	"description": "Description",
-	"distributor": "Distributor",
-	"support_email": "SupportEmail",
-	"accept_language": "AcceptLanguage",
-	"support_url": "SupportUrl",
-	"tags": "Tags",
-	"name": "Name",
-	"provisioning_artifact_parameters": "ProvisioningArtifactParameters",
-}
-
 func ResourceServiceCatalogCloudFormationProduct() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogCloudFormationProductExists,
@@ -96,11 +83,11 @@ func resourceServiceCatalogCloudFormationProductRead(data *schema.ResourceData, 
 }
 
 func resourceServiceCatalogCloudFormationProductCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(serviceCatalogCloudFormationProductType, ResourceServiceCatalogCloudFormationProduct(), data, serviceCatalogCloudFormationProductProperties, meta)
+	return plugin.ResourceCreate(serviceCatalogCloudFormationProductType, ResourceServiceCatalogCloudFormationProduct(), data, meta)
 }
 
 func resourceServiceCatalogCloudFormationProductUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(serviceCatalogCloudFormationProductType, ResourceServiceCatalogCloudFormationProduct(), data, serviceCatalogCloudFormationProductProperties, meta)
+	return plugin.ResourceUpdate(serviceCatalogCloudFormationProductType, ResourceServiceCatalogCloudFormationProduct(), data, meta)
 }
 
 func resourceServiceCatalogCloudFormationProductDelete(data *schema.ResourceData, meta interface{}) error {

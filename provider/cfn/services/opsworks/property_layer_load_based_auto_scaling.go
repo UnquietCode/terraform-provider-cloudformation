@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var layerLoadBasedAutoScalingProperties map[string]string = map[string]string{
-	"down_scaling": "DownScaling",
-	"enable": "Enable",
-	"up_scaling": "UpScaling",
-}
-
 func propertyLayerLoadBasedAutoScaling(extras...string) *schema.Resource {
 	var count int64 = 0
 	

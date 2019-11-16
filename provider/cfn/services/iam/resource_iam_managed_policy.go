@@ -16,16 +16,6 @@ import (
 
 const iAMManagedPolicyType string = "AWS::IAM::ManagedPolicy"
 
-var iAMManagedPolicyProperties map[string]string = map[string]string{
-	"description": "Description",
-	"groups": "Groups",
-	"managed_policy_name": "ManagedPolicyName",
-	"path": "Path",
-	"policy_document": "PolicyDocument",
-	"roles": "Roles",
-	"users": "Users",
-}
-
 func ResourceIAMManagedPolicy() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIAMManagedPolicyExists,
@@ -86,11 +76,11 @@ func resourceIAMManagedPolicyRead(data *schema.ResourceData, meta interface{}) e
 }
 
 func resourceIAMManagedPolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(iAMManagedPolicyType, ResourceIAMManagedPolicy(), data, iAMManagedPolicyProperties, meta)
+	return plugin.ResourceCreate(iAMManagedPolicyType, ResourceIAMManagedPolicy(), data, meta)
 }
 
 func resourceIAMManagedPolicyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(iAMManagedPolicyType, ResourceIAMManagedPolicy(), data, iAMManagedPolicyProperties, meta)
+	return plugin.ResourceUpdate(iAMManagedPolicyType, ResourceIAMManagedPolicy(), data, meta)
 }
 
 func resourceIAMManagedPolicyDelete(data *schema.ResourceData, meta interface{}) error {

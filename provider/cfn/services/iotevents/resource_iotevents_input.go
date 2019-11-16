@@ -17,13 +17,6 @@ import (
 
 const ioTEventsInputType string = "AWS::IoTEvents::Input"
 
-var ioTEventsInputProperties map[string]string = map[string]string{
-	"input_definition": "InputDefinition",
-	"input_name": "InputName",
-	"input_description": "InputDescription",
-	"tags": "Tags",
-}
-
 func ResourceIoTEventsInput() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoTEventsInputExists,
@@ -67,11 +60,11 @@ func resourceIoTEventsInputRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceIoTEventsInputCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(ioTEventsInputType, ResourceIoTEventsInput(), data, ioTEventsInputProperties, meta)
+	return plugin.ResourceCreate(ioTEventsInputType, ResourceIoTEventsInput(), data, meta)
 }
 
 func resourceIoTEventsInputUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(ioTEventsInputType, ResourceIoTEventsInput(), data, ioTEventsInputProperties, meta)
+	return plugin.ResourceUpdate(ioTEventsInputType, ResourceIoTEventsInput(), data, meta)
 }
 
 func resourceIoTEventsInputDelete(data *schema.ResourceData, meta interface{}) error {

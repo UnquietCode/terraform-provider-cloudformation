@@ -16,12 +16,6 @@ import (
 
 const serviceDiscoveryPrivateDnsNamespaceType string = "AWS::ServiceDiscovery::PrivateDnsNamespace"
 
-var serviceDiscoveryPrivateDnsNamespaceProperties map[string]string = map[string]string{
-	"description": "Description",
-	"vpc": "Vpc",
-	"name": "Name",
-}
-
 func ResourceServiceDiscoveryPrivateDnsNamespace() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceDiscoveryPrivateDnsNamespaceExists,
@@ -62,11 +56,11 @@ func resourceServiceDiscoveryPrivateDnsNamespaceRead(data *schema.ResourceData, 
 }
 
 func resourceServiceDiscoveryPrivateDnsNamespaceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(serviceDiscoveryPrivateDnsNamespaceType, ResourceServiceDiscoveryPrivateDnsNamespace(), data, serviceDiscoveryPrivateDnsNamespaceProperties, meta)
+	return plugin.ResourceCreate(serviceDiscoveryPrivateDnsNamespaceType, ResourceServiceDiscoveryPrivateDnsNamespace(), data, meta)
 }
 
 func resourceServiceDiscoveryPrivateDnsNamespaceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(serviceDiscoveryPrivateDnsNamespaceType, ResourceServiceDiscoveryPrivateDnsNamespace(), data, serviceDiscoveryPrivateDnsNamespaceProperties, meta)
+	return plugin.ResourceUpdate(serviceDiscoveryPrivateDnsNamespaceType, ResourceServiceDiscoveryPrivateDnsNamespace(), data, meta)
 }
 
 func resourceServiceDiscoveryPrivateDnsNamespaceDelete(data *schema.ResourceData, meta interface{}) error {

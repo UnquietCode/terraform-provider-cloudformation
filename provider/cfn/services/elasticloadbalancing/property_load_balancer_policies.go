@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var loadBalancerPoliciesProperties map[string]string = map[string]string{
-	"attributes": "Attributes",
-	"instance_ports": "InstancePorts",
-	"load_balancer_ports": "LoadBalancerPorts",
-	"policy_name": "PolicyName",
-	"policy_type": "PolicyType",
-}
-
 func propertyLoadBalancerPolicies(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -17,15 +17,6 @@ import (
 
 const sageMakerModelType string = "AWS::SageMaker::Model"
 
-var sageMakerModelProperties map[string]string = map[string]string{
-	"execution_role_arn": "ExecutionRoleArn",
-	"primary_container": "PrimaryContainer",
-	"model_name": "ModelName",
-	"vpc_config": "VpcConfig",
-	"containers": "Containers",
-	"tags": "Tags",
-}
-
 func ResourceSageMakerModel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSageMakerModelExists,
@@ -80,11 +71,11 @@ func resourceSageMakerModelRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceSageMakerModelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(sageMakerModelType, ResourceSageMakerModel(), data, sageMakerModelProperties, meta)
+	return plugin.ResourceCreate(sageMakerModelType, ResourceSageMakerModel(), data, meta)
 }
 
 func resourceSageMakerModelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(sageMakerModelType, ResourceSageMakerModel(), data, sageMakerModelProperties, meta)
+	return plugin.ResourceUpdate(sageMakerModelType, ResourceSageMakerModel(), data, meta)
 }
 
 func resourceSageMakerModelDelete(data *schema.ResourceData, meta interface{}) error {

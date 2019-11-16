@@ -16,13 +16,6 @@ import (
 
 const pinpointADMChannelType string = "AWS::Pinpoint::ADMChannel"
 
-var pinpointADMChannelProperties map[string]string = map[string]string{
-	"client_secret": "ClientSecret",
-	"enabled": "Enabled",
-	"client_id": "ClientId",
-	"application_id": "ApplicationId",
-}
-
 func ResourcePinpointADMChannel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointADMChannelExists,
@@ -67,11 +60,11 @@ func resourcePinpointADMChannelRead(data *schema.ResourceData, meta interface{})
 }
 
 func resourcePinpointADMChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(pinpointADMChannelType, ResourcePinpointADMChannel(), data, pinpointADMChannelProperties, meta)
+	return plugin.ResourceCreate(pinpointADMChannelType, ResourcePinpointADMChannel(), data, meta)
 }
 
 func resourcePinpointADMChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(pinpointADMChannelType, ResourcePinpointADMChannel(), data, pinpointADMChannelProperties, meta)
+	return plugin.ResourceUpdate(pinpointADMChannelType, ResourcePinpointADMChannel(), data, meta)
 }
 
 func resourcePinpointADMChannelDelete(data *schema.ResourceData, meta interface{}) error {

@@ -16,19 +16,6 @@ import (
 
 const eC2TrafficMirrorFilterRuleType string = "AWS::EC2::TrafficMirrorFilterRule"
 
-var eC2TrafficMirrorFilterRuleProperties map[string]string = map[string]string{
-	"destination_port_range": "DestinationPortRange",
-	"description": "Description",
-	"source_port_range": "SourcePortRange",
-	"rule_action": "RuleAction",
-	"source_cidr_block": "SourceCidrBlock",
-	"rule_number": "RuleNumber",
-	"destination_cidr_block": "DestinationCidrBlock",
-	"traffic_mirror_filter_id": "TrafficMirrorFilterId",
-	"traffic_direction": "TrafficDirection",
-	"protocol": "Protocol",
-}
-
 func ResourceEC2TrafficMirrorFilterRule() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2TrafficMirrorFilterRuleExists,
@@ -101,11 +88,11 @@ func resourceEC2TrafficMirrorFilterRuleRead(data *schema.ResourceData, meta inte
 }
 
 func resourceEC2TrafficMirrorFilterRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2TrafficMirrorFilterRuleType, ResourceEC2TrafficMirrorFilterRule(), data, eC2TrafficMirrorFilterRuleProperties, meta)
+	return plugin.ResourceCreate(eC2TrafficMirrorFilterRuleType, ResourceEC2TrafficMirrorFilterRule(), data, meta)
 }
 
 func resourceEC2TrafficMirrorFilterRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2TrafficMirrorFilterRuleType, ResourceEC2TrafficMirrorFilterRule(), data, eC2TrafficMirrorFilterRuleProperties, meta)
+	return plugin.ResourceUpdate(eC2TrafficMirrorFilterRuleType, ResourceEC2TrafficMirrorFilterRule(), data, meta)
 }
 
 func resourceEC2TrafficMirrorFilterRuleDelete(data *schema.ResourceData, meta interface{}) error {

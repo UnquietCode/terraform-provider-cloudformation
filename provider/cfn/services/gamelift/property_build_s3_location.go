@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var buildS3LocationProperties map[string]string = map[string]string{
-	"bucket": "Bucket",
-	"key": "Key",
-	"role_arn": "RoleArn",
-}
-
 func propertyBuildS3Location(extras...string) *schema.Resource {
 	var count int64 = 0
 	

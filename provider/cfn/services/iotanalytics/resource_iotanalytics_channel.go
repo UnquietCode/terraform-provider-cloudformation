@@ -17,13 +17,6 @@ import (
 
 const ioTAnalyticsChannelType string = "AWS::IoTAnalytics::Channel"
 
-var ioTAnalyticsChannelProperties map[string]string = map[string]string{
-	"channel_name": "ChannelName",
-	"channel_storage": "ChannelStorage",
-	"retention_period": "RetentionPeriod",
-	"tags": "Tags",
-}
-
 func ResourceIoTAnalyticsChannel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoTAnalyticsChannelExists,
@@ -69,11 +62,11 @@ func resourceIoTAnalyticsChannelRead(data *schema.ResourceData, meta interface{}
 }
 
 func resourceIoTAnalyticsChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(ioTAnalyticsChannelType, ResourceIoTAnalyticsChannel(), data, ioTAnalyticsChannelProperties, meta)
+	return plugin.ResourceCreate(ioTAnalyticsChannelType, ResourceIoTAnalyticsChannel(), data, meta)
 }
 
 func resourceIoTAnalyticsChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(ioTAnalyticsChannelType, ResourceIoTAnalyticsChannel(), data, ioTAnalyticsChannelProperties, meta)
+	return plugin.ResourceUpdate(ioTAnalyticsChannelType, ResourceIoTAnalyticsChannel(), data, meta)
 }
 
 func resourceIoTAnalyticsChannelDelete(data *schema.ResourceData, meta interface{}) error {

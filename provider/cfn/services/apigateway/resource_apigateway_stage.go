@@ -17,23 +17,6 @@ import (
 
 const apiGatewayStageType string = "AWS::ApiGateway::Stage"
 
-var apiGatewayStageProperties map[string]string = map[string]string{
-	"access_log_setting": "AccessLogSetting",
-	"cache_cluster_enabled": "CacheClusterEnabled",
-	"cache_cluster_size": "CacheClusterSize",
-	"canary_setting": "CanarySetting",
-	"client_certificate_id": "ClientCertificateId",
-	"deployment_id": "DeploymentId",
-	"description": "Description",
-	"documentation_version": "DocumentationVersion",
-	"method_settings": "MethodSettings",
-	"rest_api_id": "RestApiId",
-	"stage_name": "StageName",
-	"tags": "Tags",
-	"tracing_enabled": "TracingEnabled",
-	"variables": "Variables",
-}
-
 func ResourceApiGatewayStage() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayStageExists,
@@ -121,11 +104,11 @@ func resourceApiGatewayStageRead(data *schema.ResourceData, meta interface{}) er
 }
 
 func resourceApiGatewayStageCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayStageType, ResourceApiGatewayStage(), data, apiGatewayStageProperties, meta)
+	return plugin.ResourceCreate(apiGatewayStageType, ResourceApiGatewayStage(), data, meta)
 }
 
 func resourceApiGatewayStageUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayStageType, ResourceApiGatewayStage(), data, apiGatewayStageProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayStageType, ResourceApiGatewayStage(), data, meta)
 }
 
 func resourceApiGatewayStageDelete(data *schema.ResourceData, meta interface{}) error {

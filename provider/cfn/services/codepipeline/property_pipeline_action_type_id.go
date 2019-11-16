@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var pipelineActionTypeIdProperties map[string]string = map[string]string{
-	"category": "Category",
-	"owner": "Owner",
-	"the_provider": "TheProvider",
-	"version": "Version",
-}
-
 func propertyPipelineActionTypeId(extras...string) *schema.Resource {
 	var count int64 = 0
 	

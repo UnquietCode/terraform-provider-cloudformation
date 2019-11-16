@@ -16,14 +16,6 @@ import (
 
 const batchComputeEnvironmentType string = "AWS::Batch::ComputeEnvironment"
 
-var batchComputeEnvironmentProperties map[string]string = map[string]string{
-	"type": "Type",
-	"service_role": "ServiceRole",
-	"compute_environment_name": "ComputeEnvironmentName",
-	"compute_resources": "ComputeResources",
-	"state": "State",
-}
-
 func ResourceBatchComputeEnvironment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceBatchComputeEnvironmentExists,
@@ -74,11 +66,11 @@ func resourceBatchComputeEnvironmentRead(data *schema.ResourceData, meta interfa
 }
 
 func resourceBatchComputeEnvironmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(batchComputeEnvironmentType, ResourceBatchComputeEnvironment(), data, batchComputeEnvironmentProperties, meta)
+	return plugin.ResourceCreate(batchComputeEnvironmentType, ResourceBatchComputeEnvironment(), data, meta)
 }
 
 func resourceBatchComputeEnvironmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(batchComputeEnvironmentType, ResourceBatchComputeEnvironment(), data, batchComputeEnvironmentProperties, meta)
+	return plugin.ResourceUpdate(batchComputeEnvironmentType, ResourceBatchComputeEnvironment(), data, meta)
 }
 
 func resourceBatchComputeEnvironmentDelete(data *schema.ResourceData, meta interface{}) error {

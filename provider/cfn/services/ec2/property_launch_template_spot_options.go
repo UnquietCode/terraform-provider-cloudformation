@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var launchTemplateSpotOptionsProperties map[string]string = map[string]string{
-	"spot_instance_type": "SpotInstanceType",
-	"instance_interruption_behavior": "InstanceInterruptionBehavior",
-	"max_price": "MaxPrice",
-	"block_duration_minutes": "BlockDurationMinutes",
-	"valid_until": "ValidUntil",
-}
-
 func propertyLaunchTemplateSpotOptions(extras...string) *schema.Resource {
 	var count int64 = 0
 	

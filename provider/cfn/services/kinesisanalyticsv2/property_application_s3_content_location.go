@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationS3ContentLocationProperties map[string]string = map[string]string{
-	"bucket_arn": "BucketARN",
-	"file_key": "FileKey",
-	"object_version": "ObjectVersion",
-}
-
 func propertyApplicationS3ContentLocation(extras...string) *schema.Resource {
 	var count int64 = 0
 	

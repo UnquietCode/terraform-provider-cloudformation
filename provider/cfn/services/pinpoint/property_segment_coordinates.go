@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var segmentCoordinatesProperties map[string]string = map[string]string{
-	"latitude": "Latitude",
-	"longitude": "Longitude",
-}
-
 func propertySegmentCoordinates(extras...string) *schema.Resource {
 	var count int64 = 0
 	

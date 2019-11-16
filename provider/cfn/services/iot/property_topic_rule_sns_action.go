@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var topicRuleSnsActionProperties map[string]string = map[string]string{
-	"message_format": "MessageFormat",
-	"role_arn": "RoleArn",
-	"target_arn": "TargetArn",
-}
-
 func propertyTopicRuleSnsAction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

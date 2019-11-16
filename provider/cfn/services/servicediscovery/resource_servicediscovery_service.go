@@ -16,15 +16,6 @@ import (
 
 const serviceDiscoveryServiceType string = "AWS::ServiceDiscovery::Service"
 
-var serviceDiscoveryServiceProperties map[string]string = map[string]string{
-	"description": "Description",
-	"health_check_custom_config": "HealthCheckCustomConfig",
-	"dns_config": "DnsConfig",
-	"namespace_id": "NamespaceId",
-	"health_check_config": "HealthCheckConfig",
-	"name": "Name",
-}
-
 func ResourceServiceDiscoveryService() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceDiscoveryServiceExists,
@@ -83,11 +74,11 @@ func resourceServiceDiscoveryServiceRead(data *schema.ResourceData, meta interfa
 }
 
 func resourceServiceDiscoveryServiceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(serviceDiscoveryServiceType, ResourceServiceDiscoveryService(), data, serviceDiscoveryServiceProperties, meta)
+	return plugin.ResourceCreate(serviceDiscoveryServiceType, ResourceServiceDiscoveryService(), data, meta)
 }
 
 func resourceServiceDiscoveryServiceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(serviceDiscoveryServiceType, ResourceServiceDiscoveryService(), data, serviceDiscoveryServiceProperties, meta)
+	return plugin.ResourceUpdate(serviceDiscoveryServiceType, ResourceServiceDiscoveryService(), data, meta)
 }
 
 func resourceServiceDiscoveryServiceDelete(data *schema.ResourceData, meta interface{}) error {

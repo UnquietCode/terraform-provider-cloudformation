@@ -14,23 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var spotFleetSpotFleetRequestConfigDataProperties map[string]string = map[string]string{
-	"allocation_strategy": "AllocationStrategy",
-	"excess_capacity_termination_policy": "ExcessCapacityTerminationPolicy",
-	"iam_fleet_role": "IamFleetRole",
-	"instance_interruption_behavior": "InstanceInterruptionBehavior",
-	"launch_specifications": "LaunchSpecifications",
-	"launch_template_configs": "LaunchTemplateConfigs",
-	"load_balancers_config": "LoadBalancersConfig",
-	"replace_unhealthy_instances": "ReplaceUnhealthyInstances",
-	"spot_price": "SpotPrice",
-	"target_capacity": "TargetCapacity",
-	"terminate_instances_with_expiration": "TerminateInstancesWithExpiration",
-	"type": "Type",
-	"valid_from": "ValidFrom",
-	"valid_until": "ValidUntil",
-}
-
 func propertySpotFleetSpotFleetRequestConfigData(extras...string) *schema.Resource {
 	var count int64 = 0
 	

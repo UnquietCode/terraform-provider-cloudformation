@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var configRuleSourceDetailProperties map[string]string = map[string]string{
-	"event_source": "EventSource",
-	"maximum_execution_frequency": "MaximumExecutionFrequency",
-	"message_type": "MessageType",
-}
-
 func propertyConfigRuleSourceDetail(extras...string) *schema.Resource {
 	var count int64 = 0
 	

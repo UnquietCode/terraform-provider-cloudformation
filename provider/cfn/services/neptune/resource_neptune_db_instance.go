@@ -17,20 +17,6 @@ import (
 
 const neptuneDBInstanceType string = "AWS::Neptune::DBInstance"
 
-var neptuneDBInstanceProperties map[string]string = map[string]string{
-	"db_parameter_group_name": "DBParameterGroupName",
-	"db_instance_class": "DBInstanceClass",
-	"allow_major_version_upgrade": "AllowMajorVersionUpgrade",
-	"db_cluster_identifier": "DBClusterIdentifier",
-	"availability_zone": "AvailabilityZone",
-	"preferred_maintenance_window": "PreferredMaintenanceWindow",
-	"auto_minor_version_upgrade": "AutoMinorVersionUpgrade",
-	"db_subnet_group_name": "DBSubnetGroupName",
-	"db_instance_identifier": "DBInstanceIdentifier",
-	"db_snapshot_identifier": "DBSnapshotIdentifier",
-	"tags": "Tags",
-}
-
 func ResourceNeptuneDBInstance() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceNeptuneDBInstanceExists,
@@ -100,11 +86,11 @@ func resourceNeptuneDBInstanceRead(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceNeptuneDBInstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(neptuneDBInstanceType, ResourceNeptuneDBInstance(), data, neptuneDBInstanceProperties, meta)
+	return plugin.ResourceCreate(neptuneDBInstanceType, ResourceNeptuneDBInstance(), data, meta)
 }
 
 func resourceNeptuneDBInstanceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(neptuneDBInstanceType, ResourceNeptuneDBInstance(), data, neptuneDBInstanceProperties, meta)
+	return plugin.ResourceUpdate(neptuneDBInstanceType, ResourceNeptuneDBInstance(), data, meta)
 }
 
 func resourceNeptuneDBInstanceDelete(data *schema.ResourceData, meta interface{}) error {

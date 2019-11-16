@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var virtualNodeVirtualNodeSpecProperties map[string]string = map[string]string{
-	"logging": "Logging",
-	"backends": "Backends",
-	"listeners": "Listeners",
-	"service_discovery": "ServiceDiscovery",
-}
-
 func propertyVirtualNodeVirtualNodeSpec(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,26 +16,6 @@ import (
 
 const opsWorksCMServerType string = "AWS::OpsWorksCM::Server"
 
-var opsWorksCMServerProperties map[string]string = map[string]string{
-	"key_pair": "KeyPair",
-	"engine_version": "EngineVersion",
-	"service_role_arn": "ServiceRoleArn",
-	"disable_automated_backup": "DisableAutomatedBackup",
-	"backup_id": "BackupId",
-	"engine_model": "EngineModel",
-	"preferred_maintenance_window": "PreferredMaintenanceWindow",
-	"associate_public_ip_address": "AssociatePublicIpAddress",
-	"instance_profile_arn": "InstanceProfileArn",
-	"preferred_backup_window": "PreferredBackupWindow",
-	"security_group_ids": "SecurityGroupIds",
-	"subnet_ids": "SubnetIds",
-	"server_name": "ServerName",
-	"engine_attributes": "EngineAttributes",
-	"backup_retention_count": "BackupRetentionCount",
-	"instance_type": "InstanceType",
-	"engine": "Engine",
-}
-
 func ResourceOpsWorksCMServer() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceOpsWorksCMServerExists,
@@ -135,11 +115,11 @@ func resourceOpsWorksCMServerRead(data *schema.ResourceData, meta interface{}) e
 }
 
 func resourceOpsWorksCMServerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(opsWorksCMServerType, ResourceOpsWorksCMServer(), data, opsWorksCMServerProperties, meta)
+	return plugin.ResourceCreate(opsWorksCMServerType, ResourceOpsWorksCMServer(), data, meta)
 }
 
 func resourceOpsWorksCMServerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(opsWorksCMServerType, ResourceOpsWorksCMServer(), data, opsWorksCMServerProperties, meta)
+	return plugin.ResourceUpdate(opsWorksCMServerType, ResourceOpsWorksCMServer(), data, meta)
 }
 
 func resourceOpsWorksCMServerDelete(data *schema.ResourceData, meta interface{}) error {

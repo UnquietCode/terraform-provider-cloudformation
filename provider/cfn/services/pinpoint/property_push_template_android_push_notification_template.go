@@ -14,17 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var pushTemplateAndroidPushNotificationTemplateProperties map[string]string = map[string]string{
-	"action": "Action",
-	"image_url": "ImageUrl",
-	"small_image_icon_url": "SmallImageIconUrl",
-	"title": "Title",
-	"image_icon_url": "ImageIconUrl",
-	"sound": "Sound",
-	"body": "Body",
-	"url": "Url",
-}
-
 func propertyPushTemplateAndroidPushNotificationTemplate(extras...string) *schema.Resource {
 	var count int64 = 0
 	

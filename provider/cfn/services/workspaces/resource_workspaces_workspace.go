@@ -17,17 +17,6 @@ import (
 
 const workSpacesWorkspaceType string = "AWS::WorkSpaces::Workspace"
 
-var workSpacesWorkspaceProperties map[string]string = map[string]string{
-	"bundle_id": "BundleId",
-	"directory_id": "DirectoryId",
-	"root_volume_encryption_enabled": "RootVolumeEncryptionEnabled",
-	"tags": "Tags",
-	"user_name": "UserName",
-	"user_volume_encryption_enabled": "UserVolumeEncryptionEnabled",
-	"volume_encryption_key": "VolumeEncryptionKey",
-	"workspace_properties": "WorkspaceProperties",
-}
-
 func ResourceWorkSpacesWorkspace() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWorkSpacesWorkspaceExists,
@@ -87,11 +76,11 @@ func resourceWorkSpacesWorkspaceRead(data *schema.ResourceData, meta interface{}
 }
 
 func resourceWorkSpacesWorkspaceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(workSpacesWorkspaceType, ResourceWorkSpacesWorkspace(), data, workSpacesWorkspaceProperties, meta)
+	return plugin.ResourceCreate(workSpacesWorkspaceType, ResourceWorkSpacesWorkspace(), data, meta)
 }
 
 func resourceWorkSpacesWorkspaceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(workSpacesWorkspaceType, ResourceWorkSpacesWorkspace(), data, workSpacesWorkspaceProperties, meta)
+	return plugin.ResourceUpdate(workSpacesWorkspaceType, ResourceWorkSpacesWorkspace(), data, meta)
 }
 
 func resourceWorkSpacesWorkspaceDelete(data *schema.ResourceData, meta interface{}) error {

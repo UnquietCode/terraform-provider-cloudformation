@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var detectorModelTransitionEventProperties map[string]string = map[string]string{
-	"condition": "Condition",
-	"actions": "Actions",
-	"next_state": "NextState",
-	"event_name": "EventName",
-}
-
 func propertyDetectorModelTransitionEvent(extras...string) *schema.Resource {
 	var count int64 = 0
 	

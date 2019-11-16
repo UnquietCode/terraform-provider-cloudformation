@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var layerLifecycleEventConfigurationProperties map[string]string = map[string]string{
-	"shutdown_event_configuration": "ShutdownEventConfiguration",
-}
-
 func propertyLayerLifecycleEventConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

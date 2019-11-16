@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var resourceDefinitionVersionLocalVolumeResourceDataProperties map[string]string = map[string]string{
-	"source_path": "SourcePath",
-	"destination_path": "DestinationPath",
-	"group_owner_setting": "GroupOwnerSetting",
-}
-
 func propertyResourceDefinitionVersionLocalVolumeResourceData(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,12 +16,6 @@ import (
 
 const dAXSubnetGroupType string = "AWS::DAX::SubnetGroup"
 
-var dAXSubnetGroupProperties map[string]string = map[string]string{
-	"description": "Description",
-	"subnet_group_name": "SubnetGroupName",
-	"subnet_ids": "SubnetIds",
-}
-
 func ResourceDAXSubnetGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDAXSubnetGroupExists,
@@ -63,11 +57,11 @@ func resourceDAXSubnetGroupRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceDAXSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(dAXSubnetGroupType, ResourceDAXSubnetGroup(), data, dAXSubnetGroupProperties, meta)
+	return plugin.ResourceCreate(dAXSubnetGroupType, ResourceDAXSubnetGroup(), data, meta)
 }
 
 func resourceDAXSubnetGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(dAXSubnetGroupType, ResourceDAXSubnetGroup(), data, dAXSubnetGroupProperties, meta)
+	return plugin.ResourceUpdate(dAXSubnetGroupType, ResourceDAXSubnetGroup(), data, meta)
 }
 
 func resourceDAXSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {

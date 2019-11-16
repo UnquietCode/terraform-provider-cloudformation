@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var configurationSetEventDestinationDimensionConfigurationProperties map[string]string = map[string]string{
-	"dimension_value_source": "DimensionValueSource",
-	"default_dimension_value": "DefaultDimensionValue",
-	"dimension_name": "DimensionName",
-}
-
 func propertyConfigurationSetEventDestinationDimensionConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

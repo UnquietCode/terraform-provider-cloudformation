@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var pipelineDeviceRegistryEnrichProperties map[string]string = map[string]string{
-	"attribute": "Attribute",
-	"next": "Next",
-	"thing_name": "ThingName",
-	"role_arn": "RoleArn",
-	"name": "Name",
-}
-
 func propertyPipelineDeviceRegistryEnrich(extras...string) *schema.Resource {
 	var count int64 = 0
 	

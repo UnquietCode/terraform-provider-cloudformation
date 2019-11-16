@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var workspaceWorkspacePropertiesProperties map[string]string = map[string]string{
-	"compute_type_name": "ComputeTypeName",
-	"root_volume_size_gib": "RootVolumeSizeGib",
-	"running_mode": "RunningMode",
-	"running_mode_auto_stop_timeout_in_minutes": "RunningModeAutoStopTimeoutInMinutes",
-	"user_volume_size_gib": "UserVolumeSizeGib",
-}
-
 func propertyWorkspaceWorkspaceProperties(extras...string) *schema.Resource {
 	var count int64 = 0
 	

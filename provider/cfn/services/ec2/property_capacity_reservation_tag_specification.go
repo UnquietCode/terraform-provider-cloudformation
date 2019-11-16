@@ -15,11 +15,6 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 )
 
-var capacityReservationTagSpecificationProperties map[string]string = map[string]string{
-	"resource_type": "ResourceType",
-	"tags": "Tags",
-}
-
 func propertyCapacityReservationTagSpecification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

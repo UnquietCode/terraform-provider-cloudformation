@@ -16,21 +16,6 @@ import (
 
 const glueCrawlerType string = "AWS::Glue::Crawler"
 
-var glueCrawlerProperties map[string]string = map[string]string{
-	"role": "Role",
-	"classifiers": "Classifiers",
-	"description": "Description",
-	"schema_change_policy": "SchemaChangePolicy",
-	"configuration": "Configuration",
-	"schedule": "Schedule",
-	"database_name": "DatabaseName",
-	"targets": "Targets",
-	"crawler_security_configuration": "CrawlerSecurityConfiguration",
-	"table_prefix": "TablePrefix",
-	"tags": "Tags",
-	"name": "Name",
-}
-
 func ResourceGlueCrawler() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGlueCrawlerExists,
@@ -114,11 +99,11 @@ func resourceGlueCrawlerRead(data *schema.ResourceData, meta interface{}) error 
 }
 
 func resourceGlueCrawlerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(glueCrawlerType, ResourceGlueCrawler(), data, glueCrawlerProperties, meta)
+	return plugin.ResourceCreate(glueCrawlerType, ResourceGlueCrawler(), data, meta)
 }
 
 func resourceGlueCrawlerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(glueCrawlerType, ResourceGlueCrawler(), data, glueCrawlerProperties, meta)
+	return plugin.ResourceUpdate(glueCrawlerType, ResourceGlueCrawler(), data, meta)
 }
 
 func resourceGlueCrawlerDelete(data *schema.ResourceData, meta interface{}) error {

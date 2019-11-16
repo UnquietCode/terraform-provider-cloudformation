@@ -16,13 +16,6 @@ import (
 
 const serviceCatalogPortfolioPrincipalAssociationType string = "AWS::ServiceCatalog::PortfolioPrincipalAssociation"
 
-var serviceCatalogPortfolioPrincipalAssociationProperties map[string]string = map[string]string{
-	"principal_arn": "PrincipalARN",
-	"accept_language": "AcceptLanguage",
-	"portfolio_id": "PortfolioId",
-	"principal_type": "PrincipalType",
-}
-
 func ResourceServiceCatalogPortfolioPrincipalAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogPortfolioPrincipalAssociationExists,
@@ -67,11 +60,11 @@ func resourceServiceCatalogPortfolioPrincipalAssociationRead(data *schema.Resour
 }
 
 func resourceServiceCatalogPortfolioPrincipalAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(serviceCatalogPortfolioPrincipalAssociationType, ResourceServiceCatalogPortfolioPrincipalAssociation(), data, serviceCatalogPortfolioPrincipalAssociationProperties, meta)
+	return plugin.ResourceCreate(serviceCatalogPortfolioPrincipalAssociationType, ResourceServiceCatalogPortfolioPrincipalAssociation(), data, meta)
 }
 
 func resourceServiceCatalogPortfolioPrincipalAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(serviceCatalogPortfolioPrincipalAssociationType, ResourceServiceCatalogPortfolioPrincipalAssociation(), data, serviceCatalogPortfolioPrincipalAssociationProperties, meta)
+	return plugin.ResourceUpdate(serviceCatalogPortfolioPrincipalAssociationType, ResourceServiceCatalogPortfolioPrincipalAssociation(), data, meta)
 }
 
 func resourceServiceCatalogPortfolioPrincipalAssociationDelete(data *schema.ResourceData, meta interface{}) error {

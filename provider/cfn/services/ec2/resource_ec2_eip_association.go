@@ -16,14 +16,6 @@ import (
 
 const eC2EIPAssociationType string = "AWS::EC2::EIPAssociation"
 
-var eC2EIPAssociationProperties map[string]string = map[string]string{
-	"allocation_id": "AllocationId",
-	"eip": "EIP",
-	"instance_id": "InstanceId",
-	"network_interface_id": "NetworkInterfaceId",
-	"private_ip_address": "PrivateIpAddress",
-}
-
 func ResourceEC2EIPAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2EIPAssociationExists,
@@ -72,11 +64,11 @@ func resourceEC2EIPAssociationRead(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceEC2EIPAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2EIPAssociationType, ResourceEC2EIPAssociation(), data, eC2EIPAssociationProperties, meta)
+	return plugin.ResourceCreate(eC2EIPAssociationType, ResourceEC2EIPAssociation(), data, meta)
 }
 
 func resourceEC2EIPAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2EIPAssociationType, ResourceEC2EIPAssociation(), data, eC2EIPAssociationProperties, meta)
+	return plugin.ResourceUpdate(eC2EIPAssociationType, ResourceEC2EIPAssociation(), data, meta)
 }
 
 func resourceEC2EIPAssociationDelete(data *schema.ResourceData, meta interface{}) error {

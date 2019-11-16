@@ -16,19 +16,6 @@ import (
 
 const appSyncResolverType string = "AWS::AppSync::Resolver"
 
-var appSyncResolverProperties map[string]string = map[string]string{
-	"response_mapping_template_s3_location": "ResponseMappingTemplateS3Location",
-	"type_name": "TypeName",
-	"pipeline_config": "PipelineConfig",
-	"data_source_name": "DataSourceName",
-	"request_mapping_template": "RequestMappingTemplate",
-	"response_mapping_template": "ResponseMappingTemplate",
-	"kind": "Kind",
-	"request_mapping_template_s3_location": "RequestMappingTemplateS3Location",
-	"api_id": "ApiId",
-	"field_name": "FieldName",
-}
-
 func ResourceAppSyncResolver() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppSyncResolverExists,
@@ -99,11 +86,11 @@ func resourceAppSyncResolverRead(data *schema.ResourceData, meta interface{}) er
 }
 
 func resourceAppSyncResolverCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(appSyncResolverType, ResourceAppSyncResolver(), data, appSyncResolverProperties, meta)
+	return plugin.ResourceCreate(appSyncResolverType, ResourceAppSyncResolver(), data, meta)
 }
 
 func resourceAppSyncResolverUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(appSyncResolverType, ResourceAppSyncResolver(), data, appSyncResolverProperties, meta)
+	return plugin.ResourceUpdate(appSyncResolverType, ResourceAppSyncResolver(), data, meta)
 }
 
 func resourceAppSyncResolverDelete(data *schema.ResourceData, meta interface{}) error {

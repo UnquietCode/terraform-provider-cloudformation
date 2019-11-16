@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var campaignMetricDimensionProperties map[string]string = map[string]string{
-	"comparison_operator": "ComparisonOperator",
-	"value": "Value",
-}
-
 func propertyCampaignMetricDimension(extras...string) *schema.Resource {
 	var count int64 = 0
 	

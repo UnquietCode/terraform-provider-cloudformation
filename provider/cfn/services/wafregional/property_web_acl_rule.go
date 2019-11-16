@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var webACLRuleProperties map[string]string = map[string]string{
-	"action": "Action",
-	"priority": "Priority",
-	"rule_id": "RuleId",
-}
-
 func propertyWebACLRule(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var campaignQuietTimeProperties map[string]string = map[string]string{
-	"start": "Start",
-	"end": "End",
-}
-
 func propertyCampaignQuietTime(extras...string) *schema.Resource {
 	var count int64 = 0
 	

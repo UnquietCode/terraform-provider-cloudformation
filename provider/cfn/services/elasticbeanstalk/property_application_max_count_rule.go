@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationMaxCountRuleProperties map[string]string = map[string]string{
-	"delete_source_from_s3": "DeleteSourceFromS3",
-	"enabled": "Enabled",
-	"max_count": "MaxCount",
-}
-
 func propertyApplicationMaxCountRule(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var identityPoolPushSyncProperties map[string]string = map[string]string{
-	"application_arns": "ApplicationArns",
-	"role_arn": "RoleArn",
-}
-
 func propertyIdentityPoolPushSync(extras...string) *schema.Resource {
 	var count int64 = 0
 	

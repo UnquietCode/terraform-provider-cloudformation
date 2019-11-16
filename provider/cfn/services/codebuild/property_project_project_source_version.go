@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var projectProjectSourceVersionProperties map[string]string = map[string]string{
-	"source_identifier": "SourceIdentifier",
-	"source_version": "SourceVersion",
-}
-
 func propertyProjectProjectSourceVersion(extras...string) *schema.Resource {
 	var count int64 = 0
 	

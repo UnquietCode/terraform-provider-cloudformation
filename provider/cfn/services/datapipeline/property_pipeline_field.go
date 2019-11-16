@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var pipelineFieldProperties map[string]string = map[string]string{
-	"key": "Key",
-	"ref_value": "RefValue",
-	"string_value": "StringValue",
-}
-
 func propertyPipelineField(extras...string) *schema.Resource {
 	var count int64 = 0
 	

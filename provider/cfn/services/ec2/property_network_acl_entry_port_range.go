@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var networkAclEntryPortRangeProperties map[string]string = map[string]string{
-	"from": "From",
-	"to": "To",
-}
-
 func propertyNetworkAclEntryPortRange(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,11 +16,6 @@ import (
 
 const wAFRegionalSqlInjectionMatchSetType string = "AWS::WAFRegional::SqlInjectionMatchSet"
 
-var wAFRegionalSqlInjectionMatchSetProperties map[string]string = map[string]string{
-	"sql_injection_match_tuples": "SqlInjectionMatchTuples",
-	"name": "Name",
-}
-
 func ResourceWAFRegionalSqlInjectionMatchSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFRegionalSqlInjectionMatchSetExists,
@@ -58,11 +53,11 @@ func resourceWAFRegionalSqlInjectionMatchSetRead(data *schema.ResourceData, meta
 }
 
 func resourceWAFRegionalSqlInjectionMatchSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(wAFRegionalSqlInjectionMatchSetType, ResourceWAFRegionalSqlInjectionMatchSet(), data, wAFRegionalSqlInjectionMatchSetProperties, meta)
+	return plugin.ResourceCreate(wAFRegionalSqlInjectionMatchSetType, ResourceWAFRegionalSqlInjectionMatchSet(), data, meta)
 }
 
 func resourceWAFRegionalSqlInjectionMatchSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(wAFRegionalSqlInjectionMatchSetType, ResourceWAFRegionalSqlInjectionMatchSet(), data, wAFRegionalSqlInjectionMatchSetProperties, meta)
+	return plugin.ResourceUpdate(wAFRegionalSqlInjectionMatchSetType, ResourceWAFRegionalSqlInjectionMatchSet(), data, meta)
 }
 
 func resourceWAFRegionalSqlInjectionMatchSetDelete(data *schema.ResourceData, meta interface{}) error {

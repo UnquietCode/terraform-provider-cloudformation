@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var certificateDomainValidationOptionProperties map[string]string = map[string]string{
-	"domain_name": "DomainName",
-	"validation_domain": "ValidationDomain",
-}
-
 func propertyCertificateDomainValidationOption(extras...string) *schema.Resource {
 	var count int64 = 0
 	

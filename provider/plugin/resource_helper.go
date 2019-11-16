@@ -149,11 +149,11 @@ func ResourceRead(resourceType string, resourceSchema *schema.Resource, resource
   return nil
 }
 
-func ResourceCreate(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, propertyNames map[string]string, meta interface{}) error {
+func ResourceCreate(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
 	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
 	var logicalId string = resourceData.Get("logical_id").(string)
 	
-	var data map[string]interface{} = convertResourceToMap("", resourceSchema, resourceData, propertyNames, normalGetter)
+	var data map[string]interface{} = convertResourceToMap("", resourceSchema, resourceData, normalGetter)
 	_, err := writeFile(logicalId, data, meta.(ProviderMetadata))
 	
 	if err != nil {
@@ -167,7 +167,7 @@ func ResourceCreate(resourceType string, resourceSchema *schema.Resource, resour
 }
 
 
-func ResourceUpdate(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, propertyNames map[string]string, meta interface{}) error {
+func ResourceUpdate(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
 	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
 	var logicalId string = resourceData.Id()//("logical_id").(string)
 	data, _, err := readFile(logicalId, providerMeta)
@@ -176,7 +176,7 @@ func ResourceUpdate(resourceType string, resourceSchema *schema.Resource, resour
 		return err
 	}
 	
-	convertAndMergeResourceToMap("", resourceSchema, resourceData, data, propertyNames, changedOnlyGetter)
+	convertAndMergeResourceToMap("", resourceSchema, resourceData, data, changedOnlyGetter)
 	_, err = writeFile(logicalId, data, meta.(ProviderMetadata))
 	
 	if err != nil {

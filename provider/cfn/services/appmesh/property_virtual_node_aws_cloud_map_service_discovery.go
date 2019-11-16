@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var virtualNodeAwsCloudMapServiceDiscoveryProperties map[string]string = map[string]string{
-	"namespace_name": "NamespaceName",
-	"service_name": "ServiceName",
-	"attributes": "Attributes",
-}
-
 func propertyVirtualNodeAwsCloudMapServiceDiscovery(extras...string) *schema.Resource {
 	var count int64 = 0
 	

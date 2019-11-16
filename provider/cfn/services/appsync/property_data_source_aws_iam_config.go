@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var dataSourceAwsIamConfigProperties map[string]string = map[string]string{
-	"signing_region": "SigningRegion",
-	"signing_service_name": "SigningServiceName",
-}
-
 func propertyDataSourceAwsIamConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

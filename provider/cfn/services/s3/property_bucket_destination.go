@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketDestinationProperties map[string]string = map[string]string{
-	"bucket_account_id": "BucketAccountId",
-	"bucket_arn": "BucketArn",
-	"format": "Format",
-	"prefix": "Prefix",
-}
-
 func propertyBucketDestination(extras...string) *schema.Resource {
 	var count int64 = 0
 	

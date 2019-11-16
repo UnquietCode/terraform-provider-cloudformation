@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var dataSourceRelationalDatabaseConfigProperties map[string]string = map[string]string{
-	"rds_http_endpoint_config": "RdsHttpEndpointConfig",
-	"relational_database_source_type": "RelationalDatabaseSourceType",
-}
-
 func propertyDataSourceRelationalDatabaseConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

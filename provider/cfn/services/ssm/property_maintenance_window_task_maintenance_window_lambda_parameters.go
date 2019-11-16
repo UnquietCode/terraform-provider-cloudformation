@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var maintenanceWindowTaskMaintenanceWindowLambdaParametersProperties map[string]string = map[string]string{
-	"client_context": "ClientContext",
-	"qualifier": "Qualifier",
-	"payload": "Payload",
-}
-
 func propertyMaintenanceWindowTaskMaintenanceWindowLambdaParameters(extras...string) *schema.Resource {
 	var count int64 = 0
 	

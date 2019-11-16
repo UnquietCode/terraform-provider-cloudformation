@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var resourceDefinitionSecretsManagerSecretResourceDataProperties map[string]string = map[string]string{
-	"arn": "ARN",
-	"additional_staging_labels_to_download": "AdditionalStagingLabelsToDownload",
-}
-
 func propertyResourceDefinitionSecretsManagerSecretResourceData(extras...string) *schema.Resource {
 	var count int64 = 0
 	

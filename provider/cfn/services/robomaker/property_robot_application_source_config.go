@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var robotApplicationSourceConfigProperties map[string]string = map[string]string{
-	"s3_bucket": "S3Bucket",
-	"architecture": "Architecture",
-	"s3_key": "S3Key",
-}
-
 func propertyRobotApplicationSourceConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

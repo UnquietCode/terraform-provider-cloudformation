@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var partitionPartitionInputProperties map[string]string = map[string]string{
-	"parameters": "Parameters",
-	"storage_descriptor": "StorageDescriptor",
-	"values": "Values",
-}
-
 func propertyPartitionPartitionInput(extras...string) *schema.Resource {
 	var count int64 = 0
 	

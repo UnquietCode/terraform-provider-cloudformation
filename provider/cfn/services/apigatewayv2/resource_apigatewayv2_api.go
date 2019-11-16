@@ -16,17 +16,6 @@ import (
 
 const apiGatewayV2ApiType string = "AWS::ApiGatewayV2::Api"
 
-var apiGatewayV2ApiProperties map[string]string = map[string]string{
-	"route_selection_expression": "RouteSelectionExpression",
-	"description": "Description",
-	"version": "Version",
-	"protocol_type": "ProtocolType",
-	"disable_schema_validation": "DisableSchemaValidation",
-	"tags": "Tags",
-	"name": "Name",
-	"api_key_selection_expression": "ApiKeySelectionExpression",
-}
-
 func ResourceApiGatewayV2Api() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayV2ApiExists,
@@ -87,11 +76,11 @@ func resourceApiGatewayV2ApiRead(data *schema.ResourceData, meta interface{}) er
 }
 
 func resourceApiGatewayV2ApiCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayV2ApiType, ResourceApiGatewayV2Api(), data, apiGatewayV2ApiProperties, meta)
+	return plugin.ResourceCreate(apiGatewayV2ApiType, ResourceApiGatewayV2Api(), data, meta)
 }
 
 func resourceApiGatewayV2ApiUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayV2ApiType, ResourceApiGatewayV2Api(), data, apiGatewayV2ApiProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayV2ApiType, ResourceApiGatewayV2Api(), data, meta)
 }
 
 func resourceApiGatewayV2ApiDelete(data *schema.ResourceData, meta interface{}) error {

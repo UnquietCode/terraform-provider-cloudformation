@@ -17,14 +17,6 @@ import (
 
 const neptuneDBClusterParameterGroupType string = "AWS::Neptune::DBClusterParameterGroup"
 
-var neptuneDBClusterParameterGroupProperties map[string]string = map[string]string{
-	"description": "Description",
-	"parameters": "Parameters",
-	"family": "Family",
-	"tags": "Tags",
-	"name": "Name",
-}
-
 func ResourceNeptuneDBClusterParameterGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceNeptuneDBClusterParameterGroupExists,
@@ -70,11 +62,11 @@ func resourceNeptuneDBClusterParameterGroupRead(data *schema.ResourceData, meta 
 }
 
 func resourceNeptuneDBClusterParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(neptuneDBClusterParameterGroupType, ResourceNeptuneDBClusterParameterGroup(), data, neptuneDBClusterParameterGroupProperties, meta)
+	return plugin.ResourceCreate(neptuneDBClusterParameterGroupType, ResourceNeptuneDBClusterParameterGroup(), data, meta)
 }
 
 func resourceNeptuneDBClusterParameterGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(neptuneDBClusterParameterGroupType, ResourceNeptuneDBClusterParameterGroup(), data, neptuneDBClusterParameterGroupProperties, meta)
+	return plugin.ResourceUpdate(neptuneDBClusterParameterGroupType, ResourceNeptuneDBClusterParameterGroup(), data, meta)
 }
 
 func resourceNeptuneDBClusterParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {

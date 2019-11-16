@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var fileSystemLustreConfigurationProperties map[string]string = map[string]string{
-	"import_path": "ImportPath",
-	"weekly_maintenance_start_time": "WeeklyMaintenanceStartTime",
-	"imported_file_chunk_size": "ImportedFileChunkSize",
-	"export_path": "ExportPath",
-}
-
 func propertyFileSystemLustreConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

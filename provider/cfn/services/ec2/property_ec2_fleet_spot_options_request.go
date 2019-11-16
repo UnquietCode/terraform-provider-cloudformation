@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var eC2FleetSpotOptionsRequestProperties map[string]string = map[string]string{
-	"allocation_strategy": "AllocationStrategy",
-	"instance_interruption_behavior": "InstanceInterruptionBehavior",
-	"instance_pools_to_use_count": "InstancePoolsToUseCount",
-}
-
 func propertyEC2FleetSpotOptionsRequest(extras...string) *schema.Resource {
 	var count int64 = 0
 	

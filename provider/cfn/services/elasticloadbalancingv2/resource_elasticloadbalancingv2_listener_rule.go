@@ -16,13 +16,6 @@ import (
 
 const elasticLoadBalancingV2ListenerRuleType string = "AWS::ElasticLoadBalancingV2::ListenerRule"
 
-var elasticLoadBalancingV2ListenerRuleProperties map[string]string = map[string]string{
-	"actions": "Actions",
-	"conditions": "Conditions",
-	"listener_arn": "ListenerArn",
-	"priority": "Priority",
-}
-
 func ResourceElasticLoadBalancingV2ListenerRule() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElasticLoadBalancingV2ListenerRuleExists,
@@ -69,11 +62,11 @@ func resourceElasticLoadBalancingV2ListenerRuleRead(data *schema.ResourceData, m
 }
 
 func resourceElasticLoadBalancingV2ListenerRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(elasticLoadBalancingV2ListenerRuleType, ResourceElasticLoadBalancingV2ListenerRule(), data, elasticLoadBalancingV2ListenerRuleProperties, meta)
+	return plugin.ResourceCreate(elasticLoadBalancingV2ListenerRuleType, ResourceElasticLoadBalancingV2ListenerRule(), data, meta)
 }
 
 func resourceElasticLoadBalancingV2ListenerRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(elasticLoadBalancingV2ListenerRuleType, ResourceElasticLoadBalancingV2ListenerRule(), data, elasticLoadBalancingV2ListenerRuleProperties, meta)
+	return plugin.ResourceUpdate(elasticLoadBalancingV2ListenerRuleType, ResourceElasticLoadBalancingV2ListenerRule(), data, meta)
 }
 
 func resourceElasticLoadBalancingV2ListenerRuleDelete(data *schema.ResourceData, meta interface{}) error {

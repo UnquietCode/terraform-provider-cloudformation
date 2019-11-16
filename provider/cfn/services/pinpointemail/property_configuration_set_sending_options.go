@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var configurationSetSendingOptionsProperties map[string]string = map[string]string{
-	"sending_enabled": "SendingEnabled",
-}
-
 func propertyConfigurationSetSendingOptions(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,12 +16,6 @@ import (
 
 const appStreamDirectoryConfigType string = "AWS::AppStream::DirectoryConfig"
 
-var appStreamDirectoryConfigProperties map[string]string = map[string]string{
-	"organizational_unit_distinguished_names": "OrganizationalUnitDistinguishedNames",
-	"service_account_credentials": "ServiceAccountCredentials",
-	"directory_name": "DirectoryName",
-}
-
 func ResourceAppStreamDirectoryConfig() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppStreamDirectoryConfigExists,
@@ -65,11 +59,11 @@ func resourceAppStreamDirectoryConfigRead(data *schema.ResourceData, meta interf
 }
 
 func resourceAppStreamDirectoryConfigCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(appStreamDirectoryConfigType, ResourceAppStreamDirectoryConfig(), data, appStreamDirectoryConfigProperties, meta)
+	return plugin.ResourceCreate(appStreamDirectoryConfigType, ResourceAppStreamDirectoryConfig(), data, meta)
 }
 
 func resourceAppStreamDirectoryConfigUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(appStreamDirectoryConfigType, ResourceAppStreamDirectoryConfig(), data, appStreamDirectoryConfigProperties, meta)
+	return plugin.ResourceUpdate(appStreamDirectoryConfigType, ResourceAppStreamDirectoryConfig(), data, meta)
 }
 
 func resourceAppStreamDirectoryConfigDelete(data *schema.ResourceData, meta interface{}) error {

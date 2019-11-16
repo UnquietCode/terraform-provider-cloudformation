@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var appSslConfigurationProperties map[string]string = map[string]string{
-	"certificate": "Certificate",
-	"chain": "Chain",
-	"private_key": "PrivateKey",
-}
-
 func propertyAppSslConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

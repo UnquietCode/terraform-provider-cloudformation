@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var userPoolInviteMessageTemplateProperties map[string]string = map[string]string{
-	"email_message": "EmailMessage",
-	"sms_message": "SMSMessage",
-	"email_subject": "EmailSubject",
-}
-
 func propertyUserPoolInviteMessageTemplate(extras...string) *schema.Resource {
 	var count int64 = 0
 	

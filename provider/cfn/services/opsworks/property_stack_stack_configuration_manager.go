@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var stackStackConfigurationManagerProperties map[string]string = map[string]string{
-	"name": "Name",
-	"version": "Version",
-}
-
 func propertyStackStackConfigurationManager(extras...string) *schema.Resource {
 	var count int64 = 0
 	

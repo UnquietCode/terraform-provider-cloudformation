@@ -16,12 +16,6 @@ import (
 
 const eC2VPCCidrBlockType string = "AWS::EC2::VPCCidrBlock"
 
-var eC2VPCCidrBlockProperties map[string]string = map[string]string{
-	"amazon_provided_ipv6_cidr_block": "AmazonProvidedIpv6CidrBlock",
-	"cidr_block": "CidrBlock",
-	"vpc_id": "VpcId",
-}
-
 func ResourceEC2VPCCidrBlock() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPCCidrBlockExists,
@@ -62,11 +56,11 @@ func resourceEC2VPCCidrBlockRead(data *schema.ResourceData, meta interface{}) er
 }
 
 func resourceEC2VPCCidrBlockCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2VPCCidrBlockType, ResourceEC2VPCCidrBlock(), data, eC2VPCCidrBlockProperties, meta)
+	return plugin.ResourceCreate(eC2VPCCidrBlockType, ResourceEC2VPCCidrBlock(), data, meta)
 }
 
 func resourceEC2VPCCidrBlockUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2VPCCidrBlockType, ResourceEC2VPCCidrBlock(), data, eC2VPCCidrBlockProperties, meta)
+	return plugin.ResourceUpdate(eC2VPCCidrBlockType, ResourceEC2VPCCidrBlock(), data, meta)
 }
 
 func resourceEC2VPCCidrBlockDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var instanceGroupConfigAutoScalingPolicyProperties map[string]string = map[string]string{
-	"constraints": "Constraints",
-	"rules": "Rules",
-}
-
 func propertyInstanceGroupConfigAutoScalingPolicy(extras...string) *schema.Resource {
 	var count int64 = 0
 	

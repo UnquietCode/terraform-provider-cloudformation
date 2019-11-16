@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var topicRuleIotAnalyticsActionProperties map[string]string = map[string]string{
-	"channel_name": "ChannelName",
-	"role_arn": "RoleArn",
-}
-
 func propertyTopicRuleIotAnalyticsAction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

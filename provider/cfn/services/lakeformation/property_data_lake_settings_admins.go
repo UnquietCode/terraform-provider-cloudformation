@@ -14,9 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var dataLakeSettingsAdminsProperties map[string]string = map[string]string{
-}
-
 func propertyDataLakeSettingsAdmins(extras...string) *schema.Resource {
 	var count int64 = 0
 	

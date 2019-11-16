@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var streamingDistributionS3OriginProperties map[string]string = map[string]string{
-	"domain_name": "DomainName",
-	"origin_access_identity": "OriginAccessIdentity",
-}
-
 func propertyStreamingDistributionS3Origin(extras...string) *schema.Resource {
 	var count int64 = 0
 	

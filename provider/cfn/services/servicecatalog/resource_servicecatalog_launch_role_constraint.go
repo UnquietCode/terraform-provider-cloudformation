@@ -16,14 +16,6 @@ import (
 
 const serviceCatalogLaunchRoleConstraintType string = "AWS::ServiceCatalog::LaunchRoleConstraint"
 
-var serviceCatalogLaunchRoleConstraintProperties map[string]string = map[string]string{
-	"description": "Description",
-	"accept_language": "AcceptLanguage",
-	"portfolio_id": "PortfolioId",
-	"product_id": "ProductId",
-	"role_arn": "RoleArn",
-}
-
 func ResourceServiceCatalogLaunchRoleConstraint() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogLaunchRoleConstraintExists,
@@ -72,11 +64,11 @@ func resourceServiceCatalogLaunchRoleConstraintRead(data *schema.ResourceData, m
 }
 
 func resourceServiceCatalogLaunchRoleConstraintCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(serviceCatalogLaunchRoleConstraintType, ResourceServiceCatalogLaunchRoleConstraint(), data, serviceCatalogLaunchRoleConstraintProperties, meta)
+	return plugin.ResourceCreate(serviceCatalogLaunchRoleConstraintType, ResourceServiceCatalogLaunchRoleConstraint(), data, meta)
 }
 
 func resourceServiceCatalogLaunchRoleConstraintUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(serviceCatalogLaunchRoleConstraintType, ResourceServiceCatalogLaunchRoleConstraint(), data, serviceCatalogLaunchRoleConstraintProperties, meta)
+	return plugin.ResourceUpdate(serviceCatalogLaunchRoleConstraintType, ResourceServiceCatalogLaunchRoleConstraint(), data, meta)
 }
 
 func resourceServiceCatalogLaunchRoleConstraintDelete(data *schema.ResourceData, meta interface{}) error {

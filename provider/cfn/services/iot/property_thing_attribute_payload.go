@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var thingAttributePayloadProperties map[string]string = map[string]string{
-	"attributes": "Attributes",
-}
-
 func propertyThingAttributePayload(extras...string) *schema.Resource {
 	var count int64 = 0
 	

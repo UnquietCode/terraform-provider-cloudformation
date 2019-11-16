@@ -16,15 +16,6 @@ import (
 
 const configConfigRuleType string = "AWS::Config::ConfigRule"
 
-var configConfigRuleProperties map[string]string = map[string]string{
-	"config_rule_name": "ConfigRuleName",
-	"description": "Description",
-	"input_parameters": "InputParameters",
-	"maximum_execution_frequency": "MaximumExecutionFrequency",
-	"scope": "Scope",
-	"source": "Source",
-}
-
 func ResourceConfigConfigRule() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceConfigConfigRuleExists,
@@ -81,11 +72,11 @@ func resourceConfigConfigRuleRead(data *schema.ResourceData, meta interface{}) e
 }
 
 func resourceConfigConfigRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(configConfigRuleType, ResourceConfigConfigRule(), data, configConfigRuleProperties, meta)
+	return plugin.ResourceCreate(configConfigRuleType, ResourceConfigConfigRule(), data, meta)
 }
 
 func resourceConfigConfigRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(configConfigRuleType, ResourceConfigConfigRule(), data, configConfigRuleProperties, meta)
+	return plugin.ResourceUpdate(configConfigRuleType, ResourceConfigConfigRule(), data, meta)
 }
 
 func resourceConfigConfigRuleDelete(data *schema.ResourceData, meta interface{}) error {

@@ -16,13 +16,6 @@ import (
 
 const serviceCatalogPortfolioProductAssociationType string = "AWS::ServiceCatalog::PortfolioProductAssociation"
 
-var serviceCatalogPortfolioProductAssociationProperties map[string]string = map[string]string{
-	"source_portfolio_id": "SourcePortfolioId",
-	"accept_language": "AcceptLanguage",
-	"portfolio_id": "PortfolioId",
-	"product_id": "ProductId",
-}
-
 func ResourceServiceCatalogPortfolioProductAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogPortfolioProductAssociationExists,
@@ -67,11 +60,11 @@ func resourceServiceCatalogPortfolioProductAssociationRead(data *schema.Resource
 }
 
 func resourceServiceCatalogPortfolioProductAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(serviceCatalogPortfolioProductAssociationType, ResourceServiceCatalogPortfolioProductAssociation(), data, serviceCatalogPortfolioProductAssociationProperties, meta)
+	return plugin.ResourceCreate(serviceCatalogPortfolioProductAssociationType, ResourceServiceCatalogPortfolioProductAssociation(), data, meta)
 }
 
 func resourceServiceCatalogPortfolioProductAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(serviceCatalogPortfolioProductAssociationType, ResourceServiceCatalogPortfolioProductAssociation(), data, serviceCatalogPortfolioProductAssociationProperties, meta)
+	return plugin.ResourceUpdate(serviceCatalogPortfolioProductAssociationType, ResourceServiceCatalogPortfolioProductAssociation(), data, meta)
 }
 
 func resourceServiceCatalogPortfolioProductAssociationDelete(data *schema.ResourceData, meta interface{}) error {

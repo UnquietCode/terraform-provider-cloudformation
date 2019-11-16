@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var coreDefinitionCoreDefinitionVersionProperties map[string]string = map[string]string{
-	"cores": "Cores",
-}
-
 func propertyCoreDefinitionCoreDefinitionVersion(extras...string) *schema.Resource {
 	var count int64 = 0
 	

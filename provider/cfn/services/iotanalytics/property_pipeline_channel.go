@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var pipelineChannelProperties map[string]string = map[string]string{
-	"channel_name": "ChannelName",
-	"next": "Next",
-	"name": "Name",
-}
-
 func propertyPipelineChannel(extras...string) *schema.Resource {
 	var count int64 = 0
 	

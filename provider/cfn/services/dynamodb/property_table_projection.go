@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var tableProjectionProperties map[string]string = map[string]string{
-	"non_key_attributes": "NonKeyAttributes",
-	"projection_type": "ProjectionType",
-}
-
 func propertyTableProjection(extras...string) *schema.Resource {
 	var count int64 = 0
 	

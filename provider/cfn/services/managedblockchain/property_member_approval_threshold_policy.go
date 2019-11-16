@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var memberApprovalThresholdPolicyProperties map[string]string = map[string]string{
-	"threshold_comparator": "ThresholdComparator",
-	"threshold_percentage": "ThresholdPercentage",
-	"proposal_duration_in_hours": "ProposalDurationInHours",
-}
-
 func propertyMemberApprovalThresholdPolicy(extras...string) *schema.Resource {
 	var count int64 = 0
 	

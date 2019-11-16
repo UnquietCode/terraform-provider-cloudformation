@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var codeRepositoryGitConfigProperties map[string]string = map[string]string{
-	"secret_arn": "SecretArn",
-	"branch": "Branch",
-	"repository_url": "RepositoryUrl",
-}
-
 func propertyCodeRepositoryGitConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

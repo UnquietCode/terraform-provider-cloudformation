@@ -16,13 +16,6 @@ import (
 
 const apiGatewayDomainNameType string = "AWS::ApiGateway::DomainName"
 
-var apiGatewayDomainNameProperties map[string]string = map[string]string{
-	"certificate_arn": "CertificateArn",
-	"domain_name": "DomainName",
-	"endpoint_configuration": "EndpointConfiguration",
-	"regional_certificate_arn": "RegionalCertificateArn",
-}
-
 func ResourceApiGatewayDomainName() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayDomainNameExists,
@@ -69,11 +62,11 @@ func resourceApiGatewayDomainNameRead(data *schema.ResourceData, meta interface{
 }
 
 func resourceApiGatewayDomainNameCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayDomainNameType, ResourceApiGatewayDomainName(), data, apiGatewayDomainNameProperties, meta)
+	return plugin.ResourceCreate(apiGatewayDomainNameType, ResourceApiGatewayDomainName(), data, meta)
 }
 
 func resourceApiGatewayDomainNameUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayDomainNameType, ResourceApiGatewayDomainName(), data, apiGatewayDomainNameProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayDomainNameType, ResourceApiGatewayDomainName(), data, meta)
 }
 
 func resourceApiGatewayDomainNameDelete(data *schema.ResourceData, meta interface{}) error {

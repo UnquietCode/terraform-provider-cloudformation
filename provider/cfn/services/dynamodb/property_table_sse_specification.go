@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var tableSSESpecificationProperties map[string]string = map[string]string{
-	"kms_master_key_id": "KMSMasterKeyId",
-	"sse_enabled": "SSEEnabled",
-	"sse_type": "SSEType",
-}
-
 func propertyTableSSESpecification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

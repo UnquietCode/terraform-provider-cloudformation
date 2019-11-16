@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var simulationApplicationSourceConfigProperties map[string]string = map[string]string{
-	"s3_bucket": "S3Bucket",
-	"architecture": "Architecture",
-	"s3_key": "S3Key",
-}
-
 func propertySimulationApplicationSourceConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

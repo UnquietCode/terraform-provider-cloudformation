@@ -17,14 +17,6 @@ import (
 
 const inspectorAssessmentTemplateType string = "AWS::Inspector::AssessmentTemplate"
 
-var inspectorAssessmentTemplateProperties map[string]string = map[string]string{
-	"assessment_target_arn": "AssessmentTargetArn",
-	"duration_in_seconds": "DurationInSeconds",
-	"assessment_template_name": "AssessmentTemplateName",
-	"rules_package_arns": "RulesPackageArns",
-	"user_attributes_for_findings": "UserAttributesForFindings",
-}
-
 func ResourceInspectorAssessmentTemplate() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceInspectorAssessmentTemplateExists,
@@ -71,11 +63,11 @@ func resourceInspectorAssessmentTemplateRead(data *schema.ResourceData, meta int
 }
 
 func resourceInspectorAssessmentTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(inspectorAssessmentTemplateType, ResourceInspectorAssessmentTemplate(), data, inspectorAssessmentTemplateProperties, meta)
+	return plugin.ResourceCreate(inspectorAssessmentTemplateType, ResourceInspectorAssessmentTemplate(), data, meta)
 }
 
 func resourceInspectorAssessmentTemplateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(inspectorAssessmentTemplateType, ResourceInspectorAssessmentTemplate(), data, inspectorAssessmentTemplateProperties, meta)
+	return plugin.ResourceUpdate(inspectorAssessmentTemplateType, ResourceInspectorAssessmentTemplate(), data, meta)
 }
 
 func resourceInspectorAssessmentTemplateDelete(data *schema.ResourceData, meta interface{}) error {

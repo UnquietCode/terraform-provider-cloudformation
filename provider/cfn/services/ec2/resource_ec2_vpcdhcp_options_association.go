@@ -16,11 +16,6 @@ import (
 
 const eC2VPCDHCPOptionsAssociationType string = "AWS::EC2::VPCDHCPOptionsAssociation"
 
-var eC2VPCDHCPOptionsAssociationProperties map[string]string = map[string]string{
-	"dhcp_options_id": "DhcpOptionsId",
-	"vpc_id": "VpcId",
-}
-
 func ResourceEC2VPCDHCPOptionsAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPCDHCPOptionsAssociationExists,
@@ -57,11 +52,11 @@ func resourceEC2VPCDHCPOptionsAssociationRead(data *schema.ResourceData, meta in
 }
 
 func resourceEC2VPCDHCPOptionsAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2VPCDHCPOptionsAssociationType, ResourceEC2VPCDHCPOptionsAssociation(), data, eC2VPCDHCPOptionsAssociationProperties, meta)
+	return plugin.ResourceCreate(eC2VPCDHCPOptionsAssociationType, ResourceEC2VPCDHCPOptionsAssociation(), data, meta)
 }
 
 func resourceEC2VPCDHCPOptionsAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2VPCDHCPOptionsAssociationType, ResourceEC2VPCDHCPOptionsAssociation(), data, eC2VPCDHCPOptionsAssociationProperties, meta)
+	return plugin.ResourceUpdate(eC2VPCDHCPOptionsAssociationType, ResourceEC2VPCDHCPOptionsAssociation(), data, meta)
 }
 
 func resourceEC2VPCDHCPOptionsAssociationDelete(data *schema.ResourceData, meta interface{}) error {

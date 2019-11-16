@@ -16,12 +16,6 @@ import (
 
 const sESReceiptRuleType string = "AWS::SES::ReceiptRule"
 
-var sESReceiptRuleProperties map[string]string = map[string]string{
-	"after": "After",
-	"rule": "Rule",
-	"rule_set_name": "RuleSetName",
-}
-
 func ResourceSESReceiptRule() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSESReceiptRuleExists,
@@ -64,11 +58,11 @@ func resourceSESReceiptRuleRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceSESReceiptRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(sESReceiptRuleType, ResourceSESReceiptRule(), data, sESReceiptRuleProperties, meta)
+	return plugin.ResourceCreate(sESReceiptRuleType, ResourceSESReceiptRule(), data, meta)
 }
 
 func resourceSESReceiptRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(sESReceiptRuleType, ResourceSESReceiptRule(), data, sESReceiptRuleProperties, meta)
+	return plugin.ResourceUpdate(sESReceiptRuleType, ResourceSESReceiptRule(), data, meta)
 }
 
 func resourceSESReceiptRuleDelete(data *schema.ResourceData, meta interface{}) error {

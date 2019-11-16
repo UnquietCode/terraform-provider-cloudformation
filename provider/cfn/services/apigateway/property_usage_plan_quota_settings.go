@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var usagePlanQuotaSettingsProperties map[string]string = map[string]string{
-	"limit": "Limit",
-	"offset": "Offset",
-	"period": "Period",
-}
-
 func propertyUsagePlanQuotaSettings(extras...string) *schema.Resource {
 	var count int64 = 0
 	

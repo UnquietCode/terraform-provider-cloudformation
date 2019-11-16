@@ -17,13 +17,6 @@ import (
 
 const eCRRepositoryType string = "AWS::ECR::Repository"
 
-var eCRRepositoryProperties map[string]string = map[string]string{
-	"lifecycle_policy": "LifecyclePolicy",
-	"repository_name": "RepositoryName",
-	"repository_policy_text": "RepositoryPolicyText",
-	"tags": "Tags",
-}
-
 func ResourceECRRepository() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceECRRepositoryExists,
@@ -67,11 +60,11 @@ func resourceECRRepositoryRead(data *schema.ResourceData, meta interface{}) erro
 }
 
 func resourceECRRepositoryCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eCRRepositoryType, ResourceECRRepository(), data, eCRRepositoryProperties, meta)
+	return plugin.ResourceCreate(eCRRepositoryType, ResourceECRRepository(), data, meta)
 }
 
 func resourceECRRepositoryUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eCRRepositoryType, ResourceECRRepository(), data, eCRRepositoryProperties, meta)
+	return plugin.ResourceUpdate(eCRRepositoryType, ResourceECRRepository(), data, meta)
 }
 
 func resourceECRRepositoryDelete(data *schema.ResourceData, meta interface{}) error {

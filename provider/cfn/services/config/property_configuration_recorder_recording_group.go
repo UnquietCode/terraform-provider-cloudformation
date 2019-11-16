@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var configurationRecorderRecordingGroupProperties map[string]string = map[string]string{
-	"all_supported": "AllSupported",
-	"include_global_resource_types": "IncludeGlobalResourceTypes",
-	"resource_types": "ResourceTypes",
-}
-
 func propertyConfigurationRecorderRecordingGroup(extras...string) *schema.Resource {
 	var count int64 = 0
 	

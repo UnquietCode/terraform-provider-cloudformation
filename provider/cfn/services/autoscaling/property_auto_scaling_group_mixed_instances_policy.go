@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var autoScalingGroupMixedInstancesPolicyProperties map[string]string = map[string]string{
-	"instances_distribution": "InstancesDistribution",
-	"launch_template": "LaunchTemplate",
-}
-
 func propertyAutoScalingGroupMixedInstancesPolicy(extras...string) *schema.Resource {
 	var count int64 = 0
 	

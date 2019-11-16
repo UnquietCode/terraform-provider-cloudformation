@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var aliasAliasRoutingConfigurationProperties map[string]string = map[string]string{
-	"additional_version_weights": "AdditionalVersionWeights",
-}
-
 func propertyAliasAliasRoutingConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

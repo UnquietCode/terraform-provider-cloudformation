@@ -17,14 +17,6 @@ import (
 
 const eC2VPCType string = "AWS::EC2::VPC"
 
-var eC2VPCProperties map[string]string = map[string]string{
-	"cidr_block": "CidrBlock",
-	"enable_dns_hostnames": "EnableDnsHostnames",
-	"enable_dns_support": "EnableDnsSupport",
-	"instance_tenancy": "InstanceTenancy",
-	"tags": "Tags",
-}
-
 func ResourceEC2VPC() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPCExists,
@@ -70,11 +62,11 @@ func resourceEC2VPCRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceEC2VPCCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2VPCType, ResourceEC2VPC(), data, eC2VPCProperties, meta)
+	return plugin.ResourceCreate(eC2VPCType, ResourceEC2VPC(), data, meta)
 }
 
 func resourceEC2VPCUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2VPCType, ResourceEC2VPC(), data, eC2VPCProperties, meta)
+	return plugin.ResourceUpdate(eC2VPCType, ResourceEC2VPC(), data, meta)
 }
 
 func resourceEC2VPCDelete(data *schema.ResourceData, meta interface{}) error {

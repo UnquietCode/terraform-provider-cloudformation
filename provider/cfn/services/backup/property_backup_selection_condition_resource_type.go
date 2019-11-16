@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var backupSelectionConditionResourceTypeProperties map[string]string = map[string]string{
-	"condition_value": "ConditionValue",
-	"condition_key": "ConditionKey",
-	"condition_type": "ConditionType",
-}
-
 func propertyBackupSelectionConditionResourceType(extras...string) *schema.Resource {
 	var count int64 = 0
 	

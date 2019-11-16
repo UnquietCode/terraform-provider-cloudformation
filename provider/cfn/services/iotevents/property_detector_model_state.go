@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var detectorModelStateProperties map[string]string = map[string]string{
-	"on_input": "OnInput",
-	"on_exit": "OnExit",
-	"state_name": "StateName",
-	"on_enter": "OnEnter",
-}
-
 func propertyDetectorModelState(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,12 +16,6 @@ import (
 
 const serviceDiscoveryInstanceType string = "AWS::ServiceDiscovery::Instance"
 
-var serviceDiscoveryInstanceProperties map[string]string = map[string]string{
-	"instance_attributes": "InstanceAttributes",
-	"instance_id": "InstanceId",
-	"service_id": "ServiceId",
-}
-
 func ResourceServiceDiscoveryInstance() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceDiscoveryInstanceExists,
@@ -62,11 +56,11 @@ func resourceServiceDiscoveryInstanceRead(data *schema.ResourceData, meta interf
 }
 
 func resourceServiceDiscoveryInstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(serviceDiscoveryInstanceType, ResourceServiceDiscoveryInstance(), data, serviceDiscoveryInstanceProperties, meta)
+	return plugin.ResourceCreate(serviceDiscoveryInstanceType, ResourceServiceDiscoveryInstance(), data, meta)
 }
 
 func resourceServiceDiscoveryInstanceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(serviceDiscoveryInstanceType, ResourceServiceDiscoveryInstance(), data, serviceDiscoveryInstanceProperties, meta)
+	return plugin.ResourceUpdate(serviceDiscoveryInstanceType, ResourceServiceDiscoveryInstance(), data, meta)
 }
 
 func resourceServiceDiscoveryInstanceDelete(data *schema.ResourceData, meta interface{}) error {

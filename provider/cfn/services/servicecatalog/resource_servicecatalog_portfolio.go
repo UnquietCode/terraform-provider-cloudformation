@@ -17,14 +17,6 @@ import (
 
 const serviceCatalogPortfolioType string = "AWS::ServiceCatalog::Portfolio"
 
-var serviceCatalogPortfolioProperties map[string]string = map[string]string{
-	"provider_name": "ProviderName",
-	"description": "Description",
-	"display_name": "DisplayName",
-	"accept_language": "AcceptLanguage",
-	"tags": "Tags",
-}
-
 func ResourceServiceCatalogPortfolio() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogPortfolioExists,
@@ -70,11 +62,11 @@ func resourceServiceCatalogPortfolioRead(data *schema.ResourceData, meta interfa
 }
 
 func resourceServiceCatalogPortfolioCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(serviceCatalogPortfolioType, ResourceServiceCatalogPortfolio(), data, serviceCatalogPortfolioProperties, meta)
+	return plugin.ResourceCreate(serviceCatalogPortfolioType, ResourceServiceCatalogPortfolio(), data, meta)
 }
 
 func resourceServiceCatalogPortfolioUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(serviceCatalogPortfolioType, ResourceServiceCatalogPortfolio(), data, serviceCatalogPortfolioProperties, meta)
+	return plugin.ResourceUpdate(serviceCatalogPortfolioType, ResourceServiceCatalogPortfolio(), data, meta)
 }
 
 func resourceServiceCatalogPortfolioDelete(data *schema.ResourceData, meta interface{}) error {

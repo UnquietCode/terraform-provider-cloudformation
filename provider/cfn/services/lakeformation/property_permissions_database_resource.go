@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var permissionsDatabaseResourceProperties map[string]string = map[string]string{
-	"name": "Name",
-}
-
 func propertyPermissionsDatabaseResource(extras...string) *schema.Resource {
 	var count int64 = 0
 	

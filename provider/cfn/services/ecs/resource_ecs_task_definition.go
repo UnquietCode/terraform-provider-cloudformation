@@ -17,23 +17,6 @@ import (
 
 const eCSTaskDefinitionType string = "AWS::ECS::TaskDefinition"
 
-var eCSTaskDefinitionProperties map[string]string = map[string]string{
-	"container_definitions": "ContainerDefinitions",
-	"cpu": "Cpu",
-	"execution_role_arn": "ExecutionRoleArn",
-	"family": "Family",
-	"ipc_mode": "IpcMode",
-	"memory": "Memory",
-	"network_mode": "NetworkMode",
-	"pid_mode": "PidMode",
-	"placement_constraints": "PlacementConstraints",
-	"proxy_configuration": "ProxyConfiguration",
-	"requires_compatibilities": "RequiresCompatibilities",
-	"tags": "Tags",
-	"task_role_arn": "TaskRoleArn",
-	"volumes": "Volumes",
-}
-
 func ResourceECSTaskDefinition() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceECSTaskDefinitionExists,
@@ -122,11 +105,11 @@ func resourceECSTaskDefinitionRead(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceECSTaskDefinitionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eCSTaskDefinitionType, ResourceECSTaskDefinition(), data, eCSTaskDefinitionProperties, meta)
+	return plugin.ResourceCreate(eCSTaskDefinitionType, ResourceECSTaskDefinition(), data, meta)
 }
 
 func resourceECSTaskDefinitionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eCSTaskDefinitionType, ResourceECSTaskDefinition(), data, eCSTaskDefinitionProperties, meta)
+	return plugin.ResourceUpdate(eCSTaskDefinitionType, ResourceECSTaskDefinition(), data, meta)
 }
 
 func resourceECSTaskDefinitionDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var receiptRuleSNSActionProperties map[string]string = map[string]string{
-	"topic_arn": "TopicArn",
-	"encoding": "Encoding",
-}
-
 func propertyReceiptRuleSNSAction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

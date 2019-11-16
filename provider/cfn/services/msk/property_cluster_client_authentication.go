@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var clusterClientAuthenticationProperties map[string]string = map[string]string{
-	"tls": "Tls",
-}
-
 func propertyClusterClientAuthentication(extras...string) *schema.Resource {
 	var count int64 = 0
 	

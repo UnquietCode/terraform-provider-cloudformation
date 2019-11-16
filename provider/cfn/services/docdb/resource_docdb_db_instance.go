@@ -17,16 +17,6 @@ import (
 
 const docDBDBInstanceType string = "AWS::DocDB::DBInstance"
 
-var docDBDBInstanceProperties map[string]string = map[string]string{
-	"db_instance_class": "DBInstanceClass",
-	"db_cluster_identifier": "DBClusterIdentifier",
-	"availability_zone": "AvailabilityZone",
-	"preferred_maintenance_window": "PreferredMaintenanceWindow",
-	"auto_minor_version_upgrade": "AutoMinorVersionUpgrade",
-	"db_instance_identifier": "DBInstanceIdentifier",
-	"tags": "Tags",
-}
-
 func ResourceDocDBDBInstance() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDocDBDBInstanceExists,
@@ -80,11 +70,11 @@ func resourceDocDBDBInstanceRead(data *schema.ResourceData, meta interface{}) er
 }
 
 func resourceDocDBDBInstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(docDBDBInstanceType, ResourceDocDBDBInstance(), data, docDBDBInstanceProperties, meta)
+	return plugin.ResourceCreate(docDBDBInstanceType, ResourceDocDBDBInstance(), data, meta)
 }
 
 func resourceDocDBDBInstanceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(docDBDBInstanceType, ResourceDocDBDBInstance(), data, docDBDBInstanceProperties, meta)
+	return plugin.ResourceUpdate(docDBDBInstanceType, ResourceDocDBDBInstance(), data, meta)
 }
 
 func resourceDocDBDBInstanceDelete(data *schema.ResourceData, meta interface{}) error {

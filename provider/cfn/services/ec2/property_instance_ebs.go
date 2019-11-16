@@ -14,16 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var instanceEbsProperties map[string]string = map[string]string{
-	"delete_on_termination": "DeleteOnTermination",
-	"encrypted": "Encrypted",
-	"iops": "Iops",
-	"kms_key_id": "KmsKeyId",
-	"snapshot_id": "SnapshotId",
-	"volume_size": "VolumeSize",
-	"volume_type": "VolumeType",
-}
-
 func propertyInstanceEbs(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,16 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var campaignMessageConfigurationProperties map[string]string = map[string]string{
-	"apns_message": "APNSMessage",
-	"baidu_message": "BaiduMessage",
-	"default_message": "DefaultMessage",
-	"email_message": "EmailMessage",
-	"gcm_message": "GCMMessage",
-	"sms_message": "SMSMessage",
-	"adm_message": "ADMMessage",
-}
-
 func propertyCampaignMessageConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var domainSnapshotOptionsProperties map[string]string = map[string]string{
-	"automated_snapshot_start_hour": "AutomatedSnapshotStartHour",
-}
-
 func propertyDomainSnapshotOptions(extras...string) *schema.Resource {
 	var count int64 = 0
 	

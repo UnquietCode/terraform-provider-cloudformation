@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketObjectLockRuleProperties map[string]string = map[string]string{
-	"default_retention": "DefaultRetention",
-}
-
 func propertyBucketObjectLockRule(extras...string) *schema.Resource {
 	var count int64 = 0
 	

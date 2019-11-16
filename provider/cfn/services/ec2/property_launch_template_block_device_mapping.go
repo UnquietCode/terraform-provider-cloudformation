@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var launchTemplateBlockDeviceMappingProperties map[string]string = map[string]string{
-	"ebs": "Ebs",
-	"no_device": "NoDevice",
-	"virtual_name": "VirtualName",
-	"device_name": "DeviceName",
-}
-
 func propertyLaunchTemplateBlockDeviceMapping(extras...string) *schema.Resource {
 	var count int64 = 0
 	

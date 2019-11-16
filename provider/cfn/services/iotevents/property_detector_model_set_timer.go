@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var detectorModelSetTimerProperties map[string]string = map[string]string{
-	"seconds": "Seconds",
-	"timer_name": "TimerName",
-}
-
 func propertyDetectorModelSetTimer(extras...string) *schema.Resource {
 	var count int64 = 0
 	

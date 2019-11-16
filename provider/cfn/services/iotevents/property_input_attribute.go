@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var inputAttributeProperties map[string]string = map[string]string{
-	"json_path": "JsonPath",
-}
-
 func propertyInputAttribute(extras...string) *schema.Resource {
 	var count int64 = 0
 	

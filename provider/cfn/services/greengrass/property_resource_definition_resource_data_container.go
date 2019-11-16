@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var resourceDefinitionResourceDataContainerProperties map[string]string = map[string]string{
-	"secrets_manager_secret_resource_data": "SecretsManagerSecretResourceData",
-	"sage_maker_machine_learning_model_resource_data": "SageMakerMachineLearningModelResourceData",
-	"local_volume_resource_data": "LocalVolumeResourceData",
-	"local_device_resource_data": "LocalDeviceResourceData",
-	"s3_machine_learning_model_resource_data": "S3MachineLearningModelResourceData",
-}
-
 func propertyResourceDefinitionResourceDataContainer(extras...string) *schema.Resource {
 	var count int64 = 0
 	

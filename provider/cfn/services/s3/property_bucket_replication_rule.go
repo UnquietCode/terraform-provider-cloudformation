@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketReplicationRuleProperties map[string]string = map[string]string{
-	"destination": "Destination",
-	"id": "Id",
-	"prefix": "Prefix",
-	"source_selection_criteria": "SourceSelectionCriteria",
-	"status": "Status",
-}
-
 func propertyBucketReplicationRule(extras...string) *schema.Resource {
 	var count int64 = 0
 	

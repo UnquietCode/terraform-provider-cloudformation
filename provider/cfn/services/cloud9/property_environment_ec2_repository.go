@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var environmentEC2RepositoryProperties map[string]string = map[string]string{
-	"path_component": "PathComponent",
-	"repository_url": "RepositoryUrl",
-}
-
 func propertyEnvironmentEC2Repository(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,12 +16,6 @@ import (
 
 const pinpointGCMChannelType string = "AWS::Pinpoint::GCMChannel"
 
-var pinpointGCMChannelProperties map[string]string = map[string]string{
-	"api_key": "ApiKey",
-	"enabled": "Enabled",
-	"application_id": "ApplicationId",
-}
-
 func ResourcePinpointGCMChannel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointGCMChannelExists,
@@ -62,11 +56,11 @@ func resourcePinpointGCMChannelRead(data *schema.ResourceData, meta interface{})
 }
 
 func resourcePinpointGCMChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(pinpointGCMChannelType, ResourcePinpointGCMChannel(), data, pinpointGCMChannelProperties, meta)
+	return plugin.ResourceCreate(pinpointGCMChannelType, ResourcePinpointGCMChannel(), data, meta)
 }
 
 func resourcePinpointGCMChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(pinpointGCMChannelType, ResourcePinpointGCMChannel(), data, pinpointGCMChannelProperties, meta)
+	return plugin.ResourceUpdate(pinpointGCMChannelType, ResourcePinpointGCMChannel(), data, meta)
 }
 
 func resourcePinpointGCMChannelDelete(data *schema.ResourceData, meta interface{}) error {

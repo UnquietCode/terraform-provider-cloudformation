@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var userPoolDomainCustomDomainConfigTypeProperties map[string]string = map[string]string{
-	"certificate_arn": "CertificateArn",
-}
-
 func propertyUserPoolDomainCustomDomainConfigType(extras...string) *schema.Resource {
 	var count int64 = 0
 	

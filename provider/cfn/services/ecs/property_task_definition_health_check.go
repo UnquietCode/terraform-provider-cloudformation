@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var taskDefinitionHealthCheckProperties map[string]string = map[string]string{
-	"command": "Command",
-	"interval": "Interval",
-	"retries": "Retries",
-	"start_period": "StartPeriod",
-	"timeout": "Timeout",
-}
-
 func propertyTaskDefinitionHealthCheck(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -17,15 +17,6 @@ import (
 
 const eC2VPCPeeringConnectionType string = "AWS::EC2::VPCPeeringConnection"
 
-var eC2VPCPeeringConnectionProperties map[string]string = map[string]string{
-	"peer_owner_id": "PeerOwnerId",
-	"peer_region": "PeerRegion",
-	"peer_role_arn": "PeerRoleArn",
-	"peer_vpc_id": "PeerVpcId",
-	"tags": "Tags",
-	"vpc_id": "VpcId",
-}
-
 func ResourceEC2VPCPeeringConnection() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPCPeeringConnectionExists,
@@ -75,11 +66,11 @@ func resourceEC2VPCPeeringConnectionRead(data *schema.ResourceData, meta interfa
 }
 
 func resourceEC2VPCPeeringConnectionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2VPCPeeringConnectionType, ResourceEC2VPCPeeringConnection(), data, eC2VPCPeeringConnectionProperties, meta)
+	return plugin.ResourceCreate(eC2VPCPeeringConnectionType, ResourceEC2VPCPeeringConnection(), data, meta)
 }
 
 func resourceEC2VPCPeeringConnectionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2VPCPeeringConnectionType, ResourceEC2VPCPeeringConnection(), data, eC2VPCPeeringConnectionProperties, meta)
+	return plugin.ResourceUpdate(eC2VPCPeeringConnectionType, ResourceEC2VPCPeeringConnection(), data, meta)
 }
 
 func resourceEC2VPCPeeringConnectionDelete(data *schema.ResourceData, meta interface{}) error {

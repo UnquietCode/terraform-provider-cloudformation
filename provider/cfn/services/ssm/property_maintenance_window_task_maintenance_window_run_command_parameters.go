@@ -14,18 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var maintenanceWindowTaskMaintenanceWindowRunCommandParametersProperties map[string]string = map[string]string{
-	"timeout_seconds": "TimeoutSeconds",
-	"comment": "Comment",
-	"output_s3_key_prefix": "OutputS3KeyPrefix",
-	"parameters": "Parameters",
-	"document_hash_type": "DocumentHashType",
-	"service_role_arn": "ServiceRoleArn",
-	"notification_config": "NotificationConfig",
-	"output_s3_bucket_name": "OutputS3BucketName",
-	"document_hash": "DocumentHash",
-}
-
 func propertyMaintenanceWindowTaskMaintenanceWindowRunCommandParameters(extras...string) *schema.Resource {
 	var count int64 = 0
 	

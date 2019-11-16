@@ -17,13 +17,6 @@ import (
 
 const ioTAnalyticsDatastoreType string = "AWS::IoTAnalytics::Datastore"
 
-var ioTAnalyticsDatastoreProperties map[string]string = map[string]string{
-	"datastore_storage": "DatastoreStorage",
-	"datastore_name": "DatastoreName",
-	"retention_period": "RetentionPeriod",
-	"tags": "Tags",
-}
-
 func ResourceIoTAnalyticsDatastore() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoTAnalyticsDatastoreExists,
@@ -69,11 +62,11 @@ func resourceIoTAnalyticsDatastoreRead(data *schema.ResourceData, meta interface
 }
 
 func resourceIoTAnalyticsDatastoreCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(ioTAnalyticsDatastoreType, ResourceIoTAnalyticsDatastore(), data, ioTAnalyticsDatastoreProperties, meta)
+	return plugin.ResourceCreate(ioTAnalyticsDatastoreType, ResourceIoTAnalyticsDatastore(), data, meta)
 }
 
 func resourceIoTAnalyticsDatastoreUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(ioTAnalyticsDatastoreType, ResourceIoTAnalyticsDatastore(), data, ioTAnalyticsDatastoreProperties, meta)
+	return plugin.ResourceUpdate(ioTAnalyticsDatastoreType, ResourceIoTAnalyticsDatastore(), data, meta)
 }
 
 func resourceIoTAnalyticsDatastoreDelete(data *schema.ResourceData, meta interface{}) error {

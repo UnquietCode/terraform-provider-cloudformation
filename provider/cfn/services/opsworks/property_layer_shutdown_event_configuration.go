@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var layerShutdownEventConfigurationProperties map[string]string = map[string]string{
-	"delay_until_elb_connections_drained": "DelayUntilElbConnectionsDrained",
-	"execution_timeout": "ExecutionTimeout",
-}
-
 func propertyLayerShutdownEventConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

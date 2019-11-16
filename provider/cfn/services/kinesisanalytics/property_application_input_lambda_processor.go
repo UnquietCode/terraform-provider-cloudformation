@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationInputLambdaProcessorProperties map[string]string = map[string]string{
-	"resource_arn": "ResourceARN",
-	"role_arn": "RoleARN",
-}
-
 func propertyApplicationInputLambdaProcessor(extras...string) *schema.Resource {
 	var count int64 = 0
 	

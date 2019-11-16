@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var projectGitSubmodulesConfigProperties map[string]string = map[string]string{
-	"fetch_submodules": "FetchSubmodules",
-}
-
 func propertyProjectGitSubmodulesConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

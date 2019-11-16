@@ -16,13 +16,6 @@ import (
 
 const pinpointSMSChannelType string = "AWS::Pinpoint::SMSChannel"
 
-var pinpointSMSChannelProperties map[string]string = map[string]string{
-	"short_code": "ShortCode",
-	"enabled": "Enabled",
-	"application_id": "ApplicationId",
-	"sender_id": "SenderId",
-}
-
 func ResourcePinpointSMSChannel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointSMSChannelExists,
@@ -67,11 +60,11 @@ func resourcePinpointSMSChannelRead(data *schema.ResourceData, meta interface{})
 }
 
 func resourcePinpointSMSChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(pinpointSMSChannelType, ResourcePinpointSMSChannel(), data, pinpointSMSChannelProperties, meta)
+	return plugin.ResourceCreate(pinpointSMSChannelType, ResourcePinpointSMSChannel(), data, meta)
 }
 
 func resourcePinpointSMSChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(pinpointSMSChannelType, ResourcePinpointSMSChannel(), data, pinpointSMSChannelProperties, meta)
+	return plugin.ResourceUpdate(pinpointSMSChannelType, ResourcePinpointSMSChannel(), data, meta)
 }
 
 func resourcePinpointSMSChannelDelete(data *schema.ResourceData, meta interface{}) error {

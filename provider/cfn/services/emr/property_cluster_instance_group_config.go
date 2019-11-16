@@ -14,17 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var clusterInstanceGroupConfigProperties map[string]string = map[string]string{
-	"auto_scaling_policy": "AutoScalingPolicy",
-	"bid_price": "BidPrice",
-	"configurations": "Configurations",
-	"ebs_configuration": "EbsConfiguration",
-	"instance_count": "InstanceCount",
-	"instance_type": "InstanceType",
-	"market": "Market",
-	"name": "Name",
-}
-
 func propertyClusterInstanceGroupConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

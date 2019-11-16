@@ -14,16 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var autoScalingGroupLifecycleHookSpecificationProperties map[string]string = map[string]string{
-	"default_result": "DefaultResult",
-	"heartbeat_timeout": "HeartbeatTimeout",
-	"lifecycle_hook_name": "LifecycleHookName",
-	"lifecycle_transition": "LifecycleTransition",
-	"notification_metadata": "NotificationMetadata",
-	"notification_target_arn": "NotificationTargetARN",
-	"role_arn": "RoleARN",
-}
-
 func propertyAutoScalingGroupLifecycleHookSpecification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

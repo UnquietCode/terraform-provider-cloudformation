@@ -16,11 +16,6 @@ import (
 
 const backupBackupPlanType string = "AWS::Backup::BackupPlan"
 
-var backupBackupPlanProperties map[string]string = map[string]string{
-	"backup_plan": "BackupPlan",
-	"backup_plan_tags": "BackupPlanTags",
-}
-
 func ResourceBackupBackupPlan() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceBackupBackupPlanExists,
@@ -59,11 +54,11 @@ func resourceBackupBackupPlanRead(data *schema.ResourceData, meta interface{}) e
 }
 
 func resourceBackupBackupPlanCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(backupBackupPlanType, ResourceBackupBackupPlan(), data, backupBackupPlanProperties, meta)
+	return plugin.ResourceCreate(backupBackupPlanType, ResourceBackupBackupPlan(), data, meta)
 }
 
 func resourceBackupBackupPlanUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(backupBackupPlanType, ResourceBackupBackupPlan(), data, backupBackupPlanProperties, meta)
+	return plugin.ResourceUpdate(backupBackupPlanType, ResourceBackupBackupPlan(), data, meta)
 }
 
 func resourceBackupBackupPlanDelete(data *schema.ResourceData, meta interface{}) error {

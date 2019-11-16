@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketLambdaConfigurationProperties map[string]string = map[string]string{
-	"event": "Event",
-	"filter": "Filter",
-	"function": "Function",
-}
-
 func propertyBucketLambdaConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var routeGrpcRetryPolicyProperties map[string]string = map[string]string{
-	"max_retries": "MaxRetries",
-	"per_retry_timeout": "PerRetryTimeout",
-	"grpc_retry_events": "GrpcRetryEvents",
-	"http_retry_events": "HttpRetryEvents",
-	"tcp_retry_events": "TcpRetryEvents",
-}
-
 func propertyRouteGrpcRetryPolicy(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var ruleNetworkConfigurationProperties map[string]string = map[string]string{
-	"aws_vpc_configuration": "AwsVpcConfiguration",
-}
-
 func propertyRuleNetworkConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,24 +16,6 @@ import (
 
 const amazonMQBrokerType string = "AWS::AmazonMQ::Broker"
 
-var amazonMQBrokerProperties map[string]string = map[string]string{
-	"security_groups": "SecurityGroups",
-	"engine_version": "EngineVersion",
-	"configuration": "Configuration",
-	"maintenance_window_start_time": "MaintenanceWindowStartTime",
-	"host_instance_type": "HostInstanceType",
-	"auto_minor_version_upgrade": "AutoMinorVersionUpgrade",
-	"users": "Users",
-	"logs": "Logs",
-	"subnet_ids": "SubnetIds",
-	"broker_name": "BrokerName",
-	"deployment_mode": "DeploymentMode",
-	"engine_type": "EngineType",
-	"publicly_accessible": "PubliclyAccessible",
-	"encryption_options": "EncryptionOptions",
-	"tags": "Tags",
-}
-
 func ResourceAmazonMQBroker() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAmazonMQBrokerExists,
@@ -134,11 +116,11 @@ func resourceAmazonMQBrokerRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceAmazonMQBrokerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(amazonMQBrokerType, ResourceAmazonMQBroker(), data, amazonMQBrokerProperties, meta)
+	return plugin.ResourceCreate(amazonMQBrokerType, ResourceAmazonMQBroker(), data, meta)
 }
 
 func resourceAmazonMQBrokerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(amazonMQBrokerType, ResourceAmazonMQBroker(), data, amazonMQBrokerProperties, meta)
+	return plugin.ResourceUpdate(amazonMQBrokerType, ResourceAmazonMQBroker(), data, meta)
 }
 
 func resourceAmazonMQBrokerDelete(data *schema.ResourceData, meta interface{}) error {

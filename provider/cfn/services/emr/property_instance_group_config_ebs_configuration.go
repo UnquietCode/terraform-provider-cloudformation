@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var instanceGroupConfigEbsConfigurationProperties map[string]string = map[string]string{
-	"ebs_block_device_configs": "EbsBlockDeviceConfigs",
-	"ebs_optimized": "EbsOptimized",
-}
-
 func propertyInstanceGroupConfigEbsConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

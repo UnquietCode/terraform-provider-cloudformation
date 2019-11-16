@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var campaignSetDimensionProperties map[string]string = map[string]string{
-	"dimension_type": "DimensionType",
-	"values": "Values",
-}
-
 func propertyCampaignSetDimension(extras...string) *schema.Resource {
 	var count int64 = 0
 	

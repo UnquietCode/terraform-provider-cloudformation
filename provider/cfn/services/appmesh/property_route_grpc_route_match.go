@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var routeGrpcRouteMatchProperties map[string]string = map[string]string{
-	"service_name": "ServiceName",
-	"metadata": "Metadata",
-	"method_name": "MethodName",
-}
-
 func propertyRouteGrpcRouteMatch(extras...string) *schema.Resource {
 	var count int64 = 0
 	

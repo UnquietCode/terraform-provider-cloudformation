@@ -17,12 +17,6 @@ import (
 
 const sSMDocumentType string = "AWS::SSM::Document"
 
-var sSMDocumentProperties map[string]string = map[string]string{
-	"content": "Content",
-	"document_type": "DocumentType",
-	"tags": "Tags",
-}
-
 func ResourceSSMDocument() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSSMDocumentExists,
@@ -60,11 +54,11 @@ func resourceSSMDocumentRead(data *schema.ResourceData, meta interface{}) error 
 }
 
 func resourceSSMDocumentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(sSMDocumentType, ResourceSSMDocument(), data, sSMDocumentProperties, meta)
+	return plugin.ResourceCreate(sSMDocumentType, ResourceSSMDocument(), data, meta)
 }
 
 func resourceSSMDocumentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(sSMDocumentType, ResourceSSMDocument(), data, sSMDocumentProperties, meta)
+	return plugin.ResourceUpdate(sSMDocumentType, ResourceSSMDocument(), data, meta)
 }
 
 func resourceSSMDocumentDelete(data *schema.ResourceData, meta interface{}) error {

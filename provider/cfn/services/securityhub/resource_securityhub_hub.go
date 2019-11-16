@@ -16,10 +16,6 @@ import (
 
 const securityHubHubType string = "AWS::SecurityHub::Hub"
 
-var securityHubHubProperties map[string]string = map[string]string{
-	"tags": "Tags",
-}
-
 func ResourceSecurityHubHub() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSecurityHubHubExists,
@@ -52,11 +48,11 @@ func resourceSecurityHubHubRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceSecurityHubHubCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(securityHubHubType, ResourceSecurityHubHub(), data, securityHubHubProperties, meta)
+	return plugin.ResourceCreate(securityHubHubType, ResourceSecurityHubHub(), data, meta)
 }
 
 func resourceSecurityHubHubUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(securityHubHubType, ResourceSecurityHubHub(), data, securityHubHubProperties, meta)
+	return plugin.ResourceUpdate(securityHubHubType, ResourceSecurityHubHub(), data, meta)
 }
 
 func resourceSecurityHubHubDelete(data *schema.ResourceData, meta interface{}) error {

@@ -17,12 +17,6 @@ import (
 
 const sageMakerEndpointType string = "AWS::SageMaker::Endpoint"
 
-var sageMakerEndpointProperties map[string]string = map[string]string{
-	"endpoint_name": "EndpointName",
-	"endpoint_config_name": "EndpointConfigName",
-	"tags": "Tags",
-}
-
 func ResourceSageMakerEndpoint() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSageMakerEndpointExists,
@@ -60,11 +54,11 @@ func resourceSageMakerEndpointRead(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceSageMakerEndpointCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(sageMakerEndpointType, ResourceSageMakerEndpoint(), data, sageMakerEndpointProperties, meta)
+	return plugin.ResourceCreate(sageMakerEndpointType, ResourceSageMakerEndpoint(), data, meta)
 }
 
 func resourceSageMakerEndpointUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(sageMakerEndpointType, ResourceSageMakerEndpoint(), data, sageMakerEndpointProperties, meta)
+	return plugin.ResourceUpdate(sageMakerEndpointType, ResourceSageMakerEndpoint(), data, meta)
 }
 
 func resourceSageMakerEndpointDelete(data *schema.ResourceData, meta interface{}) error {

@@ -16,16 +16,6 @@ import (
 
 const codePipelinePipelineType string = "AWS::CodePipeline::Pipeline"
 
-var codePipelinePipelineProperties map[string]string = map[string]string{
-	"artifact_store": "ArtifactStore",
-	"artifact_stores": "ArtifactStores",
-	"disable_inbound_stage_transitions": "DisableInboundStageTransitions",
-	"name": "Name",
-	"restart_execution_on_update": "RestartExecutionOnUpdate",
-	"role_arn": "RoleArn",
-	"stages": "Stages",
-}
-
 func ResourceCodePipelinePipeline() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCodePipelinePipelineExists,
@@ -87,11 +77,11 @@ func resourceCodePipelinePipelineRead(data *schema.ResourceData, meta interface{
 }
 
 func resourceCodePipelinePipelineCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(codePipelinePipelineType, ResourceCodePipelinePipeline(), data, codePipelinePipelineProperties, meta)
+	return plugin.ResourceCreate(codePipelinePipelineType, ResourceCodePipelinePipeline(), data, meta)
 }
 
 func resourceCodePipelinePipelineUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(codePipelinePipelineType, ResourceCodePipelinePipeline(), data, codePipelinePipelineProperties, meta)
+	return plugin.ResourceUpdate(codePipelinePipelineType, ResourceCodePipelinePipeline(), data, meta)
 }
 
 func resourceCodePipelinePipelineDelete(data *schema.ResourceData, meta interface{}) error {

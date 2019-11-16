@@ -17,14 +17,6 @@ import (
 
 const docDBDBClusterParameterGroupType string = "AWS::DocDB::DBClusterParameterGroup"
 
-var docDBDBClusterParameterGroupProperties map[string]string = map[string]string{
-	"description": "Description",
-	"parameters": "Parameters",
-	"family": "Family",
-	"tags": "Tags",
-	"name": "Name",
-}
-
 func ResourceDocDBDBClusterParameterGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDocDBDBClusterParameterGroupExists,
@@ -70,11 +62,11 @@ func resourceDocDBDBClusterParameterGroupRead(data *schema.ResourceData, meta in
 }
 
 func resourceDocDBDBClusterParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(docDBDBClusterParameterGroupType, ResourceDocDBDBClusterParameterGroup(), data, docDBDBClusterParameterGroupProperties, meta)
+	return plugin.ResourceCreate(docDBDBClusterParameterGroupType, ResourceDocDBDBClusterParameterGroup(), data, meta)
 }
 
 func resourceDocDBDBClusterParameterGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(docDBDBClusterParameterGroupType, ResourceDocDBDBClusterParameterGroup(), data, docDBDBClusterParameterGroupProperties, meta)
+	return plugin.ResourceUpdate(docDBDBClusterParameterGroupType, ResourceDocDBDBClusterParameterGroup(), data, meta)
 }
 
 func resourceDocDBDBClusterParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {

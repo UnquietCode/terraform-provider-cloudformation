@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var networkAclEntryIcmpProperties map[string]string = map[string]string{
-	"code": "Code",
-	"type": "Type",
-}
-
 func propertyNetworkAclEntryIcmp(extras...string) *schema.Resource {
 	var count int64 = 0
 	

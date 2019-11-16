@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var scalingPolicyStepScalingPolicyConfigurationProperties map[string]string = map[string]string{
-	"adjustment_type": "AdjustmentType",
-	"cooldown": "Cooldown",
-	"metric_aggregation_type": "MetricAggregationType",
-	"min_adjustment_magnitude": "MinAdjustmentMagnitude",
-	"step_adjustments": "StepAdjustments",
-}
-
 func propertyScalingPolicyStepScalingPolicyConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketCorsRuleProperties map[string]string = map[string]string{
-	"allowed_headers": "AllowedHeaders",
-	"allowed_methods": "AllowedMethods",
-	"allowed_origins": "AllowedOrigins",
-	"exposed_headers": "ExposedHeaders",
-	"id": "Id",
-	"max_age": "MaxAge",
-}
-
 func propertyBucketCorsRule(extras...string) *schema.Resource {
 	var count int64 = 0
 	

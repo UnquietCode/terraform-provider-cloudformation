@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var loadBalancerAppCookieStickinessPolicyProperties map[string]string = map[string]string{
-	"cookie_name": "CookieName",
-	"policy_name": "PolicyName",
-}
-
 func propertyLoadBalancerAppCookieStickinessPolicy(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var eC2FleetTargetCapacitySpecificationRequestProperties map[string]string = map[string]string{
-	"default_target_capacity_type": "DefaultTargetCapacityType",
-	"total_target_capacity": "TotalTargetCapacity",
-	"on_demand_target_capacity": "OnDemandTargetCapacity",
-	"spot_target_capacity": "SpotTargetCapacity",
-}
-
 func propertyEC2FleetTargetCapacitySpecificationRequest(extras...string) *schema.Resource {
 	var count int64 = 0
 	

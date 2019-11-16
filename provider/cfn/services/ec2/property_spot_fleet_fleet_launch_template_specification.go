@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var spotFleetFleetLaunchTemplateSpecificationProperties map[string]string = map[string]string{
-	"launch_template_id": "LaunchTemplateId",
-	"launch_template_name": "LaunchTemplateName",
-	"version": "Version",
-}
-
 func propertySpotFleetFleetLaunchTemplateSpecification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

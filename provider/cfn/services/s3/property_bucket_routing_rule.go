@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketRoutingRuleProperties map[string]string = map[string]string{
-	"redirect_rule": "RedirectRule",
-	"routing_rule_condition": "RoutingRuleCondition",
-}
-
 func propertyBucketRoutingRule(extras...string) *schema.Resource {
 	var count int64 = 0
 	

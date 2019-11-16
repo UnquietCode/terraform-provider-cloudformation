@@ -16,11 +16,6 @@ import (
 
 const eMRSecurityConfigurationType string = "AWS::EMR::SecurityConfiguration"
 
-var eMRSecurityConfigurationProperties map[string]string = map[string]string{
-	"name": "Name",
-	"security_configuration": "SecurityConfiguration",
-}
-
 func ResourceEMRSecurityConfiguration() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEMRSecurityConfigurationExists,
@@ -57,11 +52,11 @@ func resourceEMRSecurityConfigurationRead(data *schema.ResourceData, meta interf
 }
 
 func resourceEMRSecurityConfigurationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eMRSecurityConfigurationType, ResourceEMRSecurityConfiguration(), data, eMRSecurityConfigurationProperties, meta)
+	return plugin.ResourceCreate(eMRSecurityConfigurationType, ResourceEMRSecurityConfiguration(), data, meta)
 }
 
 func resourceEMRSecurityConfigurationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eMRSecurityConfigurationType, ResourceEMRSecurityConfiguration(), data, eMRSecurityConfigurationProperties, meta)
+	return plugin.ResourceUpdate(eMRSecurityConfigurationType, ResourceEMRSecurityConfiguration(), data, meta)
 }
 
 func resourceEMRSecurityConfigurationDelete(data *schema.ResourceData, meta interface{}) error {

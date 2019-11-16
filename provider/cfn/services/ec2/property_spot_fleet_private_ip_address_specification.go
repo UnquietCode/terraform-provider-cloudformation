@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var spotFleetPrivateIpAddressSpecificationProperties map[string]string = map[string]string{
-	"primary": "Primary",
-	"private_ip_address": "PrivateIpAddress",
-}
-
 func propertySpotFleetPrivateIpAddressSpecification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

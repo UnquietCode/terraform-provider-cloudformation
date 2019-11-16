@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var memberNetworkFabricConfigurationProperties map[string]string = map[string]string{
-	"edition": "Edition",
-}
-
 func propertyMemberNetworkFabricConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

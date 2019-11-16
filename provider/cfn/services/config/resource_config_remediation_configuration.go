@@ -16,19 +16,6 @@ import (
 
 const configRemediationConfigurationType string = "AWS::Config::RemediationConfiguration"
 
-var configRemediationConfigurationProperties map[string]string = map[string]string{
-	"target_version": "TargetVersion",
-	"execution_controls": "ExecutionControls",
-	"parameters": "Parameters",
-	"target_type": "TargetType",
-	"config_rule_name": "ConfigRuleName",
-	"resource_type": "ResourceType",
-	"retry_attempt_seconds": "RetryAttemptSeconds",
-	"maximum_automatic_attempts": "MaximumAutomaticAttempts",
-	"target_id": "TargetId",
-	"automatic": "Automatic",
-}
-
 func ResourceConfigRemediationConfiguration() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceConfigRemediationConfigurationExists,
@@ -99,11 +86,11 @@ func resourceConfigRemediationConfigurationRead(data *schema.ResourceData, meta 
 }
 
 func resourceConfigRemediationConfigurationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(configRemediationConfigurationType, ResourceConfigRemediationConfiguration(), data, configRemediationConfigurationProperties, meta)
+	return plugin.ResourceCreate(configRemediationConfigurationType, ResourceConfigRemediationConfiguration(), data, meta)
 }
 
 func resourceConfigRemediationConfigurationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(configRemediationConfigurationType, ResourceConfigRemediationConfiguration(), data, configRemediationConfigurationProperties, meta)
+	return plugin.ResourceUpdate(configRemediationConfigurationType, ResourceConfigRemediationConfiguration(), data, meta)
 }
 
 func resourceConfigRemediationConfigurationDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var datasetTriggeringDatasetProperties map[string]string = map[string]string{
-	"dataset_name": "DatasetName",
-}
-
 func propertyDatasetTriggeringDataset(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -17,13 +17,6 @@ import (
 
 const neptuneDBSubnetGroupType string = "AWS::Neptune::DBSubnetGroup"
 
-var neptuneDBSubnetGroupProperties map[string]string = map[string]string{
-	"db_subnet_group_name": "DBSubnetGroupName",
-	"db_subnet_group_description": "DBSubnetGroupDescription",
-	"subnet_ids": "SubnetIds",
-	"tags": "Tags",
-}
-
 func ResourceNeptuneDBSubnetGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceNeptuneDBSubnetGroupExists,
@@ -66,11 +59,11 @@ func resourceNeptuneDBSubnetGroupRead(data *schema.ResourceData, meta interface{
 }
 
 func resourceNeptuneDBSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(neptuneDBSubnetGroupType, ResourceNeptuneDBSubnetGroup(), data, neptuneDBSubnetGroupProperties, meta)
+	return plugin.ResourceCreate(neptuneDBSubnetGroupType, ResourceNeptuneDBSubnetGroup(), data, meta)
 }
 
 func resourceNeptuneDBSubnetGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(neptuneDBSubnetGroupType, ResourceNeptuneDBSubnetGroup(), data, neptuneDBSubnetGroupProperties, meta)
+	return plugin.ResourceUpdate(neptuneDBSubnetGroupType, ResourceNeptuneDBSubnetGroup(), data, meta)
 }
 
 func resourceNeptuneDBSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {

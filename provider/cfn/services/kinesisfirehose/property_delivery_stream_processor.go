@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deliveryStreamProcessorProperties map[string]string = map[string]string{
-	"parameters": "Parameters",
-	"type": "Type",
-}
-
 func propertyDeliveryStreamProcessor(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var userPoolSmsConfigurationProperties map[string]string = map[string]string{
-	"external_id": "ExternalId",
-	"sns_caller_arn": "SnsCallerArn",
-}
-
 func propertyUserPoolSmsConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

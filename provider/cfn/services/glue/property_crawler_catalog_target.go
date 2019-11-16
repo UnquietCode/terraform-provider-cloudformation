@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var crawlerCatalogTargetProperties map[string]string = map[string]string{
-	"database_name": "DatabaseName",
-	"tables": "Tables",
-}
-
 func propertyCrawlerCatalogTarget(extras...string) *schema.Resource {
 	var count int64 = 0
 	

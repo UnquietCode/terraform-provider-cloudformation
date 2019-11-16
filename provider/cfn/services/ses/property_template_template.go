@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var templateTemplateProperties map[string]string = map[string]string{
-	"html_part": "HtmlPart",
-	"text_part": "TextPart",
-	"template_name": "TemplateName",
-	"subject_part": "SubjectPart",
-}
-
 func propertyTemplateTemplate(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,16 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var streamingDistributionStreamingDistributionConfigProperties map[string]string = map[string]string{
-	"logging": "Logging",
-	"comment": "Comment",
-	"price_class": "PriceClass",
-	"s3_origin": "S3Origin",
-	"enabled": "Enabled",
-	"aliases": "Aliases",
-	"trusted_signers": "TrustedSigners",
-}
-
 func propertyStreamingDistributionStreamingDistributionConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

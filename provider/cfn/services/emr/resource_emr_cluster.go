@@ -17,28 +17,6 @@ import (
 
 const eMRClusterType string = "AWS::EMR::Cluster"
 
-var eMRClusterProperties map[string]string = map[string]string{
-	"additional_info": "AdditionalInfo",
-	"applications": "Applications",
-	"auto_scaling_role": "AutoScalingRole",
-	"bootstrap_actions": "BootstrapActions",
-	"configurations": "Configurations",
-	"custom_ami_id": "CustomAmiId",
-	"ebs_root_volume_size": "EbsRootVolumeSize",
-	"instances": "Instances",
-	"job_flow_role": "JobFlowRole",
-	"kerberos_attributes": "KerberosAttributes",
-	"log_uri": "LogUri",
-	"name": "Name",
-	"release_label": "ReleaseLabel",
-	"scale_down_behavior": "ScaleDownBehavior",
-	"security_configuration": "SecurityConfiguration",
-	"service_role": "ServiceRole",
-	"steps": "Steps",
-	"tags": "Tags",
-	"visible_to_all_users": "VisibleToAllUsers",
-}
-
 func ResourceEMRCluster() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEMRClusterExists,
@@ -148,11 +126,11 @@ func resourceEMRClusterRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceEMRClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eMRClusterType, ResourceEMRCluster(), data, eMRClusterProperties, meta)
+	return plugin.ResourceCreate(eMRClusterType, ResourceEMRCluster(), data, meta)
 }
 
 func resourceEMRClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eMRClusterType, ResourceEMRCluster(), data, eMRClusterProperties, meta)
+	return plugin.ResourceUpdate(eMRClusterType, ResourceEMRCluster(), data, meta)
 }
 
 func resourceEMRClusterDelete(data *schema.ResourceData, meta interface{}) error {

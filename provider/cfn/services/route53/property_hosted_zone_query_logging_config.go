@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var hostedZoneQueryLoggingConfigProperties map[string]string = map[string]string{
-	"cloud_watch_logs_log_group_arn": "CloudWatchLogsLogGroupArn",
-}
-
 func propertyHostedZoneQueryLoggingConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

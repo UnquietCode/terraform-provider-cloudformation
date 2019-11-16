@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var userPolicyProperties map[string]string = map[string]string{
-	"policy_document": "PolicyDocument",
-	"policy_name": "PolicyName",
-}
-
 func propertyUserPolicy(extras...string) *schema.Resource {
 	var count int64 = 0
 	

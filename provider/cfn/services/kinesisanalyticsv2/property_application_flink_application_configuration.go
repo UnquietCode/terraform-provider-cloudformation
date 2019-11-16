@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationFlinkApplicationConfigurationProperties map[string]string = map[string]string{
-	"checkpoint_configuration": "CheckpointConfiguration",
-	"parallelism_configuration": "ParallelismConfiguration",
-	"monitoring_configuration": "MonitoringConfiguration",
-}
-
 func propertyApplicationFlinkApplicationConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,15 +16,6 @@ import (
 
 const pinpointEmailChannelType string = "AWS::Pinpoint::EmailChannel"
 
-var pinpointEmailChannelProperties map[string]string = map[string]string{
-	"configuration_set": "ConfigurationSet",
-	"from_address": "FromAddress",
-	"enabled": "Enabled",
-	"application_id": "ApplicationId",
-	"identity": "Identity",
-	"role_arn": "RoleArn",
-}
-
 func ResourcePinpointEmailChannel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointEmailChannelExists,
@@ -77,11 +68,11 @@ func resourcePinpointEmailChannelRead(data *schema.ResourceData, meta interface{
 }
 
 func resourcePinpointEmailChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(pinpointEmailChannelType, ResourcePinpointEmailChannel(), data, pinpointEmailChannelProperties, meta)
+	return plugin.ResourceCreate(pinpointEmailChannelType, ResourcePinpointEmailChannel(), data, meta)
 }
 
 func resourcePinpointEmailChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(pinpointEmailChannelType, ResourcePinpointEmailChannel(), data, pinpointEmailChannelProperties, meta)
+	return plugin.ResourceUpdate(pinpointEmailChannelType, ResourcePinpointEmailChannel(), data, meta)
 }
 
 func resourcePinpointEmailChannelDelete(data *schema.ResourceData, meta interface{}) error {

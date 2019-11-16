@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var functionDefinitionVersionRunAsProperties map[string]string = map[string]string{
-	"uid": "Uid",
-	"gid": "Gid",
-}
-
 func propertyFunctionDefinitionVersionRunAs(extras...string) *schema.Resource {
 	var count int64 = 0
 	

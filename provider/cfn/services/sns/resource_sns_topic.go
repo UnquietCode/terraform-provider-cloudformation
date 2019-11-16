@@ -16,13 +16,6 @@ import (
 
 const sNSTopicType string = "AWS::SNS::Topic"
 
-var sNSTopicProperties map[string]string = map[string]string{
-	"display_name": "DisplayName",
-	"kms_master_key_id": "KmsMasterKeyId",
-	"subscription": "Subscription",
-	"topic_name": "TopicName",
-}
-
 func ResourceSNSTopic() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSNSTopicExists,
@@ -68,11 +61,11 @@ func resourceSNSTopicRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceSNSTopicCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(sNSTopicType, ResourceSNSTopic(), data, sNSTopicProperties, meta)
+	return plugin.ResourceCreate(sNSTopicType, ResourceSNSTopic(), data, meta)
 }
 
 func resourceSNSTopicUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(sNSTopicType, ResourceSNSTopic(), data, sNSTopicProperties, meta)
+	return plugin.ResourceUpdate(sNSTopicType, ResourceSNSTopic(), data, meta)
 }
 
 func resourceSNSTopicDelete(data *schema.ResourceData, meta interface{}) error {

@@ -16,14 +16,6 @@ import (
 
 const serviceCatalogLaunchNotificationConstraintType string = "AWS::ServiceCatalog::LaunchNotificationConstraint"
 
-var serviceCatalogLaunchNotificationConstraintProperties map[string]string = map[string]string{
-	"description": "Description",
-	"notification_arns": "NotificationArns",
-	"accept_language": "AcceptLanguage",
-	"portfolio_id": "PortfolioId",
-	"product_id": "ProductId",
-}
-
 func ResourceServiceCatalogLaunchNotificationConstraint() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogLaunchNotificationConstraintExists,
@@ -73,11 +65,11 @@ func resourceServiceCatalogLaunchNotificationConstraintRead(data *schema.Resourc
 }
 
 func resourceServiceCatalogLaunchNotificationConstraintCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(serviceCatalogLaunchNotificationConstraintType, ResourceServiceCatalogLaunchNotificationConstraint(), data, serviceCatalogLaunchNotificationConstraintProperties, meta)
+	return plugin.ResourceCreate(serviceCatalogLaunchNotificationConstraintType, ResourceServiceCatalogLaunchNotificationConstraint(), data, meta)
 }
 
 func resourceServiceCatalogLaunchNotificationConstraintUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(serviceCatalogLaunchNotificationConstraintType, ResourceServiceCatalogLaunchNotificationConstraint(), data, serviceCatalogLaunchNotificationConstraintProperties, meta)
+	return plugin.ResourceUpdate(serviceCatalogLaunchNotificationConstraintType, ResourceServiceCatalogLaunchNotificationConstraint(), data, meta)
 }
 
 func resourceServiceCatalogLaunchNotificationConstraintDelete(data *schema.ResourceData, meta interface{}) error {

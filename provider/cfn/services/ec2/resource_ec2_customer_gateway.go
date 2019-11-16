@@ -17,13 +17,6 @@ import (
 
 const eC2CustomerGatewayType string = "AWS::EC2::CustomerGateway"
 
-var eC2CustomerGatewayProperties map[string]string = map[string]string{
-	"bgp_asn": "BgpAsn",
-	"ip_address": "IpAddress",
-	"tags": "Tags",
-	"type": "Type",
-}
-
 func ResourceEC2CustomerGateway() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2CustomerGatewayExists,
@@ -65,11 +58,11 @@ func resourceEC2CustomerGatewayRead(data *schema.ResourceData, meta interface{})
 }
 
 func resourceEC2CustomerGatewayCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2CustomerGatewayType, ResourceEC2CustomerGateway(), data, eC2CustomerGatewayProperties, meta)
+	return plugin.ResourceCreate(eC2CustomerGatewayType, ResourceEC2CustomerGateway(), data, meta)
 }
 
 func resourceEC2CustomerGatewayUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2CustomerGatewayType, ResourceEC2CustomerGateway(), data, eC2CustomerGatewayProperties, meta)
+	return plugin.ResourceUpdate(eC2CustomerGatewayType, ResourceEC2CustomerGateway(), data, meta)
 }
 
 func resourceEC2CustomerGatewayDelete(data *schema.ResourceData, meta interface{}) error {

@@ -16,13 +16,6 @@ import (
 
 const configOrganizationConfigRuleType string = "AWS::Config::OrganizationConfigRule"
 
-var configOrganizationConfigRuleProperties map[string]string = map[string]string{
-	"organization_managed_rule_metadata": "OrganizationManagedRuleMetadata",
-	"organization_config_rule_name": "OrganizationConfigRuleName",
-	"organization_custom_rule_metadata": "OrganizationCustomRuleMetadata",
-	"excluded_accounts": "ExcludedAccounts",
-}
-
 func ResourceConfigOrganizationConfigRule() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceConfigOrganizationConfigRuleExists,
@@ -72,11 +65,11 @@ func resourceConfigOrganizationConfigRuleRead(data *schema.ResourceData, meta in
 }
 
 func resourceConfigOrganizationConfigRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(configOrganizationConfigRuleType, ResourceConfigOrganizationConfigRule(), data, configOrganizationConfigRuleProperties, meta)
+	return plugin.ResourceCreate(configOrganizationConfigRuleType, ResourceConfigOrganizationConfigRule(), data, meta)
 }
 
 func resourceConfigOrganizationConfigRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(configOrganizationConfigRuleType, ResourceConfigOrganizationConfigRule(), data, configOrganizationConfigRuleProperties, meta)
+	return plugin.ResourceUpdate(configOrganizationConfigRuleType, ResourceConfigOrganizationConfigRule(), data, meta)
 }
 
 func resourceConfigOrganizationConfigRuleDelete(data *schema.ResourceData, meta interface{}) error {

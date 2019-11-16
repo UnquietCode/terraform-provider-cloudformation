@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationCodeContentProperties map[string]string = map[string]string{
-	"zip_file_content": "ZipFileContent",
-	"s3_content_location": "S3ContentLocation",
-	"text_content": "TextContent",
-}
-
 func propertyApplicationCodeContent(extras...string) *schema.Resource {
 	var count int64 = 0
 	

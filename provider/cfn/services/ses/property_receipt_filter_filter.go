@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var receiptFilterFilterProperties map[string]string = map[string]string{
-	"ip_filter": "IpFilter",
-	"name": "Name",
-}
-
 func propertyReceiptFilterFilter(extras...string) *schema.Resource {
 	var count int64 = 0
 	

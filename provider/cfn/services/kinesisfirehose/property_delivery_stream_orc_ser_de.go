@@ -14,19 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deliveryStreamOrcSerDeProperties map[string]string = map[string]string{
-	"block_size_bytes": "BlockSizeBytes",
-	"bloom_filter_columns": "BloomFilterColumns",
-	"bloom_filter_false_positive_probability": "BloomFilterFalsePositiveProbability",
-	"compression": "Compression",
-	"dictionary_key_threshold": "DictionaryKeyThreshold",
-	"enable_padding": "EnablePadding",
-	"format_version": "FormatVersion",
-	"padding_tolerance": "PaddingTolerance",
-	"row_index_stride": "RowIndexStride",
-	"stripe_size_bytes": "StripeSizeBytes",
-}
-
 func propertyDeliveryStreamOrcSerDe(extras...string) *schema.Resource {
 	var count int64 = 0
 	

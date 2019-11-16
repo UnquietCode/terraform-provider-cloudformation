@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var recordSetAliasTargetProperties map[string]string = map[string]string{
-	"dns_name": "DNSName",
-	"evaluate_target_health": "EvaluateTargetHealth",
-	"hosted_zone_id": "HostedZoneId",
-}
-
 func propertyRecordSetAliasTarget(extras...string) *schema.Resource {
 	var count int64 = 0
 	

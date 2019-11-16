@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var receiptRuleStopActionProperties map[string]string = map[string]string{
-	"scope": "Scope",
-	"topic_arn": "TopicArn",
-}
-
 func propertyReceiptRuleStopAction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

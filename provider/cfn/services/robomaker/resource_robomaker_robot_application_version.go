@@ -16,11 +16,6 @@ import (
 
 const roboMakerRobotApplicationVersionType string = "AWS::RoboMaker::RobotApplicationVersion"
 
-var roboMakerRobotApplicationVersionProperties map[string]string = map[string]string{
-	"current_revision_id": "CurrentRevisionId",
-	"application": "Application",
-}
-
 func ResourceRoboMakerRobotApplicationVersion() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRoboMakerRobotApplicationVersionExists,
@@ -57,11 +52,11 @@ func resourceRoboMakerRobotApplicationVersionRead(data *schema.ResourceData, met
 }
 
 func resourceRoboMakerRobotApplicationVersionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(roboMakerRobotApplicationVersionType, ResourceRoboMakerRobotApplicationVersion(), data, roboMakerRobotApplicationVersionProperties, meta)
+	return plugin.ResourceCreate(roboMakerRobotApplicationVersionType, ResourceRoboMakerRobotApplicationVersion(), data, meta)
 }
 
 func resourceRoboMakerRobotApplicationVersionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(roboMakerRobotApplicationVersionType, ResourceRoboMakerRobotApplicationVersion(), data, roboMakerRobotApplicationVersionProperties, meta)
+	return plugin.ResourceUpdate(roboMakerRobotApplicationVersionType, ResourceRoboMakerRobotApplicationVersion(), data, meta)
 }
 
 func resourceRoboMakerRobotApplicationVersionDelete(data *schema.ResourceData, meta interface{}) error {

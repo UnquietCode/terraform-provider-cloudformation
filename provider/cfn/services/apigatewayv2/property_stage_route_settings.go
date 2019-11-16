@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var stageRouteSettingsProperties map[string]string = map[string]string{
-	"logging_level": "LoggingLevel",
-	"data_trace_enabled": "DataTraceEnabled",
-	"throttling_burst_limit": "ThrottlingBurstLimit",
-	"detailed_metrics_enabled": "DetailedMetricsEnabled",
-	"throttling_rate_limit": "ThrottlingRateLimit",
-}
-
 func propertyStageRouteSettings(extras...string) *schema.Resource {
 	var count int64 = 0
 	

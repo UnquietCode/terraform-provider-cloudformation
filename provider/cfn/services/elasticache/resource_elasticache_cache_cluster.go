@@ -17,30 +17,6 @@ import (
 
 const elastiCacheCacheClusterType string = "AWS::ElastiCache::CacheCluster"
 
-var elastiCacheCacheClusterProperties map[string]string = map[string]string{
-	"az_mode": "AZMode",
-	"auto_minor_version_upgrade": "AutoMinorVersionUpgrade",
-	"cache_node_type": "CacheNodeType",
-	"cache_parameter_group_name": "CacheParameterGroupName",
-	"cache_security_group_names": "CacheSecurityGroupNames",
-	"cache_subnet_group_name": "CacheSubnetGroupName",
-	"cluster_name": "ClusterName",
-	"engine": "Engine",
-	"engine_version": "EngineVersion",
-	"notification_topic_arn": "NotificationTopicArn",
-	"num_cache_nodes": "NumCacheNodes",
-	"port": "Port",
-	"preferred_availability_zone": "PreferredAvailabilityZone",
-	"preferred_availability_zones": "PreferredAvailabilityZones",
-	"preferred_maintenance_window": "PreferredMaintenanceWindow",
-	"snapshot_arns": "SnapshotArns",
-	"snapshot_name": "SnapshotName",
-	"snapshot_retention_limit": "SnapshotRetentionLimit",
-	"snapshot_window": "SnapshotWindow",
-	"tags": "Tags",
-	"vpc_security_group_ids": "VpcSecurityGroupIds",
-}
-
 func ResourceElastiCacheCacheCluster() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElastiCacheCacheClusterExists,
@@ -156,11 +132,11 @@ func resourceElastiCacheCacheClusterRead(data *schema.ResourceData, meta interfa
 }
 
 func resourceElastiCacheCacheClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(elastiCacheCacheClusterType, ResourceElastiCacheCacheCluster(), data, elastiCacheCacheClusterProperties, meta)
+	return plugin.ResourceCreate(elastiCacheCacheClusterType, ResourceElastiCacheCacheCluster(), data, meta)
 }
 
 func resourceElastiCacheCacheClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(elastiCacheCacheClusterType, ResourceElastiCacheCacheCluster(), data, elastiCacheCacheClusterProperties, meta)
+	return plugin.ResourceUpdate(elastiCacheCacheClusterType, ResourceElastiCacheCacheCluster(), data, meta)
 }
 
 func resourceElastiCacheCacheClusterDelete(data *schema.ResourceData, meta interface{}) error {

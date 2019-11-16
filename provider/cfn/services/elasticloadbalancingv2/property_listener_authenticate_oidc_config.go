@@ -14,20 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var listenerAuthenticateOidcConfigProperties map[string]string = map[string]string{
-	"authentication_request_extra_params": "AuthenticationRequestExtraParams",
-	"authorization_endpoint": "AuthorizationEndpoint",
-	"client_id": "ClientId",
-	"client_secret": "ClientSecret",
-	"issuer": "Issuer",
-	"on_unauthenticated_request": "OnUnauthenticatedRequest",
-	"scope": "Scope",
-	"session_cookie_name": "SessionCookieName",
-	"session_timeout": "SessionTimeout",
-	"token_endpoint": "TokenEndpoint",
-	"user_info_endpoint": "UserInfoEndpoint",
-}
-
 func propertyListenerAuthenticateOidcConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

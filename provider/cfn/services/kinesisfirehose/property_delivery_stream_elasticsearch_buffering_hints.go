@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deliveryStreamElasticsearchBufferingHintsProperties map[string]string = map[string]string{
-	"interval_in_seconds": "IntervalInSeconds",
-	"size_in_m_bs": "SizeInMBs",
-}
-
 func propertyDeliveryStreamElasticsearchBufferingHints(extras...string) *schema.Resource {
 	var count int64 = 0
 	

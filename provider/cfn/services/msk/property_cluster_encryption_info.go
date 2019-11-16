@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var clusterEncryptionInfoProperties map[string]string = map[string]string{
-	"encryption_at_rest": "EncryptionAtRest",
-	"encryption_in_transit": "EncryptionInTransit",
-}
-
 func propertyClusterEncryptionInfo(extras...string) *schema.Resource {
 	var count int64 = 0
 	

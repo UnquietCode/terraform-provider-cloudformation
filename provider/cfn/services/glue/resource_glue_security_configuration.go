@@ -16,11 +16,6 @@ import (
 
 const glueSecurityConfigurationType string = "AWS::Glue::SecurityConfiguration"
 
-var glueSecurityConfigurationProperties map[string]string = map[string]string{
-	"encryption_configuration": "EncryptionConfiguration",
-	"name": "Name",
-}
-
 func ResourceGlueSecurityConfiguration() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGlueSecurityConfigurationExists,
@@ -59,11 +54,11 @@ func resourceGlueSecurityConfigurationRead(data *schema.ResourceData, meta inter
 }
 
 func resourceGlueSecurityConfigurationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(glueSecurityConfigurationType, ResourceGlueSecurityConfiguration(), data, glueSecurityConfigurationProperties, meta)
+	return plugin.ResourceCreate(glueSecurityConfigurationType, ResourceGlueSecurityConfiguration(), data, meta)
 }
 
 func resourceGlueSecurityConfigurationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(glueSecurityConfigurationType, ResourceGlueSecurityConfiguration(), data, glueSecurityConfigurationProperties, meta)
+	return plugin.ResourceUpdate(glueSecurityConfigurationType, ResourceGlueSecurityConfiguration(), data, meta)
 }
 
 func resourceGlueSecurityConfigurationDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var virtualRouterVirtualRouterSpecProperties map[string]string = map[string]string{
-	"listeners": "Listeners",
-}
-
 func propertyVirtualRouterVirtualRouterSpec(extras...string) *schema.Resource {
 	var count int64 = 0
 	

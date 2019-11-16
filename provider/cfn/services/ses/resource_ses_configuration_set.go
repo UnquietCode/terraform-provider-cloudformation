@@ -16,10 +16,6 @@ import (
 
 const sESConfigurationSetType string = "AWS::SES::ConfigurationSet"
 
-var sESConfigurationSetProperties map[string]string = map[string]string{
-	"name": "Name",
-}
-
 func ResourceSESConfigurationSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSESConfigurationSetExists,
@@ -52,11 +48,11 @@ func resourceSESConfigurationSetRead(data *schema.ResourceData, meta interface{}
 }
 
 func resourceSESConfigurationSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(sESConfigurationSetType, ResourceSESConfigurationSet(), data, sESConfigurationSetProperties, meta)
+	return plugin.ResourceCreate(sESConfigurationSetType, ResourceSESConfigurationSet(), data, meta)
 }
 
 func resourceSESConfigurationSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(sESConfigurationSetType, ResourceSESConfigurationSet(), data, sESConfigurationSetProperties, meta)
+	return plugin.ResourceUpdate(sESConfigurationSetType, ResourceSESConfigurationSet(), data, meta)
 }
 
 func resourceSESConfigurationSetDelete(data *schema.ResourceData, meta interface{}) error {

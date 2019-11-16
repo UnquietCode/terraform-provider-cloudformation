@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var scalingPolicyTargetTrackingConfigurationProperties map[string]string = map[string]string{
-	"customized_metric_specification": "CustomizedMetricSpecification",
-	"disable_scale_in": "DisableScaleIn",
-	"predefined_metric_specification": "PredefinedMetricSpecification",
-	"target_value": "TargetValue",
-}
-
 func propertyScalingPolicyTargetTrackingConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

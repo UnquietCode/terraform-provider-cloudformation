@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var clusterInstanceTypeConfigProperties map[string]string = map[string]string{
-	"bid_price": "BidPrice",
-	"bid_price_as_percentage_of_on_demand_price": "BidPriceAsPercentageOfOnDemandPrice",
-	"configurations": "Configurations",
-	"ebs_configuration": "EbsConfiguration",
-	"instance_type": "InstanceType",
-	"weighted_capacity": "WeightedCapacity",
-}
-
 func propertyClusterInstanceTypeConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

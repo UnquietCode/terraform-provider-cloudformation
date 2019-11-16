@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var datasetDatasetContentDeliveryRuleDestinationProperties map[string]string = map[string]string{
-	"iot_events_destination_configuration": "IotEventsDestinationConfiguration",
-	"s3_destination_configuration": "S3DestinationConfiguration",
-}
-
 func propertyDatasetDatasetContentDeliveryRuleDestination(extras...string) *schema.Resource {
 	var count int64 = 0
 	

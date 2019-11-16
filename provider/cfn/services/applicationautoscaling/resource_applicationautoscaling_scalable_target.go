@@ -16,17 +16,6 @@ import (
 
 const applicationAutoScalingScalableTargetType string = "AWS::ApplicationAutoScaling::ScalableTarget"
 
-var applicationAutoScalingScalableTargetProperties map[string]string = map[string]string{
-	"max_capacity": "MaxCapacity",
-	"min_capacity": "MinCapacity",
-	"resource_id": "ResourceId",
-	"role_arn": "RoleARN",
-	"scalable_dimension": "ScalableDimension",
-	"scheduled_actions": "ScheduledActions",
-	"service_namespace": "ServiceNamespace",
-	"suspended_state": "SuspendedState",
-}
-
 func ResourceApplicationAutoScalingScalableTarget() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApplicationAutoScalingScalableTargetExists,
@@ -90,11 +79,11 @@ func resourceApplicationAutoScalingScalableTargetRead(data *schema.ResourceData,
 }
 
 func resourceApplicationAutoScalingScalableTargetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(applicationAutoScalingScalableTargetType, ResourceApplicationAutoScalingScalableTarget(), data, applicationAutoScalingScalableTargetProperties, meta)
+	return plugin.ResourceCreate(applicationAutoScalingScalableTargetType, ResourceApplicationAutoScalingScalableTarget(), data, meta)
 }
 
 func resourceApplicationAutoScalingScalableTargetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(applicationAutoScalingScalableTargetType, ResourceApplicationAutoScalingScalableTarget(), data, applicationAutoScalingScalableTargetProperties, meta)
+	return plugin.ResourceUpdate(applicationAutoScalingScalableTargetType, ResourceApplicationAutoScalingScalableTarget(), data, meta)
 }
 
 func resourceApplicationAutoScalingScalableTargetDelete(data *schema.ResourceData, meta interface{}) error {

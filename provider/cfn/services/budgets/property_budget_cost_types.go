@@ -14,20 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var budgetCostTypesProperties map[string]string = map[string]string{
-	"include_support": "IncludeSupport",
-	"include_other_subscription": "IncludeOtherSubscription",
-	"include_tax": "IncludeTax",
-	"include_subscription": "IncludeSubscription",
-	"use_blended": "UseBlended",
-	"include_upfront": "IncludeUpfront",
-	"include_discount": "IncludeDiscount",
-	"include_credit": "IncludeCredit",
-	"include_recurring": "IncludeRecurring",
-	"use_amortized": "UseAmortized",
-	"include_refund": "IncludeRefund",
-}
-
 func propertyBudgetCostTypes(extras...string) *schema.Resource {
 	var count int64 = 0
 	

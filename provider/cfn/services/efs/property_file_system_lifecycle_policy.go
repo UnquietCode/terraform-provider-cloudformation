@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var fileSystemLifecyclePolicyProperties map[string]string = map[string]string{
-	"transition_to_ia": "TransitionToIA",
-}
-
 func propertyFileSystemLifecyclePolicy(extras...string) *schema.Resource {
 	var count int64 = 0
 	

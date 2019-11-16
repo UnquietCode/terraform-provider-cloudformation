@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var taskDefinitionRepositoryCredentialsProperties map[string]string = map[string]string{
-	"credentials_parameter": "CredentialsParameter",
-}
-
 func propertyTaskDefinitionRepositoryCredentials(extras...string) *schema.Resource {
 	var count int64 = 0
 	

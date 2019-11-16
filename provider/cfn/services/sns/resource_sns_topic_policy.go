@@ -16,11 +16,6 @@ import (
 
 const sNSTopicPolicyType string = "AWS::SNS::TopicPolicy"
 
-var sNSTopicPolicyProperties map[string]string = map[string]string{
-	"policy_document": "PolicyDocument",
-	"topics": "Topics",
-}
-
 func ResourceSNSTopicPolicy() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSNSTopicPolicyExists,
@@ -58,11 +53,11 @@ func resourceSNSTopicPolicyRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceSNSTopicPolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(sNSTopicPolicyType, ResourceSNSTopicPolicy(), data, sNSTopicPolicyProperties, meta)
+	return plugin.ResourceCreate(sNSTopicPolicyType, ResourceSNSTopicPolicy(), data, meta)
 }
 
 func resourceSNSTopicPolicyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(sNSTopicPolicyType, ResourceSNSTopicPolicy(), data, sNSTopicPolicyProperties, meta)
+	return plugin.ResourceUpdate(sNSTopicPolicyType, ResourceSNSTopicPolicy(), data, meta)
 }
 
 func resourceSNSTopicPolicyDelete(data *schema.ResourceData, meta interface{}) error {

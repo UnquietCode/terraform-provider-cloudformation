@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var clusterSpotProvisioningSpecificationProperties map[string]string = map[string]string{
-	"block_duration_minutes": "BlockDurationMinutes",
-	"timeout_action": "TimeoutAction",
-	"timeout_duration_minutes": "TimeoutDurationMinutes",
-}
-
 func propertyClusterSpotProvisioningSpecification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

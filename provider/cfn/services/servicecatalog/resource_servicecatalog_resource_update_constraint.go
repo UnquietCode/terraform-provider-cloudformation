@@ -16,14 +16,6 @@ import (
 
 const serviceCatalogResourceUpdateConstraintType string = "AWS::ServiceCatalog::ResourceUpdateConstraint"
 
-var serviceCatalogResourceUpdateConstraintProperties map[string]string = map[string]string{
-	"description": "Description",
-	"accept_language": "AcceptLanguage",
-	"tag_update_on_provisioned_product": "TagUpdateOnProvisionedProduct",
-	"portfolio_id": "PortfolioId",
-	"product_id": "ProductId",
-}
-
 func ResourceServiceCatalogResourceUpdateConstraint() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogResourceUpdateConstraintExists,
@@ -72,11 +64,11 @@ func resourceServiceCatalogResourceUpdateConstraintRead(data *schema.ResourceDat
 }
 
 func resourceServiceCatalogResourceUpdateConstraintCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(serviceCatalogResourceUpdateConstraintType, ResourceServiceCatalogResourceUpdateConstraint(), data, serviceCatalogResourceUpdateConstraintProperties, meta)
+	return plugin.ResourceCreate(serviceCatalogResourceUpdateConstraintType, ResourceServiceCatalogResourceUpdateConstraint(), data, meta)
 }
 
 func resourceServiceCatalogResourceUpdateConstraintUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(serviceCatalogResourceUpdateConstraintType, ResourceServiceCatalogResourceUpdateConstraint(), data, serviceCatalogResourceUpdateConstraintProperties, meta)
+	return plugin.ResourceUpdate(serviceCatalogResourceUpdateConstraintType, ResourceServiceCatalogResourceUpdateConstraint(), data, meta)
 }
 
 func resourceServiceCatalogResourceUpdateConstraintDelete(data *schema.ResourceData, meta interface{}) error {

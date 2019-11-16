@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var clientVpnEndpointDirectoryServiceAuthenticationRequestProperties map[string]string = map[string]string{
-	"directory_id": "DirectoryId",
-}
-
 func propertyClientVpnEndpointDirectoryServiceAuthenticationRequest(extras...string) *schema.Resource {
 	var count int64 = 0
 	

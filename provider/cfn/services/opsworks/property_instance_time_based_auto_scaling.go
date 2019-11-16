@@ -14,16 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var instanceTimeBasedAutoScalingProperties map[string]string = map[string]string{
-	"friday": "Friday",
-	"monday": "Monday",
-	"saturday": "Saturday",
-	"sunday": "Sunday",
-	"thursday": "Thursday",
-	"tuesday": "Tuesday",
-	"wednesday": "Wednesday",
-}
-
 func propertyInstanceTimeBasedAutoScaling(extras...string) *schema.Resource {
 	var count int64 = 0
 	

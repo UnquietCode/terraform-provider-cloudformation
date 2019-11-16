@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var inputInputDestinationRequestProperties map[string]string = map[string]string{
-	"stream_name": "StreamName",
-}
-
 func propertyInputInputDestinationRequest(extras...string) *schema.Resource {
 	var count int64 = 0
 	

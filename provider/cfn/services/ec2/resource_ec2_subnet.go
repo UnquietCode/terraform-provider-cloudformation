@@ -17,16 +17,6 @@ import (
 
 const eC2SubnetType string = "AWS::EC2::Subnet"
 
-var eC2SubnetProperties map[string]string = map[string]string{
-	"assign_ipv6_address_on_creation": "AssignIpv6AddressOnCreation",
-	"availability_zone": "AvailabilityZone",
-	"cidr_block": "CidrBlock",
-	"ipv6_cidr_block": "Ipv6CidrBlock",
-	"map_public_ip_on_launch": "MapPublicIpOnLaunch",
-	"tags": "Tags",
-	"vpc_id": "VpcId",
-}
-
 func ResourceEC2Subnet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2SubnetExists,
@@ -80,11 +70,11 @@ func resourceEC2SubnetRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceEC2SubnetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2SubnetType, ResourceEC2Subnet(), data, eC2SubnetProperties, meta)
+	return plugin.ResourceCreate(eC2SubnetType, ResourceEC2Subnet(), data, meta)
 }
 
 func resourceEC2SubnetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2SubnetType, ResourceEC2Subnet(), data, eC2SubnetProperties, meta)
+	return plugin.ResourceUpdate(eC2SubnetType, ResourceEC2Subnet(), data, meta)
 }
 
 func resourceEC2SubnetDelete(data *schema.ResourceData, meta interface{}) error {

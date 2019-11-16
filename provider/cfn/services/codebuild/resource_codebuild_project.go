@@ -17,28 +17,6 @@ import (
 
 const codeBuildProjectType string = "AWS::CodeBuild::Project"
 
-var codeBuildProjectProperties map[string]string = map[string]string{
-	"description": "Description",
-	"vpc_config": "VpcConfig",
-	"secondary_sources": "SecondarySources",
-	"encryption_key": "EncryptionKey",
-	"source_version": "SourceVersion",
-	"triggers": "Triggers",
-	"secondary_artifacts": "SecondaryArtifacts",
-	"source": "Source",
-	"name": "Name",
-	"artifacts": "Artifacts",
-	"badge_enabled": "BadgeEnabled",
-	"logs_config": "LogsConfig",
-	"service_role": "ServiceRole",
-	"queued_timeout_in_minutes": "QueuedTimeoutInMinutes",
-	"environment": "Environment",
-	"secondary_source_versions": "SecondarySourceVersions",
-	"tags": "Tags",
-	"timeout_in_minutes": "TimeoutInMinutes",
-	"cache": "Cache",
-}
-
 func ResourceCodeBuildProject() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCodeBuildProjectExists,
@@ -157,11 +135,11 @@ func resourceCodeBuildProjectRead(data *schema.ResourceData, meta interface{}) e
 }
 
 func resourceCodeBuildProjectCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(codeBuildProjectType, ResourceCodeBuildProject(), data, codeBuildProjectProperties, meta)
+	return plugin.ResourceCreate(codeBuildProjectType, ResourceCodeBuildProject(), data, meta)
 }
 
 func resourceCodeBuildProjectUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(codeBuildProjectType, ResourceCodeBuildProject(), data, codeBuildProjectProperties, meta)
+	return plugin.ResourceUpdate(codeBuildProjectType, ResourceCodeBuildProject(), data, meta)
 }
 
 func resourceCodeBuildProjectDelete(data *schema.ResourceData, meta interface{}) error {

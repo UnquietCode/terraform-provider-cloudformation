@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var resolverRuleTargetAddressProperties map[string]string = map[string]string{
-	"ip": "Ip",
-	"port": "Port",
-}
-
 func propertyResolverRuleTargetAddress(extras...string) *schema.Resource {
 	var count int64 = 0
 	

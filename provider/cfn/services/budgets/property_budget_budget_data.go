@@ -14,17 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var budgetBudgetDataProperties map[string]string = map[string]string{
-	"budget_limit": "BudgetLimit",
-	"time_period": "TimePeriod",
-	"time_unit": "TimeUnit",
-	"planned_budget_limits": "PlannedBudgetLimits",
-	"cost_filters": "CostFilters",
-	"budget_name": "BudgetName",
-	"cost_types": "CostTypes",
-	"budget_type": "BudgetType",
-}
-
 func propertyBudgetBudgetData(extras...string) *schema.Resource {
 	var count int64 = 0
 	

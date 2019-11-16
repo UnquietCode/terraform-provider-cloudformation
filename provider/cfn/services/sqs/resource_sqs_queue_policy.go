@@ -16,11 +16,6 @@ import (
 
 const sQSQueuePolicyType string = "AWS::SQS::QueuePolicy"
 
-var sQSQueuePolicyProperties map[string]string = map[string]string{
-	"policy_document": "PolicyDocument",
-	"queues": "Queues",
-}
-
 func ResourceSQSQueuePolicy() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSQSQueuePolicyExists,
@@ -58,11 +53,11 @@ func resourceSQSQueuePolicyRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceSQSQueuePolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(sQSQueuePolicyType, ResourceSQSQueuePolicy(), data, sQSQueuePolicyProperties, meta)
+	return plugin.ResourceCreate(sQSQueuePolicyType, ResourceSQSQueuePolicy(), data, meta)
 }
 
 func resourceSQSQueuePolicyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(sQSQueuePolicyType, ResourceSQSQueuePolicy(), data, sQSQueuePolicyProperties, meta)
+	return plugin.ResourceUpdate(sQSQueuePolicyType, ResourceSQSQueuePolicy(), data, meta)
 }
 
 func resourceSQSQueuePolicyDelete(data *schema.ResourceData, meta interface{}) error {

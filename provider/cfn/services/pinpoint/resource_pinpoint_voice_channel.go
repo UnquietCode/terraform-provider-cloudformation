@@ -16,11 +16,6 @@ import (
 
 const pinpointVoiceChannelType string = "AWS::Pinpoint::VoiceChannel"
 
-var pinpointVoiceChannelProperties map[string]string = map[string]string{
-	"enabled": "Enabled",
-	"application_id": "ApplicationId",
-}
-
 func ResourcePinpointVoiceChannel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointVoiceChannelExists,
@@ -57,11 +52,11 @@ func resourcePinpointVoiceChannelRead(data *schema.ResourceData, meta interface{
 }
 
 func resourcePinpointVoiceChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(pinpointVoiceChannelType, ResourcePinpointVoiceChannel(), data, pinpointVoiceChannelProperties, meta)
+	return plugin.ResourceCreate(pinpointVoiceChannelType, ResourcePinpointVoiceChannel(), data, meta)
 }
 
 func resourcePinpointVoiceChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(pinpointVoiceChannelType, ResourcePinpointVoiceChannel(), data, pinpointVoiceChannelProperties, meta)
+	return plugin.ResourceUpdate(pinpointVoiceChannelType, ResourcePinpointVoiceChannel(), data, meta)
 }
 
 func resourcePinpointVoiceChannelDelete(data *schema.ResourceData, meta interface{}) error {

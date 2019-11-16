@@ -14,16 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var groupGroupVersionProperties map[string]string = map[string]string{
-	"logger_definition_version_arn": "LoggerDefinitionVersionArn",
-	"device_definition_version_arn": "DeviceDefinitionVersionArn",
-	"function_definition_version_arn": "FunctionDefinitionVersionArn",
-	"core_definition_version_arn": "CoreDefinitionVersionArn",
-	"resource_definition_version_arn": "ResourceDefinitionVersionArn",
-	"connector_definition_version_arn": "ConnectorDefinitionVersionArn",
-	"subscription_definition_version_arn": "SubscriptionDefinitionVersionArn",
-}
-
 func propertyGroupGroupVersion(extras...string) *schema.Resource {
 	var count int64 = 0
 	

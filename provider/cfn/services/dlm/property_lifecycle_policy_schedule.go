@@ -15,16 +15,6 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 )
 
-var lifecyclePolicyScheduleProperties map[string]string = map[string]string{
-	"tags_to_add": "TagsToAdd",
-	"create_rule": "CreateRule",
-	"variable_tags": "VariableTags",
-	"fast_restore_rule": "FastRestoreRule",
-	"retain_rule": "RetainRule",
-	"name": "Name",
-	"copy_tags": "CopyTags",
-}
-
 func propertyLifecyclePolicySchedule(extras...string) *schema.Resource {
 	var count int64 = 0
 	

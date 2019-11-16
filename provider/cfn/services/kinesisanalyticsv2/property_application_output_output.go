@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationOutputOutputProperties map[string]string = map[string]string{
-	"destination_schema": "DestinationSchema",
-	"lambda_output": "LambdaOutput",
-	"kinesis_firehose_output": "KinesisFirehoseOutput",
-	"kinesis_streams_output": "KinesisStreamsOutput",
-	"name": "Name",
-}
-
 func propertyApplicationOutputOutput(extras...string) *schema.Resource {
 	var count int64 = 0
 	

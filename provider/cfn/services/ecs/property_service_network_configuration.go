@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var serviceNetworkConfigurationProperties map[string]string = map[string]string{
-	"awsvpc_configuration": "AwsvpcConfiguration",
-}
-
 func propertyServiceNetworkConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var launchTemplateIamInstanceProfileProperties map[string]string = map[string]string{
-	"arn": "Arn",
-	"name": "Name",
-}
-
 func propertyLaunchTemplateIamInstanceProfile(extras...string) *schema.Resource {
 	var count int64 = 0
 	

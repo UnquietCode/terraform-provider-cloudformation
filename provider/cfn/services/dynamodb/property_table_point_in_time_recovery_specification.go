@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var tablePointInTimeRecoverySpecificationProperties map[string]string = map[string]string{
-	"point_in_time_recovery_enabled": "PointInTimeRecoveryEnabled",
-}
-
 func propertyTablePointInTimeRecoverySpecification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

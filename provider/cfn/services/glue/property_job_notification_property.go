@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var jobNotificationPropertyProperties map[string]string = map[string]string{
-	"notify_delay_after": "NotifyDelayAfter",
-}
-
 func propertyJobNotificationProperty(extras...string) *schema.Resource {
 	var count int64 = 0
 	

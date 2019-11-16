@@ -16,11 +16,6 @@ import (
 
 const eC2SubnetRouteTableAssociationType string = "AWS::EC2::SubnetRouteTableAssociation"
 
-var eC2SubnetRouteTableAssociationProperties map[string]string = map[string]string{
-	"route_table_id": "RouteTableId",
-	"subnet_id": "SubnetId",
-}
-
 func ResourceEC2SubnetRouteTableAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2SubnetRouteTableAssociationExists,
@@ -57,11 +52,11 @@ func resourceEC2SubnetRouteTableAssociationRead(data *schema.ResourceData, meta 
 }
 
 func resourceEC2SubnetRouteTableAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2SubnetRouteTableAssociationType, ResourceEC2SubnetRouteTableAssociation(), data, eC2SubnetRouteTableAssociationProperties, meta)
+	return plugin.ResourceCreate(eC2SubnetRouteTableAssociationType, ResourceEC2SubnetRouteTableAssociation(), data, meta)
 }
 
 func resourceEC2SubnetRouteTableAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2SubnetRouteTableAssociationType, ResourceEC2SubnetRouteTableAssociation(), data, eC2SubnetRouteTableAssociationProperties, meta)
+	return plugin.ResourceUpdate(eC2SubnetRouteTableAssociationType, ResourceEC2SubnetRouteTableAssociation(), data, meta)
 }
 
 func resourceEC2SubnetRouteTableAssociationDelete(data *schema.ResourceData, meta interface{}) error {

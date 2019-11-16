@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketRedirectRuleProperties map[string]string = map[string]string{
-	"host_name": "HostName",
-	"http_redirect_code": "HttpRedirectCode",
-	"protocol": "Protocol",
-	"replace_key_prefix_with": "ReplaceKeyPrefixWith",
-	"replace_key_with": "ReplaceKeyWith",
-}
-
 func propertyBucketRedirectRule(extras...string) *schema.Resource {
 	var count int64 = 0
 	

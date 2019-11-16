@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var graphQLApiAdditionalAuthenticationProviderProperties map[string]string = map[string]string{
-	"open_id_connect_config": "OpenIDConnectConfig",
-	"user_pool_config": "UserPoolConfig",
-	"authentication_type": "AuthenticationType",
-}
-
 func propertyGraphQLApiAdditionalAuthenticationProvider(extras...string) *schema.Resource {
 	var count int64 = 0
 	

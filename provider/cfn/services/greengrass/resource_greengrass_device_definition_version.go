@@ -16,11 +16,6 @@ import (
 
 const greengrassDeviceDefinitionVersionType string = "AWS::Greengrass::DeviceDefinitionVersion"
 
-var greengrassDeviceDefinitionVersionProperties map[string]string = map[string]string{
-	"device_definition_id": "DeviceDefinitionId",
-	"devices": "Devices",
-}
-
 func ResourceGreengrassDeviceDefinitionVersion() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGreengrassDeviceDefinitionVersionExists,
@@ -58,11 +53,11 @@ func resourceGreengrassDeviceDefinitionVersionRead(data *schema.ResourceData, me
 }
 
 func resourceGreengrassDeviceDefinitionVersionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(greengrassDeviceDefinitionVersionType, ResourceGreengrassDeviceDefinitionVersion(), data, greengrassDeviceDefinitionVersionProperties, meta)
+	return plugin.ResourceCreate(greengrassDeviceDefinitionVersionType, ResourceGreengrassDeviceDefinitionVersion(), data, meta)
 }
 
 func resourceGreengrassDeviceDefinitionVersionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(greengrassDeviceDefinitionVersionType, ResourceGreengrassDeviceDefinitionVersion(), data, greengrassDeviceDefinitionVersionProperties, meta)
+	return plugin.ResourceUpdate(greengrassDeviceDefinitionVersionType, ResourceGreengrassDeviceDefinitionVersion(), data, meta)
 }
 
 func resourceGreengrassDeviceDefinitionVersionDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var segmentBehaviorProperties map[string]string = map[string]string{
-	"recency": "Recency",
-}
-
 func propertySegmentBehavior(extras...string) *schema.Resource {
 	var count int64 = 0
 	

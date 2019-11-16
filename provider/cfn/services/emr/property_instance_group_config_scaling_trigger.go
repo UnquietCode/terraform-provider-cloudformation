@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var instanceGroupConfigScalingTriggerProperties map[string]string = map[string]string{
-	"cloud_watch_alarm_definition": "CloudWatchAlarmDefinition",
-}
-
 func propertyInstanceGroupConfigScalingTrigger(extras...string) *schema.Resource {
 	var count int64 = 0
 	

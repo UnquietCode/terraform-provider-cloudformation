@@ -16,12 +16,6 @@ import (
 
 const iAMInstanceProfileType string = "AWS::IAM::InstanceProfile"
 
-var iAMInstanceProfileProperties map[string]string = map[string]string{
-	"instance_profile_name": "InstanceProfileName",
-	"path": "Path",
-	"roles": "Roles",
-}
-
 func ResourceIAMInstanceProfile() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIAMInstanceProfileExists,
@@ -63,11 +57,11 @@ func resourceIAMInstanceProfileRead(data *schema.ResourceData, meta interface{})
 }
 
 func resourceIAMInstanceProfileCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(iAMInstanceProfileType, ResourceIAMInstanceProfile(), data, iAMInstanceProfileProperties, meta)
+	return plugin.ResourceCreate(iAMInstanceProfileType, ResourceIAMInstanceProfile(), data, meta)
 }
 
 func resourceIAMInstanceProfileUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(iAMInstanceProfileType, ResourceIAMInstanceProfile(), data, iAMInstanceProfileProperties, meta)
+	return plugin.ResourceUpdate(iAMInstanceProfileType, ResourceIAMInstanceProfile(), data, meta)
 }
 
 func resourceIAMInstanceProfileDelete(data *schema.ResourceData, meta interface{}) error {

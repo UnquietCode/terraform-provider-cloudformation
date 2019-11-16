@@ -17,18 +17,6 @@ import (
 
 const eC2VolumeType string = "AWS::EC2::Volume"
 
-var eC2VolumeProperties map[string]string = map[string]string{
-	"auto_enable_io": "AutoEnableIO",
-	"availability_zone": "AvailabilityZone",
-	"encrypted": "Encrypted",
-	"iops": "Iops",
-	"kms_key_id": "KmsKeyId",
-	"size": "Size",
-	"snapshot_id": "SnapshotId",
-	"tags": "Tags",
-	"volume_type": "VolumeType",
-}
-
 func ResourceEC2Volume() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VolumeExists,
@@ -90,11 +78,11 @@ func resourceEC2VolumeRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceEC2VolumeCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2VolumeType, ResourceEC2Volume(), data, eC2VolumeProperties, meta)
+	return plugin.ResourceCreate(eC2VolumeType, ResourceEC2Volume(), data, meta)
 }
 
 func resourceEC2VolumeUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2VolumeType, ResourceEC2Volume(), data, eC2VolumeProperties, meta)
+	return plugin.ResourceUpdate(eC2VolumeType, ResourceEC2Volume(), data, meta)
 }
 
 func resourceEC2VolumeDelete(data *schema.ResourceData, meta interface{}) error {

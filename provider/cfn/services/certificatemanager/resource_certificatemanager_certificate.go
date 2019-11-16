@@ -17,14 +17,6 @@ import (
 
 const certificateManagerCertificateType string = "AWS::CertificateManager::Certificate"
 
-var certificateManagerCertificateProperties map[string]string = map[string]string{
-	"domain_name": "DomainName",
-	"domain_validation_options": "DomainValidationOptions",
-	"subject_alternative_names": "SubjectAlternativeNames",
-	"tags": "Tags",
-	"validation_method": "ValidationMethod",
-}
-
 func ResourceCertificateManagerCertificate() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCertificateManagerCertificateExists,
@@ -73,11 +65,11 @@ func resourceCertificateManagerCertificateRead(data *schema.ResourceData, meta i
 }
 
 func resourceCertificateManagerCertificateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(certificateManagerCertificateType, ResourceCertificateManagerCertificate(), data, certificateManagerCertificateProperties, meta)
+	return plugin.ResourceCreate(certificateManagerCertificateType, ResourceCertificateManagerCertificate(), data, meta)
 }
 
 func resourceCertificateManagerCertificateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(certificateManagerCertificateType, ResourceCertificateManagerCertificate(), data, certificateManagerCertificateProperties, meta)
+	return plugin.ResourceUpdate(certificateManagerCertificateType, ResourceCertificateManagerCertificate(), data, meta)
 }
 
 func resourceCertificateManagerCertificateDelete(data *schema.ResourceData, meta interface{}) error {

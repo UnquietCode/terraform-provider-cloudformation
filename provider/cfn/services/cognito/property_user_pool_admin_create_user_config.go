@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var userPoolAdminCreateUserConfigProperties map[string]string = map[string]string{
-	"invite_message_template": "InviteMessageTemplate",
-	"unused_account_validity_days": "UnusedAccountValidityDays",
-	"allow_admin_create_user_only": "AllowAdminCreateUserOnly",
-}
-
 func propertyUserPoolAdminCreateUserConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

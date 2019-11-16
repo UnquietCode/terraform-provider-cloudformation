@@ -17,15 +17,6 @@ import (
 
 const route53ResolverResolverRuleType string = "AWS::Route53Resolver::ResolverRule"
 
-var route53ResolverResolverRuleProperties map[string]string = map[string]string{
-	"resolver_endpoint_id": "ResolverEndpointId",
-	"domain_name": "DomainName",
-	"rule_type": "RuleType",
-	"target_ips": "TargetIps",
-	"tags": "Tags",
-	"name": "Name",
-}
-
 func ResourceRoute53ResolverResolverRule() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRoute53ResolverResolverRuleExists,
@@ -76,11 +67,11 @@ func resourceRoute53ResolverResolverRuleRead(data *schema.ResourceData, meta int
 }
 
 func resourceRoute53ResolverResolverRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(route53ResolverResolverRuleType, ResourceRoute53ResolverResolverRule(), data, route53ResolverResolverRuleProperties, meta)
+	return plugin.ResourceCreate(route53ResolverResolverRuleType, ResourceRoute53ResolverResolverRule(), data, meta)
 }
 
 func resourceRoute53ResolverResolverRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(route53ResolverResolverRuleType, ResourceRoute53ResolverResolverRule(), data, route53ResolverResolverRuleProperties, meta)
+	return plugin.ResourceUpdate(route53ResolverResolverRuleType, ResourceRoute53ResolverResolverRule(), data, meta)
 }
 
 func resourceRoute53ResolverResolverRuleDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,24 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var jobDefinitionContainerPropertiesProperties map[string]string = map[string]string{
-	"user": "User",
-	"memory": "Memory",
-	"privileged": "Privileged",
-	"linux_parameters": "LinuxParameters",
-	"job_role_arn": "JobRoleArn",
-	"readonly_root_filesystem": "ReadonlyRootFilesystem",
-	"vcpus": "Vcpus",
-	"image": "Image",
-	"resource_requirements": "ResourceRequirements",
-	"mount_points": "MountPoints",
-	"volumes": "Volumes",
-	"command": "Command",
-	"environment": "Environment",
-	"ulimits": "Ulimits",
-	"instance_type": "InstanceType",
-}
-
 func propertyJobDefinitionContainerProperties(extras...string) *schema.Resource {
 	var count int64 = 0
 	

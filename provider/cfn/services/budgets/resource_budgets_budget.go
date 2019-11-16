@@ -16,11 +16,6 @@ import (
 
 const budgetsBudgetType string = "AWS::Budgets::Budget"
 
-var budgetsBudgetProperties map[string]string = map[string]string{
-	"notifications_with_subscribers": "NotificationsWithSubscribers",
-	"budget": "Budget",
-}
-
 func ResourceBudgetsBudget() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceBudgetsBudgetExists,
@@ -60,11 +55,11 @@ func resourceBudgetsBudgetRead(data *schema.ResourceData, meta interface{}) erro
 }
 
 func resourceBudgetsBudgetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(budgetsBudgetType, ResourceBudgetsBudget(), data, budgetsBudgetProperties, meta)
+	return plugin.ResourceCreate(budgetsBudgetType, ResourceBudgetsBudget(), data, meta)
 }
 
 func resourceBudgetsBudgetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(budgetsBudgetType, ResourceBudgetsBudget(), data, budgetsBudgetProperties, meta)
+	return plugin.ResourceUpdate(budgetsBudgetType, ResourceBudgetsBudget(), data, meta)
 }
 
 func resourceBudgetsBudgetDelete(data *schema.ResourceData, meta interface{}) error {

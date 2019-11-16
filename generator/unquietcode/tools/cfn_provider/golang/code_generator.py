@@ -185,7 +185,7 @@ def generate_resource_model(*, cfn_version, imports, resource):
 	)
 	
 	type_const = f"{resource_name[0].lower()}{resource_name[1:]}Type"
-	property_map_name, property_map = _property_lookup(resource_name, attribute_structs)
+	# property_map_name, property_map = _property_lookup(resource_name, attribute_structs)
 	
 	declarations = [
         ConstantExpression(
@@ -195,7 +195,7 @@ def generate_resource_model(*, cfn_version, imports, resource):
         ),
         BlankLines(count=1),
         
-        property_map,
+        # property_map,
 		
 		GoFunction(
 			name=f"Resource{resource_name}",
@@ -230,7 +230,7 @@ def generate_resource_model(*, cfn_version, imports, resource):
 				GoParameter(name="meta", type="interface{}"),
 			],
 			return_types=["error"],
-			body=[f'return plugin.ResourceCreate({type_const}, Resource{resource_name}(), data, {property_map_name}, meta)'],
+			body=[f'return plugin.ResourceCreate({type_const}, Resource{resource_name}(), data, meta)'],
 		),
 		GoFunction(
 			name=f"resource{resource_name}Update",
@@ -239,7 +239,7 @@ def generate_resource_model(*, cfn_version, imports, resource):
 				GoParameter(name="meta", type="interface{}"),
 			],
 			return_types=["error"],
-			body=[f'return plugin.ResourceUpdate({type_const}, Resource{resource_name}(), data, {property_map_name}, meta)'],
+			body=[f'return plugin.ResourceUpdate({type_const}, Resource{resource_name}(), data, meta)'],
 		),
 		GoFunction(
 			name=f"resource{resource_name}Delete",
@@ -317,10 +317,10 @@ def generate_property_model(*, cfn_version, package_name, property_name, attribu
 		max_recursion=MAX_PROPERTY_RECURSION,
 	))
 	
-	property_map_name, property_map = _property_lookup(property_name, attribute_structs)
+	# property_map_name, property_map = _property_lookup(property_name, attribute_structs)
 	
 	declarations = [
-		property_map,
+		# property_map,
 		
 		GoFunction(
 			name=function_name,

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketNoncurrentVersionTransitionProperties map[string]string = map[string]string{
-	"storage_class": "StorageClass",
-	"transition_in_days": "TransitionInDays",
-}
-
 func propertyBucketNoncurrentVersionTransition(extras...string) *schema.Resource {
 	var count int64 = 0
 	

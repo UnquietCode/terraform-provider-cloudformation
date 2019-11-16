@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var directoryConfigServiceAccountCredentialsProperties map[string]string = map[string]string{
-	"account_name": "AccountName",
-	"account_password": "AccountPassword",
-}
-
 func propertyDirectoryConfigServiceAccountCredentials(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -15,28 +15,6 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 )
 
-var deploymentStageDescriptionProperties map[string]string = map[string]string{
-	"access_log_setting": "AccessLogSetting",
-	"cache_cluster_enabled": "CacheClusterEnabled",
-	"cache_cluster_size": "CacheClusterSize",
-	"cache_data_encrypted": "CacheDataEncrypted",
-	"cache_ttl_in_seconds": "CacheTtlInSeconds",
-	"caching_enabled": "CachingEnabled",
-	"canary_setting": "CanarySetting",
-	"client_certificate_id": "ClientCertificateId",
-	"data_trace_enabled": "DataTraceEnabled",
-	"description": "Description",
-	"documentation_version": "DocumentationVersion",
-	"logging_level": "LoggingLevel",
-	"method_settings": "MethodSettings",
-	"metrics_enabled": "MetricsEnabled",
-	"tags": "Tags",
-	"throttling_burst_limit": "ThrottlingBurstLimit",
-	"throttling_rate_limit": "ThrottlingRateLimit",
-	"tracing_enabled": "TracingEnabled",
-	"variables": "Variables",
-}
-
 func propertyDeploymentStageDescription(extras...string) *schema.Resource {
 	var count int64 = 0
 	

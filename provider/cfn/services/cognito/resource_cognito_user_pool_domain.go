@@ -16,12 +16,6 @@ import (
 
 const cognitoUserPoolDomainType string = "AWS::Cognito::UserPoolDomain"
 
-var cognitoUserPoolDomainProperties map[string]string = map[string]string{
-	"user_pool_id": "UserPoolId",
-	"custom_domain_config": "CustomDomainConfig",
-	"domain": "Domain",
-}
-
 func ResourceCognitoUserPoolDomain() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCognitoUserPoolDomainExists,
@@ -64,11 +58,11 @@ func resourceCognitoUserPoolDomainRead(data *schema.ResourceData, meta interface
 }
 
 func resourceCognitoUserPoolDomainCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(cognitoUserPoolDomainType, ResourceCognitoUserPoolDomain(), data, cognitoUserPoolDomainProperties, meta)
+	return plugin.ResourceCreate(cognitoUserPoolDomainType, ResourceCognitoUserPoolDomain(), data, meta)
 }
 
 func resourceCognitoUserPoolDomainUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(cognitoUserPoolDomainType, ResourceCognitoUserPoolDomain(), data, cognitoUserPoolDomainProperties, meta)
+	return plugin.ResourceUpdate(cognitoUserPoolDomainType, ResourceCognitoUserPoolDomain(), data, meta)
 }
 
 func resourceCognitoUserPoolDomainDelete(data *schema.ResourceData, meta interface{}) error {

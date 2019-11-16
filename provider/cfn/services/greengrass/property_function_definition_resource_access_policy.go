@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var functionDefinitionResourceAccessPolicyProperties map[string]string = map[string]string{
-	"resource_id": "ResourceId",
-	"permission": "Permission",
-}
-
 func propertyFunctionDefinitionResourceAccessPolicy(extras...string) *schema.Resource {
 	var count int64 = 0
 	

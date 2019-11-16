@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var userPoolRiskConfigurationAttachmentCompromisedCredentialsActionsTypeProperties map[string]string = map[string]string{
-	"event_action": "EventAction",
-}
-
 func propertyUserPoolRiskConfigurationAttachmentCompromisedCredentialsActionsType(extras...string) *schema.Resource {
 	var count int64 = 0
 	

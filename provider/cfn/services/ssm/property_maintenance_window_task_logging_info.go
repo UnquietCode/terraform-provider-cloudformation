@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var maintenanceWindowTaskLoggingInfoProperties map[string]string = map[string]string{
-	"s3_bucket": "S3Bucket",
-	"region": "Region",
-	"s3_prefix": "S3Prefix",
-}
-
 func propertyMaintenanceWindowTaskLoggingInfo(extras...string) *schema.Resource {
 	var count int64 = 0
 	

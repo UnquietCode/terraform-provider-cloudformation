@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var distributionLambdaFunctionAssociationProperties map[string]string = map[string]string{
-	"event_type": "EventType",
-	"lambda_function_arn": "LambdaFunctionARN",
-}
-
 func propertyDistributionLambdaFunctionAssociation(extras...string) *schema.Resource {
 	var count int64 = 0
 	

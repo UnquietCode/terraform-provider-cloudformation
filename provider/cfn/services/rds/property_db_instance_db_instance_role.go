@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var dBInstanceDBInstanceRoleProperties map[string]string = map[string]string{
-	"feature_name": "FeatureName",
-	"role_arn": "RoleArn",
-	"status": "Status",
-}
-
 func propertyDBInstanceDBInstanceRole(extras...string) *schema.Resource {
 	var count int64 = 0
 	

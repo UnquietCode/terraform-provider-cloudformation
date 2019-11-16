@@ -16,10 +16,6 @@ import (
 
 const eC2SpotFleetType string = "AWS::EC2::SpotFleet"
 
-var eC2SpotFleetProperties map[string]string = map[string]string{
-	"spot_fleet_request_config_data": "SpotFleetRequestConfigData",
-}
-
 func ResourceEC2SpotFleet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2SpotFleetExists,
@@ -54,11 +50,11 @@ func resourceEC2SpotFleetRead(data *schema.ResourceData, meta interface{}) error
 }
 
 func resourceEC2SpotFleetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2SpotFleetType, ResourceEC2SpotFleet(), data, eC2SpotFleetProperties, meta)
+	return plugin.ResourceCreate(eC2SpotFleetType, ResourceEC2SpotFleet(), data, meta)
 }
 
 func resourceEC2SpotFleetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2SpotFleetType, ResourceEC2SpotFleet(), data, eC2SpotFleetProperties, meta)
+	return plugin.ResourceUpdate(eC2SpotFleetType, ResourceEC2SpotFleet(), data, meta)
 }
 
 func resourceEC2SpotFleetDelete(data *schema.ResourceData, meta interface{}) error {

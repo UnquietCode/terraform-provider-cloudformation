@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var scalingPolicyMetricDimensionProperties map[string]string = map[string]string{
-	"name": "Name",
-	"value": "Value",
-}
-
 func propertyScalingPolicyMetricDimension(extras...string) *schema.Resource {
 	var count int64 = 0
 	

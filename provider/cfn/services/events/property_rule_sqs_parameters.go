@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var ruleSqsParametersProperties map[string]string = map[string]string{
-	"message_group_id": "MessageGroupId",
-}
-
 func propertyRuleSqsParameters(extras...string) *schema.Resource {
 	var count int64 = 0
 	

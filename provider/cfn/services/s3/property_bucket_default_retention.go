@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketDefaultRetentionProperties map[string]string = map[string]string{
-	"days": "Days",
-	"mode": "Mode",
-	"years": "Years",
-}
-
 func propertyBucketDefaultRetention(extras...string) *schema.Resource {
 	var count int64 = 0
 	

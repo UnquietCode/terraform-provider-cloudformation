@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var hostedZoneHostedZoneConfigProperties map[string]string = map[string]string{
-	"comment": "Comment",
-}
-
 func propertyHostedZoneHostedZoneConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

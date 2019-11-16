@@ -16,13 +16,6 @@ import (
 
 const apiGatewayV2ApiMappingType string = "AWS::ApiGatewayV2::ApiMapping"
 
-var apiGatewayV2ApiMappingProperties map[string]string = map[string]string{
-	"domain_name": "DomainName",
-	"stage": "Stage",
-	"api_mapping_key": "ApiMappingKey",
-	"api_id": "ApiId",
-}
-
 func ResourceApiGatewayV2ApiMapping() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayV2ApiMappingExists,
@@ -67,11 +60,11 @@ func resourceApiGatewayV2ApiMappingRead(data *schema.ResourceData, meta interfac
 }
 
 func resourceApiGatewayV2ApiMappingCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayV2ApiMappingType, ResourceApiGatewayV2ApiMapping(), data, apiGatewayV2ApiMappingProperties, meta)
+	return plugin.ResourceCreate(apiGatewayV2ApiMappingType, ResourceApiGatewayV2ApiMapping(), data, meta)
 }
 
 func resourceApiGatewayV2ApiMappingUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayV2ApiMappingType, ResourceApiGatewayV2ApiMapping(), data, apiGatewayV2ApiMappingProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayV2ApiMappingType, ResourceApiGatewayV2ApiMapping(), data, meta)
 }
 
 func resourceApiGatewayV2ApiMappingDelete(data *schema.ResourceData, meta interface{}) error {

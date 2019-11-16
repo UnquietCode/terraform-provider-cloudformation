@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var environmentOptionSettingProperties map[string]string = map[string]string{
-	"namespace": "Namespace",
-	"option_name": "OptionName",
-	"resource_name": "ResourceName",
-	"value": "Value",
-}
-
 func propertyEnvironmentOptionSetting(extras...string) *schema.Resource {
 	var count int64 = 0
 	

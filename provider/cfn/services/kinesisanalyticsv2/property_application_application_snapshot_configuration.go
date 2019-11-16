@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationApplicationSnapshotConfigurationProperties map[string]string = map[string]string{
-	"snapshots_enabled": "SnapshotsEnabled",
-}
-
 func propertyApplicationApplicationSnapshotConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

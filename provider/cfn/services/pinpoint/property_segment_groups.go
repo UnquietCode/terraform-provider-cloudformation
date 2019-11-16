@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var segmentGroupsProperties map[string]string = map[string]string{
-	"type": "Type",
-	"source_type": "SourceType",
-	"dimensions": "Dimensions",
-	"source_segments": "SourceSegments",
-}
-
 func propertySegmentGroups(extras...string) *schema.Resource {
 	var count int64 = 0
 	

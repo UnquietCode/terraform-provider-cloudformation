@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var resourceDefinitionVersionGroupOwnerSettingProperties map[string]string = map[string]string{
-	"auto_add_group_owner": "AutoAddGroupOwner",
-	"group_owner": "GroupOwner",
-}
-
 func propertyResourceDefinitionVersionGroupOwnerSetting(extras...string) *schema.Resource {
 	var count int64 = 0
 	

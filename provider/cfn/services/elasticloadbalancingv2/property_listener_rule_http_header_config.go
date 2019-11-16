@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var listenerRuleHttpHeaderConfigProperties map[string]string = map[string]string{
-	"http_header_name": "HttpHeaderName",
-	"values": "Values",
-}
-
 func propertyListenerRuleHttpHeaderConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var inputMediaConnectFlowRequestProperties map[string]string = map[string]string{
-	"flow_arn": "FlowArn",
-}
-
 func propertyInputMediaConnectFlowRequest(extras...string) *schema.Resource {
 	var count int64 = 0
 	

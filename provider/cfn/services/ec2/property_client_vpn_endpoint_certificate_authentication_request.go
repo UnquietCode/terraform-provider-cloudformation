@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var clientVpnEndpointCertificateAuthenticationRequestProperties map[string]string = map[string]string{
-	"client_root_certificate_chain_arn": "ClientRootCertificateChainArn",
-}
-
 func propertyClientVpnEndpointCertificateAuthenticationRequest(extras...string) *schema.Resource {
 	var count int64 = 0
 	

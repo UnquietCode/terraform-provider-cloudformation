@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var brokerEncryptionOptionsProperties map[string]string = map[string]string{
-	"kms_key_id": "KmsKeyId",
-	"use_aws_owned_key": "UseAwsOwnedKey",
-}
-
 func propertyBrokerEncryptionOptions(extras...string) *schema.Resource {
 	var count int64 = 0
 	

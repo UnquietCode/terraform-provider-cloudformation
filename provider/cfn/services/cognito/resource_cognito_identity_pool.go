@@ -16,19 +16,6 @@ import (
 
 const cognitoIdentityPoolType string = "AWS::Cognito::IdentityPool"
 
-var cognitoIdentityPoolProperties map[string]string = map[string]string{
-	"push_sync": "PushSync",
-	"cognito_identity_providers": "CognitoIdentityProviders",
-	"cognito_events": "CognitoEvents",
-	"developer_provider_name": "DeveloperProviderName",
-	"cognito_streams": "CognitoStreams",
-	"identity_pool_name": "IdentityPoolName",
-	"allow_unauthenticated_identities": "AllowUnauthenticatedIdentities",
-	"supported_login_providers": "SupportedLoginProviders",
-	"saml_provider_ar_ns": "SamlProviderARNs",
-	"open_id_connect_provider_ar_ns": "OpenIdConnectProviderARNs",
-}
-
 func ResourceCognitoIdentityPool() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCognitoIdentityPoolExists,
@@ -104,11 +91,11 @@ func resourceCognitoIdentityPoolRead(data *schema.ResourceData, meta interface{}
 }
 
 func resourceCognitoIdentityPoolCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(cognitoIdentityPoolType, ResourceCognitoIdentityPool(), data, cognitoIdentityPoolProperties, meta)
+	return plugin.ResourceCreate(cognitoIdentityPoolType, ResourceCognitoIdentityPool(), data, meta)
 }
 
 func resourceCognitoIdentityPoolUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(cognitoIdentityPoolType, ResourceCognitoIdentityPool(), data, cognitoIdentityPoolProperties, meta)
+	return plugin.ResourceUpdate(cognitoIdentityPoolType, ResourceCognitoIdentityPool(), data, meta)
 }
 
 func resourceCognitoIdentityPoolDelete(data *schema.ResourceData, meta interface{}) error {

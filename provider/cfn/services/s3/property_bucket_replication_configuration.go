@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketReplicationConfigurationProperties map[string]string = map[string]string{
-	"role": "Role",
-	"rules": "Rules",
-}
-
 func propertyBucketReplicationConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,13 +16,6 @@ import (
 
 const wAFWebACLType string = "AWS::WAF::WebACL"
 
-var wAFWebACLProperties map[string]string = map[string]string{
-	"default_action": "DefaultAction",
-	"metric_name": "MetricName",
-	"name": "Name",
-	"rules": "Rules",
-}
-
 func ResourceWAFWebACL() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFWebACLExists,
@@ -70,11 +63,11 @@ func resourceWAFWebACLRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceWAFWebACLCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(wAFWebACLType, ResourceWAFWebACL(), data, wAFWebACLProperties, meta)
+	return plugin.ResourceCreate(wAFWebACLType, ResourceWAFWebACL(), data, meta)
 }
 
 func resourceWAFWebACLUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(wAFWebACLType, ResourceWAFWebACL(), data, wAFWebACLProperties, meta)
+	return plugin.ResourceUpdate(wAFWebACLType, ResourceWAFWebACL(), data, meta)
 }
 
 func resourceWAFWebACLDelete(data *schema.ResourceData, meta interface{}) error {

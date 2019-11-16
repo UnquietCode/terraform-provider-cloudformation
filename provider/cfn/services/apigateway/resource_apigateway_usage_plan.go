@@ -16,14 +16,6 @@ import (
 
 const apiGatewayUsagePlanType string = "AWS::ApiGateway::UsagePlan"
 
-var apiGatewayUsagePlanProperties map[string]string = map[string]string{
-	"api_stages": "ApiStages",
-	"description": "Description",
-	"quota": "Quota",
-	"throttle": "Throttle",
-	"usage_plan_name": "UsagePlanName",
-}
-
 func ResourceApiGatewayUsagePlan() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayUsagePlanExists,
@@ -77,11 +69,11 @@ func resourceApiGatewayUsagePlanRead(data *schema.ResourceData, meta interface{}
 }
 
 func resourceApiGatewayUsagePlanCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayUsagePlanType, ResourceApiGatewayUsagePlan(), data, apiGatewayUsagePlanProperties, meta)
+	return plugin.ResourceCreate(apiGatewayUsagePlanType, ResourceApiGatewayUsagePlan(), data, meta)
 }
 
 func resourceApiGatewayUsagePlanUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayUsagePlanType, ResourceApiGatewayUsagePlan(), data, apiGatewayUsagePlanProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayUsagePlanType, ResourceApiGatewayUsagePlan(), data, meta)
 }
 
 func resourceApiGatewayUsagePlanDelete(data *schema.ResourceData, meta interface{}) error {

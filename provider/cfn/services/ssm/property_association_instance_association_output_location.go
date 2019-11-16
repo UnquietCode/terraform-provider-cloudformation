@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var associationInstanceAssociationOutputLocationProperties map[string]string = map[string]string{
-	"s3_location": "S3Location",
-}
-
 func propertyAssociationInstanceAssociationOutputLocation(extras...string) *schema.Resource {
 	var count int64 = 0
 	

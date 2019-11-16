@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var memberNetworkFrameworkConfigurationProperties map[string]string = map[string]string{
-	"network_fabric_configuration": "NetworkFabricConfiguration",
-}
-
 func propertyMemberNetworkFrameworkConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

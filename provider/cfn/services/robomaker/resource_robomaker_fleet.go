@@ -16,11 +16,6 @@ import (
 
 const roboMakerFleetType string = "AWS::RoboMaker::Fleet"
 
-var roboMakerFleetProperties map[string]string = map[string]string{
-	"tags": "Tags",
-	"name": "Name",
-}
-
 func ResourceRoboMakerFleet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRoboMakerFleetExists,
@@ -57,11 +52,11 @@ func resourceRoboMakerFleetRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceRoboMakerFleetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(roboMakerFleetType, ResourceRoboMakerFleet(), data, roboMakerFleetProperties, meta)
+	return plugin.ResourceCreate(roboMakerFleetType, ResourceRoboMakerFleet(), data, meta)
 }
 
 func resourceRoboMakerFleetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(roboMakerFleetType, ResourceRoboMakerFleet(), data, roboMakerFleetProperties, meta)
+	return plugin.ResourceUpdate(roboMakerFleetType, ResourceRoboMakerFleet(), data, meta)
 }
 
 func resourceRoboMakerFleetDelete(data *schema.ResourceData, meta interface{}) error {

@@ -17,12 +17,6 @@ import (
 
 const appMeshMeshType string = "AWS::AppMesh::Mesh"
 
-var appMeshMeshProperties map[string]string = map[string]string{
-	"mesh_name": "MeshName",
-	"spec": "Spec",
-	"tags": "Tags",
-}
-
 func ResourceAppMeshMesh() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppMeshMeshExists,
@@ -62,11 +56,11 @@ func resourceAppMeshMeshRead(data *schema.ResourceData, meta interface{}) error 
 }
 
 func resourceAppMeshMeshCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(appMeshMeshType, ResourceAppMeshMesh(), data, appMeshMeshProperties, meta)
+	return plugin.ResourceCreate(appMeshMeshType, ResourceAppMeshMesh(), data, meta)
 }
 
 func resourceAppMeshMeshUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(appMeshMeshType, ResourceAppMeshMesh(), data, appMeshMeshProperties, meta)
+	return plugin.ResourceUpdate(appMeshMeshType, ResourceAppMeshMesh(), data, meta)
 }
 
 func resourceAppMeshMeshDelete(data *schema.ResourceData, meta interface{}) error {

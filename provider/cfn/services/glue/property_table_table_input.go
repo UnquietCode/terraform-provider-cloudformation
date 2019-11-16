@@ -14,19 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var tableTableInputProperties map[string]string = map[string]string{
-	"owner": "Owner",
-	"view_original_text": "ViewOriginalText",
-	"description": "Description",
-	"table_type": "TableType",
-	"parameters": "Parameters",
-	"view_expanded_text": "ViewExpandedText",
-	"storage_descriptor": "StorageDescriptor",
-	"partition_keys": "PartitionKeys",
-	"retention": "Retention",
-	"name": "Name",
-}
-
 func propertyTableTableInput(extras...string) *schema.Resource {
 	var count int64 = 0
 	

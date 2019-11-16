@@ -16,16 +16,6 @@ import (
 
 const dataPipelinePipelineType string = "AWS::DataPipeline::Pipeline"
 
-var dataPipelinePipelineProperties map[string]string = map[string]string{
-	"activate": "Activate",
-	"description": "Description",
-	"name": "Name",
-	"parameter_objects": "ParameterObjects",
-	"parameter_values": "ParameterValues",
-	"pipeline_objects": "PipelineObjects",
-	"pipeline_tags": "PipelineTags",
-}
-
 func ResourceDataPipelinePipeline() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDataPipelinePipelineExists,
@@ -86,11 +76,11 @@ func resourceDataPipelinePipelineRead(data *schema.ResourceData, meta interface{
 }
 
 func resourceDataPipelinePipelineCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(dataPipelinePipelineType, ResourceDataPipelinePipeline(), data, dataPipelinePipelineProperties, meta)
+	return plugin.ResourceCreate(dataPipelinePipelineType, ResourceDataPipelinePipeline(), data, meta)
 }
 
 func resourceDataPipelinePipelineUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(dataPipelinePipelineType, ResourceDataPipelinePipeline(), data, dataPipelinePipelineProperties, meta)
+	return plugin.ResourceUpdate(dataPipelinePipelineType, ResourceDataPipelinePipeline(), data, meta)
 }
 
 func resourceDataPipelinePipelineDelete(data *schema.ResourceData, meta interface{}) error {

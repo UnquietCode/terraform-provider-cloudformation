@@ -17,11 +17,6 @@ import (
 
 const cloudFrontStreamingDistributionType string = "AWS::CloudFront::StreamingDistribution"
 
-var cloudFrontStreamingDistributionProperties map[string]string = map[string]string{
-	"streaming_distribution_config": "StreamingDistributionConfig",
-	"tags": "Tags",
-}
-
 func ResourceCloudFrontStreamingDistribution() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCloudFrontStreamingDistributionExists,
@@ -57,11 +52,11 @@ func resourceCloudFrontStreamingDistributionRead(data *schema.ResourceData, meta
 }
 
 func resourceCloudFrontStreamingDistributionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(cloudFrontStreamingDistributionType, ResourceCloudFrontStreamingDistribution(), data, cloudFrontStreamingDistributionProperties, meta)
+	return plugin.ResourceCreate(cloudFrontStreamingDistributionType, ResourceCloudFrontStreamingDistribution(), data, meta)
 }
 
 func resourceCloudFrontStreamingDistributionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(cloudFrontStreamingDistributionType, ResourceCloudFrontStreamingDistribution(), data, cloudFrontStreamingDistributionProperties, meta)
+	return plugin.ResourceUpdate(cloudFrontStreamingDistributionType, ResourceCloudFrontStreamingDistribution(), data, meta)
 }
 
 func resourceCloudFrontStreamingDistributionDelete(data *schema.ResourceData, meta interface{}) error {

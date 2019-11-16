@@ -16,15 +16,6 @@ import (
 
 const lambdaEventSourceMappingType string = "AWS::Lambda::EventSourceMapping"
 
-var lambdaEventSourceMappingProperties map[string]string = map[string]string{
-	"batch_size": "BatchSize",
-	"enabled": "Enabled",
-	"event_source_arn": "EventSourceArn",
-	"function_name": "FunctionName",
-	"maximum_batching_window_in_seconds": "MaximumBatchingWindowInSeconds",
-	"starting_position": "StartingPosition",
-}
-
 func ResourceLambdaEventSourceMapping() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLambdaEventSourceMappingExists,
@@ -77,11 +68,11 @@ func resourceLambdaEventSourceMappingRead(data *schema.ResourceData, meta interf
 }
 
 func resourceLambdaEventSourceMappingCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(lambdaEventSourceMappingType, ResourceLambdaEventSourceMapping(), data, lambdaEventSourceMappingProperties, meta)
+	return plugin.ResourceCreate(lambdaEventSourceMappingType, ResourceLambdaEventSourceMapping(), data, meta)
 }
 
 func resourceLambdaEventSourceMappingUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(lambdaEventSourceMappingType, ResourceLambdaEventSourceMapping(), data, lambdaEventSourceMappingProperties, meta)
+	return plugin.ResourceUpdate(lambdaEventSourceMappingType, ResourceLambdaEventSourceMapping(), data, meta)
 }
 
 func resourceLambdaEventSourceMappingDelete(data *schema.ResourceData, meta interface{}) error {

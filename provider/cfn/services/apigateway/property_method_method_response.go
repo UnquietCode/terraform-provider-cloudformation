@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var methodMethodResponseProperties map[string]string = map[string]string{
-	"response_models": "ResponseModels",
-	"response_parameters": "ResponseParameters",
-	"status_code": "StatusCode",
-}
-
 func propertyMethodMethodResponse(extras...string) *schema.Resource {
 	var count int64 = 0
 	

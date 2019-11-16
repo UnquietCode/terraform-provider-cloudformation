@@ -17,11 +17,6 @@ import (
 
 const redshiftClusterSecurityGroupType string = "AWS::Redshift::ClusterSecurityGroup"
 
-var redshiftClusterSecurityGroupProperties map[string]string = map[string]string{
-	"description": "Description",
-	"tags": "Tags",
-}
-
 func ResourceRedshiftClusterSecurityGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRedshiftClusterSecurityGroupExists,
@@ -55,11 +50,11 @@ func resourceRedshiftClusterSecurityGroupRead(data *schema.ResourceData, meta in
 }
 
 func resourceRedshiftClusterSecurityGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(redshiftClusterSecurityGroupType, ResourceRedshiftClusterSecurityGroup(), data, redshiftClusterSecurityGroupProperties, meta)
+	return plugin.ResourceCreate(redshiftClusterSecurityGroupType, ResourceRedshiftClusterSecurityGroup(), data, meta)
 }
 
 func resourceRedshiftClusterSecurityGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(redshiftClusterSecurityGroupType, ResourceRedshiftClusterSecurityGroup(), data, redshiftClusterSecurityGroupProperties, meta)
+	return plugin.ResourceUpdate(redshiftClusterSecurityGroupType, ResourceRedshiftClusterSecurityGroup(), data, meta)
 }
 
 func resourceRedshiftClusterSecurityGroupDelete(data *schema.ResourceData, meta interface{}) error {

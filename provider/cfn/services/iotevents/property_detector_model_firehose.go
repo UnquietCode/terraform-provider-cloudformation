@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var detectorModelFirehoseProperties map[string]string = map[string]string{
-	"delivery_stream_name": "DeliveryStreamName",
-	"separator": "Separator",
-}
-
 func propertyDetectorModelFirehose(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deliveryStreamProcessingConfigurationProperties map[string]string = map[string]string{
-	"enabled": "Enabled",
-	"processors": "Processors",
-}
-
 func propertyDeliveryStreamProcessingConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

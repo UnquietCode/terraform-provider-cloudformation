@@ -16,12 +16,6 @@ import (
 
 const eC2EIPType string = "AWS::EC2::EIP"
 
-var eC2EIPProperties map[string]string = map[string]string{
-	"domain": "Domain",
-	"instance_id": "InstanceId",
-	"public_ipv4_pool": "PublicIpv4Pool",
-}
-
 func ResourceEC2EIP() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2EIPExists,
@@ -62,11 +56,11 @@ func resourceEC2EIPRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceEC2EIPCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2EIPType, ResourceEC2EIP(), data, eC2EIPProperties, meta)
+	return plugin.ResourceCreate(eC2EIPType, ResourceEC2EIP(), data, meta)
 }
 
 func resourceEC2EIPUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2EIPType, ResourceEC2EIP(), data, eC2EIPProperties, meta)
+	return plugin.ResourceUpdate(eC2EIPType, ResourceEC2EIP(), data, meta)
 }
 
 func resourceEC2EIPDelete(data *schema.ResourceData, meta interface{}) error {

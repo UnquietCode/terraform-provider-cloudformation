@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var dataSourceDynamoDBConfigProperties map[string]string = map[string]string{
-	"table_name": "TableName",
-	"aws_region": "AwsRegion",
-	"use_caller_credentials": "UseCallerCredentials",
-}
-
 func propertyDataSourceDynamoDBConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var connectionConnectionInputProperties map[string]string = map[string]string{
-	"description": "Description",
-	"connection_type": "ConnectionType",
-	"match_criteria": "MatchCriteria",
-	"physical_connection_requirements": "PhysicalConnectionRequirements",
-	"connection_properties": "ConnectionProperties",
-	"name": "Name",
-}
-
 func propertyConnectionConnectionInput(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var robotApplicationRobotSoftwareSuiteProperties map[string]string = map[string]string{
-	"version": "Version",
-	"name": "Name",
-}
-
 func propertyRobotApplicationRobotSoftwareSuite(extras...string) *schema.Resource {
 	var count int64 = 0
 	

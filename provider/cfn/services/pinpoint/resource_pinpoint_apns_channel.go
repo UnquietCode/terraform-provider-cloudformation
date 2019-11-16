@@ -16,18 +16,6 @@ import (
 
 const pinpointAPNSChannelType string = "AWS::Pinpoint::APNSChannel"
 
-var pinpointAPNSChannelProperties map[string]string = map[string]string{
-	"bundle_id": "BundleId",
-	"private_key": "PrivateKey",
-	"enabled": "Enabled",
-	"default_authentication_method": "DefaultAuthenticationMethod",
-	"token_key": "TokenKey",
-	"application_id": "ApplicationId",
-	"team_id": "TeamId",
-	"certificate": "Certificate",
-	"token_key_id": "TokenKeyId",
-}
-
 func ResourcePinpointAPNSChannel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointAPNSChannelExists,
@@ -92,11 +80,11 @@ func resourcePinpointAPNSChannelRead(data *schema.ResourceData, meta interface{}
 }
 
 func resourcePinpointAPNSChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(pinpointAPNSChannelType, ResourcePinpointAPNSChannel(), data, pinpointAPNSChannelProperties, meta)
+	return plugin.ResourceCreate(pinpointAPNSChannelType, ResourcePinpointAPNSChannel(), data, meta)
 }
 
 func resourcePinpointAPNSChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(pinpointAPNSChannelType, ResourcePinpointAPNSChannel(), data, pinpointAPNSChannelProperties, meta)
+	return plugin.ResourceUpdate(pinpointAPNSChannelType, ResourcePinpointAPNSChannel(), data, meta)
 }
 
 func resourcePinpointAPNSChannelDelete(data *schema.ResourceData, meta interface{}) error {

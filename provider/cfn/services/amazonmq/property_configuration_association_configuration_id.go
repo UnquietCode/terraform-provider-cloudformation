@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var configurationAssociationConfigurationIdProperties map[string]string = map[string]string{
-	"revision": "Revision",
-	"id": "Id",
-}
-
 func propertyConfigurationAssociationConfigurationId(extras...string) *schema.Resource {
 	var count int64 = 0
 	

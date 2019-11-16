@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var endpointElasticsearchSettingsProperties map[string]string = map[string]string{
-	"endpoint_uri": "EndpointUri",
-	"full_load_error_percentage": "FullLoadErrorPercentage",
-	"error_retry_duration": "ErrorRetryDuration",
-	"service_access_role_arn": "ServiceAccessRoleArn",
-}
-
 func propertyEndpointElasticsearchSettings(extras...string) *schema.Resource {
 	var count int64 = 0
 	

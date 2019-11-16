@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var aliasRoutingStrategyProperties map[string]string = map[string]string{
-	"fleet_id": "FleetId",
-	"message": "Message",
-	"type": "Type",
-}
-
 func propertyAliasRoutingStrategy(extras...string) *schema.Resource {
 	var count int64 = 0
 	

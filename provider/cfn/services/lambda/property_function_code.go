@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var functionCodeProperties map[string]string = map[string]string{
-	"s3_bucket": "S3Bucket",
-	"s3_key": "S3Key",
-	"s3_object_version": "S3ObjectVersion",
-	"zip_file": "ZipFile",
-}
-
 func propertyFunctionCode(extras...string) *schema.Resource {
 	var count int64 = 0
 	

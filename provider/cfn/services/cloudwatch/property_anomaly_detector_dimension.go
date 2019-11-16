@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var anomalyDetectorDimensionProperties map[string]string = map[string]string{
-	"value": "Value",
-	"name": "Name",
-}
-
 func propertyAnomalyDetectorDimension(extras...string) *schema.Resource {
 	var count int64 = 0
 	

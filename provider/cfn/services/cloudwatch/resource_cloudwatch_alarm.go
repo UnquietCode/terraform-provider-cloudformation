@@ -16,30 +16,6 @@ import (
 
 const cloudWatchAlarmType string = "AWS::CloudWatch::Alarm"
 
-var cloudWatchAlarmProperties map[string]string = map[string]string{
-	"actions_enabled": "ActionsEnabled",
-	"alarm_actions": "AlarmActions",
-	"alarm_description": "AlarmDescription",
-	"alarm_name": "AlarmName",
-	"comparison_operator": "ComparisonOperator",
-	"datapoints_to_alarm": "DatapointsToAlarm",
-	"dimensions": "Dimensions",
-	"evaluate_low_sample_count_percentile": "EvaluateLowSampleCountPercentile",
-	"evaluation_periods": "EvaluationPeriods",
-	"extended_statistic": "ExtendedStatistic",
-	"insufficient_data_actions": "InsufficientDataActions",
-	"metric_name": "MetricName",
-	"metrics": "Metrics",
-	"namespace": "Namespace",
-	"ok_actions": "OKActions",
-	"period": "Period",
-	"statistic": "Statistic",
-	"threshold": "Threshold",
-	"threshold_metric_id": "ThresholdMetricId",
-	"treat_missing_data": "TreatMissingData",
-	"unit": "Unit",
-}
-
 func ResourceCloudWatchAlarm() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCloudWatchAlarmExists,
@@ -157,11 +133,11 @@ func resourceCloudWatchAlarmRead(data *schema.ResourceData, meta interface{}) er
 }
 
 func resourceCloudWatchAlarmCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(cloudWatchAlarmType, ResourceCloudWatchAlarm(), data, cloudWatchAlarmProperties, meta)
+	return plugin.ResourceCreate(cloudWatchAlarmType, ResourceCloudWatchAlarm(), data, meta)
 }
 
 func resourceCloudWatchAlarmUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(cloudWatchAlarmType, ResourceCloudWatchAlarm(), data, cloudWatchAlarmProperties, meta)
+	return plugin.ResourceUpdate(cloudWatchAlarmType, ResourceCloudWatchAlarm(), data, meta)
 }
 
 func resourceCloudWatchAlarmDelete(data *schema.ResourceData, meta interface{}) error {

@@ -16,16 +16,6 @@ import (
 
 const codePipelineCustomActionTypeType string = "AWS::CodePipeline::CustomActionType"
 
-var codePipelineCustomActionTypeProperties map[string]string = map[string]string{
-	"category": "Category",
-	"configuration_properties": "ConfigurationProperties",
-	"input_artifact_details": "InputArtifactDetails",
-	"output_artifact_details": "OutputArtifactDetails",
-	"the_provider": "TheProvider",
-	"settings": "Settings",
-	"version": "Version",
-}
-
 func ResourceCodePipelineCustomActionType() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCodePipelineCustomActionTypeExists,
@@ -89,11 +79,11 @@ func resourceCodePipelineCustomActionTypeRead(data *schema.ResourceData, meta in
 }
 
 func resourceCodePipelineCustomActionTypeCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(codePipelineCustomActionTypeType, ResourceCodePipelineCustomActionType(), data, codePipelineCustomActionTypeProperties, meta)
+	return plugin.ResourceCreate(codePipelineCustomActionTypeType, ResourceCodePipelineCustomActionType(), data, meta)
 }
 
 func resourceCodePipelineCustomActionTypeUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(codePipelineCustomActionTypeType, ResourceCodePipelineCustomActionType(), data, codePipelineCustomActionTypeProperties, meta)
+	return plugin.ResourceUpdate(codePipelineCustomActionTypeType, ResourceCodePipelineCustomActionType(), data, meta)
 }
 
 func resourceCodePipelineCustomActionTypeDelete(data *schema.ResourceData, meta interface{}) error {

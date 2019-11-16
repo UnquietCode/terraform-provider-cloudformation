@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var launchTemplatePlacementProperties map[string]string = map[string]string{
-	"group_name": "GroupName",
-	"tenancy": "Tenancy",
-	"availability_zone": "AvailabilityZone",
-	"affinity": "Affinity",
-	"host_id": "HostId",
-}
-
 func propertyLaunchTemplatePlacement(extras...string) *schema.Resource {
 	var count int64 = 0
 	

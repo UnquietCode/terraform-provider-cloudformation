@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationInputSchemaProperties map[string]string = map[string]string{
-	"record_encoding": "RecordEncoding",
-	"record_columns": "RecordColumns",
-	"record_format": "RecordFormat",
-}
-
 func propertyApplicationInputSchema(extras...string) *schema.Resource {
 	var count int64 = 0
 	

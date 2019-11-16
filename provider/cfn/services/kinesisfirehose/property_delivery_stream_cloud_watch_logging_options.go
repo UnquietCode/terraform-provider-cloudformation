@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deliveryStreamCloudWatchLoggingOptionsProperties map[string]string = map[string]string{
-	"enabled": "Enabled",
-	"log_group_name": "LogGroupName",
-	"log_stream_name": "LogStreamName",
-}
-
 func propertyDeliveryStreamCloudWatchLoggingOptions(extras...string) *schema.Resource {
 	var count int64 = 0
 	

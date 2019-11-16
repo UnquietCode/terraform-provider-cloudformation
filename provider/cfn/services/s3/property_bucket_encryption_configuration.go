@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketEncryptionConfigurationProperties map[string]string = map[string]string{
-	"replica_kms_key_id": "ReplicaKmsKeyID",
-}
-
 func propertyBucketEncryptionConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var loadBalancerAccessLoggingPolicyProperties map[string]string = map[string]string{
-	"emit_interval": "EmitInterval",
-	"enabled": "Enabled",
-	"s3_bucket_name": "S3BucketName",
-	"s3_bucket_prefix": "S3BucketPrefix",
-}
-
 func propertyLoadBalancerAccessLoggingPolicy(extras...string) *schema.Resource {
 	var count int64 = 0
 	

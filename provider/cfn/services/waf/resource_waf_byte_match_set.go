@@ -16,11 +16,6 @@ import (
 
 const wAFByteMatchSetType string = "AWS::WAF::ByteMatchSet"
 
-var wAFByteMatchSetProperties map[string]string = map[string]string{
-	"byte_match_tuples": "ByteMatchTuples",
-	"name": "Name",
-}
-
 func ResourceWAFByteMatchSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFByteMatchSetExists,
@@ -58,11 +53,11 @@ func resourceWAFByteMatchSetRead(data *schema.ResourceData, meta interface{}) er
 }
 
 func resourceWAFByteMatchSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(wAFByteMatchSetType, ResourceWAFByteMatchSet(), data, wAFByteMatchSetProperties, meta)
+	return plugin.ResourceCreate(wAFByteMatchSetType, ResourceWAFByteMatchSet(), data, meta)
 }
 
 func resourceWAFByteMatchSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(wAFByteMatchSetType, ResourceWAFByteMatchSet(), data, wAFByteMatchSetProperties, meta)
+	return plugin.ResourceUpdate(wAFByteMatchSetType, ResourceWAFByteMatchSet(), data, meta)
 }
 
 func resourceWAFByteMatchSetDelete(data *schema.ResourceData, meta interface{}) error {

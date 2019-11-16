@@ -16,16 +16,6 @@ import (
 
 const appSyncGraphQLApiType string = "AWS::AppSync::GraphQLApi"
 
-var appSyncGraphQLApiProperties map[string]string = map[string]string{
-	"open_id_connect_config": "OpenIDConnectConfig",
-	"user_pool_config": "UserPoolConfig",
-	"tags": "Tags",
-	"name": "Name",
-	"authentication_type": "AuthenticationType",
-	"log_config": "LogConfig",
-	"additional_authentication_providers": "AdditionalAuthenticationProviders",
-}
-
 func ResourceAppSyncGraphQLApi() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppSyncGraphQLApiExists,
@@ -92,11 +82,11 @@ func resourceAppSyncGraphQLApiRead(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceAppSyncGraphQLApiCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(appSyncGraphQLApiType, ResourceAppSyncGraphQLApi(), data, appSyncGraphQLApiProperties, meta)
+	return plugin.ResourceCreate(appSyncGraphQLApiType, ResourceAppSyncGraphQLApi(), data, meta)
 }
 
 func resourceAppSyncGraphQLApiUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(appSyncGraphQLApiType, ResourceAppSyncGraphQLApi(), data, appSyncGraphQLApiProperties, meta)
+	return plugin.ResourceUpdate(appSyncGraphQLApiType, ResourceAppSyncGraphQLApi(), data, meta)
 }
 
 func resourceAppSyncGraphQLApiDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var pushTemplateAPNSPushNotificationTemplateProperties map[string]string = map[string]string{
-	"action": "Action",
-	"media_url": "MediaUrl",
-	"title": "Title",
-	"sound": "Sound",
-	"body": "Body",
-	"url": "Url",
-}
-
 func propertyPushTemplateAPNSPushNotificationTemplate(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var lifecyclePolicyCreateRuleProperties map[string]string = map[string]string{
-	"interval_unit": "IntervalUnit",
-	"times": "Times",
-	"interval": "Interval",
-}
-
 func propertyLifecyclePolicyCreateRule(extras...string) *schema.Resource {
 	var count int64 = 0
 	

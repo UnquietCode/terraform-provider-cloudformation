@@ -16,12 +16,6 @@ import (
 
 const iAMServiceLinkedRoleType string = "AWS::IAM::ServiceLinkedRole"
 
-var iAMServiceLinkedRoleProperties map[string]string = map[string]string{
-	"custom_suffix": "CustomSuffix",
-	"description": "Description",
-	"aws_service_name": "AWSServiceName",
-}
-
 func ResourceIAMServiceLinkedRole() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIAMServiceLinkedRoleExists,
@@ -62,11 +56,11 @@ func resourceIAMServiceLinkedRoleRead(data *schema.ResourceData, meta interface{
 }
 
 func resourceIAMServiceLinkedRoleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(iAMServiceLinkedRoleType, ResourceIAMServiceLinkedRole(), data, iAMServiceLinkedRoleProperties, meta)
+	return plugin.ResourceCreate(iAMServiceLinkedRoleType, ResourceIAMServiceLinkedRole(), data, meta)
 }
 
 func resourceIAMServiceLinkedRoleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(iAMServiceLinkedRoleType, ResourceIAMServiceLinkedRole(), data, iAMServiceLinkedRoleProperties, meta)
+	return plugin.ResourceUpdate(iAMServiceLinkedRoleType, ResourceIAMServiceLinkedRole(), data, meta)
 }
 
 func resourceIAMServiceLinkedRoleDelete(data *schema.ResourceData, meta interface{}) error {

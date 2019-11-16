@@ -16,12 +16,6 @@ import (
 
 const eC2NetworkInterfacePermissionType string = "AWS::EC2::NetworkInterfacePermission"
 
-var eC2NetworkInterfacePermissionProperties map[string]string = map[string]string{
-	"aws_account_id": "AwsAccountId",
-	"network_interface_id": "NetworkInterfaceId",
-	"permission": "Permission",
-}
-
 func ResourceEC2NetworkInterfacePermission() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2NetworkInterfacePermissionExists,
@@ -62,11 +56,11 @@ func resourceEC2NetworkInterfacePermissionRead(data *schema.ResourceData, meta i
 }
 
 func resourceEC2NetworkInterfacePermissionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2NetworkInterfacePermissionType, ResourceEC2NetworkInterfacePermission(), data, eC2NetworkInterfacePermissionProperties, meta)
+	return plugin.ResourceCreate(eC2NetworkInterfacePermissionType, ResourceEC2NetworkInterfacePermission(), data, meta)
 }
 
 func resourceEC2NetworkInterfacePermissionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2NetworkInterfacePermissionType, ResourceEC2NetworkInterfacePermission(), data, eC2NetworkInterfacePermissionProperties, meta)
+	return plugin.ResourceUpdate(eC2NetworkInterfacePermissionType, ResourceEC2NetworkInterfacePermission(), data, meta)
 }
 
 func resourceEC2NetworkInterfacePermissionDelete(data *schema.ResourceData, meta interface{}) error {

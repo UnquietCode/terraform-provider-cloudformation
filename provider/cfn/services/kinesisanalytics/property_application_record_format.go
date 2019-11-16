@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationRecordFormatProperties map[string]string = map[string]string{
-	"mapping_parameters": "MappingParameters",
-	"record_format_type": "RecordFormatType",
-}
-
 func propertyApplicationRecordFormat(extras...string) *schema.Resource {
 	var count int64 = 0
 	

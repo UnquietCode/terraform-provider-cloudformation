@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var repositoryS3Properties map[string]string = map[string]string{
-	"object_version": "ObjectVersion",
-	"bucket": "Bucket",
-	"key": "Key",
-}
-
 func propertyRepositoryS3(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var maintenanceWindowTaskTargetProperties map[string]string = map[string]string{
-	"values": "Values",
-	"key": "Key",
-}
-
 func propertyMaintenanceWindowTaskTarget(extras...string) *schema.Resource {
 	var count int64 = 0
 	

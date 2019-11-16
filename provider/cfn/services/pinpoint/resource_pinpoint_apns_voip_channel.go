@@ -16,18 +16,6 @@ import (
 
 const pinpointAPNSVoipChannelType string = "AWS::Pinpoint::APNSVoipChannel"
 
-var pinpointAPNSVoipChannelProperties map[string]string = map[string]string{
-	"bundle_id": "BundleId",
-	"private_key": "PrivateKey",
-	"enabled": "Enabled",
-	"default_authentication_method": "DefaultAuthenticationMethod",
-	"token_key": "TokenKey",
-	"application_id": "ApplicationId",
-	"team_id": "TeamId",
-	"certificate": "Certificate",
-	"token_key_id": "TokenKeyId",
-}
-
 func ResourcePinpointAPNSVoipChannel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointAPNSVoipChannelExists,
@@ -92,11 +80,11 @@ func resourcePinpointAPNSVoipChannelRead(data *schema.ResourceData, meta interfa
 }
 
 func resourcePinpointAPNSVoipChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(pinpointAPNSVoipChannelType, ResourcePinpointAPNSVoipChannel(), data, pinpointAPNSVoipChannelProperties, meta)
+	return plugin.ResourceCreate(pinpointAPNSVoipChannelType, ResourcePinpointAPNSVoipChannel(), data, meta)
 }
 
 func resourcePinpointAPNSVoipChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(pinpointAPNSVoipChannelType, ResourcePinpointAPNSVoipChannel(), data, pinpointAPNSVoipChannelProperties, meta)
+	return plugin.ResourceUpdate(pinpointAPNSVoipChannelType, ResourcePinpointAPNSVoipChannel(), data, meta)
 }
 
 func resourcePinpointAPNSVoipChannelDelete(data *schema.ResourceData, meta interface{}) error {

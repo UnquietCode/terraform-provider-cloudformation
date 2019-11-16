@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var meshMeshSpecProperties map[string]string = map[string]string{
-	"egress_filter": "EgressFilter",
-}
-
 func propertyMeshMeshSpec(extras...string) *schema.Resource {
 	var count int64 = 0
 	

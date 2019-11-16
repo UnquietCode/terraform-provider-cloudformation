@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var autoScalingGroupTagPropertyProperties map[string]string = map[string]string{
-	"key": "Key",
-	"propagate_at_launch": "PropagateAtLaunch",
-	"value": "Value",
-}
-
 func propertyAutoScalingGroupTagProperty(extras...string) *schema.Resource {
 	var count int64 = 0
 	

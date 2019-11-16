@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var clientVpnEndpointConnectionLogOptionsProperties map[string]string = map[string]string{
-	"cloudwatch_log_stream": "CloudwatchLogStream",
-	"enabled": "Enabled",
-	"cloudwatch_log_group": "CloudwatchLogGroup",
-}
-
 func propertyClientVpnEndpointConnectionLogOptions(extras...string) *schema.Resource {
 	var count int64 = 0
 	

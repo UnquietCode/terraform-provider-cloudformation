@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var launchTemplateIpv6AddProperties map[string]string = map[string]string{
-	"ipv6_address": "Ipv6Address",
-}
-
 func propertyLaunchTemplateIpv6Add(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var configurationSetEventDestinationEventDestinationProperties map[string]string = map[string]string{
-	"cloud_watch_destination": "CloudWatchDestination",
-	"enabled": "Enabled",
-	"matching_event_types": "MatchingEventTypes",
-	"name": "Name",
-	"kinesis_firehose_destination": "KinesisFirehoseDestination",
-}
-
 func propertyConfigurationSetEventDestinationEventDestination(extras...string) *schema.Resource {
 	var count int64 = 0
 	

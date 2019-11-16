@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var topicRuleTopicRulePayloadProperties map[string]string = map[string]string{
-	"actions": "Actions",
-	"aws_iot_sql_version": "AwsIotSqlVersion",
-	"description": "Description",
-	"error_action": "ErrorAction",
-	"rule_disabled": "RuleDisabled",
-	"sql": "Sql",
-}
-
 func propertyTopicRuleTopicRulePayload(extras...string) *schema.Resource {
 	var count int64 = 0
 	

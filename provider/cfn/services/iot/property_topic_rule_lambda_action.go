@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var topicRuleLambdaActionProperties map[string]string = map[string]string{
-	"function_arn": "FunctionArn",
-}
-
 func propertyTopicRuleLambdaAction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

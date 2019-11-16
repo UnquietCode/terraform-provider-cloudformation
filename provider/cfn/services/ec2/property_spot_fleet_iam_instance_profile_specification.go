@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var spotFleetIamInstanceProfileSpecificationProperties map[string]string = map[string]string{
-	"arn": "Arn",
-}
-
 func propertySpotFleetIamInstanceProfileSpecification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,24 +16,6 @@ import (
 
 const route53RecordSetType string = "AWS::Route53::RecordSet"
 
-var route53RecordSetProperties map[string]string = map[string]string{
-	"alias_target": "AliasTarget",
-	"comment": "Comment",
-	"failover": "Failover",
-	"geo_location": "GeoLocation",
-	"health_check_id": "HealthCheckId",
-	"hosted_zone_id": "HostedZoneId",
-	"hosted_zone_name": "HostedZoneName",
-	"multi_value_answer": "MultiValueAnswer",
-	"name": "Name",
-	"region": "Region",
-	"resource_records": "ResourceRecords",
-	"set_identifier": "SetIdentifier",
-	"ttl": "TTL",
-	"type": "Type",
-	"weight": "Weight",
-}
-
 func ResourceRoute53RecordSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRoute53RecordSetExists,
@@ -127,11 +109,11 @@ func resourceRoute53RecordSetRead(data *schema.ResourceData, meta interface{}) e
 }
 
 func resourceRoute53RecordSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(route53RecordSetType, ResourceRoute53RecordSet(), data, route53RecordSetProperties, meta)
+	return plugin.ResourceCreate(route53RecordSetType, ResourceRoute53RecordSet(), data, meta)
 }
 
 func resourceRoute53RecordSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(route53RecordSetType, ResourceRoute53RecordSet(), data, route53RecordSetProperties, meta)
+	return plugin.ResourceUpdate(route53RecordSetType, ResourceRoute53RecordSet(), data, meta)
 }
 
 func resourceRoute53RecordSetDelete(data *schema.ResourceData, meta interface{}) error {

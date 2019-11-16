@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketS3KeyFilterProperties map[string]string = map[string]string{
-	"rules": "Rules",
-}
-
 func propertyBucketS3KeyFilter(extras...string) *schema.Resource {
 	var count int64 = 0
 	

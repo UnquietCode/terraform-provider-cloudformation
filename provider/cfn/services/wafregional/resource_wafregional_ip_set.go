@@ -16,11 +16,6 @@ import (
 
 const wAFRegionalIPSetType string = "AWS::WAFRegional::IPSet"
 
-var wAFRegionalIPSetProperties map[string]string = map[string]string{
-	"ip_set_descriptors": "IPSetDescriptors",
-	"name": "Name",
-}
-
 func ResourceWAFRegionalIPSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFRegionalIPSetExists,
@@ -58,11 +53,11 @@ func resourceWAFRegionalIPSetRead(data *schema.ResourceData, meta interface{}) e
 }
 
 func resourceWAFRegionalIPSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(wAFRegionalIPSetType, ResourceWAFRegionalIPSet(), data, wAFRegionalIPSetProperties, meta)
+	return plugin.ResourceCreate(wAFRegionalIPSetType, ResourceWAFRegionalIPSet(), data, meta)
 }
 
 func resourceWAFRegionalIPSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(wAFRegionalIPSetType, ResourceWAFRegionalIPSet(), data, wAFRegionalIPSetProperties, meta)
+	return plugin.ResourceUpdate(wAFRegionalIPSetType, ResourceWAFRegionalIPSet(), data, meta)
 }
 
 func resourceWAFRegionalIPSetDelete(data *schema.ResourceData, meta interface{}) error {

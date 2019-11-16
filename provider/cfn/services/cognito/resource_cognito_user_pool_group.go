@@ -16,14 +16,6 @@ import (
 
 const cognitoUserPoolGroupType string = "AWS::Cognito::UserPoolGroup"
 
-var cognitoUserPoolGroupProperties map[string]string = map[string]string{
-	"group_name": "GroupName",
-	"description": "Description",
-	"user_pool_id": "UserPoolId",
-	"precedence": "Precedence",
-	"role_arn": "RoleArn",
-}
-
 func ResourceCognitoUserPoolGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCognitoUserPoolGroupExists,
@@ -72,11 +64,11 @@ func resourceCognitoUserPoolGroupRead(data *schema.ResourceData, meta interface{
 }
 
 func resourceCognitoUserPoolGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(cognitoUserPoolGroupType, ResourceCognitoUserPoolGroup(), data, cognitoUserPoolGroupProperties, meta)
+	return plugin.ResourceCreate(cognitoUserPoolGroupType, ResourceCognitoUserPoolGroup(), data, meta)
 }
 
 func resourceCognitoUserPoolGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(cognitoUserPoolGroupType, ResourceCognitoUserPoolGroup(), data, cognitoUserPoolGroupProperties, meta)
+	return plugin.ResourceUpdate(cognitoUserPoolGroupType, ResourceCognitoUserPoolGroup(), data, meta)
 }
 
 func resourceCognitoUserPoolGroupDelete(data *schema.ResourceData, meta interface{}) error {

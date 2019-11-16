@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var pipelineMathProperties map[string]string = map[string]string{
-	"attribute": "Attribute",
-	"next": "Next",
-	"math": "Math",
-	"name": "Name",
-}
-
 func propertyPipelineMath(extras...string) *schema.Resource {
 	var count int64 = 0
 	

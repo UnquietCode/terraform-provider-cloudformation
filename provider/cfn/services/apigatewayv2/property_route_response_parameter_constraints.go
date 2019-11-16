@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var routeResponseParameterConstraintsProperties map[string]string = map[string]string{
-	"required": "Required",
-}
-
 func propertyRouteResponseParameterConstraints(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -17,16 +17,6 @@ import (
 
 const eC2VPNConnectionType string = "AWS::EC2::VPNConnection"
 
-var eC2VPNConnectionProperties map[string]string = map[string]string{
-	"customer_gateway_id": "CustomerGatewayId",
-	"static_routes_only": "StaticRoutesOnly",
-	"tags": "Tags",
-	"transit_gateway_id": "TransitGatewayId",
-	"type": "Type",
-	"vpn_gateway_id": "VpnGatewayId",
-	"vpn_tunnel_options_specifications": "VpnTunnelOptionsSpecifications",
-}
-
 func ResourceEC2VPNConnection() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPNConnectionExists,
@@ -81,11 +71,11 @@ func resourceEC2VPNConnectionRead(data *schema.ResourceData, meta interface{}) e
 }
 
 func resourceEC2VPNConnectionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2VPNConnectionType, ResourceEC2VPNConnection(), data, eC2VPNConnectionProperties, meta)
+	return plugin.ResourceCreate(eC2VPNConnectionType, ResourceEC2VPNConnection(), data, meta)
 }
 
 func resourceEC2VPNConnectionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2VPNConnectionType, ResourceEC2VPNConnection(), data, eC2VPNConnectionProperties, meta)
+	return plugin.ResourceUpdate(eC2VPNConnectionType, ResourceEC2VPNConnection(), data, meta)
 }
 
 func resourceEC2VPNConnectionDelete(data *schema.ResourceData, meta interface{}) error {

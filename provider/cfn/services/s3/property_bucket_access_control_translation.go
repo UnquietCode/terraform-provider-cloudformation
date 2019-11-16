@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketAccessControlTranslationProperties map[string]string = map[string]string{
-	"owner": "Owner",
-}
-
 func propertyBucketAccessControlTranslation(extras...string) *schema.Resource {
 	var count int64 = 0
 	

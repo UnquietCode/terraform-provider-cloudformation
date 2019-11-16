@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketDataExportProperties map[string]string = map[string]string{
-	"destination": "Destination",
-	"output_schema_version": "OutputSchemaVersion",
-}
-
 func propertyBucketDataExport(extras...string) *schema.Resource {
 	var count int64 = 0
 	

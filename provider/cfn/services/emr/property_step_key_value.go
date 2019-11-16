@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var stepKeyValueProperties map[string]string = map[string]string{
-	"key": "Key",
-	"value": "Value",
-}
-
 func propertyStepKeyValue(extras...string) *schema.Resource {
 	var count int64 = 0
 	

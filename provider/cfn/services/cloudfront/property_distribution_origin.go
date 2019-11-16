@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var distributionOriginProperties map[string]string = map[string]string{
-	"origin_custom_headers": "OriginCustomHeaders",
-	"domain_name": "DomainName",
-	"s3_origin_config": "S3OriginConfig",
-	"origin_path": "OriginPath",
-	"id": "Id",
-	"custom_origin_config": "CustomOriginConfig",
-}
-
 func propertyDistributionOrigin(extras...string) *schema.Resource {
 	var count int64 = 0
 	

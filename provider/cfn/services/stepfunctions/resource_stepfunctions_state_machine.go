@@ -16,13 +16,6 @@ import (
 
 const stepFunctionsStateMachineType string = "AWS::StepFunctions::StateMachine"
 
-var stepFunctionsStateMachineProperties map[string]string = map[string]string{
-	"definition_string": "DefinitionString",
-	"state_machine_name": "StateMachineName",
-	"role_arn": "RoleArn",
-	"tags": "Tags",
-}
-
 func ResourceStepFunctionsStateMachine() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceStepFunctionsStateMachineExists,
@@ -68,11 +61,11 @@ func resourceStepFunctionsStateMachineRead(data *schema.ResourceData, meta inter
 }
 
 func resourceStepFunctionsStateMachineCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(stepFunctionsStateMachineType, ResourceStepFunctionsStateMachine(), data, stepFunctionsStateMachineProperties, meta)
+	return plugin.ResourceCreate(stepFunctionsStateMachineType, ResourceStepFunctionsStateMachine(), data, meta)
 }
 
 func resourceStepFunctionsStateMachineUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(stepFunctionsStateMachineType, ResourceStepFunctionsStateMachine(), data, stepFunctionsStateMachineProperties, meta)
+	return plugin.ResourceUpdate(stepFunctionsStateMachineType, ResourceStepFunctionsStateMachine(), data, meta)
 }
 
 func resourceStepFunctionsStateMachineDelete(data *schema.ResourceData, meta interface{}) error {

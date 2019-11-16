@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var xssMatchSetXssMatchTupleProperties map[string]string = map[string]string{
-	"text_transformation": "TextTransformation",
-	"field_to_match": "FieldToMatch",
-}
-
 func propertyXssMatchSetXssMatchTuple(extras...string) *schema.Resource {
 	var count int64 = 0
 	

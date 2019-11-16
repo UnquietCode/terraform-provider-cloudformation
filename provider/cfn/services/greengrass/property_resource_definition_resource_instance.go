@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var resourceDefinitionResourceInstanceProperties map[string]string = map[string]string{
-	"resource_data_container": "ResourceDataContainer",
-	"id": "Id",
-	"name": "Name",
-}
-
 func propertyResourceDefinitionResourceInstance(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var autoScalingGroupInstancesDistributionProperties map[string]string = map[string]string{
-	"on_demand_allocation_strategy": "OnDemandAllocationStrategy",
-	"on_demand_base_capacity": "OnDemandBaseCapacity",
-	"on_demand_percentage_above_base_capacity": "OnDemandPercentageAboveBaseCapacity",
-	"spot_allocation_strategy": "SpotAllocationStrategy",
-	"spot_instance_pools": "SpotInstancePools",
-	"spot_max_price": "SpotMaxPrice",
-}
-
 func propertyAutoScalingGroupInstancesDistribution(extras...string) *schema.Resource {
 	var count int64 = 0
 	

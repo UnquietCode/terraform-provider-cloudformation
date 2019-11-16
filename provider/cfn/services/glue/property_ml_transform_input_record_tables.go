@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var mLTransformInputRecordTablesProperties map[string]string = map[string]string{
-	"glue_tables": "GlueTables",
-}
-
 func propertyMLTransformInputRecordTables(extras...string) *schema.Resource {
 	var count int64 = 0
 	

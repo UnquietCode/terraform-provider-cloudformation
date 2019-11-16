@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var apiKeyStageKeyProperties map[string]string = map[string]string{
-	"rest_api_id": "RestApiId",
-	"stage_name": "StageName",
-}
-
 func propertyApiKeyStageKey(extras...string) *schema.Resource {
 	var count int64 = 0
 	

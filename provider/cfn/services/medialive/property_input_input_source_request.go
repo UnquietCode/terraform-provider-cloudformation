@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var inputInputSourceRequestProperties map[string]string = map[string]string{
-	"username": "Username",
-	"password_param": "PasswordParam",
-	"url": "Url",
-}
-
 func propertyInputInputSourceRequest(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var routeDurationProperties map[string]string = map[string]string{
-	"value": "Value",
-	"unit": "Unit",
-}
-
 func propertyRouteDuration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

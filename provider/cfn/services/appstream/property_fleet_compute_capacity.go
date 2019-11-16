@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var fleetComputeCapacityProperties map[string]string = map[string]string{
-	"desired_instances": "DesiredInstances",
-}
-
 func propertyFleetComputeCapacity(extras...string) *schema.Resource {
 	var count int64 = 0
 	

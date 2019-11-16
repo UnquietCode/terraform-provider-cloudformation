@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var detectorModelSetVariableProperties map[string]string = map[string]string{
-	"variable_name": "VariableName",
-	"value": "Value",
-}
-
 func propertyDetectorModelSetVariable(extras...string) *schema.Resource {
 	var count int64 = 0
 	

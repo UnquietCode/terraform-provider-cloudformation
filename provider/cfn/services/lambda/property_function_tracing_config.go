@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var functionTracingConfigProperties map[string]string = map[string]string{
-	"mode": "Mode",
-}
-
 func propertyFunctionTracingConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

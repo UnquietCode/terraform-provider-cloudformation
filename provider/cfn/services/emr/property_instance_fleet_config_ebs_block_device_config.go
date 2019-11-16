@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var instanceFleetConfigEbsBlockDeviceConfigProperties map[string]string = map[string]string{
-	"volume_specification": "VolumeSpecification",
-	"volumes_per_instance": "VolumesPerInstance",
-}
-
 func propertyInstanceFleetConfigEbsBlockDeviceConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

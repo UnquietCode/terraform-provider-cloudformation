@@ -16,13 +16,6 @@ import (
 
 const cognitoUserPoolResourceServerType string = "AWS::Cognito::UserPoolResourceServer"
 
-var cognitoUserPoolResourceServerProperties map[string]string = map[string]string{
-	"user_pool_id": "UserPoolId",
-	"identifier": "Identifier",
-	"scopes": "Scopes",
-	"name": "Name",
-}
-
 func ResourceCognitoUserPoolResourceServer() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCognitoUserPoolResourceServerExists,
@@ -68,11 +61,11 @@ func resourceCognitoUserPoolResourceServerRead(data *schema.ResourceData, meta i
 }
 
 func resourceCognitoUserPoolResourceServerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(cognitoUserPoolResourceServerType, ResourceCognitoUserPoolResourceServer(), data, cognitoUserPoolResourceServerProperties, meta)
+	return plugin.ResourceCreate(cognitoUserPoolResourceServerType, ResourceCognitoUserPoolResourceServer(), data, meta)
 }
 
 func resourceCognitoUserPoolResourceServerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(cognitoUserPoolResourceServerType, ResourceCognitoUserPoolResourceServer(), data, cognitoUserPoolResourceServerProperties, meta)
+	return plugin.ResourceUpdate(cognitoUserPoolResourceServerType, ResourceCognitoUserPoolResourceServer(), data, meta)
 }
 
 func resourceCognitoUserPoolResourceServerDelete(data *schema.ResourceData, meta interface{}) error {

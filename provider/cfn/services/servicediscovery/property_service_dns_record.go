@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var serviceDnsRecordProperties map[string]string = map[string]string{
-	"type": "Type",
-	"ttl": "TTL",
-}
-
 func propertyServiceDnsRecord(extras...string) *schema.Resource {
 	var count int64 = 0
 	

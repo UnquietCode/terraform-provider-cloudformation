@@ -16,15 +16,6 @@ import (
 
 const lambdaPermissionType string = "AWS::Lambda::Permission"
 
-var lambdaPermissionProperties map[string]string = map[string]string{
-	"action": "Action",
-	"event_source_token": "EventSourceToken",
-	"function_name": "FunctionName",
-	"principal": "Principal",
-	"source_account": "SourceAccount",
-	"source_arn": "SourceArn",
-}
-
 func ResourceLambdaPermission() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLambdaPermissionExists,
@@ -77,11 +68,11 @@ func resourceLambdaPermissionRead(data *schema.ResourceData, meta interface{}) e
 }
 
 func resourceLambdaPermissionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(lambdaPermissionType, ResourceLambdaPermission(), data, lambdaPermissionProperties, meta)
+	return plugin.ResourceCreate(lambdaPermissionType, ResourceLambdaPermission(), data, meta)
 }
 
 func resourceLambdaPermissionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(lambdaPermissionType, ResourceLambdaPermission(), data, lambdaPermissionProperties, meta)
+	return plugin.ResourceUpdate(lambdaPermissionType, ResourceLambdaPermission(), data, meta)
 }
 
 func resourceLambdaPermissionDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,16 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var receiptRuleActionProperties map[string]string = map[string]string{
-	"bounce_action": "BounceAction",
-	"s3_action": "S3Action",
-	"stop_action": "StopAction",
-	"sns_action": "SNSAction",
-	"workmail_action": "WorkmailAction",
-	"add_header_action": "AddHeaderAction",
-	"lambda_action": "LambdaAction",
-}
-
 func propertyReceiptRuleAction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

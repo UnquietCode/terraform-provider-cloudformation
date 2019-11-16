@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var channelTeletextSourceSettingsProperties map[string]string = map[string]string{
-	"page_number": "PageNumber",
-}
-
 func propertyChannelTeletextSourceSettings(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var maintenanceWindowTaskTaskInvocationParametersProperties map[string]string = map[string]string{
-	"maintenance_window_run_command_parameters": "MaintenanceWindowRunCommandParameters",
-	"maintenance_window_automation_parameters": "MaintenanceWindowAutomationParameters",
-	"maintenance_window_step_functions_parameters": "MaintenanceWindowStepFunctionsParameters",
-	"maintenance_window_lambda_parameters": "MaintenanceWindowLambdaParameters",
-}
-
 func propertyMaintenanceWindowTaskTaskInvocationParameters(extras...string) *schema.Resource {
 	var count int64 = 0
 	

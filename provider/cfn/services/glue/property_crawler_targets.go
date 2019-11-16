@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var crawlerTargetsProperties map[string]string = map[string]string{
-	"s3_targets": "S3Targets",
-	"catalog_targets": "CatalogTargets",
-	"jdbc_targets": "JdbcTargets",
-	"dynamo_db_targets": "DynamoDBTargets",
-}
-
 func propertyCrawlerTargets(extras...string) *schema.Resource {
 	var count int64 = 0
 	

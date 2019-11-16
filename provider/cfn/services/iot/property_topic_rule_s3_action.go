@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var topicRuleS3ActionProperties map[string]string = map[string]string{
-	"bucket_name": "BucketName",
-	"key": "Key",
-	"role_arn": "RoleArn",
-}
-
 func propertyTopicRuleS3Action(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,14 +16,6 @@ import (
 
 const guardDutyThreatIntelSetType string = "AWS::GuardDuty::ThreatIntelSet"
 
-var guardDutyThreatIntelSetProperties map[string]string = map[string]string{
-	"format": "Format",
-	"activate": "Activate",
-	"detector_id": "DetectorId",
-	"name": "Name",
-	"location": "Location",
-}
-
 func ResourceGuardDutyThreatIntelSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGuardDutyThreatIntelSetExists,
@@ -72,11 +64,11 @@ func resourceGuardDutyThreatIntelSetRead(data *schema.ResourceData, meta interfa
 }
 
 func resourceGuardDutyThreatIntelSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(guardDutyThreatIntelSetType, ResourceGuardDutyThreatIntelSet(), data, guardDutyThreatIntelSetProperties, meta)
+	return plugin.ResourceCreate(guardDutyThreatIntelSetType, ResourceGuardDutyThreatIntelSet(), data, meta)
 }
 
 func resourceGuardDutyThreatIntelSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(guardDutyThreatIntelSetType, ResourceGuardDutyThreatIntelSet(), data, guardDutyThreatIntelSetProperties, meta)
+	return plugin.ResourceUpdate(guardDutyThreatIntelSetType, ResourceGuardDutyThreatIntelSet(), data, meta)
 }
 
 func resourceGuardDutyThreatIntelSetDelete(data *schema.ResourceData, meta interface{}) error {

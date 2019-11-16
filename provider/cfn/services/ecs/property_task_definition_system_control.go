@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var taskDefinitionSystemControlProperties map[string]string = map[string]string{
-	"namespace": "Namespace",
-	"value": "Value",
-}
-
 func propertyTaskDefinitionSystemControl(extras...string) *schema.Resource {
 	var count int64 = 0
 	

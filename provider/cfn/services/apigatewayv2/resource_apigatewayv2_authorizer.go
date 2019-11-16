@@ -16,17 +16,6 @@ import (
 
 const apiGatewayV2AuthorizerType string = "AWS::ApiGatewayV2::Authorizer"
 
-var apiGatewayV2AuthorizerProperties map[string]string = map[string]string{
-	"identity_validation_expression": "IdentityValidationExpression",
-	"authorizer_uri": "AuthorizerUri",
-	"authorizer_credentials_arn": "AuthorizerCredentialsArn",
-	"authorizer_type": "AuthorizerType",
-	"authorizer_result_ttl_in_seconds": "AuthorizerResultTtlInSeconds",
-	"identity_source": "IdentitySource",
-	"api_id": "ApiId",
-	"name": "Name",
-}
-
 func ResourceApiGatewayV2Authorizer() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayV2AuthorizerExists,
@@ -88,11 +77,11 @@ func resourceApiGatewayV2AuthorizerRead(data *schema.ResourceData, meta interfac
 }
 
 func resourceApiGatewayV2AuthorizerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayV2AuthorizerType, ResourceApiGatewayV2Authorizer(), data, apiGatewayV2AuthorizerProperties, meta)
+	return plugin.ResourceCreate(apiGatewayV2AuthorizerType, ResourceApiGatewayV2Authorizer(), data, meta)
 }
 
 func resourceApiGatewayV2AuthorizerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayV2AuthorizerType, ResourceApiGatewayV2Authorizer(), data, apiGatewayV2AuthorizerProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayV2AuthorizerType, ResourceApiGatewayV2Authorizer(), data, meta)
 }
 
 func resourceApiGatewayV2AuthorizerDelete(data *schema.ResourceData, meta interface{}) error {

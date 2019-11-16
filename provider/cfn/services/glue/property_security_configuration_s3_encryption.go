@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var securityConfigurationS3EncryptionProperties map[string]string = map[string]string{
-	"kms_key_arn": "KmsKeyArn",
-	"s3_encryption_mode": "S3EncryptionMode",
-}
-
 func propertySecurityConfigurationS3Encryption(extras...string) *schema.Resource {
 	var count int64 = 0
 	

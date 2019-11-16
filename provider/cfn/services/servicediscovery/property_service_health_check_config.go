@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var serviceHealthCheckConfigProperties map[string]string = map[string]string{
-	"type": "Type",
-	"resource_path": "ResourcePath",
-	"failure_threshold": "FailureThreshold",
-}
-
 func propertyServiceHealthCheckConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var remediationConfigurationExecutionControlsProperties map[string]string = map[string]string{
-	"ssm_controls": "SsmControls",
-}
-
 func propertyRemediationConfigurationExecutionControls(extras...string) *schema.Resource {
 	var count int64 = 0
 	

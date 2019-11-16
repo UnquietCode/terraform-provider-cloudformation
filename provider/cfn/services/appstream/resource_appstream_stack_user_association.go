@@ -16,13 +16,6 @@ import (
 
 const appStreamStackUserAssociationType string = "AWS::AppStream::StackUserAssociation"
 
-var appStreamStackUserAssociationProperties map[string]string = map[string]string{
-	"send_email_notification": "SendEmailNotification",
-	"user_name": "UserName",
-	"stack_name": "StackName",
-	"authentication_type": "AuthenticationType",
-}
-
 func ResourceAppStreamStackUserAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppStreamStackUserAssociationExists,
@@ -67,11 +60,11 @@ func resourceAppStreamStackUserAssociationRead(data *schema.ResourceData, meta i
 }
 
 func resourceAppStreamStackUserAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(appStreamStackUserAssociationType, ResourceAppStreamStackUserAssociation(), data, appStreamStackUserAssociationProperties, meta)
+	return plugin.ResourceCreate(appStreamStackUserAssociationType, ResourceAppStreamStackUserAssociation(), data, meta)
 }
 
 func resourceAppStreamStackUserAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(appStreamStackUserAssociationType, ResourceAppStreamStackUserAssociation(), data, appStreamStackUserAssociationProperties, meta)
+	return plugin.ResourceUpdate(appStreamStackUserAssociationType, ResourceAppStreamStackUserAssociation(), data, meta)
 }
 
 func resourceAppStreamStackUserAssociationDelete(data *schema.ResourceData, meta interface{}) error {

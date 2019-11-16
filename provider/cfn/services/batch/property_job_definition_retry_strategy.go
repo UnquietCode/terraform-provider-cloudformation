@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var jobDefinitionRetryStrategyProperties map[string]string = map[string]string{
-	"attempts": "Attempts",
-}
-
 func propertyJobDefinitionRetryStrategy(extras...string) *schema.Resource {
 	var count int64 = 0
 	

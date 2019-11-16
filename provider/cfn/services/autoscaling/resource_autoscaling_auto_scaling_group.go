@@ -16,31 +16,6 @@ import (
 
 const autoScalingAutoScalingGroupType string = "AWS::AutoScaling::AutoScalingGroup"
 
-var autoScalingAutoScalingGroupProperties map[string]string = map[string]string{
-	"auto_scaling_group_name": "AutoScalingGroupName",
-	"availability_zones": "AvailabilityZones",
-	"cooldown": "Cooldown",
-	"desired_capacity": "DesiredCapacity",
-	"health_check_grace_period": "HealthCheckGracePeriod",
-	"health_check_type": "HealthCheckType",
-	"instance_id": "InstanceId",
-	"launch_configuration_name": "LaunchConfigurationName",
-	"launch_template": "LaunchTemplate",
-	"lifecycle_hook_specification_list": "LifecycleHookSpecificationList",
-	"load_balancer_names": "LoadBalancerNames",
-	"max_size": "MaxSize",
-	"metrics_collection": "MetricsCollection",
-	"min_size": "MinSize",
-	"mixed_instances_policy": "MixedInstancesPolicy",
-	"notification_configurations": "NotificationConfigurations",
-	"placement_group": "PlacementGroup",
-	"service_linked_role_arn": "ServiceLinkedRoleARN",
-	"tags": "Tags",
-	"target_group_ar_ns": "TargetGroupARNs",
-	"termination_policies": "TerminationPolicies",
-	"vpc_zone_identifier": "VPCZoneIdentifier",
-}
-
 func ResourceAutoScalingAutoScalingGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAutoScalingAutoScalingGroupExists,
@@ -172,11 +147,11 @@ func resourceAutoScalingAutoScalingGroupRead(data *schema.ResourceData, meta int
 }
 
 func resourceAutoScalingAutoScalingGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(autoScalingAutoScalingGroupType, ResourceAutoScalingAutoScalingGroup(), data, autoScalingAutoScalingGroupProperties, meta)
+	return plugin.ResourceCreate(autoScalingAutoScalingGroupType, ResourceAutoScalingAutoScalingGroup(), data, meta)
 }
 
 func resourceAutoScalingAutoScalingGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(autoScalingAutoScalingGroupType, ResourceAutoScalingAutoScalingGroup(), data, autoScalingAutoScalingGroupProperties, meta)
+	return plugin.ResourceUpdate(autoScalingAutoScalingGroupType, ResourceAutoScalingAutoScalingGroup(), data, meta)
 }
 
 func resourceAutoScalingAutoScalingGroupDelete(data *schema.ResourceData, meta interface{}) error {

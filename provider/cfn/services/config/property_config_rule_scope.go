@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var configRuleScopeProperties map[string]string = map[string]string{
-	"compliance_resource_id": "ComplianceResourceId",
-	"compliance_resource_types": "ComplianceResourceTypes",
-	"tag_key": "TagKey",
-	"tag_value": "TagValue",
-}
-
 func propertyConfigRuleScope(extras...string) *schema.Resource {
 	var count int64 = 0
 	

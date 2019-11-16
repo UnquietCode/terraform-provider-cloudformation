@@ -17,15 +17,6 @@ import (
 
 const secretsManagerSecretType string = "AWS::SecretsManager::Secret"
 
-var secretsManagerSecretProperties map[string]string = map[string]string{
-	"description": "Description",
-	"kms_key_id": "KmsKeyId",
-	"secret_string": "SecretString",
-	"generate_secret_string": "GenerateSecretString",
-	"tags": "Tags",
-	"name": "Name",
-}
-
 func ResourceSecretsManagerSecret() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSecretsManagerSecretExists,
@@ -77,11 +68,11 @@ func resourceSecretsManagerSecretRead(data *schema.ResourceData, meta interface{
 }
 
 func resourceSecretsManagerSecretCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(secretsManagerSecretType, ResourceSecretsManagerSecret(), data, secretsManagerSecretProperties, meta)
+	return plugin.ResourceCreate(secretsManagerSecretType, ResourceSecretsManagerSecret(), data, meta)
 }
 
 func resourceSecretsManagerSecretUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(secretsManagerSecretType, ResourceSecretsManagerSecret(), data, secretsManagerSecretProperties, meta)
+	return plugin.ResourceUpdate(secretsManagerSecretType, ResourceSecretsManagerSecret(), data, meta)
 }
 
 func resourceSecretsManagerSecretDelete(data *schema.ResourceData, meta interface{}) error {

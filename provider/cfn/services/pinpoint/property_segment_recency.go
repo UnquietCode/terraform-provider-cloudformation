@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var segmentRecencyProperties map[string]string = map[string]string{
-	"duration": "Duration",
-	"recency_type": "RecencyType",
-}
-
 func propertySegmentRecency(extras...string) *schema.Resource {
 	var count int64 = 0
 	

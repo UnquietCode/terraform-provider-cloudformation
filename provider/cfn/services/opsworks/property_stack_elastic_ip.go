@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var stackElasticIpProperties map[string]string = map[string]string{
-	"ip": "Ip",
-	"name": "Name",
-}
-
 func propertyStackElasticIp(extras...string) *schema.Resource {
 	var count int64 = 0
 	

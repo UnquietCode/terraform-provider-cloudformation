@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deploymentGroupDeploymentProperties map[string]string = map[string]string{
-	"description": "Description",
-	"ignore_application_stop_failures": "IgnoreApplicationStopFailures",
-	"revision": "Revision",
-}
-
 func propertyDeploymentGroupDeployment(extras...string) *schema.Resource {
 	var count int64 = 0
 	

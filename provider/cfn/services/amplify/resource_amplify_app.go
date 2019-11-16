@@ -17,21 +17,6 @@ import (
 
 const amplifyAppType string = "AWS::Amplify::App"
 
-var amplifyAppProperties map[string]string = map[string]string{
-	"auto_branch_creation_config": "AutoBranchCreationConfig",
-	"oauth_token": "OauthToken",
-	"repository": "Repository",
-	"description": "Description",
-	"environment_variables": "EnvironmentVariables",
-	"access_token": "AccessToken",
-	"build_spec": "BuildSpec",
-	"custom_rules": "CustomRules",
-	"basic_auth_config": "BasicAuthConfig",
-	"tags": "Tags",
-	"name": "Name",
-	"iam_service_role": "IAMServiceRole",
-}
-
 func ResourceAmplifyApp() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAmplifyAppExists,
@@ -111,11 +96,11 @@ func resourceAmplifyAppRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceAmplifyAppCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(amplifyAppType, ResourceAmplifyApp(), data, amplifyAppProperties, meta)
+	return plugin.ResourceCreate(amplifyAppType, ResourceAmplifyApp(), data, meta)
 }
 
 func resourceAmplifyAppUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(amplifyAppType, ResourceAmplifyApp(), data, amplifyAppProperties, meta)
+	return plugin.ResourceUpdate(amplifyAppType, ResourceAmplifyApp(), data, meta)
 }
 
 func resourceAmplifyAppDelete(data *schema.ResourceData, meta interface{}) error {

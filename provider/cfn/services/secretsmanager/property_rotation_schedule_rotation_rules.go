@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var rotationScheduleRotationRulesProperties map[string]string = map[string]string{
-	"automatically_after_days": "AutomaticallyAfterDays",
-}
-
 func propertyRotationScheduleRotationRules(extras...string) *schema.Resource {
 	var count int64 = 0
 	

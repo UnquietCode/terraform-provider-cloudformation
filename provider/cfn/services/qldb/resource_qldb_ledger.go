@@ -17,13 +17,6 @@ import (
 
 const qLDBLedgerType string = "AWS::QLDB::Ledger"
 
-var qLDBLedgerProperties map[string]string = map[string]string{
-	"permissions_mode": "PermissionsMode",
-	"deletion_protection": "DeletionProtection",
-	"tags": "Tags",
-	"name": "Name",
-}
-
 func ResourceQLDBLedger() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceQLDBLedgerExists,
@@ -65,11 +58,11 @@ func resourceQLDBLedgerRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceQLDBLedgerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(qLDBLedgerType, ResourceQLDBLedger(), data, qLDBLedgerProperties, meta)
+	return plugin.ResourceCreate(qLDBLedgerType, ResourceQLDBLedger(), data, meta)
 }
 
 func resourceQLDBLedgerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(qLDBLedgerType, ResourceQLDBLedger(), data, qLDBLedgerProperties, meta)
+	return plugin.ResourceUpdate(qLDBLedgerType, ResourceQLDBLedger(), data, meta)
 }
 
 func resourceQLDBLedgerDelete(data *schema.ResourceData, meta interface{}) error {

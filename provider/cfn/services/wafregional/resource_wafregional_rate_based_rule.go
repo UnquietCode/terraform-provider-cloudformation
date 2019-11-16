@@ -16,14 +16,6 @@ import (
 
 const wAFRegionalRateBasedRuleType string = "AWS::WAFRegional::RateBasedRule"
 
-var wAFRegionalRateBasedRuleProperties map[string]string = map[string]string{
-	"metric_name": "MetricName",
-	"rate_limit": "RateLimit",
-	"match_predicates": "MatchPredicates",
-	"rate_key": "RateKey",
-	"name": "Name",
-}
-
 func ResourceWAFRegionalRateBasedRule() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFRegionalRateBasedRuleExists,
@@ -73,11 +65,11 @@ func resourceWAFRegionalRateBasedRuleRead(data *schema.ResourceData, meta interf
 }
 
 func resourceWAFRegionalRateBasedRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(wAFRegionalRateBasedRuleType, ResourceWAFRegionalRateBasedRule(), data, wAFRegionalRateBasedRuleProperties, meta)
+	return plugin.ResourceCreate(wAFRegionalRateBasedRuleType, ResourceWAFRegionalRateBasedRule(), data, meta)
 }
 
 func resourceWAFRegionalRateBasedRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(wAFRegionalRateBasedRuleType, ResourceWAFRegionalRateBasedRule(), data, wAFRegionalRateBasedRuleProperties, meta)
+	return plugin.ResourceUpdate(wAFRegionalRateBasedRuleType, ResourceWAFRegionalRateBasedRule(), data, meta)
 }
 
 func resourceWAFRegionalRateBasedRuleDelete(data *schema.ResourceData, meta interface{}) error {

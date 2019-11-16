@@ -14,26 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var spotFleetSpotFleetLaunchSpecificationProperties map[string]string = map[string]string{
-	"block_device_mappings": "BlockDeviceMappings",
-	"ebs_optimized": "EbsOptimized",
-	"iam_instance_profile": "IamInstanceProfile",
-	"image_id": "ImageId",
-	"instance_type": "InstanceType",
-	"kernel_id": "KernelId",
-	"key_name": "KeyName",
-	"monitoring": "Monitoring",
-	"network_interfaces": "NetworkInterfaces",
-	"placement": "Placement",
-	"ramdisk_id": "RamdiskId",
-	"security_groups": "SecurityGroups",
-	"spot_price": "SpotPrice",
-	"subnet_id": "SubnetId",
-	"tag_specifications": "TagSpecifications",
-	"user_data": "UserData",
-	"weighted_capacity": "WeightedCapacity",
-}
-
 func propertySpotFleetSpotFleetLaunchSpecification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

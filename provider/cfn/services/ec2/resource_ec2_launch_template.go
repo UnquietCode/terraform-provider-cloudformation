@@ -16,11 +16,6 @@ import (
 
 const eC2LaunchTemplateType string = "AWS::EC2::LaunchTemplate"
 
-var eC2LaunchTemplateProperties map[string]string = map[string]string{
-	"launch_template_name": "LaunchTemplateName",
-	"launch_template_data": "LaunchTemplateData",
-}
-
 func ResourceEC2LaunchTemplate() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2LaunchTemplateExists,
@@ -59,11 +54,11 @@ func resourceEC2LaunchTemplateRead(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceEC2LaunchTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2LaunchTemplateType, ResourceEC2LaunchTemplate(), data, eC2LaunchTemplateProperties, meta)
+	return plugin.ResourceCreate(eC2LaunchTemplateType, ResourceEC2LaunchTemplate(), data, meta)
 }
 
 func resourceEC2LaunchTemplateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2LaunchTemplateType, ResourceEC2LaunchTemplate(), data, eC2LaunchTemplateProperties, meta)
+	return plugin.ResourceUpdate(eC2LaunchTemplateType, ResourceEC2LaunchTemplate(), data, meta)
 }
 
 func resourceEC2LaunchTemplateDelete(data *schema.ResourceData, meta interface{}) error {

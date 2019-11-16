@@ -16,12 +16,6 @@ import (
 
 const secretsManagerRotationScheduleType string = "AWS::SecretsManager::RotationSchedule"
 
-var secretsManagerRotationScheduleProperties map[string]string = map[string]string{
-	"secret_id": "SecretId",
-	"rotation_lambda_arn": "RotationLambdaARN",
-	"rotation_rules": "RotationRules",
-}
-
 func ResourceSecretsManagerRotationSchedule() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSecretsManagerRotationScheduleExists,
@@ -64,11 +58,11 @@ func resourceSecretsManagerRotationScheduleRead(data *schema.ResourceData, meta 
 }
 
 func resourceSecretsManagerRotationScheduleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(secretsManagerRotationScheduleType, ResourceSecretsManagerRotationSchedule(), data, secretsManagerRotationScheduleProperties, meta)
+	return plugin.ResourceCreate(secretsManagerRotationScheduleType, ResourceSecretsManagerRotationSchedule(), data, meta)
 }
 
 func resourceSecretsManagerRotationScheduleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(secretsManagerRotationScheduleType, ResourceSecretsManagerRotationSchedule(), data, secretsManagerRotationScheduleProperties, meta)
+	return plugin.ResourceUpdate(secretsManagerRotationScheduleType, ResourceSecretsManagerRotationSchedule(), data, meta)
 }
 
 func resourceSecretsManagerRotationScheduleDelete(data *schema.ResourceData, meta interface{}) error {

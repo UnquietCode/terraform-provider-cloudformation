@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deliveryStreamKinesisStreamSourceConfigurationProperties map[string]string = map[string]string{
-	"kinesis_stream_arn": "KinesisStreamARN",
-	"role_arn": "RoleARN",
-}
-
 func propertyDeliveryStreamKinesisStreamSourceConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

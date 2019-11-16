@@ -16,13 +16,6 @@ import (
 
 const apiGatewayBasePathMappingType string = "AWS::ApiGateway::BasePathMapping"
 
-var apiGatewayBasePathMappingProperties map[string]string = map[string]string{
-	"base_path": "BasePath",
-	"domain_name": "DomainName",
-	"rest_api_id": "RestApiId",
-	"stage": "Stage",
-}
-
 func ResourceApiGatewayBasePathMapping() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayBasePathMappingExists,
@@ -67,11 +60,11 @@ func resourceApiGatewayBasePathMappingRead(data *schema.ResourceData, meta inter
 }
 
 func resourceApiGatewayBasePathMappingCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayBasePathMappingType, ResourceApiGatewayBasePathMapping(), data, apiGatewayBasePathMappingProperties, meta)
+	return plugin.ResourceCreate(apiGatewayBasePathMappingType, ResourceApiGatewayBasePathMapping(), data, meta)
 }
 
 func resourceApiGatewayBasePathMappingUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayBasePathMappingType, ResourceApiGatewayBasePathMapping(), data, apiGatewayBasePathMappingProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayBasePathMappingType, ResourceApiGatewayBasePathMapping(), data, meta)
 }
 
 func resourceApiGatewayBasePathMappingDelete(data *schema.ResourceData, meta interface{}) error {

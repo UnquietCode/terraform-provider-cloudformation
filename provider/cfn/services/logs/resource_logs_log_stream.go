@@ -16,11 +16,6 @@ import (
 
 const logsLogStreamType string = "AWS::Logs::LogStream"
 
-var logsLogStreamProperties map[string]string = map[string]string{
-	"log_group_name": "LogGroupName",
-	"log_stream_name": "LogStreamName",
-}
-
 func ResourceLogsLogStream() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLogsLogStreamExists,
@@ -57,11 +52,11 @@ func resourceLogsLogStreamRead(data *schema.ResourceData, meta interface{}) erro
 }
 
 func resourceLogsLogStreamCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(logsLogStreamType, ResourceLogsLogStream(), data, logsLogStreamProperties, meta)
+	return plugin.ResourceCreate(logsLogStreamType, ResourceLogsLogStream(), data, meta)
 }
 
 func resourceLogsLogStreamUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(logsLogStreamType, ResourceLogsLogStream(), data, logsLogStreamProperties, meta)
+	return plugin.ResourceUpdate(logsLogStreamType, ResourceLogsLogStream(), data, meta)
 }
 
 func resourceLogsLogStreamDelete(data *schema.ResourceData, meta interface{}) error {

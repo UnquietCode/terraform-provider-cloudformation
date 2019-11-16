@@ -16,13 +16,6 @@ import (
 
 const opsWorksVolumeType string = "AWS::OpsWorks::Volume"
 
-var opsWorksVolumeProperties map[string]string = map[string]string{
-	"ec2_volume_id": "Ec2VolumeId",
-	"mount_point": "MountPoint",
-	"name": "Name",
-	"stack_id": "StackId",
-}
-
 func ResourceOpsWorksVolume() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceOpsWorksVolumeExists,
@@ -67,11 +60,11 @@ func resourceOpsWorksVolumeRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceOpsWorksVolumeCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(opsWorksVolumeType, ResourceOpsWorksVolume(), data, opsWorksVolumeProperties, meta)
+	return plugin.ResourceCreate(opsWorksVolumeType, ResourceOpsWorksVolume(), data, meta)
 }
 
 func resourceOpsWorksVolumeUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(opsWorksVolumeType, ResourceOpsWorksVolume(), data, opsWorksVolumeProperties, meta)
+	return plugin.ResourceUpdate(opsWorksVolumeType, ResourceOpsWorksVolume(), data, meta)
 }
 
 func resourceOpsWorksVolumeDelete(data *schema.ResourceData, meta interface{}) error {

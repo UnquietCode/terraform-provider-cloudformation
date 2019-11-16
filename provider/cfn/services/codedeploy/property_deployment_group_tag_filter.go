@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deploymentGroupTagFilterProperties map[string]string = map[string]string{
-	"key": "Key",
-	"type": "Type",
-	"value": "Value",
-}
-
 func propertyDeploymentGroupTagFilter(extras...string) *schema.Resource {
 	var count int64 = 0
 	

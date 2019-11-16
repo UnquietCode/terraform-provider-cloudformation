@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationOutputDestinationSchemaProperties map[string]string = map[string]string{
-	"record_format_type": "RecordFormatType",
-}
-
 func propertyApplicationOutputDestinationSchema(extras...string) *schema.Resource {
 	var count int64 = 0
 	

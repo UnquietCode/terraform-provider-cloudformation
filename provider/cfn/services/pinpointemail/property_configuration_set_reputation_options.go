@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var configurationSetReputationOptionsProperties map[string]string = map[string]string{
-	"reputation_metrics_enabled": "ReputationMetricsEnabled",
-}
-
 func propertyConfigurationSetReputationOptions(extras...string) *schema.Resource {
 	var count int64 = 0
 	

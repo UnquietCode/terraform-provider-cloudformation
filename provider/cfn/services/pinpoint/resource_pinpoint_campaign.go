@@ -16,24 +16,6 @@ import (
 
 const pinpointCampaignType string = "AWS::Pinpoint::Campaign"
 
-var pinpointCampaignProperties map[string]string = map[string]string{
-	"description": "Description",
-	"segment_id": "SegmentId",
-	"is_paused": "IsPaused",
-	"additional_treatments": "AdditionalTreatments",
-	"name": "Name",
-	"segment_version": "SegmentVersion",
-	"treatment_description": "TreatmentDescription",
-	"message_configuration": "MessageConfiguration",
-	"limits": "Limits",
-	"holdout_percent": "HoldoutPercent",
-	"schedule": "Schedule",
-	"application_id": "ApplicationId",
-	"campaign_hook": "CampaignHook",
-	"tags": "Tags",
-	"treatment_name": "TreatmentName",
-}
-
 func ResourcePinpointCampaign() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointCampaignExists,
@@ -131,11 +113,11 @@ func resourcePinpointCampaignRead(data *schema.ResourceData, meta interface{}) e
 }
 
 func resourcePinpointCampaignCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(pinpointCampaignType, ResourcePinpointCampaign(), data, pinpointCampaignProperties, meta)
+	return plugin.ResourceCreate(pinpointCampaignType, ResourcePinpointCampaign(), data, meta)
 }
 
 func resourcePinpointCampaignUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(pinpointCampaignType, ResourcePinpointCampaign(), data, pinpointCampaignProperties, meta)
+	return plugin.ResourceUpdate(pinpointCampaignType, ResourcePinpointCampaign(), data, meta)
 }
 
 func resourcePinpointCampaignDelete(data *schema.ResourceData, meta interface{}) error {

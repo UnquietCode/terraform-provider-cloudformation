@@ -17,39 +17,6 @@ import (
 
 const elastiCacheReplicationGroupType string = "AWS::ElastiCache::ReplicationGroup"
 
-var elastiCacheReplicationGroupProperties map[string]string = map[string]string{
-	"at_rest_encryption_enabled": "AtRestEncryptionEnabled",
-	"auth_token": "AuthToken",
-	"auto_minor_version_upgrade": "AutoMinorVersionUpgrade",
-	"automatic_failover_enabled": "AutomaticFailoverEnabled",
-	"cache_node_type": "CacheNodeType",
-	"cache_parameter_group_name": "CacheParameterGroupName",
-	"cache_security_group_names": "CacheSecurityGroupNames",
-	"cache_subnet_group_name": "CacheSubnetGroupName",
-	"engine": "Engine",
-	"engine_version": "EngineVersion",
-	"kms_key_id": "KmsKeyId",
-	"node_group_configuration": "NodeGroupConfiguration",
-	"notification_topic_arn": "NotificationTopicArn",
-	"num_cache_clusters": "NumCacheClusters",
-	"num_node_groups": "NumNodeGroups",
-	"port": "Port",
-	"preferred_cache_cluster_a_zs": "PreferredCacheClusterAZs",
-	"preferred_maintenance_window": "PreferredMaintenanceWindow",
-	"primary_cluster_id": "PrimaryClusterId",
-	"replicas_per_node_group": "ReplicasPerNodeGroup",
-	"replication_group_description": "ReplicationGroupDescription",
-	"replication_group_id": "ReplicationGroupId",
-	"security_group_ids": "SecurityGroupIds",
-	"snapshot_arns": "SnapshotArns",
-	"snapshot_name": "SnapshotName",
-	"snapshot_retention_limit": "SnapshotRetentionLimit",
-	"snapshot_window": "SnapshotWindow",
-	"snapshotting_cluster_id": "SnapshottingClusterId",
-	"tags": "Tags",
-	"transit_encryption_enabled": "TransitEncryptionEnabled",
-}
-
 func ResourceElastiCacheReplicationGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElastiCacheReplicationGroupExists,
@@ -204,11 +171,11 @@ func resourceElastiCacheReplicationGroupRead(data *schema.ResourceData, meta int
 }
 
 func resourceElastiCacheReplicationGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(elastiCacheReplicationGroupType, ResourceElastiCacheReplicationGroup(), data, elastiCacheReplicationGroupProperties, meta)
+	return plugin.ResourceCreate(elastiCacheReplicationGroupType, ResourceElastiCacheReplicationGroup(), data, meta)
 }
 
 func resourceElastiCacheReplicationGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(elastiCacheReplicationGroupType, ResourceElastiCacheReplicationGroup(), data, elastiCacheReplicationGroupProperties, meta)
+	return plugin.ResourceUpdate(elastiCacheReplicationGroupType, ResourceElastiCacheReplicationGroup(), data, meta)
 }
 
 func resourceElastiCacheReplicationGroupDelete(data *schema.ResourceData, meta interface{}) error {

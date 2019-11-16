@@ -17,20 +17,6 @@ import (
 
 const elasticsearchDomainType string = "AWS::Elasticsearch::Domain"
 
-var elasticsearchDomainProperties map[string]string = map[string]string{
-	"access_policies": "AccessPolicies",
-	"advanced_options": "AdvancedOptions",
-	"domain_name": "DomainName",
-	"ebs_options": "EBSOptions",
-	"elasticsearch_cluster_config": "ElasticsearchClusterConfig",
-	"elasticsearch_version": "ElasticsearchVersion",
-	"encryption_at_rest_options": "EncryptionAtRestOptions",
-	"node_to_node_encryption_options": "NodeToNodeEncryptionOptions",
-	"snapshot_options": "SnapshotOptions",
-	"tags": "Tags",
-	"vpc_options": "VPCOptions",
-}
-
 func ResourceElasticsearchDomain() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElasticsearchDomainExists,
@@ -113,11 +99,11 @@ func resourceElasticsearchDomainRead(data *schema.ResourceData, meta interface{}
 }
 
 func resourceElasticsearchDomainCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(elasticsearchDomainType, ResourceElasticsearchDomain(), data, elasticsearchDomainProperties, meta)
+	return plugin.ResourceCreate(elasticsearchDomainType, ResourceElasticsearchDomain(), data, meta)
 }
 
 func resourceElasticsearchDomainUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(elasticsearchDomainType, ResourceElasticsearchDomain(), data, elasticsearchDomainProperties, meta)
+	return plugin.ResourceUpdate(elasticsearchDomainType, ResourceElasticsearchDomain(), data, meta)
 }
 
 func resourceElasticsearchDomainDelete(data *schema.ResourceData, meta interface{}) error {

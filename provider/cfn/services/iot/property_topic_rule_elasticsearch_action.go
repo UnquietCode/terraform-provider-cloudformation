@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var topicRuleElasticsearchActionProperties map[string]string = map[string]string{
-	"endpoint": "Endpoint",
-	"id": "Id",
-	"index": "Index",
-	"role_arn": "RoleArn",
-	"type": "Type",
-}
-
 func propertyTopicRuleElasticsearchAction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

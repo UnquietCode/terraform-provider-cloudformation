@@ -16,19 +16,6 @@ import (
 
 const apiGatewayV2StageType string = "AWS::ApiGatewayV2::Stage"
 
-var apiGatewayV2StageProperties map[string]string = map[string]string{
-	"client_certificate_id": "ClientCertificateId",
-	"deployment_id": "DeploymentId",
-	"description": "Description",
-	"access_log_settings": "AccessLogSettings",
-	"route_settings": "RouteSettings",
-	"stage_name": "StageName",
-	"stage_variables": "StageVariables",
-	"api_id": "ApiId",
-	"default_route_settings": "DefaultRouteSettings",
-	"tags": "Tags",
-}
-
 func ResourceApiGatewayV2Stage() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayV2StageExists,
@@ -101,11 +88,11 @@ func resourceApiGatewayV2StageRead(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceApiGatewayV2StageCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayV2StageType, ResourceApiGatewayV2Stage(), data, apiGatewayV2StageProperties, meta)
+	return plugin.ResourceCreate(apiGatewayV2StageType, ResourceApiGatewayV2Stage(), data, meta)
 }
 
 func resourceApiGatewayV2StageUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayV2StageType, ResourceApiGatewayV2Stage(), data, apiGatewayV2StageProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayV2StageType, ResourceApiGatewayV2Stage(), data, meta)
 }
 
 func resourceApiGatewayV2StageDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var anomalyDetectorConfigurationProperties map[string]string = map[string]string{
-	"metric_time_zone": "MetricTimeZone",
-	"excluded_time_ranges": "ExcludedTimeRanges",
-}
-
 func propertyAnomalyDetectorConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

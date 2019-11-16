@@ -14,9 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var graphQLApiTagsProperties map[string]string = map[string]string{
-}
-
 func propertyGraphQLApiTags(extras...string) *schema.Resource {
 	var count int64 = 0
 	

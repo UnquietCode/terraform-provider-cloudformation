@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var databaseDatabaseInputProperties map[string]string = map[string]string{
-	"location_uri": "LocationUri",
-	"description": "Description",
-	"parameters": "Parameters",
-	"name": "Name",
-}
-
 func propertyDatabaseDatabaseInput(extras...string) *schema.Resource {
 	var count int64 = 0
 	

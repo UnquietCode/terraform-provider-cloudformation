@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var jobDefinitionEnvironmentProperties map[string]string = map[string]string{
-	"value": "Value",
-	"name": "Name",
-}
-
 func propertyJobDefinitionEnvironment(extras...string) *schema.Resource {
 	var count int64 = 0
 	

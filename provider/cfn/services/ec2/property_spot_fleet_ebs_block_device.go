@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var spotFleetEbsBlockDeviceProperties map[string]string = map[string]string{
-	"delete_on_termination": "DeleteOnTermination",
-	"encrypted": "Encrypted",
-	"iops": "Iops",
-	"snapshot_id": "SnapshotId",
-	"volume_size": "VolumeSize",
-	"volume_type": "VolumeType",
-}
-
 func propertySpotFleetEbsBlockDevice(extras...string) *schema.Resource {
 	var count int64 = 0
 	

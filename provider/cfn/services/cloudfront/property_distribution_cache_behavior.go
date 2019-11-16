@@ -14,23 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var distributionCacheBehaviorProperties map[string]string = map[string]string{
-	"compress": "Compress",
-	"lambda_function_associations": "LambdaFunctionAssociations",
-	"target_origin_id": "TargetOriginId",
-	"viewer_protocol_policy": "ViewerProtocolPolicy",
-	"trusted_signers": "TrustedSigners",
-	"default_ttl": "DefaultTTL",
-	"field_level_encryption_id": "FieldLevelEncryptionId",
-	"allowed_methods": "AllowedMethods",
-	"path_pattern": "PathPattern",
-	"cached_methods": "CachedMethods",
-	"smooth_streaming": "SmoothStreaming",
-	"forwarded_values": "ForwardedValues",
-	"min_ttl": "MinTTL",
-	"max_ttl": "MaxTTL",
-}
-
 func propertyDistributionCacheBehavior(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -17,21 +17,6 @@ import (
 
 const sQSQueueType string = "AWS::SQS::Queue"
 
-var sQSQueueProperties map[string]string = map[string]string{
-	"content_based_deduplication": "ContentBasedDeduplication",
-	"delay_seconds": "DelaySeconds",
-	"fifo_queue": "FifoQueue",
-	"kms_data_key_reuse_period_seconds": "KmsDataKeyReusePeriodSeconds",
-	"kms_master_key_id": "KmsMasterKeyId",
-	"maximum_message_size": "MaximumMessageSize",
-	"message_retention_period": "MessageRetentionPeriod",
-	"queue_name": "QueueName",
-	"receive_message_wait_time_seconds": "ReceiveMessageWaitTimeSeconds",
-	"redrive_policy": "RedrivePolicy",
-	"tags": "Tags",
-	"visibility_timeout": "VisibilityTimeout",
-}
-
 func ResourceSQSQueue() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSQSQueueExists,
@@ -105,11 +90,11 @@ func resourceSQSQueueRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceSQSQueueCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(sQSQueueType, ResourceSQSQueue(), data, sQSQueueProperties, meta)
+	return plugin.ResourceCreate(sQSQueueType, ResourceSQSQueue(), data, meta)
 }
 
 func resourceSQSQueueUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(sQSQueueType, ResourceSQSQueue(), data, sQSQueueProperties, meta)
+	return plugin.ResourceUpdate(sQSQueueType, ResourceSQSQueue(), data, meta)
 }
 
 func resourceSQSQueueDelete(data *schema.ResourceData, meta interface{}) error {

@@ -16,11 +16,6 @@ import (
 
 const eC2SubnetCidrBlockType string = "AWS::EC2::SubnetCidrBlock"
 
-var eC2SubnetCidrBlockProperties map[string]string = map[string]string{
-	"ipv6_cidr_block": "Ipv6CidrBlock",
-	"subnet_id": "SubnetId",
-}
-
 func ResourceEC2SubnetCidrBlock() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2SubnetCidrBlockExists,
@@ -57,11 +52,11 @@ func resourceEC2SubnetCidrBlockRead(data *schema.ResourceData, meta interface{})
 }
 
 func resourceEC2SubnetCidrBlockCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2SubnetCidrBlockType, ResourceEC2SubnetCidrBlock(), data, eC2SubnetCidrBlockProperties, meta)
+	return plugin.ResourceCreate(eC2SubnetCidrBlockType, ResourceEC2SubnetCidrBlock(), data, meta)
 }
 
 func resourceEC2SubnetCidrBlockUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2SubnetCidrBlockType, ResourceEC2SubnetCidrBlock(), data, eC2SubnetCidrBlockProperties, meta)
+	return plugin.ResourceUpdate(eC2SubnetCidrBlockType, ResourceEC2SubnetCidrBlock(), data, meta)
 }
 
 func resourceEC2SubnetCidrBlockDelete(data *schema.ResourceData, meta interface{}) error {

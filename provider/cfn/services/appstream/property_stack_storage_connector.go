@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var stackStorageConnectorProperties map[string]string = map[string]string{
-	"domains": "Domains",
-	"resource_identifier": "ResourceIdentifier",
-	"connector_type": "ConnectorType",
-}
-
 func propertyStackStorageConnector(extras...string) *schema.Resource {
 	var count int64 = 0
 	

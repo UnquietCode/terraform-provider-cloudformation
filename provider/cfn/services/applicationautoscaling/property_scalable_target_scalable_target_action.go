@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var scalableTargetScalableTargetActionProperties map[string]string = map[string]string{
-	"max_capacity": "MaxCapacity",
-	"min_capacity": "MinCapacity",
-}
-
 func propertyScalableTargetScalableTargetAction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var detectorModelOnInputProperties map[string]string = map[string]string{
-	"events": "Events",
-	"transition_events": "TransitionEvents",
-}
-
 func propertyDetectorModelOnInput(extras...string) *schema.Resource {
 	var count int64 = 0
 	

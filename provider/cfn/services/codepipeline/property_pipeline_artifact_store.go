@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var pipelineArtifactStoreProperties map[string]string = map[string]string{
-	"encryption_key": "EncryptionKey",
-	"location": "Location",
-	"type": "Type",
-}
-
 func propertyPipelineArtifactStore(extras...string) *schema.Resource {
 	var count int64 = 0
 	

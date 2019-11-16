@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var streamingDistributionTrustedSignersProperties map[string]string = map[string]string{
-	"enabled": "Enabled",
-	"aws_account_numbers": "AwsAccountNumbers",
-}
-
 func propertyStreamingDistributionTrustedSigners(extras...string) *schema.Resource {
 	var count int64 = 0
 	

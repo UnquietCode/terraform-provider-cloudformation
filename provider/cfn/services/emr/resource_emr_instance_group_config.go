@@ -16,19 +16,6 @@ import (
 
 const eMRInstanceGroupConfigType string = "AWS::EMR::InstanceGroupConfig"
 
-var eMRInstanceGroupConfigProperties map[string]string = map[string]string{
-	"auto_scaling_policy": "AutoScalingPolicy",
-	"bid_price": "BidPrice",
-	"configurations": "Configurations",
-	"ebs_configuration": "EbsConfiguration",
-	"instance_count": "InstanceCount",
-	"instance_role": "InstanceRole",
-	"instance_type": "InstanceType",
-	"job_flow_id": "JobFlowId",
-	"market": "Market",
-	"name": "Name",
-}
-
 func ResourceEMRInstanceGroupConfig() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEMRInstanceGroupConfigExists,
@@ -102,11 +89,11 @@ func resourceEMRInstanceGroupConfigRead(data *schema.ResourceData, meta interfac
 }
 
 func resourceEMRInstanceGroupConfigCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eMRInstanceGroupConfigType, ResourceEMRInstanceGroupConfig(), data, eMRInstanceGroupConfigProperties, meta)
+	return plugin.ResourceCreate(eMRInstanceGroupConfigType, ResourceEMRInstanceGroupConfig(), data, meta)
 }
 
 func resourceEMRInstanceGroupConfigUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eMRInstanceGroupConfigType, ResourceEMRInstanceGroupConfig(), data, eMRInstanceGroupConfigProperties, meta)
+	return plugin.ResourceUpdate(eMRInstanceGroupConfigType, ResourceEMRInstanceGroupConfig(), data, meta)
 }
 
 func resourceEMRInstanceGroupConfigDelete(data *schema.ResourceData, meta interface{}) error {

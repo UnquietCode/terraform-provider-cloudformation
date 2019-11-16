@@ -16,11 +16,6 @@ import (
 
 const eC2TransitGatewayRouteTableAssociationType string = "AWS::EC2::TransitGatewayRouteTableAssociation"
 
-var eC2TransitGatewayRouteTableAssociationProperties map[string]string = map[string]string{
-	"transit_gateway_route_table_id": "TransitGatewayRouteTableId",
-	"transit_gateway_attachment_id": "TransitGatewayAttachmentId",
-}
-
 func ResourceEC2TransitGatewayRouteTableAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2TransitGatewayRouteTableAssociationExists,
@@ -57,11 +52,11 @@ func resourceEC2TransitGatewayRouteTableAssociationRead(data *schema.ResourceDat
 }
 
 func resourceEC2TransitGatewayRouteTableAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2TransitGatewayRouteTableAssociationType, ResourceEC2TransitGatewayRouteTableAssociation(), data, eC2TransitGatewayRouteTableAssociationProperties, meta)
+	return plugin.ResourceCreate(eC2TransitGatewayRouteTableAssociationType, ResourceEC2TransitGatewayRouteTableAssociation(), data, meta)
 }
 
 func resourceEC2TransitGatewayRouteTableAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2TransitGatewayRouteTableAssociationType, ResourceEC2TransitGatewayRouteTableAssociation(), data, eC2TransitGatewayRouteTableAssociationProperties, meta)
+	return plugin.ResourceUpdate(eC2TransitGatewayRouteTableAssociationType, ResourceEC2TransitGatewayRouteTableAssociation(), data, meta)
 }
 
 func resourceEC2TransitGatewayRouteTableAssociationDelete(data *schema.ResourceData, meta interface{}) error {

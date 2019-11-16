@@ -17,12 +17,6 @@ import (
 
 const eC2NatGatewayType string = "AWS::EC2::NatGateway"
 
-var eC2NatGatewayProperties map[string]string = map[string]string{
-	"allocation_id": "AllocationId",
-	"subnet_id": "SubnetId",
-	"tags": "Tags",
-}
-
 func ResourceEC2NatGateway() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2NatGatewayExists,
@@ -60,11 +54,11 @@ func resourceEC2NatGatewayRead(data *schema.ResourceData, meta interface{}) erro
 }
 
 func resourceEC2NatGatewayCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2NatGatewayType, ResourceEC2NatGateway(), data, eC2NatGatewayProperties, meta)
+	return plugin.ResourceCreate(eC2NatGatewayType, ResourceEC2NatGateway(), data, meta)
 }
 
 func resourceEC2NatGatewayUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2NatGatewayType, ResourceEC2NatGateway(), data, eC2NatGatewayProperties, meta)
+	return plugin.ResourceUpdate(eC2NatGatewayType, ResourceEC2NatGateway(), data, meta)
 }
 
 func resourceEC2NatGatewayDelete(data *schema.ResourceData, meta interface{}) error {

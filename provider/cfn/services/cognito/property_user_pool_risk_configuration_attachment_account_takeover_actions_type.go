@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var userPoolRiskConfigurationAttachmentAccountTakeoverActionsTypeProperties map[string]string = map[string]string{
-	"high_action": "HighAction",
-	"low_action": "LowAction",
-	"medium_action": "MediumAction",
-}
-
 func propertyUserPoolRiskConfigurationAttachmentAccountTakeoverActionsType(extras...string) *schema.Resource {
 	var count int64 = 0
 	

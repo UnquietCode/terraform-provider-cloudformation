@@ -16,14 +16,6 @@ import (
 
 const rDSEventSubscriptionType string = "AWS::RDS::EventSubscription"
 
-var rDSEventSubscriptionProperties map[string]string = map[string]string{
-	"enabled": "Enabled",
-	"event_categories": "EventCategories",
-	"sns_topic_arn": "SnsTopicArn",
-	"source_ids": "SourceIds",
-	"source_type": "SourceType",
-}
-
 func ResourceRDSEventSubscription() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRDSEventSubscriptionExists,
@@ -75,11 +67,11 @@ func resourceRDSEventSubscriptionRead(data *schema.ResourceData, meta interface{
 }
 
 func resourceRDSEventSubscriptionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(rDSEventSubscriptionType, ResourceRDSEventSubscription(), data, rDSEventSubscriptionProperties, meta)
+	return plugin.ResourceCreate(rDSEventSubscriptionType, ResourceRDSEventSubscription(), data, meta)
 }
 
 func resourceRDSEventSubscriptionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(rDSEventSubscriptionType, ResourceRDSEventSubscription(), data, rDSEventSubscriptionProperties, meta)
+	return plugin.ResourceUpdate(rDSEventSubscriptionType, ResourceRDSEventSubscription(), data, meta)
 }
 
 func resourceRDSEventSubscriptionDelete(data *schema.ResourceData, meta interface{}) error {

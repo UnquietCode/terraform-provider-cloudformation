@@ -17,14 +17,6 @@ import (
 
 const sageMakerWorkteamType string = "AWS::SageMaker::Workteam"
 
-var sageMakerWorkteamProperties map[string]string = map[string]string{
-	"description": "Description",
-	"notification_configuration": "NotificationConfiguration",
-	"workteam_name": "WorkteamName",
-	"member_definitions": "MemberDefinitions",
-	"tags": "Tags",
-}
-
 func ResourceSageMakerWorkteam() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSageMakerWorkteamExists,
@@ -73,11 +65,11 @@ func resourceSageMakerWorkteamRead(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceSageMakerWorkteamCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(sageMakerWorkteamType, ResourceSageMakerWorkteam(), data, sageMakerWorkteamProperties, meta)
+	return plugin.ResourceCreate(sageMakerWorkteamType, ResourceSageMakerWorkteam(), data, meta)
 }
 
 func resourceSageMakerWorkteamUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(sageMakerWorkteamType, ResourceSageMakerWorkteam(), data, sageMakerWorkteamProperties, meta)
+	return plugin.ResourceUpdate(sageMakerWorkteamType, ResourceSageMakerWorkteam(), data, meta)
 }
 
 func resourceSageMakerWorkteamDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var patchBaselinePatchFilterProperties map[string]string = map[string]string{
-	"values": "Values",
-	"key": "Key",
-}
-
 func propertyPatchBaselinePatchFilter(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var jobJobCommandProperties map[string]string = map[string]string{
-	"python_version": "PythonVersion",
-	"script_location": "ScriptLocation",
-	"name": "Name",
-}
-
 func propertyJobJobCommand(extras...string) *schema.Resource {
 	var count int64 = 0
 	

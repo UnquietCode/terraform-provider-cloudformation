@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var dataSourceElasticsearchConfigProperties map[string]string = map[string]string{
-	"aws_region": "AwsRegion",
-	"endpoint": "Endpoint",
-}
-
 func propertyDataSourceElasticsearchConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

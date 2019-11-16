@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var filterFindingCriteriaProperties map[string]string = map[string]string{
-	"criterion": "Criterion",
-	"item_type": "ItemType",
-}
-
 func propertyFilterFindingCriteria(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var channelCustomerManagedS3Properties map[string]string = map[string]string{
-	"bucket": "Bucket",
-	"role_arn": "RoleArn",
-	"key_prefix": "KeyPrefix",
-}
-
 func propertyChannelCustomerManagedS3(extras...string) *schema.Resource {
 	var count int64 = 0
 	

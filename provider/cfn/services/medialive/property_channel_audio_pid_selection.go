@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var channelAudioPidSelectionProperties map[string]string = map[string]string{
-	"pid": "Pid",
-}
-
 func propertyChannelAudioPidSelection(extras...string) *schema.Resource {
 	var count int64 = 0
 	

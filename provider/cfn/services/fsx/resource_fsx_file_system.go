@@ -17,18 +17,6 @@ import (
 
 const fSxFileSystemType string = "AWS::FSx::FileSystem"
 
-var fSxFileSystemProperties map[string]string = map[string]string{
-	"kms_key_id": "KmsKeyId",
-	"storage_capacity": "StorageCapacity",
-	"file_system_type": "FileSystemType",
-	"lustre_configuration": "LustreConfiguration",
-	"backup_id": "BackupId",
-	"subnet_ids": "SubnetIds",
-	"security_group_ids": "SecurityGroupIds",
-	"tags": "Tags",
-	"windows_configuration": "WindowsConfiguration",
-}
-
 func ResourceFSxFileSystem() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceFSxFileSystemExists,
@@ -96,11 +84,11 @@ func resourceFSxFileSystemRead(data *schema.ResourceData, meta interface{}) erro
 }
 
 func resourceFSxFileSystemCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(fSxFileSystemType, ResourceFSxFileSystem(), data, fSxFileSystemProperties, meta)
+	return plugin.ResourceCreate(fSxFileSystemType, ResourceFSxFileSystem(), data, meta)
 }
 
 func resourceFSxFileSystemUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(fSxFileSystemType, ResourceFSxFileSystem(), data, fSxFileSystemProperties, meta)
+	return plugin.ResourceUpdate(fSxFileSystemType, ResourceFSxFileSystem(), data, meta)
 }
 
 func resourceFSxFileSystemDelete(data *schema.ResourceData, meta interface{}) error {

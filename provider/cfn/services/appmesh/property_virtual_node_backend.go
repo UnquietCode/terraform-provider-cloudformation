@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var virtualNodeBackendProperties map[string]string = map[string]string{
-	"virtual_service": "VirtualService",
-}
-
 func propertyVirtualNodeBackend(extras...string) *schema.Resource {
 	var count int64 = 0
 	

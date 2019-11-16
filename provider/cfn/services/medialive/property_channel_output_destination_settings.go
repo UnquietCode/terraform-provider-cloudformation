@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var channelOutputDestinationSettingsProperties map[string]string = map[string]string{
-	"stream_name": "StreamName",
-	"username": "Username",
-	"password_param": "PasswordParam",
-	"url": "Url",
-}
-
 func propertyChannelOutputDestinationSettings(extras...string) *schema.Resource {
 	var count int64 = 0
 	

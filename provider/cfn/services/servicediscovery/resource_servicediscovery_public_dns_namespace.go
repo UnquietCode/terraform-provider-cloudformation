@@ -16,11 +16,6 @@ import (
 
 const serviceDiscoveryPublicDnsNamespaceType string = "AWS::ServiceDiscovery::PublicDnsNamespace"
 
-var serviceDiscoveryPublicDnsNamespaceProperties map[string]string = map[string]string{
-	"description": "Description",
-	"name": "Name",
-}
-
 func ResourceServiceDiscoveryPublicDnsNamespace() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceDiscoveryPublicDnsNamespaceExists,
@@ -57,11 +52,11 @@ func resourceServiceDiscoveryPublicDnsNamespaceRead(data *schema.ResourceData, m
 }
 
 func resourceServiceDiscoveryPublicDnsNamespaceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(serviceDiscoveryPublicDnsNamespaceType, ResourceServiceDiscoveryPublicDnsNamespace(), data, serviceDiscoveryPublicDnsNamespaceProperties, meta)
+	return plugin.ResourceCreate(serviceDiscoveryPublicDnsNamespaceType, ResourceServiceDiscoveryPublicDnsNamespace(), data, meta)
 }
 
 func resourceServiceDiscoveryPublicDnsNamespaceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(serviceDiscoveryPublicDnsNamespaceType, ResourceServiceDiscoveryPublicDnsNamespace(), data, serviceDiscoveryPublicDnsNamespaceProperties, meta)
+	return plugin.ResourceUpdate(serviceDiscoveryPublicDnsNamespaceType, ResourceServiceDiscoveryPublicDnsNamespace(), data, meta)
 }
 
 func resourceServiceDiscoveryPublicDnsNamespaceDelete(data *schema.ResourceData, meta interface{}) error {

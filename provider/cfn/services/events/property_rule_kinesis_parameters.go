@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var ruleKinesisParametersProperties map[string]string = map[string]string{
-	"partition_key_path": "PartitionKeyPath",
-}
-
 func propertyRuleKinesisParameters(extras...string) *schema.Resource {
 	var count int64 = 0
 	

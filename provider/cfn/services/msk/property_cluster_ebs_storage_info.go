@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var clusterEBSStorageInfoProperties map[string]string = map[string]string{
-	"volume_size": "VolumeSize",
-}
-
 func propertyClusterEBSStorageInfo(extras...string) *schema.Resource {
 	var count int64 = 0
 	

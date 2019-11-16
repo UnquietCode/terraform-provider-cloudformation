@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var routeGrpcRouteProperties map[string]string = map[string]string{
-	"action": "Action",
-	"retry_policy": "RetryPolicy",
-	"match": "Match",
-}
-
 func propertyRouteGrpcRoute(extras...string) *schema.Resource {
 	var count int64 = 0
 	

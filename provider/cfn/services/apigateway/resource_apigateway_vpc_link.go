@@ -16,12 +16,6 @@ import (
 
 const apiGatewayVpcLinkType string = "AWS::ApiGateway::VpcLink"
 
-var apiGatewayVpcLinkProperties map[string]string = map[string]string{
-	"description": "Description",
-	"target_arns": "TargetArns",
-	"name": "Name",
-}
-
 func ResourceApiGatewayVpcLink() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayVpcLinkExists,
@@ -63,11 +57,11 @@ func resourceApiGatewayVpcLinkRead(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceApiGatewayVpcLinkCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayVpcLinkType, ResourceApiGatewayVpcLink(), data, apiGatewayVpcLinkProperties, meta)
+	return plugin.ResourceCreate(apiGatewayVpcLinkType, ResourceApiGatewayVpcLink(), data, meta)
 }
 
 func resourceApiGatewayVpcLinkUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayVpcLinkType, ResourceApiGatewayVpcLink(), data, apiGatewayVpcLinkProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayVpcLinkType, ResourceApiGatewayVpcLink(), data, meta)
 }
 
 func resourceApiGatewayVpcLinkDelete(data *schema.ResourceData, meta interface{}) error {

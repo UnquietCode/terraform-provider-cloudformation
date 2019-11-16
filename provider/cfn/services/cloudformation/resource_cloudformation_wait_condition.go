@@ -16,12 +16,6 @@ import (
 
 const cloudFormationWaitConditionType string = "AWS::CloudFormation::WaitCondition"
 
-var cloudFormationWaitConditionProperties map[string]string = map[string]string{
-	"the_count": "TheCount",
-	"handle": "Handle",
-	"timeout": "Timeout",
-}
-
 func ResourceCloudFormationWaitCondition() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCloudFormationWaitConditionExists,
@@ -62,11 +56,11 @@ func resourceCloudFormationWaitConditionRead(data *schema.ResourceData, meta int
 }
 
 func resourceCloudFormationWaitConditionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(cloudFormationWaitConditionType, ResourceCloudFormationWaitCondition(), data, cloudFormationWaitConditionProperties, meta)
+	return plugin.ResourceCreate(cloudFormationWaitConditionType, ResourceCloudFormationWaitCondition(), data, meta)
 }
 
 func resourceCloudFormationWaitConditionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(cloudFormationWaitConditionType, ResourceCloudFormationWaitCondition(), data, cloudFormationWaitConditionProperties, meta)
+	return plugin.ResourceUpdate(cloudFormationWaitConditionType, ResourceCloudFormationWaitCondition(), data, meta)
 }
 
 func resourceCloudFormationWaitConditionDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var securityConfigurationEncryptionConfigurationProperties map[string]string = map[string]string{
-	"s3_encryptions": "S3Encryptions",
-	"cloud_watch_encryption": "CloudWatchEncryption",
-	"job_bookmarks_encryption": "JobBookmarksEncryption",
-}
-
 func propertySecurityConfigurationEncryptionConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

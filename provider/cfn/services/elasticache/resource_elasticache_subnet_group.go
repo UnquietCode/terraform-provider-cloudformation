@@ -16,12 +16,6 @@ import (
 
 const elastiCacheSubnetGroupType string = "AWS::ElastiCache::SubnetGroup"
 
-var elastiCacheSubnetGroupProperties map[string]string = map[string]string{
-	"cache_subnet_group_name": "CacheSubnetGroupName",
-	"description": "Description",
-	"subnet_ids": "SubnetIds",
-}
-
 func ResourceElastiCacheSubnetGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElastiCacheSubnetGroupExists,
@@ -63,11 +57,11 @@ func resourceElastiCacheSubnetGroupRead(data *schema.ResourceData, meta interfac
 }
 
 func resourceElastiCacheSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(elastiCacheSubnetGroupType, ResourceElastiCacheSubnetGroup(), data, elastiCacheSubnetGroupProperties, meta)
+	return plugin.ResourceCreate(elastiCacheSubnetGroupType, ResourceElastiCacheSubnetGroup(), data, meta)
 }
 
 func resourceElastiCacheSubnetGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(elastiCacheSubnetGroupType, ResourceElastiCacheSubnetGroup(), data, elastiCacheSubnetGroupProperties, meta)
+	return plugin.ResourceUpdate(elastiCacheSubnetGroupType, ResourceElastiCacheSubnetGroup(), data, meta)
 }
 
 func resourceElastiCacheSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {

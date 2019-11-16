@@ -16,11 +16,6 @@ import (
 
 const cloudWatchDashboardType string = "AWS::CloudWatch::Dashboard"
 
-var cloudWatchDashboardProperties map[string]string = map[string]string{
-	"dashboard_name": "DashboardName",
-	"dashboard_body": "DashboardBody",
-}
-
 func ResourceCloudWatchDashboard() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCloudWatchDashboardExists,
@@ -57,11 +52,11 @@ func resourceCloudWatchDashboardRead(data *schema.ResourceData, meta interface{}
 }
 
 func resourceCloudWatchDashboardCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(cloudWatchDashboardType, ResourceCloudWatchDashboard(), data, cloudWatchDashboardProperties, meta)
+	return plugin.ResourceCreate(cloudWatchDashboardType, ResourceCloudWatchDashboard(), data, meta)
 }
 
 func resourceCloudWatchDashboardUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(cloudWatchDashboardType, ResourceCloudWatchDashboard(), data, cloudWatchDashboardProperties, meta)
+	return plugin.ResourceUpdate(cloudWatchDashboardType, ResourceCloudWatchDashboard(), data, meta)
 }
 
 func resourceCloudWatchDashboardDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var subscriptionDefinitionSubscriptionProperties map[string]string = map[string]string{
-	"target": "Target",
-	"id": "Id",
-	"source": "Source",
-	"subject": "Subject",
-}
-
 func propertySubscriptionDefinitionSubscription(extras...string) *schema.Resource {
 	var count int64 = 0
 	

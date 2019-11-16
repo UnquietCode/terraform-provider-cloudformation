@@ -14,16 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var cloudFormationProvisionedProductProvisioningPreferencesProperties map[string]string = map[string]string{
-	"stack_set_accounts": "StackSetAccounts",
-	"stack_set_failure_tolerance_count": "StackSetFailureToleranceCount",
-	"stack_set_max_concurrency_percentage": "StackSetMaxConcurrencyPercentage",
-	"stack_set_max_concurrency_count": "StackSetMaxConcurrencyCount",
-	"stack_set_regions": "StackSetRegions",
-	"stack_set_operation_type": "StackSetOperationType",
-	"stack_set_failure_tolerance_percentage": "StackSetFailureTolerancePercentage",
-}
-
 func propertyCloudFormationProvisionedProductProvisioningPreferences(extras...string) *schema.Resource {
 	var count int64 = 0
 	

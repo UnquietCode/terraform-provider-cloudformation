@@ -14,25 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var computeEnvironmentComputeResourcesProperties map[string]string = map[string]string{
-	"spot_iam_fleet_role": "SpotIamFleetRole",
-	"maxv_cpus": "MaxvCpus",
-	"bid_percentage": "BidPercentage",
-	"security_group_ids": "SecurityGroupIds",
-	"subnets": "Subnets",
-	"type": "Type",
-	"allocation_strategy": "AllocationStrategy",
-	"minv_cpus": "MinvCpus",
-	"launch_template": "LaunchTemplate",
-	"image_id": "ImageId",
-	"instance_role": "InstanceRole",
-	"instance_types": "InstanceTypes",
-	"ec2_key_pair": "Ec2KeyPair",
-	"placement_group": "PlacementGroup",
-	"tags": "Tags",
-	"desiredv_cpus": "DesiredvCpus",
-}
-
 func propertyComputeEnvironmentComputeResources(extras...string) *schema.Resource {
 	var count int64 = 0
 	

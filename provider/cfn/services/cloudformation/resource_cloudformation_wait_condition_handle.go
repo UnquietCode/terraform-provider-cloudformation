@@ -16,9 +16,6 @@ import (
 
 const cloudFormationWaitConditionHandleType string = "AWS::CloudFormation::WaitConditionHandle"
 
-var cloudFormationWaitConditionHandleProperties map[string]string = map[string]string{
-}
-
 func ResourceCloudFormationWaitConditionHandle() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCloudFormationWaitConditionHandleExists,
@@ -46,11 +43,11 @@ func resourceCloudFormationWaitConditionHandleRead(data *schema.ResourceData, me
 }
 
 func resourceCloudFormationWaitConditionHandleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(cloudFormationWaitConditionHandleType, ResourceCloudFormationWaitConditionHandle(), data, cloudFormationWaitConditionHandleProperties, meta)
+	return plugin.ResourceCreate(cloudFormationWaitConditionHandleType, ResourceCloudFormationWaitConditionHandle(), data, meta)
 }
 
 func resourceCloudFormationWaitConditionHandleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(cloudFormationWaitConditionHandleType, ResourceCloudFormationWaitConditionHandle(), data, cloudFormationWaitConditionHandleProperties, meta)
+	return plugin.ResourceUpdate(cloudFormationWaitConditionHandleType, ResourceCloudFormationWaitConditionHandle(), data, meta)
 }
 
 func resourceCloudFormationWaitConditionHandleDelete(data *schema.ResourceData, meta interface{}) error {

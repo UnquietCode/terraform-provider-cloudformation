@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var pipelineSelectAttributesProperties map[string]string = map[string]string{
-	"next": "Next",
-	"attributes": "Attributes",
-	"name": "Name",
-}
-
 func propertyPipelineSelectAttributes(extras...string) *schema.Resource {
 	var count int64 = 0
 	

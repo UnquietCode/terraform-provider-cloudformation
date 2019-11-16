@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var jobDefinitionTimeoutProperties map[string]string = map[string]string{
-	"attempt_duration_seconds": "AttemptDurationSeconds",
-}
-
 func propertyJobDefinitionTimeout(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,12 +16,6 @@ import (
 
 const greengrassConnectorDefinitionType string = "AWS::Greengrass::ConnectorDefinition"
 
-var greengrassConnectorDefinitionProperties map[string]string = map[string]string{
-	"initial_version": "InitialVersion",
-	"tags": "Tags",
-	"name": "Name",
-}
-
 func ResourceGreengrassConnectorDefinition() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGreengrassConnectorDefinitionExists,
@@ -64,11 +58,11 @@ func resourceGreengrassConnectorDefinitionRead(data *schema.ResourceData, meta i
 }
 
 func resourceGreengrassConnectorDefinitionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(greengrassConnectorDefinitionType, ResourceGreengrassConnectorDefinition(), data, greengrassConnectorDefinitionProperties, meta)
+	return plugin.ResourceCreate(greengrassConnectorDefinitionType, ResourceGreengrassConnectorDefinition(), data, meta)
 }
 
 func resourceGreengrassConnectorDefinitionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(greengrassConnectorDefinitionType, ResourceGreengrassConnectorDefinition(), data, greengrassConnectorDefinitionProperties, meta)
+	return plugin.ResourceUpdate(greengrassConnectorDefinitionType, ResourceGreengrassConnectorDefinition(), data, meta)
 }
 
 func resourceGreengrassConnectorDefinitionDelete(data *schema.ResourceData, meta interface{}) error {

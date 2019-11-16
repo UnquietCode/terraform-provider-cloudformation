@@ -16,16 +16,6 @@ import (
 
 const cloud9EnvironmentEC2Type string = "AWS::Cloud9::EnvironmentEC2"
 
-var cloud9EnvironmentEC2Properties map[string]string = map[string]string{
-	"repositories": "Repositories",
-	"owner_arn": "OwnerArn",
-	"description": "Description",
-	"automatic_stop_time_minutes": "AutomaticStopTimeMinutes",
-	"subnet_id": "SubnetId",
-	"instance_type": "InstanceType",
-	"name": "Name",
-}
-
 func ResourceCloud9EnvironmentEC2() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCloud9EnvironmentEC2Exists,
@@ -83,11 +73,11 @@ func resourceCloud9EnvironmentEC2Read(data *schema.ResourceData, meta interface{
 }
 
 func resourceCloud9EnvironmentEC2Create(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(cloud9EnvironmentEC2Type, ResourceCloud9EnvironmentEC2(), data, cloud9EnvironmentEC2Properties, meta)
+	return plugin.ResourceCreate(cloud9EnvironmentEC2Type, ResourceCloud9EnvironmentEC2(), data, meta)
 }
 
 func resourceCloud9EnvironmentEC2Update(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(cloud9EnvironmentEC2Type, ResourceCloud9EnvironmentEC2(), data, cloud9EnvironmentEC2Properties, meta)
+	return plugin.ResourceUpdate(cloud9EnvironmentEC2Type, ResourceCloud9EnvironmentEC2(), data, meta)
 }
 
 func resourceCloud9EnvironmentEC2Delete(data *schema.ResourceData, meta interface{}) error {

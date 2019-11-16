@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var byteMatchSetByteMatchTupleProperties map[string]string = map[string]string{
-	"field_to_match": "FieldToMatch",
-	"positional_constraint": "PositionalConstraint",
-	"target_string": "TargetString",
-	"target_string_base64": "TargetStringBase64",
-	"text_transformation": "TextTransformation",
-}
-
 func propertyByteMatchSetByteMatchTuple(extras...string) *schema.Resource {
 	var count int64 = 0
 	

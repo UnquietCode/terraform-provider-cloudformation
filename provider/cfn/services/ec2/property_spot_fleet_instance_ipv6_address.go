@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var spotFleetInstanceIpv6AddressProperties map[string]string = map[string]string{
-	"ipv6_address": "Ipv6Address",
-}
-
 func propertySpotFleetInstanceIpv6Address(extras...string) *schema.Resource {
 	var count int64 = 0
 	

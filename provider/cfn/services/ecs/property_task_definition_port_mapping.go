@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var taskDefinitionPortMappingProperties map[string]string = map[string]string{
-	"container_port": "ContainerPort",
-	"host_port": "HostPort",
-	"protocol": "Protocol",
-}
-
 func propertyTaskDefinitionPortMapping(extras...string) *schema.Resource {
 	var count int64 = 0
 	

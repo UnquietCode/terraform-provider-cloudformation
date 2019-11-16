@@ -16,13 +16,6 @@ import (
 
 const pinpointBaiduChannelType string = "AWS::Pinpoint::BaiduChannel"
 
-var pinpointBaiduChannelProperties map[string]string = map[string]string{
-	"secret_key": "SecretKey",
-	"api_key": "ApiKey",
-	"enabled": "Enabled",
-	"application_id": "ApplicationId",
-}
-
 func ResourcePinpointBaiduChannel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointBaiduChannelExists,
@@ -67,11 +60,11 @@ func resourcePinpointBaiduChannelRead(data *schema.ResourceData, meta interface{
 }
 
 func resourcePinpointBaiduChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(pinpointBaiduChannelType, ResourcePinpointBaiduChannel(), data, pinpointBaiduChannelProperties, meta)
+	return plugin.ResourceCreate(pinpointBaiduChannelType, ResourcePinpointBaiduChannel(), data, meta)
 }
 
 func resourcePinpointBaiduChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(pinpointBaiduChannelType, ResourcePinpointBaiduChannel(), data, pinpointBaiduChannelProperties, meta)
+	return plugin.ResourceUpdate(pinpointBaiduChannelType, ResourcePinpointBaiduChannel(), data, meta)
 }
 
 func resourcePinpointBaiduChannelDelete(data *schema.ResourceData, meta interface{}) error {

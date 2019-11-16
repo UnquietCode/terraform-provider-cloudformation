@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var identityMailFromAttributesProperties map[string]string = map[string]string{
-	"mail_from_domain": "MailFromDomain",
-	"behavior_on_mx_failure": "BehaviorOnMxFailure",
-}
-
 func propertyIdentityMailFromAttributes(extras...string) *schema.Resource {
 	var count int64 = 0
 	

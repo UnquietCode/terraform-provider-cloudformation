@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var loadBalancerListenersProperties map[string]string = map[string]string{
-	"instance_port": "InstancePort",
-	"instance_protocol": "InstanceProtocol",
-	"load_balancer_port": "LoadBalancerPort",
-	"policy_names": "PolicyNames",
-	"protocol": "Protocol",
-	"ssl_certificate_id": "SSLCertificateId",
-}
-
 func propertyLoadBalancerListeners(extras...string) *schema.Resource {
 	var count int64 = 0
 	

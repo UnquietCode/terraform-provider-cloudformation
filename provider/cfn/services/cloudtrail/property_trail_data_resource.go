@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var trailDataResourceProperties map[string]string = map[string]string{
-	"type": "Type",
-	"values": "Values",
-}
-
 func propertyTrailDataResource(extras...string) *schema.Resource {
 	var count int64 = 0
 	

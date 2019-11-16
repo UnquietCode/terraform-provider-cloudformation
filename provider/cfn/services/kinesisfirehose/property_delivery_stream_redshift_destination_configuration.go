@@ -14,17 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deliveryStreamRedshiftDestinationConfigurationProperties map[string]string = map[string]string{
-	"cloud_watch_logging_options": "CloudWatchLoggingOptions",
-	"cluster_jdbcurl": "ClusterJDBCURL",
-	"copy_command": "CopyCommand",
-	"password": "Password",
-	"processing_configuration": "ProcessingConfiguration",
-	"role_arn": "RoleARN",
-	"s3_configuration": "S3Configuration",
-	"username": "Username",
-}
-
 func propertyDeliveryStreamRedshiftDestinationConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

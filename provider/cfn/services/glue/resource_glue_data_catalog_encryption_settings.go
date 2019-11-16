@@ -16,11 +16,6 @@ import (
 
 const glueDataCatalogEncryptionSettingsType string = "AWS::Glue::DataCatalogEncryptionSettings"
 
-var glueDataCatalogEncryptionSettingsProperties map[string]string = map[string]string{
-	"data_catalog_encryption_settings": "DataCatalogEncryptionSettings",
-	"catalog_id": "CatalogId",
-}
-
 func ResourceGlueDataCatalogEncryptionSettings() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGlueDataCatalogEncryptionSettingsExists,
@@ -59,11 +54,11 @@ func resourceGlueDataCatalogEncryptionSettingsRead(data *schema.ResourceData, me
 }
 
 func resourceGlueDataCatalogEncryptionSettingsCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(glueDataCatalogEncryptionSettingsType, ResourceGlueDataCatalogEncryptionSettings(), data, glueDataCatalogEncryptionSettingsProperties, meta)
+	return plugin.ResourceCreate(glueDataCatalogEncryptionSettingsType, ResourceGlueDataCatalogEncryptionSettings(), data, meta)
 }
 
 func resourceGlueDataCatalogEncryptionSettingsUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(glueDataCatalogEncryptionSettingsType, ResourceGlueDataCatalogEncryptionSettings(), data, glueDataCatalogEncryptionSettingsProperties, meta)
+	return plugin.ResourceUpdate(glueDataCatalogEncryptionSettingsType, ResourceGlueDataCatalogEncryptionSettings(), data, meta)
 }
 
 func resourceGlueDataCatalogEncryptionSettingsDelete(data *schema.ResourceData, meta interface{}) error {

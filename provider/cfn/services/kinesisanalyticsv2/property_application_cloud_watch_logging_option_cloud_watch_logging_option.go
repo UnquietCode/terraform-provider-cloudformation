@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationCloudWatchLoggingOptionCloudWatchLoggingOptionProperties map[string]string = map[string]string{
-	"log_stream_arn": "LogStreamARN",
-}
-
 func propertyApplicationCloudWatchLoggingOptionCloudWatchLoggingOption(extras...string) *schema.Resource {
 	var count int64 = 0
 	

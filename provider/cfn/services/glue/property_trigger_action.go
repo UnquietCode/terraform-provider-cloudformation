@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var triggerActionProperties map[string]string = map[string]string{
-	"notification_property": "NotificationProperty",
-	"crawler_name": "CrawlerName",
-	"timeout": "Timeout",
-	"job_name": "JobName",
-	"arguments": "Arguments",
-	"security_configuration": "SecurityConfiguration",
-}
-
 func propertyTriggerAction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

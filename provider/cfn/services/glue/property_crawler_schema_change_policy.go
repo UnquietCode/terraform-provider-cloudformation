@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var crawlerSchemaChangePolicyProperties map[string]string = map[string]string{
-	"update_behavior": "UpdateBehavior",
-	"delete_behavior": "DeleteBehavior",
-}
-
 func propertyCrawlerSchemaChangePolicy(extras...string) *schema.Resource {
 	var count int64 = 0
 	

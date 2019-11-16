@@ -17,16 +17,6 @@ import (
 
 const kMSKeyType string = "AWS::KMS::Key"
 
-var kMSKeyProperties map[string]string = map[string]string{
-	"description": "Description",
-	"enable_key_rotation": "EnableKeyRotation",
-	"enabled": "Enabled",
-	"key_policy": "KeyPolicy",
-	"key_usage": "KeyUsage",
-	"pending_window_in_days": "PendingWindowInDays",
-	"tags": "Tags",
-}
-
 func ResourceKMSKey() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceKMSKeyExists,
@@ -80,11 +70,11 @@ func resourceKMSKeyRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceKMSKeyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(kMSKeyType, ResourceKMSKey(), data, kMSKeyProperties, meta)
+	return plugin.ResourceCreate(kMSKeyType, ResourceKMSKey(), data, meta)
 }
 
 func resourceKMSKeyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(kMSKeyType, ResourceKMSKey(), data, kMSKeyProperties, meta)
+	return plugin.ResourceUpdate(kMSKeyType, ResourceKMSKey(), data, meta)
 }
 
 func resourceKMSKeyDelete(data *schema.ResourceData, meta interface{}) error {

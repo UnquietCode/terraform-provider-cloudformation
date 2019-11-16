@@ -16,11 +16,6 @@ import (
 
 const codeDeployDeploymentConfigType string = "AWS::CodeDeploy::DeploymentConfig"
 
-var codeDeployDeploymentConfigProperties map[string]string = map[string]string{
-	"deployment_config_name": "DeploymentConfigName",
-	"minimum_healthy_hosts": "MinimumHealthyHosts",
-}
-
 func ResourceCodeDeployDeploymentConfig() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCodeDeployDeploymentConfigExists,
@@ -59,11 +54,11 @@ func resourceCodeDeployDeploymentConfigRead(data *schema.ResourceData, meta inte
 }
 
 func resourceCodeDeployDeploymentConfigCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(codeDeployDeploymentConfigType, ResourceCodeDeployDeploymentConfig(), data, codeDeployDeploymentConfigProperties, meta)
+	return plugin.ResourceCreate(codeDeployDeploymentConfigType, ResourceCodeDeployDeploymentConfig(), data, meta)
 }
 
 func resourceCodeDeployDeploymentConfigUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(codeDeployDeploymentConfigType, ResourceCodeDeployDeploymentConfig(), data, codeDeployDeploymentConfigProperties, meta)
+	return plugin.ResourceUpdate(codeDeployDeploymentConfigType, ResourceCodeDeployDeploymentConfig(), data, meta)
 }
 
 func resourceCodeDeployDeploymentConfigDelete(data *schema.ResourceData, meta interface{}) error {

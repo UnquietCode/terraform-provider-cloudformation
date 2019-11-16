@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationReferenceDataSourceS3ReferenceDataSourceProperties map[string]string = map[string]string{
-	"bucket_arn": "BucketARN",
-	"file_key": "FileKey",
-}
-
 func propertyApplicationReferenceDataSourceS3ReferenceDataSource(extras...string) *schema.Resource {
 	var count int64 = 0
 	

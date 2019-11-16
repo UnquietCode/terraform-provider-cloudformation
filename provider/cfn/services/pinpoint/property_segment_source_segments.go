@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var segmentSourceSegmentsProperties map[string]string = map[string]string{
-	"version": "Version",
-	"id": "Id",
-}
-
 func propertySegmentSourceSegments(extras...string) *schema.Resource {
 	var count int64 = 0
 	

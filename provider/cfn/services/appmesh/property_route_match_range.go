@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var routeMatchRangeProperties map[string]string = map[string]string{
-	"start": "Start",
-	"end": "End",
-}
-
 func propertyRouteMatchRange(extras...string) *schema.Resource {
 	var count int64 = 0
 	

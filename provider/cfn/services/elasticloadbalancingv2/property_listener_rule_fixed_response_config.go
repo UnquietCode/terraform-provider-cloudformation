@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var listenerRuleFixedResponseConfigProperties map[string]string = map[string]string{
-	"content_type": "ContentType",
-	"message_body": "MessageBody",
-	"status_code": "StatusCode",
-}
-
 func propertyListenerRuleFixedResponseConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

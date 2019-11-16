@@ -14,18 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var clusterCloudWatchAlarmDefinitionProperties map[string]string = map[string]string{
-	"comparison_operator": "ComparisonOperator",
-	"dimensions": "Dimensions",
-	"evaluation_periods": "EvaluationPeriods",
-	"metric_name": "MetricName",
-	"namespace": "Namespace",
-	"period": "Period",
-	"statistic": "Statistic",
-	"threshold": "Threshold",
-	"unit": "Unit",
-}
-
 func propertyClusterCloudWatchAlarmDefinition(extras...string) *schema.Resource {
 	var count int64 = 0
 	

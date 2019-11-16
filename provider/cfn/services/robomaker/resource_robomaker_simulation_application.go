@@ -16,16 +16,6 @@ import (
 
 const roboMakerSimulationApplicationType string = "AWS::RoboMaker::SimulationApplication"
 
-var roboMakerSimulationApplicationProperties map[string]string = map[string]string{
-	"rendering_engine": "RenderingEngine",
-	"simulation_software_suite": "SimulationSoftwareSuite",
-	"current_revision_id": "CurrentRevisionId",
-	"robot_software_suite": "RobotSoftwareSuite",
-	"sources": "Sources",
-	"tags": "Tags",
-	"name": "Name",
-}
-
 func ResourceRoboMakerSimulationApplication() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRoboMakerSimulationApplicationExists,
@@ -89,11 +79,11 @@ func resourceRoboMakerSimulationApplicationRead(data *schema.ResourceData, meta 
 }
 
 func resourceRoboMakerSimulationApplicationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(roboMakerSimulationApplicationType, ResourceRoboMakerSimulationApplication(), data, roboMakerSimulationApplicationProperties, meta)
+	return plugin.ResourceCreate(roboMakerSimulationApplicationType, ResourceRoboMakerSimulationApplication(), data, meta)
 }
 
 func resourceRoboMakerSimulationApplicationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(roboMakerSimulationApplicationType, ResourceRoboMakerSimulationApplication(), data, roboMakerSimulationApplicationProperties, meta)
+	return plugin.ResourceUpdate(roboMakerSimulationApplicationType, ResourceRoboMakerSimulationApplication(), data, meta)
 }
 
 func resourceRoboMakerSimulationApplicationDelete(data *schema.ResourceData, meta interface{}) error {

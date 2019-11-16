@@ -16,15 +16,6 @@ import (
 
 const sSMMaintenanceWindowTargetType string = "AWS::SSM::MaintenanceWindowTarget"
 
-var sSMMaintenanceWindowTargetProperties map[string]string = map[string]string{
-	"owner_information": "OwnerInformation",
-	"description": "Description",
-	"window_id": "WindowId",
-	"resource_type": "ResourceType",
-	"targets": "Targets",
-	"name": "Name",
-}
-
 func ResourceSSMMaintenanceWindowTarget() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSSMMaintenanceWindowTargetExists,
@@ -78,11 +69,11 @@ func resourceSSMMaintenanceWindowTargetRead(data *schema.ResourceData, meta inte
 }
 
 func resourceSSMMaintenanceWindowTargetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(sSMMaintenanceWindowTargetType, ResourceSSMMaintenanceWindowTarget(), data, sSMMaintenanceWindowTargetProperties, meta)
+	return plugin.ResourceCreate(sSMMaintenanceWindowTargetType, ResourceSSMMaintenanceWindowTarget(), data, meta)
 }
 
 func resourceSSMMaintenanceWindowTargetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(sSMMaintenanceWindowTargetType, ResourceSSMMaintenanceWindowTarget(), data, sSMMaintenanceWindowTargetProperties, meta)
+	return plugin.ResourceUpdate(sSMMaintenanceWindowTargetType, ResourceSSMMaintenanceWindowTarget(), data, meta)
 }
 
 func resourceSSMMaintenanceWindowTargetDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var branchBasicAuthConfigProperties map[string]string = map[string]string{
-	"username": "Username",
-	"enable_basic_auth": "EnableBasicAuth",
-	"password": "Password",
-}
-
 func propertyBranchBasicAuthConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

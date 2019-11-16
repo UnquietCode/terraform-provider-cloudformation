@@ -16,11 +16,6 @@ import (
 
 const ioTThingPrincipalAttachmentType string = "AWS::IoT::ThingPrincipalAttachment"
 
-var ioTThingPrincipalAttachmentProperties map[string]string = map[string]string{
-	"principal": "Principal",
-	"thing_name": "ThingName",
-}
-
 func ResourceIoTThingPrincipalAttachment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoTThingPrincipalAttachmentExists,
@@ -57,11 +52,11 @@ func resourceIoTThingPrincipalAttachmentRead(data *schema.ResourceData, meta int
 }
 
 func resourceIoTThingPrincipalAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(ioTThingPrincipalAttachmentType, ResourceIoTThingPrincipalAttachment(), data, ioTThingPrincipalAttachmentProperties, meta)
+	return plugin.ResourceCreate(ioTThingPrincipalAttachmentType, ResourceIoTThingPrincipalAttachment(), data, meta)
 }
 
 func resourceIoTThingPrincipalAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(ioTThingPrincipalAttachmentType, ResourceIoTThingPrincipalAttachment(), data, ioTThingPrincipalAttachmentProperties, meta)
+	return plugin.ResourceUpdate(ioTThingPrincipalAttachmentType, ResourceIoTThingPrincipalAttachment(), data, meta)
 }
 
 func resourceIoTThingPrincipalAttachmentDelete(data *schema.ResourceData, meta interface{}) error {

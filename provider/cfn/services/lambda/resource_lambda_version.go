@@ -16,12 +16,6 @@ import (
 
 const lambdaVersionType string = "AWS::Lambda::Version"
 
-var lambdaVersionProperties map[string]string = map[string]string{
-	"code_sha256": "CodeSha256",
-	"description": "Description",
-	"function_name": "FunctionName",
-}
-
 func ResourceLambdaVersion() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLambdaVersionExists,
@@ -62,11 +56,11 @@ func resourceLambdaVersionRead(data *schema.ResourceData, meta interface{}) erro
 }
 
 func resourceLambdaVersionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(lambdaVersionType, ResourceLambdaVersion(), data, lambdaVersionProperties, meta)
+	return plugin.ResourceCreate(lambdaVersionType, ResourceLambdaVersion(), data, meta)
 }
 
 func resourceLambdaVersionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(lambdaVersionType, ResourceLambdaVersion(), data, lambdaVersionProperties, meta)
+	return plugin.ResourceUpdate(lambdaVersionType, ResourceLambdaVersion(), data, meta)
 }
 
 func resourceLambdaVersionDelete(data *schema.ResourceData, meta interface{}) error {

@@ -16,14 +16,6 @@ import (
 
 const mediaStoreContainerType string = "AWS::MediaStore::Container"
 
-var mediaStoreContainerProperties map[string]string = map[string]string{
-	"policy": "Policy",
-	"container_name": "ContainerName",
-	"cors_policy": "CorsPolicy",
-	"lifecycle_policy": "LifecyclePolicy",
-	"access_logging_enabled": "AccessLoggingEnabled",
-}
-
 func ResourceMediaStoreContainer() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceMediaStoreContainerExists,
@@ -73,11 +65,11 @@ func resourceMediaStoreContainerRead(data *schema.ResourceData, meta interface{}
 }
 
 func resourceMediaStoreContainerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(mediaStoreContainerType, ResourceMediaStoreContainer(), data, mediaStoreContainerProperties, meta)
+	return plugin.ResourceCreate(mediaStoreContainerType, ResourceMediaStoreContainer(), data, meta)
 }
 
 func resourceMediaStoreContainerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(mediaStoreContainerType, ResourceMediaStoreContainer(), data, mediaStoreContainerProperties, meta)
+	return plugin.ResourceUpdate(mediaStoreContainerType, ResourceMediaStoreContainer(), data, meta)
 }
 
 func resourceMediaStoreContainerDelete(data *schema.ResourceData, meta interface{}) error {

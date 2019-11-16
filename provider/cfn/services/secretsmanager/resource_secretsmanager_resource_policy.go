@@ -16,11 +16,6 @@ import (
 
 const secretsManagerResourcePolicyType string = "AWS::SecretsManager::ResourcePolicy"
 
-var secretsManagerResourcePolicyProperties map[string]string = map[string]string{
-	"secret_id": "SecretId",
-	"resource_policy": "ResourcePolicy",
-}
-
 func ResourceSecretsManagerResourcePolicy() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSecretsManagerResourcePolicyExists,
@@ -57,11 +52,11 @@ func resourceSecretsManagerResourcePolicyRead(data *schema.ResourceData, meta in
 }
 
 func resourceSecretsManagerResourcePolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(secretsManagerResourcePolicyType, ResourceSecretsManagerResourcePolicy(), data, secretsManagerResourcePolicyProperties, meta)
+	return plugin.ResourceCreate(secretsManagerResourcePolicyType, ResourceSecretsManagerResourcePolicy(), data, meta)
 }
 
 func resourceSecretsManagerResourcePolicyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(secretsManagerResourcePolicyType, ResourceSecretsManagerResourcePolicy(), data, secretsManagerResourcePolicyProperties, meta)
+	return plugin.ResourceUpdate(secretsManagerResourcePolicyType, ResourceSecretsManagerResourcePolicy(), data, meta)
 }
 
 func resourceSecretsManagerResourcePolicyDelete(data *schema.ResourceData, meta interface{}) error {

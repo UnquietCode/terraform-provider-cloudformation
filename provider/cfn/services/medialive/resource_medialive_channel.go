@@ -16,18 +16,6 @@ import (
 
 const mediaLiveChannelType string = "AWS::MediaLive::Channel"
 
-var mediaLiveChannelProperties map[string]string = map[string]string{
-	"input_attachments": "InputAttachments",
-	"input_specification": "InputSpecification",
-	"channel_class": "ChannelClass",
-	"encoder_settings": "EncoderSettings",
-	"destinations": "Destinations",
-	"log_level": "LogLevel",
-	"role_arn": "RoleArn",
-	"tags": "Tags",
-	"name": "Name",
-}
-
 func ResourceMediaLiveChannel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceMediaLiveChannelExists,
@@ -96,11 +84,11 @@ func resourceMediaLiveChannelRead(data *schema.ResourceData, meta interface{}) e
 }
 
 func resourceMediaLiveChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(mediaLiveChannelType, ResourceMediaLiveChannel(), data, mediaLiveChannelProperties, meta)
+	return plugin.ResourceCreate(mediaLiveChannelType, ResourceMediaLiveChannel(), data, meta)
 }
 
 func resourceMediaLiveChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(mediaLiveChannelType, ResourceMediaLiveChannel(), data, mediaLiveChannelProperties, meta)
+	return plugin.ResourceUpdate(mediaLiveChannelType, ResourceMediaLiveChannel(), data, meta)
 }
 
 func resourceMediaLiveChannelDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var webhookWebhookAuthConfigurationProperties map[string]string = map[string]string{
-	"allowed_ip_range": "AllowedIPRange",
-	"secret_token": "SecretToken",
-}
-
 func propertyWebhookWebhookAuthConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

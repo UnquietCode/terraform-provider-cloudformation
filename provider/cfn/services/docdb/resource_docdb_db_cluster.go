@@ -17,26 +17,6 @@ import (
 
 const docDBDBClusterType string = "AWS::DocDB::DBCluster"
 
-var docDBDBClusterProperties map[string]string = map[string]string{
-	"storage_encrypted": "StorageEncrypted",
-	"engine_version": "EngineVersion",
-	"kms_key_id": "KmsKeyId",
-	"availability_zones": "AvailabilityZones",
-	"snapshot_identifier": "SnapshotIdentifier",
-	"port": "Port",
-	"db_cluster_identifier": "DBClusterIdentifier",
-	"preferred_maintenance_window": "PreferredMaintenanceWindow",
-	"db_subnet_group_name": "DBSubnetGroupName",
-	"preferred_backup_window": "PreferredBackupWindow",
-	"master_user_password": "MasterUserPassword",
-	"vpc_security_group_ids": "VpcSecurityGroupIds",
-	"master_username": "MasterUsername",
-	"db_cluster_parameter_group_name": "DBClusterParameterGroupName",
-	"backup_retention_period": "BackupRetentionPeriod",
-	"tags": "Tags",
-	"enable_cloudwatch_logs_exports": "EnableCloudwatchLogsExports",
-}
-
 func ResourceDocDBDBCluster() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDocDBDBClusterExists,
@@ -133,11 +113,11 @@ func resourceDocDBDBClusterRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceDocDBDBClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(docDBDBClusterType, ResourceDocDBDBCluster(), data, docDBDBClusterProperties, meta)
+	return plugin.ResourceCreate(docDBDBClusterType, ResourceDocDBDBCluster(), data, meta)
 }
 
 func resourceDocDBDBClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(docDBDBClusterType, ResourceDocDBDBCluster(), data, docDBDBClusterProperties, meta)
+	return plugin.ResourceUpdate(docDBDBClusterType, ResourceDocDBDBCluster(), data, meta)
 }
 
 func resourceDocDBDBClusterDelete(data *schema.ResourceData, meta interface{}) error {

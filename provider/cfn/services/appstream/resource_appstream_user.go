@@ -16,14 +16,6 @@ import (
 
 const appStreamUserType string = "AWS::AppStream::User"
 
-var appStreamUserProperties map[string]string = map[string]string{
-	"user_name": "UserName",
-	"first_name": "FirstName",
-	"message_action": "MessageAction",
-	"last_name": "LastName",
-	"authentication_type": "AuthenticationType",
-}
-
 func ResourceAppStreamUser() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppStreamUserExists,
@@ -72,11 +64,11 @@ func resourceAppStreamUserRead(data *schema.ResourceData, meta interface{}) erro
 }
 
 func resourceAppStreamUserCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(appStreamUserType, ResourceAppStreamUser(), data, appStreamUserProperties, meta)
+	return plugin.ResourceCreate(appStreamUserType, ResourceAppStreamUser(), data, meta)
 }
 
 func resourceAppStreamUserUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(appStreamUserType, ResourceAppStreamUser(), data, appStreamUserProperties, meta)
+	return plugin.ResourceUpdate(appStreamUserType, ResourceAppStreamUser(), data, meta)
 }
 
 func resourceAppStreamUserDelete(data *schema.ResourceData, meta interface{}) error {

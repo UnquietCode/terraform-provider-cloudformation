@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var loadBalancerHealthCheckProperties map[string]string = map[string]string{
-	"healthy_threshold": "HealthyThreshold",
-	"interval": "Interval",
-	"target": "Target",
-	"timeout": "Timeout",
-	"unhealthy_threshold": "UnhealthyThreshold",
-}
-
 func propertyLoadBalancerHealthCheck(extras...string) *schema.Resource {
 	var count int64 = 0
 	

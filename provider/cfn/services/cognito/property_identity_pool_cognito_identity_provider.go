@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var identityPoolCognitoIdentityProviderProperties map[string]string = map[string]string{
-	"server_side_token_check": "ServerSideTokenCheck",
-	"provider_name": "ProviderName",
-	"client_id": "ClientId",
-}
-
 func propertyIdentityPoolCognitoIdentityProvider(extras...string) *schema.Resource {
 	var count int64 = 0
 	

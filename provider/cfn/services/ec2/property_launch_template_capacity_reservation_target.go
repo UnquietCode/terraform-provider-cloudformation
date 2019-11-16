@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var launchTemplateCapacityReservationTargetProperties map[string]string = map[string]string{
-	"capacity_reservation_id": "CapacityReservationId",
-}
-
 func propertyLaunchTemplateCapacityReservationTarget(extras...string) *schema.Resource {
 	var count int64 = 0
 	

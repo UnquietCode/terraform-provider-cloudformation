@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var configurationSetDeliveryOptionsProperties map[string]string = map[string]string{
-	"sending_pool_name": "SendingPoolName",
-}
-
 func propertyConfigurationSetDeliveryOptions(extras...string) *schema.Resource {
 	var count int64 = 0
 	

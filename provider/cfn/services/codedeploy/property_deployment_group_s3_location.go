@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deploymentGroupS3LocationProperties map[string]string = map[string]string{
-	"bucket": "Bucket",
-	"bundle_type": "BundleType",
-	"e_tag": "ETag",
-	"key": "Key",
-	"version": "Version",
-}
-
 func propertyDeploymentGroupS3Location(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var ruleInputTransformerProperties map[string]string = map[string]string{
-	"input_paths_map": "InputPathsMap",
-	"input_template": "InputTemplate",
-}
-
 func propertyRuleInputTransformer(extras...string) *schema.Resource {
 	var count int64 = 0
 	

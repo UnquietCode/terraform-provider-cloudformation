@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var memberMemberFrameworkConfigurationProperties map[string]string = map[string]string{
-	"member_fabric_configuration": "MemberFabricConfiguration",
-}
-
 func propertyMemberMemberFrameworkConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

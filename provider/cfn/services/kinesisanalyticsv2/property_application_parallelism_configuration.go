@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationParallelismConfigurationProperties map[string]string = map[string]string{
-	"configuration_type": "ConfigurationType",
-	"parallelism_per_kpu": "ParallelismPerKPU",
-	"auto_scaling_enabled": "AutoScalingEnabled",
-	"parallelism": "Parallelism",
-}
-
 func propertyApplicationParallelismConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

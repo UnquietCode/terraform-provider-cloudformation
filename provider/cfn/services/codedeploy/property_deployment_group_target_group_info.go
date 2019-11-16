@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deploymentGroupTargetGroupInfoProperties map[string]string = map[string]string{
-	"name": "Name",
-}
-
 func propertyDeploymentGroupTargetGroupInfo(extras...string) *schema.Resource {
 	var count int64 = 0
 	

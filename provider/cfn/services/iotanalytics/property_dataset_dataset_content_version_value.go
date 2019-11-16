@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var datasetDatasetContentVersionValueProperties map[string]string = map[string]string{
-	"dataset_name": "DatasetName",
-}
-
 func propertyDatasetDatasetContentVersionValue(extras...string) *schema.Resource {
 	var count int64 = 0
 	

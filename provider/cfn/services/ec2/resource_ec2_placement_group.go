@@ -16,10 +16,6 @@ import (
 
 const eC2PlacementGroupType string = "AWS::EC2::PlacementGroup"
 
-var eC2PlacementGroupProperties map[string]string = map[string]string{
-	"strategy": "Strategy",
-}
-
 func ResourceEC2PlacementGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2PlacementGroupExists,
@@ -52,11 +48,11 @@ func resourceEC2PlacementGroupRead(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceEC2PlacementGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2PlacementGroupType, ResourceEC2PlacementGroup(), data, eC2PlacementGroupProperties, meta)
+	return plugin.ResourceCreate(eC2PlacementGroupType, ResourceEC2PlacementGroup(), data, meta)
 }
 
 func resourceEC2PlacementGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2PlacementGroupType, ResourceEC2PlacementGroup(), data, eC2PlacementGroupProperties, meta)
+	return plugin.ResourceUpdate(eC2PlacementGroupType, ResourceEC2PlacementGroup(), data, meta)
 }
 
 func resourceEC2PlacementGroupDelete(data *schema.ResourceData, meta interface{}) error {

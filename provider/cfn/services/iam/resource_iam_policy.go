@@ -16,14 +16,6 @@ import (
 
 const iAMPolicyType string = "AWS::IAM::Policy"
 
-var iAMPolicyProperties map[string]string = map[string]string{
-	"groups": "Groups",
-	"policy_document": "PolicyDocument",
-	"policy_name": "PolicyName",
-	"roles": "Roles",
-	"users": "Users",
-}
-
 func ResourceIAMPolicy() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIAMPolicyExists,
@@ -75,11 +67,11 @@ func resourceIAMPolicyRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceIAMPolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(iAMPolicyType, ResourceIAMPolicy(), data, iAMPolicyProperties, meta)
+	return plugin.ResourceCreate(iAMPolicyType, ResourceIAMPolicy(), data, meta)
 }
 
 func resourceIAMPolicyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(iAMPolicyType, ResourceIAMPolicy(), data, iAMPolicyProperties, meta)
+	return plugin.ResourceUpdate(iAMPolicyType, ResourceIAMPolicy(), data, meta)
 }
 
 func resourceIAMPolicyDelete(data *schema.ResourceData, meta interface{}) error {

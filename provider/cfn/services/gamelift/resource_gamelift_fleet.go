@@ -16,20 +16,6 @@ import (
 
 const gameLiftFleetType string = "AWS::GameLift::Fleet"
 
-var gameLiftFleetProperties map[string]string = map[string]string{
-	"build_id": "BuildId",
-	"description": "Description",
-	"desired_ec2_instances": "DesiredEC2Instances",
-	"ec2_inbound_permissions": "EC2InboundPermissions",
-	"ec2_instance_type": "EC2InstanceType",
-	"log_paths": "LogPaths",
-	"max_size": "MaxSize",
-	"min_size": "MinSize",
-	"name": "Name",
-	"server_launch_parameters": "ServerLaunchParameters",
-	"server_launch_path": "ServerLaunchPath",
-}
-
 func ResourceGameLiftFleet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGameLiftFleetExists,
@@ -105,11 +91,11 @@ func resourceGameLiftFleetRead(data *schema.ResourceData, meta interface{}) erro
 }
 
 func resourceGameLiftFleetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(gameLiftFleetType, ResourceGameLiftFleet(), data, gameLiftFleetProperties, meta)
+	return plugin.ResourceCreate(gameLiftFleetType, ResourceGameLiftFleet(), data, meta)
 }
 
 func resourceGameLiftFleetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(gameLiftFleetType, ResourceGameLiftFleet(), data, gameLiftFleetProperties, meta)
+	return plugin.ResourceUpdate(gameLiftFleetType, ResourceGameLiftFleet(), data, meta)
 }
 
 func resourceGameLiftFleetDelete(data *schema.ResourceData, meta interface{}) error {

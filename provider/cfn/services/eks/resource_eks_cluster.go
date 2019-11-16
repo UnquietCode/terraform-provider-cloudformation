@@ -16,13 +16,6 @@ import (
 
 const eKSClusterType string = "AWS::EKS::Cluster"
 
-var eKSClusterProperties map[string]string = map[string]string{
-	"version": "Version",
-	"role_arn": "RoleArn",
-	"resources_vpc_config": "ResourcesVpcConfig",
-	"name": "Name",
-}
-
 func ResourceEKSCluster() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEKSClusterExists,
@@ -69,11 +62,11 @@ func resourceEKSClusterRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceEKSClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eKSClusterType, ResourceEKSCluster(), data, eKSClusterProperties, meta)
+	return plugin.ResourceCreate(eKSClusterType, ResourceEKSCluster(), data, meta)
 }
 
 func resourceEKSClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eKSClusterType, ResourceEKSCluster(), data, eKSClusterProperties, meta)
+	return plugin.ResourceUpdate(eKSClusterType, ResourceEKSCluster(), data, meta)
 }
 
 func resourceEKSClusterDelete(data *schema.ResourceData, meta interface{}) error {

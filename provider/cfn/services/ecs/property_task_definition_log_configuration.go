@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var taskDefinitionLogConfigurationProperties map[string]string = map[string]string{
-	"log_driver": "LogDriver",
-	"options": "Options",
-	"secret_options": "SecretOptions",
-}
-
 func propertyTaskDefinitionLogConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

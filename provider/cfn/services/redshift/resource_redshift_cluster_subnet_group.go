@@ -17,12 +17,6 @@ import (
 
 const redshiftClusterSubnetGroupType string = "AWS::Redshift::ClusterSubnetGroup"
 
-var redshiftClusterSubnetGroupProperties map[string]string = map[string]string{
-	"description": "Description",
-	"subnet_ids": "SubnetIds",
-	"tags": "Tags",
-}
-
 func ResourceRedshiftClusterSubnetGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRedshiftClusterSubnetGroupExists,
@@ -61,11 +55,11 @@ func resourceRedshiftClusterSubnetGroupRead(data *schema.ResourceData, meta inte
 }
 
 func resourceRedshiftClusterSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(redshiftClusterSubnetGroupType, ResourceRedshiftClusterSubnetGroup(), data, redshiftClusterSubnetGroupProperties, meta)
+	return plugin.ResourceCreate(redshiftClusterSubnetGroupType, ResourceRedshiftClusterSubnetGroup(), data, meta)
 }
 
 func resourceRedshiftClusterSubnetGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(redshiftClusterSubnetGroupType, ResourceRedshiftClusterSubnetGroup(), data, redshiftClusterSubnetGroupProperties, meta)
+	return plugin.ResourceUpdate(redshiftClusterSubnetGroupType, ResourceRedshiftClusterSubnetGroup(), data, meta)
 }
 
 func resourceRedshiftClusterSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {

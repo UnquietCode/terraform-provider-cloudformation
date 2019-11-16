@@ -14,16 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var functionDefinitionVersionFunctionConfigurationProperties map[string]string = map[string]string{
-	"memory_size": "MemorySize",
-	"pinned": "Pinned",
-	"exec_args": "ExecArgs",
-	"timeout": "Timeout",
-	"encoding_type": "EncodingType",
-	"environment": "Environment",
-	"executable": "Executable",
-}
-
 func propertyFunctionDefinitionVersionFunctionConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

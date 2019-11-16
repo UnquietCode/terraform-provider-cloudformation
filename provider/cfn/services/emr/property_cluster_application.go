@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var clusterApplicationProperties map[string]string = map[string]string{
-	"additional_info": "AdditionalInfo",
-	"args": "Args",
-	"name": "Name",
-	"version": "Version",
-}
-
 func propertyClusterApplication(extras...string) *schema.Resource {
 	var count int64 = 0
 	

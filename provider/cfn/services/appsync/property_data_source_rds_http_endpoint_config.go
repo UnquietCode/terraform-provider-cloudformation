@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var dataSourceRdsHttpEndpointConfigProperties map[string]string = map[string]string{
-	"aws_region": "AwsRegion",
-	"schema": "Schema",
-	"database_name": "DatabaseName",
-	"db_cluster_identifier": "DbClusterIdentifier",
-	"aws_secret_store_arn": "AwsSecretStoreArn",
-}
-
 func propertyDataSourceRdsHttpEndpointConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

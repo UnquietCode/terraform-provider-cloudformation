@@ -16,11 +16,6 @@ import (
 
 const ioTThingsGraphFlowTemplateType string = "AWS::IoTThingsGraph::FlowTemplate"
 
-var ioTThingsGraphFlowTemplateProperties map[string]string = map[string]string{
-	"compatible_namespace_version": "CompatibleNamespaceVersion",
-	"definition": "Definition",
-}
-
 func ResourceIoTThingsGraphFlowTemplate() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoTThingsGraphFlowTemplateExists,
@@ -59,11 +54,11 @@ func resourceIoTThingsGraphFlowTemplateRead(data *schema.ResourceData, meta inte
 }
 
 func resourceIoTThingsGraphFlowTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(ioTThingsGraphFlowTemplateType, ResourceIoTThingsGraphFlowTemplate(), data, ioTThingsGraphFlowTemplateProperties, meta)
+	return plugin.ResourceCreate(ioTThingsGraphFlowTemplateType, ResourceIoTThingsGraphFlowTemplate(), data, meta)
 }
 
 func resourceIoTThingsGraphFlowTemplateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(ioTThingsGraphFlowTemplateType, ResourceIoTThingsGraphFlowTemplate(), data, ioTThingsGraphFlowTemplateProperties, meta)
+	return plugin.ResourceUpdate(ioTThingsGraphFlowTemplateType, ResourceIoTThingsGraphFlowTemplate(), data, meta)
 }
 
 func resourceIoTThingsGraphFlowTemplateDelete(data *schema.ResourceData, meta interface{}) error {

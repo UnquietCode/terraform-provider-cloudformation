@@ -16,24 +16,6 @@ import (
 
 const cognitoUserPoolClientType string = "AWS::Cognito::UserPoolClient"
 
-var cognitoUserPoolClientProperties map[string]string = map[string]string{
-	"analytics_configuration": "AnalyticsConfiguration",
-	"generate_secret": "GenerateSecret",
-	"callback_ur_ls": "CallbackURLs",
-	"allowed_o_auth_scopes": "AllowedOAuthScopes",
-	"read_attributes": "ReadAttributes",
-	"allowed_o_auth_flows_user_pool_client": "AllowedOAuthFlowsUserPoolClient",
-	"default_redirect_uri": "DefaultRedirectURI",
-	"supported_identity_providers": "SupportedIdentityProviders",
-	"client_name": "ClientName",
-	"user_pool_id": "UserPoolId",
-	"allowed_o_auth_flows": "AllowedOAuthFlows",
-	"explicit_auth_flows": "ExplicitAuthFlows",
-	"logout_ur_ls": "LogoutURLs",
-	"refresh_token_validity": "RefreshTokenValidity",
-	"write_attributes": "WriteAttributes",
-}
-
 func ResourceCognitoUserPoolClient() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCognitoUserPoolClientExists,
@@ -132,11 +114,11 @@ func resourceCognitoUserPoolClientRead(data *schema.ResourceData, meta interface
 }
 
 func resourceCognitoUserPoolClientCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(cognitoUserPoolClientType, ResourceCognitoUserPoolClient(), data, cognitoUserPoolClientProperties, meta)
+	return plugin.ResourceCreate(cognitoUserPoolClientType, ResourceCognitoUserPoolClient(), data, meta)
 }
 
 func resourceCognitoUserPoolClientUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(cognitoUserPoolClientType, ResourceCognitoUserPoolClient(), data, cognitoUserPoolClientProperties, meta)
+	return plugin.ResourceUpdate(cognitoUserPoolClientType, ResourceCognitoUserPoolClient(), data, meta)
 }
 
 func resourceCognitoUserPoolClientDelete(data *schema.ResourceData, meta interface{}) error {

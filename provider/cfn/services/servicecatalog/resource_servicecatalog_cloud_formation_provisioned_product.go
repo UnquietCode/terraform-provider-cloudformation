@@ -17,20 +17,6 @@ import (
 
 const serviceCatalogCloudFormationProvisionedProductType string = "AWS::ServiceCatalog::CloudFormationProvisionedProduct"
 
-var serviceCatalogCloudFormationProvisionedProductProperties map[string]string = map[string]string{
-	"path_id": "PathId",
-	"provisioning_parameters": "ProvisioningParameters",
-	"provisioning_preferences": "ProvisioningPreferences",
-	"product_name": "ProductName",
-	"provisioning_artifact_name": "ProvisioningArtifactName",
-	"notification_arns": "NotificationArns",
-	"accept_language": "AcceptLanguage",
-	"product_id": "ProductId",
-	"tags": "Tags",
-	"provisioned_product_name": "ProvisionedProductName",
-	"provisioning_artifact_id": "ProvisioningArtifactId",
-}
-
 func ResourceServiceCatalogCloudFormationProvisionedProduct() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogCloudFormationProvisionedProductExists,
@@ -104,11 +90,11 @@ func resourceServiceCatalogCloudFormationProvisionedProductRead(data *schema.Res
 }
 
 func resourceServiceCatalogCloudFormationProvisionedProductCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(serviceCatalogCloudFormationProvisionedProductType, ResourceServiceCatalogCloudFormationProvisionedProduct(), data, serviceCatalogCloudFormationProvisionedProductProperties, meta)
+	return plugin.ResourceCreate(serviceCatalogCloudFormationProvisionedProductType, ResourceServiceCatalogCloudFormationProvisionedProduct(), data, meta)
 }
 
 func resourceServiceCatalogCloudFormationProvisionedProductUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(serviceCatalogCloudFormationProvisionedProductType, ResourceServiceCatalogCloudFormationProvisionedProduct(), data, serviceCatalogCloudFormationProvisionedProductProperties, meta)
+	return plugin.ResourceUpdate(serviceCatalogCloudFormationProvisionedProductType, ResourceServiceCatalogCloudFormationProvisionedProduct(), data, meta)
 }
 
 func resourceServiceCatalogCloudFormationProvisionedProductDelete(data *schema.ResourceData, meta interface{}) error {

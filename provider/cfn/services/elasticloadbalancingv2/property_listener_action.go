@@ -14,16 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var listenerActionProperties map[string]string = map[string]string{
-	"authenticate_cognito_config": "AuthenticateCognitoConfig",
-	"authenticate_oidc_config": "AuthenticateOidcConfig",
-	"fixed_response_config": "FixedResponseConfig",
-	"order": "Order",
-	"redirect_config": "RedirectConfig",
-	"target_group_arn": "TargetGroupArn",
-	"type": "Type",
-}
-
 func propertyListenerAction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

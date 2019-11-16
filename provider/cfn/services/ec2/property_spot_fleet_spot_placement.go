@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var spotFleetSpotPlacementProperties map[string]string = map[string]string{
-	"availability_zone": "AvailabilityZone",
-	"group_name": "GroupName",
-	"tenancy": "Tenancy",
-}
-
 func propertySpotFleetSpotPlacement(extras...string) *schema.Resource {
 	var count int64 = 0
 	

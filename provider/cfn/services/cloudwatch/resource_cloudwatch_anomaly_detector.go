@@ -16,14 +16,6 @@ import (
 
 const cloudWatchAnomalyDetectorType string = "AWS::CloudWatch::AnomalyDetector"
 
-var cloudWatchAnomalyDetectorProperties map[string]string = map[string]string{
-	"metric_name": "MetricName",
-	"stat": "Stat",
-	"configuration": "Configuration",
-	"dimensions": "Dimensions",
-	"namespace": "Namespace",
-}
-
 func ResourceCloudWatchAnomalyDetector() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCloudWatchAnomalyDetectorExists,
@@ -75,11 +67,11 @@ func resourceCloudWatchAnomalyDetectorRead(data *schema.ResourceData, meta inter
 }
 
 func resourceCloudWatchAnomalyDetectorCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(cloudWatchAnomalyDetectorType, ResourceCloudWatchAnomalyDetector(), data, cloudWatchAnomalyDetectorProperties, meta)
+	return plugin.ResourceCreate(cloudWatchAnomalyDetectorType, ResourceCloudWatchAnomalyDetector(), data, meta)
 }
 
 func resourceCloudWatchAnomalyDetectorUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(cloudWatchAnomalyDetectorType, ResourceCloudWatchAnomalyDetector(), data, cloudWatchAnomalyDetectorProperties, meta)
+	return plugin.ResourceUpdate(cloudWatchAnomalyDetectorType, ResourceCloudWatchAnomalyDetector(), data, meta)
 }
 
 func resourceCloudWatchAnomalyDetectorDelete(data *schema.ResourceData, meta interface{}) error {

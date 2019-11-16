@@ -14,16 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var fileSystemWindowsConfigurationProperties map[string]string = map[string]string{
-	"self_managed_active_directory_configuration": "SelfManagedActiveDirectoryConfiguration",
-	"weekly_maintenance_start_time": "WeeklyMaintenanceStartTime",
-	"active_directory_id": "ActiveDirectoryId",
-	"throughput_capacity": "ThroughputCapacity",
-	"copy_tags_to_backups": "CopyTagsToBackups",
-	"daily_automatic_backup_start_time": "DailyAutomaticBackupStartTime",
-	"automatic_backup_retention_days": "AutomaticBackupRetentionDays",
-}
-
 func propertyFileSystemWindowsConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

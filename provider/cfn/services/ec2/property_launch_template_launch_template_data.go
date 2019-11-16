@@ -14,34 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var launchTemplateLaunchTemplateDataProperties map[string]string = map[string]string{
-	"security_groups": "SecurityGroups",
-	"tag_specifications": "TagSpecifications",
-	"user_data": "UserData",
-	"block_device_mappings": "BlockDeviceMappings",
-	"iam_instance_profile": "IamInstanceProfile",
-	"kernel_id": "KernelId",
-	"ebs_optimized": "EbsOptimized",
-	"elastic_gpu_specifications": "ElasticGpuSpecifications",
-	"elastic_inference_accelerators": "ElasticInferenceAccelerators",
-	"placement": "Placement",
-	"network_interfaces": "NetworkInterfaces",
-	"image_id": "ImageId",
-	"instance_type": "InstanceType",
-	"monitoring": "Monitoring",
-	"hibernation_options": "HibernationOptions",
-	"license_specifications": "LicenseSpecifications",
-	"instance_initiated_shutdown_behavior": "InstanceInitiatedShutdownBehavior",
-	"cpu_options": "CpuOptions",
-	"security_group_ids": "SecurityGroupIds",
-	"key_name": "KeyName",
-	"disable_api_termination": "DisableApiTermination",
-	"instance_market_options": "InstanceMarketOptions",
-	"ram_disk_id": "RamDiskId",
-	"capacity_reservation_specification": "CapacityReservationSpecification",
-	"credit_specification": "CreditSpecification",
-}
-
 func propertyLaunchTemplateLaunchTemplateData(extras...string) *schema.Resource {
 	var count int64 = 0
 	

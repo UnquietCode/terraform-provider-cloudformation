@@ -16,19 +16,6 @@ import (
 
 const glueMLTransformType string = "AWS::Glue::MLTransform"
 
-var glueMLTransformProperties map[string]string = map[string]string{
-	"role": "Role",
-	"max_retries": "MaxRetries",
-	"worker_type": "WorkerType",
-	"description": "Description",
-	"timeout": "Timeout",
-	"transform_parameters": "TransformParameters",
-	"input_record_tables": "InputRecordTables",
-	"number_of_workers": "NumberOfWorkers",
-	"name": "Name",
-	"max_capacity": "MaxCapacity",
-}
-
 func ResourceGlueMLTransform() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGlueMLTransformExists,
@@ -101,11 +88,11 @@ func resourceGlueMLTransformRead(data *schema.ResourceData, meta interface{}) er
 }
 
 func resourceGlueMLTransformCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(glueMLTransformType, ResourceGlueMLTransform(), data, glueMLTransformProperties, meta)
+	return plugin.ResourceCreate(glueMLTransformType, ResourceGlueMLTransform(), data, meta)
 }
 
 func resourceGlueMLTransformUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(glueMLTransformType, ResourceGlueMLTransform(), data, glueMLTransformProperties, meta)
+	return plugin.ResourceUpdate(glueMLTransformType, ResourceGlueMLTransform(), data, meta)
 }
 
 func resourceGlueMLTransformDelete(data *schema.ResourceData, meta interface{}) error {

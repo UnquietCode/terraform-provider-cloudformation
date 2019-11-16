@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var cloudFormationProductProvisioningArtifactPropertiesProperties map[string]string = map[string]string{
-	"description": "Description",
-	"disable_template_validation": "DisableTemplateValidation",
-	"info": "Info",
-	"name": "Name",
-}
-
 func propertyCloudFormationProductProvisioningArtifactProperties(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationInputProcessingConfigurationProperties map[string]string = map[string]string{
-	"input_lambda_processor": "InputLambdaProcessor",
-}
-
 func propertyApplicationInputProcessingConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

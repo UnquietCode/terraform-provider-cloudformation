@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deliveryStreamParquetSerDeProperties map[string]string = map[string]string{
-	"block_size_bytes": "BlockSizeBytes",
-	"compression": "Compression",
-	"enable_dictionary_compression": "EnableDictionaryCompression",
-	"max_padding_bytes": "MaxPaddingBytes",
-	"page_size_bytes": "PageSizeBytes",
-	"writer_version": "WriterVersion",
-}
-
 func propertyDeliveryStreamParquetSerDe(extras...string) *schema.Resource {
 	var count int64 = 0
 	

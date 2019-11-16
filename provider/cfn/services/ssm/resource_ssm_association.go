@@ -16,17 +16,6 @@ import (
 
 const sSMAssociationType string = "AWS::SSM::Association"
 
-var sSMAssociationProperties map[string]string = map[string]string{
-	"association_name": "AssociationName",
-	"document_version": "DocumentVersion",
-	"instance_id": "InstanceId",
-	"name": "Name",
-	"output_location": "OutputLocation",
-	"parameters": "Parameters",
-	"schedule_expression": "ScheduleExpression",
-	"targets": "Targets",
-}
-
 func ResourceSSMAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSSMAssociationExists,
@@ -91,11 +80,11 @@ func resourceSSMAssociationRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceSSMAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(sSMAssociationType, ResourceSSMAssociation(), data, sSMAssociationProperties, meta)
+	return plugin.ResourceCreate(sSMAssociationType, ResourceSSMAssociation(), data, meta)
 }
 
 func resourceSSMAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(sSMAssociationType, ResourceSSMAssociation(), data, sSMAssociationProperties, meta)
+	return plugin.ResourceUpdate(sSMAssociationType, ResourceSSMAssociation(), data, meta)
 }
 
 func resourceSSMAssociationDelete(data *schema.ResourceData, meta interface{}) error {

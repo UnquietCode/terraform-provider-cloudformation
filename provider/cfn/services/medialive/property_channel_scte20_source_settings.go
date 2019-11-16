@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var channelScte20SourceSettingsProperties map[string]string = map[string]string{
-	"source608_channel_number": "Source608ChannelNumber",
-	"convert608_to708": "Convert608To708",
-}
-
 func propertyChannelScte20SourceSettings(extras...string) *schema.Resource {
 	var count int64 = 0
 	

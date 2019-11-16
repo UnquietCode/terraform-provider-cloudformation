@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketSourceSelectionCriteriaProperties map[string]string = map[string]string{
-	"sse_kms_encrypted_objects": "SseKmsEncryptedObjects",
-}
-
 func propertyBucketSourceSelectionCriteria(extras...string) *schema.Resource {
 	var count int64 = 0
 	

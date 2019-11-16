@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var recordSetGeoLocationProperties map[string]string = map[string]string{
-	"continent_code": "ContinentCode",
-	"country_code": "CountryCode",
-	"subdivision_code": "SubdivisionCode",
-}
-
 func propertyRecordSetGeoLocation(extras...string) *schema.Resource {
 	var count int64 = 0
 	

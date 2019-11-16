@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var topicRuleKinesisActionProperties map[string]string = map[string]string{
-	"partition_key": "PartitionKey",
-	"role_arn": "RoleArn",
-	"stream_name": "StreamName",
-}
-
 func propertyTopicRuleKinesisAction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

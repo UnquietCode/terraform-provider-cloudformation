@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var jobExecutionPropertyProperties map[string]string = map[string]string{
-	"max_concurrent_runs": "MaxConcurrentRuns",
-}
-
 func propertyJobExecutionProperty(extras...string) *schema.Resource {
 	var count int64 = 0
 	

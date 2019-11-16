@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var stageCanarySettingProperties map[string]string = map[string]string{
-	"deployment_id": "DeploymentId",
-	"percent_traffic": "PercentTraffic",
-	"stage_variable_overrides": "StageVariableOverrides",
-	"use_stage_cache": "UseStageCache",
-}
-
 func propertyStageCanarySetting(extras...string) *schema.Resource {
 	var count int64 = 0
 	

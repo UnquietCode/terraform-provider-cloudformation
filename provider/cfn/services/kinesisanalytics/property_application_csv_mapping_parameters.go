@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationCSVMappingParametersProperties map[string]string = map[string]string{
-	"record_row_delimiter": "RecordRowDelimiter",
-	"record_column_delimiter": "RecordColumnDelimiter",
-}
-
 func propertyApplicationCSVMappingParameters(extras...string) *schema.Resource {
 	var count int64 = 0
 	

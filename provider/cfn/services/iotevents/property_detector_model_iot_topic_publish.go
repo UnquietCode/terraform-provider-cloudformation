@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var detectorModelIotTopicPublishProperties map[string]string = map[string]string{
-	"mqtt_topic": "MqttTopic",
-}
-
 func propertyDetectorModelIotTopicPublish(extras...string) *schema.Resource {
 	var count int64 = 0
 	

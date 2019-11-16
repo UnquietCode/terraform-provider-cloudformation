@@ -16,10 +16,6 @@ import (
 
 const cloudFrontCloudFrontOriginAccessIdentityType string = "AWS::CloudFront::CloudFrontOriginAccessIdentity"
 
-var cloudFrontCloudFrontOriginAccessIdentityProperties map[string]string = map[string]string{
-	"cloud_front_origin_access_identity_config": "CloudFrontOriginAccessIdentityConfig",
-}
-
 func ResourceCloudFrontCloudFrontOriginAccessIdentity() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCloudFrontCloudFrontOriginAccessIdentityExists,
@@ -54,11 +50,11 @@ func resourceCloudFrontCloudFrontOriginAccessIdentityRead(data *schema.ResourceD
 }
 
 func resourceCloudFrontCloudFrontOriginAccessIdentityCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(cloudFrontCloudFrontOriginAccessIdentityType, ResourceCloudFrontCloudFrontOriginAccessIdentity(), data, cloudFrontCloudFrontOriginAccessIdentityProperties, meta)
+	return plugin.ResourceCreate(cloudFrontCloudFrontOriginAccessIdentityType, ResourceCloudFrontCloudFrontOriginAccessIdentity(), data, meta)
 }
 
 func resourceCloudFrontCloudFrontOriginAccessIdentityUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(cloudFrontCloudFrontOriginAccessIdentityType, ResourceCloudFrontCloudFrontOriginAccessIdentity(), data, cloudFrontCloudFrontOriginAccessIdentityProperties, meta)
+	return plugin.ResourceUpdate(cloudFrontCloudFrontOriginAccessIdentityType, ResourceCloudFrontCloudFrontOriginAccessIdentity(), data, meta)
 }
 
 func resourceCloudFrontCloudFrontOriginAccessIdentityDelete(data *schema.ResourceData, meta interface{}) error {

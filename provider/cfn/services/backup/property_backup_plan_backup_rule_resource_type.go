@@ -14,16 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var backupPlanBackupRuleResourceTypeProperties map[string]string = map[string]string{
-	"completion_window_minutes": "CompletionWindowMinutes",
-	"schedule_expression": "ScheduleExpression",
-	"recovery_point_tags": "RecoveryPointTags",
-	"lifecycle": "Lifecycle",
-	"target_backup_vault": "TargetBackupVault",
-	"start_window_minutes": "StartWindowMinutes",
-	"rule_name": "RuleName",
-}
-
 func propertyBackupPlanBackupRuleResourceType(extras...string) *schema.Resource {
 	var count int64 = 0
 	

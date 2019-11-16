@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var resourceDefinitionS3MachineLearningModelResourceDataProperties map[string]string = map[string]string{
-	"destination_path": "DestinationPath",
-	"s3_uri": "S3Uri",
-}
-
 func propertyResourceDefinitionS3MachineLearningModelResourceData(extras...string) *schema.Resource {
 	var count int64 = 0
 	

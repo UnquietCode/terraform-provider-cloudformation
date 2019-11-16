@@ -16,12 +16,6 @@ import (
 
 const apiGatewayV2DeploymentType string = "AWS::ApiGatewayV2::Deployment"
 
-var apiGatewayV2DeploymentProperties map[string]string = map[string]string{
-	"description": "Description",
-	"stage_name": "StageName",
-	"api_id": "ApiId",
-}
-
 func ResourceApiGatewayV2Deployment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayV2DeploymentExists,
@@ -62,11 +56,11 @@ func resourceApiGatewayV2DeploymentRead(data *schema.ResourceData, meta interfac
 }
 
 func resourceApiGatewayV2DeploymentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayV2DeploymentType, ResourceApiGatewayV2Deployment(), data, apiGatewayV2DeploymentProperties, meta)
+	return plugin.ResourceCreate(apiGatewayV2DeploymentType, ResourceApiGatewayV2Deployment(), data, meta)
 }
 
 func resourceApiGatewayV2DeploymentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayV2DeploymentType, ResourceApiGatewayV2Deployment(), data, apiGatewayV2DeploymentProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayV2DeploymentType, ResourceApiGatewayV2Deployment(), data, meta)
 }
 
 func resourceApiGatewayV2DeploymentDelete(data *schema.ResourceData, meta interface{}) error {

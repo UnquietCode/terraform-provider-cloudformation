@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var documentationPartLocationProperties map[string]string = map[string]string{
-	"method": "Method",
-	"name": "Name",
-	"path": "Path",
-	"status_code": "StatusCode",
-	"type": "Type",
-}
-
 func propertyDocumentationPartLocation(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,11 +16,6 @@ import (
 
 const autoScalingPlansScalingPlanType string = "AWS::AutoScalingPlans::ScalingPlan"
 
-var autoScalingPlansScalingPlanProperties map[string]string = map[string]string{
-	"application_source": "ApplicationSource",
-	"scaling_instructions": "ScalingInstructions",
-}
-
 func ResourceAutoScalingPlansScalingPlan() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAutoScalingPlansScalingPlanExists,
@@ -60,11 +55,11 @@ func resourceAutoScalingPlansScalingPlanRead(data *schema.ResourceData, meta int
 }
 
 func resourceAutoScalingPlansScalingPlanCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(autoScalingPlansScalingPlanType, ResourceAutoScalingPlansScalingPlan(), data, autoScalingPlansScalingPlanProperties, meta)
+	return plugin.ResourceCreate(autoScalingPlansScalingPlanType, ResourceAutoScalingPlansScalingPlan(), data, meta)
 }
 
 func resourceAutoScalingPlansScalingPlanUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(autoScalingPlansScalingPlanType, ResourceAutoScalingPlansScalingPlan(), data, autoScalingPlansScalingPlanProperties, meta)
+	return plugin.ResourceUpdate(autoScalingPlansScalingPlanType, ResourceAutoScalingPlansScalingPlan(), data, meta)
 }
 
 func resourceAutoScalingPlansScalingPlanDelete(data *schema.ResourceData, meta interface{}) error {

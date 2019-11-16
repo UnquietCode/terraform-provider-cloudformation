@@ -16,12 +16,6 @@ import (
 
 const lakeFormationResourceType string = "AWS::LakeFormation::Resource"
 
-var lakeFormationResourceProperties map[string]string = map[string]string{
-	"resource_arn": "ResourceArn",
-	"use_service_linked_role": "UseServiceLinkedRole",
-	"role_arn": "RoleArn",
-}
-
 func ResourceLakeFormationResource() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLakeFormationResourceExists,
@@ -62,11 +56,11 @@ func resourceLakeFormationResourceRead(data *schema.ResourceData, meta interface
 }
 
 func resourceLakeFormationResourceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(lakeFormationResourceType, ResourceLakeFormationResource(), data, lakeFormationResourceProperties, meta)
+	return plugin.ResourceCreate(lakeFormationResourceType, ResourceLakeFormationResource(), data, meta)
 }
 
 func resourceLakeFormationResourceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(lakeFormationResourceType, ResourceLakeFormationResource(), data, lakeFormationResourceProperties, meta)
+	return plugin.ResourceUpdate(lakeFormationResourceType, ResourceLakeFormationResource(), data, meta)
 }
 
 func resourceLakeFormationResourceDelete(data *schema.ResourceData, meta interface{}) error {

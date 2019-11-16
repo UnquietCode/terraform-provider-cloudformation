@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var datasetScheduleProperties map[string]string = map[string]string{
-	"schedule_expression": "ScheduleExpression",
-}
-
 func propertyDatasetSchedule(extras...string) *schema.Resource {
 	var count int64 = 0
 	

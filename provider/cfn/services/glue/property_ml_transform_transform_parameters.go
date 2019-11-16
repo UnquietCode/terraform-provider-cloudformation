@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var mLTransformTransformParametersProperties map[string]string = map[string]string{
-	"transform_type": "TransformType",
-	"find_matches_parameters": "FindMatchesParameters",
-}
-
 func propertyMLTransformTransformParameters(extras...string) *schema.Resource {
 	var count int64 = 0
 	

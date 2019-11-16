@@ -16,11 +16,6 @@ import (
 
 const eC2SubnetNetworkAclAssociationType string = "AWS::EC2::SubnetNetworkAclAssociation"
 
-var eC2SubnetNetworkAclAssociationProperties map[string]string = map[string]string{
-	"network_acl_id": "NetworkAclId",
-	"subnet_id": "SubnetId",
-}
-
 func ResourceEC2SubnetNetworkAclAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2SubnetNetworkAclAssociationExists,
@@ -57,11 +52,11 @@ func resourceEC2SubnetNetworkAclAssociationRead(data *schema.ResourceData, meta 
 }
 
 func resourceEC2SubnetNetworkAclAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2SubnetNetworkAclAssociationType, ResourceEC2SubnetNetworkAclAssociation(), data, eC2SubnetNetworkAclAssociationProperties, meta)
+	return plugin.ResourceCreate(eC2SubnetNetworkAclAssociationType, ResourceEC2SubnetNetworkAclAssociation(), data, meta)
 }
 
 func resourceEC2SubnetNetworkAclAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2SubnetNetworkAclAssociationType, ResourceEC2SubnetNetworkAclAssociation(), data, eC2SubnetNetworkAclAssociationProperties, meta)
+	return plugin.ResourceUpdate(eC2SubnetNetworkAclAssociationType, ResourceEC2SubnetNetworkAclAssociation(), data, meta)
 }
 
 func resourceEC2SubnetNetworkAclAssociationDelete(data *schema.ResourceData, meta interface{}) error {

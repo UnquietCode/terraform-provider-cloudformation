@@ -16,18 +16,6 @@ import (
 
 const pinpointAPNSSandboxChannelType string = "AWS::Pinpoint::APNSSandboxChannel"
 
-var pinpointAPNSSandboxChannelProperties map[string]string = map[string]string{
-	"bundle_id": "BundleId",
-	"private_key": "PrivateKey",
-	"enabled": "Enabled",
-	"default_authentication_method": "DefaultAuthenticationMethod",
-	"token_key": "TokenKey",
-	"application_id": "ApplicationId",
-	"team_id": "TeamId",
-	"certificate": "Certificate",
-	"token_key_id": "TokenKeyId",
-}
-
 func ResourcePinpointAPNSSandboxChannel() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointAPNSSandboxChannelExists,
@@ -92,11 +80,11 @@ func resourcePinpointAPNSSandboxChannelRead(data *schema.ResourceData, meta inte
 }
 
 func resourcePinpointAPNSSandboxChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(pinpointAPNSSandboxChannelType, ResourcePinpointAPNSSandboxChannel(), data, pinpointAPNSSandboxChannelProperties, meta)
+	return plugin.ResourceCreate(pinpointAPNSSandboxChannelType, ResourcePinpointAPNSSandboxChannel(), data, meta)
 }
 
 func resourcePinpointAPNSSandboxChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(pinpointAPNSSandboxChannelType, ResourcePinpointAPNSSandboxChannel(), data, pinpointAPNSSandboxChannelProperties, meta)
+	return plugin.ResourceUpdate(pinpointAPNSSandboxChannelType, ResourcePinpointAPNSSandboxChannel(), data, meta)
 }
 
 func resourcePinpointAPNSSandboxChannelDelete(data *schema.ResourceData, meta interface{}) error {

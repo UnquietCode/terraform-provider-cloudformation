@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var spotFleetTargetGroupsConfigProperties map[string]string = map[string]string{
-	"target_groups": "TargetGroups",
-}
-
 func propertySpotFleetTargetGroupsConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var microsoftADVpcSettingsProperties map[string]string = map[string]string{
-	"subnet_ids": "SubnetIds",
-	"vpc_id": "VpcId",
-}
-
 func propertyMicrosoftADVpcSettings(extras...string) *schema.Resource {
 	var count int64 = 0
 	

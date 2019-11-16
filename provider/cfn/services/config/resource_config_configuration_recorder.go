@@ -16,12 +16,6 @@ import (
 
 const configConfigurationRecorderType string = "AWS::Config::ConfigurationRecorder"
 
-var configConfigurationRecorderProperties map[string]string = map[string]string{
-	"name": "Name",
-	"recording_group": "RecordingGroup",
-	"role_arn": "RoleARN",
-}
-
 func ResourceConfigConfigurationRecorder() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceConfigConfigurationRecorderExists,
@@ -64,11 +58,11 @@ func resourceConfigConfigurationRecorderRead(data *schema.ResourceData, meta int
 }
 
 func resourceConfigConfigurationRecorderCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(configConfigurationRecorderType, ResourceConfigConfigurationRecorder(), data, configConfigurationRecorderProperties, meta)
+	return plugin.ResourceCreate(configConfigurationRecorderType, ResourceConfigConfigurationRecorder(), data, meta)
 }
 
 func resourceConfigConfigurationRecorderUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(configConfigurationRecorderType, ResourceConfigConfigurationRecorder(), data, configConfigurationRecorderProperties, meta)
+	return plugin.ResourceUpdate(configConfigurationRecorderType, ResourceConfigConfigurationRecorder(), data, meta)
 }
 
 func resourceConfigConfigurationRecorderDelete(data *schema.ResourceData, meta interface{}) error {

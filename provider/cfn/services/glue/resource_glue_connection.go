@@ -16,11 +16,6 @@ import (
 
 const glueConnectionType string = "AWS::Glue::Connection"
 
-var glueConnectionProperties map[string]string = map[string]string{
-	"connection_input": "ConnectionInput",
-	"catalog_id": "CatalogId",
-}
-
 func ResourceGlueConnection() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGlueConnectionExists,
@@ -59,11 +54,11 @@ func resourceGlueConnectionRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceGlueConnectionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(glueConnectionType, ResourceGlueConnection(), data, glueConnectionProperties, meta)
+	return plugin.ResourceCreate(glueConnectionType, ResourceGlueConnection(), data, meta)
 }
 
 func resourceGlueConnectionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(glueConnectionType, ResourceGlueConnection(), data, glueConnectionProperties, meta)
+	return plugin.ResourceUpdate(glueConnectionType, ResourceGlueConnection(), data, meta)
 }
 
 func resourceGlueConnectionDelete(data *schema.ResourceData, meta interface{}) error {

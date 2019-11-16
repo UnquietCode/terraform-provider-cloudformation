@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var stackChefConfigurationProperties map[string]string = map[string]string{
-	"berkshelf_version": "BerkshelfVersion",
-	"manage_berkshelf": "ManageBerkshelf",
-}
-
 func propertyStackChefConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

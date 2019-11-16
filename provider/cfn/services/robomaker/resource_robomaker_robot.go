@@ -16,14 +16,6 @@ import (
 
 const roboMakerRobotType string = "AWS::RoboMaker::Robot"
 
-var roboMakerRobotProperties map[string]string = map[string]string{
-	"fleet": "Fleet",
-	"architecture": "Architecture",
-	"greengrass_group_id": "GreengrassGroupId",
-	"tags": "Tags",
-	"name": "Name",
-}
-
 func ResourceRoboMakerRobot() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRoboMakerRobotExists,
@@ -72,11 +64,11 @@ func resourceRoboMakerRobotRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceRoboMakerRobotCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(roboMakerRobotType, ResourceRoboMakerRobot(), data, roboMakerRobotProperties, meta)
+	return plugin.ResourceCreate(roboMakerRobotType, ResourceRoboMakerRobot(), data, meta)
 }
 
 func resourceRoboMakerRobotUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(roboMakerRobotType, ResourceRoboMakerRobot(), data, roboMakerRobotProperties, meta)
+	return plugin.ResourceUpdate(roboMakerRobotType, ResourceRoboMakerRobot(), data, meta)
 }
 
 func resourceRoboMakerRobotDelete(data *schema.ResourceData, meta interface{}) error {

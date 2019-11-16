@@ -16,15 +16,6 @@ import (
 
 const guardDutyMemberType string = "AWS::GuardDuty::Member"
 
-var guardDutyMemberProperties map[string]string = map[string]string{
-	"status": "Status",
-	"member_id": "MemberId",
-	"email": "Email",
-	"message": "Message",
-	"disable_email_notification": "DisableEmailNotification",
-	"detector_id": "DetectorId",
-}
-
 func ResourceGuardDutyMember() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGuardDutyMemberExists,
@@ -77,11 +68,11 @@ func resourceGuardDutyMemberRead(data *schema.ResourceData, meta interface{}) er
 }
 
 func resourceGuardDutyMemberCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(guardDutyMemberType, ResourceGuardDutyMember(), data, guardDutyMemberProperties, meta)
+	return plugin.ResourceCreate(guardDutyMemberType, ResourceGuardDutyMember(), data, meta)
 }
 
 func resourceGuardDutyMemberUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(guardDutyMemberType, ResourceGuardDutyMember(), data, guardDutyMemberProperties, meta)
+	return plugin.ResourceUpdate(guardDutyMemberType, ResourceGuardDutyMember(), data, meta)
 }
 
 func resourceGuardDutyMemberDelete(data *schema.ResourceData, meta interface{}) error {

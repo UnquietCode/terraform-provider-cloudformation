@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var environmentTierProperties map[string]string = map[string]string{
-	"name": "Name",
-	"type": "Type",
-	"version": "Version",
-}
-
 func propertyEnvironmentTier(extras...string) *schema.Resource {
 	var count int64 = 0
 	

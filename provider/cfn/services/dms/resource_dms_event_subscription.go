@@ -17,16 +17,6 @@ import (
 
 const dMSEventSubscriptionType string = "AWS::DMS::EventSubscription"
 
-var dMSEventSubscriptionProperties map[string]string = map[string]string{
-	"source_type": "SourceType",
-	"event_categories": "EventCategories",
-	"enabled": "Enabled",
-	"subscription_name": "SubscriptionName",
-	"sns_topic_arn": "SnsTopicArn",
-	"source_ids": "SourceIds",
-	"tags": "Tags",
-}
-
 func ResourceDMSEventSubscription() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDMSEventSubscriptionExists,
@@ -82,11 +72,11 @@ func resourceDMSEventSubscriptionRead(data *schema.ResourceData, meta interface{
 }
 
 func resourceDMSEventSubscriptionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(dMSEventSubscriptionType, ResourceDMSEventSubscription(), data, dMSEventSubscriptionProperties, meta)
+	return plugin.ResourceCreate(dMSEventSubscriptionType, ResourceDMSEventSubscription(), data, meta)
 }
 
 func resourceDMSEventSubscriptionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(dMSEventSubscriptionType, ResourceDMSEventSubscription(), data, dMSEventSubscriptionProperties, meta)
+	return plugin.ResourceUpdate(dMSEventSubscriptionType, ResourceDMSEventSubscription(), data, meta)
 }
 
 func resourceDMSEventSubscriptionDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var functionEnvironmentProperties map[string]string = map[string]string{
-	"variables": "Variables",
-}
-
 func propertyFunctionEnvironment(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var topicSubscriptionProperties map[string]string = map[string]string{
-	"endpoint": "Endpoint",
-	"protocol": "Protocol",
-}
-
 func propertyTopicSubscription(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var functionDeadLetterConfigProperties map[string]string = map[string]string{
-	"target_arn": "TargetArn",
-}
-
 func propertyFunctionDeadLetterConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

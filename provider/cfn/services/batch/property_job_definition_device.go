@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var jobDefinitionDeviceProperties map[string]string = map[string]string{
-	"host_path": "HostPath",
-	"permissions": "Permissions",
-	"container_path": "ContainerPath",
-}
-
 func propertyJobDefinitionDevice(extras...string) *schema.Resource {
 	var count int64 = 0
 	

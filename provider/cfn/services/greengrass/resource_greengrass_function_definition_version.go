@@ -16,12 +16,6 @@ import (
 
 const greengrassFunctionDefinitionVersionType string = "AWS::Greengrass::FunctionDefinitionVersion"
 
-var greengrassFunctionDefinitionVersionProperties map[string]string = map[string]string{
-	"default_config": "DefaultConfig",
-	"functions": "Functions",
-	"function_definition_id": "FunctionDefinitionId",
-}
-
 func ResourceGreengrassFunctionDefinitionVersion() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGreengrassFunctionDefinitionVersionExists,
@@ -65,11 +59,11 @@ func resourceGreengrassFunctionDefinitionVersionRead(data *schema.ResourceData, 
 }
 
 func resourceGreengrassFunctionDefinitionVersionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(greengrassFunctionDefinitionVersionType, ResourceGreengrassFunctionDefinitionVersion(), data, greengrassFunctionDefinitionVersionProperties, meta)
+	return plugin.ResourceCreate(greengrassFunctionDefinitionVersionType, ResourceGreengrassFunctionDefinitionVersion(), data, meta)
 }
 
 func resourceGreengrassFunctionDefinitionVersionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(greengrassFunctionDefinitionVersionType, ResourceGreengrassFunctionDefinitionVersion(), data, greengrassFunctionDefinitionVersionProperties, meta)
+	return plugin.ResourceUpdate(greengrassFunctionDefinitionVersionType, ResourceGreengrassFunctionDefinitionVersion(), data, meta)
 }
 
 func resourceGreengrassFunctionDefinitionVersionDelete(data *schema.ResourceData, meta interface{}) error {

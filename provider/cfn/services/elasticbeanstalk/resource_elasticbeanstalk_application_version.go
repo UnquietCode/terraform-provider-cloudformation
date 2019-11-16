@@ -16,12 +16,6 @@ import (
 
 const elasticBeanstalkApplicationVersionType string = "AWS::ElasticBeanstalk::ApplicationVersion"
 
-var elasticBeanstalkApplicationVersionProperties map[string]string = map[string]string{
-	"application_name": "ApplicationName",
-	"description": "Description",
-	"source_bundle": "SourceBundle",
-}
-
 func ResourceElasticBeanstalkApplicationVersion() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElasticBeanstalkApplicationVersionExists,
@@ -64,11 +58,11 @@ func resourceElasticBeanstalkApplicationVersionRead(data *schema.ResourceData, m
 }
 
 func resourceElasticBeanstalkApplicationVersionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(elasticBeanstalkApplicationVersionType, ResourceElasticBeanstalkApplicationVersion(), data, elasticBeanstalkApplicationVersionProperties, meta)
+	return plugin.ResourceCreate(elasticBeanstalkApplicationVersionType, ResourceElasticBeanstalkApplicationVersion(), data, meta)
 }
 
 func resourceElasticBeanstalkApplicationVersionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(elasticBeanstalkApplicationVersionType, ResourceElasticBeanstalkApplicationVersion(), data, elasticBeanstalkApplicationVersionProperties, meta)
+	return plugin.ResourceUpdate(elasticBeanstalkApplicationVersionType, ResourceElasticBeanstalkApplicationVersion(), data, meta)
 }
 
 func resourceElasticBeanstalkApplicationVersionDelete(data *schema.ResourceData, meta interface{}) error {

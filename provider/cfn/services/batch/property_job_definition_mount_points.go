@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var jobDefinitionMountPointsProperties map[string]string = map[string]string{
-	"read_only": "ReadOnly",
-	"source_volume": "SourceVolume",
-	"container_path": "ContainerPath",
-}
-
 func propertyJobDefinitionMountPoints(extras...string) *schema.Resource {
 	var count int64 = 0
 	

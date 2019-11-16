@@ -16,14 +16,6 @@ import (
 
 const lambdaLayerVersionType string = "AWS::Lambda::LayerVersion"
 
-var lambdaLayerVersionProperties map[string]string = map[string]string{
-	"compatible_runtimes": "CompatibleRuntimes",
-	"license_info": "LicenseInfo",
-	"description": "Description",
-	"layer_name": "LayerName",
-	"content": "Content",
-}
-
 func ResourceLambdaLayerVersion() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLambdaLayerVersionExists,
@@ -75,11 +67,11 @@ func resourceLambdaLayerVersionRead(data *schema.ResourceData, meta interface{})
 }
 
 func resourceLambdaLayerVersionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(lambdaLayerVersionType, ResourceLambdaLayerVersion(), data, lambdaLayerVersionProperties, meta)
+	return plugin.ResourceCreate(lambdaLayerVersionType, ResourceLambdaLayerVersion(), data, meta)
 }
 
 func resourceLambdaLayerVersionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(lambdaLayerVersionType, ResourceLambdaLayerVersion(), data, lambdaLayerVersionProperties, meta)
+	return plugin.ResourceUpdate(lambdaLayerVersionType, ResourceLambdaLayerVersion(), data, meta)
 }
 
 func resourceLambdaLayerVersionDelete(data *schema.ResourceData, meta interface{}) error {

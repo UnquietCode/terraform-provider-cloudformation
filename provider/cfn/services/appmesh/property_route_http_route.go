@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var routeHttpRouteProperties map[string]string = map[string]string{
-	"action": "Action",
-	"retry_policy": "RetryPolicy",
-	"match": "Match",
-}
-
 func propertyRouteHttpRoute(extras...string) *schema.Resource {
 	var count int64 = 0
 	

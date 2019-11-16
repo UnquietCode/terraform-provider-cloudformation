@@ -16,16 +16,6 @@ import (
 
 const cognitoUserPoolUserType string = "AWS::Cognito::UserPoolUser"
 
-var cognitoUserPoolUserProperties map[string]string = map[string]string{
-	"validation_data": "ValidationData",
-	"user_pool_id": "UserPoolId",
-	"username": "Username",
-	"message_action": "MessageAction",
-	"desired_delivery_mediums": "DesiredDeliveryMediums",
-	"force_alias_creation": "ForceAliasCreation",
-	"user_attributes": "UserAttributes",
-}
-
 func ResourceCognitoUserPoolUser() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCognitoUserPoolUserExists,
@@ -85,11 +75,11 @@ func resourceCognitoUserPoolUserRead(data *schema.ResourceData, meta interface{}
 }
 
 func resourceCognitoUserPoolUserCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(cognitoUserPoolUserType, ResourceCognitoUserPoolUser(), data, cognitoUserPoolUserProperties, meta)
+	return plugin.ResourceCreate(cognitoUserPoolUserType, ResourceCognitoUserPoolUser(), data, meta)
 }
 
 func resourceCognitoUserPoolUserUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(cognitoUserPoolUserType, ResourceCognitoUserPoolUser(), data, cognitoUserPoolUserProperties, meta)
+	return plugin.ResourceUpdate(cognitoUserPoolUserType, ResourceCognitoUserPoolUser(), data, meta)
 }
 
 func resourceCognitoUserPoolUserDelete(data *schema.ResourceData, meta interface{}) error {

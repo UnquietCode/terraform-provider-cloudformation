@@ -16,11 +16,6 @@ import (
 
 const guardDutyDetectorType string = "AWS::GuardDuty::Detector"
 
-var guardDutyDetectorProperties map[string]string = map[string]string{
-	"finding_publishing_frequency": "FindingPublishingFrequency",
-	"enable": "Enable",
-}
-
 func ResourceGuardDutyDetector() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGuardDutyDetectorExists,
@@ -57,11 +52,11 @@ func resourceGuardDutyDetectorRead(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceGuardDutyDetectorCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(guardDutyDetectorType, ResourceGuardDutyDetector(), data, guardDutyDetectorProperties, meta)
+	return plugin.ResourceCreate(guardDutyDetectorType, ResourceGuardDutyDetector(), data, meta)
 }
 
 func resourceGuardDutyDetectorUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(guardDutyDetectorType, ResourceGuardDutyDetector(), data, guardDutyDetectorProperties, meta)
+	return plugin.ResourceUpdate(guardDutyDetectorType, ResourceGuardDutyDetector(), data, meta)
 }
 
 func resourceGuardDutyDetectorDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var distributionCustomErrorResponseProperties map[string]string = map[string]string{
-	"response_code": "ResponseCode",
-	"error_caching_min_ttl": "ErrorCachingMinTTL",
-	"error_code": "ErrorCode",
-	"response_page_path": "ResponsePagePath",
-}
-
 func propertyDistributionCustomErrorResponse(extras...string) *schema.Resource {
 	var count int64 = 0
 	

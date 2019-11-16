@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var functionDefinitionFunctionProperties map[string]string = map[string]string{
-	"function_arn": "FunctionArn",
-	"function_configuration": "FunctionConfiguration",
-	"id": "Id",
-}
-
 func propertyFunctionDefinitionFunction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

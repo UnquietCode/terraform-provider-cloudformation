@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deliveryStreamSerializerProperties map[string]string = map[string]string{
-	"orc_ser_de": "OrcSerDe",
-	"parquet_ser_de": "ParquetSerDe",
-}
-
 func propertyDeliveryStreamSerializer(extras...string) *schema.Resource {
 	var count int64 = 0
 	

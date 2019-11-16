@@ -16,11 +16,6 @@ import (
 
 const eventsEventBusType string = "AWS::Events::EventBus"
 
-var eventsEventBusProperties map[string]string = map[string]string{
-	"event_source_name": "EventSourceName",
-	"name": "Name",
-}
-
 func ResourceEventsEventBus() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEventsEventBusExists,
@@ -57,11 +52,11 @@ func resourceEventsEventBusRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceEventsEventBusCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eventsEventBusType, ResourceEventsEventBus(), data, eventsEventBusProperties, meta)
+	return plugin.ResourceCreate(eventsEventBusType, ResourceEventsEventBus(), data, meta)
 }
 
 func resourceEventsEventBusUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eventsEventBusType, ResourceEventsEventBus(), data, eventsEventBusProperties, meta)
+	return plugin.ResourceUpdate(eventsEventBusType, ResourceEventsEventBus(), data, meta)
 }
 
 func resourceEventsEventBusDelete(data *schema.ResourceData, meta interface{}) error {

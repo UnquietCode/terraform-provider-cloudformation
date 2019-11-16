@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var launchTemplatePrivateIpAddProperties map[string]string = map[string]string{
-	"private_ip_address": "PrivateIpAddress",
-	"primary": "Primary",
-}
-
 func propertyLaunchTemplatePrivateIpAdd(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,14 +16,6 @@ import (
 
 const apiGatewayDeploymentType string = "AWS::ApiGateway::Deployment"
 
-var apiGatewayDeploymentProperties map[string]string = map[string]string{
-	"deployment_canary_settings": "DeploymentCanarySettings",
-	"description": "Description",
-	"rest_api_id": "RestApiId",
-	"stage_description": "StageDescription",
-	"stage_name": "StageName",
-}
-
 func ResourceApiGatewayDeployment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayDeploymentExists,
@@ -76,11 +68,11 @@ func resourceApiGatewayDeploymentRead(data *schema.ResourceData, meta interface{
 }
 
 func resourceApiGatewayDeploymentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayDeploymentType, ResourceApiGatewayDeployment(), data, apiGatewayDeploymentProperties, meta)
+	return plugin.ResourceCreate(apiGatewayDeploymentType, ResourceApiGatewayDeployment(), data, meta)
 }
 
 func resourceApiGatewayDeploymentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayDeploymentType, ResourceApiGatewayDeployment(), data, apiGatewayDeploymentProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayDeploymentType, ResourceApiGatewayDeployment(), data, meta)
 }
 
 func resourceApiGatewayDeploymentDelete(data *schema.ResourceData, meta interface{}) error {

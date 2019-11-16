@@ -17,13 +17,6 @@ import (
 
 const rDSDBSubnetGroupType string = "AWS::RDS::DBSubnetGroup"
 
-var rDSDBSubnetGroupProperties map[string]string = map[string]string{
-	"db_subnet_group_description": "DBSubnetGroupDescription",
-	"db_subnet_group_name": "DBSubnetGroupName",
-	"subnet_ids": "SubnetIds",
-	"tags": "Tags",
-}
-
 func ResourceRDSDBSubnetGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRDSDBSubnetGroupExists,
@@ -67,11 +60,11 @@ func resourceRDSDBSubnetGroupRead(data *schema.ResourceData, meta interface{}) e
 }
 
 func resourceRDSDBSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(rDSDBSubnetGroupType, ResourceRDSDBSubnetGroup(), data, rDSDBSubnetGroupProperties, meta)
+	return plugin.ResourceCreate(rDSDBSubnetGroupType, ResourceRDSDBSubnetGroup(), data, meta)
 }
 
 func resourceRDSDBSubnetGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(rDSDBSubnetGroupType, ResourceRDSDBSubnetGroup(), data, rDSDBSubnetGroupProperties, meta)
+	return plugin.ResourceUpdate(rDSDBSubnetGroupType, ResourceRDSDBSubnetGroup(), data, meta)
 }
 
 func resourceRDSDBSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var eC2FleetOnDemandOptionsRequestProperties map[string]string = map[string]string{
-	"allocation_strategy": "AllocationStrategy",
-}
-
 func propertyEC2FleetOnDemandOptionsRequest(extras...string) *schema.Resource {
 	var count int64 = 0
 	

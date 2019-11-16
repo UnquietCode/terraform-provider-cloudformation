@@ -16,14 +16,6 @@ import (
 
 const apiGatewayGatewayResponseType string = "AWS::ApiGateway::GatewayResponse"
 
-var apiGatewayGatewayResponseProperties map[string]string = map[string]string{
-	"response_parameters": "ResponseParameters",
-	"response_templates": "ResponseTemplates",
-	"response_type": "ResponseType",
-	"rest_api_id": "RestApiId",
-	"status_code": "StatusCode",
-}
-
 func ResourceApiGatewayGatewayResponse() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayGatewayResponseExists,
@@ -74,11 +66,11 @@ func resourceApiGatewayGatewayResponseRead(data *schema.ResourceData, meta inter
 }
 
 func resourceApiGatewayGatewayResponseCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayGatewayResponseType, ResourceApiGatewayGatewayResponse(), data, apiGatewayGatewayResponseProperties, meta)
+	return plugin.ResourceCreate(apiGatewayGatewayResponseType, ResourceApiGatewayGatewayResponse(), data, meta)
 }
 
 func resourceApiGatewayGatewayResponseUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayGatewayResponseType, ResourceApiGatewayGatewayResponse(), data, apiGatewayGatewayResponseProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayGatewayResponseType, ResourceApiGatewayGatewayResponse(), data, meta)
 }
 
 func resourceApiGatewayGatewayResponseDelete(data *schema.ResourceData, meta interface{}) error {

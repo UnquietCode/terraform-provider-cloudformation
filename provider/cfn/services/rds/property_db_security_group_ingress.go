@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var dBSecurityGroupIngressProperties map[string]string = map[string]string{
-	"cidrip": "CIDRIP",
-	"ec2_security_group_id": "EC2SecurityGroupId",
-	"ec2_security_group_name": "EC2SecurityGroupName",
-	"ec2_security_group_owner_id": "EC2SecurityGroupOwnerId",
-}
-
 func propertyDBSecurityGroupIngress(extras...string) *schema.Resource {
 	var count int64 = 0
 	

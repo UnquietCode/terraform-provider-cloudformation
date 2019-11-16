@@ -14,16 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var domainElasticsearchClusterConfigProperties map[string]string = map[string]string{
-	"dedicated_master_count": "DedicatedMasterCount",
-	"dedicated_master_enabled": "DedicatedMasterEnabled",
-	"dedicated_master_type": "DedicatedMasterType",
-	"instance_count": "InstanceCount",
-	"instance_type": "InstanceType",
-	"zone_awareness_config": "ZoneAwarenessConfig",
-	"zone_awareness_enabled": "ZoneAwarenessEnabled",
-}
-
 func propertyDomainElasticsearchClusterConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

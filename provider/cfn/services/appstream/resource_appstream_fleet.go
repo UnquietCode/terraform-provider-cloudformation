@@ -17,24 +17,6 @@ import (
 
 const appStreamFleetType string = "AWS::AppStream::Fleet"
 
-var appStreamFleetProperties map[string]string = map[string]string{
-	"description": "Description",
-	"compute_capacity": "ComputeCapacity",
-	"vpc_config": "VpcConfig",
-	"fleet_type": "FleetType",
-	"enable_default_internet_access": "EnableDefaultInternetAccess",
-	"domain_join_info": "DomainJoinInfo",
-	"name": "Name",
-	"image_name": "ImageName",
-	"max_user_duration_in_seconds": "MaxUserDurationInSeconds",
-	"idle_disconnect_timeout_in_seconds": "IdleDisconnectTimeoutInSeconds",
-	"disconnect_timeout_in_seconds": "DisconnectTimeoutInSeconds",
-	"display_name": "DisplayName",
-	"instance_type": "InstanceType",
-	"tags": "Tags",
-	"image_arn": "ImageArn",
-}
-
 func ResourceAppStreamFleet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppStreamFleetExists,
@@ -126,11 +108,11 @@ func resourceAppStreamFleetRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceAppStreamFleetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(appStreamFleetType, ResourceAppStreamFleet(), data, appStreamFleetProperties, meta)
+	return plugin.ResourceCreate(appStreamFleetType, ResourceAppStreamFleet(), data, meta)
 }
 
 func resourceAppStreamFleetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(appStreamFleetType, ResourceAppStreamFleet(), data, appStreamFleetProperties, meta)
+	return plugin.ResourceUpdate(appStreamFleetType, ResourceAppStreamFleet(), data, meta)
 }
 
 func resourceAppStreamFleetDelete(data *schema.ResourceData, meta interface{}) error {

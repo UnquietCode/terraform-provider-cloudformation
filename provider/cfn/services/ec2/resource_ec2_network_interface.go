@@ -17,20 +17,6 @@ import (
 
 const eC2NetworkInterfaceType string = "AWS::EC2::NetworkInterface"
 
-var eC2NetworkInterfaceProperties map[string]string = map[string]string{
-	"description": "Description",
-	"group_set": "GroupSet",
-	"interface_type": "InterfaceType",
-	"ipv6_address_count": "Ipv6AddressCount",
-	"ipv6_addresses": "Ipv6Addresses",
-	"private_ip_address": "PrivateIpAddress",
-	"private_ip_addresses": "PrivateIpAddresses",
-	"secondary_private_ip_address_count": "SecondaryPrivateIpAddressCount",
-	"source_dest_check": "SourceDestCheck",
-	"subnet_id": "SubnetId",
-	"tags": "Tags",
-}
-
 func ResourceEC2NetworkInterface() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2NetworkInterfaceExists,
@@ -105,11 +91,11 @@ func resourceEC2NetworkInterfaceRead(data *schema.ResourceData, meta interface{}
 }
 
 func resourceEC2NetworkInterfaceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2NetworkInterfaceType, ResourceEC2NetworkInterface(), data, eC2NetworkInterfaceProperties, meta)
+	return plugin.ResourceCreate(eC2NetworkInterfaceType, ResourceEC2NetworkInterface(), data, meta)
 }
 
 func resourceEC2NetworkInterfaceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2NetworkInterfaceType, ResourceEC2NetworkInterface(), data, eC2NetworkInterfaceProperties, meta)
+	return plugin.ResourceUpdate(eC2NetworkInterfaceType, ResourceEC2NetworkInterface(), data, meta)
 }
 
 func resourceEC2NetworkInterfaceDelete(data *schema.ResourceData, meta interface{}) error {

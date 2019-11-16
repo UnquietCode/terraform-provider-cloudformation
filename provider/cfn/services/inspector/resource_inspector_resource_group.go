@@ -17,10 +17,6 @@ import (
 
 const inspectorResourceGroupType string = "AWS::Inspector::ResourceGroup"
 
-var inspectorResourceGroupProperties map[string]string = map[string]string{
-	"resource_group_tags": "ResourceGroupTags",
-}
-
 func ResourceInspectorResourceGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceInspectorResourceGroupExists,
@@ -50,11 +46,11 @@ func resourceInspectorResourceGroupRead(data *schema.ResourceData, meta interfac
 }
 
 func resourceInspectorResourceGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(inspectorResourceGroupType, ResourceInspectorResourceGroup(), data, inspectorResourceGroupProperties, meta)
+	return plugin.ResourceCreate(inspectorResourceGroupType, ResourceInspectorResourceGroup(), data, meta)
 }
 
 func resourceInspectorResourceGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(inspectorResourceGroupType, ResourceInspectorResourceGroup(), data, inspectorResourceGroupProperties, meta)
+	return plugin.ResourceUpdate(inspectorResourceGroupType, ResourceInspectorResourceGroup(), data, meta)
 }
 
 func resourceInspectorResourceGroupDelete(data *schema.ResourceData, meta interface{}) error {

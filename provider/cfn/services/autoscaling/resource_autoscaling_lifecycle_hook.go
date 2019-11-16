@@ -16,17 +16,6 @@ import (
 
 const autoScalingLifecycleHookType string = "AWS::AutoScaling::LifecycleHook"
 
-var autoScalingLifecycleHookProperties map[string]string = map[string]string{
-	"auto_scaling_group_name": "AutoScalingGroupName",
-	"default_result": "DefaultResult",
-	"heartbeat_timeout": "HeartbeatTimeout",
-	"lifecycle_hook_name": "LifecycleHookName",
-	"lifecycle_transition": "LifecycleTransition",
-	"notification_metadata": "NotificationMetadata",
-	"notification_target_arn": "NotificationTargetARN",
-	"role_arn": "RoleARN",
-}
-
 func ResourceAutoScalingLifecycleHook() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAutoScalingLifecycleHookExists,
@@ -87,11 +76,11 @@ func resourceAutoScalingLifecycleHookRead(data *schema.ResourceData, meta interf
 }
 
 func resourceAutoScalingLifecycleHookCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(autoScalingLifecycleHookType, ResourceAutoScalingLifecycleHook(), data, autoScalingLifecycleHookProperties, meta)
+	return plugin.ResourceCreate(autoScalingLifecycleHookType, ResourceAutoScalingLifecycleHook(), data, meta)
 }
 
 func resourceAutoScalingLifecycleHookUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(autoScalingLifecycleHookType, ResourceAutoScalingLifecycleHook(), data, autoScalingLifecycleHookProperties, meta)
+	return plugin.ResourceUpdate(autoScalingLifecycleHookType, ResourceAutoScalingLifecycleHook(), data, meta)
 }
 
 func resourceAutoScalingLifecycleHookDelete(data *schema.ResourceData, meta interface{}) error {

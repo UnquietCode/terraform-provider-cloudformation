@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var mLTransformFindMatchesParametersProperties map[string]string = map[string]string{
-	"precision_recall_tradeoff": "PrecisionRecallTradeoff",
-	"enforce_provided_labels": "EnforceProvidedLabels",
-	"primary_key_column_name": "PrimaryKeyColumnName",
-	"accuracy_cost_tradeoff": "AccuracyCostTradeoff",
-}
-
 func propertyMLTransformFindMatchesParameters(extras...string) *schema.Resource {
 	var count int64 = 0
 	

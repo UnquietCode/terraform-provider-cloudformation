@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var identityPoolRoleAttachmentRoleMappingProperties map[string]string = map[string]string{
-	"type": "Type",
-	"ambiguous_role_resolution": "AmbiguousRoleResolution",
-	"rules_configuration": "RulesConfiguration",
-	"identity_provider": "IdentityProvider",
-}
-
 func propertyIdentityPoolRoleAttachmentRoleMapping(extras...string) *schema.Resource {
 	var count int64 = 0
 	

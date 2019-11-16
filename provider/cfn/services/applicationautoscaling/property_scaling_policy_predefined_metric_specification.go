@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var scalingPolicyPredefinedMetricSpecificationProperties map[string]string = map[string]string{
-	"predefined_metric_type": "PredefinedMetricType",
-	"resource_label": "ResourceLabel",
-}
-
 func propertyScalingPolicyPredefinedMetricSpecification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

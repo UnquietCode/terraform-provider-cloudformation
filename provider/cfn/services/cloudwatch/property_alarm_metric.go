@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var alarmMetricProperties map[string]string = map[string]string{
-	"dimensions": "Dimensions",
-	"metric_name": "MetricName",
-	"namespace": "Namespace",
-}
-
 func propertyAlarmMetric(extras...string) *schema.Resource {
 	var count int64 = 0
 	

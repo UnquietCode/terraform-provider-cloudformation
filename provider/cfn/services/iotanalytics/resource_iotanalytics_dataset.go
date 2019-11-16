@@ -17,16 +17,6 @@ import (
 
 const ioTAnalyticsDatasetType string = "AWS::IoTAnalytics::Dataset"
 
-var ioTAnalyticsDatasetProperties map[string]string = map[string]string{
-	"actions": "Actions",
-	"dataset_name": "DatasetName",
-	"content_delivery_rules": "ContentDeliveryRules",
-	"triggers": "Triggers",
-	"versioning_configuration": "VersioningConfiguration",
-	"retention_period": "RetentionPeriod",
-	"tags": "Tags",
-}
-
 func ResourceIoTAnalyticsDataset() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoTAnalyticsDatasetExists,
@@ -87,11 +77,11 @@ func resourceIoTAnalyticsDatasetRead(data *schema.ResourceData, meta interface{}
 }
 
 func resourceIoTAnalyticsDatasetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(ioTAnalyticsDatasetType, ResourceIoTAnalyticsDataset(), data, ioTAnalyticsDatasetProperties, meta)
+	return plugin.ResourceCreate(ioTAnalyticsDatasetType, ResourceIoTAnalyticsDataset(), data, meta)
 }
 
 func resourceIoTAnalyticsDatasetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(ioTAnalyticsDatasetType, ResourceIoTAnalyticsDataset(), data, ioTAnalyticsDatasetProperties, meta)
+	return plugin.ResourceUpdate(ioTAnalyticsDatasetType, ResourceIoTAnalyticsDataset(), data, meta)
 }
 
 func resourceIoTAnalyticsDatasetDelete(data *schema.ResourceData, meta interface{}) error {

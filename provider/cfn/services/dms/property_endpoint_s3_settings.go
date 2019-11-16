@@ -14,16 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var endpointS3SettingsProperties map[string]string = map[string]string{
-	"external_table_definition": "ExternalTableDefinition",
-	"bucket_name": "BucketName",
-	"bucket_folder": "BucketFolder",
-	"csv_row_delimiter": "CsvRowDelimiter",
-	"csv_delimiter": "CsvDelimiter",
-	"service_access_role_arn": "ServiceAccessRoleArn",
-	"compression_type": "CompressionType",
-}
-
 func propertyEndpointS3Settings(extras...string) *schema.Resource {
 	var count int64 = 0
 	

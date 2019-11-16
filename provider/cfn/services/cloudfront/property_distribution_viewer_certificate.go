@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var distributionViewerCertificateProperties map[string]string = map[string]string{
-	"iam_certificate_id": "IamCertificateId",
-	"ssl_support_method": "SslSupportMethod",
-	"minimum_protocol_version": "MinimumProtocolVersion",
-	"cloud_front_default_certificate": "CloudFrontDefaultCertificate",
-	"acm_certificate_arn": "AcmCertificateArn",
-}
-
 func propertyDistributionViewerCertificate(extras...string) *schema.Resource {
 	var count int64 = 0
 	

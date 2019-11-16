@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var workteamMemberDefinitionProperties map[string]string = map[string]string{
-	"cognito_member_definition": "CognitoMemberDefinition",
-}
-
 func propertyWorkteamMemberDefinition(extras...string) *schema.Resource {
 	var count int64 = 0
 	

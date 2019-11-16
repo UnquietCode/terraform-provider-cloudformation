@@ -17,13 +17,6 @@ import (
 
 const appMeshVirtualServiceType string = "AWS::AppMesh::VirtualService"
 
-var appMeshVirtualServiceProperties map[string]string = map[string]string{
-	"mesh_name": "MeshName",
-	"virtual_service_name": "VirtualServiceName",
-	"spec": "Spec",
-	"tags": "Tags",
-}
-
 func ResourceAppMeshVirtualService() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppMeshVirtualServiceExists,
@@ -67,11 +60,11 @@ func resourceAppMeshVirtualServiceRead(data *schema.ResourceData, meta interface
 }
 
 func resourceAppMeshVirtualServiceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(appMeshVirtualServiceType, ResourceAppMeshVirtualService(), data, appMeshVirtualServiceProperties, meta)
+	return plugin.ResourceCreate(appMeshVirtualServiceType, ResourceAppMeshVirtualService(), data, meta)
 }
 
 func resourceAppMeshVirtualServiceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(appMeshVirtualServiceType, ResourceAppMeshVirtualService(), data, appMeshVirtualServiceProperties, meta)
+	return plugin.ResourceUpdate(appMeshVirtualServiceType, ResourceAppMeshVirtualService(), data, meta)
 }
 
 func resourceAppMeshVirtualServiceDelete(data *schema.ResourceData, meta interface{}) error {

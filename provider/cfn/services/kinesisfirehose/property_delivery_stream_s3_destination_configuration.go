@@ -14,17 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deliveryStreamS3DestinationConfigurationProperties map[string]string = map[string]string{
-	"bucket_arn": "BucketARN",
-	"buffering_hints": "BufferingHints",
-	"cloud_watch_logging_options": "CloudWatchLoggingOptions",
-	"compression_format": "CompressionFormat",
-	"encryption_configuration": "EncryptionConfiguration",
-	"error_output_prefix": "ErrorOutputPrefix",
-	"prefix": "Prefix",
-	"role_arn": "RoleARN",
-}
-
 func propertyDeliveryStreamS3DestinationConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,12 +16,6 @@ import (
 
 const serviceCatalogTagOptionType string = "AWS::ServiceCatalog::TagOption"
 
-var serviceCatalogTagOptionProperties map[string]string = map[string]string{
-	"active": "Active",
-	"value": "Value",
-	"key": "Key",
-}
-
 func ResourceServiceCatalogTagOption() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogTagOptionExists,
@@ -62,11 +56,11 @@ func resourceServiceCatalogTagOptionRead(data *schema.ResourceData, meta interfa
 }
 
 func resourceServiceCatalogTagOptionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(serviceCatalogTagOptionType, ResourceServiceCatalogTagOption(), data, serviceCatalogTagOptionProperties, meta)
+	return plugin.ResourceCreate(serviceCatalogTagOptionType, ResourceServiceCatalogTagOption(), data, meta)
 }
 
 func resourceServiceCatalogTagOptionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(serviceCatalogTagOptionType, ResourceServiceCatalogTagOption(), data, serviceCatalogTagOptionProperties, meta)
+	return plugin.ResourceUpdate(serviceCatalogTagOptionType, ResourceServiceCatalogTagOption(), data, meta)
 }
 
 func resourceServiceCatalogTagOptionDelete(data *schema.ResourceData, meta interface{}) error {

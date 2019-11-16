@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deliveryStreamKMSEncryptionConfigProperties map[string]string = map[string]string{
-	"awskms_key_arn": "AWSKMSKeyARN",
-}
-
 func propertyDeliveryStreamKMSEncryptionConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

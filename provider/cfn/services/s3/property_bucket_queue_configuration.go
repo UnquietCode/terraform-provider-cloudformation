@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketQueueConfigurationProperties map[string]string = map[string]string{
-	"event": "Event",
-	"filter": "Filter",
-	"queue": "Queue",
-}
-
 func propertyBucketQueueConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

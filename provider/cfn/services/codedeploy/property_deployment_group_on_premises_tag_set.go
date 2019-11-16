@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deploymentGroupOnPremisesTagSetProperties map[string]string = map[string]string{
-	"on_premises_tag_set_list": "OnPremisesTagSetList",
-}
-
 func propertyDeploymentGroupOnPremisesTagSet(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var projectProjectCacheProperties map[string]string = map[string]string{
-	"modes": "Modes",
-	"type": "Type",
-	"location": "Location",
-}
-
 func propertyProjectProjectCache(extras...string) *schema.Resource {
 	var count int64 = 0
 	

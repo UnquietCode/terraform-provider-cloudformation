@@ -16,18 +16,6 @@ import (
 
 const eC2NetworkAclEntryType string = "AWS::EC2::NetworkAclEntry"
 
-var eC2NetworkAclEntryProperties map[string]string = map[string]string{
-	"cidr_block": "CidrBlock",
-	"egress": "Egress",
-	"icmp": "Icmp",
-	"ipv6_cidr_block": "Ipv6CidrBlock",
-	"network_acl_id": "NetworkAclId",
-	"port_range": "PortRange",
-	"protocol": "Protocol",
-	"rule_action": "RuleAction",
-	"rule_number": "RuleNumber",
-}
-
 func ResourceEC2NetworkAclEntry() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2NetworkAclEntryExists,
@@ -96,11 +84,11 @@ func resourceEC2NetworkAclEntryRead(data *schema.ResourceData, meta interface{})
 }
 
 func resourceEC2NetworkAclEntryCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2NetworkAclEntryType, ResourceEC2NetworkAclEntry(), data, eC2NetworkAclEntryProperties, meta)
+	return plugin.ResourceCreate(eC2NetworkAclEntryType, ResourceEC2NetworkAclEntry(), data, meta)
 }
 
 func resourceEC2NetworkAclEntryUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2NetworkAclEntryType, ResourceEC2NetworkAclEntry(), data, eC2NetworkAclEntryProperties, meta)
+	return plugin.ResourceUpdate(eC2NetworkAclEntryType, ResourceEC2NetworkAclEntry(), data, meta)
 }
 
 func resourceEC2NetworkAclEntryDelete(data *schema.ResourceData, meta interface{}) error {

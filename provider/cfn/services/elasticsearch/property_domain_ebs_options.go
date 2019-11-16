@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var domainEBSOptionsProperties map[string]string = map[string]string{
-	"ebs_enabled": "EBSEnabled",
-	"iops": "Iops",
-	"volume_size": "VolumeSize",
-	"volume_type": "VolumeType",
-}
-
 func propertyDomainEBSOptions(extras...string) *schema.Resource {
 	var count int64 = 0
 	

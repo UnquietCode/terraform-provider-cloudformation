@@ -16,11 +16,6 @@ import (
 
 const wAFRegionalWebACLAssociationType string = "AWS::WAFRegional::WebACLAssociation"
 
-var wAFRegionalWebACLAssociationProperties map[string]string = map[string]string{
-	"resource_arn": "ResourceArn",
-	"web_acl_id": "WebACLId",
-}
-
 func ResourceWAFRegionalWebACLAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFRegionalWebACLAssociationExists,
@@ -57,11 +52,11 @@ func resourceWAFRegionalWebACLAssociationRead(data *schema.ResourceData, meta in
 }
 
 func resourceWAFRegionalWebACLAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(wAFRegionalWebACLAssociationType, ResourceWAFRegionalWebACLAssociation(), data, wAFRegionalWebACLAssociationProperties, meta)
+	return plugin.ResourceCreate(wAFRegionalWebACLAssociationType, ResourceWAFRegionalWebACLAssociation(), data, meta)
 }
 
 func resourceWAFRegionalWebACLAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(wAFRegionalWebACLAssociationType, ResourceWAFRegionalWebACLAssociation(), data, wAFRegionalWebACLAssociationProperties, meta)
+	return plugin.ResourceUpdate(wAFRegionalWebACLAssociationType, ResourceWAFRegionalWebACLAssociation(), data, meta)
 }
 
 func resourceWAFRegionalWebACLAssociationDelete(data *schema.ResourceData, meta interface{}) error {

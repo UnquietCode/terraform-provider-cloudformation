@@ -16,16 +16,6 @@ import (
 
 const autoScalingScheduledActionType string = "AWS::AutoScaling::ScheduledAction"
 
-var autoScalingScheduledActionProperties map[string]string = map[string]string{
-	"auto_scaling_group_name": "AutoScalingGroupName",
-	"desired_capacity": "DesiredCapacity",
-	"end_time": "EndTime",
-	"max_size": "MaxSize",
-	"min_size": "MinSize",
-	"recurrence": "Recurrence",
-	"start_time": "StartTime",
-}
-
 func ResourceAutoScalingScheduledAction() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAutoScalingScheduledActionExists,
@@ -82,11 +72,11 @@ func resourceAutoScalingScheduledActionRead(data *schema.ResourceData, meta inte
 }
 
 func resourceAutoScalingScheduledActionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(autoScalingScheduledActionType, ResourceAutoScalingScheduledAction(), data, autoScalingScheduledActionProperties, meta)
+	return plugin.ResourceCreate(autoScalingScheduledActionType, ResourceAutoScalingScheduledAction(), data, meta)
 }
 
 func resourceAutoScalingScheduledActionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(autoScalingScheduledActionType, ResourceAutoScalingScheduledAction(), data, autoScalingScheduledActionProperties, meta)
+	return plugin.ResourceUpdate(autoScalingScheduledActionType, ResourceAutoScalingScheduledAction(), data, meta)
 }
 
 func resourceAutoScalingScheduledActionDelete(data *schema.ResourceData, meta interface{}) error {

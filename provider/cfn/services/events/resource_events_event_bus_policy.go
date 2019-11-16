@@ -16,14 +16,6 @@ import (
 
 const eventsEventBusPolicyType string = "AWS::Events::EventBusPolicy"
 
-var eventsEventBusPolicyProperties map[string]string = map[string]string{
-	"event_bus_name": "EventBusName",
-	"condition": "Condition",
-	"action": "Action",
-	"statement_id": "StatementId",
-	"principal": "Principal",
-}
-
 func ResourceEventsEventBusPolicy() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEventsEventBusPolicyExists,
@@ -74,11 +66,11 @@ func resourceEventsEventBusPolicyRead(data *schema.ResourceData, meta interface{
 }
 
 func resourceEventsEventBusPolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eventsEventBusPolicyType, ResourceEventsEventBusPolicy(), data, eventsEventBusPolicyProperties, meta)
+	return plugin.ResourceCreate(eventsEventBusPolicyType, ResourceEventsEventBusPolicy(), data, meta)
 }
 
 func resourceEventsEventBusPolicyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eventsEventBusPolicyType, ResourceEventsEventBusPolicy(), data, eventsEventBusPolicyProperties, meta)
+	return plugin.ResourceUpdate(eventsEventBusPolicyType, ResourceEventsEventBusPolicy(), data, meta)
 }
 
 func resourceEventsEventBusPolicyDelete(data *schema.ResourceData, meta interface{}) error {

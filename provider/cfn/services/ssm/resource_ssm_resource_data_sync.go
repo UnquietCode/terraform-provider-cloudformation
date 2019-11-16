@@ -16,15 +16,6 @@ import (
 
 const sSMResourceDataSyncType string = "AWS::SSM::ResourceDataSync"
 
-var sSMResourceDataSyncProperties map[string]string = map[string]string{
-	"kms_key_arn": "KMSKeyArn",
-	"bucket_name": "BucketName",
-	"bucket_region": "BucketRegion",
-	"sync_format": "SyncFormat",
-	"sync_name": "SyncName",
-	"bucket_prefix": "BucketPrefix",
-}
-
 func ResourceSSMResourceDataSync() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSSMResourceDataSyncExists,
@@ -77,11 +68,11 @@ func resourceSSMResourceDataSyncRead(data *schema.ResourceData, meta interface{}
 }
 
 func resourceSSMResourceDataSyncCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(sSMResourceDataSyncType, ResourceSSMResourceDataSync(), data, sSMResourceDataSyncProperties, meta)
+	return plugin.ResourceCreate(sSMResourceDataSyncType, ResourceSSMResourceDataSync(), data, meta)
 }
 
 func resourceSSMResourceDataSyncUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(sSMResourceDataSyncType, ResourceSSMResourceDataSync(), data, sSMResourceDataSyncProperties, meta)
+	return plugin.ResourceUpdate(sSMResourceDataSyncType, ResourceSSMResourceDataSync(), data, meta)
 }
 
 func resourceSSMResourceDataSyncDelete(data *schema.ResourceData, meta interface{}) error {

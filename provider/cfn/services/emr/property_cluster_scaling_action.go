@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var clusterScalingActionProperties map[string]string = map[string]string{
-	"market": "Market",
-	"simple_scaling_policy_configuration": "SimpleScalingPolicyConfiguration",
-}
-
 func propertyClusterScalingAction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

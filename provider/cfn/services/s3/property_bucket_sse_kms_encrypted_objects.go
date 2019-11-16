@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketSseKmsEncryptedObjectsProperties map[string]string = map[string]string{
-	"status": "Status",
-}
-
 func propertyBucketSseKmsEncryptedObjects(extras...string) *schema.Resource {
 	var count int64 = 0
 	

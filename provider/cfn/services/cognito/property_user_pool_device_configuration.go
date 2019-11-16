@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var userPoolDeviceConfigurationProperties map[string]string = map[string]string{
-	"device_only_remembered_on_user_prompt": "DeviceOnlyRememberedOnUserPrompt",
-	"challenge_required_on_new_device": "ChallengeRequiredOnNewDevice",
-}
-
 func propertyUserPoolDeviceConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

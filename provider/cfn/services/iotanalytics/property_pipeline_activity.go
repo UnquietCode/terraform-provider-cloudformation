@@ -14,19 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var pipelineActivityProperties map[string]string = map[string]string{
-	"select_attributes": "SelectAttributes",
-	"datastore": "Datastore",
-	"filter": "Filter",
-	"add_attributes": "AddAttributes",
-	"channel": "Channel",
-	"device_shadow_enrich": "DeviceShadowEnrich",
-	"math": "Math",
-	"lambda": "Lambda",
-	"device_registry_enrich": "DeviceRegistryEnrich",
-	"remove_attributes": "RemoveAttributes",
-}
-
 func propertyPipelineActivity(extras...string) *schema.Resource {
 	var count int64 = 0
 	

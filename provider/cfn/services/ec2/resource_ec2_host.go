@@ -16,13 +16,6 @@ import (
 
 const eC2HostType string = "AWS::EC2::Host"
 
-var eC2HostProperties map[string]string = map[string]string{
-	"auto_placement": "AutoPlacement",
-	"availability_zone": "AvailabilityZone",
-	"host_recovery": "HostRecovery",
-	"instance_type": "InstanceType",
-}
-
 func ResourceEC2Host() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2HostExists,
@@ -67,11 +60,11 @@ func resourceEC2HostRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceEC2HostCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2HostType, ResourceEC2Host(), data, eC2HostProperties, meta)
+	return plugin.ResourceCreate(eC2HostType, ResourceEC2Host(), data, meta)
 }
 
 func resourceEC2HostUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2HostType, ResourceEC2Host(), data, eC2HostProperties, meta)
+	return plugin.ResourceUpdate(eC2HostType, ResourceEC2Host(), data, meta)
 }
 
 func resourceEC2HostDelete(data *schema.ResourceData, meta interface{}) error {

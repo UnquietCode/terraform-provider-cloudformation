@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var taskDefinitionHostVolumePropertiesProperties map[string]string = map[string]string{
-	"source_path": "SourcePath",
-}
-
 func propertyTaskDefinitionHostVolumeProperties(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var classifierGrokClassifierProperties map[string]string = map[string]string{
-	"custom_patterns": "CustomPatterns",
-	"grok_pattern": "GrokPattern",
-	"classification": "Classification",
-	"name": "Name",
-}
-
 func propertyClassifierGrokClassifier(extras...string) *schema.Resource {
 	var count int64 = 0
 	

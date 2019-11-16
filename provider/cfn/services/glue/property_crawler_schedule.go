@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var crawlerScheduleProperties map[string]string = map[string]string{
-	"schedule_expression": "ScheduleExpression",
-}
-
 func propertyCrawlerSchedule(extras...string) *schema.Resource {
 	var count int64 = 0
 	

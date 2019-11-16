@@ -17,21 +17,6 @@ import (
 
 const dynamoDBTableType string = "AWS::DynamoDB::Table"
 
-var dynamoDBTableProperties map[string]string = map[string]string{
-	"attribute_definitions": "AttributeDefinitions",
-	"billing_mode": "BillingMode",
-	"global_secondary_indexes": "GlobalSecondaryIndexes",
-	"key_schema": "KeySchema",
-	"local_secondary_indexes": "LocalSecondaryIndexes",
-	"point_in_time_recovery_specification": "PointInTimeRecoverySpecification",
-	"provisioned_throughput": "ProvisionedThroughput",
-	"sse_specification": "SSESpecification",
-	"stream_specification": "StreamSpecification",
-	"table_name": "TableName",
-	"tags": "Tags",
-	"time_to_live_specification": "TimeToLiveSpecification",
-}
-
 func ResourceDynamoDBTable() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDynamoDBTableExists,
@@ -119,11 +104,11 @@ func resourceDynamoDBTableRead(data *schema.ResourceData, meta interface{}) erro
 }
 
 func resourceDynamoDBTableCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(dynamoDBTableType, ResourceDynamoDBTable(), data, dynamoDBTableProperties, meta)
+	return plugin.ResourceCreate(dynamoDBTableType, ResourceDynamoDBTable(), data, meta)
 }
 
 func resourceDynamoDBTableUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(dynamoDBTableType, ResourceDynamoDBTable(), data, dynamoDBTableProperties, meta)
+	return plugin.ResourceUpdate(dynamoDBTableType, ResourceDynamoDBTable(), data, meta)
 }
 
 func resourceDynamoDBTableDelete(data *schema.ResourceData, meta interface{}) error {

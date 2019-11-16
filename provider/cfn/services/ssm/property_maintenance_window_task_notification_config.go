@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var maintenanceWindowTaskNotificationConfigProperties map[string]string = map[string]string{
-	"notification_arn": "NotificationArn",
-	"notification_type": "NotificationType",
-	"notification_events": "NotificationEvents",
-}
-
 func propertyMaintenanceWindowTaskNotificationConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -17,11 +17,6 @@ import (
 
 const cloudFrontDistributionType string = "AWS::CloudFront::Distribution"
 
-var cloudFrontDistributionProperties map[string]string = map[string]string{
-	"distribution_config": "DistributionConfig",
-	"tags": "Tags",
-}
-
 func ResourceCloudFrontDistribution() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCloudFrontDistributionExists,
@@ -57,11 +52,11 @@ func resourceCloudFrontDistributionRead(data *schema.ResourceData, meta interfac
 }
 
 func resourceCloudFrontDistributionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(cloudFrontDistributionType, ResourceCloudFrontDistribution(), data, cloudFrontDistributionProperties, meta)
+	return plugin.ResourceCreate(cloudFrontDistributionType, ResourceCloudFrontDistribution(), data, meta)
 }
 
 func resourceCloudFrontDistributionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(cloudFrontDistributionType, ResourceCloudFrontDistribution(), data, cloudFrontDistributionProperties, meta)
+	return plugin.ResourceUpdate(cloudFrontDistributionType, ResourceCloudFrontDistribution(), data, meta)
 }
 
 func resourceCloudFrontDistributionDelete(data *schema.ResourceData, meta interface{}) error {

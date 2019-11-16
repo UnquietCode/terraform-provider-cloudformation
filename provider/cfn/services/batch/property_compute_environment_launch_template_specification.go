@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var computeEnvironmentLaunchTemplateSpecificationProperties map[string]string = map[string]string{
-	"launch_template_name": "LaunchTemplateName",
-	"version": "Version",
-	"launch_template_id": "LaunchTemplateId",
-}
-
 func propertyComputeEnvironmentLaunchTemplateSpecification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

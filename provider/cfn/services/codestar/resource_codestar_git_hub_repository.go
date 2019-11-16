@@ -16,16 +16,6 @@ import (
 
 const codeStarGitHubRepositoryType string = "AWS::CodeStar::GitHubRepository"
 
-var codeStarGitHubRepositoryProperties map[string]string = map[string]string{
-	"enable_issues": "EnableIssues",
-	"repository_name": "RepositoryName",
-	"repository_access_token": "RepositoryAccessToken",
-	"repository_owner": "RepositoryOwner",
-	"is_private": "IsPrivate",
-	"code": "Code",
-	"repository_description": "RepositoryDescription",
-}
-
 func ResourceCodeStarGitHubRepository() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCodeStarGitHubRepositoryExists,
@@ -84,11 +74,11 @@ func resourceCodeStarGitHubRepositoryRead(data *schema.ResourceData, meta interf
 }
 
 func resourceCodeStarGitHubRepositoryCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(codeStarGitHubRepositoryType, ResourceCodeStarGitHubRepository(), data, codeStarGitHubRepositoryProperties, meta)
+	return plugin.ResourceCreate(codeStarGitHubRepositoryType, ResourceCodeStarGitHubRepository(), data, meta)
 }
 
 func resourceCodeStarGitHubRepositoryUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(codeStarGitHubRepositoryType, ResourceCodeStarGitHubRepository(), data, codeStarGitHubRepositoryProperties, meta)
+	return plugin.ResourceUpdate(codeStarGitHubRepositoryType, ResourceCodeStarGitHubRepository(), data, meta)
 }
 
 func resourceCodeStarGitHubRepositoryDelete(data *schema.ResourceData, meta interface{}) error {

@@ -16,19 +16,6 @@ import (
 
 const appSyncDataSourceType string = "AWS::AppSync::DataSource"
 
-var appSyncDataSourceProperties map[string]string = map[string]string{
-	"type": "Type",
-	"description": "Description",
-	"service_role_arn": "ServiceRoleArn",
-	"http_config": "HttpConfig",
-	"relational_database_config": "RelationalDatabaseConfig",
-	"lambda_config": "LambdaConfig",
-	"api_id": "ApiId",
-	"name": "Name",
-	"dynamo_db_config": "DynamoDBConfig",
-	"elasticsearch_config": "ElasticsearchConfig",
-}
-
 func ResourceAppSyncDataSource() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppSyncDataSourceExists,
@@ -107,11 +94,11 @@ func resourceAppSyncDataSourceRead(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceAppSyncDataSourceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(appSyncDataSourceType, ResourceAppSyncDataSource(), data, appSyncDataSourceProperties, meta)
+	return plugin.ResourceCreate(appSyncDataSourceType, ResourceAppSyncDataSource(), data, meta)
 }
 
 func resourceAppSyncDataSourceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(appSyncDataSourceType, ResourceAppSyncDataSource(), data, appSyncDataSourceProperties, meta)
+	return plugin.ResourceUpdate(appSyncDataSourceType, ResourceAppSyncDataSource(), data, meta)
 }
 
 func resourceAppSyncDataSourceDelete(data *schema.ResourceData, meta interface{}) error {

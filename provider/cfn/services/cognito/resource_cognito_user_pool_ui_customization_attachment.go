@@ -16,12 +16,6 @@ import (
 
 const cognitoUserPoolUICustomizationAttachmentType string = "AWS::Cognito::UserPoolUICustomizationAttachment"
 
-var cognitoUserPoolUICustomizationAttachmentProperties map[string]string = map[string]string{
-	"css": "CSS",
-	"user_pool_id": "UserPoolId",
-	"client_id": "ClientId",
-}
-
 func ResourceCognitoUserPoolUICustomizationAttachment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCognitoUserPoolUICustomizationAttachmentExists,
@@ -62,11 +56,11 @@ func resourceCognitoUserPoolUICustomizationAttachmentRead(data *schema.ResourceD
 }
 
 func resourceCognitoUserPoolUICustomizationAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(cognitoUserPoolUICustomizationAttachmentType, ResourceCognitoUserPoolUICustomizationAttachment(), data, cognitoUserPoolUICustomizationAttachmentProperties, meta)
+	return plugin.ResourceCreate(cognitoUserPoolUICustomizationAttachmentType, ResourceCognitoUserPoolUICustomizationAttachment(), data, meta)
 }
 
 func resourceCognitoUserPoolUICustomizationAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(cognitoUserPoolUICustomizationAttachmentType, ResourceCognitoUserPoolUICustomizationAttachment(), data, cognitoUserPoolUICustomizationAttachmentProperties, meta)
+	return plugin.ResourceUpdate(cognitoUserPoolUICustomizationAttachmentType, ResourceCognitoUserPoolUICustomizationAttachment(), data, meta)
 }
 
 func resourceCognitoUserPoolUICustomizationAttachmentDelete(data *schema.ResourceData, meta interface{}) error {

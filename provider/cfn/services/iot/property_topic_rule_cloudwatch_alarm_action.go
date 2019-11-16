@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var topicRuleCloudwatchAlarmActionProperties map[string]string = map[string]string{
-	"alarm_name": "AlarmName",
-	"role_arn": "RoleArn",
-	"state_reason": "StateReason",
-	"state_value": "StateValue",
-}
-
 func propertyTopicRuleCloudwatchAlarmAction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

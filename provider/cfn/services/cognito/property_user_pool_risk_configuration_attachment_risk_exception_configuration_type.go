@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var userPoolRiskConfigurationAttachmentRiskExceptionConfigurationTypeProperties map[string]string = map[string]string{
-	"blocked_ip_range_list": "BlockedIPRangeList",
-	"skipped_ip_range_list": "SkippedIPRangeList",
-}
-
 func propertyUserPoolRiskConfigurationAttachmentRiskExceptionConfigurationType(extras...string) *schema.Resource {
 	var count int64 = 0
 	

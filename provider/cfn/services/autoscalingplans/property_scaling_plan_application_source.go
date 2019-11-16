@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var scalingPlanApplicationSourceProperties map[string]string = map[string]string{
-	"cloud_formation_stack_arn": "CloudFormationStackARN",
-	"tag_filters": "TagFilters",
-}
-
 func propertyScalingPlanApplicationSource(extras...string) *schema.Resource {
 	var count int64 = 0
 	

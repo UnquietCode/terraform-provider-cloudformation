@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationApplicationVersionLifecycleConfigProperties map[string]string = map[string]string{
-	"max_age_rule": "MaxAgeRule",
-	"max_count_rule": "MaxCountRule",
-}
-
 func propertyApplicationApplicationVersionLifecycleConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

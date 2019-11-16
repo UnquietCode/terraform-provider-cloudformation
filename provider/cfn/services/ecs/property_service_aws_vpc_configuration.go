@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var serviceAwsVpcConfigurationProperties map[string]string = map[string]string{
-	"assign_public_ip": "AssignPublicIp",
-	"security_groups": "SecurityGroups",
-	"subnets": "Subnets",
-}
-
 func propertyServiceAwsVpcConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

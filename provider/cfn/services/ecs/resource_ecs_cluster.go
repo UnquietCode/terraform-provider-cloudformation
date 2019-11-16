@@ -17,11 +17,6 @@ import (
 
 const eCSClusterType string = "AWS::ECS::Cluster"
 
-var eCSClusterProperties map[string]string = map[string]string{
-	"cluster_name": "ClusterName",
-	"tags": "Tags",
-}
-
 func ResourceECSCluster() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceECSClusterExists,
@@ -55,11 +50,11 @@ func resourceECSClusterRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceECSClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eCSClusterType, ResourceECSCluster(), data, eCSClusterProperties, meta)
+	return plugin.ResourceCreate(eCSClusterType, ResourceECSCluster(), data, meta)
 }
 
 func resourceECSClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eCSClusterType, ResourceECSCluster(), data, eCSClusterProperties, meta)
+	return plugin.ResourceUpdate(eCSClusterType, ResourceECSCluster(), data, meta)
 }
 
 func resourceECSClusterDelete(data *schema.ResourceData, meta interface{}) error {

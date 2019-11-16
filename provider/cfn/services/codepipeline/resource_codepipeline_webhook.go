@@ -16,17 +16,6 @@ import (
 
 const codePipelineWebhookType string = "AWS::CodePipeline::Webhook"
 
-var codePipelineWebhookProperties map[string]string = map[string]string{
-	"authentication_configuration": "AuthenticationConfiguration",
-	"filters": "Filters",
-	"authentication": "Authentication",
-	"target_pipeline": "TargetPipeline",
-	"target_action": "TargetAction",
-	"name": "Name",
-	"target_pipeline_version": "TargetPipelineVersion",
-	"register_with_third_party": "RegisterWithThirdParty",
-}
-
 func ResourceCodePipelineWebhook() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCodePipelineWebhookExists,
@@ -90,11 +79,11 @@ func resourceCodePipelineWebhookRead(data *schema.ResourceData, meta interface{}
 }
 
 func resourceCodePipelineWebhookCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(codePipelineWebhookType, ResourceCodePipelineWebhook(), data, codePipelineWebhookProperties, meta)
+	return plugin.ResourceCreate(codePipelineWebhookType, ResourceCodePipelineWebhook(), data, meta)
 }
 
 func resourceCodePipelineWebhookUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(codePipelineWebhookType, ResourceCodePipelineWebhook(), data, codePipelineWebhookProperties, meta)
+	return plugin.ResourceUpdate(codePipelineWebhookType, ResourceCodePipelineWebhook(), data, meta)
 }
 
 func resourceCodePipelineWebhookDelete(data *schema.ResourceData, meta interface{}) error {

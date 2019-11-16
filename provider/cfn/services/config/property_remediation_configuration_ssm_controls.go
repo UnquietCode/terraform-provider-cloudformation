@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var remediationConfigurationSsmControlsProperties map[string]string = map[string]string{
-	"error_percentage": "ErrorPercentage",
-	"concurrent_execution_rate_percentage": "ConcurrentExecutionRatePercentage",
-}
-
 func propertyRemediationConfigurationSsmControls(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,13 +16,6 @@ import (
 
 const batchJobQueueType string = "AWS::Batch::JobQueue"
 
-var batchJobQueueProperties map[string]string = map[string]string{
-	"compute_environment_order": "ComputeEnvironmentOrder",
-	"priority": "Priority",
-	"state": "State",
-	"job_queue_name": "JobQueueName",
-}
-
 func ResourceBatchJobQueue() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceBatchJobQueueExists,
@@ -68,11 +61,11 @@ func resourceBatchJobQueueRead(data *schema.ResourceData, meta interface{}) erro
 }
 
 func resourceBatchJobQueueCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(batchJobQueueType, ResourceBatchJobQueue(), data, batchJobQueueProperties, meta)
+	return plugin.ResourceCreate(batchJobQueueType, ResourceBatchJobQueue(), data, meta)
 }
 
 func resourceBatchJobQueueUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(batchJobQueueType, ResourceBatchJobQueue(), data, batchJobQueueProperties, meta)
+	return plugin.ResourceUpdate(batchJobQueueType, ResourceBatchJobQueue(), data, meta)
 }
 
 func resourceBatchJobQueueDelete(data *schema.ResourceData, meta interface{}) error {

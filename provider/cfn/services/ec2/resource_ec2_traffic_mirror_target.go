@@ -17,13 +17,6 @@ import (
 
 const eC2TrafficMirrorTargetType string = "AWS::EC2::TrafficMirrorTarget"
 
-var eC2TrafficMirrorTargetProperties map[string]string = map[string]string{
-	"network_load_balancer_arn": "NetworkLoadBalancerArn",
-	"description": "Description",
-	"network_interface_id": "NetworkInterfaceId",
-	"tags": "Tags",
-}
-
 func ResourceEC2TrafficMirrorTarget() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2TrafficMirrorTargetExists,
@@ -65,11 +58,11 @@ func resourceEC2TrafficMirrorTargetRead(data *schema.ResourceData, meta interfac
 }
 
 func resourceEC2TrafficMirrorTargetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2TrafficMirrorTargetType, ResourceEC2TrafficMirrorTarget(), data, eC2TrafficMirrorTargetProperties, meta)
+	return plugin.ResourceCreate(eC2TrafficMirrorTargetType, ResourceEC2TrafficMirrorTarget(), data, meta)
 }
 
 func resourceEC2TrafficMirrorTargetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2TrafficMirrorTargetType, ResourceEC2TrafficMirrorTarget(), data, eC2TrafficMirrorTargetProperties, meta)
+	return plugin.ResourceUpdate(eC2TrafficMirrorTargetType, ResourceEC2TrafficMirrorTarget(), data, meta)
 }
 
 func resourceEC2TrafficMirrorTargetDelete(data *schema.ResourceData, meta interface{}) error {

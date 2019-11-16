@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var pushTemplateDefaultPushNotificationTemplateProperties map[string]string = map[string]string{
-	"action": "Action",
-	"title": "Title",
-	"sound": "Sound",
-	"body": "Body",
-	"url": "Url",
-}
-
 func propertyPushTemplateDefaultPushNotificationTemplate(extras...string) *schema.Resource {
 	var count int64 = 0
 	

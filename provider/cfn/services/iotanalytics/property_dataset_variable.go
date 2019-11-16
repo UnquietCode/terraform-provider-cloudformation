@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var datasetVariableProperties map[string]string = map[string]string{
-	"dataset_content_version_value": "DatasetContentVersionValue",
-	"double_value": "DoubleValue",
-	"output_file_uri_value": "OutputFileUriValue",
-	"variable_name": "VariableName",
-	"string_value": "StringValue",
-}
-
 func propertyDatasetVariable(extras...string) *schema.Resource {
 	var count int64 = 0
 	

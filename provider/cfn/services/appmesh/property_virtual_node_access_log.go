@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var virtualNodeAccessLogProperties map[string]string = map[string]string{
-	"file": "File",
-}
-
 func propertyVirtualNodeAccessLog(extras...string) *schema.Resource {
 	var count int64 = 0
 	

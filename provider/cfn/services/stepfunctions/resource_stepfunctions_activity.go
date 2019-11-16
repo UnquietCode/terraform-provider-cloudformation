@@ -16,11 +16,6 @@ import (
 
 const stepFunctionsActivityType string = "AWS::StepFunctions::Activity"
 
-var stepFunctionsActivityProperties map[string]string = map[string]string{
-	"tags": "Tags",
-	"name": "Name",
-}
-
 func ResourceStepFunctionsActivity() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceStepFunctionsActivityExists,
@@ -58,11 +53,11 @@ func resourceStepFunctionsActivityRead(data *schema.ResourceData, meta interface
 }
 
 func resourceStepFunctionsActivityCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(stepFunctionsActivityType, ResourceStepFunctionsActivity(), data, stepFunctionsActivityProperties, meta)
+	return plugin.ResourceCreate(stepFunctionsActivityType, ResourceStepFunctionsActivity(), data, meta)
 }
 
 func resourceStepFunctionsActivityUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(stepFunctionsActivityType, ResourceStepFunctionsActivity(), data, stepFunctionsActivityProperties, meta)
+	return plugin.ResourceUpdate(stepFunctionsActivityType, ResourceStepFunctionsActivity(), data, meta)
 }
 
 func resourceStepFunctionsActivityDelete(data *schema.ResourceData, meta interface{}) error {

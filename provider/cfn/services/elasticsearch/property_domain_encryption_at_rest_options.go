@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var domainEncryptionAtRestOptionsProperties map[string]string = map[string]string{
-	"enabled": "Enabled",
-	"kms_key_id": "KmsKeyId",
-}
-
 func propertyDomainEncryptionAtRestOptions(extras...string) *schema.Resource {
 	var count int64 = 0
 	

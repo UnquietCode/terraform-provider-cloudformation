@@ -16,12 +16,6 @@ import (
 
 const appSyncGraphQLSchemaType string = "AWS::AppSync::GraphQLSchema"
 
-var appSyncGraphQLSchemaProperties map[string]string = map[string]string{
-	"definition": "Definition",
-	"definition_s3_location": "DefinitionS3Location",
-	"api_id": "ApiId",
-}
-
 func ResourceAppSyncGraphQLSchema() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppSyncGraphQLSchemaExists,
@@ -62,11 +56,11 @@ func resourceAppSyncGraphQLSchemaRead(data *schema.ResourceData, meta interface{
 }
 
 func resourceAppSyncGraphQLSchemaCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(appSyncGraphQLSchemaType, ResourceAppSyncGraphQLSchema(), data, appSyncGraphQLSchemaProperties, meta)
+	return plugin.ResourceCreate(appSyncGraphQLSchemaType, ResourceAppSyncGraphQLSchema(), data, meta)
 }
 
 func resourceAppSyncGraphQLSchemaUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(appSyncGraphQLSchemaType, ResourceAppSyncGraphQLSchema(), data, appSyncGraphQLSchemaProperties, meta)
+	return plugin.ResourceUpdate(appSyncGraphQLSchemaType, ResourceAppSyncGraphQLSchema(), data, meta)
 }
 
 func resourceAppSyncGraphQLSchemaDelete(data *schema.ResourceData, meta interface{}) error {

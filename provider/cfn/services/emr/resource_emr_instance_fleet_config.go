@@ -16,16 +16,6 @@ import (
 
 const eMRInstanceFleetConfigType string = "AWS::EMR::InstanceFleetConfig"
 
-var eMRInstanceFleetConfigProperties map[string]string = map[string]string{
-	"cluster_id": "ClusterId",
-	"instance_fleet_type": "InstanceFleetType",
-	"instance_type_configs": "InstanceTypeConfigs",
-	"launch_specifications": "LaunchSpecifications",
-	"name": "Name",
-	"target_on_demand_capacity": "TargetOnDemandCapacity",
-	"target_spot_capacity": "TargetSpotCapacity",
-}
-
 func ResourceEMRInstanceFleetConfig() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEMRInstanceFleetConfigExists,
@@ -85,11 +75,11 @@ func resourceEMRInstanceFleetConfigRead(data *schema.ResourceData, meta interfac
 }
 
 func resourceEMRInstanceFleetConfigCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eMRInstanceFleetConfigType, ResourceEMRInstanceFleetConfig(), data, eMRInstanceFleetConfigProperties, meta)
+	return plugin.ResourceCreate(eMRInstanceFleetConfigType, ResourceEMRInstanceFleetConfig(), data, meta)
 }
 
 func resourceEMRInstanceFleetConfigUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eMRInstanceFleetConfigType, ResourceEMRInstanceFleetConfig(), data, eMRInstanceFleetConfigProperties, meta)
+	return plugin.ResourceUpdate(eMRInstanceFleetConfigType, ResourceEMRInstanceFleetConfig(), data, meta)
 }
 
 func resourceEMRInstanceFleetConfigDelete(data *schema.ResourceData, meta interface{}) error {

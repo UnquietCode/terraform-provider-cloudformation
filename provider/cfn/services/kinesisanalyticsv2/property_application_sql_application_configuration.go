@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationSqlApplicationConfigurationProperties map[string]string = map[string]string{
-	"inputs": "Inputs",
-}
-
 func propertyApplicationSqlApplicationConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

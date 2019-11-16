@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var topicRuleRepublishActionProperties map[string]string = map[string]string{
-	"role_arn": "RoleArn",
-	"topic": "Topic",
-}
-
 func propertyTopicRuleRepublishAction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

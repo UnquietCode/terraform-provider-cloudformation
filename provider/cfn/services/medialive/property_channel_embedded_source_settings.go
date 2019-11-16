@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var channelEmbeddedSourceSettingsProperties map[string]string = map[string]string{
-	"source608_channel_number": "Source608ChannelNumber",
-	"scte20_detection": "Scte20Detection",
-	"source608_track_number": "Source608TrackNumber",
-	"convert608_to708": "Convert608To708",
-}
-
 func propertyChannelEmbeddedSourceSettings(extras...string) *schema.Resource {
 	var count int64 = 0
 	

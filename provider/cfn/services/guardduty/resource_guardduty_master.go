@@ -16,12 +16,6 @@ import (
 
 const guardDutyMasterType string = "AWS::GuardDuty::Master"
 
-var guardDutyMasterProperties map[string]string = map[string]string{
-	"detector_id": "DetectorId",
-	"master_id": "MasterId",
-	"invitation_id": "InvitationId",
-}
-
 func ResourceGuardDutyMaster() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGuardDutyMasterExists,
@@ -62,11 +56,11 @@ func resourceGuardDutyMasterRead(data *schema.ResourceData, meta interface{}) er
 }
 
 func resourceGuardDutyMasterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(guardDutyMasterType, ResourceGuardDutyMaster(), data, guardDutyMasterProperties, meta)
+	return plugin.ResourceCreate(guardDutyMasterType, ResourceGuardDutyMaster(), data, meta)
 }
 
 func resourceGuardDutyMasterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(guardDutyMasterType, ResourceGuardDutyMaster(), data, guardDutyMasterProperties, meta)
+	return plugin.ResourceUpdate(guardDutyMasterType, ResourceGuardDutyMaster(), data, meta)
 }
 
 func resourceGuardDutyMasterDelete(data *schema.ResourceData, meta interface{}) error {

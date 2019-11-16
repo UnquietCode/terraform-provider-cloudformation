@@ -16,17 +16,6 @@ import (
 
 const eC2VPCEndpointType string = "AWS::EC2::VPCEndpoint"
 
-var eC2VPCEndpointProperties map[string]string = map[string]string{
-	"policy_document": "PolicyDocument",
-	"private_dns_enabled": "PrivateDnsEnabled",
-	"route_table_ids": "RouteTableIds",
-	"security_group_ids": "SecurityGroupIds",
-	"service_name": "ServiceName",
-	"subnet_ids": "SubnetIds",
-	"vpc_endpoint_type": "VpcEndpointType",
-	"vpc_id": "VpcId",
-}
-
 func ResourceEC2VPCEndpoint() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPCEndpointExists,
@@ -93,11 +82,11 @@ func resourceEC2VPCEndpointRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceEC2VPCEndpointCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2VPCEndpointType, ResourceEC2VPCEndpoint(), data, eC2VPCEndpointProperties, meta)
+	return plugin.ResourceCreate(eC2VPCEndpointType, ResourceEC2VPCEndpoint(), data, meta)
 }
 
 func resourceEC2VPCEndpointUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2VPCEndpointType, ResourceEC2VPCEndpoint(), data, eC2VPCEndpointProperties, meta)
+	return plugin.ResourceUpdate(eC2VPCEndpointType, ResourceEC2VPCEndpoint(), data, meta)
 }
 
 func resourceEC2VPCEndpointDelete(data *schema.ResourceData, meta interface{}) error {

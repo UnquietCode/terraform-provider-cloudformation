@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var distributionGeoRestrictionProperties map[string]string = map[string]string{
-	"locations": "Locations",
-	"restriction_type": "RestrictionType",
-}
-
 func propertyDistributionGeoRestriction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

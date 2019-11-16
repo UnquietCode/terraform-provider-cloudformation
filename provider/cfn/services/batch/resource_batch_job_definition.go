@@ -16,16 +16,6 @@ import (
 
 const batchJobDefinitionType string = "AWS::Batch::JobDefinition"
 
-var batchJobDefinitionProperties map[string]string = map[string]string{
-	"type": "Type",
-	"parameters": "Parameters",
-	"node_properties": "NodeProperties",
-	"timeout": "Timeout",
-	"container_properties": "ContainerProperties",
-	"job_definition_name": "JobDefinitionName",
-	"retry_strategy": "RetryStrategy",
-}
-
 func ResourceBatchJobDefinition() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceBatchJobDefinitionExists,
@@ -90,11 +80,11 @@ func resourceBatchJobDefinitionRead(data *schema.ResourceData, meta interface{})
 }
 
 func resourceBatchJobDefinitionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(batchJobDefinitionType, ResourceBatchJobDefinition(), data, batchJobDefinitionProperties, meta)
+	return plugin.ResourceCreate(batchJobDefinitionType, ResourceBatchJobDefinition(), data, meta)
 }
 
 func resourceBatchJobDefinitionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(batchJobDefinitionType, ResourceBatchJobDefinition(), data, batchJobDefinitionProperties, meta)
+	return plugin.ResourceUpdate(batchJobDefinitionType, ResourceBatchJobDefinition(), data, meta)
 }
 
 func resourceBatchJobDefinitionDelete(data *schema.ResourceData, meta interface{}) error {

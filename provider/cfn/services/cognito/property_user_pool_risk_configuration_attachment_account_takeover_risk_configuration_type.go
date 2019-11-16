@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var userPoolRiskConfigurationAttachmentAccountTakeoverRiskConfigurationTypeProperties map[string]string = map[string]string{
-	"actions": "Actions",
-	"notify_configuration": "NotifyConfiguration",
-}
-
 func propertyUserPoolRiskConfigurationAttachmentAccountTakeoverRiskConfigurationType(extras...string) *schema.Resource {
 	var count int64 = 0
 	

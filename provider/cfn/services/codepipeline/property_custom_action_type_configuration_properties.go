@@ -14,16 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var customActionTypeConfigurationPropertiesProperties map[string]string = map[string]string{
-	"description": "Description",
-	"key": "Key",
-	"name": "Name",
-	"queryable": "Queryable",
-	"required": "Required",
-	"secret": "Secret",
-	"type": "Type",
-}
-
 func propertyCustomActionTypeConfigurationProperties(extras...string) *schema.Resource {
 	var count int64 = 0
 	

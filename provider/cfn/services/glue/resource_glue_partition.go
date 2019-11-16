@@ -16,13 +16,6 @@ import (
 
 const gluePartitionType string = "AWS::Glue::Partition"
 
-var gluePartitionProperties map[string]string = map[string]string{
-	"table_name": "TableName",
-	"database_name": "DatabaseName",
-	"catalog_id": "CatalogId",
-	"partition_input": "PartitionInput",
-}
-
 func ResourceGluePartition() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGluePartitionExists,
@@ -69,11 +62,11 @@ func resourceGluePartitionRead(data *schema.ResourceData, meta interface{}) erro
 }
 
 func resourceGluePartitionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(gluePartitionType, ResourceGluePartition(), data, gluePartitionProperties, meta)
+	return plugin.ResourceCreate(gluePartitionType, ResourceGluePartition(), data, meta)
 }
 
 func resourceGluePartitionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(gluePartitionType, ResourceGluePartition(), data, gluePartitionProperties, meta)
+	return plugin.ResourceUpdate(gluePartitionType, ResourceGluePartition(), data, meta)
 }
 
 func resourceGluePartitionDelete(data *schema.ResourceData, meta interface{}) error {

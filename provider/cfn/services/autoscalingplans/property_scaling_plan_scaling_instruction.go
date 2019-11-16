@@ -14,23 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var scalingPlanScalingInstructionProperties map[string]string = map[string]string{
-	"disable_dynamic_scaling": "DisableDynamicScaling",
-	"service_namespace": "ServiceNamespace",
-	"predictive_scaling_max_capacity_behavior": "PredictiveScalingMaxCapacityBehavior",
-	"scalable_dimension": "ScalableDimension",
-	"scaling_policy_update_behavior": "ScalingPolicyUpdateBehavior",
-	"min_capacity": "MinCapacity",
-	"target_tracking_configurations": "TargetTrackingConfigurations",
-	"predictive_scaling_max_capacity_buffer": "PredictiveScalingMaxCapacityBuffer",
-	"customized_load_metric_specification": "CustomizedLoadMetricSpecification",
-	"predefined_load_metric_specification": "PredefinedLoadMetricSpecification",
-	"resource_id": "ResourceId",
-	"scheduled_action_buffer_time": "ScheduledActionBufferTime",
-	"max_capacity": "MaxCapacity",
-	"predictive_scaling_mode": "PredictiveScalingMode",
-}
-
 func propertyScalingPlanScalingInstruction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

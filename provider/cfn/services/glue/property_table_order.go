@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var tableOrderProperties map[string]string = map[string]string{
-	"column": "Column",
-	"sort_order": "SortOrder",
-}
-
 func propertyTableOrder(extras...string) *schema.Resource {
 	var count int64 = 0
 	

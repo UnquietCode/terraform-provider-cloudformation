@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var functionDefinitionVersionEnvironmentProperties map[string]string = map[string]string{
-	"variables": "Variables",
-	"execution": "Execution",
-	"resource_access_policies": "ResourceAccessPolicies",
-	"access_sysfs": "AccessSysfs",
-}
-
 func propertyFunctionDefinitionVersionEnvironment(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -17,18 +17,6 @@ import (
 
 const iAMRoleType string = "AWS::IAM::Role"
 
-var iAMRoleProperties map[string]string = map[string]string{
-	"assume_role_policy_document": "AssumeRolePolicyDocument",
-	"description": "Description",
-	"managed_policy_arns": "ManagedPolicyArns",
-	"max_session_duration": "MaxSessionDuration",
-	"path": "Path",
-	"permissions_boundary": "PermissionsBoundary",
-	"policies": "Policies",
-	"role_name": "RoleName",
-	"tags": "Tags",
-}
-
 func ResourceIAMRole() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIAMRoleExists,
@@ -93,11 +81,11 @@ func resourceIAMRoleRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceIAMRoleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(iAMRoleType, ResourceIAMRole(), data, iAMRoleProperties, meta)
+	return plugin.ResourceCreate(iAMRoleType, ResourceIAMRole(), data, meta)
 }
 
 func resourceIAMRoleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(iAMRoleType, ResourceIAMRole(), data, iAMRoleProperties, meta)
+	return plugin.ResourceUpdate(iAMRoleType, ResourceIAMRole(), data, meta)
 }
 
 func resourceIAMRoleDelete(data *schema.ResourceData, meta interface{}) error {

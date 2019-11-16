@@ -16,15 +16,6 @@ import (
 
 const amazonMQConfigurationType string = "AWS::AmazonMQ::Configuration"
 
-var amazonMQConfigurationProperties map[string]string = map[string]string{
-	"engine_version": "EngineVersion",
-	"description": "Description",
-	"engine_type": "EngineType",
-	"data": "Data",
-	"tags": "Tags",
-	"name": "Name",
-}
-
 func ResourceAmazonMQConfiguration() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAmazonMQConfigurationExists,
@@ -78,11 +69,11 @@ func resourceAmazonMQConfigurationRead(data *schema.ResourceData, meta interface
 }
 
 func resourceAmazonMQConfigurationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(amazonMQConfigurationType, ResourceAmazonMQConfiguration(), data, amazonMQConfigurationProperties, meta)
+	return plugin.ResourceCreate(amazonMQConfigurationType, ResourceAmazonMQConfiguration(), data, meta)
 }
 
 func resourceAmazonMQConfigurationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(amazonMQConfigurationType, ResourceAmazonMQConfiguration(), data, amazonMQConfigurationProperties, meta)
+	return plugin.ResourceUpdate(amazonMQConfigurationType, ResourceAmazonMQConfiguration(), data, meta)
 }
 
 func resourceAmazonMQConfigurationDelete(data *schema.ResourceData, meta interface{}) error {

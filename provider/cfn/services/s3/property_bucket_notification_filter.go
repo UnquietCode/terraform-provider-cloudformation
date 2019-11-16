@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketNotificationFilterProperties map[string]string = map[string]string{
-	"s3_key": "S3Key",
-}
-
 func propertyBucketNotificationFilter(extras...string) *schema.Resource {
 	var count int64 = 0
 	

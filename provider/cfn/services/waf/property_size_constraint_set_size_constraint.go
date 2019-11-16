@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var sizeConstraintSetSizeConstraintProperties map[string]string = map[string]string{
-	"comparison_operator": "ComparisonOperator",
-	"field_to_match": "FieldToMatch",
-	"size": "Size",
-	"text_transformation": "TextTransformation",
-}
-
 func propertySizeConstraintSetSizeConstraint(extras...string) *schema.Resource {
 	var count int64 = 0
 	

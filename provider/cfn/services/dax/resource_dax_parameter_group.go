@@ -16,12 +16,6 @@ import (
 
 const dAXParameterGroupType string = "AWS::DAX::ParameterGroup"
 
-var dAXParameterGroupProperties map[string]string = map[string]string{
-	"parameter_name_values": "ParameterNameValues",
-	"description": "Description",
-	"parameter_group_name": "ParameterGroupName",
-}
-
 func ResourceDAXParameterGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDAXParameterGroupExists,
@@ -62,11 +56,11 @@ func resourceDAXParameterGroupRead(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceDAXParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(dAXParameterGroupType, ResourceDAXParameterGroup(), data, dAXParameterGroupProperties, meta)
+	return plugin.ResourceCreate(dAXParameterGroupType, ResourceDAXParameterGroup(), data, meta)
 }
 
 func resourceDAXParameterGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(dAXParameterGroupType, ResourceDAXParameterGroup(), data, dAXParameterGroupProperties, meta)
+	return plugin.ResourceUpdate(dAXParameterGroupType, ResourceDAXParameterGroup(), data, meta)
 }
 
 func resourceDAXParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {

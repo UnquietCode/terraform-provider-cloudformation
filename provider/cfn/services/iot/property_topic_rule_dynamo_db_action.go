@@ -14,18 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var topicRuleDynamoDBActionProperties map[string]string = map[string]string{
-	"hash_key_field": "HashKeyField",
-	"hash_key_type": "HashKeyType",
-	"hash_key_value": "HashKeyValue",
-	"payload_field": "PayloadField",
-	"range_key_field": "RangeKeyField",
-	"range_key_type": "RangeKeyType",
-	"range_key_value": "RangeKeyValue",
-	"role_arn": "RoleArn",
-	"table_name": "TableName",
-}
-
 func propertyTopicRuleDynamoDBAction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

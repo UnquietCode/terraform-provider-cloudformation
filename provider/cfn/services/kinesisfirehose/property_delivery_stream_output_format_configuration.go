@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deliveryStreamOutputFormatConfigurationProperties map[string]string = map[string]string{
-	"serializer": "Serializer",
-}
-
 func propertyDeliveryStreamOutputFormatConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

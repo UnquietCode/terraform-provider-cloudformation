@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var flowTemplateDefinitionDocumentProperties map[string]string = map[string]string{
-	"language": "Language",
-	"text": "Text",
-}
-
 func propertyFlowTemplateDefinitionDocument(extras...string) *schema.Resource {
 	var count int64 = 0
 	

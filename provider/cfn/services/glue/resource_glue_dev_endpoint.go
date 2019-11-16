@@ -16,23 +16,6 @@ import (
 
 const glueDevEndpointType string = "AWS::Glue::DevEndpoint"
 
-var glueDevEndpointProperties map[string]string = map[string]string{
-	"extra_jars_s3_path": "ExtraJarsS3Path",
-	"public_key": "PublicKey",
-	"number_of_nodes": "NumberOfNodes",
-	"arguments": "Arguments",
-	"subnet_id": "SubnetId",
-	"security_group_ids": "SecurityGroupIds",
-	"role_arn": "RoleArn",
-	"worker_type": "WorkerType",
-	"endpoint_name": "EndpointName",
-	"glue_version": "GlueVersion",
-	"extra_python_libs_s3_path": "ExtraPythonLibsS3Path",
-	"security_configuration": "SecurityConfiguration",
-	"number_of_workers": "NumberOfWorkers",
-	"tags": "Tags",
-}
-
 func ResourceGlueDevEndpoint() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGlueDevEndpointExists,
@@ -118,11 +101,11 @@ func resourceGlueDevEndpointRead(data *schema.ResourceData, meta interface{}) er
 }
 
 func resourceGlueDevEndpointCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(glueDevEndpointType, ResourceGlueDevEndpoint(), data, glueDevEndpointProperties, meta)
+	return plugin.ResourceCreate(glueDevEndpointType, ResourceGlueDevEndpoint(), data, meta)
 }
 
 func resourceGlueDevEndpointUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(glueDevEndpointType, ResourceGlueDevEndpoint(), data, glueDevEndpointProperties, meta)
+	return plugin.ResourceUpdate(glueDevEndpointType, ResourceGlueDevEndpoint(), data, meta)
 }
 
 func resourceGlueDevEndpointDelete(data *schema.ResourceData, meta interface{}) error {

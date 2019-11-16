@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var backupVaultNotificationObjectTypeProperties map[string]string = map[string]string{
-	"sns_topic_arn": "SNSTopicArn",
-	"backup_vault_events": "BackupVaultEvents",
-}
-
 func propertyBackupVaultNotificationObjectType(extras...string) *schema.Resource {
 	var count int64 = 0
 	

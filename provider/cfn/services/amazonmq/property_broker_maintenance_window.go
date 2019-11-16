@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var brokerMaintenanceWindowProperties map[string]string = map[string]string{
-	"day_of_week": "DayOfWeek",
-	"time_of_day": "TimeOfDay",
-	"time_zone": "TimeZone",
-}
-
 func propertyBrokerMaintenanceWindow(extras...string) *schema.Resource {
 	var count int64 = 0
 	

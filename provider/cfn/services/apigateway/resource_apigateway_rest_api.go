@@ -16,21 +16,6 @@ import (
 
 const apiGatewayRestApiType string = "AWS::ApiGateway::RestApi"
 
-var apiGatewayRestApiProperties map[string]string = map[string]string{
-	"api_key_source_type": "ApiKeySourceType",
-	"binary_media_types": "BinaryMediaTypes",
-	"body": "Body",
-	"body_s3_location": "BodyS3Location",
-	"clone_from": "CloneFrom",
-	"description": "Description",
-	"endpoint_configuration": "EndpointConfiguration",
-	"fail_on_warnings": "FailOnWarnings",
-	"minimum_compression_size": "MinimumCompressionSize",
-	"name": "Name",
-	"parameters": "Parameters",
-	"policy": "Policy",
-}
-
 func ResourceApiGatewayRestApi() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayRestApiExists,
@@ -114,11 +99,11 @@ func resourceApiGatewayRestApiRead(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceApiGatewayRestApiCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayRestApiType, ResourceApiGatewayRestApi(), data, apiGatewayRestApiProperties, meta)
+	return plugin.ResourceCreate(apiGatewayRestApiType, ResourceApiGatewayRestApi(), data, meta)
 }
 
 func resourceApiGatewayRestApiUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayRestApiType, ResourceApiGatewayRestApi(), data, apiGatewayRestApiProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayRestApiType, ResourceApiGatewayRestApi(), data, meta)
 }
 
 func resourceApiGatewayRestApiDelete(data *schema.ResourceData, meta interface{}) error {

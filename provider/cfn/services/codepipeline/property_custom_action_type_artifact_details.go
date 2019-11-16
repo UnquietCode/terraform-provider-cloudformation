@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var customActionTypeArtifactDetailsProperties map[string]string = map[string]string{
-	"maximum_count": "MaximumCount",
-	"minimum_count": "MinimumCount",
-}
-
 func propertyCustomActionTypeArtifactDetails(extras...string) *schema.Resource {
 	var count int64 = 0
 	

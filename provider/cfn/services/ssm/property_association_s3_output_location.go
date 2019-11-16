@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var associationS3OutputLocationProperties map[string]string = map[string]string{
-	"output_s3_bucket_name": "OutputS3BucketName",
-	"output_s3_key_prefix": "OutputS3KeyPrefix",
-}
-
 func propertyAssociationS3OutputLocation(extras...string) *schema.Resource {
 	var count int64 = 0
 	

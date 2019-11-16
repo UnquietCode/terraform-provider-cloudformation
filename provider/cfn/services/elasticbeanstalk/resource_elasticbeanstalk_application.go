@@ -16,12 +16,6 @@ import (
 
 const elasticBeanstalkApplicationType string = "AWS::ElasticBeanstalk::Application"
 
-var elasticBeanstalkApplicationProperties map[string]string = map[string]string{
-	"application_name": "ApplicationName",
-	"description": "Description",
-	"resource_lifecycle_config": "ResourceLifecycleConfig",
-}
-
 func ResourceElasticBeanstalkApplication() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElasticBeanstalkApplicationExists,
@@ -64,11 +58,11 @@ func resourceElasticBeanstalkApplicationRead(data *schema.ResourceData, meta int
 }
 
 func resourceElasticBeanstalkApplicationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(elasticBeanstalkApplicationType, ResourceElasticBeanstalkApplication(), data, elasticBeanstalkApplicationProperties, meta)
+	return plugin.ResourceCreate(elasticBeanstalkApplicationType, ResourceElasticBeanstalkApplication(), data, meta)
 }
 
 func resourceElasticBeanstalkApplicationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(elasticBeanstalkApplicationType, ResourceElasticBeanstalkApplication(), data, elasticBeanstalkApplicationProperties, meta)
+	return plugin.ResourceUpdate(elasticBeanstalkApplicationType, ResourceElasticBeanstalkApplication(), data, meta)
 }
 
 func resourceElasticBeanstalkApplicationDelete(data *schema.ResourceData, meta interface{}) error {

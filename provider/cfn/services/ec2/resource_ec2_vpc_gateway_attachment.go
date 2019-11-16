@@ -16,12 +16,6 @@ import (
 
 const eC2VPCGatewayAttachmentType string = "AWS::EC2::VPCGatewayAttachment"
 
-var eC2VPCGatewayAttachmentProperties map[string]string = map[string]string{
-	"internet_gateway_id": "InternetGatewayId",
-	"vpc_id": "VpcId",
-	"vpn_gateway_id": "VpnGatewayId",
-}
-
 func ResourceEC2VPCGatewayAttachment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPCGatewayAttachmentExists,
@@ -62,11 +56,11 @@ func resourceEC2VPCGatewayAttachmentRead(data *schema.ResourceData, meta interfa
 }
 
 func resourceEC2VPCGatewayAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2VPCGatewayAttachmentType, ResourceEC2VPCGatewayAttachment(), data, eC2VPCGatewayAttachmentProperties, meta)
+	return plugin.ResourceCreate(eC2VPCGatewayAttachmentType, ResourceEC2VPCGatewayAttachment(), data, meta)
 }
 
 func resourceEC2VPCGatewayAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2VPCGatewayAttachmentType, ResourceEC2VPCGatewayAttachment(), data, eC2VPCGatewayAttachmentProperties, meta)
+	return plugin.ResourceUpdate(eC2VPCGatewayAttachmentType, ResourceEC2VPCGatewayAttachment(), data, meta)
 }
 
 func resourceEC2VPCGatewayAttachmentDelete(data *schema.ResourceData, meta interface{}) error {

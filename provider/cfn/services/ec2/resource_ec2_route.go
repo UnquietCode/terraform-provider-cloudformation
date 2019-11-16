@@ -16,19 +16,6 @@ import (
 
 const eC2RouteType string = "AWS::EC2::Route"
 
-var eC2RouteProperties map[string]string = map[string]string{
-	"destination_cidr_block": "DestinationCidrBlock",
-	"destination_ipv6_cidr_block": "DestinationIpv6CidrBlock",
-	"egress_only_internet_gateway_id": "EgressOnlyInternetGatewayId",
-	"gateway_id": "GatewayId",
-	"instance_id": "InstanceId",
-	"nat_gateway_id": "NatGatewayId",
-	"network_interface_id": "NetworkInterfaceId",
-	"route_table_id": "RouteTableId",
-	"transit_gateway_id": "TransitGatewayId",
-	"vpc_peering_connection_id": "VpcPeeringConnectionId",
-}
-
 func ResourceEC2Route() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2RouteExists,
@@ -97,11 +84,11 @@ func resourceEC2RouteRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceEC2RouteCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2RouteType, ResourceEC2Route(), data, eC2RouteProperties, meta)
+	return plugin.ResourceCreate(eC2RouteType, ResourceEC2Route(), data, meta)
 }
 
 func resourceEC2RouteUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2RouteType, ResourceEC2Route(), data, eC2RouteProperties, meta)
+	return plugin.ResourceUpdate(eC2RouteType, ResourceEC2Route(), data, meta)
 }
 
 func resourceEC2RouteDelete(data *schema.ResourceData, meta interface{}) error {

@@ -17,13 +17,6 @@ import (
 
 const appMeshVirtualNodeType string = "AWS::AppMesh::VirtualNode"
 
-var appMeshVirtualNodeProperties map[string]string = map[string]string{
-	"mesh_name": "MeshName",
-	"spec": "Spec",
-	"virtual_node_name": "VirtualNodeName",
-	"tags": "Tags",
-}
-
 func ResourceAppMeshVirtualNode() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppMeshVirtualNodeExists,
@@ -67,11 +60,11 @@ func resourceAppMeshVirtualNodeRead(data *schema.ResourceData, meta interface{})
 }
 
 func resourceAppMeshVirtualNodeCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(appMeshVirtualNodeType, ResourceAppMeshVirtualNode(), data, appMeshVirtualNodeProperties, meta)
+	return plugin.ResourceCreate(appMeshVirtualNodeType, ResourceAppMeshVirtualNode(), data, meta)
 }
 
 func resourceAppMeshVirtualNodeUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(appMeshVirtualNodeType, ResourceAppMeshVirtualNode(), data, appMeshVirtualNodeProperties, meta)
+	return plugin.ResourceUpdate(appMeshVirtualNodeType, ResourceAppMeshVirtualNode(), data, meta)
 }
 
 func resourceAppMeshVirtualNodeDelete(data *schema.ResourceData, meta interface{}) error {

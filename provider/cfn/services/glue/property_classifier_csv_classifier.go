@@ -14,16 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var classifierCsvClassifierProperties map[string]string = map[string]string{
-	"quote_symbol": "QuoteSymbol",
-	"contains_header": "ContainsHeader",
-	"delimiter": "Delimiter",
-	"header": "Header",
-	"allow_single_column": "AllowSingleColumn",
-	"disable_value_trimming": "DisableValueTrimming",
-	"name": "Name",
-}
-
 func propertyClassifierCsvClassifier(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,17 +16,6 @@ import (
 
 const applicationAutoScalingScalingPolicyType string = "AWS::ApplicationAutoScaling::ScalingPolicy"
 
-var applicationAutoScalingScalingPolicyProperties map[string]string = map[string]string{
-	"policy_name": "PolicyName",
-	"policy_type": "PolicyType",
-	"resource_id": "ResourceId",
-	"scalable_dimension": "ScalableDimension",
-	"scaling_target_id": "ScalingTargetId",
-	"service_namespace": "ServiceNamespace",
-	"step_scaling_policy_configuration": "StepScalingPolicyConfiguration",
-	"target_tracking_scaling_policy_configuration": "TargetTrackingScalingPolicyConfiguration",
-}
-
 func ResourceApplicationAutoScalingScalingPolicy() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApplicationAutoScalingScalingPolicyExists,
@@ -91,11 +80,11 @@ func resourceApplicationAutoScalingScalingPolicyRead(data *schema.ResourceData, 
 }
 
 func resourceApplicationAutoScalingScalingPolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(applicationAutoScalingScalingPolicyType, ResourceApplicationAutoScalingScalingPolicy(), data, applicationAutoScalingScalingPolicyProperties, meta)
+	return plugin.ResourceCreate(applicationAutoScalingScalingPolicyType, ResourceApplicationAutoScalingScalingPolicy(), data, meta)
 }
 
 func resourceApplicationAutoScalingScalingPolicyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(applicationAutoScalingScalingPolicyType, ResourceApplicationAutoScalingScalingPolicy(), data, applicationAutoScalingScalingPolicyProperties, meta)
+	return plugin.ResourceUpdate(applicationAutoScalingScalingPolicyType, ResourceApplicationAutoScalingScalingPolicy(), data, meta)
 }
 
 func resourceApplicationAutoScalingScalingPolicyDelete(data *schema.ResourceData, meta interface{}) error {

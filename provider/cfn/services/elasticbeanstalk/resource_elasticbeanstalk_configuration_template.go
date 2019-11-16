@@ -16,16 +16,6 @@ import (
 
 const elasticBeanstalkConfigurationTemplateType string = "AWS::ElasticBeanstalk::ConfigurationTemplate"
 
-var elasticBeanstalkConfigurationTemplateProperties map[string]string = map[string]string{
-	"application_name": "ApplicationName",
-	"description": "Description",
-	"environment_id": "EnvironmentId",
-	"option_settings": "OptionSettings",
-	"platform_arn": "PlatformArn",
-	"solution_stack_name": "SolutionStackName",
-	"source_configuration": "SourceConfiguration",
-}
-
 func ResourceElasticBeanstalkConfigurationTemplate() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElasticBeanstalkConfigurationTemplateExists,
@@ -85,11 +75,11 @@ func resourceElasticBeanstalkConfigurationTemplateRead(data *schema.ResourceData
 }
 
 func resourceElasticBeanstalkConfigurationTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(elasticBeanstalkConfigurationTemplateType, ResourceElasticBeanstalkConfigurationTemplate(), data, elasticBeanstalkConfigurationTemplateProperties, meta)
+	return plugin.ResourceCreate(elasticBeanstalkConfigurationTemplateType, ResourceElasticBeanstalkConfigurationTemplate(), data, meta)
 }
 
 func resourceElasticBeanstalkConfigurationTemplateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(elasticBeanstalkConfigurationTemplateType, ResourceElasticBeanstalkConfigurationTemplate(), data, elasticBeanstalkConfigurationTemplateProperties, meta)
+	return plugin.ResourceUpdate(elasticBeanstalkConfigurationTemplateType, ResourceElasticBeanstalkConfigurationTemplate(), data, meta)
 }
 
 func resourceElasticBeanstalkConfigurationTemplateDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var tableSerdeInfoProperties map[string]string = map[string]string{
-	"parameters": "Parameters",
-	"serialization_library": "SerializationLibrary",
-	"name": "Name",
-}
-
 func propertyTableSerdeInfo(extras...string) *schema.Resource {
 	var count int64 = 0
 	

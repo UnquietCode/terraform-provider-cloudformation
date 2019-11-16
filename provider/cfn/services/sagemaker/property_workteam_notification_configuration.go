@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var workteamNotificationConfigurationProperties map[string]string = map[string]string{
-	"notification_topic_arn": "NotificationTopicArn",
-}
-
 func propertyWorkteamNotificationConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

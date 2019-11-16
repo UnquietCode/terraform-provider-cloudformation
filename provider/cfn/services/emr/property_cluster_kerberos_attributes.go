@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var clusterKerberosAttributesProperties map[string]string = map[string]string{
-	"ad_domain_join_password": "ADDomainJoinPassword",
-	"ad_domain_join_user": "ADDomainJoinUser",
-	"cross_realm_trust_principal_password": "CrossRealmTrustPrincipalPassword",
-	"kdc_admin_password": "KdcAdminPassword",
-	"realm": "Realm",
-}
-
 func propertyClusterKerberosAttributes(extras...string) *schema.Resource {
 	var count int64 = 0
 	

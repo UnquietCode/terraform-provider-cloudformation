@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var datasetRetentionPeriodProperties map[string]string = map[string]string{
-	"number_of_days": "NumberOfDays",
-	"unlimited": "Unlimited",
-}
-
 func propertyDatasetRetentionPeriod(extras...string) *schema.Resource {
 	var count int64 = 0
 	

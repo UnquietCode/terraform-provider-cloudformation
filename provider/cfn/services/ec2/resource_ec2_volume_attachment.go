@@ -16,12 +16,6 @@ import (
 
 const eC2VolumeAttachmentType string = "AWS::EC2::VolumeAttachment"
 
-var eC2VolumeAttachmentProperties map[string]string = map[string]string{
-	"device": "Device",
-	"instance_id": "InstanceId",
-	"volume_id": "VolumeId",
-}
-
 func ResourceEC2VolumeAttachment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VolumeAttachmentExists,
@@ -62,11 +56,11 @@ func resourceEC2VolumeAttachmentRead(data *schema.ResourceData, meta interface{}
 }
 
 func resourceEC2VolumeAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2VolumeAttachmentType, ResourceEC2VolumeAttachment(), data, eC2VolumeAttachmentProperties, meta)
+	return plugin.ResourceCreate(eC2VolumeAttachmentType, ResourceEC2VolumeAttachment(), data, meta)
 }
 
 func resourceEC2VolumeAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2VolumeAttachmentType, ResourceEC2VolumeAttachment(), data, eC2VolumeAttachmentProperties, meta)
+	return plugin.ResourceUpdate(eC2VolumeAttachmentType, ResourceEC2VolumeAttachment(), data, meta)
 }
 
 func resourceEC2VolumeAttachmentDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var endpointKinesisSettingsProperties map[string]string = map[string]string{
-	"message_format": "MessageFormat",
-	"stream_arn": "StreamArn",
-	"service_access_role_arn": "ServiceAccessRoleArn",
-}
-
 func propertyEndpointKinesisSettings(extras...string) *schema.Resource {
 	var count int64 = 0
 	

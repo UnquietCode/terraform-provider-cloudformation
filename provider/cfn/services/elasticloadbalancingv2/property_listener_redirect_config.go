@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var listenerRedirectConfigProperties map[string]string = map[string]string{
-	"host": "Host",
-	"path": "Path",
-	"port": "Port",
-	"protocol": "Protocol",
-	"query": "Query",
-	"status_code": "StatusCode",
-}
-
 func propertyListenerRedirectConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

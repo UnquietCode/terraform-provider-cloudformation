@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var projectLogsConfigProperties map[string]string = map[string]string{
-	"cloud_watch_logs": "CloudWatchLogs",
-	"s3_logs": "S3Logs",
-}
-
 func propertyProjectLogsConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

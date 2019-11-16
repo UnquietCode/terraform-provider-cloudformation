@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var pipelineStageTransitionProperties map[string]string = map[string]string{
-	"reason": "Reason",
-	"stage_name": "StageName",
-}
-
 func propertyPipelineStageTransition(extras...string) *schema.Resource {
 	var count int64 = 0
 	

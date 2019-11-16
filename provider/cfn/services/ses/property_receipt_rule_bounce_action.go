@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var receiptRuleBounceActionProperties map[string]string = map[string]string{
-	"sender": "Sender",
-	"smtp_reply_code": "SmtpReplyCode",
-	"message": "Message",
-	"topic_arn": "TopicArn",
-	"status_code": "StatusCode",
-}
-
 func propertyReceiptRuleBounceAction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

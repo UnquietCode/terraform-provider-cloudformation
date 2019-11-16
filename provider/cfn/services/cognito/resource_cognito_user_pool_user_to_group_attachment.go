@@ -16,12 +16,6 @@ import (
 
 const cognitoUserPoolUserToGroupAttachmentType string = "AWS::Cognito::UserPoolUserToGroupAttachment"
 
-var cognitoUserPoolUserToGroupAttachmentProperties map[string]string = map[string]string{
-	"group_name": "GroupName",
-	"user_pool_id": "UserPoolId",
-	"username": "Username",
-}
-
 func ResourceCognitoUserPoolUserToGroupAttachment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCognitoUserPoolUserToGroupAttachmentExists,
@@ -62,11 +56,11 @@ func resourceCognitoUserPoolUserToGroupAttachmentRead(data *schema.ResourceData,
 }
 
 func resourceCognitoUserPoolUserToGroupAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(cognitoUserPoolUserToGroupAttachmentType, ResourceCognitoUserPoolUserToGroupAttachment(), data, cognitoUserPoolUserToGroupAttachmentProperties, meta)
+	return plugin.ResourceCreate(cognitoUserPoolUserToGroupAttachmentType, ResourceCognitoUserPoolUserToGroupAttachment(), data, meta)
 }
 
 func resourceCognitoUserPoolUserToGroupAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(cognitoUserPoolUserToGroupAttachmentType, ResourceCognitoUserPoolUserToGroupAttachment(), data, cognitoUserPoolUserToGroupAttachmentProperties, meta)
+	return plugin.ResourceUpdate(cognitoUserPoolUserToGroupAttachmentType, ResourceCognitoUserPoolUserToGroupAttachment(), data, meta)
 }
 
 func resourceCognitoUserPoolUserToGroupAttachmentDelete(data *schema.ResourceData, meta interface{}) error {

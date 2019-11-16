@@ -16,16 +16,6 @@ import (
 
 const apiGatewayV2IntegrationResponseType string = "AWS::ApiGatewayV2::IntegrationResponse"
 
-var apiGatewayV2IntegrationResponseProperties map[string]string = map[string]string{
-	"response_templates": "ResponseTemplates",
-	"template_selection_expression": "TemplateSelectionExpression",
-	"response_parameters": "ResponseParameters",
-	"content_handling_strategy": "ContentHandlingStrategy",
-	"integration_id": "IntegrationId",
-	"integration_response_key": "IntegrationResponseKey",
-	"api_id": "ApiId",
-}
-
 func ResourceApiGatewayV2IntegrationResponse() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayV2IntegrationResponseExists,
@@ -82,11 +72,11 @@ func resourceApiGatewayV2IntegrationResponseRead(data *schema.ResourceData, meta
 }
 
 func resourceApiGatewayV2IntegrationResponseCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayV2IntegrationResponseType, ResourceApiGatewayV2IntegrationResponse(), data, apiGatewayV2IntegrationResponseProperties, meta)
+	return plugin.ResourceCreate(apiGatewayV2IntegrationResponseType, ResourceApiGatewayV2IntegrationResponse(), data, meta)
 }
 
 func resourceApiGatewayV2IntegrationResponseUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayV2IntegrationResponseType, ResourceApiGatewayV2IntegrationResponse(), data, apiGatewayV2IntegrationResponseProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayV2IntegrationResponseType, ResourceApiGatewayV2IntegrationResponse(), data, meta)
 }
 
 func resourceApiGatewayV2IntegrationResponseDelete(data *schema.ResourceData, meta interface{}) error {

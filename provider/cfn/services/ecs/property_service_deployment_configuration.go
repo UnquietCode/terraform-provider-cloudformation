@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var serviceDeploymentConfigurationProperties map[string]string = map[string]string{
-	"maximum_percent": "MaximumPercent",
-	"minimum_healthy_percent": "MinimumHealthyPercent",
-}
-
 func propertyServiceDeploymentConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

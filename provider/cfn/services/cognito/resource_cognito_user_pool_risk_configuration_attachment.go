@@ -16,14 +16,6 @@ import (
 
 const cognitoUserPoolRiskConfigurationAttachmentType string = "AWS::Cognito::UserPoolRiskConfigurationAttachment"
 
-var cognitoUserPoolRiskConfigurationAttachmentProperties map[string]string = map[string]string{
-	"compromised_credentials_risk_configuration": "CompromisedCredentialsRiskConfiguration",
-	"user_pool_id": "UserPoolId",
-	"client_id": "ClientId",
-	"account_takeover_risk_configuration": "AccountTakeoverRiskConfiguration",
-	"risk_exception_configuration": "RiskExceptionConfiguration",
-}
-
 func ResourceCognitoUserPoolRiskConfigurationAttachment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceCognitoUserPoolRiskConfigurationAttachmentExists,
@@ -78,11 +70,11 @@ func resourceCognitoUserPoolRiskConfigurationAttachmentRead(data *schema.Resourc
 }
 
 func resourceCognitoUserPoolRiskConfigurationAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(cognitoUserPoolRiskConfigurationAttachmentType, ResourceCognitoUserPoolRiskConfigurationAttachment(), data, cognitoUserPoolRiskConfigurationAttachmentProperties, meta)
+	return plugin.ResourceCreate(cognitoUserPoolRiskConfigurationAttachmentType, ResourceCognitoUserPoolRiskConfigurationAttachment(), data, meta)
 }
 
 func resourceCognitoUserPoolRiskConfigurationAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(cognitoUserPoolRiskConfigurationAttachmentType, ResourceCognitoUserPoolRiskConfigurationAttachment(), data, cognitoUserPoolRiskConfigurationAttachmentProperties, meta)
+	return plugin.ResourceUpdate(cognitoUserPoolRiskConfigurationAttachmentType, ResourceCognitoUserPoolRiskConfigurationAttachment(), data, meta)
 }
 
 func resourceCognitoUserPoolRiskConfigurationAttachmentDelete(data *schema.ResourceData, meta interface{}) error {

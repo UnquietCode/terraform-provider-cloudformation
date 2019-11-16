@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var stackSourceProperties map[string]string = map[string]string{
-	"password": "Password",
-	"revision": "Revision",
-	"ssh_key": "SshKey",
-	"type": "Type",
-	"url": "Url",
-	"username": "Username",
-}
-
 func propertyStackSource(extras...string) *schema.Resource {
 	var count int64 = 0
 	

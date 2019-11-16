@@ -16,14 +16,6 @@ import (
 
 const route53HostedZoneType string = "AWS::Route53::HostedZone"
 
-var route53HostedZoneProperties map[string]string = map[string]string{
-	"hosted_zone_config": "HostedZoneConfig",
-	"hosted_zone_tags": "HostedZoneTags",
-	"name": "Name",
-	"query_logging_config": "QueryLoggingConfig",
-	"vp_cs": "VPCs",
-}
-
 func ResourceRoute53HostedZone() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRoute53HostedZoneExists,
@@ -78,11 +70,11 @@ func resourceRoute53HostedZoneRead(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceRoute53HostedZoneCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(route53HostedZoneType, ResourceRoute53HostedZone(), data, route53HostedZoneProperties, meta)
+	return plugin.ResourceCreate(route53HostedZoneType, ResourceRoute53HostedZone(), data, meta)
 }
 
 func resourceRoute53HostedZoneUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(route53HostedZoneType, ResourceRoute53HostedZone(), data, route53HostedZoneProperties, meta)
+	return plugin.ResourceUpdate(route53HostedZoneType, ResourceRoute53HostedZone(), data, meta)
 }
 
 func resourceRoute53HostedZoneDelete(data *schema.ResourceData, meta interface{}) error {

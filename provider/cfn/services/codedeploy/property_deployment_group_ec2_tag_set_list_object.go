@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deploymentGroupEC2TagSetListObjectProperties map[string]string = map[string]string{
-	"ec2_tag_group": "Ec2TagGroup",
-}
-
 func propertyDeploymentGroupEC2TagSetListObject(extras...string) *schema.Resource {
 	var count int64 = 0
 	

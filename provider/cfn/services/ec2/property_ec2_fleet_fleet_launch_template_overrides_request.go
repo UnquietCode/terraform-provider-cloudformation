@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var eC2FleetFleetLaunchTemplateOverridesRequestProperties map[string]string = map[string]string{
-	"weighted_capacity": "WeightedCapacity",
-	"priority": "Priority",
-	"availability_zone": "AvailabilityZone",
-	"subnet_id": "SubnetId",
-	"instance_type": "InstanceType",
-	"max_price": "MaxPrice",
-}
-
 func propertyEC2FleetFleetLaunchTemplateOverridesRequest(extras...string) *schema.Resource {
 	var count int64 = 0
 	

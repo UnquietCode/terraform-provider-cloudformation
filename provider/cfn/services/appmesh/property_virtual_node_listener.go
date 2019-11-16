@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var virtualNodeListenerProperties map[string]string = map[string]string{
-	"health_check": "HealthCheck",
-	"port_mapping": "PortMapping",
-}
-
 func propertyVirtualNodeListener(extras...string) *schema.Resource {
 	var count int64 = 0
 	

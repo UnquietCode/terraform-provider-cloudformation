@@ -16,20 +16,6 @@ import (
 
 const eC2EC2FleetType string = "AWS::EC2::EC2Fleet"
 
-var eC2EC2FleetProperties map[string]string = map[string]string{
-	"target_capacity_specification": "TargetCapacitySpecification",
-	"on_demand_options": "OnDemandOptions",
-	"type": "Type",
-	"excess_capacity_termination_policy": "ExcessCapacityTerminationPolicy",
-	"tag_specifications": "TagSpecifications",
-	"spot_options": "SpotOptions",
-	"valid_from": "ValidFrom",
-	"replace_unhealthy_instances": "ReplaceUnhealthyInstances",
-	"launch_template_configs": "LaunchTemplateConfigs",
-	"terminate_instances_with_expiration": "TerminateInstancesWithExpiration",
-	"valid_until": "ValidUntil",
-}
-
 func ResourceEC2EC2Fleet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2EC2FleetExists,
@@ -110,11 +96,11 @@ func resourceEC2EC2FleetRead(data *schema.ResourceData, meta interface{}) error 
 }
 
 func resourceEC2EC2FleetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2EC2FleetType, ResourceEC2EC2Fleet(), data, eC2EC2FleetProperties, meta)
+	return plugin.ResourceCreate(eC2EC2FleetType, ResourceEC2EC2Fleet(), data, meta)
 }
 
 func resourceEC2EC2FleetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2EC2FleetType, ResourceEC2EC2Fleet(), data, eC2EC2FleetProperties, meta)
+	return plugin.ResourceUpdate(eC2EC2FleetType, ResourceEC2EC2Fleet(), data, meta)
 }
 
 func resourceEC2EC2FleetDelete(data *schema.ResourceData, meta interface{}) error {

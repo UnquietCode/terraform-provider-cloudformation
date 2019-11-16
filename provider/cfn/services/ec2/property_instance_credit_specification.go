@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var instanceCreditSpecificationProperties map[string]string = map[string]string{
-	"cpu_credits": "CPUCredits",
-}
-
 func propertyInstanceCreditSpecification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

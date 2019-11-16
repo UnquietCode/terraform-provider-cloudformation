@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var userPoolPasswordPolicyProperties map[string]string = map[string]string{
-	"require_numbers": "RequireNumbers",
-	"minimum_length": "MinimumLength",
-	"temporary_password_validity_days": "TemporaryPasswordValidityDays",
-	"require_uppercase": "RequireUppercase",
-	"require_lowercase": "RequireLowercase",
-	"require_symbols": "RequireSymbols",
-}
-
 func propertyUserPoolPasswordPolicy(extras...string) *schema.Resource {
 	var count int64 = 0
 	

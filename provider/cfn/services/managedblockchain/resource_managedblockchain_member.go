@@ -16,13 +16,6 @@ import (
 
 const managedBlockchainMemberType string = "AWS::ManagedBlockchain::Member"
 
-var managedBlockchainMemberProperties map[string]string = map[string]string{
-	"member_configuration": "MemberConfiguration",
-	"network_configuration": "NetworkConfiguration",
-	"network_id": "NetworkId",
-	"invitation_id": "InvitationId",
-}
-
 func ResourceManagedBlockchainMember() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceManagedBlockchainMemberExists,
@@ -71,11 +64,11 @@ func resourceManagedBlockchainMemberRead(data *schema.ResourceData, meta interfa
 }
 
 func resourceManagedBlockchainMemberCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(managedBlockchainMemberType, ResourceManagedBlockchainMember(), data, managedBlockchainMemberProperties, meta)
+	return plugin.ResourceCreate(managedBlockchainMemberType, ResourceManagedBlockchainMember(), data, meta)
 }
 
 func resourceManagedBlockchainMemberUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(managedBlockchainMemberType, ResourceManagedBlockchainMember(), data, managedBlockchainMemberProperties, meta)
+	return plugin.ResourceUpdate(managedBlockchainMemberType, ResourceManagedBlockchainMember(), data, meta)
 }
 
 func resourceManagedBlockchainMemberDelete(data *schema.ResourceData, meta interface{}) error {

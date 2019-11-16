@@ -17,39 +17,6 @@ import (
 
 const rDSDBClusterType string = "AWS::RDS::DBCluster"
 
-var rDSDBClusterProperties map[string]string = map[string]string{
-	"associated_roles": "AssociatedRoles",
-	"availability_zones": "AvailabilityZones",
-	"backtrack_window": "BacktrackWindow",
-	"backup_retention_period": "BackupRetentionPeriod",
-	"db_cluster_identifier": "DBClusterIdentifier",
-	"db_cluster_parameter_group_name": "DBClusterParameterGroupName",
-	"db_subnet_group_name": "DBSubnetGroupName",
-	"database_name": "DatabaseName",
-	"deletion_protection": "DeletionProtection",
-	"enable_cloudwatch_logs_exports": "EnableCloudwatchLogsExports",
-	"enable_iam_database_authentication": "EnableIAMDatabaseAuthentication",
-	"engine": "Engine",
-	"engine_mode": "EngineMode",
-	"engine_version": "EngineVersion",
-	"kms_key_id": "KmsKeyId",
-	"master_user_password": "MasterUserPassword",
-	"master_username": "MasterUsername",
-	"port": "Port",
-	"preferred_backup_window": "PreferredBackupWindow",
-	"preferred_maintenance_window": "PreferredMaintenanceWindow",
-	"replication_source_identifier": "ReplicationSourceIdentifier",
-	"restore_type": "RestoreType",
-	"scaling_configuration": "ScalingConfiguration",
-	"snapshot_identifier": "SnapshotIdentifier",
-	"source_db_cluster_identifier": "SourceDBClusterIdentifier",
-	"source_region": "SourceRegion",
-	"storage_encrypted": "StorageEncrypted",
-	"tags": "Tags",
-	"use_latest_restorable_time": "UseLatestRestorableTime",
-	"vpc_security_group_ids": "VpcSecurityGroupIds",
-}
-
 func ResourceRDSDBCluster() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRDSDBClusterExists,
@@ -204,11 +171,11 @@ func resourceRDSDBClusterRead(data *schema.ResourceData, meta interface{}) error
 }
 
 func resourceRDSDBClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(rDSDBClusterType, ResourceRDSDBCluster(), data, rDSDBClusterProperties, meta)
+	return plugin.ResourceCreate(rDSDBClusterType, ResourceRDSDBCluster(), data, meta)
 }
 
 func resourceRDSDBClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(rDSDBClusterType, ResourceRDSDBCluster(), data, rDSDBClusterProperties, meta)
+	return plugin.ResourceUpdate(rDSDBClusterType, ResourceRDSDBCluster(), data, meta)
 }
 
 func resourceRDSDBClusterDelete(data *schema.ResourceData, meta interface{}) error {

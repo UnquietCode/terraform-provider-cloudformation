@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var campaignCampaignEventFilterProperties map[string]string = map[string]string{
-	"filter_type": "FilterType",
-	"dimensions": "Dimensions",
-}
-
 func propertyCampaignCampaignEventFilter(extras...string) *schema.Resource {
 	var count int64 = 0
 	

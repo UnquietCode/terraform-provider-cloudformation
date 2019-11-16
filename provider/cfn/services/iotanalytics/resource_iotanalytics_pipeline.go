@@ -17,12 +17,6 @@ import (
 
 const ioTAnalyticsPipelineType string = "AWS::IoTAnalytics::Pipeline"
 
-var ioTAnalyticsPipelineProperties map[string]string = map[string]string{
-	"pipeline_name": "PipelineName",
-	"tags": "Tags",
-	"pipeline_activities": "PipelineActivities",
-}
-
 func ResourceIoTAnalyticsPipeline() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoTAnalyticsPipelineExists,
@@ -61,11 +55,11 @@ func resourceIoTAnalyticsPipelineRead(data *schema.ResourceData, meta interface{
 }
 
 func resourceIoTAnalyticsPipelineCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(ioTAnalyticsPipelineType, ResourceIoTAnalyticsPipeline(), data, ioTAnalyticsPipelineProperties, meta)
+	return plugin.ResourceCreate(ioTAnalyticsPipelineType, ResourceIoTAnalyticsPipeline(), data, meta)
 }
 
 func resourceIoTAnalyticsPipelineUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(ioTAnalyticsPipelineType, ResourceIoTAnalyticsPipeline(), data, ioTAnalyticsPipelineProperties, meta)
+	return plugin.ResourceUpdate(ioTAnalyticsPipelineType, ResourceIoTAnalyticsPipeline(), data, meta)
 }
 
 func resourceIoTAnalyticsPipelineDelete(data *schema.ResourceData, meta interface{}) error {

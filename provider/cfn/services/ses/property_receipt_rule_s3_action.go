@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var receiptRuleS3ActionProperties map[string]string = map[string]string{
-	"bucket_name": "BucketName",
-	"kms_key_arn": "KmsKeyArn",
-	"topic_arn": "TopicArn",
-	"object_key_prefix": "ObjectKeyPrefix",
-}
-
 func propertyReceiptRuleS3Action(extras...string) *schema.Resource {
 	var count int64 = 0
 	

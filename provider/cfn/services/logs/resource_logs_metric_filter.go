@@ -16,12 +16,6 @@ import (
 
 const logsMetricFilterType string = "AWS::Logs::MetricFilter"
 
-var logsMetricFilterProperties map[string]string = map[string]string{
-	"filter_pattern": "FilterPattern",
-	"log_group_name": "LogGroupName",
-	"metric_transformations": "MetricTransformations",
-}
-
 func ResourceLogsMetricFilter() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLogsMetricFilterExists,
@@ -63,11 +57,11 @@ func resourceLogsMetricFilterRead(data *schema.ResourceData, meta interface{}) e
 }
 
 func resourceLogsMetricFilterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(logsMetricFilterType, ResourceLogsMetricFilter(), data, logsMetricFilterProperties, meta)
+	return plugin.ResourceCreate(logsMetricFilterType, ResourceLogsMetricFilter(), data, meta)
 }
 
 func resourceLogsMetricFilterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(logsMetricFilterType, ResourceLogsMetricFilter(), data, logsMetricFilterProperties, meta)
+	return plugin.ResourceUpdate(logsMetricFilterType, ResourceLogsMetricFilter(), data, meta)
 }
 
 func resourceLogsMetricFilterDelete(data *schema.ResourceData, meta interface{}) error {

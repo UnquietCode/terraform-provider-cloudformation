@@ -17,20 +17,6 @@ import (
 
 const appStreamStackType string = "AWS::AppStream::Stack"
 
-var appStreamStackProperties map[string]string = map[string]string{
-	"application_settings": "ApplicationSettings",
-	"description": "Description",
-	"storage_connectors": "StorageConnectors",
-	"delete_storage_connectors": "DeleteStorageConnectors",
-	"user_settings": "UserSettings",
-	"attributes_to_delete": "AttributesToDelete",
-	"display_name": "DisplayName",
-	"redirect_url": "RedirectURL",
-	"tags": "Tags",
-	"name": "Name",
-	"feedback_url": "FeedbackURL",
-}
-
 func ResourceAppStreamStack() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppStreamStackExists,
@@ -105,11 +91,11 @@ func resourceAppStreamStackRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceAppStreamStackCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(appStreamStackType, ResourceAppStreamStack(), data, appStreamStackProperties, meta)
+	return plugin.ResourceCreate(appStreamStackType, ResourceAppStreamStack(), data, meta)
 }
 
 func resourceAppStreamStackUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(appStreamStackType, ResourceAppStreamStack(), data, appStreamStackProperties, meta)
+	return plugin.ResourceUpdate(appStreamStackType, ResourceAppStreamStack(), data, meta)
 }
 
 func resourceAppStreamStackDelete(data *schema.ResourceData, meta interface{}) error {

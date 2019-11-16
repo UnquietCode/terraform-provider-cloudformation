@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketCorsConfigurationProperties map[string]string = map[string]string{
-	"cors_rules": "CorsRules",
-}
-
 func propertyBucketCorsConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

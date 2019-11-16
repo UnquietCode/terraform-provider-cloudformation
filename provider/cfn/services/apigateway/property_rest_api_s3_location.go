@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var restApiS3LocationProperties map[string]string = map[string]string{
-	"bucket": "Bucket",
-	"e_tag": "ETag",
-	"key": "Key",
-	"version": "Version",
-}
-
 func propertyRestApiS3Location(extras...string) *schema.Resource {
 	var count int64 = 0
 	

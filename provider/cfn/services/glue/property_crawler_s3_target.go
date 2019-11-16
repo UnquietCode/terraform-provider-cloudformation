@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var crawlerS3TargetProperties map[string]string = map[string]string{
-	"path": "Path",
-	"exclusions": "Exclusions",
-}
-
 func propertyCrawlerS3Target(extras...string) *schema.Resource {
 	var count int64 = 0
 	

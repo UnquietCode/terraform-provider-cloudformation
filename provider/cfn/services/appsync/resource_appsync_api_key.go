@@ -16,12 +16,6 @@ import (
 
 const appSyncApiKeyType string = "AWS::AppSync::ApiKey"
 
-var appSyncApiKeyProperties map[string]string = map[string]string{
-	"description": "Description",
-	"expires": "Expires",
-	"api_id": "ApiId",
-}
-
 func ResourceAppSyncApiKey() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceAppSyncApiKeyExists,
@@ -62,11 +56,11 @@ func resourceAppSyncApiKeyRead(data *schema.ResourceData, meta interface{}) erro
 }
 
 func resourceAppSyncApiKeyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(appSyncApiKeyType, ResourceAppSyncApiKey(), data, appSyncApiKeyProperties, meta)
+	return plugin.ResourceCreate(appSyncApiKeyType, ResourceAppSyncApiKey(), data, meta)
 }
 
 func resourceAppSyncApiKeyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(appSyncApiKeyType, ResourceAppSyncApiKey(), data, appSyncApiKeyProperties, meta)
+	return plugin.ResourceUpdate(appSyncApiKeyType, ResourceAppSyncApiKey(), data, meta)
 }
 
 func resourceAppSyncApiKeyDelete(data *schema.ResourceData, meta interface{}) error {

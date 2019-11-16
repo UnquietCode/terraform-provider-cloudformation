@@ -16,12 +16,6 @@ import (
 
 const secretsManagerSecretTargetAttachmentType string = "AWS::SecretsManager::SecretTargetAttachment"
 
-var secretsManagerSecretTargetAttachmentProperties map[string]string = map[string]string{
-	"secret_id": "SecretId",
-	"target_type": "TargetType",
-	"target_id": "TargetId",
-}
-
 func ResourceSecretsManagerSecretTargetAttachment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSecretsManagerSecretTargetAttachmentExists,
@@ -62,11 +56,11 @@ func resourceSecretsManagerSecretTargetAttachmentRead(data *schema.ResourceData,
 }
 
 func resourceSecretsManagerSecretTargetAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(secretsManagerSecretTargetAttachmentType, ResourceSecretsManagerSecretTargetAttachment(), data, secretsManagerSecretTargetAttachmentProperties, meta)
+	return plugin.ResourceCreate(secretsManagerSecretTargetAttachmentType, ResourceSecretsManagerSecretTargetAttachment(), data, meta)
 }
 
 func resourceSecretsManagerSecretTargetAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(secretsManagerSecretTargetAttachmentType, ResourceSecretsManagerSecretTargetAttachment(), data, secretsManagerSecretTargetAttachmentProperties, meta)
+	return plugin.ResourceUpdate(secretsManagerSecretTargetAttachmentType, ResourceSecretsManagerSecretTargetAttachment(), data, meta)
 }
 
 func resourceSecretsManagerSecretTargetAttachmentDelete(data *schema.ResourceData, meta interface{}) error {

@@ -16,12 +16,6 @@ import (
 
 const dMSCertificateType string = "AWS::DMS::Certificate"
 
-var dMSCertificateProperties map[string]string = map[string]string{
-	"certificate_identifier": "CertificateIdentifier",
-	"certificate_pem": "CertificatePem",
-	"certificate_wallet": "CertificateWallet",
-}
-
 func ResourceDMSCertificate() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDMSCertificateExists,
@@ -62,11 +56,11 @@ func resourceDMSCertificateRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceDMSCertificateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(dMSCertificateType, ResourceDMSCertificate(), data, dMSCertificateProperties, meta)
+	return plugin.ResourceCreate(dMSCertificateType, ResourceDMSCertificate(), data, meta)
 }
 
 func resourceDMSCertificateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(dMSCertificateType, ResourceDMSCertificate(), data, dMSCertificateProperties, meta)
+	return plugin.ResourceUpdate(dMSCertificateType, ResourceDMSCertificate(), data, meta)
 }
 
 func resourceDMSCertificateDelete(data *schema.ResourceData, meta interface{}) error {

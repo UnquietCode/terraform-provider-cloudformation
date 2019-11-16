@@ -16,21 +16,6 @@ import (
 
 const eC2SecurityGroupIngressType string = "AWS::EC2::SecurityGroupIngress"
 
-var eC2SecurityGroupIngressProperties map[string]string = map[string]string{
-	"cidr_ip": "CidrIp",
-	"cidr_ipv6": "CidrIpv6",
-	"description": "Description",
-	"from_port": "FromPort",
-	"group_id": "GroupId",
-	"group_name": "GroupName",
-	"ip_protocol": "IpProtocol",
-	"source_prefix_list_id": "SourcePrefixListId",
-	"source_security_group_id": "SourceSecurityGroupId",
-	"source_security_group_name": "SourceSecurityGroupName",
-	"source_security_group_owner_id": "SourceSecurityGroupOwnerId",
-	"to_port": "ToPort",
-}
-
 func ResourceEC2SecurityGroupIngress() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2SecurityGroupIngressExists,
@@ -107,11 +92,11 @@ func resourceEC2SecurityGroupIngressRead(data *schema.ResourceData, meta interfa
 }
 
 func resourceEC2SecurityGroupIngressCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2SecurityGroupIngressType, ResourceEC2SecurityGroupIngress(), data, eC2SecurityGroupIngressProperties, meta)
+	return plugin.ResourceCreate(eC2SecurityGroupIngressType, ResourceEC2SecurityGroupIngress(), data, meta)
 }
 
 func resourceEC2SecurityGroupIngressUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2SecurityGroupIngressType, ResourceEC2SecurityGroupIngress(), data, eC2SecurityGroupIngressProperties, meta)
+	return plugin.ResourceUpdate(eC2SecurityGroupIngressType, ResourceEC2SecurityGroupIngress(), data, meta)
 }
 
 func resourceEC2SecurityGroupIngressDelete(data *schema.ResourceData, meta interface{}) error {

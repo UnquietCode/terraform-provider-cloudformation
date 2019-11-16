@@ -14,21 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var tableStorageDescriptorProperties map[string]string = map[string]string{
-	"stored_as_sub_directories": "StoredAsSubDirectories",
-	"parameters": "Parameters",
-	"bucket_columns": "BucketColumns",
-	"skewed_info": "SkewedInfo",
-	"input_format": "InputFormat",
-	"number_of_buckets": "NumberOfBuckets",
-	"output_format": "OutputFormat",
-	"columns": "Columns",
-	"serde_info": "SerdeInfo",
-	"sort_columns": "SortColumns",
-	"compressed": "Compressed",
-	"location": "Location",
-}
-
 func propertyTableStorageDescriptor(extras...string) *schema.Resource {
 	var count int64 = 0
 	

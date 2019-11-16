@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var alarmDimensionProperties map[string]string = map[string]string{
-	"name": "Name",
-	"value": "Value",
-}
-
 func propertyAlarmDimension(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationSettingsLimitsProperties map[string]string = map[string]string{
-	"daily": "Daily",
-	"maximum_duration": "MaximumDuration",
-	"total": "Total",
-	"messages_per_second": "MessagesPerSecond",
-}
-
 func propertyApplicationSettingsLimits(extras...string) *schema.Resource {
 	var count int64 = 0
 	

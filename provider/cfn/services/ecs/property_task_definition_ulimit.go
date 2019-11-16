@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var taskDefinitionUlimitProperties map[string]string = map[string]string{
-	"hard_limit": "HardLimit",
-	"name": "Name",
-	"soft_limit": "SoftLimit",
-}
-
 func propertyTaskDefinitionUlimit(extras...string) *schema.Resource {
 	var count int64 = 0
 	

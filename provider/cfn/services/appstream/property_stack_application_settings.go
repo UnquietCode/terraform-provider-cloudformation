@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var stackApplicationSettingsProperties map[string]string = map[string]string{
-	"settings_group": "SettingsGroup",
-	"enabled": "Enabled",
-}
-
 func propertyStackApplicationSettings(extras...string) *schema.Resource {
 	var count int64 = 0
 	

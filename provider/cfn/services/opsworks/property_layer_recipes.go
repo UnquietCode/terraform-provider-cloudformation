@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var layerRecipesProperties map[string]string = map[string]string{
-	"configure": "Configure",
-	"deploy": "Deploy",
-	"setup": "Setup",
-	"shutdown": "Shutdown",
-	"undeploy": "Undeploy",
-}
-
 func propertyLayerRecipes(extras...string) *schema.Resource {
 	var count int64 = 0
 	

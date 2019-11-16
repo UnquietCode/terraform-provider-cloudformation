@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var customActionTypeSettingsProperties map[string]string = map[string]string{
-	"entity_url_template": "EntityUrlTemplate",
-	"execution_url_template": "ExecutionUrlTemplate",
-	"revision_url_template": "RevisionUrlTemplate",
-	"third_party_configuration_url": "ThirdPartyConfigurationUrl",
-}
-
 func propertyCustomActionTypeSettings(extras...string) *schema.Resource {
 	var count int64 = 0
 	

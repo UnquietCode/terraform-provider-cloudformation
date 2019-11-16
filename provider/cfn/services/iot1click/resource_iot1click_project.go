@@ -16,12 +16,6 @@ import (
 
 const ioT1ClickProjectType string = "AWS::IoT1Click::Project"
 
-var ioT1ClickProjectProperties map[string]string = map[string]string{
-	"description": "Description",
-	"placement_template": "PlacementTemplate",
-	"project_name": "ProjectName",
-}
-
 func ResourceIoT1ClickProject() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoT1ClickProjectExists,
@@ -64,11 +58,11 @@ func resourceIoT1ClickProjectRead(data *schema.ResourceData, meta interface{}) e
 }
 
 func resourceIoT1ClickProjectCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(ioT1ClickProjectType, ResourceIoT1ClickProject(), data, ioT1ClickProjectProperties, meta)
+	return plugin.ResourceCreate(ioT1ClickProjectType, ResourceIoT1ClickProject(), data, meta)
 }
 
 func resourceIoT1ClickProjectUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(ioT1ClickProjectType, ResourceIoT1ClickProject(), data, ioT1ClickProjectProperties, meta)
+	return plugin.ResourceUpdate(ioT1ClickProjectType, ResourceIoT1ClickProject(), data, meta)
 }
 
 func resourceIoT1ClickProjectDelete(data *schema.ResourceData, meta interface{}) error {

@@ -16,16 +16,6 @@ import (
 
 const iAMUserType string = "AWS::IAM::User"
 
-var iAMUserProperties map[string]string = map[string]string{
-	"groups": "Groups",
-	"login_profile": "LoginProfile",
-	"managed_policy_arns": "ManagedPolicyArns",
-	"path": "Path",
-	"permissions_boundary": "PermissionsBoundary",
-	"policies": "Policies",
-	"user_name": "UserName",
-}
-
 func ResourceIAMUser() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIAMUserExists,
@@ -88,11 +78,11 @@ func resourceIAMUserRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceIAMUserCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(iAMUserType, ResourceIAMUser(), data, iAMUserProperties, meta)
+	return plugin.ResourceCreate(iAMUserType, ResourceIAMUser(), data, meta)
 }
 
 func resourceIAMUserUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(iAMUserType, ResourceIAMUser(), data, iAMUserProperties, meta)
+	return plugin.ResourceUpdate(iAMUserType, ResourceIAMUser(), data, meta)
 }
 
 func resourceIAMUserDelete(data *schema.ResourceData, meta interface{}) error {

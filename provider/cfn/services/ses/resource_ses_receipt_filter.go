@@ -16,10 +16,6 @@ import (
 
 const sESReceiptFilterType string = "AWS::SES::ReceiptFilter"
 
-var sESReceiptFilterProperties map[string]string = map[string]string{
-	"filter": "Filter",
-}
-
 func ResourceSESReceiptFilter() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSESReceiptFilterExists,
@@ -54,11 +50,11 @@ func resourceSESReceiptFilterRead(data *schema.ResourceData, meta interface{}) e
 }
 
 func resourceSESReceiptFilterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(sESReceiptFilterType, ResourceSESReceiptFilter(), data, sESReceiptFilterProperties, meta)
+	return plugin.ResourceCreate(sESReceiptFilterType, ResourceSESReceiptFilter(), data, meta)
 }
 
 func resourceSESReceiptFilterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(sESReceiptFilterType, ResourceSESReceiptFilter(), data, sESReceiptFilterProperties, meta)
+	return plugin.ResourceUpdate(sESReceiptFilterType, ResourceSESReceiptFilter(), data, meta)
 }
 
 func resourceSESReceiptFilterDelete(data *schema.ResourceData, meta interface{}) error {

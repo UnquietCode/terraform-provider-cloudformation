@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var serviceServiceRegistryProperties map[string]string = map[string]string{
-	"container_name": "ContainerName",
-	"container_port": "ContainerPort",
-	"port": "Port",
-	"registry_arn": "RegistryArn",
-}
-
 func propertyServiceServiceRegistry(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var detectorModelEventProperties map[string]string = map[string]string{
-	"condition": "Condition",
-	"actions": "Actions",
-	"event_name": "EventName",
-}
-
 func propertyDetectorModelEvent(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,11 +16,6 @@ import (
 
 const serviceDiscoveryHttpNamespaceType string = "AWS::ServiceDiscovery::HttpNamespace"
 
-var serviceDiscoveryHttpNamespaceProperties map[string]string = map[string]string{
-	"description": "Description",
-	"name": "Name",
-}
-
 func ResourceServiceDiscoveryHttpNamespace() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceDiscoveryHttpNamespaceExists,
@@ -57,11 +52,11 @@ func resourceServiceDiscoveryHttpNamespaceRead(data *schema.ResourceData, meta i
 }
 
 func resourceServiceDiscoveryHttpNamespaceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(serviceDiscoveryHttpNamespaceType, ResourceServiceDiscoveryHttpNamespace(), data, serviceDiscoveryHttpNamespaceProperties, meta)
+	return plugin.ResourceCreate(serviceDiscoveryHttpNamespaceType, ResourceServiceDiscoveryHttpNamespace(), data, meta)
 }
 
 func resourceServiceDiscoveryHttpNamespaceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(serviceDiscoveryHttpNamespaceType, ResourceServiceDiscoveryHttpNamespace(), data, serviceDiscoveryHttpNamespaceProperties, meta)
+	return plugin.ResourceUpdate(serviceDiscoveryHttpNamespaceType, ResourceServiceDiscoveryHttpNamespace(), data, meta)
 }
 
 func resourceServiceDiscoveryHttpNamespaceDelete(data *schema.ResourceData, meta interface{}) error {

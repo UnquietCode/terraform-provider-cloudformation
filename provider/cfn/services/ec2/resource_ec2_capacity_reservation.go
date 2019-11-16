@@ -16,20 +16,6 @@ import (
 
 const eC2CapacityReservationType string = "AWS::EC2::CapacityReservation"
 
-var eC2CapacityReservationProperties map[string]string = map[string]string{
-	"tenancy": "Tenancy",
-	"end_date_type": "EndDateType",
-	"instance_count": "InstanceCount",
-	"tag_specifications": "TagSpecifications",
-	"availability_zone": "AvailabilityZone",
-	"instance_platform": "InstancePlatform",
-	"instance_type": "InstanceType",
-	"ephemeral_storage": "EphemeralStorage",
-	"instance_match_criteria": "InstanceMatchCriteria",
-	"end_date": "EndDate",
-	"ebs_optimized": "EbsOptimized",
-}
-
 func ResourceEC2CapacityReservation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2CapacityReservationExists,
@@ -103,11 +89,11 @@ func resourceEC2CapacityReservationRead(data *schema.ResourceData, meta interfac
 }
 
 func resourceEC2CapacityReservationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2CapacityReservationType, ResourceEC2CapacityReservation(), data, eC2CapacityReservationProperties, meta)
+	return plugin.ResourceCreate(eC2CapacityReservationType, ResourceEC2CapacityReservation(), data, meta)
 }
 
 func resourceEC2CapacityReservationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2CapacityReservationType, ResourceEC2CapacityReservation(), data, eC2CapacityReservationProperties, meta)
+	return plugin.ResourceUpdate(eC2CapacityReservationType, ResourceEC2CapacityReservation(), data, meta)
 }
 
 func resourceEC2CapacityReservationDelete(data *schema.ResourceData, meta interface{}) error {

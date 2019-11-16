@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var memberNetworkConfigurationProperties map[string]string = map[string]string{
-	"description": "Description",
-	"framework_version": "FrameworkVersion",
-	"voting_policy": "VotingPolicy",
-	"framework": "Framework",
-	"name": "Name",
-	"network_framework_configuration": "NetworkFrameworkConfiguration",
-}
-
 func propertyMemberNetworkConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

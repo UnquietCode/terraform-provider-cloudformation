@@ -14,18 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deliveryStreamSplunkDestinationConfigurationProperties map[string]string = map[string]string{
-	"cloud_watch_logging_options": "CloudWatchLoggingOptions",
-	"hec_acknowledgment_timeout_in_seconds": "HECAcknowledgmentTimeoutInSeconds",
-	"hec_endpoint": "HECEndpoint",
-	"hec_endpoint_type": "HECEndpointType",
-	"hec_token": "HECToken",
-	"processing_configuration": "ProcessingConfiguration",
-	"retry_options": "RetryOptions",
-	"s3_backup_mode": "S3BackupMode",
-	"s3_configuration": "S3Configuration",
-}
-
 func propertyDeliveryStreamSplunkDestinationConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

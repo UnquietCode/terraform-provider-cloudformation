@@ -16,12 +16,6 @@ import (
 
 const pinpointEmailConfigurationSetEventDestinationType string = "AWS::PinpointEmail::ConfigurationSetEventDestination"
 
-var pinpointEmailConfigurationSetEventDestinationProperties map[string]string = map[string]string{
-	"event_destination_name": "EventDestinationName",
-	"configuration_set_name": "ConfigurationSetName",
-	"event_destination": "EventDestination",
-}
-
 func ResourcePinpointEmailConfigurationSetEventDestination() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointEmailConfigurationSetEventDestinationExists,
@@ -64,11 +58,11 @@ func resourcePinpointEmailConfigurationSetEventDestinationRead(data *schema.Reso
 }
 
 func resourcePinpointEmailConfigurationSetEventDestinationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(pinpointEmailConfigurationSetEventDestinationType, ResourcePinpointEmailConfigurationSetEventDestination(), data, pinpointEmailConfigurationSetEventDestinationProperties, meta)
+	return plugin.ResourceCreate(pinpointEmailConfigurationSetEventDestinationType, ResourcePinpointEmailConfigurationSetEventDestination(), data, meta)
 }
 
 func resourcePinpointEmailConfigurationSetEventDestinationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(pinpointEmailConfigurationSetEventDestinationType, ResourcePinpointEmailConfigurationSetEventDestination(), data, pinpointEmailConfigurationSetEventDestinationProperties, meta)
+	return plugin.ResourceUpdate(pinpointEmailConfigurationSetEventDestinationType, ResourcePinpointEmailConfigurationSetEventDestination(), data, meta)
 }
 
 func resourcePinpointEmailConfigurationSetEventDestinationDelete(data *schema.ResourceData, meta interface{}) error {

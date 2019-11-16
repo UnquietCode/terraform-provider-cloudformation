@@ -16,14 +16,6 @@ import (
 
 const pinpointApplicationSettingsType string = "AWS::Pinpoint::ApplicationSettings"
 
-var pinpointApplicationSettingsProperties map[string]string = map[string]string{
-	"quiet_time": "QuietTime",
-	"limits": "Limits",
-	"application_id": "ApplicationId",
-	"campaign_hook": "CampaignHook",
-	"cloud_watch_metrics_enabled": "CloudWatchMetricsEnabled",
-}
-
 func ResourcePinpointApplicationSettings() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointApplicationSettingsExists,
@@ -78,11 +70,11 @@ func resourcePinpointApplicationSettingsRead(data *schema.ResourceData, meta int
 }
 
 func resourcePinpointApplicationSettingsCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(pinpointApplicationSettingsType, ResourcePinpointApplicationSettings(), data, pinpointApplicationSettingsProperties, meta)
+	return plugin.ResourceCreate(pinpointApplicationSettingsType, ResourcePinpointApplicationSettings(), data, meta)
 }
 
 func resourcePinpointApplicationSettingsUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(pinpointApplicationSettingsType, ResourcePinpointApplicationSettings(), data, pinpointApplicationSettingsProperties, meta)
+	return plugin.ResourceUpdate(pinpointApplicationSettingsType, ResourcePinpointApplicationSettings(), data, meta)
 }
 
 func resourcePinpointApplicationSettingsDelete(data *schema.ResourceData, meta interface{}) error {

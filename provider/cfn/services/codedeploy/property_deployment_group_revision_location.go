@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deploymentGroupRevisionLocationProperties map[string]string = map[string]string{
-	"git_hub_location": "GitHubLocation",
-	"revision_type": "RevisionType",
-	"s3_location": "S3Location",
-}
-
 func propertyDeploymentGroupRevisionLocation(extras...string) *schema.Resource {
 	var count int64 = 0
 	

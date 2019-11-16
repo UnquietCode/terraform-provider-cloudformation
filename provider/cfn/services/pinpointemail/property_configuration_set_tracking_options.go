@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var configurationSetTrackingOptionsProperties map[string]string = map[string]string{
-	"custom_redirect_domain": "CustomRedirectDomain",
-}
-
 func propertyConfigurationSetTrackingOptions(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,13 +16,6 @@ import (
 
 const eFSMountTargetType string = "AWS::EFS::MountTarget"
 
-var eFSMountTargetProperties map[string]string = map[string]string{
-	"file_system_id": "FileSystemId",
-	"ip_address": "IpAddress",
-	"security_groups": "SecurityGroups",
-	"subnet_id": "SubnetId",
-}
-
 func ResourceEFSMountTarget() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEFSMountTargetExists,
@@ -69,11 +62,11 @@ func resourceEFSMountTargetRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceEFSMountTargetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eFSMountTargetType, ResourceEFSMountTarget(), data, eFSMountTargetProperties, meta)
+	return plugin.ResourceCreate(eFSMountTargetType, ResourceEFSMountTarget(), data, meta)
 }
 
 func resourceEFSMountTargetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eFSMountTargetType, ResourceEFSMountTarget(), data, eFSMountTargetProperties, meta)
+	return plugin.ResourceUpdate(eFSMountTargetType, ResourceEFSMountTarget(), data, meta)
 }
 
 func resourceEFSMountTargetDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var tableStreamSpecificationProperties map[string]string = map[string]string{
-	"stream_view_type": "StreamViewType",
-}
-
 func propertyTableStreamSpecification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

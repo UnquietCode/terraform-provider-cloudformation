@@ -16,11 +16,6 @@ import (
 
 const route53HealthCheckType string = "AWS::Route53::HealthCheck"
 
-var route53HealthCheckProperties map[string]string = map[string]string{
-	"health_check_config": "HealthCheckConfig",
-	"health_check_tags": "HealthCheckTags",
-}
-
 func ResourceRoute53HealthCheck() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRoute53HealthCheckExists,
@@ -60,11 +55,11 @@ func resourceRoute53HealthCheckRead(data *schema.ResourceData, meta interface{})
 }
 
 func resourceRoute53HealthCheckCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(route53HealthCheckType, ResourceRoute53HealthCheck(), data, route53HealthCheckProperties, meta)
+	return plugin.ResourceCreate(route53HealthCheckType, ResourceRoute53HealthCheck(), data, meta)
 }
 
 func resourceRoute53HealthCheckUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(route53HealthCheckType, ResourceRoute53HealthCheck(), data, route53HealthCheckProperties, meta)
+	return plugin.ResourceUpdate(route53HealthCheckType, ResourceRoute53HealthCheck(), data, meta)
 }
 
 func resourceRoute53HealthCheckDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,18 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var organizationConfigRuleOrganizationCustomRuleMetadataProperties map[string]string = map[string]string{
-	"tag_key_scope": "TagKeyScope",
-	"tag_value_scope": "TagValueScope",
-	"description": "Description",
-	"resource_id_scope": "ResourceIdScope",
-	"lambda_function_arn": "LambdaFunctionArn",
-	"organization_config_rule_trigger_types": "OrganizationConfigRuleTriggerTypes",
-	"resource_types_scope": "ResourceTypesScope",
-	"maximum_execution_frequency": "MaximumExecutionFrequency",
-	"input_parameters": "InputParameters",
-}
-
 func propertyOrganizationConfigRuleOrganizationCustomRuleMetadata(extras...string) *schema.Resource {
 	var count int64 = 0
 	

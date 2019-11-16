@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deploymentAccessLogSettingProperties map[string]string = map[string]string{
-	"destination_arn": "DestinationArn",
-	"format": "Format",
-}
-
 func propertyDeploymentAccessLogSetting(extras...string) *schema.Resource {
 	var count int64 = 0
 	

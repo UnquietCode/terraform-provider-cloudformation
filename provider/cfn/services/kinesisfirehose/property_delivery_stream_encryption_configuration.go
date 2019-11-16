@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deliveryStreamEncryptionConfigurationProperties map[string]string = map[string]string{
-	"kms_encryption_config": "KMSEncryptionConfig",
-	"no_encryption_config": "NoEncryptionConfig",
-}
-
 func propertyDeliveryStreamEncryptionConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

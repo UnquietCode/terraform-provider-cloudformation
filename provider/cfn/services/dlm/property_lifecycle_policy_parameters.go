@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var lifecyclePolicyParametersProperties map[string]string = map[string]string{
-	"exclude_boot_volume": "ExcludeBootVolume",
-}
-
 func propertyLifecyclePolicyParameters(extras...string) *schema.Resource {
 	var count int64 = 0
 	

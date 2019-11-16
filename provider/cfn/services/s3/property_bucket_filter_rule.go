@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketFilterRuleProperties map[string]string = map[string]string{
-	"name": "Name",
-	"value": "Value",
-}
-
 func propertyBucketFilterRule(extras...string) *schema.Resource {
 	var count int64 = 0
 	

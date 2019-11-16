@@ -16,11 +16,6 @@ import (
 
 const elasticLoadBalancingV2ListenerCertificateType string = "AWS::ElasticLoadBalancingV2::ListenerCertificate"
 
-var elasticLoadBalancingV2ListenerCertificateProperties map[string]string = map[string]string{
-	"certificates": "Certificates",
-	"listener_arn": "ListenerArn",
-}
-
 func ResourceElasticLoadBalancingV2ListenerCertificate() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElasticLoadBalancingV2ListenerCertificateExists,
@@ -58,11 +53,11 @@ func resourceElasticLoadBalancingV2ListenerCertificateRead(data *schema.Resource
 }
 
 func resourceElasticLoadBalancingV2ListenerCertificateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(elasticLoadBalancingV2ListenerCertificateType, ResourceElasticLoadBalancingV2ListenerCertificate(), data, elasticLoadBalancingV2ListenerCertificateProperties, meta)
+	return plugin.ResourceCreate(elasticLoadBalancingV2ListenerCertificateType, ResourceElasticLoadBalancingV2ListenerCertificate(), data, meta)
 }
 
 func resourceElasticLoadBalancingV2ListenerCertificateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(elasticLoadBalancingV2ListenerCertificateType, ResourceElasticLoadBalancingV2ListenerCertificate(), data, elasticLoadBalancingV2ListenerCertificateProperties, meta)
+	return plugin.ResourceUpdate(elasticLoadBalancingV2ListenerCertificateType, ResourceElasticLoadBalancingV2ListenerCertificate(), data, meta)
 }
 
 func resourceElasticLoadBalancingV2ListenerCertificateDelete(data *schema.ResourceData, meta interface{}) error {

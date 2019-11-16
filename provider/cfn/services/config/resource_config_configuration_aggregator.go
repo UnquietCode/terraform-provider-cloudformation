@@ -16,12 +16,6 @@ import (
 
 const configConfigurationAggregatorType string = "AWS::Config::ConfigurationAggregator"
 
-var configConfigurationAggregatorProperties map[string]string = map[string]string{
-	"account_aggregation_sources": "AccountAggregationSources",
-	"configuration_aggregator_name": "ConfigurationAggregatorName",
-	"organization_aggregation_source": "OrganizationAggregationSource",
-}
-
 func ResourceConfigConfigurationAggregator() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceConfigConfigurationAggregatorExists,
@@ -65,11 +59,11 @@ func resourceConfigConfigurationAggregatorRead(data *schema.ResourceData, meta i
 }
 
 func resourceConfigConfigurationAggregatorCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(configConfigurationAggregatorType, ResourceConfigConfigurationAggregator(), data, configConfigurationAggregatorProperties, meta)
+	return plugin.ResourceCreate(configConfigurationAggregatorType, ResourceConfigConfigurationAggregator(), data, meta)
 }
 
 func resourceConfigConfigurationAggregatorUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(configConfigurationAggregatorType, ResourceConfigConfigurationAggregator(), data, configConfigurationAggregatorProperties, meta)
+	return plugin.ResourceUpdate(configConfigurationAggregatorType, ResourceConfigConfigurationAggregator(), data, meta)
 }
 
 func resourceConfigConfigurationAggregatorDelete(data *schema.ResourceData, meta interface{}) error {

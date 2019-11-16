@@ -16,12 +16,6 @@ import (
 
 const pinpointEventStreamType string = "AWS::Pinpoint::EventStream"
 
-var pinpointEventStreamProperties map[string]string = map[string]string{
-	"application_id": "ApplicationId",
-	"destination_stream_arn": "DestinationStreamArn",
-	"role_arn": "RoleArn",
-}
-
 func ResourcePinpointEventStream() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourcePinpointEventStreamExists,
@@ -62,11 +56,11 @@ func resourcePinpointEventStreamRead(data *schema.ResourceData, meta interface{}
 }
 
 func resourcePinpointEventStreamCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(pinpointEventStreamType, ResourcePinpointEventStream(), data, pinpointEventStreamProperties, meta)
+	return plugin.ResourceCreate(pinpointEventStreamType, ResourcePinpointEventStream(), data, meta)
 }
 
 func resourcePinpointEventStreamUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(pinpointEventStreamType, ResourcePinpointEventStream(), data, pinpointEventStreamProperties, meta)
+	return plugin.ResourceUpdate(pinpointEventStreamType, ResourcePinpointEventStream(), data, meta)
 }
 
 func resourcePinpointEventStreamDelete(data *schema.ResourceData, meta interface{}) error {

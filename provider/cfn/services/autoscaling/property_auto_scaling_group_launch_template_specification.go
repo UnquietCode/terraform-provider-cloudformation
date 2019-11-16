@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var autoScalingGroupLaunchTemplateSpecificationProperties map[string]string = map[string]string{
-	"launch_template_id": "LaunchTemplateId",
-	"launch_template_name": "LaunchTemplateName",
-	"version": "Version",
-}
-
 func propertyAutoScalingGroupLaunchTemplateSpecification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

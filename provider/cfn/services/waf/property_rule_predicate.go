@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var rulePredicateProperties map[string]string = map[string]string{
-	"data_id": "DataId",
-	"negated": "Negated",
-	"type": "Type",
-}
-
 func propertyRulePredicate(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var taskDefinitionContainerDependencyProperties map[string]string = map[string]string{
-	"condition": "Condition",
-	"container_name": "ContainerName",
-}
-
 func propertyTaskDefinitionContainerDependency(extras...string) *schema.Resource {
 	var count int64 = 0
 	

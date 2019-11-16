@@ -16,16 +16,6 @@ import (
 
 const directoryServiceMicrosoftADType string = "AWS::DirectoryService::MicrosoftAD"
 
-var directoryServiceMicrosoftADProperties map[string]string = map[string]string{
-	"create_alias": "CreateAlias",
-	"edition": "Edition",
-	"enable_sso": "EnableSso",
-	"name": "Name",
-	"password": "Password",
-	"short_name": "ShortName",
-	"vpc_settings": "VpcSettings",
-}
-
 func ResourceDirectoryServiceMicrosoftAD() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDirectoryServiceMicrosoftADExists,
@@ -84,11 +74,11 @@ func resourceDirectoryServiceMicrosoftADRead(data *schema.ResourceData, meta int
 }
 
 func resourceDirectoryServiceMicrosoftADCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(directoryServiceMicrosoftADType, ResourceDirectoryServiceMicrosoftAD(), data, directoryServiceMicrosoftADProperties, meta)
+	return plugin.ResourceCreate(directoryServiceMicrosoftADType, ResourceDirectoryServiceMicrosoftAD(), data, meta)
 }
 
 func resourceDirectoryServiceMicrosoftADUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(directoryServiceMicrosoftADType, ResourceDirectoryServiceMicrosoftAD(), data, directoryServiceMicrosoftADProperties, meta)
+	return plugin.ResourceUpdate(directoryServiceMicrosoftADType, ResourceDirectoryServiceMicrosoftAD(), data, meta)
 }
 
 func resourceDirectoryServiceMicrosoftADDelete(data *schema.ResourceData, meta interface{}) error {

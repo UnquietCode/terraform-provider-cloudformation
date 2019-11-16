@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var budgetSubscriberProperties map[string]string = map[string]string{
-	"subscription_type": "SubscriptionType",
-	"address": "Address",
-}
-
 func propertyBudgetSubscriber(extras...string) *schema.Resource {
 	var count int64 = 0
 	

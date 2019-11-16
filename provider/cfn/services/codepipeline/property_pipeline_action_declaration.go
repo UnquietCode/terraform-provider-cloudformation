@@ -14,17 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var pipelineActionDeclarationProperties map[string]string = map[string]string{
-	"action_type_id": "ActionTypeId",
-	"configuration": "Configuration",
-	"input_artifacts": "InputArtifacts",
-	"name": "Name",
-	"output_artifacts": "OutputArtifacts",
-	"region": "Region",
-	"role_arn": "RoleArn",
-	"run_order": "RunOrder",
-}
-
 func propertyPipelineActionDeclaration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

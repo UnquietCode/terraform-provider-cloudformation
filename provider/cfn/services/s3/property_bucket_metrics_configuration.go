@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketMetricsConfigurationProperties map[string]string = map[string]string{
-	"id": "Id",
-	"prefix": "Prefix",
-	"tag_filters": "TagFilters",
-}
-
 func propertyBucketMetricsConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

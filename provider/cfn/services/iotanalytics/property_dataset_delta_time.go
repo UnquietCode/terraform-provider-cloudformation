@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var datasetDeltaTimeProperties map[string]string = map[string]string{
-	"time_expression": "TimeExpression",
-	"offset_seconds": "OffsetSeconds",
-}
-
 func propertyDatasetDeltaTime(extras...string) *schema.Resource {
 	var count int64 = 0
 	

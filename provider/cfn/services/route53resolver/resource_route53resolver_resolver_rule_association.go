@@ -16,12 +16,6 @@ import (
 
 const route53ResolverResolverRuleAssociationType string = "AWS::Route53Resolver::ResolverRuleAssociation"
 
-var route53ResolverResolverRuleAssociationProperties map[string]string = map[string]string{
-	"vpc_id": "VPCId",
-	"resolver_rule_id": "ResolverRuleId",
-	"name": "Name",
-}
-
 func ResourceRoute53ResolverResolverRuleAssociation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRoute53ResolverResolverRuleAssociationExists,
@@ -62,11 +56,11 @@ func resourceRoute53ResolverResolverRuleAssociationRead(data *schema.ResourceDat
 }
 
 func resourceRoute53ResolverResolverRuleAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(route53ResolverResolverRuleAssociationType, ResourceRoute53ResolverResolverRuleAssociation(), data, route53ResolverResolverRuleAssociationProperties, meta)
+	return plugin.ResourceCreate(route53ResolverResolverRuleAssociationType, ResourceRoute53ResolverResolverRuleAssociation(), data, meta)
 }
 
 func resourceRoute53ResolverResolverRuleAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(route53ResolverResolverRuleAssociationType, ResourceRoute53ResolverResolverRuleAssociation(), data, route53ResolverResolverRuleAssociationProperties, meta)
+	return plugin.ResourceUpdate(route53ResolverResolverRuleAssociationType, ResourceRoute53ResolverResolverRuleAssociation(), data, meta)
 }
 
 func resourceRoute53ResolverResolverRuleAssociationDelete(data *schema.ResourceData, meta interface{}) error {

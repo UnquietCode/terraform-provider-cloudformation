@@ -16,15 +16,6 @@ import (
 
 const apiGatewayV2RouteResponseType string = "AWS::ApiGatewayV2::RouteResponse"
 
-var apiGatewayV2RouteResponseProperties map[string]string = map[string]string{
-	"route_response_key": "RouteResponseKey",
-	"response_parameters": "ResponseParameters",
-	"route_id": "RouteId",
-	"model_selection_expression": "ModelSelectionExpression",
-	"api_id": "ApiId",
-	"response_models": "ResponseModels",
-}
-
 func ResourceApiGatewayV2RouteResponse() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayV2RouteResponseExists,
@@ -77,11 +68,11 @@ func resourceApiGatewayV2RouteResponseRead(data *schema.ResourceData, meta inter
 }
 
 func resourceApiGatewayV2RouteResponseCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayV2RouteResponseType, ResourceApiGatewayV2RouteResponse(), data, apiGatewayV2RouteResponseProperties, meta)
+	return plugin.ResourceCreate(apiGatewayV2RouteResponseType, ResourceApiGatewayV2RouteResponse(), data, meta)
 }
 
 func resourceApiGatewayV2RouteResponseUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayV2RouteResponseType, ResourceApiGatewayV2RouteResponse(), data, apiGatewayV2RouteResponseProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayV2RouteResponseType, ResourceApiGatewayV2RouteResponse(), data, meta)
 }
 
 func resourceApiGatewayV2RouteResponseDelete(data *schema.ResourceData, meta interface{}) error {

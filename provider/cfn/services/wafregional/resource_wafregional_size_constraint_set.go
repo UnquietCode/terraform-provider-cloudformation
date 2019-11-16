@@ -16,11 +16,6 @@ import (
 
 const wAFRegionalSizeConstraintSetType string = "AWS::WAFRegional::SizeConstraintSet"
 
-var wAFRegionalSizeConstraintSetProperties map[string]string = map[string]string{
-	"size_constraints": "SizeConstraints",
-	"name": "Name",
-}
-
 func ResourceWAFRegionalSizeConstraintSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceWAFRegionalSizeConstraintSetExists,
@@ -58,11 +53,11 @@ func resourceWAFRegionalSizeConstraintSetRead(data *schema.ResourceData, meta in
 }
 
 func resourceWAFRegionalSizeConstraintSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(wAFRegionalSizeConstraintSetType, ResourceWAFRegionalSizeConstraintSet(), data, wAFRegionalSizeConstraintSetProperties, meta)
+	return plugin.ResourceCreate(wAFRegionalSizeConstraintSetType, ResourceWAFRegionalSizeConstraintSet(), data, meta)
 }
 
 func resourceWAFRegionalSizeConstraintSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(wAFRegionalSizeConstraintSetType, ResourceWAFRegionalSizeConstraintSet(), data, wAFRegionalSizeConstraintSetProperties, meta)
+	return plugin.ResourceUpdate(wAFRegionalSizeConstraintSetType, ResourceWAFRegionalSizeConstraintSet(), data, meta)
 }
 
 func resourceWAFRegionalSizeConstraintSetDelete(data *schema.ResourceData, meta interface{}) error {

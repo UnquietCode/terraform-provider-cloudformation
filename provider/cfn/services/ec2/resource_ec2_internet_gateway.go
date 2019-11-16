@@ -17,10 +17,6 @@ import (
 
 const eC2InternetGatewayType string = "AWS::EC2::InternetGateway"
 
-var eC2InternetGatewayProperties map[string]string = map[string]string{
-	"tags": "Tags",
-}
-
 func ResourceEC2InternetGateway() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2InternetGatewayExists,
@@ -50,11 +46,11 @@ func resourceEC2InternetGatewayRead(data *schema.ResourceData, meta interface{})
 }
 
 func resourceEC2InternetGatewayCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2InternetGatewayType, ResourceEC2InternetGateway(), data, eC2InternetGatewayProperties, meta)
+	return plugin.ResourceCreate(eC2InternetGatewayType, ResourceEC2InternetGateway(), data, meta)
 }
 
 func resourceEC2InternetGatewayUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2InternetGatewayType, ResourceEC2InternetGateway(), data, eC2InternetGatewayProperties, meta)
+	return plugin.ResourceUpdate(eC2InternetGatewayType, ResourceEC2InternetGateway(), data, meta)
 }
 
 func resourceEC2InternetGatewayDelete(data *schema.ResourceData, meta interface{}) error {

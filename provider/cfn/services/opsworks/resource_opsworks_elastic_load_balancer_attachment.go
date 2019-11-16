@@ -16,11 +16,6 @@ import (
 
 const opsWorksElasticLoadBalancerAttachmentType string = "AWS::OpsWorks::ElasticLoadBalancerAttachment"
 
-var opsWorksElasticLoadBalancerAttachmentProperties map[string]string = map[string]string{
-	"elastic_load_balancer_name": "ElasticLoadBalancerName",
-	"layer_id": "LayerId",
-}
-
 func ResourceOpsWorksElasticLoadBalancerAttachment() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceOpsWorksElasticLoadBalancerAttachmentExists,
@@ -57,11 +52,11 @@ func resourceOpsWorksElasticLoadBalancerAttachmentRead(data *schema.ResourceData
 }
 
 func resourceOpsWorksElasticLoadBalancerAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(opsWorksElasticLoadBalancerAttachmentType, ResourceOpsWorksElasticLoadBalancerAttachment(), data, opsWorksElasticLoadBalancerAttachmentProperties, meta)
+	return plugin.ResourceCreate(opsWorksElasticLoadBalancerAttachmentType, ResourceOpsWorksElasticLoadBalancerAttachment(), data, meta)
 }
 
 func resourceOpsWorksElasticLoadBalancerAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(opsWorksElasticLoadBalancerAttachmentType, ResourceOpsWorksElasticLoadBalancerAttachment(), data, opsWorksElasticLoadBalancerAttachmentProperties, meta)
+	return plugin.ResourceUpdate(opsWorksElasticLoadBalancerAttachmentType, ResourceOpsWorksElasticLoadBalancerAttachment(), data, meta)
 }
 
 func resourceOpsWorksElasticLoadBalancerAttachmentDelete(data *schema.ResourceData, meta interface{}) error {

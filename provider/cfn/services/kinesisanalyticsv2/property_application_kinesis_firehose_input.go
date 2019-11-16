@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationKinesisFirehoseInputProperties map[string]string = map[string]string{
-	"resource_arn": "ResourceARN",
-}
-
 func propertyApplicationKinesisFirehoseInput(extras...string) *schema.Resource {
 	var count int64 = 0
 	

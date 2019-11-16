@@ -16,16 +16,6 @@ import (
 
 const sNSSubscriptionType string = "AWS::SNS::Subscription"
 
-var sNSSubscriptionProperties map[string]string = map[string]string{
-	"delivery_policy": "DeliveryPolicy",
-	"endpoint": "Endpoint",
-	"filter_policy": "FilterPolicy",
-	"protocol": "Protocol",
-	"raw_message_delivery": "RawMessageDelivery",
-	"region": "Region",
-	"topic_arn": "TopicArn",
-}
-
 func ResourceSNSSubscription() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSNSSubscriptionExists,
@@ -82,11 +72,11 @@ func resourceSNSSubscriptionRead(data *schema.ResourceData, meta interface{}) er
 }
 
 func resourceSNSSubscriptionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(sNSSubscriptionType, ResourceSNSSubscription(), data, sNSSubscriptionProperties, meta)
+	return plugin.ResourceCreate(sNSSubscriptionType, ResourceSNSSubscription(), data, meta)
 }
 
 func resourceSNSSubscriptionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(sNSSubscriptionType, ResourceSNSSubscription(), data, sNSSubscriptionProperties, meta)
+	return plugin.ResourceUpdate(sNSSubscriptionType, ResourceSNSSubscription(), data, meta)
 }
 
 func resourceSNSSubscriptionDelete(data *schema.ResourceData, meta interface{}) error {

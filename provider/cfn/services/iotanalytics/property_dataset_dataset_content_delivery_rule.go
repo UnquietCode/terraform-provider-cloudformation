@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var datasetDatasetContentDeliveryRuleProperties map[string]string = map[string]string{
-	"destination": "Destination",
-	"entry_name": "EntryName",
-}
-
 func propertyDatasetDatasetContentDeliveryRule(extras...string) *schema.Resource {
 	var count int64 = 0
 	

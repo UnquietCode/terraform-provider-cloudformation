@@ -16,11 +16,6 @@ import (
 
 const logsLogGroupType string = "AWS::Logs::LogGroup"
 
-var logsLogGroupProperties map[string]string = map[string]string{
-	"log_group_name": "LogGroupName",
-	"retention_in_days": "RetentionInDays",
-}
-
 func ResourceLogsLogGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceLogsLogGroupExists,
@@ -57,11 +52,11 @@ func resourceLogsLogGroupRead(data *schema.ResourceData, meta interface{}) error
 }
 
 func resourceLogsLogGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(logsLogGroupType, ResourceLogsLogGroup(), data, logsLogGroupProperties, meta)
+	return plugin.ResourceCreate(logsLogGroupType, ResourceLogsLogGroup(), data, meta)
 }
 
 func resourceLogsLogGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(logsLogGroupType, ResourceLogsLogGroup(), data, logsLogGroupProperties, meta)
+	return plugin.ResourceUpdate(logsLogGroupType, ResourceLogsLogGroup(), data, meta)
 }
 
 func resourceLogsLogGroupDelete(data *schema.ResourceData, meta interface{}) error {

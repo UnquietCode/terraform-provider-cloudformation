@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var configurationSetTagsProperties map[string]string = map[string]string{
-	"value": "Value",
-	"key": "Key",
-}
-
 func propertyConfigurationSetTags(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var scalingPolicyStepAdjustmentProperties map[string]string = map[string]string{
-	"metric_interval_lower_bound": "MetricIntervalLowerBound",
-	"metric_interval_upper_bound": "MetricIntervalUpperBound",
-	"scaling_adjustment": "ScalingAdjustment",
-}
-
 func propertyScalingPolicyStepAdjustment(extras...string) *schema.Resource {
 	var count int64 = 0
 	

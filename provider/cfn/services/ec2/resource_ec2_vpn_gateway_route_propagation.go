@@ -16,11 +16,6 @@ import (
 
 const eC2VPNGatewayRoutePropagationType string = "AWS::EC2::VPNGatewayRoutePropagation"
 
-var eC2VPNGatewayRoutePropagationProperties map[string]string = map[string]string{
-	"route_table_ids": "RouteTableIds",
-	"vpn_gateway_id": "VpnGatewayId",
-}
-
 func ResourceEC2VPNGatewayRoutePropagation() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPNGatewayRoutePropagationExists,
@@ -58,11 +53,11 @@ func resourceEC2VPNGatewayRoutePropagationRead(data *schema.ResourceData, meta i
 }
 
 func resourceEC2VPNGatewayRoutePropagationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2VPNGatewayRoutePropagationType, ResourceEC2VPNGatewayRoutePropagation(), data, eC2VPNGatewayRoutePropagationProperties, meta)
+	return plugin.ResourceCreate(eC2VPNGatewayRoutePropagationType, ResourceEC2VPNGatewayRoutePropagation(), data, meta)
 }
 
 func resourceEC2VPNGatewayRoutePropagationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2VPNGatewayRoutePropagationType, ResourceEC2VPNGatewayRoutePropagation(), data, eC2VPNGatewayRoutePropagationProperties, meta)
+	return plugin.ResourceUpdate(eC2VPNGatewayRoutePropagationType, ResourceEC2VPNGatewayRoutePropagation(), data, meta)
 }
 
 func resourceEC2VPNGatewayRoutePropagationDelete(data *schema.ResourceData, meta interface{}) error {

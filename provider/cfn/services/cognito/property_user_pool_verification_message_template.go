@@ -14,15 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var userPoolVerificationMessageTemplateProperties map[string]string = map[string]string{
-	"email_message_by_link": "EmailMessageByLink",
-	"email_message": "EmailMessage",
-	"sms_message": "SmsMessage",
-	"email_subject": "EmailSubject",
-	"default_email_option": "DefaultEmailOption",
-	"email_subject_by_link": "EmailSubjectByLink",
-}
-
 func propertyUserPoolVerificationMessageTemplate(extras...string) *schema.Resource {
 	var count int64 = 0
 	

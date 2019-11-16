@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var channelVideoSelectorProperties map[string]string = map[string]string{
-	"selector_settings": "SelectorSettings",
-	"color_space": "ColorSpace",
-	"color_space_usage": "ColorSpaceUsage",
-}
-
 func propertyChannelVideoSelector(extras...string) *schema.Resource {
 	var count int64 = 0
 	

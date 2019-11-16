@@ -17,13 +17,6 @@ import (
 
 const redshiftClusterParameterGroupType string = "AWS::Redshift::ClusterParameterGroup"
 
-var redshiftClusterParameterGroupProperties map[string]string = map[string]string{
-	"description": "Description",
-	"parameter_group_family": "ParameterGroupFamily",
-	"parameters": "Parameters",
-	"tags": "Tags",
-}
-
 func ResourceRedshiftClusterParameterGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceRedshiftClusterParameterGroupExists,
@@ -66,11 +59,11 @@ func resourceRedshiftClusterParameterGroupRead(data *schema.ResourceData, meta i
 }
 
 func resourceRedshiftClusterParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(redshiftClusterParameterGroupType, ResourceRedshiftClusterParameterGroup(), data, redshiftClusterParameterGroupProperties, meta)
+	return plugin.ResourceCreate(redshiftClusterParameterGroupType, ResourceRedshiftClusterParameterGroup(), data, meta)
 }
 
 func resourceRedshiftClusterParameterGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(redshiftClusterParameterGroupType, ResourceRedshiftClusterParameterGroup(), data, redshiftClusterParameterGroupProperties, meta)
+	return plugin.ResourceUpdate(redshiftClusterParameterGroupType, ResourceRedshiftClusterParameterGroup(), data, meta)
 }
 
 func resourceRedshiftClusterParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var jobDefinitionUlimitProperties map[string]string = map[string]string{
-	"soft_limit": "SoftLimit",
-	"hard_limit": "HardLimit",
-	"name": "Name",
-}
-
 func propertyJobDefinitionUlimit(extras...string) *schema.Resource {
 	var count int64 = 0
 	

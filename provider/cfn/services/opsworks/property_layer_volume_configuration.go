@@ -14,16 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var layerVolumeConfigurationProperties map[string]string = map[string]string{
-	"encrypted": "Encrypted",
-	"iops": "Iops",
-	"mount_point": "MountPoint",
-	"number_of_disks": "NumberOfDisks",
-	"raid_level": "RaidLevel",
-	"size": "Size",
-	"volume_type": "VolumeType",
-}
-
 func propertyLayerVolumeConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

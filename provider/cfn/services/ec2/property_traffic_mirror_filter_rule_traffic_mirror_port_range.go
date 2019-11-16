@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var trafficMirrorFilterRuleTrafficMirrorPortRangeProperties map[string]string = map[string]string{
-	"from_port": "FromPort",
-	"to_port": "ToPort",
-}
-
 func propertyTrafficMirrorFilterRuleTrafficMirrorPortRange(extras...string) *schema.Resource {
 	var count int64 = 0
 	

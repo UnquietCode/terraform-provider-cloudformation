@@ -16,11 +16,6 @@ import (
 
 const ioTPolicyType string = "AWS::IoT::Policy"
 
-var ioTPolicyProperties map[string]string = map[string]string{
-	"policy_document": "PolicyDocument",
-	"policy_name": "PolicyName",
-}
-
 func ResourceIoTPolicy() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceIoTPolicyExists,
@@ -57,11 +52,11 @@ func resourceIoTPolicyRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceIoTPolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(ioTPolicyType, ResourceIoTPolicy(), data, ioTPolicyProperties, meta)
+	return plugin.ResourceCreate(ioTPolicyType, ResourceIoTPolicy(), data, meta)
 }
 
 func resourceIoTPolicyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(ioTPolicyType, ResourceIoTPolicy(), data, ioTPolicyProperties, meta)
+	return plugin.ResourceUpdate(ioTPolicyType, ResourceIoTPolicy(), data, meta)
 }
 
 func resourceIoTPolicyDelete(data *schema.ResourceData, meta interface{}) error {

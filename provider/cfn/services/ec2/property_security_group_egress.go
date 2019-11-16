@@ -14,17 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var securityGroupEgressProperties map[string]string = map[string]string{
-	"cidr_ip": "CidrIp",
-	"cidr_ipv6": "CidrIpv6",
-	"description": "Description",
-	"destination_prefix_list_id": "DestinationPrefixListId",
-	"destination_security_group_id": "DestinationSecurityGroupId",
-	"from_port": "FromPort",
-	"ip_protocol": "IpProtocol",
-	"to_port": "ToPort",
-}
-
 func propertySecurityGroupEgress(extras...string) *schema.Resource {
 	var count int64 = 0
 	

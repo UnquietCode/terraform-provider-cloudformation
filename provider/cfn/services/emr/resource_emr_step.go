@@ -16,13 +16,6 @@ import (
 
 const eMRStepType string = "AWS::EMR::Step"
 
-var eMRStepProperties map[string]string = map[string]string{
-	"action_on_failure": "ActionOnFailure",
-	"hadoop_jar_step": "HadoopJarStep",
-	"job_flow_id": "JobFlowId",
-	"name": "Name",
-}
-
 func ResourceEMRStep() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEMRStepExists,
@@ -69,11 +62,11 @@ func resourceEMRStepRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceEMRStepCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eMRStepType, ResourceEMRStep(), data, eMRStepProperties, meta)
+	return plugin.ResourceCreate(eMRStepType, ResourceEMRStep(), data, meta)
 }
 
 func resourceEMRStepUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eMRStepType, ResourceEMRStep(), data, eMRStepProperties, meta)
+	return plugin.ResourceUpdate(eMRStepType, ResourceEMRStep(), data, meta)
 }
 
 func resourceEMRStepDelete(data *schema.ResourceData, meta interface{}) error {

@@ -16,14 +16,6 @@ import (
 
 const backupBackupVaultType string = "AWS::Backup::BackupVault"
 
-var backupBackupVaultProperties map[string]string = map[string]string{
-	"backup_vault_tags": "BackupVaultTags",
-	"backup_vault_name": "BackupVaultName",
-	"encryption_key_arn": "EncryptionKeyArn",
-	"notifications": "Notifications",
-	"access_policy": "AccessPolicy",
-}
-
 func ResourceBackupBackupVault() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceBackupBackupVaultExists,
@@ -74,11 +66,11 @@ func resourceBackupBackupVaultRead(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceBackupBackupVaultCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(backupBackupVaultType, ResourceBackupBackupVault(), data, backupBackupVaultProperties, meta)
+	return plugin.ResourceCreate(backupBackupVaultType, ResourceBackupBackupVault(), data, meta)
 }
 
 func resourceBackupBackupVaultUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(backupBackupVaultType, ResourceBackupBackupVault(), data, backupBackupVaultProperties, meta)
+	return plugin.ResourceUpdate(backupBackupVaultType, ResourceBackupBackupVault(), data, meta)
 }
 
 func resourceBackupBackupVaultDelete(data *schema.ResourceData, meta interface{}) error {

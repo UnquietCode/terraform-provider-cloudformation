@@ -15,14 +15,6 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 )
 
-var lifecyclePolicyPolicyDetailsProperties map[string]string = map[string]string{
-	"resource_types": "ResourceTypes",
-	"schedules": "Schedules",
-	"policy_type": "PolicyType",
-	"parameters": "Parameters",
-	"target_tags": "TargetTags",
-}
-
 func propertyLifecyclePolicyPolicyDetails(extras...string) *schema.Resource {
 	var count int64 = 0
 	

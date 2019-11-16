@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var campaignCampaignSmsMessageProperties map[string]string = map[string]string{
-	"sender_id": "SenderId",
-	"body": "Body",
-	"message_type": "MessageType",
-}
-
 func propertyCampaignCampaignSmsMessage(extras...string) *schema.Resource {
 	var count int64 = 0
 	

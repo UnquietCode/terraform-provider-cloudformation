@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var aliasVersionWeightProperties map[string]string = map[string]string{
-	"function_version": "FunctionVersion",
-	"function_weight": "FunctionWeight",
-}
-
 func propertyAliasVersionWeight(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -16,13 +16,6 @@ import (
 
 const eC2VPCEndpointConnectionNotificationType string = "AWS::EC2::VPCEndpointConnectionNotification"
 
-var eC2VPCEndpointConnectionNotificationProperties map[string]string = map[string]string{
-	"connection_events": "ConnectionEvents",
-	"vpc_endpoint_id": "VPCEndpointId",
-	"service_id": "ServiceId",
-	"connection_notification_arn": "ConnectionNotificationArn",
-}
-
 func ResourceEC2VPCEndpointConnectionNotification() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2VPCEndpointConnectionNotificationExists,
@@ -68,11 +61,11 @@ func resourceEC2VPCEndpointConnectionNotificationRead(data *schema.ResourceData,
 }
 
 func resourceEC2VPCEndpointConnectionNotificationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2VPCEndpointConnectionNotificationType, ResourceEC2VPCEndpointConnectionNotification(), data, eC2VPCEndpointConnectionNotificationProperties, meta)
+	return plugin.ResourceCreate(eC2VPCEndpointConnectionNotificationType, ResourceEC2VPCEndpointConnectionNotification(), data, meta)
 }
 
 func resourceEC2VPCEndpointConnectionNotificationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2VPCEndpointConnectionNotificationType, ResourceEC2VPCEndpointConnectionNotification(), data, eC2VPCEndpointConnectionNotificationProperties, meta)
+	return plugin.ResourceUpdate(eC2VPCEndpointConnectionNotificationType, ResourceEC2VPCEndpointConnectionNotification(), data, meta)
 }
 
 func resourceEC2VPCEndpointConnectionNotificationDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var pipelineFilterProperties map[string]string = map[string]string{
-	"filter": "Filter",
-	"next": "Next",
-	"name": "Name",
-}
-
 func propertyPipelineFilter(extras...string) *schema.Resource {
 	var count int64 = 0
 	

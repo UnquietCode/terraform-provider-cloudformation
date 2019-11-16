@@ -16,12 +16,6 @@ import (
 
 const serviceCatalogPortfolioShareType string = "AWS::ServiceCatalog::PortfolioShare"
 
-var serviceCatalogPortfolioShareProperties map[string]string = map[string]string{
-	"account_id": "AccountId",
-	"accept_language": "AcceptLanguage",
-	"portfolio_id": "PortfolioId",
-}
-
 func ResourceServiceCatalogPortfolioShare() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceServiceCatalogPortfolioShareExists,
@@ -62,11 +56,11 @@ func resourceServiceCatalogPortfolioShareRead(data *schema.ResourceData, meta in
 }
 
 func resourceServiceCatalogPortfolioShareCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(serviceCatalogPortfolioShareType, ResourceServiceCatalogPortfolioShare(), data, serviceCatalogPortfolioShareProperties, meta)
+	return plugin.ResourceCreate(serviceCatalogPortfolioShareType, ResourceServiceCatalogPortfolioShare(), data, meta)
 }
 
 func resourceServiceCatalogPortfolioShareUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(serviceCatalogPortfolioShareType, ResourceServiceCatalogPortfolioShare(), data, serviceCatalogPortfolioShareProperties, meta)
+	return plugin.ResourceUpdate(serviceCatalogPortfolioShareType, ResourceServiceCatalogPortfolioShare(), data, meta)
 }
 
 func resourceServiceCatalogPortfolioShareDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deliveryStreamCopyCommandProperties map[string]string = map[string]string{
-	"copy_options": "CopyOptions",
-	"data_table_columns": "DataTableColumns",
-	"data_table_name": "DataTableName",
-}
-
 func propertyDeliveryStreamCopyCommand(extras...string) *schema.Resource {
 	var count int64 = 0
 	

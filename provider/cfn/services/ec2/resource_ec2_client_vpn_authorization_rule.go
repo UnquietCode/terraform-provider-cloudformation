@@ -16,14 +16,6 @@ import (
 
 const eC2ClientVpnAuthorizationRuleType string = "AWS::EC2::ClientVpnAuthorizationRule"
 
-var eC2ClientVpnAuthorizationRuleProperties map[string]string = map[string]string{
-	"client_vpn_endpoint_id": "ClientVpnEndpointId",
-	"description": "Description",
-	"access_group_id": "AccessGroupId",
-	"target_network_cidr": "TargetNetworkCidr",
-	"authorize_all_groups": "AuthorizeAllGroups",
-}
-
 func ResourceEC2ClientVpnAuthorizationRule() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceEC2ClientVpnAuthorizationRuleExists,
@@ -72,11 +64,11 @@ func resourceEC2ClientVpnAuthorizationRuleRead(data *schema.ResourceData, meta i
 }
 
 func resourceEC2ClientVpnAuthorizationRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(eC2ClientVpnAuthorizationRuleType, ResourceEC2ClientVpnAuthorizationRule(), data, eC2ClientVpnAuthorizationRuleProperties, meta)
+	return plugin.ResourceCreate(eC2ClientVpnAuthorizationRuleType, ResourceEC2ClientVpnAuthorizationRule(), data, meta)
 }
 
 func resourceEC2ClientVpnAuthorizationRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(eC2ClientVpnAuthorizationRuleType, ResourceEC2ClientVpnAuthorizationRule(), data, eC2ClientVpnAuthorizationRuleProperties, meta)
+	return plugin.ResourceUpdate(eC2ClientVpnAuthorizationRuleType, ResourceEC2ClientVpnAuthorizationRule(), data, meta)
 }
 
 func resourceEC2ClientVpnAuthorizationRuleDelete(data *schema.ResourceData, meta interface{}) error {

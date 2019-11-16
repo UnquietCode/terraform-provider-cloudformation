@@ -16,12 +16,6 @@ import (
 
 const apiGatewayDocumentationPartType string = "AWS::ApiGateway::DocumentationPart"
 
-var apiGatewayDocumentationPartProperties map[string]string = map[string]string{
-	"location": "Location",
-	"properties": "Properties",
-	"rest_api_id": "RestApiId",
-}
-
 func ResourceApiGatewayDocumentationPart() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceApiGatewayDocumentationPartExists,
@@ -64,11 +58,11 @@ func resourceApiGatewayDocumentationPartRead(data *schema.ResourceData, meta int
 }
 
 func resourceApiGatewayDocumentationPartCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(apiGatewayDocumentationPartType, ResourceApiGatewayDocumentationPart(), data, apiGatewayDocumentationPartProperties, meta)
+	return plugin.ResourceCreate(apiGatewayDocumentationPartType, ResourceApiGatewayDocumentationPart(), data, meta)
 }
 
 func resourceApiGatewayDocumentationPartUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(apiGatewayDocumentationPartType, ResourceApiGatewayDocumentationPart(), data, apiGatewayDocumentationPartProperties, meta)
+	return plugin.ResourceUpdate(apiGatewayDocumentationPartType, ResourceApiGatewayDocumentationPart(), data, meta)
 }
 
 func resourceApiGatewayDocumentationPartDelete(data *schema.ResourceData, meta interface{}) error {

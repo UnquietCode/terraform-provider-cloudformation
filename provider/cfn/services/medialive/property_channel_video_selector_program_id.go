@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var channelVideoSelectorProgramIdProperties map[string]string = map[string]string{
-	"program_id": "ProgramId",
-}
-
 func propertyChannelVideoSelectorProgramId(extras...string) *schema.Resource {
 	var count int64 = 0
 	

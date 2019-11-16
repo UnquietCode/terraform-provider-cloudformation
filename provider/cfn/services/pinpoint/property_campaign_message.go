@@ -14,21 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var campaignMessageProperties map[string]string = map[string]string{
-	"json_body": "JsonBody",
-	"action": "Action",
-	"media_url": "MediaUrl",
-	"time_to_live": "TimeToLive",
-	"image_small_icon_url": "ImageSmallIconUrl",
-	"image_url": "ImageUrl",
-	"title": "Title",
-	"image_icon_url": "ImageIconUrl",
-	"silent_push": "SilentPush",
-	"body": "Body",
-	"raw_content": "RawContent",
-	"url": "Url",
-}
-
 func propertyCampaignMessage(extras...string) *schema.Resource {
 	var count int64 = 0
 	

@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var dBClusterScalingConfigurationProperties map[string]string = map[string]string{
-	"auto_pause": "AutoPause",
-	"max_capacity": "MaxCapacity",
-	"min_capacity": "MinCapacity",
-	"seconds_until_auto_pause": "SecondsUntilAutoPause",
-}
-
 func propertyDBClusterScalingConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
 	

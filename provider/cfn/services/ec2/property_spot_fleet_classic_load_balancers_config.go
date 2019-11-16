@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var spotFleetClassicLoadBalancersConfigProperties map[string]string = map[string]string{
-	"classic_load_balancers": "ClassicLoadBalancers",
-}
-
 func propertySpotFleetClassicLoadBalancersConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

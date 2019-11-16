@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var tableLocalSecondaryIndexProperties map[string]string = map[string]string{
-	"index_name": "IndexName",
-	"key_schema": "KeySchema",
-	"projection": "Projection",
-}
-
 func propertyTableLocalSecondaryIndex(extras...string) *schema.Resource {
 	var count int64 = 0
 	

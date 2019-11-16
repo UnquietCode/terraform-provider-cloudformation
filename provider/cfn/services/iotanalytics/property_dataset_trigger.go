@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var datasetTriggerProperties map[string]string = map[string]string{
-	"schedule": "Schedule",
-	"triggering_dataset": "TriggeringDataset",
-}
-
 func propertyDatasetTrigger(extras...string) *schema.Resource {
 	var count int64 = 0
 	

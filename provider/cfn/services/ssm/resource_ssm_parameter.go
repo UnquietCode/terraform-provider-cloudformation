@@ -16,17 +16,6 @@ import (
 
 const sSMParameterType string = "AWS::SSM::Parameter"
 
-var sSMParameterProperties map[string]string = map[string]string{
-	"type": "Type",
-	"description": "Description",
-	"policies": "Policies",
-	"allowed_pattern": "AllowedPattern",
-	"tier": "Tier",
-	"value": "Value",
-	"tags": "Tags",
-	"name": "Name",
-}
-
 func ResourceSSMParameter() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceSSMParameterExists,
@@ -87,11 +76,11 @@ func resourceSSMParameterRead(data *schema.ResourceData, meta interface{}) error
 }
 
 func resourceSSMParameterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(sSMParameterType, ResourceSSMParameter(), data, sSMParameterProperties, meta)
+	return plugin.ResourceCreate(sSMParameterType, ResourceSSMParameter(), data, meta)
 }
 
 func resourceSSMParameterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(sSMParameterType, ResourceSSMParameter(), data, sSMParameterProperties, meta)
+	return plugin.ResourceUpdate(sSMParameterType, ResourceSSMParameter(), data, meta)
 }
 
 func resourceSSMParameterDelete(data *schema.ResourceData, meta interface{}) error {

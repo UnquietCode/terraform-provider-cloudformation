@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var clusterEncryptionInTransitProperties map[string]string = map[string]string{
-	"client_broker": "ClientBroker",
-	"in_cluster": "InCluster",
-}
-
 func propertyClusterEncryptionInTransit(extras...string) *schema.Resource {
 	var count int64 = 0
 	

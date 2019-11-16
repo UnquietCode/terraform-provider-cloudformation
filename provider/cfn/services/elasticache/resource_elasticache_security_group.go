@@ -16,10 +16,6 @@ import (
 
 const elastiCacheSecurityGroupType string = "AWS::ElastiCache::SecurityGroup"
 
-var elastiCacheSecurityGroupProperties map[string]string = map[string]string{
-	"description": "Description",
-}
-
 func ResourceElastiCacheSecurityGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceElastiCacheSecurityGroupExists,
@@ -52,11 +48,11 @@ func resourceElastiCacheSecurityGroupRead(data *schema.ResourceData, meta interf
 }
 
 func resourceElastiCacheSecurityGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(elastiCacheSecurityGroupType, ResourceElastiCacheSecurityGroup(), data, elastiCacheSecurityGroupProperties, meta)
+	return plugin.ResourceCreate(elastiCacheSecurityGroupType, ResourceElastiCacheSecurityGroup(), data, meta)
 }
 
 func resourceElastiCacheSecurityGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(elastiCacheSecurityGroupType, ResourceElastiCacheSecurityGroup(), data, elastiCacheSecurityGroupProperties, meta)
+	return plugin.ResourceUpdate(elastiCacheSecurityGroupType, ResourceElastiCacheSecurityGroup(), data, meta)
 }
 
 func resourceElastiCacheSecurityGroupDelete(data *schema.ResourceData, meta interface{}) error {

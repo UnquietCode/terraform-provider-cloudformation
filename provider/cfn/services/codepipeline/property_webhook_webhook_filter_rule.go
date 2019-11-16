@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var webhookWebhookFilterRuleProperties map[string]string = map[string]string{
-	"json_path": "JsonPath",
-	"match_equals": "MatchEquals",
-}
-
 func propertyWebhookWebhookFilterRule(extras...string) *schema.Resource {
 	var count int64 = 0
 	

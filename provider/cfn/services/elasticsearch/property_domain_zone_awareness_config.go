@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var domainZoneAwarenessConfigProperties map[string]string = map[string]string{
-	"availability_zone_count": "AvailabilityZoneCount",
-}
-
 func propertyDomainZoneAwarenessConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

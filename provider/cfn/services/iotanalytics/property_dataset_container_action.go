@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var datasetContainerActionProperties map[string]string = map[string]string{
-	"variables": "Variables",
-	"execution_role_arn": "ExecutionRoleArn",
-	"image": "Image",
-	"resource_configuration": "ResourceConfiguration",
-}
-
 func propertyDatasetContainerAction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

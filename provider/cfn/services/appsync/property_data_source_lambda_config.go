@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var dataSourceLambdaConfigProperties map[string]string = map[string]string{
-	"lambda_function_arn": "LambdaFunctionArn",
-}
-
 func propertyDataSourceLambdaConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

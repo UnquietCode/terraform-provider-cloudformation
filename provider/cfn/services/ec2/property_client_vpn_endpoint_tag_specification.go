@@ -15,11 +15,6 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 )
 
-var clientVpnEndpointTagSpecificationProperties map[string]string = map[string]string{
-	"resource_type": "ResourceType",
-	"tags": "Tags",
-}
-
 func propertyClientVpnEndpointTagSpecification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

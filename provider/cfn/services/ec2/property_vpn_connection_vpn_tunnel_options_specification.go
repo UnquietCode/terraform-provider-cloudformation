@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var vPNConnectionVpnTunnelOptionsSpecificationProperties map[string]string = map[string]string{
-	"pre_shared_key": "PreSharedKey",
-	"tunnel_inside_cidr": "TunnelInsideCidr",
-}
-
 func propertyVPNConnectionVpnTunnelOptionsSpecification(extras...string) *schema.Resource {
 	var count int64 = 0
 	

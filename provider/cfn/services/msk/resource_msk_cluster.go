@@ -16,18 +16,6 @@ import (
 
 const mSKClusterType string = "AWS::MSK::Cluster"
 
-var mSKClusterProperties map[string]string = map[string]string{
-	"broker_node_group_info": "BrokerNodeGroupInfo",
-	"enhanced_monitoring": "EnhancedMonitoring",
-	"kafka_version": "KafkaVersion",
-	"number_of_broker_nodes": "NumberOfBrokerNodes",
-	"encryption_info": "EncryptionInfo",
-	"cluster_name": "ClusterName",
-	"client_authentication": "ClientAuthentication",
-	"tags": "Tags",
-	"configuration_info": "ConfigurationInfo",
-}
-
 func ResourceMSKCluster() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceMSKClusterExists,
@@ -100,11 +88,11 @@ func resourceMSKClusterRead(data *schema.ResourceData, meta interface{}) error {
 }
 
 func resourceMSKClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(mSKClusterType, ResourceMSKCluster(), data, mSKClusterProperties, meta)
+	return plugin.ResourceCreate(mSKClusterType, ResourceMSKCluster(), data, meta)
 }
 
 func resourceMSKClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(mSKClusterType, ResourceMSKCluster(), data, mSKClusterProperties, meta)
+	return plugin.ResourceUpdate(mSKClusterType, ResourceMSKCluster(), data, meta)
 }
 
 func resourceMSKClusterDelete(data *schema.ResourceData, meta interface{}) error {

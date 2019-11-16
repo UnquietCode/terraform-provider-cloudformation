@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var applicationInputParallelismProperties map[string]string = map[string]string{
-	"the_count": "TheCount",
-}
-
 func propertyApplicationInputParallelism(extras...string) *schema.Resource {
 	var count int64 = 0
 	

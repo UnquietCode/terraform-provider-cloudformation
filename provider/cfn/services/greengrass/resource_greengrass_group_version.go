@@ -16,17 +16,6 @@ import (
 
 const greengrassGroupVersionType string = "AWS::Greengrass::GroupVersion"
 
-var greengrassGroupVersionProperties map[string]string = map[string]string{
-	"logger_definition_version_arn": "LoggerDefinitionVersionArn",
-	"device_definition_version_arn": "DeviceDefinitionVersionArn",
-	"function_definition_version_arn": "FunctionDefinitionVersionArn",
-	"core_definition_version_arn": "CoreDefinitionVersionArn",
-	"resource_definition_version_arn": "ResourceDefinitionVersionArn",
-	"connector_definition_version_arn": "ConnectorDefinitionVersionArn",
-	"subscription_definition_version_arn": "SubscriptionDefinitionVersionArn",
-	"group_id": "GroupId",
-}
-
 func ResourceGreengrassGroupVersion() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGreengrassGroupVersionExists,
@@ -87,11 +76,11 @@ func resourceGreengrassGroupVersionRead(data *schema.ResourceData, meta interfac
 }
 
 func resourceGreengrassGroupVersionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(greengrassGroupVersionType, ResourceGreengrassGroupVersion(), data, greengrassGroupVersionProperties, meta)
+	return plugin.ResourceCreate(greengrassGroupVersionType, ResourceGreengrassGroupVersion(), data, meta)
 }
 
 func resourceGreengrassGroupVersionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(greengrassGroupVersionType, ResourceGreengrassGroupVersion(), data, greengrassGroupVersionProperties, meta)
+	return plugin.ResourceUpdate(greengrassGroupVersionType, ResourceGreengrassGroupVersion(), data, meta)
 }
 
 func resourceGreengrassGroupVersionDelete(data *schema.ResourceData, meta interface{}) error {

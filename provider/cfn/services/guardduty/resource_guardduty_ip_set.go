@@ -16,14 +16,6 @@ import (
 
 const guardDutyIPSetType string = "AWS::GuardDuty::IPSet"
 
-var guardDutyIPSetProperties map[string]string = map[string]string{
-	"format": "Format",
-	"activate": "Activate",
-	"detector_id": "DetectorId",
-	"name": "Name",
-	"location": "Location",
-}
-
 func ResourceGuardDutyIPSet() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGuardDutyIPSetExists,
@@ -72,11 +64,11 @@ func resourceGuardDutyIPSetRead(data *schema.ResourceData, meta interface{}) err
 }
 
 func resourceGuardDutyIPSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(guardDutyIPSetType, ResourceGuardDutyIPSet(), data, guardDutyIPSetProperties, meta)
+	return plugin.ResourceCreate(guardDutyIPSetType, ResourceGuardDutyIPSet(), data, meta)
 }
 
 func resourceGuardDutyIPSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(guardDutyIPSetType, ResourceGuardDutyIPSet(), data, guardDutyIPSetProperties, meta)
+	return plugin.ResourceUpdate(guardDutyIPSetType, ResourceGuardDutyIPSet(), data, meta)
 }
 
 func resourceGuardDutyIPSetDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var connectionPhysicalConnectionRequirementsProperties map[string]string = map[string]string{
-	"availability_zone": "AvailabilityZone",
-	"security_group_id_list": "SecurityGroupIdList",
-	"subnet_id": "SubnetId",
-}
-
 func propertyConnectionPhysicalConnectionRequirements(extras...string) *schema.Resource {
 	var count int64 = 0
 	

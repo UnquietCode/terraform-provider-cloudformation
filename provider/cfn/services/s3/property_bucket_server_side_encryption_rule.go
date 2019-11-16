@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var bucketServerSideEncryptionRuleProperties map[string]string = map[string]string{
-	"server_side_encryption_by_default": "ServerSideEncryptionByDefault",
-}
-
 func propertyBucketServerSideEncryptionRule(extras...string) *schema.Resource {
 	var count int64 = 0
 	

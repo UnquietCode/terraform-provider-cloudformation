@@ -14,11 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var loadBalancerSubnetMappingProperties map[string]string = map[string]string{
-	"allocation_id": "AllocationId",
-	"subnet_id": "SubnetId",
-}
-
 func propertyLoadBalancerSubnetMapping(extras...string) *schema.Resource {
 	var count int64 = 0
 	

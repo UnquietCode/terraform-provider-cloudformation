@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deliveryStreamElasticsearchRetryOptionsProperties map[string]string = map[string]string{
-	"duration_in_seconds": "DurationInSeconds",
-}
-
 func propertyDeliveryStreamElasticsearchRetryOptions(extras...string) *schema.Resource {
 	var count int64 = 0
 	

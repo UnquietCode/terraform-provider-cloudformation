@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var routeHttpRouteHeaderProperties map[string]string = map[string]string{
-	"invert": "Invert",
-	"name": "Name",
-	"match": "Match",
-}
-
 func propertyRouteHttpRouteHeader(extras...string) *schema.Resource {
 	var count int64 = 0
 	

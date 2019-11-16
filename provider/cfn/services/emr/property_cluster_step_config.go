@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var clusterStepConfigProperties map[string]string = map[string]string{
-	"action_on_failure": "ActionOnFailure",
-	"hadoop_jar_step": "HadoopJarStep",
-	"name": "Name",
-}
-
 func propertyClusterStepConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

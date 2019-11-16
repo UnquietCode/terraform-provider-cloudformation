@@ -16,13 +16,6 @@ import (
 
 const glueWorkflowType string = "AWS::Glue::Workflow"
 
-var glueWorkflowProperties map[string]string = map[string]string{
-	"description": "Description",
-	"default_run_properties": "DefaultRunProperties",
-	"tags": "Tags",
-	"name": "Name",
-}
-
 func ResourceGlueWorkflow() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceGlueWorkflowExists,
@@ -67,11 +60,11 @@ func resourceGlueWorkflowRead(data *schema.ResourceData, meta interface{}) error
 }
 
 func resourceGlueWorkflowCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(glueWorkflowType, ResourceGlueWorkflow(), data, glueWorkflowProperties, meta)
+	return plugin.ResourceCreate(glueWorkflowType, ResourceGlueWorkflow(), data, meta)
 }
 
 func resourceGlueWorkflowUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(glueWorkflowType, ResourceGlueWorkflow(), data, glueWorkflowProperties, meta)
+	return plugin.ResourceUpdate(glueWorkflowType, ResourceGlueWorkflow(), data, meta)
 }
 
 func resourceGlueWorkflowDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var cloudFrontOriginAccessIdentityCloudFrontOriginAccessIdentityConfigProperties map[string]string = map[string]string{
-	"comment": "Comment",
-}
-
 func propertyCloudFrontOriginAccessIdentityCloudFrontOriginAccessIdentityConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

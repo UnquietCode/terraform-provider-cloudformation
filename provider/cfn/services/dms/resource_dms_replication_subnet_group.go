@@ -17,13 +17,6 @@ import (
 
 const dMSReplicationSubnetGroupType string = "AWS::DMS::ReplicationSubnetGroup"
 
-var dMSReplicationSubnetGroupProperties map[string]string = map[string]string{
-	"replication_subnet_group_description": "ReplicationSubnetGroupDescription",
-	"replication_subnet_group_identifier": "ReplicationSubnetGroupIdentifier",
-	"subnet_ids": "SubnetIds",
-	"tags": "Tags",
-}
-
 func ResourceDMSReplicationSubnetGroup() *schema.Resource {
 	return &schema.Resource{
 		Exists: resourceDMSReplicationSubnetGroupExists,
@@ -66,11 +59,11 @@ func resourceDMSReplicationSubnetGroupRead(data *schema.ResourceData, meta inter
 }
 
 func resourceDMSReplicationSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate(dMSReplicationSubnetGroupType, ResourceDMSReplicationSubnetGroup(), data, dMSReplicationSubnetGroupProperties, meta)
+	return plugin.ResourceCreate(dMSReplicationSubnetGroupType, ResourceDMSReplicationSubnetGroup(), data, meta)
 }
 
 func resourceDMSReplicationSubnetGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate(dMSReplicationSubnetGroupType, ResourceDMSReplicationSubnetGroup(), data, dMSReplicationSubnetGroupProperties, meta)
+	return plugin.ResourceUpdate(dMSReplicationSubnetGroupType, ResourceDMSReplicationSubnetGroup(), data, meta)
 }
 
 func resourceDMSReplicationSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {

@@ -14,14 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var clusterBrokerNodeGroupInfoProperties map[string]string = map[string]string{
-	"security_groups": "SecurityGroups",
-	"client_subnets": "ClientSubnets",
-	"storage_info": "StorageInfo",
-	"broker_az_distribution": "BrokerAZDistribution",
-	"instance_type": "InstanceType",
-}
-
 func propertyClusterBrokerNodeGroupInfo(extras...string) *schema.Resource {
 	var count int64 = 0
 	

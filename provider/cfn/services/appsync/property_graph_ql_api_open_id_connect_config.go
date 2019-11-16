@@ -14,13 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var graphQLApiOpenIDConnectConfigProperties map[string]string = map[string]string{
-	"issuer": "Issuer",
-	"client_id": "ClientId",
-	"auth_ttl": "AuthTTL",
-	"iat_ttl": "IatTTL",
-}
-
 func propertyGraphQLApiOpenIDConnectConfig(extras...string) *schema.Resource {
 	var count int64 = 0
 	

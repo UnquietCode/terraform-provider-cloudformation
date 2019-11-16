@@ -14,12 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var topicRuleSqsActionProperties map[string]string = map[string]string{
-	"queue_url": "QueueUrl",
-	"role_arn": "RoleArn",
-	"use_base64": "UseBase64",
-}
-
 func propertyTopicRuleSqsAction(extras...string) *schema.Resource {
 	var count int64 = 0
 	

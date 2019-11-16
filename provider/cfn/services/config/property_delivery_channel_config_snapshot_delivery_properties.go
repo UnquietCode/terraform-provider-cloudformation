@@ -14,10 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
-var deliveryChannelConfigSnapshotDeliveryPropertiesProperties map[string]string = map[string]string{
-	"delivery_frequency": "DeliveryFrequency",
-}
-
 func propertyDeliveryChannelConfigSnapshotDeliveryProperties(extras...string) *schema.Resource {
 	var count int64 = 0
 	
