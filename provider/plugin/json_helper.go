@@ -3,6 +3,7 @@ package plugin
 
 import (
   "fmt"
+  _ "log"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"encoding/json"
 )
@@ -55,7 +56,33 @@ func convertValue(prefix string, resourceSchema *schema.Schema, value interface{
       return value
     
     case schema.TypeSet:
-      fallthrough
+      var setIn *schema.Set = value.(*schema.Set)
+      var listIn []interface{} = setIn.List()
+      var listOut []interface{} = make([]interface{}, 0, len(listIn))
+
+      for _, listValue := range listIn {
+        hashId := setIn.F(listValue)
+        realKey := fmt.Sprintf("%s%d", prefix, hashId)
+        
+        if listValue, ok := getter(realKey, resourceData); ok {  
+          nestedPrefix := realKey + "."
+        
+          switch elementType := resourceSchema.Elem.(type) { 
+            case *schema.Schema:
+              listOut = append(listOut, convertValue(nestedPrefix, elementType, listValue, resourceData, propertyNames, getter))
+            case *schema.Resource:
+              listOut = append(listOut, convertResourceToMap(nestedPrefix, elementType, resourceData, propertyNames, getter))
+            default:
+              panic("invalid element type")
+          }
+        }
+      }
+      
+      if resourceSchema.MaxItems == 1 {
+        return listOut[0]
+      } else {
+        return listOut
+      }
     
     case schema.TypeList:
       var listIn []interface{} = value.([]interface{})
@@ -109,11 +136,11 @@ func convertAndMergeResourceToMap(prefix string, resource *schema.Resource, reso
       nestedPrefix := realKey + "."
       var pName string
       
-      if _, ok := propertyNames[name]; ok {
-        pName = propertyNames[name]
-      } else {
+      // if _, ok := propertyNames[name]; ok {
+        // pName = "propertyNames[name]
+      // } else {
         pName = name
-	  	}
+	  	// }
       
       data[pName] = convertValue(nestedPrefix, attribute, value, resourceData, propertyNames, getter)
 		}

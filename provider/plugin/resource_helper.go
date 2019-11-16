@@ -3,6 +3,7 @@ package plugin
 import (
 	"errors"
 	"os"
+  "log"
 	"fmt"
 	"encoding/json"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
@@ -137,6 +138,8 @@ func ResourceRead(resourceType string, resourceSchema *schema.Resource, resource
 	for name, value := range data {
 		resourceData.Set(name, value)
 	}
+  
+  log.Printf("")
 	
 	// resourceData.SetId(hash)
 	// handleExistingResouce(providerMeta, logicalId, hash)

@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"fmt"
+  "strings"
 	"sort"
 	"time"
 	"bufio"
@@ -15,6 +16,40 @@ import (
 )
 
 const RENDERED_TEMPLATE_NAME string = "template.rendered"
+
+
+func deSnake(input map[string]interface{}) map[string]interface{} {
+  var output map[string]interface{} = map[string]interface{}{}
+  
+  for k,v := range(input) {
+    var newString string = ""
+    
+    for _, part := range strings.Split(k, "_") {
+      newString += strings.ToUpper(part[0:1])
+      newString += part[1:]
+    }
+    
+    if vMap, ok := v.(map[string]interface{}); ok {
+      output[newString] = deSnake(vMap)
+    } else if vList, ok := v.([]interface{}); ok {
+      var newList []interface{} = make([]interface{}, len(vList))
+      
+      for i, elem := range vList {
+        if eMap, ok := elem.(map[string]interface{}); ok {
+          newList[i] = deSnake(eMap)
+        } else {
+          newList[i] = elem
+        }
+      }
+      
+      output[newString] = newList
+    } else {
+      output[newString] = v
+    }
+  }
+  
+  return output
+}
 
 
 func readResources(meta ProviderMetadata) (map[string]TemplateEntry, error) {
@@ -199,10 +234,11 @@ func TemplateCreate(resourceData *schema.ResourceData, meta interface{}) error {
 		
 		data := map[string]interface{}{}
 		data["Type"] = entry.CfnType
-		data["Properties"] = properties
     
 		resources[entry.LogicalId] = data
-    delete(properties, entry.LogicalId)
+    delete(properties, "logical_id")
+    
+    data["Properties"] = deSnake(properties)
 	}
 	
 	hc, err := writeFile(RENDERED_TEMPLATE_NAME, templateData, providerMeta)
