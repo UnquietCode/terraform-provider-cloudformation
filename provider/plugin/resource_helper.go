@@ -51,7 +51,7 @@ func handleExistingResouce(meta ProviderMetadata, entry TemplateEntry) error {
 	defer meta.mutex.Unlock(LOCK_TEMPLATE_REFERENCE)
 	
 	var file *os.File = nil
-	var path string = fmt.Sprintf("%s/template.data.json", meta.workdir)
+	var path string = fmt.Sprintf("%s/%s", meta.workdir, TEMPLATE_DATA_FILE)
 	
 	// if this is the first run, create the file (or overwrite it)
 	if (*meta.newIndex == true) {

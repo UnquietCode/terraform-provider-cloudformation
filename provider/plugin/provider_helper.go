@@ -23,6 +23,9 @@ type ProviderMetadata struct {
 }
 
 const EMPTY string = "\xff"
+
+const TEMPLATE_DATA_FILE string = "template.data.jsonish"
+
 const LOCK_TEMPLATE_REFERENCE string = "TEMPLATE_REFERENCE"
 const LOCK_RESOURCE_COUNTER string = "RESOURCE_COUNTER"
 // const LOCK_RESOURCE_READ_COUNTER string = "RESOURCE_READ_COUNTER"

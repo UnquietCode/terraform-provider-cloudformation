@@ -14,11 +14,11 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/resource"
 )
 
-const RENDERD_TEMPLATE_NAME string = "template.rendered"
+const RENDERED_TEMPLATE_NAME string = "template.rendered"
 
 
 func readResources(meta ProviderMetadata) (map[string]TemplateEntry, error) {
-	var path string = fmt.Sprintf("%s/template.data.json", meta.workdir)
+	var path string = fmt.Sprintf("%s/%s", meta.workdir, TEMPLATE_DATA_FILE)
   file, err := os.Open(path)
   
 	if err != nil {
@@ -98,7 +98,7 @@ func buildTemplateReference(meta interface{}) ([]TemplateEntry, string, error) {
 
 
 func TemplateRead(resourceData *schema.ResourceData, meta interface{}) error {
-	var path string = fmt.Sprintf("%s/template.rendered.json", meta.(ProviderMetadata).workdir)	
+	var path string = fmt.Sprintf("%s/%s.json", meta.(ProviderMetadata).workdir, RENDERED_TEMPLATE_NAME)
 	exists, err := fileExists(path);
 	// log.Printf("--------------------------------tempalte read")
     
@@ -205,7 +205,7 @@ func TemplateCreate(resourceData *schema.ResourceData, meta interface{}) error {
     delete(properties, entry.LogicalId)
 	}
 	
-	hc, err := writeFile(RENDERD_TEMPLATE_NAME, templateData, providerMeta)
+	hc, err := writeFile(RENDERED_TEMPLATE_NAME, templateData, providerMeta)
 	
 	if err != nil {
 		return err
@@ -218,10 +218,7 @@ func TemplateCreate(resourceData *schema.ResourceData, meta interface{}) error {
 
 
 func TemplateUpdate(resourceData *schema.ResourceData, meta interface{}) error {
-	// refs, hash, err := buildTemplateReference(resourceData, meta)
-	
-	// resourceData.SetId(bigHash)
-  
+
   // should never happen since customized diff
   panic("not updatable")
   
@@ -230,7 +227,7 @@ func TemplateUpdate(resourceData *schema.ResourceData, meta interface{}) error {
 
 
 func TemplateDelete(resourceData *schema.ResourceData, meta interface{}) error {
-	err := removeFile(RENDERD_TEMPLATE_NAME, meta.(ProviderMetadata))
+	err := removeFile(RENDERED_TEMPLATE_NAME, meta.(ProviderMetadata))
 	
 	if err != nil {
 		return err
