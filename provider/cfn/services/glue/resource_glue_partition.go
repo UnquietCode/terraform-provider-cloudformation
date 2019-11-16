@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,15 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const gluePartitionType string = "AWS::Glue::Partition"
+
+var gluePartitionProperties map[string]string = map[string]string{
+	"table_name": "TableName",
+	"database_name": "DatabaseName",
+	"catalog_id": "CatalogId",
+	"partition_input": "PartitionInput",
+}
 
 func ResourceGluePartition() *schema.Resource {
 	return &schema.Resource{
@@ -56,22 +65,21 @@ func resourceGluePartitionExists(data *schema.ResourceData, meta interface{}) (b
 }
 
 func resourceGluePartitionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Glue::Partition", ResourceGluePartition(), data, meta)
+	return plugin.ResourceRead(gluePartitionType, ResourceGluePartition(), data, meta)
 }
 
 func resourceGluePartitionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::Partition", ResourceGluePartition(), data, meta)
+	return plugin.ResourceCreate(gluePartitionType, ResourceGluePartition(), data, gluePartitionProperties, meta)
 }
 
 func resourceGluePartitionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Glue::Partition", ResourceGluePartition(), data, meta)
+	return plugin.ResourceUpdate(gluePartitionType, ResourceGluePartition(), data, gluePartitionProperties, meta)
 }
 
 func resourceGluePartitionDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Glue::Partition", data, meta)
+	return plugin.ResourceDelete(gluePartitionType, data, meta)
 }
 
 func resourceGluePartitionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Glue::Partition", data, meta)
+	return plugin.ResourceCustomizeDiff(gluePartitionType, data, meta)
 }
-

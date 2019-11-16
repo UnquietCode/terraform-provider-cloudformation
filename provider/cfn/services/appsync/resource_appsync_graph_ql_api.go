@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,18 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const appSyncGraphQLApiType string = "AWS::AppSync::GraphQLApi"
+
+var appSyncGraphQLApiProperties map[string]string = map[string]string{
+	"open_id_connect_config": "OpenIDConnectConfig",
+	"user_pool_config": "UserPoolConfig",
+	"tags": "Tags",
+	"name": "Name",
+	"authentication_type": "AuthenticationType",
+	"log_config": "LogConfig",
+	"additional_authentication_providers": "AdditionalAuthenticationProviders",
+}
 
 func ResourceAppSyncGraphQLApi() *schema.Resource {
 	return &schema.Resource{
@@ -76,22 +88,21 @@ func resourceAppSyncGraphQLApiExists(data *schema.ResourceData, meta interface{}
 }
 
 func resourceAppSyncGraphQLApiRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppSync::GraphQLApi", ResourceAppSyncGraphQLApi(), data, meta)
+	return plugin.ResourceRead(appSyncGraphQLApiType, ResourceAppSyncGraphQLApi(), data, meta)
 }
 
 func resourceAppSyncGraphQLApiCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppSync::GraphQLApi", ResourceAppSyncGraphQLApi(), data, meta)
+	return plugin.ResourceCreate(appSyncGraphQLApiType, ResourceAppSyncGraphQLApi(), data, appSyncGraphQLApiProperties, meta)
 }
 
 func resourceAppSyncGraphQLApiUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppSync::GraphQLApi", ResourceAppSyncGraphQLApi(), data, meta)
+	return plugin.ResourceUpdate(appSyncGraphQLApiType, ResourceAppSyncGraphQLApi(), data, appSyncGraphQLApiProperties, meta)
 }
 
 func resourceAppSyncGraphQLApiDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::AppSync::GraphQLApi", data, meta)
+	return plugin.ResourceDelete(appSyncGraphQLApiType, data, meta)
 }
 
 func resourceAppSyncGraphQLApiCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::AppSync::GraphQLApi", data, meta)
+	return plugin.ResourceCustomizeDiff(appSyncGraphQLApiType, data, meta)
 }
-

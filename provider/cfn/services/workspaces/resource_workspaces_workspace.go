@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,19 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const workSpacesWorkspaceType string = "AWS::WorkSpaces::Workspace"
+
+var workSpacesWorkspaceProperties map[string]string = map[string]string{
+	"bundle_id": "BundleId",
+	"directory_id": "DirectoryId",
+	"root_volume_encryption_enabled": "RootVolumeEncryptionEnabled",
+	"tags": "Tags",
+	"user_name": "UserName",
+	"user_volume_encryption_enabled": "UserVolumeEncryptionEnabled",
+	"volume_encryption_key": "VolumeEncryptionKey",
+	"workspace_properties": "WorkspaceProperties",
+}
 
 func ResourceWorkSpacesWorkspace() *schema.Resource {
 	return &schema.Resource{
@@ -74,22 +87,21 @@ func resourceWorkSpacesWorkspaceExists(data *schema.ResourceData, meta interface
 }
 
 func resourceWorkSpacesWorkspaceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::WorkSpaces::Workspace", ResourceWorkSpacesWorkspace(), data, meta)
+	return plugin.ResourceRead(workSpacesWorkspaceType, ResourceWorkSpacesWorkspace(), data, meta)
 }
 
 func resourceWorkSpacesWorkspaceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::WorkSpaces::Workspace", ResourceWorkSpacesWorkspace(), data, meta)
+	return plugin.ResourceCreate(workSpacesWorkspaceType, ResourceWorkSpacesWorkspace(), data, workSpacesWorkspaceProperties, meta)
 }
 
 func resourceWorkSpacesWorkspaceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::WorkSpaces::Workspace", ResourceWorkSpacesWorkspace(), data, meta)
+	return plugin.ResourceUpdate(workSpacesWorkspaceType, ResourceWorkSpacesWorkspace(), data, workSpacesWorkspaceProperties, meta)
 }
 
 func resourceWorkSpacesWorkspaceDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::WorkSpaces::Workspace", data, meta)
+	return plugin.ResourceDelete(workSpacesWorkspaceType, data, meta)
 }
 
 func resourceWorkSpacesWorkspaceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::WorkSpaces::Workspace", data, meta)
+	return plugin.ResourceCustomizeDiff(workSpacesWorkspaceType, data, meta)
 }
-

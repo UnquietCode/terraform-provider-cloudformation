@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,16 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const guardDutyThreatIntelSetType string = "AWS::GuardDuty::ThreatIntelSet"
+
+var guardDutyThreatIntelSetProperties map[string]string = map[string]string{
+	"format": "Format",
+	"activate": "Activate",
+	"detector_id": "DetectorId",
+	"name": "Name",
+	"location": "Location",
+}
 
 func ResourceGuardDutyThreatIntelSet() *schema.Resource {
 	return &schema.Resource{
@@ -58,22 +68,21 @@ func resourceGuardDutyThreatIntelSetExists(data *schema.ResourceData, meta inter
 }
 
 func resourceGuardDutyThreatIntelSetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::GuardDuty::ThreatIntelSet", ResourceGuardDutyThreatIntelSet(), data, meta)
+	return plugin.ResourceRead(guardDutyThreatIntelSetType, ResourceGuardDutyThreatIntelSet(), data, meta)
 }
 
 func resourceGuardDutyThreatIntelSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::GuardDuty::ThreatIntelSet", ResourceGuardDutyThreatIntelSet(), data, meta)
+	return plugin.ResourceCreate(guardDutyThreatIntelSetType, ResourceGuardDutyThreatIntelSet(), data, guardDutyThreatIntelSetProperties, meta)
 }
 
 func resourceGuardDutyThreatIntelSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::GuardDuty::ThreatIntelSet", ResourceGuardDutyThreatIntelSet(), data, meta)
+	return plugin.ResourceUpdate(guardDutyThreatIntelSetType, ResourceGuardDutyThreatIntelSet(), data, guardDutyThreatIntelSetProperties, meta)
 }
 
 func resourceGuardDutyThreatIntelSetDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::GuardDuty::ThreatIntelSet", data, meta)
+	return plugin.ResourceDelete(guardDutyThreatIntelSetType, data, meta)
 }
 
 func resourceGuardDutyThreatIntelSetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::GuardDuty::ThreatIntelSet", data, meta)
+	return plugin.ResourceCustomizeDiff(guardDutyThreatIntelSetType, data, meta)
 }
-

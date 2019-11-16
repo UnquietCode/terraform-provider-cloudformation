@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,18 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const transferUserType string = "AWS::Transfer::User"
+
+var transferUserProperties map[string]string = map[string]string{
+	"policy": "Policy",
+	"role": "Role",
+	"home_directory": "HomeDirectory",
+	"server_id": "ServerId",
+	"user_name": "UserName",
+	"ssh_public_keys": "SshPublicKeys",
+	"tags": "Tags",
+}
 
 func ResourceTransferUser() *schema.Resource {
 	return &schema.Resource{
@@ -69,22 +81,21 @@ func resourceTransferUserExists(data *schema.ResourceData, meta interface{}) (bo
 }
 
 func resourceTransferUserRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Transfer::User", ResourceTransferUser(), data, meta)
+	return plugin.ResourceRead(transferUserType, ResourceTransferUser(), data, meta)
 }
 
 func resourceTransferUserCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Transfer::User", ResourceTransferUser(), data, meta)
+	return plugin.ResourceCreate(transferUserType, ResourceTransferUser(), data, transferUserProperties, meta)
 }
 
 func resourceTransferUserUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Transfer::User", ResourceTransferUser(), data, meta)
+	return plugin.ResourceUpdate(transferUserType, ResourceTransferUser(), data, transferUserProperties, meta)
 }
 
 func resourceTransferUserDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Transfer::User", data, meta)
+	return plugin.ResourceDelete(transferUserType, data, meta)
 }
 
 func resourceTransferUserCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Transfer::User", data, meta)
+	return plugin.ResourceCustomizeDiff(transferUserType, data, meta)
 }
-

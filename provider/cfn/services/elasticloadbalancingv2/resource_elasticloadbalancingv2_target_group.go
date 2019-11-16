@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,28 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const elasticLoadBalancingV2TargetGroupType string = "AWS::ElasticLoadBalancingV2::TargetGroup"
+
+var elasticLoadBalancingV2TargetGroupProperties map[string]string = map[string]string{
+	"health_check_enabled": "HealthCheckEnabled",
+	"health_check_interval_seconds": "HealthCheckIntervalSeconds",
+	"health_check_path": "HealthCheckPath",
+	"health_check_port": "HealthCheckPort",
+	"health_check_protocol": "HealthCheckProtocol",
+	"health_check_timeout_seconds": "HealthCheckTimeoutSeconds",
+	"healthy_threshold_count": "HealthyThresholdCount",
+	"matcher": "Matcher",
+	"name": "Name",
+	"port": "Port",
+	"protocol": "Protocol",
+	"tags": "Tags",
+	"target_group_attributes": "TargetGroupAttributes",
+	"target_type": "TargetType",
+	"targets": "Targets",
+	"unhealthy_threshold_count": "UnhealthyThresholdCount",
+	"vpc_id": "VpcId",
+}
 
 func ResourceElasticLoadBalancingV2TargetGroup() *schema.Resource {
 	return &schema.Resource{
@@ -112,22 +134,21 @@ func resourceElasticLoadBalancingV2TargetGroupExists(data *schema.ResourceData, 
 }
 
 func resourceElasticLoadBalancingV2TargetGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ElasticLoadBalancingV2::TargetGroup", ResourceElasticLoadBalancingV2TargetGroup(), data, meta)
+	return plugin.ResourceRead(elasticLoadBalancingV2TargetGroupType, ResourceElasticLoadBalancingV2TargetGroup(), data, meta)
 }
 
 func resourceElasticLoadBalancingV2TargetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElasticLoadBalancingV2::TargetGroup", ResourceElasticLoadBalancingV2TargetGroup(), data, meta)
+	return plugin.ResourceCreate(elasticLoadBalancingV2TargetGroupType, ResourceElasticLoadBalancingV2TargetGroup(), data, elasticLoadBalancingV2TargetGroupProperties, meta)
 }
 
 func resourceElasticLoadBalancingV2TargetGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ElasticLoadBalancingV2::TargetGroup", ResourceElasticLoadBalancingV2TargetGroup(), data, meta)
+	return plugin.ResourceUpdate(elasticLoadBalancingV2TargetGroupType, ResourceElasticLoadBalancingV2TargetGroup(), data, elasticLoadBalancingV2TargetGroupProperties, meta)
 }
 
 func resourceElasticLoadBalancingV2TargetGroupDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ElasticLoadBalancingV2::TargetGroup", data, meta)
+	return plugin.ResourceDelete(elasticLoadBalancingV2TargetGroupType, data, meta)
 }
 
 func resourceElasticLoadBalancingV2TargetGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ElasticLoadBalancingV2::TargetGroup", data, meta)
+	return plugin.ResourceCustomizeDiff(elasticLoadBalancingV2TargetGroupType, data, meta)
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,29 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const autoScalingLaunchConfigurationType string = "AWS::AutoScaling::LaunchConfiguration"
+
+var autoScalingLaunchConfigurationProperties map[string]string = map[string]string{
+	"associate_public_ip_address": "AssociatePublicIpAddress",
+	"block_device_mappings": "BlockDeviceMappings",
+	"classic_link_vpc_id": "ClassicLinkVPCId",
+	"classic_link_vpc_security_groups": "ClassicLinkVPCSecurityGroups",
+	"ebs_optimized": "EbsOptimized",
+	"iam_instance_profile": "IamInstanceProfile",
+	"image_id": "ImageId",
+	"instance_id": "InstanceId",
+	"instance_monitoring": "InstanceMonitoring",
+	"instance_type": "InstanceType",
+	"kernel_id": "KernelId",
+	"key_name": "KeyName",
+	"launch_configuration_name": "LaunchConfigurationName",
+	"placement_tenancy": "PlacementTenancy",
+	"ram_disk_id": "RamDiskId",
+	"security_groups": "SecurityGroups",
+	"spot_price": "SpotPrice",
+	"user_data": "UserData",
+}
 
 func ResourceAutoScalingLaunchConfiguration() *schema.Resource {
 	return &schema.Resource{
@@ -115,22 +138,21 @@ func resourceAutoScalingLaunchConfigurationExists(data *schema.ResourceData, met
 }
 
 func resourceAutoScalingLaunchConfigurationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AutoScaling::LaunchConfiguration", ResourceAutoScalingLaunchConfiguration(), data, meta)
+	return plugin.ResourceRead(autoScalingLaunchConfigurationType, ResourceAutoScalingLaunchConfiguration(), data, meta)
 }
 
 func resourceAutoScalingLaunchConfigurationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AutoScaling::LaunchConfiguration", ResourceAutoScalingLaunchConfiguration(), data, meta)
+	return plugin.ResourceCreate(autoScalingLaunchConfigurationType, ResourceAutoScalingLaunchConfiguration(), data, autoScalingLaunchConfigurationProperties, meta)
 }
 
 func resourceAutoScalingLaunchConfigurationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AutoScaling::LaunchConfiguration", ResourceAutoScalingLaunchConfiguration(), data, meta)
+	return plugin.ResourceUpdate(autoScalingLaunchConfigurationType, ResourceAutoScalingLaunchConfiguration(), data, autoScalingLaunchConfigurationProperties, meta)
 }
 
 func resourceAutoScalingLaunchConfigurationDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::AutoScaling::LaunchConfiguration", data, meta)
+	return plugin.ResourceDelete(autoScalingLaunchConfigurationType, data, meta)
 }
 
 func resourceAutoScalingLaunchConfigurationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::AutoScaling::LaunchConfiguration", data, meta)
+	return plugin.ResourceCustomizeDiff(autoScalingLaunchConfigurationType, data, meta)
 }
-

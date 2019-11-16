@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,23 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var topicRuleActionProperties map[string]string = map[string]string{
+	"cloudwatch_alarm": "CloudwatchAlarm",
+	"cloudwatch_metric": "CloudwatchMetric",
+	"dynamo_db": "DynamoDB",
+	"dynamo_d_bv2": "DynamoDBv2",
+	"elasticsearch": "Elasticsearch",
+	"firehose": "Firehose",
+	"iot_analytics": "IotAnalytics",
+	"kinesis": "Kinesis",
+	"lambda": "Lambda",
+	"republish": "Republish",
+	"s3": "S3",
+	"sns": "Sns",
+	"sqs": "Sqs",
+	"step_functions": "StepFunctions",
+}
 
 func propertyTopicRuleAction(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -115,4 +132,3 @@ func propertyTopicRuleAction(extras...string) *schema.Resource {
 		},
 	}
 }
-

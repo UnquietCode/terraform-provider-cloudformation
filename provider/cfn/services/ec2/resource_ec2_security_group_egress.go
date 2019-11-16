@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,20 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eC2SecurityGroupEgressType string = "AWS::EC2::SecurityGroupEgress"
+
+var eC2SecurityGroupEgressProperties map[string]string = map[string]string{
+	"cidr_ip": "CidrIp",
+	"cidr_ipv6": "CidrIpv6",
+	"description": "Description",
+	"destination_prefix_list_id": "DestinationPrefixListId",
+	"destination_security_group_id": "DestinationSecurityGroupId",
+	"from_port": "FromPort",
+	"group_id": "GroupId",
+	"ip_protocol": "IpProtocol",
+	"to_port": "ToPort",
+}
 
 func ResourceEC2SecurityGroupEgress() *schema.Resource {
 	return &schema.Resource{
@@ -74,22 +88,21 @@ func resourceEC2SecurityGroupEgressExists(data *schema.ResourceData, meta interf
 }
 
 func resourceEC2SecurityGroupEgressRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::SecurityGroupEgress", ResourceEC2SecurityGroupEgress(), data, meta)
+	return plugin.ResourceRead(eC2SecurityGroupEgressType, ResourceEC2SecurityGroupEgress(), data, meta)
 }
 
 func resourceEC2SecurityGroupEgressCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::SecurityGroupEgress", ResourceEC2SecurityGroupEgress(), data, meta)
+	return plugin.ResourceCreate(eC2SecurityGroupEgressType, ResourceEC2SecurityGroupEgress(), data, eC2SecurityGroupEgressProperties, meta)
 }
 
 func resourceEC2SecurityGroupEgressUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::SecurityGroupEgress", ResourceEC2SecurityGroupEgress(), data, meta)
+	return plugin.ResourceUpdate(eC2SecurityGroupEgressType, ResourceEC2SecurityGroupEgress(), data, eC2SecurityGroupEgressProperties, meta)
 }
 
 func resourceEC2SecurityGroupEgressDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EC2::SecurityGroupEgress", data, meta)
+	return plugin.ResourceDelete(eC2SecurityGroupEgressType, data, meta)
 }
 
 func resourceEC2SecurityGroupEgressCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EC2::SecurityGroupEgress", data, meta)
+	return plugin.ResourceCustomizeDiff(eC2SecurityGroupEgressType, data, meta)
 }
-

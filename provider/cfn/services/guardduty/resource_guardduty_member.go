@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,17 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const guardDutyMemberType string = "AWS::GuardDuty::Member"
+
+var guardDutyMemberProperties map[string]string = map[string]string{
+	"status": "Status",
+	"member_id": "MemberId",
+	"email": "Email",
+	"message": "Message",
+	"disable_email_notification": "DisableEmailNotification",
+	"detector_id": "DetectorId",
+}
 
 func ResourceGuardDutyMember() *schema.Resource {
 	return &schema.Resource{
@@ -62,22 +73,21 @@ func resourceGuardDutyMemberExists(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceGuardDutyMemberRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::GuardDuty::Member", ResourceGuardDutyMember(), data, meta)
+	return plugin.ResourceRead(guardDutyMemberType, ResourceGuardDutyMember(), data, meta)
 }
 
 func resourceGuardDutyMemberCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::GuardDuty::Member", ResourceGuardDutyMember(), data, meta)
+	return plugin.ResourceCreate(guardDutyMemberType, ResourceGuardDutyMember(), data, guardDutyMemberProperties, meta)
 }
 
 func resourceGuardDutyMemberUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::GuardDuty::Member", ResourceGuardDutyMember(), data, meta)
+	return plugin.ResourceUpdate(guardDutyMemberType, ResourceGuardDutyMember(), data, guardDutyMemberProperties, meta)
 }
 
 func resourceGuardDutyMemberDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::GuardDuty::Member", data, meta)
+	return plugin.ResourceDelete(guardDutyMemberType, data, meta)
 }
 
 func resourceGuardDutyMemberCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::GuardDuty::Member", data, meta)
+	return plugin.ResourceCustomizeDiff(guardDutyMemberType, data, meta)
 }
-

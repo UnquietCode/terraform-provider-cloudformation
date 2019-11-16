@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,16 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const pinpointEmailTemplateType string = "AWS::Pinpoint::EmailTemplate"
+
+var pinpointEmailTemplateProperties map[string]string = map[string]string{
+	"html_part": "HtmlPart",
+	"text_part": "TextPart",
+	"template_name": "TemplateName",
+	"subject": "Subject",
+	"tags": "Tags",
+}
 
 func ResourcePinpointEmailTemplate() *schema.Resource {
 	return &schema.Resource{
@@ -58,22 +68,21 @@ func resourcePinpointEmailTemplateExists(data *schema.ResourceData, meta interfa
 }
 
 func resourcePinpointEmailTemplateRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::EmailTemplate", ResourcePinpointEmailTemplate(), data, meta)
+	return plugin.ResourceRead(pinpointEmailTemplateType, ResourcePinpointEmailTemplate(), data, meta)
 }
 
 func resourcePinpointEmailTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::EmailTemplate", ResourcePinpointEmailTemplate(), data, meta)
+	return plugin.ResourceCreate(pinpointEmailTemplateType, ResourcePinpointEmailTemplate(), data, pinpointEmailTemplateProperties, meta)
 }
 
 func resourcePinpointEmailTemplateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::EmailTemplate", ResourcePinpointEmailTemplate(), data, meta)
+	return plugin.ResourceUpdate(pinpointEmailTemplateType, ResourcePinpointEmailTemplate(), data, pinpointEmailTemplateProperties, meta)
 }
 
 func resourcePinpointEmailTemplateDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Pinpoint::EmailTemplate", data, meta)
+	return plugin.ResourceDelete(pinpointEmailTemplateType, data, meta)
 }
 
 func resourcePinpointEmailTemplateCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Pinpoint::EmailTemplate", data, meta)
+	return plugin.ResourceCustomizeDiff(pinpointEmailTemplateType, data, meta)
 }
-

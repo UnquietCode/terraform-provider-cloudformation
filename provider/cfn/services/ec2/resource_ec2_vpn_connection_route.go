@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eC2VPNConnectionRouteType string = "AWS::EC2::VPNConnectionRoute"
+
+var eC2VPNConnectionRouteProperties map[string]string = map[string]string{
+	"destination_cidr_block": "DestinationCidrBlock",
+	"vpn_connection_id": "VpnConnectionId",
+}
 
 func ResourceEC2VPNConnectionRoute() *schema.Resource {
 	return &schema.Resource{
@@ -46,22 +53,21 @@ func resourceEC2VPNConnectionRouteExists(data *schema.ResourceData, meta interfa
 }
 
 func resourceEC2VPNConnectionRouteRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::VPNConnectionRoute", ResourceEC2VPNConnectionRoute(), data, meta)
+	return plugin.ResourceRead(eC2VPNConnectionRouteType, ResourceEC2VPNConnectionRoute(), data, meta)
 }
 
 func resourceEC2VPNConnectionRouteCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::VPNConnectionRoute", ResourceEC2VPNConnectionRoute(), data, meta)
+	return plugin.ResourceCreate(eC2VPNConnectionRouteType, ResourceEC2VPNConnectionRoute(), data, eC2VPNConnectionRouteProperties, meta)
 }
 
 func resourceEC2VPNConnectionRouteUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::VPNConnectionRoute", ResourceEC2VPNConnectionRoute(), data, meta)
+	return plugin.ResourceUpdate(eC2VPNConnectionRouteType, ResourceEC2VPNConnectionRoute(), data, eC2VPNConnectionRouteProperties, meta)
 }
 
 func resourceEC2VPNConnectionRouteDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EC2::VPNConnectionRoute", data, meta)
+	return plugin.ResourceDelete(eC2VPNConnectionRouteType, data, meta)
 }
 
 func resourceEC2VPNConnectionRouteCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EC2::VPNConnectionRoute", data, meta)
+	return plugin.ResourceCustomizeDiff(eC2VPNConnectionRouteType, data, meta)
 }
-

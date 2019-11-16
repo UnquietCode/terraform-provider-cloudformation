@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,19 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var securityGroupIngressProperties map[string]string = map[string]string{
+	"cidr_ip": "CidrIp",
+	"cidr_ipv6": "CidrIpv6",
+	"description": "Description",
+	"from_port": "FromPort",
+	"ip_protocol": "IpProtocol",
+	"source_prefix_list_id": "SourcePrefixListId",
+	"source_security_group_id": "SourceSecurityGroupId",
+	"source_security_group_name": "SourceSecurityGroupName",
+	"source_security_group_owner_id": "SourceSecurityGroupOwnerId",
+	"to_port": "ToPort",
+}
 
 func propertySecurityGroupIngress(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -71,4 +84,3 @@ func propertySecurityGroupIngress(extras...string) *schema.Resource {
 		},
 	}
 }
-

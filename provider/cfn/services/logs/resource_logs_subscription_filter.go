@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,15 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const logsSubscriptionFilterType string = "AWS::Logs::SubscriptionFilter"
+
+var logsSubscriptionFilterProperties map[string]string = map[string]string{
+	"destination_arn": "DestinationArn",
+	"filter_pattern": "FilterPattern",
+	"log_group_name": "LogGroupName",
+	"role_arn": "RoleArn",
+}
 
 func ResourceLogsSubscriptionFilter() *schema.Resource {
 	return &schema.Resource{
@@ -54,22 +63,21 @@ func resourceLogsSubscriptionFilterExists(data *schema.ResourceData, meta interf
 }
 
 func resourceLogsSubscriptionFilterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Logs::SubscriptionFilter", ResourceLogsSubscriptionFilter(), data, meta)
+	return plugin.ResourceRead(logsSubscriptionFilterType, ResourceLogsSubscriptionFilter(), data, meta)
 }
 
 func resourceLogsSubscriptionFilterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Logs::SubscriptionFilter", ResourceLogsSubscriptionFilter(), data, meta)
+	return plugin.ResourceCreate(logsSubscriptionFilterType, ResourceLogsSubscriptionFilter(), data, logsSubscriptionFilterProperties, meta)
 }
 
 func resourceLogsSubscriptionFilterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Logs::SubscriptionFilter", ResourceLogsSubscriptionFilter(), data, meta)
+	return plugin.ResourceUpdate(logsSubscriptionFilterType, ResourceLogsSubscriptionFilter(), data, logsSubscriptionFilterProperties, meta)
 }
 
 func resourceLogsSubscriptionFilterDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Logs::SubscriptionFilter", data, meta)
+	return plugin.ResourceDelete(logsSubscriptionFilterType, data, meta)
 }
 
 func resourceLogsSubscriptionFilterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Logs::SubscriptionFilter", data, meta)
+	return plugin.ResourceCustomizeDiff(logsSubscriptionFilterType, data, meta)
 }
-

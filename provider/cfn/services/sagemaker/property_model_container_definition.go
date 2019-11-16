@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var modelContainerDefinitionProperties map[string]string = map[string]string{
+	"container_hostname": "ContainerHostname",
+	"environment": "Environment",
+	"model_data_url": "ModelDataUrl",
+	"image": "Image",
+}
 
 func propertyModelContainerDefinition(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -47,4 +54,3 @@ func propertyModelContainerDefinition(extras...string) *schema.Resource {
 		},
 	}
 }
-

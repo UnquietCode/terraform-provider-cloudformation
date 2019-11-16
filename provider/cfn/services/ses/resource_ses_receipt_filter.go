@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,12 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const sESReceiptFilterType string = "AWS::SES::ReceiptFilter"
+
+var sESReceiptFilterProperties map[string]string = map[string]string{
+	"filter": "Filter",
+}
 
 func ResourceSESReceiptFilter() *schema.Resource {
 	return &schema.Resource{
@@ -44,22 +50,21 @@ func resourceSESReceiptFilterExists(data *schema.ResourceData, meta interface{})
 }
 
 func resourceSESReceiptFilterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SES::ReceiptFilter", ResourceSESReceiptFilter(), data, meta)
+	return plugin.ResourceRead(sESReceiptFilterType, ResourceSESReceiptFilter(), data, meta)
 }
 
 func resourceSESReceiptFilterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SES::ReceiptFilter", ResourceSESReceiptFilter(), data, meta)
+	return plugin.ResourceCreate(sESReceiptFilterType, ResourceSESReceiptFilter(), data, sESReceiptFilterProperties, meta)
 }
 
 func resourceSESReceiptFilterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SES::ReceiptFilter", ResourceSESReceiptFilter(), data, meta)
+	return plugin.ResourceUpdate(sESReceiptFilterType, ResourceSESReceiptFilter(), data, sESReceiptFilterProperties, meta)
 }
 
 func resourceSESReceiptFilterDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::SES::ReceiptFilter", data, meta)
+	return plugin.ResourceDelete(sESReceiptFilterType, data, meta)
 }
 
 func resourceSESReceiptFilterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::SES::ReceiptFilter", data, meta)
+	return plugin.ResourceCustomizeDiff(sESReceiptFilterType, data, meta)
 }
-

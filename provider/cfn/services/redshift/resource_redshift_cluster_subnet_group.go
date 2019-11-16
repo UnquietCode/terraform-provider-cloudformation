@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,14 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const redshiftClusterSubnetGroupType string = "AWS::Redshift::ClusterSubnetGroup"
+
+var redshiftClusterSubnetGroupProperties map[string]string = map[string]string{
+	"description": "Description",
+	"subnet_ids": "SubnetIds",
+	"tags": "Tags",
+}
 
 func ResourceRedshiftClusterSubnetGroup() *schema.Resource {
 	return &schema.Resource{
@@ -53,22 +61,21 @@ func resourceRedshiftClusterSubnetGroupExists(data *schema.ResourceData, meta in
 }
 
 func resourceRedshiftClusterSubnetGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Redshift::ClusterSubnetGroup", ResourceRedshiftClusterSubnetGroup(), data, meta)
+	return plugin.ResourceRead(redshiftClusterSubnetGroupType, ResourceRedshiftClusterSubnetGroup(), data, meta)
 }
 
 func resourceRedshiftClusterSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Redshift::ClusterSubnetGroup", ResourceRedshiftClusterSubnetGroup(), data, meta)
+	return plugin.ResourceCreate(redshiftClusterSubnetGroupType, ResourceRedshiftClusterSubnetGroup(), data, redshiftClusterSubnetGroupProperties, meta)
 }
 
 func resourceRedshiftClusterSubnetGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Redshift::ClusterSubnetGroup", ResourceRedshiftClusterSubnetGroup(), data, meta)
+	return plugin.ResourceUpdate(redshiftClusterSubnetGroupType, ResourceRedshiftClusterSubnetGroup(), data, redshiftClusterSubnetGroupProperties, meta)
 }
 
 func resourceRedshiftClusterSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Redshift::ClusterSubnetGroup", data, meta)
+	return plugin.ResourceDelete(redshiftClusterSubnetGroupType, data, meta)
 }
 
 func resourceRedshiftClusterSubnetGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Redshift::ClusterSubnetGroup", data, meta)
+	return plugin.ResourceCustomizeDiff(redshiftClusterSubnetGroupType, data, meta)
 }
-

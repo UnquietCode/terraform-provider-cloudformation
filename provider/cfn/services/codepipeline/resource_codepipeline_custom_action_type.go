@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,18 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const codePipelineCustomActionTypeType string = "AWS::CodePipeline::CustomActionType"
+
+var codePipelineCustomActionTypeProperties map[string]string = map[string]string{
+	"category": "Category",
+	"configuration_properties": "ConfigurationProperties",
+	"input_artifact_details": "InputArtifactDetails",
+	"output_artifact_details": "OutputArtifactDetails",
+	"the_provider": "TheProvider",
+	"settings": "Settings",
+	"version": "Version",
+}
 
 func ResourceCodePipelineCustomActionType() *schema.Resource {
 	return &schema.Resource{
@@ -73,22 +85,21 @@ func resourceCodePipelineCustomActionTypeExists(data *schema.ResourceData, meta 
 }
 
 func resourceCodePipelineCustomActionTypeRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CodePipeline::CustomActionType", ResourceCodePipelineCustomActionType(), data, meta)
+	return plugin.ResourceRead(codePipelineCustomActionTypeType, ResourceCodePipelineCustomActionType(), data, meta)
 }
 
 func resourceCodePipelineCustomActionTypeCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CodePipeline::CustomActionType", ResourceCodePipelineCustomActionType(), data, meta)
+	return plugin.ResourceCreate(codePipelineCustomActionTypeType, ResourceCodePipelineCustomActionType(), data, codePipelineCustomActionTypeProperties, meta)
 }
 
 func resourceCodePipelineCustomActionTypeUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CodePipeline::CustomActionType", ResourceCodePipelineCustomActionType(), data, meta)
+	return plugin.ResourceUpdate(codePipelineCustomActionTypeType, ResourceCodePipelineCustomActionType(), data, codePipelineCustomActionTypeProperties, meta)
 }
 
 func resourceCodePipelineCustomActionTypeDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::CodePipeline::CustomActionType", data, meta)
+	return plugin.ResourceDelete(codePipelineCustomActionTypeType, data, meta)
 }
 
 func resourceCodePipelineCustomActionTypeCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::CodePipeline::CustomActionType", data, meta)
+	return plugin.ResourceCustomizeDiff(codePipelineCustomActionTypeType, data, meta)
 }
-

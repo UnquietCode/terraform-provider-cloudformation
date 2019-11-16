@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,16 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const rDSEventSubscriptionType string = "AWS::RDS::EventSubscription"
+
+var rDSEventSubscriptionProperties map[string]string = map[string]string{
+	"enabled": "Enabled",
+	"event_categories": "EventCategories",
+	"sns_topic_arn": "SnsTopicArn",
+	"source_ids": "SourceIds",
+	"source_type": "SourceType",
+}
 
 func ResourceRDSEventSubscription() *schema.Resource {
 	return &schema.Resource{
@@ -61,22 +71,21 @@ func resourceRDSEventSubscriptionExists(data *schema.ResourceData, meta interfac
 }
 
 func resourceRDSEventSubscriptionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::RDS::EventSubscription", ResourceRDSEventSubscription(), data, meta)
+	return plugin.ResourceRead(rDSEventSubscriptionType, ResourceRDSEventSubscription(), data, meta)
 }
 
 func resourceRDSEventSubscriptionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RDS::EventSubscription", ResourceRDSEventSubscription(), data, meta)
+	return plugin.ResourceCreate(rDSEventSubscriptionType, ResourceRDSEventSubscription(), data, rDSEventSubscriptionProperties, meta)
 }
 
 func resourceRDSEventSubscriptionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::RDS::EventSubscription", ResourceRDSEventSubscription(), data, meta)
+	return plugin.ResourceUpdate(rDSEventSubscriptionType, ResourceRDSEventSubscription(), data, rDSEventSubscriptionProperties, meta)
 }
 
 func resourceRDSEventSubscriptionDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::RDS::EventSubscription", data, meta)
+	return plugin.ResourceDelete(rDSEventSubscriptionType, data, meta)
 }
 
 func resourceRDSEventSubscriptionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::RDS::EventSubscription", data, meta)
+	return plugin.ResourceCustomizeDiff(rDSEventSubscriptionType, data, meta)
 }
-

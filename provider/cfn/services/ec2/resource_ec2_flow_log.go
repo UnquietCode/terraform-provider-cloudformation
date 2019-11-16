@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,18 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eC2FlowLogType string = "AWS::EC2::FlowLog"
+
+var eC2FlowLogProperties map[string]string = map[string]string{
+	"deliver_logs_permission_arn": "DeliverLogsPermissionArn",
+	"log_destination": "LogDestination",
+	"log_destination_type": "LogDestinationType",
+	"log_group_name": "LogGroupName",
+	"resource_id": "ResourceId",
+	"resource_type": "ResourceType",
+	"traffic_type": "TrafficType",
+}
 
 func ResourceEC2FlowLog() *schema.Resource {
 	return &schema.Resource{
@@ -66,22 +78,21 @@ func resourceEC2FlowLogExists(data *schema.ResourceData, meta interface{}) (bool
 }
 
 func resourceEC2FlowLogRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::FlowLog", ResourceEC2FlowLog(), data, meta)
+	return plugin.ResourceRead(eC2FlowLogType, ResourceEC2FlowLog(), data, meta)
 }
 
 func resourceEC2FlowLogCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::FlowLog", ResourceEC2FlowLog(), data, meta)
+	return plugin.ResourceCreate(eC2FlowLogType, ResourceEC2FlowLog(), data, eC2FlowLogProperties, meta)
 }
 
 func resourceEC2FlowLogUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::FlowLog", ResourceEC2FlowLog(), data, meta)
+	return plugin.ResourceUpdate(eC2FlowLogType, ResourceEC2FlowLog(), data, eC2FlowLogProperties, meta)
 }
 
 func resourceEC2FlowLogDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EC2::FlowLog", data, meta)
+	return plugin.ResourceDelete(eC2FlowLogType, data, meta)
 }
 
 func resourceEC2FlowLogCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EC2::FlowLog", data, meta)
+	return plugin.ResourceCustomizeDiff(eC2FlowLogType, data, meta)
 }
-

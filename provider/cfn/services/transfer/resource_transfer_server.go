@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,17 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const transferServerType string = "AWS::Transfer::Server"
+
+var transferServerProperties map[string]string = map[string]string{
+	"logging_role": "LoggingRole",
+	"identity_provider_details": "IdentityProviderDetails",
+	"endpoint_type": "EndpointType",
+	"endpoint_details": "EndpointDetails",
+	"identity_provider_type": "IdentityProviderType",
+	"tags": "Tags",
+}
 
 func ResourceTransferServer() *schema.Resource {
 	return &schema.Resource{
@@ -68,22 +79,21 @@ func resourceTransferServerExists(data *schema.ResourceData, meta interface{}) (
 }
 
 func resourceTransferServerRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Transfer::Server", ResourceTransferServer(), data, meta)
+	return plugin.ResourceRead(transferServerType, ResourceTransferServer(), data, meta)
 }
 
 func resourceTransferServerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Transfer::Server", ResourceTransferServer(), data, meta)
+	return plugin.ResourceCreate(transferServerType, ResourceTransferServer(), data, transferServerProperties, meta)
 }
 
 func resourceTransferServerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Transfer::Server", ResourceTransferServer(), data, meta)
+	return plugin.ResourceUpdate(transferServerType, ResourceTransferServer(), data, transferServerProperties, meta)
 }
 
 func resourceTransferServerDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Transfer::Server", data, meta)
+	return plugin.ResourceDelete(transferServerType, data, meta)
 }
 
 func resourceTransferServerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Transfer::Server", data, meta)
+	return plugin.ResourceCustomizeDiff(transferServerType, data, meta)
 }
-

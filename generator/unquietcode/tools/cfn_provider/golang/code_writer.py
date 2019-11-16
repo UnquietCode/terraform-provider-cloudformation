@@ -7,8 +7,11 @@ from unquietcode.tools.cfn_provider.golang.code_model import (
     GoFunction,
     GoStructLiteral,
     GoMapLiteral,
+    AssignmentExpression,
+    ConstantExpression,
     LiteralExpression,
     ReturnExpression,
+    BlankLines,
 )
 
 @dataclass(frozen=True)
@@ -91,11 +94,11 @@ class CodeWriter:
         if source_file.declarations:
             s._write_line()
                 
-            for declaration in source_file.declarations:
+            for I, declaration in looper(source_file.declarations):
                 declaration.write(s)
-                s << "\n"
-        else:
-            s << "\n"
+                
+                if not I.last:
+                    s << "\n"
     
     
     def write_function(s, function: GoFunction):
@@ -199,9 +202,30 @@ class CodeWriter:
         s.line << "}"
     
     
+    def write_blank_lines(s, expr: BlankLines):
+        for i in range(1, expr.count):
+            s.line << "\n"
+    
+    
     def write_return_expression(s, expr: ReturnExpression):
         s.line << "return "
         expr.expression.write(s)
+        
+    
+    def write_assignment_expression(s, expr: AssignmentExpression):
+        s.line << f'var {expr.identifier} {expr.type} = '
+        expr.expression.write(s)
+        
+        if isinstance(expr.expression, GoMapLiteral) or isinstance(expr.expression, GoStructLiteral):
+            s.line << '\n'
+
+    
+    def write_constant_expression(s, expr: ConstantExpression):
+        s.line << f'const {expr.identifier} {expr.type} = '
+        expr.expression.write(s)
+        
+        if isinstance(expr.expression, GoMapLiteral) or isinstance(expr.expression, GoStructLiteral):
+            s.line << '\n'
 
 
 def write_file_to_string(source: SourceFile):

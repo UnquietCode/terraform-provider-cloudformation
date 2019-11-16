@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,15 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const rDSDBClusterParameterGroupType string = "AWS::RDS::DBClusterParameterGroup"
+
+var rDSDBClusterParameterGroupProperties map[string]string = map[string]string{
+	"description": "Description",
+	"family": "Family",
+	"parameters": "Parameters",
+	"tags": "Tags",
+}
 
 func ResourceRDSDBClusterParameterGroup() *schema.Resource {
 	return &schema.Resource{
@@ -56,22 +65,21 @@ func resourceRDSDBClusterParameterGroupExists(data *schema.ResourceData, meta in
 }
 
 func resourceRDSDBClusterParameterGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::RDS::DBClusterParameterGroup", ResourceRDSDBClusterParameterGroup(), data, meta)
+	return plugin.ResourceRead(rDSDBClusterParameterGroupType, ResourceRDSDBClusterParameterGroup(), data, meta)
 }
 
 func resourceRDSDBClusterParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RDS::DBClusterParameterGroup", ResourceRDSDBClusterParameterGroup(), data, meta)
+	return plugin.ResourceCreate(rDSDBClusterParameterGroupType, ResourceRDSDBClusterParameterGroup(), data, rDSDBClusterParameterGroupProperties, meta)
 }
 
 func resourceRDSDBClusterParameterGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::RDS::DBClusterParameterGroup", ResourceRDSDBClusterParameterGroup(), data, meta)
+	return plugin.ResourceUpdate(rDSDBClusterParameterGroupType, ResourceRDSDBClusterParameterGroup(), data, rDSDBClusterParameterGroupProperties, meta)
 }
 
 func resourceRDSDBClusterParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::RDS::DBClusterParameterGroup", data, meta)
+	return plugin.ResourceDelete(rDSDBClusterParameterGroupType, data, meta)
 }
 
 func resourceRDSDBClusterParameterGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::RDS::DBClusterParameterGroup", data, meta)
+	return plugin.ResourceCustomizeDiff(rDSDBClusterParameterGroupType, data, meta)
 }
-

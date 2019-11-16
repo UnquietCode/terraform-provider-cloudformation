@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,18 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const cloud9EnvironmentEC2Type string = "AWS::Cloud9::EnvironmentEC2"
+
+var cloud9EnvironmentEC2Properties map[string]string = map[string]string{
+	"repositories": "Repositories",
+	"owner_arn": "OwnerArn",
+	"description": "Description",
+	"automatic_stop_time_minutes": "AutomaticStopTimeMinutes",
+	"subnet_id": "SubnetId",
+	"instance_type": "InstanceType",
+	"name": "Name",
+}
 
 func ResourceCloud9EnvironmentEC2() *schema.Resource {
 	return &schema.Resource{
@@ -67,22 +79,21 @@ func resourceCloud9EnvironmentEC2Exists(data *schema.ResourceData, meta interfac
 }
 
 func resourceCloud9EnvironmentEC2Read(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Cloud9::EnvironmentEC2", ResourceCloud9EnvironmentEC2(), data, meta)
+	return plugin.ResourceRead(cloud9EnvironmentEC2Type, ResourceCloud9EnvironmentEC2(), data, meta)
 }
 
 func resourceCloud9EnvironmentEC2Create(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Cloud9::EnvironmentEC2", ResourceCloud9EnvironmentEC2(), data, meta)
+	return plugin.ResourceCreate(cloud9EnvironmentEC2Type, ResourceCloud9EnvironmentEC2(), data, cloud9EnvironmentEC2Properties, meta)
 }
 
 func resourceCloud9EnvironmentEC2Update(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Cloud9::EnvironmentEC2", ResourceCloud9EnvironmentEC2(), data, meta)
+	return plugin.ResourceUpdate(cloud9EnvironmentEC2Type, ResourceCloud9EnvironmentEC2(), data, cloud9EnvironmentEC2Properties, meta)
 }
 
 func resourceCloud9EnvironmentEC2Delete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Cloud9::EnvironmentEC2", data, meta)
+	return plugin.ResourceDelete(cloud9EnvironmentEC2Type, data, meta)
 }
 
 func resourceCloud9EnvironmentEC2CustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Cloud9::EnvironmentEC2", data, meta)
+	return plugin.ResourceCustomizeDiff(cloud9EnvironmentEC2Type, data, meta)
 }
-

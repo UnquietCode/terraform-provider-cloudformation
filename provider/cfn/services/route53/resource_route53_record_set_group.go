@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,15 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const route53RecordSetGroupType string = "AWS::Route53::RecordSetGroup"
+
+var route53RecordSetGroupProperties map[string]string = map[string]string{
+	"comment": "Comment",
+	"hosted_zone_id": "HostedZoneId",
+	"hosted_zone_name": "HostedZoneName",
+	"record_sets": "RecordSets",
+}
 
 func ResourceRoute53RecordSetGroup() *schema.Resource {
 	return &schema.Resource{
@@ -55,22 +64,21 @@ func resourceRoute53RecordSetGroupExists(data *schema.ResourceData, meta interfa
 }
 
 func resourceRoute53RecordSetGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Route53::RecordSetGroup", ResourceRoute53RecordSetGroup(), data, meta)
+	return plugin.ResourceRead(route53RecordSetGroupType, ResourceRoute53RecordSetGroup(), data, meta)
 }
 
 func resourceRoute53RecordSetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Route53::RecordSetGroup", ResourceRoute53RecordSetGroup(), data, meta)
+	return plugin.ResourceCreate(route53RecordSetGroupType, ResourceRoute53RecordSetGroup(), data, route53RecordSetGroupProperties, meta)
 }
 
 func resourceRoute53RecordSetGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Route53::RecordSetGroup", ResourceRoute53RecordSetGroup(), data, meta)
+	return plugin.ResourceUpdate(route53RecordSetGroupType, ResourceRoute53RecordSetGroup(), data, route53RecordSetGroupProperties, meta)
 }
 
 func resourceRoute53RecordSetGroupDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Route53::RecordSetGroup", data, meta)
+	return plugin.ResourceDelete(route53RecordSetGroupType, data, meta)
 }
 
 func resourceRoute53RecordSetGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Route53::RecordSetGroup", data, meta)
+	return plugin.ResourceCustomizeDiff(route53RecordSetGroupType, data, meta)
 }
-

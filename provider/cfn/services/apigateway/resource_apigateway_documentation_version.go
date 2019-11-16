@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const apiGatewayDocumentationVersionType string = "AWS::ApiGateway::DocumentationVersion"
+
+var apiGatewayDocumentationVersionProperties map[string]string = map[string]string{
+	"description": "Description",
+	"documentation_version": "DocumentationVersion",
+	"rest_api_id": "RestApiId",
+}
 
 func ResourceApiGatewayDocumentationVersion() *schema.Resource {
 	return &schema.Resource{
@@ -50,22 +58,21 @@ func resourceApiGatewayDocumentationVersionExists(data *schema.ResourceData, met
 }
 
 func resourceApiGatewayDocumentationVersionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGateway::DocumentationVersion", ResourceApiGatewayDocumentationVersion(), data, meta)
+	return plugin.ResourceRead(apiGatewayDocumentationVersionType, ResourceApiGatewayDocumentationVersion(), data, meta)
 }
 
 func resourceApiGatewayDocumentationVersionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::DocumentationVersion", ResourceApiGatewayDocumentationVersion(), data, meta)
+	return plugin.ResourceCreate(apiGatewayDocumentationVersionType, ResourceApiGatewayDocumentationVersion(), data, apiGatewayDocumentationVersionProperties, meta)
 }
 
 func resourceApiGatewayDocumentationVersionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGateway::DocumentationVersion", ResourceApiGatewayDocumentationVersion(), data, meta)
+	return plugin.ResourceUpdate(apiGatewayDocumentationVersionType, ResourceApiGatewayDocumentationVersion(), data, apiGatewayDocumentationVersionProperties, meta)
 }
 
 func resourceApiGatewayDocumentationVersionDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ApiGateway::DocumentationVersion", data, meta)
+	return plugin.ResourceDelete(apiGatewayDocumentationVersionType, data, meta)
 }
 
 func resourceApiGatewayDocumentationVersionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ApiGateway::DocumentationVersion", data, meta)
+	return plugin.ResourceCustomizeDiff(apiGatewayDocumentationVersionType, data, meta)
 }
-

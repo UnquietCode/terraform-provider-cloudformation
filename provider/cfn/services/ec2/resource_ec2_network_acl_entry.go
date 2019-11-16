@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,20 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eC2NetworkAclEntryType string = "AWS::EC2::NetworkAclEntry"
+
+var eC2NetworkAclEntryProperties map[string]string = map[string]string{
+	"cidr_block": "CidrBlock",
+	"egress": "Egress",
+	"icmp": "Icmp",
+	"ipv6_cidr_block": "Ipv6CidrBlock",
+	"network_acl_id": "NetworkAclId",
+	"port_range": "PortRange",
+	"protocol": "Protocol",
+	"rule_action": "RuleAction",
+	"rule_number": "RuleNumber",
+}
 
 func ResourceEC2NetworkAclEntry() *schema.Resource {
 	return &schema.Resource{
@@ -78,22 +92,21 @@ func resourceEC2NetworkAclEntryExists(data *schema.ResourceData, meta interface{
 }
 
 func resourceEC2NetworkAclEntryRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::NetworkAclEntry", ResourceEC2NetworkAclEntry(), data, meta)
+	return plugin.ResourceRead(eC2NetworkAclEntryType, ResourceEC2NetworkAclEntry(), data, meta)
 }
 
 func resourceEC2NetworkAclEntryCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::NetworkAclEntry", ResourceEC2NetworkAclEntry(), data, meta)
+	return plugin.ResourceCreate(eC2NetworkAclEntryType, ResourceEC2NetworkAclEntry(), data, eC2NetworkAclEntryProperties, meta)
 }
 
 func resourceEC2NetworkAclEntryUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::NetworkAclEntry", ResourceEC2NetworkAclEntry(), data, meta)
+	return plugin.ResourceUpdate(eC2NetworkAclEntryType, ResourceEC2NetworkAclEntry(), data, eC2NetworkAclEntryProperties, meta)
 }
 
 func resourceEC2NetworkAclEntryDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EC2::NetworkAclEntry", data, meta)
+	return plugin.ResourceDelete(eC2NetworkAclEntryType, data, meta)
 }
 
 func resourceEC2NetworkAclEntryCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EC2::NetworkAclEntry", data, meta)
+	return plugin.ResourceCustomizeDiff(eC2NetworkAclEntryType, data, meta)
 }
-

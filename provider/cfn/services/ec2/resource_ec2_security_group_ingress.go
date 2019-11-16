@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,23 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eC2SecurityGroupIngressType string = "AWS::EC2::SecurityGroupIngress"
+
+var eC2SecurityGroupIngressProperties map[string]string = map[string]string{
+	"cidr_ip": "CidrIp",
+	"cidr_ipv6": "CidrIpv6",
+	"description": "Description",
+	"from_port": "FromPort",
+	"group_id": "GroupId",
+	"group_name": "GroupName",
+	"ip_protocol": "IpProtocol",
+	"source_prefix_list_id": "SourcePrefixListId",
+	"source_security_group_id": "SourceSecurityGroupId",
+	"source_security_group_name": "SourceSecurityGroupName",
+	"source_security_group_owner_id": "SourceSecurityGroupOwnerId",
+	"to_port": "ToPort",
+}
 
 func ResourceEC2SecurityGroupIngress() *schema.Resource {
 	return &schema.Resource{
@@ -86,22 +103,21 @@ func resourceEC2SecurityGroupIngressExists(data *schema.ResourceData, meta inter
 }
 
 func resourceEC2SecurityGroupIngressRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::SecurityGroupIngress", ResourceEC2SecurityGroupIngress(), data, meta)
+	return plugin.ResourceRead(eC2SecurityGroupIngressType, ResourceEC2SecurityGroupIngress(), data, meta)
 }
 
 func resourceEC2SecurityGroupIngressCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::SecurityGroupIngress", ResourceEC2SecurityGroupIngress(), data, meta)
+	return plugin.ResourceCreate(eC2SecurityGroupIngressType, ResourceEC2SecurityGroupIngress(), data, eC2SecurityGroupIngressProperties, meta)
 }
 
 func resourceEC2SecurityGroupIngressUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::SecurityGroupIngress", ResourceEC2SecurityGroupIngress(), data, meta)
+	return plugin.ResourceUpdate(eC2SecurityGroupIngressType, ResourceEC2SecurityGroupIngress(), data, eC2SecurityGroupIngressProperties, meta)
 }
 
 func resourceEC2SecurityGroupIngressDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EC2::SecurityGroupIngress", data, meta)
+	return plugin.ResourceDelete(eC2SecurityGroupIngressType, data, meta)
 }
 
 func resourceEC2SecurityGroupIngressCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EC2::SecurityGroupIngress", data, meta)
+	return plugin.ResourceCustomizeDiff(eC2SecurityGroupIngressType, data, meta)
 }
-

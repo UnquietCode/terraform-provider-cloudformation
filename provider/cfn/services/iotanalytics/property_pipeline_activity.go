@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,19 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var pipelineActivityProperties map[string]string = map[string]string{
+	"select_attributes": "SelectAttributes",
+	"datastore": "Datastore",
+	"filter": "Filter",
+	"add_attributes": "AddAttributes",
+	"channel": "Channel",
+	"device_shadow_enrich": "DeviceShadowEnrich",
+	"math": "Math",
+	"lambda": "Lambda",
+	"device_registry_enrich": "DeviceRegistryEnrich",
+	"remove_attributes": "RemoveAttributes",
+}
 
 func propertyPipelineActivity(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -91,4 +104,3 @@ func propertyPipelineActivity(extras...string) *schema.Resource {
 		},
 	}
 }
-

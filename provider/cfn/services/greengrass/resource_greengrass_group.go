@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,15 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const greengrassGroupType string = "AWS::Greengrass::Group"
+
+var greengrassGroupProperties map[string]string = map[string]string{
+	"initial_version": "InitialVersion",
+	"role_arn": "RoleArn",
+	"tags": "Tags",
+	"name": "Name",
+}
 
 func ResourceGreengrassGroup() *schema.Resource {
 	return &schema.Resource{
@@ -56,22 +65,21 @@ func resourceGreengrassGroupExists(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceGreengrassGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Greengrass::Group", ResourceGreengrassGroup(), data, meta)
+	return plugin.ResourceRead(greengrassGroupType, ResourceGreengrassGroup(), data, meta)
 }
 
 func resourceGreengrassGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Greengrass::Group", ResourceGreengrassGroup(), data, meta)
+	return plugin.ResourceCreate(greengrassGroupType, ResourceGreengrassGroup(), data, greengrassGroupProperties, meta)
 }
 
 func resourceGreengrassGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Greengrass::Group", ResourceGreengrassGroup(), data, meta)
+	return plugin.ResourceUpdate(greengrassGroupType, ResourceGreengrassGroup(), data, greengrassGroupProperties, meta)
 }
 
 func resourceGreengrassGroupDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Greengrass::Group", data, meta)
+	return plugin.ResourceDelete(greengrassGroupType, data, meta)
 }
 
 func resourceGreengrassGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Greengrass::Group", data, meta)
+	return plugin.ResourceCustomizeDiff(greengrassGroupType, data, meta)
 }
-

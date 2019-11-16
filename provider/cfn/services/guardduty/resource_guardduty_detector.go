@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const guardDutyDetectorType string = "AWS::GuardDuty::Detector"
+
+var guardDutyDetectorProperties map[string]string = map[string]string{
+	"finding_publishing_frequency": "FindingPublishingFrequency",
+	"enable": "Enable",
+}
 
 func ResourceGuardDutyDetector() *schema.Resource {
 	return &schema.Resource{
@@ -46,22 +53,21 @@ func resourceGuardDutyDetectorExists(data *schema.ResourceData, meta interface{}
 }
 
 func resourceGuardDutyDetectorRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::GuardDuty::Detector", ResourceGuardDutyDetector(), data, meta)
+	return plugin.ResourceRead(guardDutyDetectorType, ResourceGuardDutyDetector(), data, meta)
 }
 
 func resourceGuardDutyDetectorCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::GuardDuty::Detector", ResourceGuardDutyDetector(), data, meta)
+	return plugin.ResourceCreate(guardDutyDetectorType, ResourceGuardDutyDetector(), data, guardDutyDetectorProperties, meta)
 }
 
 func resourceGuardDutyDetectorUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::GuardDuty::Detector", ResourceGuardDutyDetector(), data, meta)
+	return plugin.ResourceUpdate(guardDutyDetectorType, ResourceGuardDutyDetector(), data, guardDutyDetectorProperties, meta)
 }
 
 func resourceGuardDutyDetectorDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::GuardDuty::Detector", data, meta)
+	return plugin.ResourceDelete(guardDutyDetectorType, data, meta)
 }
 
 func resourceGuardDutyDetectorCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::GuardDuty::Detector", data, meta)
+	return plugin.ResourceCustomizeDiff(guardDutyDetectorType, data, meta)
 }
-

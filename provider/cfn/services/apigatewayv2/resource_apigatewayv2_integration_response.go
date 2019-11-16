@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,18 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const apiGatewayV2IntegrationResponseType string = "AWS::ApiGatewayV2::IntegrationResponse"
+
+var apiGatewayV2IntegrationResponseProperties map[string]string = map[string]string{
+	"response_templates": "ResponseTemplates",
+	"template_selection_expression": "TemplateSelectionExpression",
+	"response_parameters": "ResponseParameters",
+	"content_handling_strategy": "ContentHandlingStrategy",
+	"integration_id": "IntegrationId",
+	"integration_response_key": "IntegrationResponseKey",
+	"api_id": "ApiId",
+}
 
 func ResourceApiGatewayV2IntegrationResponse() *schema.Resource {
 	return &schema.Resource{
@@ -66,22 +78,21 @@ func resourceApiGatewayV2IntegrationResponseExists(data *schema.ResourceData, me
 }
 
 func resourceApiGatewayV2IntegrationResponseRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGatewayV2::IntegrationResponse", ResourceApiGatewayV2IntegrationResponse(), data, meta)
+	return plugin.ResourceRead(apiGatewayV2IntegrationResponseType, ResourceApiGatewayV2IntegrationResponse(), data, meta)
 }
 
 func resourceApiGatewayV2IntegrationResponseCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGatewayV2::IntegrationResponse", ResourceApiGatewayV2IntegrationResponse(), data, meta)
+	return plugin.ResourceCreate(apiGatewayV2IntegrationResponseType, ResourceApiGatewayV2IntegrationResponse(), data, apiGatewayV2IntegrationResponseProperties, meta)
 }
 
 func resourceApiGatewayV2IntegrationResponseUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGatewayV2::IntegrationResponse", ResourceApiGatewayV2IntegrationResponse(), data, meta)
+	return plugin.ResourceUpdate(apiGatewayV2IntegrationResponseType, ResourceApiGatewayV2IntegrationResponse(), data, apiGatewayV2IntegrationResponseProperties, meta)
 }
 
 func resourceApiGatewayV2IntegrationResponseDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ApiGatewayV2::IntegrationResponse", data, meta)
+	return plugin.ResourceDelete(apiGatewayV2IntegrationResponseType, data, meta)
 }
 
 func resourceApiGatewayV2IntegrationResponseCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ApiGatewayV2::IntegrationResponse", data, meta)
+	return plugin.ResourceCustomizeDiff(apiGatewayV2IntegrationResponseType, data, meta)
 }
-

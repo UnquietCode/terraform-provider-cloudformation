@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,18 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const codePipelinePipelineType string = "AWS::CodePipeline::Pipeline"
+
+var codePipelinePipelineProperties map[string]string = map[string]string{
+	"artifact_store": "ArtifactStore",
+	"artifact_stores": "ArtifactStores",
+	"disable_inbound_stage_transitions": "DisableInboundStageTransitions",
+	"name": "Name",
+	"restart_execution_on_update": "RestartExecutionOnUpdate",
+	"role_arn": "RoleArn",
+	"stages": "Stages",
+}
 
 func ResourceCodePipelinePipeline() *schema.Resource {
 	return &schema.Resource{
@@ -71,22 +83,21 @@ func resourceCodePipelinePipelineExists(data *schema.ResourceData, meta interfac
 }
 
 func resourceCodePipelinePipelineRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CodePipeline::Pipeline", ResourceCodePipelinePipeline(), data, meta)
+	return plugin.ResourceRead(codePipelinePipelineType, ResourceCodePipelinePipeline(), data, meta)
 }
 
 func resourceCodePipelinePipelineCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CodePipeline::Pipeline", ResourceCodePipelinePipeline(), data, meta)
+	return plugin.ResourceCreate(codePipelinePipelineType, ResourceCodePipelinePipeline(), data, codePipelinePipelineProperties, meta)
 }
 
 func resourceCodePipelinePipelineUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CodePipeline::Pipeline", ResourceCodePipelinePipeline(), data, meta)
+	return plugin.ResourceUpdate(codePipelinePipelineType, ResourceCodePipelinePipeline(), data, codePipelinePipelineProperties, meta)
 }
 
 func resourceCodePipelinePipelineDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::CodePipeline::Pipeline", data, meta)
+	return plugin.ResourceDelete(codePipelinePipelineType, data, meta)
 }
 
 func resourceCodePipelinePipelineCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::CodePipeline::Pipeline", data, meta)
+	return plugin.ResourceCustomizeDiff(codePipelinePipelineType, data, meta)
 }
-

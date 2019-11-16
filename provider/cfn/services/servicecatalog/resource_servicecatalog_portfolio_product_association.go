@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,15 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const serviceCatalogPortfolioProductAssociationType string = "AWS::ServiceCatalog::PortfolioProductAssociation"
+
+var serviceCatalogPortfolioProductAssociationProperties map[string]string = map[string]string{
+	"source_portfolio_id": "SourcePortfolioId",
+	"accept_language": "AcceptLanguage",
+	"portfolio_id": "PortfolioId",
+	"product_id": "ProductId",
+}
 
 func ResourceServiceCatalogPortfolioProductAssociation() *schema.Resource {
 	return &schema.Resource{
@@ -54,22 +63,21 @@ func resourceServiceCatalogPortfolioProductAssociationExists(data *schema.Resour
 }
 
 func resourceServiceCatalogPortfolioProductAssociationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ServiceCatalog::PortfolioProductAssociation", ResourceServiceCatalogPortfolioProductAssociation(), data, meta)
+	return plugin.ResourceRead(serviceCatalogPortfolioProductAssociationType, ResourceServiceCatalogPortfolioProductAssociation(), data, meta)
 }
 
 func resourceServiceCatalogPortfolioProductAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::PortfolioProductAssociation", ResourceServiceCatalogPortfolioProductAssociation(), data, meta)
+	return plugin.ResourceCreate(serviceCatalogPortfolioProductAssociationType, ResourceServiceCatalogPortfolioProductAssociation(), data, serviceCatalogPortfolioProductAssociationProperties, meta)
 }
 
 func resourceServiceCatalogPortfolioProductAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ServiceCatalog::PortfolioProductAssociation", ResourceServiceCatalogPortfolioProductAssociation(), data, meta)
+	return plugin.ResourceUpdate(serviceCatalogPortfolioProductAssociationType, ResourceServiceCatalogPortfolioProductAssociation(), data, serviceCatalogPortfolioProductAssociationProperties, meta)
 }
 
 func resourceServiceCatalogPortfolioProductAssociationDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ServiceCatalog::PortfolioProductAssociation", data, meta)
+	return plugin.ResourceDelete(serviceCatalogPortfolioProductAssociationType, data, meta)
 }
 
 func resourceServiceCatalogPortfolioProductAssociationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ServiceCatalog::PortfolioProductAssociation", data, meta)
+	return plugin.ResourceCustomizeDiff(serviceCatalogPortfolioProductAssociationType, data, meta)
 }
-

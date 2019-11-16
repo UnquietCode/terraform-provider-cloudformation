@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,15 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const rDSDBSecurityGroupType string = "AWS::RDS::DBSecurityGroup"
+
+var rDSDBSecurityGroupProperties map[string]string = map[string]string{
+	"db_security_group_ingress": "DBSecurityGroupIngress",
+	"ec2_vpc_id": "EC2VpcId",
+	"group_description": "GroupDescription",
+	"tags": "Tags",
+}
 
 func ResourceRDSDBSecurityGroup() *schema.Resource {
 	return &schema.Resource{
@@ -57,22 +66,21 @@ func resourceRDSDBSecurityGroupExists(data *schema.ResourceData, meta interface{
 }
 
 func resourceRDSDBSecurityGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::RDS::DBSecurityGroup", ResourceRDSDBSecurityGroup(), data, meta)
+	return plugin.ResourceRead(rDSDBSecurityGroupType, ResourceRDSDBSecurityGroup(), data, meta)
 }
 
 func resourceRDSDBSecurityGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RDS::DBSecurityGroup", ResourceRDSDBSecurityGroup(), data, meta)
+	return plugin.ResourceCreate(rDSDBSecurityGroupType, ResourceRDSDBSecurityGroup(), data, rDSDBSecurityGroupProperties, meta)
 }
 
 func resourceRDSDBSecurityGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::RDS::DBSecurityGroup", ResourceRDSDBSecurityGroup(), data, meta)
+	return plugin.ResourceUpdate(rDSDBSecurityGroupType, ResourceRDSDBSecurityGroup(), data, rDSDBSecurityGroupProperties, meta)
 }
 
 func resourceRDSDBSecurityGroupDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::RDS::DBSecurityGroup", data, meta)
+	return plugin.ResourceDelete(rDSDBSecurityGroupType, data, meta)
 }
 
 func resourceRDSDBSecurityGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::RDS::DBSecurityGroup", data, meta)
+	return plugin.ResourceCustomizeDiff(rDSDBSecurityGroupType, data, meta)
 }
-

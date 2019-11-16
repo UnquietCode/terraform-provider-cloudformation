@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,16 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const mediaStoreContainerType string = "AWS::MediaStore::Container"
+
+var mediaStoreContainerProperties map[string]string = map[string]string{
+	"policy": "Policy",
+	"container_name": "ContainerName",
+	"cors_policy": "CorsPolicy",
+	"lifecycle_policy": "LifecyclePolicy",
+	"access_logging_enabled": "AccessLoggingEnabled",
+}
 
 func ResourceMediaStoreContainer() *schema.Resource {
 	return &schema.Resource{
@@ -59,22 +69,21 @@ func resourceMediaStoreContainerExists(data *schema.ResourceData, meta interface
 }
 
 func resourceMediaStoreContainerRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::MediaStore::Container", ResourceMediaStoreContainer(), data, meta)
+	return plugin.ResourceRead(mediaStoreContainerType, ResourceMediaStoreContainer(), data, meta)
 }
 
 func resourceMediaStoreContainerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::MediaStore::Container", ResourceMediaStoreContainer(), data, meta)
+	return plugin.ResourceCreate(mediaStoreContainerType, ResourceMediaStoreContainer(), data, mediaStoreContainerProperties, meta)
 }
 
 func resourceMediaStoreContainerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::MediaStore::Container", ResourceMediaStoreContainer(), data, meta)
+	return plugin.ResourceUpdate(mediaStoreContainerType, ResourceMediaStoreContainer(), data, mediaStoreContainerProperties, meta)
 }
 
 func resourceMediaStoreContainerDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::MediaStore::Container", data, meta)
+	return plugin.ResourceDelete(mediaStoreContainerType, data, meta)
 }
 
 func resourceMediaStoreContainerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::MediaStore::Container", data, meta)
+	return plugin.ResourceCustomizeDiff(mediaStoreContainerType, data, meta)
 }
-

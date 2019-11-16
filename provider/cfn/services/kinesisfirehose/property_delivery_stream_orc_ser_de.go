@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,19 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var deliveryStreamOrcSerDeProperties map[string]string = map[string]string{
+	"block_size_bytes": "BlockSizeBytes",
+	"bloom_filter_columns": "BloomFilterColumns",
+	"bloom_filter_false_positive_probability": "BloomFilterFalsePositiveProbability",
+	"compression": "Compression",
+	"dictionary_key_threshold": "DictionaryKeyThreshold",
+	"enable_padding": "EnablePadding",
+	"format_version": "FormatVersion",
+	"padding_tolerance": "PaddingTolerance",
+	"row_index_stride": "RowIndexStride",
+	"stripe_size_bytes": "StripeSizeBytes",
+}
 
 func propertyDeliveryStreamOrcSerDe(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -73,4 +86,3 @@ func propertyDeliveryStreamOrcSerDe(extras...string) *schema.Resource {
 		},
 	}
 }
-

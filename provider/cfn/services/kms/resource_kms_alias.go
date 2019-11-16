@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const kMSAliasType string = "AWS::KMS::Alias"
+
+var kMSAliasProperties map[string]string = map[string]string{
+	"alias_name": "AliasName",
+	"target_key_id": "TargetKeyId",
+}
 
 func ResourceKMSAlias() *schema.Resource {
 	return &schema.Resource{
@@ -46,22 +53,21 @@ func resourceKMSAliasExists(data *schema.ResourceData, meta interface{}) (bool, 
 }
 
 func resourceKMSAliasRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::KMS::Alias", ResourceKMSAlias(), data, meta)
+	return plugin.ResourceRead(kMSAliasType, ResourceKMSAlias(), data, meta)
 }
 
 func resourceKMSAliasCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::KMS::Alias", ResourceKMSAlias(), data, meta)
+	return plugin.ResourceCreate(kMSAliasType, ResourceKMSAlias(), data, kMSAliasProperties, meta)
 }
 
 func resourceKMSAliasUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::KMS::Alias", ResourceKMSAlias(), data, meta)
+	return plugin.ResourceUpdate(kMSAliasType, ResourceKMSAlias(), data, kMSAliasProperties, meta)
 }
 
 func resourceKMSAliasDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::KMS::Alias", data, meta)
+	return plugin.ResourceDelete(kMSAliasType, data, meta)
 }
 
 func resourceKMSAliasCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::KMS::Alias", data, meta)
+	return plugin.ResourceCustomizeDiff(kMSAliasType, data, meta)
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,22 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eC2EC2FleetType string = "AWS::EC2::EC2Fleet"
+
+var eC2EC2FleetProperties map[string]string = map[string]string{
+	"target_capacity_specification": "TargetCapacitySpecification",
+	"on_demand_options": "OnDemandOptions",
+	"type": "Type",
+	"excess_capacity_termination_policy": "ExcessCapacityTerminationPolicy",
+	"tag_specifications": "TagSpecifications",
+	"spot_options": "SpotOptions",
+	"valid_from": "ValidFrom",
+	"replace_unhealthy_instances": "ReplaceUnhealthyInstances",
+	"launch_template_configs": "LaunchTemplateConfigs",
+	"terminate_instances_with_expiration": "TerminateInstancesWithExpiration",
+	"valid_until": "ValidUntil",
+}
 
 func ResourceEC2EC2Fleet() *schema.Resource {
 	return &schema.Resource{
@@ -90,22 +106,21 @@ func resourceEC2EC2FleetExists(data *schema.ResourceData, meta interface{}) (boo
 }
 
 func resourceEC2EC2FleetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::EC2Fleet", ResourceEC2EC2Fleet(), data, meta)
+	return plugin.ResourceRead(eC2EC2FleetType, ResourceEC2EC2Fleet(), data, meta)
 }
 
 func resourceEC2EC2FleetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::EC2Fleet", ResourceEC2EC2Fleet(), data, meta)
+	return plugin.ResourceCreate(eC2EC2FleetType, ResourceEC2EC2Fleet(), data, eC2EC2FleetProperties, meta)
 }
 
 func resourceEC2EC2FleetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::EC2Fleet", ResourceEC2EC2Fleet(), data, meta)
+	return plugin.ResourceUpdate(eC2EC2FleetType, ResourceEC2EC2Fleet(), data, eC2EC2FleetProperties, meta)
 }
 
 func resourceEC2EC2FleetDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EC2::EC2Fleet", data, meta)
+	return plugin.ResourceDelete(eC2EC2FleetType, data, meta)
 }
 
 func resourceEC2EC2FleetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EC2::EC2Fleet", data, meta)
+	return plugin.ResourceCustomizeDiff(eC2EC2FleetType, data, meta)
 }
-

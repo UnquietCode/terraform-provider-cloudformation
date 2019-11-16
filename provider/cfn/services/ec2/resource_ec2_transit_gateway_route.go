@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,15 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eC2TransitGatewayRouteType string = "AWS::EC2::TransitGatewayRoute"
+
+var eC2TransitGatewayRouteProperties map[string]string = map[string]string{
+	"transit_gateway_route_table_id": "TransitGatewayRouteTableId",
+	"destination_cidr_block": "DestinationCidrBlock",
+	"blackhole": "Blackhole",
+	"transit_gateway_attachment_id": "TransitGatewayAttachmentId",
+}
 
 func ResourceEC2TransitGatewayRoute() *schema.Resource {
 	return &schema.Resource{
@@ -54,22 +63,21 @@ func resourceEC2TransitGatewayRouteExists(data *schema.ResourceData, meta interf
 }
 
 func resourceEC2TransitGatewayRouteRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::TransitGatewayRoute", ResourceEC2TransitGatewayRoute(), data, meta)
+	return plugin.ResourceRead(eC2TransitGatewayRouteType, ResourceEC2TransitGatewayRoute(), data, meta)
 }
 
 func resourceEC2TransitGatewayRouteCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::TransitGatewayRoute", ResourceEC2TransitGatewayRoute(), data, meta)
+	return plugin.ResourceCreate(eC2TransitGatewayRouteType, ResourceEC2TransitGatewayRoute(), data, eC2TransitGatewayRouteProperties, meta)
 }
 
 func resourceEC2TransitGatewayRouteUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::TransitGatewayRoute", ResourceEC2TransitGatewayRoute(), data, meta)
+	return plugin.ResourceUpdate(eC2TransitGatewayRouteType, ResourceEC2TransitGatewayRoute(), data, eC2TransitGatewayRouteProperties, meta)
 }
 
 func resourceEC2TransitGatewayRouteDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EC2::TransitGatewayRoute", data, meta)
+	return plugin.ResourceDelete(eC2TransitGatewayRouteType, data, meta)
 }
 
 func resourceEC2TransitGatewayRouteCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EC2::TransitGatewayRoute", data, meta)
+	return plugin.ResourceCustomizeDiff(eC2TransitGatewayRouteType, data, meta)
 }
-

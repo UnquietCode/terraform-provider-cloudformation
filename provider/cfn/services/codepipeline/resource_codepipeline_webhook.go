@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,19 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const codePipelineWebhookType string = "AWS::CodePipeline::Webhook"
+
+var codePipelineWebhookProperties map[string]string = map[string]string{
+	"authentication_configuration": "AuthenticationConfiguration",
+	"filters": "Filters",
+	"authentication": "Authentication",
+	"target_pipeline": "TargetPipeline",
+	"target_action": "TargetAction",
+	"name": "Name",
+	"target_pipeline_version": "TargetPipelineVersion",
+	"register_with_third_party": "RegisterWithThirdParty",
+}
 
 func ResourceCodePipelineWebhook() *schema.Resource {
 	return &schema.Resource{
@@ -73,22 +86,21 @@ func resourceCodePipelineWebhookExists(data *schema.ResourceData, meta interface
 }
 
 func resourceCodePipelineWebhookRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CodePipeline::Webhook", ResourceCodePipelineWebhook(), data, meta)
+	return plugin.ResourceRead(codePipelineWebhookType, ResourceCodePipelineWebhook(), data, meta)
 }
 
 func resourceCodePipelineWebhookCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CodePipeline::Webhook", ResourceCodePipelineWebhook(), data, meta)
+	return plugin.ResourceCreate(codePipelineWebhookType, ResourceCodePipelineWebhook(), data, codePipelineWebhookProperties, meta)
 }
 
 func resourceCodePipelineWebhookUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CodePipeline::Webhook", ResourceCodePipelineWebhook(), data, meta)
+	return plugin.ResourceUpdate(codePipelineWebhookType, ResourceCodePipelineWebhook(), data, codePipelineWebhookProperties, meta)
 }
 
 func resourceCodePipelineWebhookDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::CodePipeline::Webhook", data, meta)
+	return plugin.ResourceDelete(codePipelineWebhookType, data, meta)
 }
 
 func resourceCodePipelineWebhookCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::CodePipeline::Webhook", data, meta)
+	return plugin.ResourceCustomizeDiff(codePipelineWebhookType, data, meta)
 }
-

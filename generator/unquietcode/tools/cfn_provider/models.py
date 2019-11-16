@@ -95,6 +95,7 @@ class AttributeType:
 @dataclass
 class ResourceAttribute:
     name: str
+    cfn_name: str
     type: AttributeType
     required: bool
     will_replace: bool

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eC2SubnetCidrBlockType string = "AWS::EC2::SubnetCidrBlock"
+
+var eC2SubnetCidrBlockProperties map[string]string = map[string]string{
+	"ipv6_cidr_block": "Ipv6CidrBlock",
+	"subnet_id": "SubnetId",
+}
 
 func ResourceEC2SubnetCidrBlock() *schema.Resource {
 	return &schema.Resource{
@@ -46,22 +53,21 @@ func resourceEC2SubnetCidrBlockExists(data *schema.ResourceData, meta interface{
 }
 
 func resourceEC2SubnetCidrBlockRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::SubnetCidrBlock", ResourceEC2SubnetCidrBlock(), data, meta)
+	return plugin.ResourceRead(eC2SubnetCidrBlockType, ResourceEC2SubnetCidrBlock(), data, meta)
 }
 
 func resourceEC2SubnetCidrBlockCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::SubnetCidrBlock", ResourceEC2SubnetCidrBlock(), data, meta)
+	return plugin.ResourceCreate(eC2SubnetCidrBlockType, ResourceEC2SubnetCidrBlock(), data, eC2SubnetCidrBlockProperties, meta)
 }
 
 func resourceEC2SubnetCidrBlockUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::SubnetCidrBlock", ResourceEC2SubnetCidrBlock(), data, meta)
+	return plugin.ResourceUpdate(eC2SubnetCidrBlockType, ResourceEC2SubnetCidrBlock(), data, eC2SubnetCidrBlockProperties, meta)
 }
 
 func resourceEC2SubnetCidrBlockDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EC2::SubnetCidrBlock", data, meta)
+	return plugin.ResourceDelete(eC2SubnetCidrBlockType, data, meta)
 }
 
 func resourceEC2SubnetCidrBlockCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EC2::SubnetCidrBlock", data, meta)
+	return plugin.ResourceCustomizeDiff(eC2SubnetCidrBlockType, data, meta)
 }
-

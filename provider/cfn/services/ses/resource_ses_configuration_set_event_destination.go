@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const sESConfigurationSetEventDestinationType string = "AWS::SES::ConfigurationSetEventDestination"
+
+var sESConfigurationSetEventDestinationProperties map[string]string = map[string]string{
+	"configuration_set_name": "ConfigurationSetName",
+	"event_destination": "EventDestination",
+}
 
 func ResourceSESConfigurationSetEventDestination() *schema.Resource {
 	return &schema.Resource{
@@ -48,22 +55,21 @@ func resourceSESConfigurationSetEventDestinationExists(data *schema.ResourceData
 }
 
 func resourceSESConfigurationSetEventDestinationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SES::ConfigurationSetEventDestination", ResourceSESConfigurationSetEventDestination(), data, meta)
+	return plugin.ResourceRead(sESConfigurationSetEventDestinationType, ResourceSESConfigurationSetEventDestination(), data, meta)
 }
 
 func resourceSESConfigurationSetEventDestinationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SES::ConfigurationSetEventDestination", ResourceSESConfigurationSetEventDestination(), data, meta)
+	return plugin.ResourceCreate(sESConfigurationSetEventDestinationType, ResourceSESConfigurationSetEventDestination(), data, sESConfigurationSetEventDestinationProperties, meta)
 }
 
 func resourceSESConfigurationSetEventDestinationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SES::ConfigurationSetEventDestination", ResourceSESConfigurationSetEventDestination(), data, meta)
+	return plugin.ResourceUpdate(sESConfigurationSetEventDestinationType, ResourceSESConfigurationSetEventDestination(), data, sESConfigurationSetEventDestinationProperties, meta)
 }
 
 func resourceSESConfigurationSetEventDestinationDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::SES::ConfigurationSetEventDestination", data, meta)
+	return plugin.ResourceDelete(sESConfigurationSetEventDestinationType, data, meta)
 }
 
 func resourceSESConfigurationSetEventDestinationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::SES::ConfigurationSetEventDestination", data, meta)
+	return plugin.ResourceCustomizeDiff(sESConfigurationSetEventDestinationType, data, meta)
 }
-

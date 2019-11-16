@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const lambdaVersionType string = "AWS::Lambda::Version"
+
+var lambdaVersionProperties map[string]string = map[string]string{
+	"code_sha256": "CodeSha256",
+	"description": "Description",
+	"function_name": "FunctionName",
+}
 
 func ResourceLambdaVersion() *schema.Resource {
 	return &schema.Resource{
@@ -50,22 +58,21 @@ func resourceLambdaVersionExists(data *schema.ResourceData, meta interface{}) (b
 }
 
 func resourceLambdaVersionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Lambda::Version", ResourceLambdaVersion(), data, meta)
+	return plugin.ResourceRead(lambdaVersionType, ResourceLambdaVersion(), data, meta)
 }
 
 func resourceLambdaVersionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Lambda::Version", ResourceLambdaVersion(), data, meta)
+	return plugin.ResourceCreate(lambdaVersionType, ResourceLambdaVersion(), data, lambdaVersionProperties, meta)
 }
 
 func resourceLambdaVersionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Lambda::Version", ResourceLambdaVersion(), data, meta)
+	return plugin.ResourceUpdate(lambdaVersionType, ResourceLambdaVersion(), data, lambdaVersionProperties, meta)
 }
 
 func resourceLambdaVersionDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Lambda::Version", data, meta)
+	return plugin.ResourceDelete(lambdaVersionType, data, meta)
 }
 
 func resourceLambdaVersionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Lambda::Version", data, meta)
+	return plugin.ResourceCustomizeDiff(lambdaVersionType, data, meta)
 }
-

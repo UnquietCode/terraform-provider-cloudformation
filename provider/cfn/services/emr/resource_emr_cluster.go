@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,30 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eMRClusterType string = "AWS::EMR::Cluster"
+
+var eMRClusterProperties map[string]string = map[string]string{
+	"additional_info": "AdditionalInfo",
+	"applications": "Applications",
+	"auto_scaling_role": "AutoScalingRole",
+	"bootstrap_actions": "BootstrapActions",
+	"configurations": "Configurations",
+	"custom_ami_id": "CustomAmiId",
+	"ebs_root_volume_size": "EbsRootVolumeSize",
+	"instances": "Instances",
+	"job_flow_role": "JobFlowRole",
+	"kerberos_attributes": "KerberosAttributes",
+	"log_uri": "LogUri",
+	"name": "Name",
+	"release_label": "ReleaseLabel",
+	"scale_down_behavior": "ScaleDownBehavior",
+	"security_configuration": "SecurityConfiguration",
+	"service_role": "ServiceRole",
+	"steps": "Steps",
+	"tags": "Tags",
+	"visible_to_all_users": "VisibleToAllUsers",
+}
 
 func ResourceEMRCluster() *schema.Resource {
 	return &schema.Resource{
@@ -124,22 +148,21 @@ func resourceEMRClusterExists(data *schema.ResourceData, meta interface{}) (bool
 }
 
 func resourceEMRClusterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EMR::Cluster", ResourceEMRCluster(), data, meta)
+	return plugin.ResourceRead(eMRClusterType, ResourceEMRCluster(), data, meta)
 }
 
 func resourceEMRClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EMR::Cluster", ResourceEMRCluster(), data, meta)
+	return plugin.ResourceCreate(eMRClusterType, ResourceEMRCluster(), data, eMRClusterProperties, meta)
 }
 
 func resourceEMRClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EMR::Cluster", ResourceEMRCluster(), data, meta)
+	return plugin.ResourceUpdate(eMRClusterType, ResourceEMRCluster(), data, eMRClusterProperties, meta)
 }
 
 func resourceEMRClusterDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EMR::Cluster", data, meta)
+	return plugin.ResourceDelete(eMRClusterType, data, meta)
 }
 
 func resourceEMRClusterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EMR::Cluster", data, meta)
+	return plugin.ResourceCustomizeDiff(eMRClusterType, data, meta)
 }
-

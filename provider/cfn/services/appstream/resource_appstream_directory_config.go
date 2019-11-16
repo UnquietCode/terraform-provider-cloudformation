@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const appStreamDirectoryConfigType string = "AWS::AppStream::DirectoryConfig"
+
+var appStreamDirectoryConfigProperties map[string]string = map[string]string{
+	"organizational_unit_distinguished_names": "OrganizationalUnitDistinguishedNames",
+	"service_account_credentials": "ServiceAccountCredentials",
+	"directory_name": "DirectoryName",
+}
 
 func ResourceAppStreamDirectoryConfig() *schema.Resource {
 	return &schema.Resource{
@@ -53,22 +61,21 @@ func resourceAppStreamDirectoryConfigExists(data *schema.ResourceData, meta inte
 }
 
 func resourceAppStreamDirectoryConfigRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppStream::DirectoryConfig", ResourceAppStreamDirectoryConfig(), data, meta)
+	return plugin.ResourceRead(appStreamDirectoryConfigType, ResourceAppStreamDirectoryConfig(), data, meta)
 }
 
 func resourceAppStreamDirectoryConfigCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppStream::DirectoryConfig", ResourceAppStreamDirectoryConfig(), data, meta)
+	return plugin.ResourceCreate(appStreamDirectoryConfigType, ResourceAppStreamDirectoryConfig(), data, appStreamDirectoryConfigProperties, meta)
 }
 
 func resourceAppStreamDirectoryConfigUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppStream::DirectoryConfig", ResourceAppStreamDirectoryConfig(), data, meta)
+	return plugin.ResourceUpdate(appStreamDirectoryConfigType, ResourceAppStreamDirectoryConfig(), data, appStreamDirectoryConfigProperties, meta)
 }
 
 func resourceAppStreamDirectoryConfigDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::AppStream::DirectoryConfig", data, meta)
+	return plugin.ResourceDelete(appStreamDirectoryConfigType, data, meta)
 }
 
 func resourceAppStreamDirectoryConfigCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::AppStream::DirectoryConfig", data, meta)
+	return plugin.ResourceCustomizeDiff(appStreamDirectoryConfigType, data, meta)
 }
-

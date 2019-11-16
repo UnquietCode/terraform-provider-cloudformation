@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,17 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eC2DHCPOptionsType string = "AWS::EC2::DHCPOptions"
+
+var eC2DHCPOptionsProperties map[string]string = map[string]string{
+	"domain_name": "DomainName",
+	"domain_name_servers": "DomainNameServers",
+	"netbios_name_servers": "NetbiosNameServers",
+	"netbios_node_type": "NetbiosNodeType",
+	"ntp_servers": "NtpServers",
+	"tags": "Tags",
+}
 
 func ResourceEC2DHCPOptions() *schema.Resource {
 	return &schema.Resource{
@@ -69,22 +80,21 @@ func resourceEC2DHCPOptionsExists(data *schema.ResourceData, meta interface{}) (
 }
 
 func resourceEC2DHCPOptionsRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::DHCPOptions", ResourceEC2DHCPOptions(), data, meta)
+	return plugin.ResourceRead(eC2DHCPOptionsType, ResourceEC2DHCPOptions(), data, meta)
 }
 
 func resourceEC2DHCPOptionsCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::DHCPOptions", ResourceEC2DHCPOptions(), data, meta)
+	return plugin.ResourceCreate(eC2DHCPOptionsType, ResourceEC2DHCPOptions(), data, eC2DHCPOptionsProperties, meta)
 }
 
 func resourceEC2DHCPOptionsUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::DHCPOptions", ResourceEC2DHCPOptions(), data, meta)
+	return plugin.ResourceUpdate(eC2DHCPOptionsType, ResourceEC2DHCPOptions(), data, eC2DHCPOptionsProperties, meta)
 }
 
 func resourceEC2DHCPOptionsDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EC2::DHCPOptions", data, meta)
+	return plugin.ResourceDelete(eC2DHCPOptionsType, data, meta)
 }
 
 func resourceEC2DHCPOptionsCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EC2::DHCPOptions", data, meta)
+	return plugin.ResourceCustomizeDiff(eC2DHCPOptionsType, data, meta)
 }
-

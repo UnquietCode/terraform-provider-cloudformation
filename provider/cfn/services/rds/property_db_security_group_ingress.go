@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var dBSecurityGroupIngressProperties map[string]string = map[string]string{
+	"cidrip": "CIDRIP",
+	"ec2_security_group_id": "EC2SecurityGroupId",
+	"ec2_security_group_name": "EC2SecurityGroupName",
+	"ec2_security_group_owner_id": "EC2SecurityGroupOwnerId",
+}
 
 func propertyDBSecurityGroupIngress(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -47,4 +54,3 @@ func propertyDBSecurityGroupIngress(extras...string) *schema.Resource {
 		},
 	}
 }
-

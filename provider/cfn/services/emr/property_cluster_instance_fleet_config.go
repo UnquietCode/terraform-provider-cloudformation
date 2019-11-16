@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var clusterInstanceFleetConfigProperties map[string]string = map[string]string{
+	"instance_type_configs": "InstanceTypeConfigs",
+	"launch_specifications": "LaunchSpecifications",
+	"name": "Name",
+	"target_on_demand_capacity": "TargetOnDemandCapacity",
+	"target_spot_capacity": "TargetSpotCapacity",
+}
 
 func propertyClusterInstanceFleetConfig(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -54,4 +62,3 @@ func propertyClusterInstanceFleetConfig(extras...string) *schema.Resource {
 		},
 	}
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,21 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var tableStorageDescriptorProperties map[string]string = map[string]string{
+	"stored_as_sub_directories": "StoredAsSubDirectories",
+	"parameters": "Parameters",
+	"bucket_columns": "BucketColumns",
+	"skewed_info": "SkewedInfo",
+	"input_format": "InputFormat",
+	"number_of_buckets": "NumberOfBuckets",
+	"output_format": "OutputFormat",
+	"columns": "Columns",
+	"serde_info": "SerdeInfo",
+	"sort_columns": "SortColumns",
+	"compressed": "Compressed",
+	"location": "Location",
+}
 
 func propertyTableStorageDescriptor(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -86,4 +101,3 @@ func propertyTableStorageDescriptor(extras...string) *schema.Resource {
 		},
 	}
 }
-

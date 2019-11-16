@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const greengrassResourceDefinitionType string = "AWS::Greengrass::ResourceDefinition"
+
+var greengrassResourceDefinitionProperties map[string]string = map[string]string{
+	"initial_version": "InitialVersion",
+	"tags": "Tags",
+	"name": "Name",
+}
 
 func ResourceGreengrassResourceDefinition() *schema.Resource {
 	return &schema.Resource{
@@ -52,22 +60,21 @@ func resourceGreengrassResourceDefinitionExists(data *schema.ResourceData, meta 
 }
 
 func resourceGreengrassResourceDefinitionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Greengrass::ResourceDefinition", ResourceGreengrassResourceDefinition(), data, meta)
+	return plugin.ResourceRead(greengrassResourceDefinitionType, ResourceGreengrassResourceDefinition(), data, meta)
 }
 
 func resourceGreengrassResourceDefinitionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Greengrass::ResourceDefinition", ResourceGreengrassResourceDefinition(), data, meta)
+	return plugin.ResourceCreate(greengrassResourceDefinitionType, ResourceGreengrassResourceDefinition(), data, greengrassResourceDefinitionProperties, meta)
 }
 
 func resourceGreengrassResourceDefinitionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Greengrass::ResourceDefinition", ResourceGreengrassResourceDefinition(), data, meta)
+	return plugin.ResourceUpdate(greengrassResourceDefinitionType, ResourceGreengrassResourceDefinition(), data, greengrassResourceDefinitionProperties, meta)
 }
 
 func resourceGreengrassResourceDefinitionDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Greengrass::ResourceDefinition", data, meta)
+	return plugin.ResourceDelete(greengrassResourceDefinitionType, data, meta)
 }
 
 func resourceGreengrassResourceDefinitionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Greengrass::ResourceDefinition", data, meta)
+	return plugin.ResourceCustomizeDiff(greengrassResourceDefinitionType, data, meta)
 }
-

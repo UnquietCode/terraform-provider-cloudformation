@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,24 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const apiGatewayMethodType string = "AWS::ApiGateway::Method"
+
+var apiGatewayMethodProperties map[string]string = map[string]string{
+	"api_key_required": "ApiKeyRequired",
+	"authorization_scopes": "AuthorizationScopes",
+	"authorization_type": "AuthorizationType",
+	"authorizer_id": "AuthorizerId",
+	"http_method": "HttpMethod",
+	"integration": "Integration",
+	"method_responses": "MethodResponses",
+	"operation_name": "OperationName",
+	"request_models": "RequestModels",
+	"request_parameters": "RequestParameters",
+	"request_validator_id": "RequestValidatorId",
+	"resource_id": "ResourceId",
+	"rest_api_id": "RestApiId",
+}
 
 func ResourceApiGatewayMethod() *schema.Resource {
 	return &schema.Resource{
@@ -97,22 +115,21 @@ func resourceApiGatewayMethodExists(data *schema.ResourceData, meta interface{})
 }
 
 func resourceApiGatewayMethodRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGateway::Method", ResourceApiGatewayMethod(), data, meta)
+	return plugin.ResourceRead(apiGatewayMethodType, ResourceApiGatewayMethod(), data, meta)
 }
 
 func resourceApiGatewayMethodCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::Method", ResourceApiGatewayMethod(), data, meta)
+	return plugin.ResourceCreate(apiGatewayMethodType, ResourceApiGatewayMethod(), data, apiGatewayMethodProperties, meta)
 }
 
 func resourceApiGatewayMethodUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGateway::Method", ResourceApiGatewayMethod(), data, meta)
+	return plugin.ResourceUpdate(apiGatewayMethodType, ResourceApiGatewayMethod(), data, apiGatewayMethodProperties, meta)
 }
 
 func resourceApiGatewayMethodDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ApiGateway::Method", data, meta)
+	return plugin.ResourceDelete(apiGatewayMethodType, data, meta)
 }
 
 func resourceApiGatewayMethodCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ApiGateway::Method", data, meta)
+	return plugin.ResourceCustomizeDiff(apiGatewayMethodType, data, meta)
 }
-

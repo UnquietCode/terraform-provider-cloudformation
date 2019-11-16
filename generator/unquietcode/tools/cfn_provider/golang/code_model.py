@@ -10,6 +10,30 @@ class CodeElement:
 
 
 @dataclass(frozen=True)
+class BlankLines(CodeElement):
+    count: int = 1
+
+    def write(self, writer):
+        writer.write_blank_lines(self)
+
+
+@dataclass(frozen=True)
+class AssignmentExpression(CodeElement):
+    identifier: str
+    type: str
+    expression: any
+
+    def write(self, writer):
+        writer.write_assignment_expression(self)
+
+
+@dataclass(frozen=True)
+class ConstantExpression(AssignmentExpression):
+    def write(self, writer):
+        writer.write_constant_expression(self)
+
+
+@dataclass(frozen=True)
 class ReturnExpression(CodeElement):
     expression: any
 

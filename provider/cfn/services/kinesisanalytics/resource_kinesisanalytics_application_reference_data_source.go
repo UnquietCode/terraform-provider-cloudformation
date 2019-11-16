@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const kinesisAnalyticsApplicationReferenceDataSourceType string = "AWS::KinesisAnalytics::ApplicationReferenceDataSource"
+
+var kinesisAnalyticsApplicationReferenceDataSourceProperties map[string]string = map[string]string{
+	"application_name": "ApplicationName",
+	"reference_data_source": "ReferenceDataSource",
+}
 
 func ResourceKinesisAnalyticsApplicationReferenceDataSource() *schema.Resource {
 	return &schema.Resource{
@@ -48,22 +55,21 @@ func resourceKinesisAnalyticsApplicationReferenceDataSourceExists(data *schema.R
 }
 
 func resourceKinesisAnalyticsApplicationReferenceDataSourceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::KinesisAnalytics::ApplicationReferenceDataSource", ResourceKinesisAnalyticsApplicationReferenceDataSource(), data, meta)
+	return plugin.ResourceRead(kinesisAnalyticsApplicationReferenceDataSourceType, ResourceKinesisAnalyticsApplicationReferenceDataSource(), data, meta)
 }
 
 func resourceKinesisAnalyticsApplicationReferenceDataSourceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::KinesisAnalytics::ApplicationReferenceDataSource", ResourceKinesisAnalyticsApplicationReferenceDataSource(), data, meta)
+	return plugin.ResourceCreate(kinesisAnalyticsApplicationReferenceDataSourceType, ResourceKinesisAnalyticsApplicationReferenceDataSource(), data, kinesisAnalyticsApplicationReferenceDataSourceProperties, meta)
 }
 
 func resourceKinesisAnalyticsApplicationReferenceDataSourceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::KinesisAnalytics::ApplicationReferenceDataSource", ResourceKinesisAnalyticsApplicationReferenceDataSource(), data, meta)
+	return plugin.ResourceUpdate(kinesisAnalyticsApplicationReferenceDataSourceType, ResourceKinesisAnalyticsApplicationReferenceDataSource(), data, kinesisAnalyticsApplicationReferenceDataSourceProperties, meta)
 }
 
 func resourceKinesisAnalyticsApplicationReferenceDataSourceDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::KinesisAnalytics::ApplicationReferenceDataSource", data, meta)
+	return plugin.ResourceDelete(kinesisAnalyticsApplicationReferenceDataSourceType, data, meta)
 }
 
 func resourceKinesisAnalyticsApplicationReferenceDataSourceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::KinesisAnalytics::ApplicationReferenceDataSource", data, meta)
+	return plugin.ResourceCustomizeDiff(kinesisAnalyticsApplicationReferenceDataSourceType, data, meta)
 }
-

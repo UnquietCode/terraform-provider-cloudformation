@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var applicationSettingsLimitsProperties map[string]string = map[string]string{
+	"daily": "Daily",
+	"maximum_duration": "MaximumDuration",
+	"total": "Total",
+	"messages_per_second": "MessagesPerSecond",
+}
 
 func propertyApplicationSettingsLimits(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -47,4 +54,3 @@ func propertyApplicationSettingsLimits(extras...string) *schema.Resource {
 		},
 	}
 }
-

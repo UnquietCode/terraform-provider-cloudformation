@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const kinesisAnalyticsApplicationOutputType string = "AWS::KinesisAnalytics::ApplicationOutput"
+
+var kinesisAnalyticsApplicationOutputProperties map[string]string = map[string]string{
+	"application_name": "ApplicationName",
+	"output": "Output",
+}
 
 func ResourceKinesisAnalyticsApplicationOutput() *schema.Resource {
 	return &schema.Resource{
@@ -48,22 +55,21 @@ func resourceKinesisAnalyticsApplicationOutputExists(data *schema.ResourceData, 
 }
 
 func resourceKinesisAnalyticsApplicationOutputRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::KinesisAnalytics::ApplicationOutput", ResourceKinesisAnalyticsApplicationOutput(), data, meta)
+	return plugin.ResourceRead(kinesisAnalyticsApplicationOutputType, ResourceKinesisAnalyticsApplicationOutput(), data, meta)
 }
 
 func resourceKinesisAnalyticsApplicationOutputCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::KinesisAnalytics::ApplicationOutput", ResourceKinesisAnalyticsApplicationOutput(), data, meta)
+	return plugin.ResourceCreate(kinesisAnalyticsApplicationOutputType, ResourceKinesisAnalyticsApplicationOutput(), data, kinesisAnalyticsApplicationOutputProperties, meta)
 }
 
 func resourceKinesisAnalyticsApplicationOutputUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::KinesisAnalytics::ApplicationOutput", ResourceKinesisAnalyticsApplicationOutput(), data, meta)
+	return plugin.ResourceUpdate(kinesisAnalyticsApplicationOutputType, ResourceKinesisAnalyticsApplicationOutput(), data, kinesisAnalyticsApplicationOutputProperties, meta)
 }
 
 func resourceKinesisAnalyticsApplicationOutputDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::KinesisAnalytics::ApplicationOutput", data, meta)
+	return plugin.ResourceDelete(kinesisAnalyticsApplicationOutputType, data, meta)
 }
 
 func resourceKinesisAnalyticsApplicationOutputCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::KinesisAnalytics::ApplicationOutput", data, meta)
+	return plugin.ResourceCustomizeDiff(kinesisAnalyticsApplicationOutputType, data, meta)
 }
-

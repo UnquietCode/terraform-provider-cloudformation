@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,16 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var listenerRuleActionProperties map[string]string = map[string]string{
+	"authenticate_cognito_config": "AuthenticateCognitoConfig",
+	"authenticate_oidc_config": "AuthenticateOidcConfig",
+	"fixed_response_config": "FixedResponseConfig",
+	"order": "Order",
+	"redirect_config": "RedirectConfig",
+	"target_group_arn": "TargetGroupArn",
+	"type": "Type",
+}
 
 func propertyListenerRuleAction(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -67,4 +77,3 @@ func propertyListenerRuleAction(extras...string) *schema.Resource {
 		},
 	}
 }
-

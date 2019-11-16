@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,20 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eC2ClientVpnEndpointType string = "AWS::EC2::ClientVpnEndpoint"
+
+var eC2ClientVpnEndpointProperties map[string]string = map[string]string{
+	"client_cidr_block": "ClientCidrBlock",
+	"connection_log_options": "ConnectionLogOptions",
+	"split_tunnel": "SplitTunnel",
+	"description": "Description",
+	"tag_specifications": "TagSpecifications",
+	"authentication_options": "AuthenticationOptions",
+	"server_certificate_arn": "ServerCertificateArn",
+	"dns_servers": "DnsServers",
+	"transport_protocol": "TransportProtocol",
+}
 
 func ResourceEC2ClientVpnEndpoint() *schema.Resource {
 	return &schema.Resource{
@@ -79,22 +93,21 @@ func resourceEC2ClientVpnEndpointExists(data *schema.ResourceData, meta interfac
 }
 
 func resourceEC2ClientVpnEndpointRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::ClientVpnEndpoint", ResourceEC2ClientVpnEndpoint(), data, meta)
+	return plugin.ResourceRead(eC2ClientVpnEndpointType, ResourceEC2ClientVpnEndpoint(), data, meta)
 }
 
 func resourceEC2ClientVpnEndpointCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::ClientVpnEndpoint", ResourceEC2ClientVpnEndpoint(), data, meta)
+	return plugin.ResourceCreate(eC2ClientVpnEndpointType, ResourceEC2ClientVpnEndpoint(), data, eC2ClientVpnEndpointProperties, meta)
 }
 
 func resourceEC2ClientVpnEndpointUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::ClientVpnEndpoint", ResourceEC2ClientVpnEndpoint(), data, meta)
+	return plugin.ResourceUpdate(eC2ClientVpnEndpointType, ResourceEC2ClientVpnEndpoint(), data, eC2ClientVpnEndpointProperties, meta)
 }
 
 func resourceEC2ClientVpnEndpointDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EC2::ClientVpnEndpoint", data, meta)
+	return plugin.ResourceDelete(eC2ClientVpnEndpointType, data, meta)
 }
 
 func resourceEC2ClientVpnEndpointCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EC2::ClientVpnEndpoint", data, meta)
+	return plugin.ResourceCustomizeDiff(eC2ClientVpnEndpointType, data, meta)
 }
-

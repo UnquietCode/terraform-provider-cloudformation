@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const pinpointGCMChannelType string = "AWS::Pinpoint::GCMChannel"
+
+var pinpointGCMChannelProperties map[string]string = map[string]string{
+	"api_key": "ApiKey",
+	"enabled": "Enabled",
+	"application_id": "ApplicationId",
+}
 
 func ResourcePinpointGCMChannel() *schema.Resource {
 	return &schema.Resource{
@@ -50,22 +58,21 @@ func resourcePinpointGCMChannelExists(data *schema.ResourceData, meta interface{
 }
 
 func resourcePinpointGCMChannelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::GCMChannel", ResourcePinpointGCMChannel(), data, meta)
+	return plugin.ResourceRead(pinpointGCMChannelType, ResourcePinpointGCMChannel(), data, meta)
 }
 
 func resourcePinpointGCMChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::GCMChannel", ResourcePinpointGCMChannel(), data, meta)
+	return plugin.ResourceCreate(pinpointGCMChannelType, ResourcePinpointGCMChannel(), data, pinpointGCMChannelProperties, meta)
 }
 
 func resourcePinpointGCMChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::GCMChannel", ResourcePinpointGCMChannel(), data, meta)
+	return plugin.ResourceUpdate(pinpointGCMChannelType, ResourcePinpointGCMChannel(), data, pinpointGCMChannelProperties, meta)
 }
 
 func resourcePinpointGCMChannelDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Pinpoint::GCMChannel", data, meta)
+	return plugin.ResourceDelete(pinpointGCMChannelType, data, meta)
 }
 
 func resourcePinpointGCMChannelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Pinpoint::GCMChannel", data, meta)
+	return plugin.ResourceCustomizeDiff(pinpointGCMChannelType, data, meta)
 }
-

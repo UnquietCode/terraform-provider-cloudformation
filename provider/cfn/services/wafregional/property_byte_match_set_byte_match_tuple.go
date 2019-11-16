@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var byteMatchSetByteMatchTupleProperties map[string]string = map[string]string{
+	"target_string": "TargetString",
+	"target_string_base64": "TargetStringBase64",
+	"positional_constraint": "PositionalConstraint",
+	"text_transformation": "TextTransformation",
+	"field_to_match": "FieldToMatch",
+}
 
 func propertyByteMatchSetByteMatchTuple(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -53,4 +61,3 @@ func propertyByteMatchSetByteMatchTuple(extras...string) *schema.Resource {
 		},
 	}
 }
-

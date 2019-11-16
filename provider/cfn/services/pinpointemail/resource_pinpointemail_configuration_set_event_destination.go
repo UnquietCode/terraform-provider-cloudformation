@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const pinpointEmailConfigurationSetEventDestinationType string = "AWS::PinpointEmail::ConfigurationSetEventDestination"
+
+var pinpointEmailConfigurationSetEventDestinationProperties map[string]string = map[string]string{
+	"event_destination_name": "EventDestinationName",
+	"configuration_set_name": "ConfigurationSetName",
+	"event_destination": "EventDestination",
+}
 
 func ResourcePinpointEmailConfigurationSetEventDestination() *schema.Resource {
 	return &schema.Resource{
@@ -52,22 +60,21 @@ func resourcePinpointEmailConfigurationSetEventDestinationExists(data *schema.Re
 }
 
 func resourcePinpointEmailConfigurationSetEventDestinationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::PinpointEmail::ConfigurationSetEventDestination", ResourcePinpointEmailConfigurationSetEventDestination(), data, meta)
+	return plugin.ResourceRead(pinpointEmailConfigurationSetEventDestinationType, ResourcePinpointEmailConfigurationSetEventDestination(), data, meta)
 }
 
 func resourcePinpointEmailConfigurationSetEventDestinationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::PinpointEmail::ConfigurationSetEventDestination", ResourcePinpointEmailConfigurationSetEventDestination(), data, meta)
+	return plugin.ResourceCreate(pinpointEmailConfigurationSetEventDestinationType, ResourcePinpointEmailConfigurationSetEventDestination(), data, pinpointEmailConfigurationSetEventDestinationProperties, meta)
 }
 
 func resourcePinpointEmailConfigurationSetEventDestinationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::PinpointEmail::ConfigurationSetEventDestination", ResourcePinpointEmailConfigurationSetEventDestination(), data, meta)
+	return plugin.ResourceUpdate(pinpointEmailConfigurationSetEventDestinationType, ResourcePinpointEmailConfigurationSetEventDestination(), data, pinpointEmailConfigurationSetEventDestinationProperties, meta)
 }
 
 func resourcePinpointEmailConfigurationSetEventDestinationDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::PinpointEmail::ConfigurationSetEventDestination", data, meta)
+	return plugin.ResourceDelete(pinpointEmailConfigurationSetEventDestinationType, data, meta)
 }
 
 func resourcePinpointEmailConfigurationSetEventDestinationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::PinpointEmail::ConfigurationSetEventDestination", data, meta)
+	return plugin.ResourceCustomizeDiff(pinpointEmailConfigurationSetEventDestinationType, data, meta)
 }
-

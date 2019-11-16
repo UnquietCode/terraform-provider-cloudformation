@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,21 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const glueMLTransformType string = "AWS::Glue::MLTransform"
+
+var glueMLTransformProperties map[string]string = map[string]string{
+	"role": "Role",
+	"max_retries": "MaxRetries",
+	"worker_type": "WorkerType",
+	"description": "Description",
+	"timeout": "Timeout",
+	"transform_parameters": "TransformParameters",
+	"input_record_tables": "InputRecordTables",
+	"number_of_workers": "NumberOfWorkers",
+	"name": "Name",
+	"max_capacity": "MaxCapacity",
+}
 
 func ResourceGlueMLTransform() *schema.Resource {
 	return &schema.Resource{
@@ -82,22 +97,21 @@ func resourceGlueMLTransformExists(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceGlueMLTransformRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Glue::MLTransform", ResourceGlueMLTransform(), data, meta)
+	return plugin.ResourceRead(glueMLTransformType, ResourceGlueMLTransform(), data, meta)
 }
 
 func resourceGlueMLTransformCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::MLTransform", ResourceGlueMLTransform(), data, meta)
+	return plugin.ResourceCreate(glueMLTransformType, ResourceGlueMLTransform(), data, glueMLTransformProperties, meta)
 }
 
 func resourceGlueMLTransformUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Glue::MLTransform", ResourceGlueMLTransform(), data, meta)
+	return plugin.ResourceUpdate(glueMLTransformType, ResourceGlueMLTransform(), data, glueMLTransformProperties, meta)
 }
 
 func resourceGlueMLTransformDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Glue::MLTransform", data, meta)
+	return plugin.ResourceDelete(glueMLTransformType, data, meta)
 }
 
 func resourceGlueMLTransformCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Glue::MLTransform", data, meta)
+	return plugin.ResourceCustomizeDiff(glueMLTransformType, data, meta)
 }
-

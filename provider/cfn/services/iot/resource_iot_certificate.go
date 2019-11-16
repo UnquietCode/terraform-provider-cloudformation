@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const ioTCertificateType string = "AWS::IoT::Certificate"
+
+var ioTCertificateProperties map[string]string = map[string]string{
+	"certificate_signing_request": "CertificateSigningRequest",
+	"status": "Status",
+}
 
 func ResourceIoTCertificate() *schema.Resource {
 	return &schema.Resource{
@@ -46,22 +53,21 @@ func resourceIoTCertificateExists(data *schema.ResourceData, meta interface{}) (
 }
 
 func resourceIoTCertificateRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoT::Certificate", ResourceIoTCertificate(), data, meta)
+	return plugin.ResourceRead(ioTCertificateType, ResourceIoTCertificate(), data, meta)
 }
 
 func resourceIoTCertificateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoT::Certificate", ResourceIoTCertificate(), data, meta)
+	return plugin.ResourceCreate(ioTCertificateType, ResourceIoTCertificate(), data, ioTCertificateProperties, meta)
 }
 
 func resourceIoTCertificateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoT::Certificate", ResourceIoTCertificate(), data, meta)
+	return plugin.ResourceUpdate(ioTCertificateType, ResourceIoTCertificate(), data, ioTCertificateProperties, meta)
 }
 
 func resourceIoTCertificateDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::IoT::Certificate", data, meta)
+	return plugin.ResourceDelete(ioTCertificateType, data, meta)
 }
 
 func resourceIoTCertificateCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::IoT::Certificate", data, meta)
+	return plugin.ResourceCustomizeDiff(ioTCertificateType, data, meta)
 }
-

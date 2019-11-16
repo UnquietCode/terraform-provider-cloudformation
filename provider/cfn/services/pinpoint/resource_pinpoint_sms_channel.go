@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,15 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const pinpointSMSChannelType string = "AWS::Pinpoint::SMSChannel"
+
+var pinpointSMSChannelProperties map[string]string = map[string]string{
+	"short_code": "ShortCode",
+	"enabled": "Enabled",
+	"application_id": "ApplicationId",
+	"sender_id": "SenderId",
+}
 
 func ResourcePinpointSMSChannel() *schema.Resource {
 	return &schema.Resource{
@@ -54,22 +63,21 @@ func resourcePinpointSMSChannelExists(data *schema.ResourceData, meta interface{
 }
 
 func resourcePinpointSMSChannelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::SMSChannel", ResourcePinpointSMSChannel(), data, meta)
+	return plugin.ResourceRead(pinpointSMSChannelType, ResourcePinpointSMSChannel(), data, meta)
 }
 
 func resourcePinpointSMSChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::SMSChannel", ResourcePinpointSMSChannel(), data, meta)
+	return plugin.ResourceCreate(pinpointSMSChannelType, ResourcePinpointSMSChannel(), data, pinpointSMSChannelProperties, meta)
 }
 
 func resourcePinpointSMSChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::SMSChannel", ResourcePinpointSMSChannel(), data, meta)
+	return plugin.ResourceUpdate(pinpointSMSChannelType, ResourcePinpointSMSChannel(), data, pinpointSMSChannelProperties, meta)
 }
 
 func resourcePinpointSMSChannelDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Pinpoint::SMSChannel", data, meta)
+	return plugin.ResourceDelete(pinpointSMSChannelType, data, meta)
 }
 
 func resourcePinpointSMSChannelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Pinpoint::SMSChannel", data, meta)
+	return plugin.ResourceCustomizeDiff(pinpointSMSChannelType, data, meta)
 }
-

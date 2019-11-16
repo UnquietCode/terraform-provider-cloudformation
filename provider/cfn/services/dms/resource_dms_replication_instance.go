@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,25 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const dMSReplicationInstanceType string = "AWS::DMS::ReplicationInstance"
+
+var dMSReplicationInstanceProperties map[string]string = map[string]string{
+	"replication_instance_identifier": "ReplicationInstanceIdentifier",
+	"engine_version": "EngineVersion",
+	"kms_key_id": "KmsKeyId",
+	"availability_zone": "AvailabilityZone",
+	"preferred_maintenance_window": "PreferredMaintenanceWindow",
+	"auto_minor_version_upgrade": "AutoMinorVersionUpgrade",
+	"replication_subnet_group_identifier": "ReplicationSubnetGroupIdentifier",
+	"allocated_storage": "AllocatedStorage",
+	"vpc_security_group_ids": "VpcSecurityGroupIds",
+	"allow_major_version_upgrade": "AllowMajorVersionUpgrade",
+	"replication_instance_class": "ReplicationInstanceClass",
+	"publicly_accessible": "PubliclyAccessible",
+	"multi_az": "MultiAZ",
+	"tags": "Tags",
+}
 
 func ResourceDMSReplicationInstance() *schema.Resource {
 	return &schema.Resource{
@@ -97,22 +116,21 @@ func resourceDMSReplicationInstanceExists(data *schema.ResourceData, meta interf
 }
 
 func resourceDMSReplicationInstanceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::DMS::ReplicationInstance", ResourceDMSReplicationInstance(), data, meta)
+	return plugin.ResourceRead(dMSReplicationInstanceType, ResourceDMSReplicationInstance(), data, meta)
 }
 
 func resourceDMSReplicationInstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DMS::ReplicationInstance", ResourceDMSReplicationInstance(), data, meta)
+	return plugin.ResourceCreate(dMSReplicationInstanceType, ResourceDMSReplicationInstance(), data, dMSReplicationInstanceProperties, meta)
 }
 
 func resourceDMSReplicationInstanceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::DMS::ReplicationInstance", ResourceDMSReplicationInstance(), data, meta)
+	return plugin.ResourceUpdate(dMSReplicationInstanceType, ResourceDMSReplicationInstance(), data, dMSReplicationInstanceProperties, meta)
 }
 
 func resourceDMSReplicationInstanceDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::DMS::ReplicationInstance", data, meta)
+	return plugin.ResourceDelete(dMSReplicationInstanceType, data, meta)
 }
 
 func resourceDMSReplicationInstanceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::DMS::ReplicationInstance", data, meta)
+	return plugin.ResourceCustomizeDiff(dMSReplicationInstanceType, data, meta)
 }
-

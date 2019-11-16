@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,20 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const pinpointAPNSVoipChannelType string = "AWS::Pinpoint::APNSVoipChannel"
+
+var pinpointAPNSVoipChannelProperties map[string]string = map[string]string{
+	"bundle_id": "BundleId",
+	"private_key": "PrivateKey",
+	"enabled": "Enabled",
+	"default_authentication_method": "DefaultAuthenticationMethod",
+	"token_key": "TokenKey",
+	"application_id": "ApplicationId",
+	"team_id": "TeamId",
+	"certificate": "Certificate",
+	"token_key_id": "TokenKeyId",
+}
 
 func ResourcePinpointAPNSVoipChannel() *schema.Resource {
 	return &schema.Resource{
@@ -74,22 +88,21 @@ func resourcePinpointAPNSVoipChannelExists(data *schema.ResourceData, meta inter
 }
 
 func resourcePinpointAPNSVoipChannelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::APNSVoipChannel", ResourcePinpointAPNSVoipChannel(), data, meta)
+	return plugin.ResourceRead(pinpointAPNSVoipChannelType, ResourcePinpointAPNSVoipChannel(), data, meta)
 }
 
 func resourcePinpointAPNSVoipChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::APNSVoipChannel", ResourcePinpointAPNSVoipChannel(), data, meta)
+	return plugin.ResourceCreate(pinpointAPNSVoipChannelType, ResourcePinpointAPNSVoipChannel(), data, pinpointAPNSVoipChannelProperties, meta)
 }
 
 func resourcePinpointAPNSVoipChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::APNSVoipChannel", ResourcePinpointAPNSVoipChannel(), data, meta)
+	return plugin.ResourceUpdate(pinpointAPNSVoipChannelType, ResourcePinpointAPNSVoipChannel(), data, pinpointAPNSVoipChannelProperties, meta)
 }
 
 func resourcePinpointAPNSVoipChannelDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Pinpoint::APNSVoipChannel", data, meta)
+	return plugin.ResourceDelete(pinpointAPNSVoipChannelType, data, meta)
 }
 
 func resourcePinpointAPNSVoipChannelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Pinpoint::APNSVoipChannel", data, meta)
+	return plugin.ResourceCustomizeDiff(pinpointAPNSVoipChannelType, data, meta)
 }
-

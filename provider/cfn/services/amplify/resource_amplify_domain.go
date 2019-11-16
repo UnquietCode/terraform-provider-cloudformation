@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const amplifyDomainType string = "AWS::Amplify::Domain"
+
+var amplifyDomainProperties map[string]string = map[string]string{
+	"sub_domain_settings": "SubDomainSettings",
+	"app_id": "AppId",
+	"domain_name": "DomainName",
+}
 
 func ResourceAmplifyDomain() *schema.Resource {
 	return &schema.Resource{
@@ -51,22 +59,21 @@ func resourceAmplifyDomainExists(data *schema.ResourceData, meta interface{}) (b
 }
 
 func resourceAmplifyDomainRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Amplify::Domain", ResourceAmplifyDomain(), data, meta)
+	return plugin.ResourceRead(amplifyDomainType, ResourceAmplifyDomain(), data, meta)
 }
 
 func resourceAmplifyDomainCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Amplify::Domain", ResourceAmplifyDomain(), data, meta)
+	return plugin.ResourceCreate(amplifyDomainType, ResourceAmplifyDomain(), data, amplifyDomainProperties, meta)
 }
 
 func resourceAmplifyDomainUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Amplify::Domain", ResourceAmplifyDomain(), data, meta)
+	return plugin.ResourceUpdate(amplifyDomainType, ResourceAmplifyDomain(), data, amplifyDomainProperties, meta)
 }
 
 func resourceAmplifyDomainDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Amplify::Domain", data, meta)
+	return plugin.ResourceDelete(amplifyDomainType, data, meta)
 }
 
 func resourceAmplifyDomainCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Amplify::Domain", data, meta)
+	return plugin.ResourceCustomizeDiff(amplifyDomainType, data, meta)
 }
-

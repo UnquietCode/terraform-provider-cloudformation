@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,13 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eCSClusterType string = "AWS::ECS::Cluster"
+
+var eCSClusterProperties map[string]string = map[string]string{
+	"cluster_name": "ClusterName",
+	"tags": "Tags",
+}
 
 func ResourceECSCluster() *schema.Resource {
 	return &schema.Resource{
@@ -48,22 +55,21 @@ func resourceECSClusterExists(data *schema.ResourceData, meta interface{}) (bool
 }
 
 func resourceECSClusterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ECS::Cluster", ResourceECSCluster(), data, meta)
+	return plugin.ResourceRead(eCSClusterType, ResourceECSCluster(), data, meta)
 }
 
 func resourceECSClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ECS::Cluster", ResourceECSCluster(), data, meta)
+	return plugin.ResourceCreate(eCSClusterType, ResourceECSCluster(), data, eCSClusterProperties, meta)
 }
 
 func resourceECSClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ECS::Cluster", ResourceECSCluster(), data, meta)
+	return plugin.ResourceUpdate(eCSClusterType, ResourceECSCluster(), data, eCSClusterProperties, meta)
 }
 
 func resourceECSClusterDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ECS::Cluster", data, meta)
+	return plugin.ResourceDelete(eCSClusterType, data, meta)
 }
 
 func resourceECSClusterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ECS::Cluster", data, meta)
+	return plugin.ResourceCustomizeDiff(eCSClusterType, data, meta)
 }
-

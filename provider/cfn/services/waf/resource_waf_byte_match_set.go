@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const wAFByteMatchSetType string = "AWS::WAF::ByteMatchSet"
+
+var wAFByteMatchSetProperties map[string]string = map[string]string{
+	"byte_match_tuples": "ByteMatchTuples",
+	"name": "Name",
+}
 
 func ResourceWAFByteMatchSet() *schema.Resource {
 	return &schema.Resource{
@@ -47,22 +54,21 @@ func resourceWAFByteMatchSetExists(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceWAFByteMatchSetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::WAF::ByteMatchSet", ResourceWAFByteMatchSet(), data, meta)
+	return plugin.ResourceRead(wAFByteMatchSetType, ResourceWAFByteMatchSet(), data, meta)
 }
 
 func resourceWAFByteMatchSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::WAF::ByteMatchSet", ResourceWAFByteMatchSet(), data, meta)
+	return plugin.ResourceCreate(wAFByteMatchSetType, ResourceWAFByteMatchSet(), data, wAFByteMatchSetProperties, meta)
 }
 
 func resourceWAFByteMatchSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::WAF::ByteMatchSet", ResourceWAFByteMatchSet(), data, meta)
+	return plugin.ResourceUpdate(wAFByteMatchSetType, ResourceWAFByteMatchSet(), data, wAFByteMatchSetProperties, meta)
 }
 
 func resourceWAFByteMatchSetDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::WAF::ByteMatchSet", data, meta)
+	return plugin.ResourceDelete(wAFByteMatchSetType, data, meta)
 }
 
 func resourceWAFByteMatchSetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::WAF::ByteMatchSet", data, meta)
+	return plugin.ResourceCustomizeDiff(wAFByteMatchSetType, data, meta)
 }
-

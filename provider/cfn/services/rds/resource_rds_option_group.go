@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,16 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const rDSOptionGroupType string = "AWS::RDS::OptionGroup"
+
+var rDSOptionGroupProperties map[string]string = map[string]string{
+	"engine_name": "EngineName",
+	"major_engine_version": "MajorEngineVersion",
+	"option_configurations": "OptionConfigurations",
+	"option_group_description": "OptionGroupDescription",
+	"tags": "Tags",
+}
 
 func ResourceRDSOptionGroup() *schema.Resource {
 	return &schema.Resource{
@@ -61,22 +71,21 @@ func resourceRDSOptionGroupExists(data *schema.ResourceData, meta interface{}) (
 }
 
 func resourceRDSOptionGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::RDS::OptionGroup", ResourceRDSOptionGroup(), data, meta)
+	return plugin.ResourceRead(rDSOptionGroupType, ResourceRDSOptionGroup(), data, meta)
 }
 
 func resourceRDSOptionGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RDS::OptionGroup", ResourceRDSOptionGroup(), data, meta)
+	return plugin.ResourceCreate(rDSOptionGroupType, ResourceRDSOptionGroup(), data, rDSOptionGroupProperties, meta)
 }
 
 func resourceRDSOptionGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::RDS::OptionGroup", ResourceRDSOptionGroup(), data, meta)
+	return plugin.ResourceUpdate(rDSOptionGroupType, ResourceRDSOptionGroup(), data, rDSOptionGroupProperties, meta)
 }
 
 func resourceRDSOptionGroupDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::RDS::OptionGroup", data, meta)
+	return plugin.ResourceDelete(rDSOptionGroupType, data, meta)
 }
 
 func resourceRDSOptionGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::RDS::OptionGroup", data, meta)
+	return plugin.ResourceCustomizeDiff(rDSOptionGroupType, data, meta)
 }
-

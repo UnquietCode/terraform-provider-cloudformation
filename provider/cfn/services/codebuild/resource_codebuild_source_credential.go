@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,15 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const codeBuildSourceCredentialType string = "AWS::CodeBuild::SourceCredential"
+
+var codeBuildSourceCredentialProperties map[string]string = map[string]string{
+	"server_type": "ServerType",
+	"username": "Username",
+	"token": "Token",
+	"auth_type": "AuthType",
+}
 
 func ResourceCodeBuildSourceCredential() *schema.Resource {
 	return &schema.Resource{
@@ -54,22 +63,21 @@ func resourceCodeBuildSourceCredentialExists(data *schema.ResourceData, meta int
 }
 
 func resourceCodeBuildSourceCredentialRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CodeBuild::SourceCredential", ResourceCodeBuildSourceCredential(), data, meta)
+	return plugin.ResourceRead(codeBuildSourceCredentialType, ResourceCodeBuildSourceCredential(), data, meta)
 }
 
 func resourceCodeBuildSourceCredentialCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CodeBuild::SourceCredential", ResourceCodeBuildSourceCredential(), data, meta)
+	return plugin.ResourceCreate(codeBuildSourceCredentialType, ResourceCodeBuildSourceCredential(), data, codeBuildSourceCredentialProperties, meta)
 }
 
 func resourceCodeBuildSourceCredentialUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CodeBuild::SourceCredential", ResourceCodeBuildSourceCredential(), data, meta)
+	return plugin.ResourceUpdate(codeBuildSourceCredentialType, ResourceCodeBuildSourceCredential(), data, codeBuildSourceCredentialProperties, meta)
 }
 
 func resourceCodeBuildSourceCredentialDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::CodeBuild::SourceCredential", data, meta)
+	return plugin.ResourceDelete(codeBuildSourceCredentialType, data, meta)
 }
 
 func resourceCodeBuildSourceCredentialCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::CodeBuild::SourceCredential", data, meta)
+	return plugin.ResourceCustomizeDiff(codeBuildSourceCredentialType, data, meta)
 }
-

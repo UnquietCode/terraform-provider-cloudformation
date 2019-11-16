@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eC2VPCDHCPOptionsAssociationType string = "AWS::EC2::VPCDHCPOptionsAssociation"
+
+var eC2VPCDHCPOptionsAssociationProperties map[string]string = map[string]string{
+	"dhcp_options_id": "DhcpOptionsId",
+	"vpc_id": "VpcId",
+}
 
 func ResourceEC2VPCDHCPOptionsAssociation() *schema.Resource {
 	return &schema.Resource{
@@ -46,22 +53,21 @@ func resourceEC2VPCDHCPOptionsAssociationExists(data *schema.ResourceData, meta 
 }
 
 func resourceEC2VPCDHCPOptionsAssociationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::VPCDHCPOptionsAssociation", ResourceEC2VPCDHCPOptionsAssociation(), data, meta)
+	return plugin.ResourceRead(eC2VPCDHCPOptionsAssociationType, ResourceEC2VPCDHCPOptionsAssociation(), data, meta)
 }
 
 func resourceEC2VPCDHCPOptionsAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::VPCDHCPOptionsAssociation", ResourceEC2VPCDHCPOptionsAssociation(), data, meta)
+	return plugin.ResourceCreate(eC2VPCDHCPOptionsAssociationType, ResourceEC2VPCDHCPOptionsAssociation(), data, eC2VPCDHCPOptionsAssociationProperties, meta)
 }
 
 func resourceEC2VPCDHCPOptionsAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::VPCDHCPOptionsAssociation", ResourceEC2VPCDHCPOptionsAssociation(), data, meta)
+	return plugin.ResourceUpdate(eC2VPCDHCPOptionsAssociationType, ResourceEC2VPCDHCPOptionsAssociation(), data, eC2VPCDHCPOptionsAssociationProperties, meta)
 }
 
 func resourceEC2VPCDHCPOptionsAssociationDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EC2::VPCDHCPOptionsAssociation", data, meta)
+	return plugin.ResourceDelete(eC2VPCDHCPOptionsAssociationType, data, meta)
 }
 
 func resourceEC2VPCDHCPOptionsAssociationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EC2::VPCDHCPOptionsAssociation", data, meta)
+	return plugin.ResourceCustomizeDiff(eC2VPCDHCPOptionsAssociationType, data, meta)
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const secretsManagerResourcePolicyType string = "AWS::SecretsManager::ResourcePolicy"
+
+var secretsManagerResourcePolicyProperties map[string]string = map[string]string{
+	"secret_id": "SecretId",
+	"resource_policy": "ResourcePolicy",
+}
 
 func ResourceSecretsManagerResourcePolicy() *schema.Resource {
 	return &schema.Resource{
@@ -46,22 +53,21 @@ func resourceSecretsManagerResourcePolicyExists(data *schema.ResourceData, meta 
 }
 
 func resourceSecretsManagerResourcePolicyRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SecretsManager::ResourcePolicy", ResourceSecretsManagerResourcePolicy(), data, meta)
+	return plugin.ResourceRead(secretsManagerResourcePolicyType, ResourceSecretsManagerResourcePolicy(), data, meta)
 }
 
 func resourceSecretsManagerResourcePolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SecretsManager::ResourcePolicy", ResourceSecretsManagerResourcePolicy(), data, meta)
+	return plugin.ResourceCreate(secretsManagerResourcePolicyType, ResourceSecretsManagerResourcePolicy(), data, secretsManagerResourcePolicyProperties, meta)
 }
 
 func resourceSecretsManagerResourcePolicyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SecretsManager::ResourcePolicy", ResourceSecretsManagerResourcePolicy(), data, meta)
+	return plugin.ResourceUpdate(secretsManagerResourcePolicyType, ResourceSecretsManagerResourcePolicy(), data, secretsManagerResourcePolicyProperties, meta)
 }
 
 func resourceSecretsManagerResourcePolicyDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::SecretsManager::ResourcePolicy", data, meta)
+	return plugin.ResourceDelete(secretsManagerResourcePolicyType, data, meta)
 }
 
 func resourceSecretsManagerResourcePolicyCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::SecretsManager::ResourcePolicy", data, meta)
+	return plugin.ResourceCustomizeDiff(secretsManagerResourcePolicyType, data, meta)
 }
-

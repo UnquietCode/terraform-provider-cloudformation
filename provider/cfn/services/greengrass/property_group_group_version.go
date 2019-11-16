@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,16 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var groupGroupVersionProperties map[string]string = map[string]string{
+	"logger_definition_version_arn": "LoggerDefinitionVersionArn",
+	"device_definition_version_arn": "DeviceDefinitionVersionArn",
+	"function_definition_version_arn": "FunctionDefinitionVersionArn",
+	"core_definition_version_arn": "CoreDefinitionVersionArn",
+	"resource_definition_version_arn": "ResourceDefinitionVersionArn",
+	"connector_definition_version_arn": "ConnectorDefinitionVersionArn",
+	"subscription_definition_version_arn": "SubscriptionDefinitionVersionArn",
+}
 
 func propertyGroupGroupVersion(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -59,4 +69,3 @@ func propertyGroupGroupVersion(extras...string) *schema.Resource {
 		},
 	}
 }
-

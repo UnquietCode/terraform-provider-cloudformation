@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const pinpointEventStreamType string = "AWS::Pinpoint::EventStream"
+
+var pinpointEventStreamProperties map[string]string = map[string]string{
+	"application_id": "ApplicationId",
+	"destination_stream_arn": "DestinationStreamArn",
+	"role_arn": "RoleArn",
+}
 
 func ResourcePinpointEventStream() *schema.Resource {
 	return &schema.Resource{
@@ -50,22 +58,21 @@ func resourcePinpointEventStreamExists(data *schema.ResourceData, meta interface
 }
 
 func resourcePinpointEventStreamRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::EventStream", ResourcePinpointEventStream(), data, meta)
+	return plugin.ResourceRead(pinpointEventStreamType, ResourcePinpointEventStream(), data, meta)
 }
 
 func resourcePinpointEventStreamCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::EventStream", ResourcePinpointEventStream(), data, meta)
+	return plugin.ResourceCreate(pinpointEventStreamType, ResourcePinpointEventStream(), data, pinpointEventStreamProperties, meta)
 }
 
 func resourcePinpointEventStreamUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::EventStream", ResourcePinpointEventStream(), data, meta)
+	return plugin.ResourceUpdate(pinpointEventStreamType, ResourcePinpointEventStream(), data, pinpointEventStreamProperties, meta)
 }
 
 func resourcePinpointEventStreamDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Pinpoint::EventStream", data, meta)
+	return plugin.ResourceDelete(pinpointEventStreamType, data, meta)
 }
 
 func resourcePinpointEventStreamCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Pinpoint::EventStream", data, meta)
+	return plugin.ResourceCustomizeDiff(pinpointEventStreamType, data, meta)
 }
-

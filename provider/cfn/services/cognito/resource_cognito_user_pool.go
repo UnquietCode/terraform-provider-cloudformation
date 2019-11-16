@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,31 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const cognitoUserPoolType string = "AWS::Cognito::UserPool"
+
+var cognitoUserPoolProperties map[string]string = map[string]string{
+	"user_pool_tags": "UserPoolTags",
+	"policies": "Policies",
+	"verification_message_template": "VerificationMessageTemplate",
+	"mfa_configuration": "MfaConfiguration",
+	"schema": "Schema",
+	"admin_create_user_config": "AdminCreateUserConfig",
+	"sms_authentication_message": "SmsAuthenticationMessage",
+	"user_pool_name": "UserPoolName",
+	"sms_verification_message": "SmsVerificationMessage",
+	"user_pool_add_ons": "UserPoolAddOns",
+	"email_configuration": "EmailConfiguration",
+	"sms_configuration": "SmsConfiguration",
+	"alias_attributes": "AliasAttributes",
+	"enabled_mfas": "EnabledMfas",
+	"email_verification_subject": "EmailVerificationSubject",
+	"lambda_config": "LambdaConfig",
+	"username_attributes": "UsernameAttributes",
+	"auto_verified_attributes": "AutoVerifiedAttributes",
+	"device_configuration": "DeviceConfiguration",
+	"email_verification_message": "EmailVerificationMessage",
+}
 
 func ResourceCognitoUserPool() *schema.Resource {
 	return &schema.Resource{
@@ -139,22 +164,21 @@ func resourceCognitoUserPoolExists(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceCognitoUserPoolRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Cognito::UserPool", ResourceCognitoUserPool(), data, meta)
+	return plugin.ResourceRead(cognitoUserPoolType, ResourceCognitoUserPool(), data, meta)
 }
 
 func resourceCognitoUserPoolCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Cognito::UserPool", ResourceCognitoUserPool(), data, meta)
+	return plugin.ResourceCreate(cognitoUserPoolType, ResourceCognitoUserPool(), data, cognitoUserPoolProperties, meta)
 }
 
 func resourceCognitoUserPoolUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Cognito::UserPool", ResourceCognitoUserPool(), data, meta)
+	return plugin.ResourceUpdate(cognitoUserPoolType, ResourceCognitoUserPool(), data, cognitoUserPoolProperties, meta)
 }
 
 func resourceCognitoUserPoolDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Cognito::UserPool", data, meta)
+	return plugin.ResourceDelete(cognitoUserPoolType, data, meta)
 }
 
 func resourceCognitoUserPoolCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Cognito::UserPool", data, meta)
+	return plugin.ResourceCustomizeDiff(cognitoUserPoolType, data, meta)
 }
-

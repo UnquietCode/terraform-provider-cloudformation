@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,32 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const opsWorksInstanceType string = "AWS::OpsWorks::Instance"
+
+var opsWorksInstanceProperties map[string]string = map[string]string{
+	"agent_version": "AgentVersion",
+	"ami_id": "AmiId",
+	"architecture": "Architecture",
+	"auto_scaling_type": "AutoScalingType",
+	"availability_zone": "AvailabilityZone",
+	"block_device_mappings": "BlockDeviceMappings",
+	"ebs_optimized": "EbsOptimized",
+	"elastic_ips": "ElasticIps",
+	"hostname": "Hostname",
+	"install_updates_on_boot": "InstallUpdatesOnBoot",
+	"instance_type": "InstanceType",
+	"layer_ids": "LayerIds",
+	"os": "Os",
+	"root_device_type": "RootDeviceType",
+	"ssh_key_name": "SshKeyName",
+	"stack_id": "StackId",
+	"subnet_id": "SubnetId",
+	"tenancy": "Tenancy",
+	"time_based_auto_scaling": "TimeBasedAutoScaling",
+	"virtualization_type": "VirtualizationType",
+	"volumes": "Volumes",
+}
 
 func ResourceOpsWorksInstance() *schema.Resource {
 	return &schema.Resource{
@@ -130,22 +156,21 @@ func resourceOpsWorksInstanceExists(data *schema.ResourceData, meta interface{})
 }
 
 func resourceOpsWorksInstanceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::OpsWorks::Instance", ResourceOpsWorksInstance(), data, meta)
+	return plugin.ResourceRead(opsWorksInstanceType, ResourceOpsWorksInstance(), data, meta)
 }
 
 func resourceOpsWorksInstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::OpsWorks::Instance", ResourceOpsWorksInstance(), data, meta)
+	return plugin.ResourceCreate(opsWorksInstanceType, ResourceOpsWorksInstance(), data, opsWorksInstanceProperties, meta)
 }
 
 func resourceOpsWorksInstanceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::OpsWorks::Instance", ResourceOpsWorksInstance(), data, meta)
+	return plugin.ResourceUpdate(opsWorksInstanceType, ResourceOpsWorksInstance(), data, opsWorksInstanceProperties, meta)
 }
 
 func resourceOpsWorksInstanceDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::OpsWorks::Instance", data, meta)
+	return plugin.ResourceDelete(opsWorksInstanceType, data, meta)
 }
 
 func resourceOpsWorksInstanceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::OpsWorks::Instance", data, meta)
+	return plugin.ResourceCustomizeDiff(opsWorksInstanceType, data, meta)
 }
-

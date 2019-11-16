@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,19 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const sSMParameterType string = "AWS::SSM::Parameter"
+
+var sSMParameterProperties map[string]string = map[string]string{
+	"type": "Type",
+	"description": "Description",
+	"policies": "Policies",
+	"allowed_pattern": "AllowedPattern",
+	"tier": "Tier",
+	"value": "Value",
+	"tags": "Tags",
+	"name": "Name",
+}
 
 func ResourceSSMParameter() *schema.Resource {
 	return &schema.Resource{
@@ -70,22 +83,21 @@ func resourceSSMParameterExists(data *schema.ResourceData, meta interface{}) (bo
 }
 
 func resourceSSMParameterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SSM::Parameter", ResourceSSMParameter(), data, meta)
+	return plugin.ResourceRead(sSMParameterType, ResourceSSMParameter(), data, meta)
 }
 
 func resourceSSMParameterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SSM::Parameter", ResourceSSMParameter(), data, meta)
+	return plugin.ResourceCreate(sSMParameterType, ResourceSSMParameter(), data, sSMParameterProperties, meta)
 }
 
 func resourceSSMParameterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SSM::Parameter", ResourceSSMParameter(), data, meta)
+	return plugin.ResourceUpdate(sSMParameterType, ResourceSSMParameter(), data, sSMParameterProperties, meta)
 }
 
 func resourceSSMParameterDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::SSM::Parameter", data, meta)
+	return plugin.ResourceDelete(sSMParameterType, data, meta)
 }
 
 func resourceSSMParameterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::SSM::Parameter", data, meta)
+	return plugin.ResourceCustomizeDiff(sSMParameterType, data, meta)
 }
-

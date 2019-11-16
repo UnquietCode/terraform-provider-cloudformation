@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,23 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const sQSQueueType string = "AWS::SQS::Queue"
+
+var sQSQueueProperties map[string]string = map[string]string{
+	"content_based_deduplication": "ContentBasedDeduplication",
+	"delay_seconds": "DelaySeconds",
+	"fifo_queue": "FifoQueue",
+	"kms_data_key_reuse_period_seconds": "KmsDataKeyReusePeriodSeconds",
+	"kms_master_key_id": "KmsMasterKeyId",
+	"maximum_message_size": "MaximumMessageSize",
+	"message_retention_period": "MessageRetentionPeriod",
+	"queue_name": "QueueName",
+	"receive_message_wait_time_seconds": "ReceiveMessageWaitTimeSeconds",
+	"redrive_policy": "RedrivePolicy",
+	"tags": "Tags",
+	"visibility_timeout": "VisibilityTimeout",
+}
 
 func ResourceSQSQueue() *schema.Resource {
 	return &schema.Resource{
@@ -88,22 +105,21 @@ func resourceSQSQueueExists(data *schema.ResourceData, meta interface{}) (bool, 
 }
 
 func resourceSQSQueueRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SQS::Queue", ResourceSQSQueue(), data, meta)
+	return plugin.ResourceRead(sQSQueueType, ResourceSQSQueue(), data, meta)
 }
 
 func resourceSQSQueueCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SQS::Queue", ResourceSQSQueue(), data, meta)
+	return plugin.ResourceCreate(sQSQueueType, ResourceSQSQueue(), data, sQSQueueProperties, meta)
 }
 
 func resourceSQSQueueUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SQS::Queue", ResourceSQSQueue(), data, meta)
+	return plugin.ResourceUpdate(sQSQueueType, ResourceSQSQueue(), data, sQSQueueProperties, meta)
 }
 
 func resourceSQSQueueDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::SQS::Queue", data, meta)
+	return plugin.ResourceDelete(sQSQueueType, data, meta)
 }
 
 func resourceSQSQueueCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::SQS::Queue", data, meta)
+	return plugin.ResourceCustomizeDiff(sQSQueueType, data, meta)
 }
-

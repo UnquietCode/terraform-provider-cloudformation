@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const sageMakerCodeRepositoryType string = "AWS::SageMaker::CodeRepository"
+
+var sageMakerCodeRepositoryProperties map[string]string = map[string]string{
+	"code_repository_name": "CodeRepositoryName",
+	"git_config": "GitConfig",
+}
 
 func ResourceSageMakerCodeRepository() *schema.Resource {
 	return &schema.Resource{
@@ -48,22 +55,21 @@ func resourceSageMakerCodeRepositoryExists(data *schema.ResourceData, meta inter
 }
 
 func resourceSageMakerCodeRepositoryRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SageMaker::CodeRepository", ResourceSageMakerCodeRepository(), data, meta)
+	return plugin.ResourceRead(sageMakerCodeRepositoryType, ResourceSageMakerCodeRepository(), data, meta)
 }
 
 func resourceSageMakerCodeRepositoryCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SageMaker::CodeRepository", ResourceSageMakerCodeRepository(), data, meta)
+	return plugin.ResourceCreate(sageMakerCodeRepositoryType, ResourceSageMakerCodeRepository(), data, sageMakerCodeRepositoryProperties, meta)
 }
 
 func resourceSageMakerCodeRepositoryUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SageMaker::CodeRepository", ResourceSageMakerCodeRepository(), data, meta)
+	return plugin.ResourceUpdate(sageMakerCodeRepositoryType, ResourceSageMakerCodeRepository(), data, sageMakerCodeRepositoryProperties, meta)
 }
 
 func resourceSageMakerCodeRepositoryDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::SageMaker::CodeRepository", data, meta)
+	return plugin.ResourceDelete(sageMakerCodeRepositoryType, data, meta)
 }
 
 func resourceSageMakerCodeRepositoryCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::SageMaker::CodeRepository", data, meta)
+	return plugin.ResourceCustomizeDiff(sageMakerCodeRepositoryType, data, meta)
 }
-

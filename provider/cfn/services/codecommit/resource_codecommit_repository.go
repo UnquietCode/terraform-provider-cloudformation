@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,16 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const codeCommitRepositoryType string = "AWS::CodeCommit::Repository"
+
+var codeCommitRepositoryProperties map[string]string = map[string]string{
+	"repository_name": "RepositoryName",
+	"triggers": "Triggers",
+	"code": "Code",
+	"repository_description": "RepositoryDescription",
+	"tags": "Tags",
+}
 
 func ResourceCodeCommitRepository() *schema.Resource {
 	return &schema.Resource{
@@ -63,22 +73,21 @@ func resourceCodeCommitRepositoryExists(data *schema.ResourceData, meta interfac
 }
 
 func resourceCodeCommitRepositoryRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CodeCommit::Repository", ResourceCodeCommitRepository(), data, meta)
+	return plugin.ResourceRead(codeCommitRepositoryType, ResourceCodeCommitRepository(), data, meta)
 }
 
 func resourceCodeCommitRepositoryCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CodeCommit::Repository", ResourceCodeCommitRepository(), data, meta)
+	return plugin.ResourceCreate(codeCommitRepositoryType, ResourceCodeCommitRepository(), data, codeCommitRepositoryProperties, meta)
 }
 
 func resourceCodeCommitRepositoryUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CodeCommit::Repository", ResourceCodeCommitRepository(), data, meta)
+	return plugin.ResourceUpdate(codeCommitRepositoryType, ResourceCodeCommitRepository(), data, codeCommitRepositoryProperties, meta)
 }
 
 func resourceCodeCommitRepositoryDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::CodeCommit::Repository", data, meta)
+	return plugin.ResourceDelete(codeCommitRepositoryType, data, meta)
 }
 
 func resourceCodeCommitRepositoryCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::CodeCommit::Repository", data, meta)
+	return plugin.ResourceCustomizeDiff(codeCommitRepositoryType, data, meta)
 }
-

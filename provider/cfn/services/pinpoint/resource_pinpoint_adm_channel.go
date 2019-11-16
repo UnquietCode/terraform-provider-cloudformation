@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,15 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const pinpointADMChannelType string = "AWS::Pinpoint::ADMChannel"
+
+var pinpointADMChannelProperties map[string]string = map[string]string{
+	"client_secret": "ClientSecret",
+	"enabled": "Enabled",
+	"client_id": "ClientId",
+	"application_id": "ApplicationId",
+}
 
 func ResourcePinpointADMChannel() *schema.Resource {
 	return &schema.Resource{
@@ -54,22 +63,21 @@ func resourcePinpointADMChannelExists(data *schema.ResourceData, meta interface{
 }
 
 func resourcePinpointADMChannelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::ADMChannel", ResourcePinpointADMChannel(), data, meta)
+	return plugin.ResourceRead(pinpointADMChannelType, ResourcePinpointADMChannel(), data, meta)
 }
 
 func resourcePinpointADMChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::ADMChannel", ResourcePinpointADMChannel(), data, meta)
+	return plugin.ResourceCreate(pinpointADMChannelType, ResourcePinpointADMChannel(), data, pinpointADMChannelProperties, meta)
 }
 
 func resourcePinpointADMChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::ADMChannel", ResourcePinpointADMChannel(), data, meta)
+	return plugin.ResourceUpdate(pinpointADMChannelType, ResourcePinpointADMChannel(), data, pinpointADMChannelProperties, meta)
 }
 
 func resourcePinpointADMChannelDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Pinpoint::ADMChannel", data, meta)
+	return plugin.ResourceDelete(pinpointADMChannelType, data, meta)
 }
 
 func resourcePinpointADMChannelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Pinpoint::ADMChannel", data, meta)
+	return plugin.ResourceCustomizeDiff(pinpointADMChannelType, data, meta)
 }
-

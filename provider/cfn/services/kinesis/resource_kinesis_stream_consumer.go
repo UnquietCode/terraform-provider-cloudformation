@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const kinesisStreamConsumerType string = "AWS::Kinesis::StreamConsumer"
+
+var kinesisStreamConsumerProperties map[string]string = map[string]string{
+	"consumer_name": "ConsumerName",
+	"stream_arn": "StreamARN",
+}
 
 func ResourceKinesisStreamConsumer() *schema.Resource {
 	return &schema.Resource{
@@ -46,22 +53,21 @@ func resourceKinesisStreamConsumerExists(data *schema.ResourceData, meta interfa
 }
 
 func resourceKinesisStreamConsumerRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Kinesis::StreamConsumer", ResourceKinesisStreamConsumer(), data, meta)
+	return plugin.ResourceRead(kinesisStreamConsumerType, ResourceKinesisStreamConsumer(), data, meta)
 }
 
 func resourceKinesisStreamConsumerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Kinesis::StreamConsumer", ResourceKinesisStreamConsumer(), data, meta)
+	return plugin.ResourceCreate(kinesisStreamConsumerType, ResourceKinesisStreamConsumer(), data, kinesisStreamConsumerProperties, meta)
 }
 
 func resourceKinesisStreamConsumerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Kinesis::StreamConsumer", ResourceKinesisStreamConsumer(), data, meta)
+	return plugin.ResourceUpdate(kinesisStreamConsumerType, ResourceKinesisStreamConsumer(), data, kinesisStreamConsumerProperties, meta)
 }
 
 func resourceKinesisStreamConsumerDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Kinesis::StreamConsumer", data, meta)
+	return plugin.ResourceDelete(kinesisStreamConsumerType, data, meta)
 }
 
 func resourceKinesisStreamConsumerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Kinesis::StreamConsumer", data, meta)
+	return plugin.ResourceCustomizeDiff(kinesisStreamConsumerType, data, meta)
 }
-

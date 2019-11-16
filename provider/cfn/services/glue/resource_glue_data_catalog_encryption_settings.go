@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const glueDataCatalogEncryptionSettingsType string = "AWS::Glue::DataCatalogEncryptionSettings"
+
+var glueDataCatalogEncryptionSettingsProperties map[string]string = map[string]string{
+	"data_catalog_encryption_settings": "DataCatalogEncryptionSettings",
+	"catalog_id": "CatalogId",
+}
 
 func ResourceGlueDataCatalogEncryptionSettings() *schema.Resource {
 	return &schema.Resource{
@@ -48,22 +55,21 @@ func resourceGlueDataCatalogEncryptionSettingsExists(data *schema.ResourceData, 
 }
 
 func resourceGlueDataCatalogEncryptionSettingsRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Glue::DataCatalogEncryptionSettings", ResourceGlueDataCatalogEncryptionSettings(), data, meta)
+	return plugin.ResourceRead(glueDataCatalogEncryptionSettingsType, ResourceGlueDataCatalogEncryptionSettings(), data, meta)
 }
 
 func resourceGlueDataCatalogEncryptionSettingsCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::DataCatalogEncryptionSettings", ResourceGlueDataCatalogEncryptionSettings(), data, meta)
+	return plugin.ResourceCreate(glueDataCatalogEncryptionSettingsType, ResourceGlueDataCatalogEncryptionSettings(), data, glueDataCatalogEncryptionSettingsProperties, meta)
 }
 
 func resourceGlueDataCatalogEncryptionSettingsUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Glue::DataCatalogEncryptionSettings", ResourceGlueDataCatalogEncryptionSettings(), data, meta)
+	return plugin.ResourceUpdate(glueDataCatalogEncryptionSettingsType, ResourceGlueDataCatalogEncryptionSettings(), data, glueDataCatalogEncryptionSettingsProperties, meta)
 }
 
 func resourceGlueDataCatalogEncryptionSettingsDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Glue::DataCatalogEncryptionSettings", data, meta)
+	return plugin.ResourceDelete(glueDataCatalogEncryptionSettingsType, data, meta)
 }
 
 func resourceGlueDataCatalogEncryptionSettingsCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Glue::DataCatalogEncryptionSettings", data, meta)
+	return plugin.ResourceCustomizeDiff(glueDataCatalogEncryptionSettingsType, data, meta)
 }
-

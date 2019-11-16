@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,27 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const lambdaFunctionType string = "AWS::Lambda::Function"
+
+var lambdaFunctionProperties map[string]string = map[string]string{
+	"code": "Code",
+	"dead_letter_config": "DeadLetterConfig",
+	"description": "Description",
+	"environment": "Environment",
+	"function_name": "FunctionName",
+	"handler": "Handler",
+	"kms_key_arn": "KmsKeyArn",
+	"layers": "Layers",
+	"memory_size": "MemorySize",
+	"reserved_concurrent_executions": "ReservedConcurrentExecutions",
+	"role": "Role",
+	"runtime": "Runtime",
+	"tags": "Tags",
+	"timeout": "Timeout",
+	"tracing_config": "TracingConfig",
+	"vpc_config": "VpcConfig",
+}
 
 func ResourceLambdaFunction() *schema.Resource {
 	return &schema.Resource{
@@ -116,22 +137,21 @@ func resourceLambdaFunctionExists(data *schema.ResourceData, meta interface{}) (
 }
 
 func resourceLambdaFunctionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Lambda::Function", ResourceLambdaFunction(), data, meta)
+	return plugin.ResourceRead(lambdaFunctionType, ResourceLambdaFunction(), data, meta)
 }
 
 func resourceLambdaFunctionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Lambda::Function", ResourceLambdaFunction(), data, meta)
+	return plugin.ResourceCreate(lambdaFunctionType, ResourceLambdaFunction(), data, lambdaFunctionProperties, meta)
 }
 
 func resourceLambdaFunctionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Lambda::Function", ResourceLambdaFunction(), data, meta)
+	return plugin.ResourceUpdate(lambdaFunctionType, ResourceLambdaFunction(), data, lambdaFunctionProperties, meta)
 }
 
 func resourceLambdaFunctionDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Lambda::Function", data, meta)
+	return plugin.ResourceDelete(lambdaFunctionType, data, meta)
 }
 
 func resourceLambdaFunctionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Lambda::Function", data, meta)
+	return plugin.ResourceCustomizeDiff(lambdaFunctionType, data, meta)
 }
-

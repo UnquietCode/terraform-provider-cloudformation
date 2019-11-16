@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,25 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const apiGatewayStageType string = "AWS::ApiGateway::Stage"
+
+var apiGatewayStageProperties map[string]string = map[string]string{
+	"access_log_setting": "AccessLogSetting",
+	"cache_cluster_enabled": "CacheClusterEnabled",
+	"cache_cluster_size": "CacheClusterSize",
+	"canary_setting": "CanarySetting",
+	"client_certificate_id": "ClientCertificateId",
+	"deployment_id": "DeploymentId",
+	"description": "Description",
+	"documentation_version": "DocumentationVersion",
+	"method_settings": "MethodSettings",
+	"rest_api_id": "RestApiId",
+	"stage_name": "StageName",
+	"tags": "Tags",
+	"tracing_enabled": "TracingEnabled",
+	"variables": "Variables",
+}
 
 func ResourceApiGatewayStage() *schema.Resource {
 	return &schema.Resource{
@@ -102,22 +121,21 @@ func resourceApiGatewayStageExists(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceApiGatewayStageRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGateway::Stage", ResourceApiGatewayStage(), data, meta)
+	return plugin.ResourceRead(apiGatewayStageType, ResourceApiGatewayStage(), data, meta)
 }
 
 func resourceApiGatewayStageCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::Stage", ResourceApiGatewayStage(), data, meta)
+	return plugin.ResourceCreate(apiGatewayStageType, ResourceApiGatewayStage(), data, apiGatewayStageProperties, meta)
 }
 
 func resourceApiGatewayStageUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGateway::Stage", ResourceApiGatewayStage(), data, meta)
+	return plugin.ResourceUpdate(apiGatewayStageType, ResourceApiGatewayStage(), data, apiGatewayStageProperties, meta)
 }
 
 func resourceApiGatewayStageDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ApiGateway::Stage", data, meta)
+	return plugin.ResourceDelete(apiGatewayStageType, data, meta)
 }
 
 func resourceApiGatewayStageCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ApiGateway::Stage", data, meta)
+	return plugin.ResourceCustomizeDiff(apiGatewayStageType, data, meta)
 }
-

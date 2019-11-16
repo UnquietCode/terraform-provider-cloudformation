@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const gameLiftBuildType string = "AWS::GameLift::Build"
+
+var gameLiftBuildProperties map[string]string = map[string]string{
+	"name": "Name",
+	"storage_location": "StorageLocation",
+	"version": "Version",
+}
 
 func ResourceGameLiftBuild() *schema.Resource {
 	return &schema.Resource{
@@ -52,22 +60,21 @@ func resourceGameLiftBuildExists(data *schema.ResourceData, meta interface{}) (b
 }
 
 func resourceGameLiftBuildRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::GameLift::Build", ResourceGameLiftBuild(), data, meta)
+	return plugin.ResourceRead(gameLiftBuildType, ResourceGameLiftBuild(), data, meta)
 }
 
 func resourceGameLiftBuildCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::GameLift::Build", ResourceGameLiftBuild(), data, meta)
+	return plugin.ResourceCreate(gameLiftBuildType, ResourceGameLiftBuild(), data, gameLiftBuildProperties, meta)
 }
 
 func resourceGameLiftBuildUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::GameLift::Build", ResourceGameLiftBuild(), data, meta)
+	return plugin.ResourceUpdate(gameLiftBuildType, ResourceGameLiftBuild(), data, gameLiftBuildProperties, meta)
 }
 
 func resourceGameLiftBuildDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::GameLift::Build", data, meta)
+	return plugin.ResourceDelete(gameLiftBuildType, data, meta)
 }
 
 func resourceGameLiftBuildCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::GameLift::Build", data, meta)
+	return plugin.ResourceCustomizeDiff(gameLiftBuildType, data, meta)
 }
-

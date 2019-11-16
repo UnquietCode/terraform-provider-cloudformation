@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,12 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const cloudFormationCustomResourceType string = "AWS::CloudFormation::CustomResource"
+
+var cloudFormationCustomResourceProperties map[string]string = map[string]string{
+	"service_token": "ServiceToken",
+}
 
 func ResourceCloudFormationCustomResource() *schema.Resource {
 	return &schema.Resource{
@@ -42,22 +48,21 @@ func resourceCloudFormationCustomResourceExists(data *schema.ResourceData, meta 
 }
 
 func resourceCloudFormationCustomResourceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CloudFormation::CustomResource", ResourceCloudFormationCustomResource(), data, meta)
+	return plugin.ResourceRead(cloudFormationCustomResourceType, ResourceCloudFormationCustomResource(), data, meta)
 }
 
 func resourceCloudFormationCustomResourceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CloudFormation::CustomResource", ResourceCloudFormationCustomResource(), data, meta)
+	return plugin.ResourceCreate(cloudFormationCustomResourceType, ResourceCloudFormationCustomResource(), data, cloudFormationCustomResourceProperties, meta)
 }
 
 func resourceCloudFormationCustomResourceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CloudFormation::CustomResource", ResourceCloudFormationCustomResource(), data, meta)
+	return plugin.ResourceUpdate(cloudFormationCustomResourceType, ResourceCloudFormationCustomResource(), data, cloudFormationCustomResourceProperties, meta)
 }
 
 func resourceCloudFormationCustomResourceDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::CloudFormation::CustomResource", data, meta)
+	return plugin.ResourceDelete(cloudFormationCustomResourceType, data, meta)
 }
 
 func resourceCloudFormationCustomResourceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::CloudFormation::CustomResource", data, meta)
+	return plugin.ResourceCustomizeDiff(cloudFormationCustomResourceType, data, meta)
 }
-

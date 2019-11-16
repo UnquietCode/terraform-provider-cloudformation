@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,19 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var tableTableInputProperties map[string]string = map[string]string{
+	"owner": "Owner",
+	"view_original_text": "ViewOriginalText",
+	"description": "Description",
+	"table_type": "TableType",
+	"parameters": "Parameters",
+	"view_expanded_text": "ViewExpandedText",
+	"storage_descriptor": "StorageDescriptor",
+	"partition_keys": "PartitionKeys",
+	"retention": "Retention",
+	"name": "Name",
+}
 
 func propertyTableTableInput(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -74,4 +87,3 @@ func propertyTableTableInput(extras...string) *schema.Resource {
 		},
 	}
 }
-

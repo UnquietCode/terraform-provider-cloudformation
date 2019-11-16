@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,17 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const lambdaPermissionType string = "AWS::Lambda::Permission"
+
+var lambdaPermissionProperties map[string]string = map[string]string{
+	"action": "Action",
+	"event_source_token": "EventSourceToken",
+	"function_name": "FunctionName",
+	"principal": "Principal",
+	"source_account": "SourceAccount",
+	"source_arn": "SourceArn",
+}
 
 func ResourceLambdaPermission() *schema.Resource {
 	return &schema.Resource{
@@ -62,22 +73,21 @@ func resourceLambdaPermissionExists(data *schema.ResourceData, meta interface{})
 }
 
 func resourceLambdaPermissionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Lambda::Permission", ResourceLambdaPermission(), data, meta)
+	return plugin.ResourceRead(lambdaPermissionType, ResourceLambdaPermission(), data, meta)
 }
 
 func resourceLambdaPermissionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Lambda::Permission", ResourceLambdaPermission(), data, meta)
+	return plugin.ResourceCreate(lambdaPermissionType, ResourceLambdaPermission(), data, lambdaPermissionProperties, meta)
 }
 
 func resourceLambdaPermissionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Lambda::Permission", ResourceLambdaPermission(), data, meta)
+	return plugin.ResourceUpdate(lambdaPermissionType, ResourceLambdaPermission(), data, lambdaPermissionProperties, meta)
 }
 
 func resourceLambdaPermissionDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Lambda::Permission", data, meta)
+	return plugin.ResourceDelete(lambdaPermissionType, data, meta)
 }
 
 func resourceLambdaPermissionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Lambda::Permission", data, meta)
+	return plugin.ResourceCustomizeDiff(lambdaPermissionType, data, meta)
 }
-

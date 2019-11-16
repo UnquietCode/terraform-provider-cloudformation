@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,19 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var detectorModelActionProperties map[string]string = map[string]string{
+	"iot_events": "IotEvents",
+	"reset_timer": "ResetTimer",
+	"sqs": "Sqs",
+	"firehose": "Firehose",
+	"sns": "Sns",
+	"iot_topic_publish": "IotTopicPublish",
+	"set_timer": "SetTimer",
+	"clear_timer": "ClearTimer",
+	"lambda": "Lambda",
+	"set_variable": "SetVariable",
+}
 
 func propertyDetectorModelAction(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -91,4 +104,3 @@ func propertyDetectorModelAction(extras...string) *schema.Resource {
 		},
 	}
 }
-

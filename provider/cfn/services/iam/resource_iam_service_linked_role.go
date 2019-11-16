@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const iAMServiceLinkedRoleType string = "AWS::IAM::ServiceLinkedRole"
+
+var iAMServiceLinkedRoleProperties map[string]string = map[string]string{
+	"custom_suffix": "CustomSuffix",
+	"description": "Description",
+	"aws_service_name": "AWSServiceName",
+}
 
 func ResourceIAMServiceLinkedRole() *schema.Resource {
 	return &schema.Resource{
@@ -50,22 +58,21 @@ func resourceIAMServiceLinkedRoleExists(data *schema.ResourceData, meta interfac
 }
 
 func resourceIAMServiceLinkedRoleRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IAM::ServiceLinkedRole", ResourceIAMServiceLinkedRole(), data, meta)
+	return plugin.ResourceRead(iAMServiceLinkedRoleType, ResourceIAMServiceLinkedRole(), data, meta)
 }
 
 func resourceIAMServiceLinkedRoleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IAM::ServiceLinkedRole", ResourceIAMServiceLinkedRole(), data, meta)
+	return plugin.ResourceCreate(iAMServiceLinkedRoleType, ResourceIAMServiceLinkedRole(), data, iAMServiceLinkedRoleProperties, meta)
 }
 
 func resourceIAMServiceLinkedRoleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IAM::ServiceLinkedRole", ResourceIAMServiceLinkedRole(), data, meta)
+	return plugin.ResourceUpdate(iAMServiceLinkedRoleType, ResourceIAMServiceLinkedRole(), data, iAMServiceLinkedRoleProperties, meta)
 }
 
 func resourceIAMServiceLinkedRoleDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::IAM::ServiceLinkedRole", data, meta)
+	return plugin.ResourceDelete(iAMServiceLinkedRoleType, data, meta)
 }
 
 func resourceIAMServiceLinkedRoleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::IAM::ServiceLinkedRole", data, meta)
+	return plugin.ResourceCustomizeDiff(iAMServiceLinkedRoleType, data, meta)
 }
-

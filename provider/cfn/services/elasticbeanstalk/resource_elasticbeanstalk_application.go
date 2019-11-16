@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const elasticBeanstalkApplicationType string = "AWS::ElasticBeanstalk::Application"
+
+var elasticBeanstalkApplicationProperties map[string]string = map[string]string{
+	"application_name": "ApplicationName",
+	"description": "Description",
+	"resource_lifecycle_config": "ResourceLifecycleConfig",
+}
 
 func ResourceElasticBeanstalkApplication() *schema.Resource {
 	return &schema.Resource{
@@ -52,22 +60,21 @@ func resourceElasticBeanstalkApplicationExists(data *schema.ResourceData, meta i
 }
 
 func resourceElasticBeanstalkApplicationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ElasticBeanstalk::Application", ResourceElasticBeanstalkApplication(), data, meta)
+	return plugin.ResourceRead(elasticBeanstalkApplicationType, ResourceElasticBeanstalkApplication(), data, meta)
 }
 
 func resourceElasticBeanstalkApplicationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElasticBeanstalk::Application", ResourceElasticBeanstalkApplication(), data, meta)
+	return plugin.ResourceCreate(elasticBeanstalkApplicationType, ResourceElasticBeanstalkApplication(), data, elasticBeanstalkApplicationProperties, meta)
 }
 
 func resourceElasticBeanstalkApplicationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ElasticBeanstalk::Application", ResourceElasticBeanstalkApplication(), data, meta)
+	return plugin.ResourceUpdate(elasticBeanstalkApplicationType, ResourceElasticBeanstalkApplication(), data, elasticBeanstalkApplicationProperties, meta)
 }
 
 func resourceElasticBeanstalkApplicationDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ElasticBeanstalk::Application", data, meta)
+	return plugin.ResourceDelete(elasticBeanstalkApplicationType, data, meta)
 }
 
 func resourceElasticBeanstalkApplicationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ElasticBeanstalk::Application", data, meta)
+	return plugin.ResourceCustomizeDiff(elasticBeanstalkApplicationType, data, meta)
 }
-

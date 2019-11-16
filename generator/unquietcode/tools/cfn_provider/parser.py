@@ -9,12 +9,14 @@ RESERVED_RESOURCE_ATTRIBUTES.update(RESERVED_PROPERTY_ATTRIBUTES)
 def handle_resource_property(resource_name, property_name, property_data, schema_properties, computed, type):
     attribute_type = translate_cfn_type(resource_name, property_data, schema_properties)
     reserved = RESERVED_PROPERTY_ATTRIBUTES if type == 'property' else RESERVED_RESOURCE_ATTRIBUTES
+    cfn_name = property_name
     
     if property_name.lower() in reserved:
         property_name = f"The{property_name}"
 
     return ResourceAttribute(
         name=property_name,
+        cfn_name=cfn_name,
         type=attribute_type,
         required=property_data['Required'],
         computed=False,#computed,
@@ -34,6 +36,7 @@ def handle_resource_attribute(resource_name, documentation_link, attribute_name,
     
     return ResourceAttribute(
         name=attribute_name,
+        cfn_name=resource_name,
         type=attribute_type,
         computed=True,
         required=None,
@@ -88,6 +91,7 @@ def handle_resource(*, service, package, resource_name, cfn_type, resource_data)
 
     attributes['LogicalId'] = ResourceAttribute(
         name='LogicalId',
+        cfn_name=None,
         type=simple_primitive("String"),
         required=True,
         computed=False,

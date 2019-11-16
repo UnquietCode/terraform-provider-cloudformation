@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const sQSQueuePolicyType string = "AWS::SQS::QueuePolicy"
+
+var sQSQueuePolicyProperties map[string]string = map[string]string{
+	"policy_document": "PolicyDocument",
+	"queues": "Queues",
+}
 
 func ResourceSQSQueuePolicy() *schema.Resource {
 	return &schema.Resource{
@@ -47,22 +54,21 @@ func resourceSQSQueuePolicyExists(data *schema.ResourceData, meta interface{}) (
 }
 
 func resourceSQSQueuePolicyRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SQS::QueuePolicy", ResourceSQSQueuePolicy(), data, meta)
+	return plugin.ResourceRead(sQSQueuePolicyType, ResourceSQSQueuePolicy(), data, meta)
 }
 
 func resourceSQSQueuePolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SQS::QueuePolicy", ResourceSQSQueuePolicy(), data, meta)
+	return plugin.ResourceCreate(sQSQueuePolicyType, ResourceSQSQueuePolicy(), data, sQSQueuePolicyProperties, meta)
 }
 
 func resourceSQSQueuePolicyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SQS::QueuePolicy", ResourceSQSQueuePolicy(), data, meta)
+	return plugin.ResourceUpdate(sQSQueuePolicyType, ResourceSQSQueuePolicy(), data, sQSQueuePolicyProperties, meta)
 }
 
 func resourceSQSQueuePolicyDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::SQS::QueuePolicy", data, meta)
+	return plugin.ResourceDelete(sQSQueuePolicyType, data, meta)
 }
 
 func resourceSQSQueuePolicyCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::SQS::QueuePolicy", data, meta)
+	return plugin.ResourceCustomizeDiff(sQSQueuePolicyType, data, meta)
 }
-

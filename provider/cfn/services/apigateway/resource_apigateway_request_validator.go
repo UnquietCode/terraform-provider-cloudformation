@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,15 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const apiGatewayRequestValidatorType string = "AWS::ApiGateway::RequestValidator"
+
+var apiGatewayRequestValidatorProperties map[string]string = map[string]string{
+	"name": "Name",
+	"rest_api_id": "RestApiId",
+	"validate_request_body": "ValidateRequestBody",
+	"validate_request_parameters": "ValidateRequestParameters",
+}
 
 func ResourceApiGatewayRequestValidator() *schema.Resource {
 	return &schema.Resource{
@@ -54,22 +63,21 @@ func resourceApiGatewayRequestValidatorExists(data *schema.ResourceData, meta in
 }
 
 func resourceApiGatewayRequestValidatorRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGateway::RequestValidator", ResourceApiGatewayRequestValidator(), data, meta)
+	return plugin.ResourceRead(apiGatewayRequestValidatorType, ResourceApiGatewayRequestValidator(), data, meta)
 }
 
 func resourceApiGatewayRequestValidatorCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::RequestValidator", ResourceApiGatewayRequestValidator(), data, meta)
+	return plugin.ResourceCreate(apiGatewayRequestValidatorType, ResourceApiGatewayRequestValidator(), data, apiGatewayRequestValidatorProperties, meta)
 }
 
 func resourceApiGatewayRequestValidatorUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGateway::RequestValidator", ResourceApiGatewayRequestValidator(), data, meta)
+	return plugin.ResourceUpdate(apiGatewayRequestValidatorType, ResourceApiGatewayRequestValidator(), data, apiGatewayRequestValidatorProperties, meta)
 }
 
 func resourceApiGatewayRequestValidatorDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ApiGateway::RequestValidator", data, meta)
+	return plugin.ResourceDelete(apiGatewayRequestValidatorType, data, meta)
 }
 
 func resourceApiGatewayRequestValidatorCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ApiGateway::RequestValidator", data, meta)
+	return plugin.ResourceCustomizeDiff(apiGatewayRequestValidatorType, data, meta)
 }
-

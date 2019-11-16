@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,26 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const amazonMQBrokerType string = "AWS::AmazonMQ::Broker"
+
+var amazonMQBrokerProperties map[string]string = map[string]string{
+	"security_groups": "SecurityGroups",
+	"engine_version": "EngineVersion",
+	"configuration": "Configuration",
+	"maintenance_window_start_time": "MaintenanceWindowStartTime",
+	"host_instance_type": "HostInstanceType",
+	"auto_minor_version_upgrade": "AutoMinorVersionUpgrade",
+	"users": "Users",
+	"logs": "Logs",
+	"subnet_ids": "SubnetIds",
+	"broker_name": "BrokerName",
+	"deployment_mode": "DeploymentMode",
+	"engine_type": "EngineType",
+	"publicly_accessible": "PubliclyAccessible",
+	"encryption_options": "EncryptionOptions",
+	"tags": "Tags",
+}
 
 func ResourceAmazonMQBroker() *schema.Resource {
 	return &schema.Resource{
@@ -110,22 +130,21 @@ func resourceAmazonMQBrokerExists(data *schema.ResourceData, meta interface{}) (
 }
 
 func resourceAmazonMQBrokerRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AmazonMQ::Broker", ResourceAmazonMQBroker(), data, meta)
+	return plugin.ResourceRead(amazonMQBrokerType, ResourceAmazonMQBroker(), data, meta)
 }
 
 func resourceAmazonMQBrokerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AmazonMQ::Broker", ResourceAmazonMQBroker(), data, meta)
+	return plugin.ResourceCreate(amazonMQBrokerType, ResourceAmazonMQBroker(), data, amazonMQBrokerProperties, meta)
 }
 
 func resourceAmazonMQBrokerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AmazonMQ::Broker", ResourceAmazonMQBroker(), data, meta)
+	return plugin.ResourceUpdate(amazonMQBrokerType, ResourceAmazonMQBroker(), data, amazonMQBrokerProperties, meta)
 }
 
 func resourceAmazonMQBrokerDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::AmazonMQ::Broker", data, meta)
+	return plugin.ResourceDelete(amazonMQBrokerType, data, meta)
 }
 
 func resourceAmazonMQBrokerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::AmazonMQ::Broker", data, meta)
+	return plugin.ResourceCustomizeDiff(amazonMQBrokerType, data, meta)
 }
-

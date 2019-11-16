@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const ioTPolicyPrincipalAttachmentType string = "AWS::IoT::PolicyPrincipalAttachment"
+
+var ioTPolicyPrincipalAttachmentProperties map[string]string = map[string]string{
+	"policy_name": "PolicyName",
+	"principal": "Principal",
+}
 
 func ResourceIoTPolicyPrincipalAttachment() *schema.Resource {
 	return &schema.Resource{
@@ -46,22 +53,21 @@ func resourceIoTPolicyPrincipalAttachmentExists(data *schema.ResourceData, meta 
 }
 
 func resourceIoTPolicyPrincipalAttachmentRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoT::PolicyPrincipalAttachment", ResourceIoTPolicyPrincipalAttachment(), data, meta)
+	return plugin.ResourceRead(ioTPolicyPrincipalAttachmentType, ResourceIoTPolicyPrincipalAttachment(), data, meta)
 }
 
 func resourceIoTPolicyPrincipalAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoT::PolicyPrincipalAttachment", ResourceIoTPolicyPrincipalAttachment(), data, meta)
+	return plugin.ResourceCreate(ioTPolicyPrincipalAttachmentType, ResourceIoTPolicyPrincipalAttachment(), data, ioTPolicyPrincipalAttachmentProperties, meta)
 }
 
 func resourceIoTPolicyPrincipalAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoT::PolicyPrincipalAttachment", ResourceIoTPolicyPrincipalAttachment(), data, meta)
+	return plugin.ResourceUpdate(ioTPolicyPrincipalAttachmentType, ResourceIoTPolicyPrincipalAttachment(), data, ioTPolicyPrincipalAttachmentProperties, meta)
 }
 
 func resourceIoTPolicyPrincipalAttachmentDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::IoT::PolicyPrincipalAttachment", data, meta)
+	return plugin.ResourceDelete(ioTPolicyPrincipalAttachmentType, data, meta)
 }
 
 func resourceIoTPolicyPrincipalAttachmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::IoT::PolicyPrincipalAttachment", data, meta)
+	return plugin.ResourceCustomizeDiff(ioTPolicyPrincipalAttachmentType, data, meta)
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,22 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const appStreamStackType string = "AWS::AppStream::Stack"
+
+var appStreamStackProperties map[string]string = map[string]string{
+	"application_settings": "ApplicationSettings",
+	"description": "Description",
+	"storage_connectors": "StorageConnectors",
+	"delete_storage_connectors": "DeleteStorageConnectors",
+	"user_settings": "UserSettings",
+	"attributes_to_delete": "AttributesToDelete",
+	"display_name": "DisplayName",
+	"redirect_url": "RedirectURL",
+	"tags": "Tags",
+	"name": "Name",
+	"feedback_url": "FeedbackURL",
+}
 
 func ResourceAppStreamStack() *schema.Resource {
 	return &schema.Resource{
@@ -89,22 +105,21 @@ func resourceAppStreamStackExists(data *schema.ResourceData, meta interface{}) (
 }
 
 func resourceAppStreamStackRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppStream::Stack", ResourceAppStreamStack(), data, meta)
+	return plugin.ResourceRead(appStreamStackType, ResourceAppStreamStack(), data, meta)
 }
 
 func resourceAppStreamStackCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppStream::Stack", ResourceAppStreamStack(), data, meta)
+	return plugin.ResourceCreate(appStreamStackType, ResourceAppStreamStack(), data, appStreamStackProperties, meta)
 }
 
 func resourceAppStreamStackUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppStream::Stack", ResourceAppStreamStack(), data, meta)
+	return plugin.ResourceUpdate(appStreamStackType, ResourceAppStreamStack(), data, appStreamStackProperties, meta)
 }
 
 func resourceAppStreamStackDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::AppStream::Stack", data, meta)
+	return plugin.ResourceDelete(appStreamStackType, data, meta)
 }
 
 func resourceAppStreamStackCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::AppStream::Stack", data, meta)
+	return plugin.ResourceCustomizeDiff(appStreamStackType, data, meta)
 }
-

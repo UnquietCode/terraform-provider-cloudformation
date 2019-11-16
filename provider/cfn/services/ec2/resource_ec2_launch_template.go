@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eC2LaunchTemplateType string = "AWS::EC2::LaunchTemplate"
+
+var eC2LaunchTemplateProperties map[string]string = map[string]string{
+	"launch_template_name": "LaunchTemplateName",
+	"launch_template_data": "LaunchTemplateData",
+}
 
 func ResourceEC2LaunchTemplate() *schema.Resource {
 	return &schema.Resource{
@@ -48,22 +55,21 @@ func resourceEC2LaunchTemplateExists(data *schema.ResourceData, meta interface{}
 }
 
 func resourceEC2LaunchTemplateRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::LaunchTemplate", ResourceEC2LaunchTemplate(), data, meta)
+	return plugin.ResourceRead(eC2LaunchTemplateType, ResourceEC2LaunchTemplate(), data, meta)
 }
 
 func resourceEC2LaunchTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::LaunchTemplate", ResourceEC2LaunchTemplate(), data, meta)
+	return plugin.ResourceCreate(eC2LaunchTemplateType, ResourceEC2LaunchTemplate(), data, eC2LaunchTemplateProperties, meta)
 }
 
 func resourceEC2LaunchTemplateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::LaunchTemplate", ResourceEC2LaunchTemplate(), data, meta)
+	return plugin.ResourceUpdate(eC2LaunchTemplateType, ResourceEC2LaunchTemplate(), data, eC2LaunchTemplateProperties, meta)
 }
 
 func resourceEC2LaunchTemplateDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EC2::LaunchTemplate", data, meta)
+	return plugin.ResourceDelete(eC2LaunchTemplateType, data, meta)
 }
 
 func resourceEC2LaunchTemplateCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EC2::LaunchTemplate", data, meta)
+	return plugin.ResourceCustomizeDiff(eC2LaunchTemplateType, data, meta)
 }
-

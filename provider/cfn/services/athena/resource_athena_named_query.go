@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,15 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const athenaNamedQueryType string = "AWS::Athena::NamedQuery"
+
+var athenaNamedQueryProperties map[string]string = map[string]string{
+	"description": "Description",
+	"query_string": "QueryString",
+	"database": "Database",
+	"name": "Name",
+}
 
 func ResourceAthenaNamedQuery() *schema.Resource {
 	return &schema.Resource{
@@ -54,22 +63,21 @@ func resourceAthenaNamedQueryExists(data *schema.ResourceData, meta interface{})
 }
 
 func resourceAthenaNamedQueryRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Athena::NamedQuery", ResourceAthenaNamedQuery(), data, meta)
+	return plugin.ResourceRead(athenaNamedQueryType, ResourceAthenaNamedQuery(), data, meta)
 }
 
 func resourceAthenaNamedQueryCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Athena::NamedQuery", ResourceAthenaNamedQuery(), data, meta)
+	return plugin.ResourceCreate(athenaNamedQueryType, ResourceAthenaNamedQuery(), data, athenaNamedQueryProperties, meta)
 }
 
 func resourceAthenaNamedQueryUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Athena::NamedQuery", ResourceAthenaNamedQuery(), data, meta)
+	return plugin.ResourceUpdate(athenaNamedQueryType, ResourceAthenaNamedQuery(), data, athenaNamedQueryProperties, meta)
 }
 
 func resourceAthenaNamedQueryDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Athena::NamedQuery", data, meta)
+	return plugin.ResourceDelete(athenaNamedQueryType, data, meta)
 }
 
 func resourceAthenaNamedQueryCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Athena::NamedQuery", data, meta)
+	return plugin.ResourceCustomizeDiff(athenaNamedQueryType, data, meta)
 }
-

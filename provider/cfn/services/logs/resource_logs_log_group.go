@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const logsLogGroupType string = "AWS::Logs::LogGroup"
+
+var logsLogGroupProperties map[string]string = map[string]string{
+	"log_group_name": "LogGroupName",
+	"retention_in_days": "RetentionInDays",
+}
 
 func ResourceLogsLogGroup() *schema.Resource {
 	return &schema.Resource{
@@ -46,22 +53,21 @@ func resourceLogsLogGroupExists(data *schema.ResourceData, meta interface{}) (bo
 }
 
 func resourceLogsLogGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Logs::LogGroup", ResourceLogsLogGroup(), data, meta)
+	return plugin.ResourceRead(logsLogGroupType, ResourceLogsLogGroup(), data, meta)
 }
 
 func resourceLogsLogGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Logs::LogGroup", ResourceLogsLogGroup(), data, meta)
+	return plugin.ResourceCreate(logsLogGroupType, ResourceLogsLogGroup(), data, logsLogGroupProperties, meta)
 }
 
 func resourceLogsLogGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Logs::LogGroup", ResourceLogsLogGroup(), data, meta)
+	return plugin.ResourceUpdate(logsLogGroupType, ResourceLogsLogGroup(), data, logsLogGroupProperties, meta)
 }
 
 func resourceLogsLogGroupDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Logs::LogGroup", data, meta)
+	return plugin.ResourceDelete(logsLogGroupType, data, meta)
 }
 
 func resourceLogsLogGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Logs::LogGroup", data, meta)
+	return plugin.ResourceCustomizeDiff(logsLogGroupType, data, meta)
 }
-

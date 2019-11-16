@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const glueDatabaseType string = "AWS::Glue::Database"
+
+var glueDatabaseProperties map[string]string = map[string]string{
+	"database_input": "DatabaseInput",
+	"catalog_id": "CatalogId",
+}
 
 func ResourceGlueDatabase() *schema.Resource {
 	return &schema.Resource{
@@ -48,22 +55,21 @@ func resourceGlueDatabaseExists(data *schema.ResourceData, meta interface{}) (bo
 }
 
 func resourceGlueDatabaseRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Glue::Database", ResourceGlueDatabase(), data, meta)
+	return plugin.ResourceRead(glueDatabaseType, ResourceGlueDatabase(), data, meta)
 }
 
 func resourceGlueDatabaseCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::Database", ResourceGlueDatabase(), data, meta)
+	return plugin.ResourceCreate(glueDatabaseType, ResourceGlueDatabase(), data, glueDatabaseProperties, meta)
 }
 
 func resourceGlueDatabaseUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Glue::Database", ResourceGlueDatabase(), data, meta)
+	return plugin.ResourceUpdate(glueDatabaseType, ResourceGlueDatabase(), data, glueDatabaseProperties, meta)
 }
 
 func resourceGlueDatabaseDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Glue::Database", data, meta)
+	return plugin.ResourceDelete(glueDatabaseType, data, meta)
 }
 
 func resourceGlueDatabaseCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Glue::Database", data, meta)
+	return plugin.ResourceCustomizeDiff(glueDatabaseType, data, meta)
 }
-

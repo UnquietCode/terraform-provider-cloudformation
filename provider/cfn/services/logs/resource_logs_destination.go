@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,15 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const logsDestinationType string = "AWS::Logs::Destination"
+
+var logsDestinationProperties map[string]string = map[string]string{
+	"destination_name": "DestinationName",
+	"destination_policy": "DestinationPolicy",
+	"role_arn": "RoleArn",
+	"target_arn": "TargetArn",
+}
 
 func ResourceLogsDestination() *schema.Resource {
 	return &schema.Resource{
@@ -54,22 +63,21 @@ func resourceLogsDestinationExists(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceLogsDestinationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Logs::Destination", ResourceLogsDestination(), data, meta)
+	return plugin.ResourceRead(logsDestinationType, ResourceLogsDestination(), data, meta)
 }
 
 func resourceLogsDestinationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Logs::Destination", ResourceLogsDestination(), data, meta)
+	return plugin.ResourceCreate(logsDestinationType, ResourceLogsDestination(), data, logsDestinationProperties, meta)
 }
 
 func resourceLogsDestinationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Logs::Destination", ResourceLogsDestination(), data, meta)
+	return plugin.ResourceUpdate(logsDestinationType, ResourceLogsDestination(), data, logsDestinationProperties, meta)
 }
 
 func resourceLogsDestinationDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Logs::Destination", data, meta)
+	return plugin.ResourceDelete(logsDestinationType, data, meta)
 }
 
 func resourceLogsDestinationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Logs::Destination", data, meta)
+	return plugin.ResourceCustomizeDiff(logsDestinationType, data, meta)
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,15 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const opsWorksVolumeType string = "AWS::OpsWorks::Volume"
+
+var opsWorksVolumeProperties map[string]string = map[string]string{
+	"ec2_volume_id": "Ec2VolumeId",
+	"mount_point": "MountPoint",
+	"name": "Name",
+	"stack_id": "StackId",
+}
 
 func ResourceOpsWorksVolume() *schema.Resource {
 	return &schema.Resource{
@@ -54,22 +63,21 @@ func resourceOpsWorksVolumeExists(data *schema.ResourceData, meta interface{}) (
 }
 
 func resourceOpsWorksVolumeRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::OpsWorks::Volume", ResourceOpsWorksVolume(), data, meta)
+	return plugin.ResourceRead(opsWorksVolumeType, ResourceOpsWorksVolume(), data, meta)
 }
 
 func resourceOpsWorksVolumeCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::OpsWorks::Volume", ResourceOpsWorksVolume(), data, meta)
+	return plugin.ResourceCreate(opsWorksVolumeType, ResourceOpsWorksVolume(), data, opsWorksVolumeProperties, meta)
 }
 
 func resourceOpsWorksVolumeUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::OpsWorks::Volume", ResourceOpsWorksVolume(), data, meta)
+	return plugin.ResourceUpdate(opsWorksVolumeType, ResourceOpsWorksVolume(), data, opsWorksVolumeProperties, meta)
 }
 
 func resourceOpsWorksVolumeDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::OpsWorks::Volume", data, meta)
+	return plugin.ResourceDelete(opsWorksVolumeType, data, meta)
 }
 
 func resourceOpsWorksVolumeCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::OpsWorks::Volume", data, meta)
+	return plugin.ResourceCustomizeDiff(opsWorksVolumeType, data, meta)
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,20 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const glueTriggerType string = "AWS::Glue::Trigger"
+
+var glueTriggerProperties map[string]string = map[string]string{
+	"type": "Type",
+	"start_on_creation": "StartOnCreation",
+	"description": "Description",
+	"actions": "Actions",
+	"workflow_name": "WorkflowName",
+	"schedule": "Schedule",
+	"tags": "Tags",
+	"name": "Name",
+	"predicate": "Predicate",
+}
 
 func ResourceGlueTrigger() *schema.Resource {
 	return &schema.Resource{
@@ -77,22 +91,21 @@ func resourceGlueTriggerExists(data *schema.ResourceData, meta interface{}) (boo
 }
 
 func resourceGlueTriggerRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Glue::Trigger", ResourceGlueTrigger(), data, meta)
+	return plugin.ResourceRead(glueTriggerType, ResourceGlueTrigger(), data, meta)
 }
 
 func resourceGlueTriggerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::Trigger", ResourceGlueTrigger(), data, meta)
+	return plugin.ResourceCreate(glueTriggerType, ResourceGlueTrigger(), data, glueTriggerProperties, meta)
 }
 
 func resourceGlueTriggerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Glue::Trigger", ResourceGlueTrigger(), data, meta)
+	return plugin.ResourceUpdate(glueTriggerType, ResourceGlueTrigger(), data, glueTriggerProperties, meta)
 }
 
 func resourceGlueTriggerDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Glue::Trigger", data, meta)
+	return plugin.ResourceDelete(glueTriggerType, data, meta)
 }
 
 func resourceGlueTriggerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Glue::Trigger", data, meta)
+	return plugin.ResourceCustomizeDiff(glueTriggerType, data, meta)
 }
-

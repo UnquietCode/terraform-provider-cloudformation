@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,16 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const certificateManagerCertificateType string = "AWS::CertificateManager::Certificate"
+
+var certificateManagerCertificateProperties map[string]string = map[string]string{
+	"domain_name": "DomainName",
+	"domain_validation_options": "DomainValidationOptions",
+	"subject_alternative_names": "SubjectAlternativeNames",
+	"tags": "Tags",
+	"validation_method": "ValidationMethod",
+}
 
 func ResourceCertificateManagerCertificate() *schema.Resource {
 	return &schema.Resource{
@@ -63,22 +73,21 @@ func resourceCertificateManagerCertificateExists(data *schema.ResourceData, meta
 }
 
 func resourceCertificateManagerCertificateRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CertificateManager::Certificate", ResourceCertificateManagerCertificate(), data, meta)
+	return plugin.ResourceRead(certificateManagerCertificateType, ResourceCertificateManagerCertificate(), data, meta)
 }
 
 func resourceCertificateManagerCertificateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CertificateManager::Certificate", ResourceCertificateManagerCertificate(), data, meta)
+	return plugin.ResourceCreate(certificateManagerCertificateType, ResourceCertificateManagerCertificate(), data, certificateManagerCertificateProperties, meta)
 }
 
 func resourceCertificateManagerCertificateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CertificateManager::Certificate", ResourceCertificateManagerCertificate(), data, meta)
+	return plugin.ResourceUpdate(certificateManagerCertificateType, ResourceCertificateManagerCertificate(), data, certificateManagerCertificateProperties, meta)
 }
 
 func resourceCertificateManagerCertificateDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::CertificateManager::Certificate", data, meta)
+	return plugin.ResourceDelete(certificateManagerCertificateType, data, meta)
 }
 
 func resourceCertificateManagerCertificateCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::CertificateManager::Certificate", data, meta)
+	return plugin.ResourceCustomizeDiff(certificateManagerCertificateType, data, meta)
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,15 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const rDSDBSubnetGroupType string = "AWS::RDS::DBSubnetGroup"
+
+var rDSDBSubnetGroupProperties map[string]string = map[string]string{
+	"db_subnet_group_description": "DBSubnetGroupDescription",
+	"db_subnet_group_name": "DBSubnetGroupName",
+	"subnet_ids": "SubnetIds",
+	"tags": "Tags",
+}
 
 func ResourceRDSDBSubnetGroup() *schema.Resource {
 	return &schema.Resource{
@@ -58,22 +67,21 @@ func resourceRDSDBSubnetGroupExists(data *schema.ResourceData, meta interface{})
 }
 
 func resourceRDSDBSubnetGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::RDS::DBSubnetGroup", ResourceRDSDBSubnetGroup(), data, meta)
+	return plugin.ResourceRead(rDSDBSubnetGroupType, ResourceRDSDBSubnetGroup(), data, meta)
 }
 
 func resourceRDSDBSubnetGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RDS::DBSubnetGroup", ResourceRDSDBSubnetGroup(), data, meta)
+	return plugin.ResourceCreate(rDSDBSubnetGroupType, ResourceRDSDBSubnetGroup(), data, rDSDBSubnetGroupProperties, meta)
 }
 
 func resourceRDSDBSubnetGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::RDS::DBSubnetGroup", ResourceRDSDBSubnetGroup(), data, meta)
+	return plugin.ResourceUpdate(rDSDBSubnetGroupType, ResourceRDSDBSubnetGroup(), data, rDSDBSubnetGroupProperties, meta)
 }
 
 func resourceRDSDBSubnetGroupDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::RDS::DBSubnetGroup", data, meta)
+	return plugin.ResourceDelete(rDSDBSubnetGroupType, data, meta)
 }
 
 func resourceRDSDBSubnetGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::RDS::DBSubnetGroup", data, meta)
+	return plugin.ResourceCustomizeDiff(rDSDBSubnetGroupType, data, meta)
 }
-

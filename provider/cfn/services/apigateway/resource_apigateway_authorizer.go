@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,21 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const apiGatewayAuthorizerType string = "AWS::ApiGateway::Authorizer"
+
+var apiGatewayAuthorizerProperties map[string]string = map[string]string{
+	"auth_type": "AuthType",
+	"authorizer_credentials": "AuthorizerCredentials",
+	"authorizer_result_ttl_in_seconds": "AuthorizerResultTtlInSeconds",
+	"authorizer_uri": "AuthorizerUri",
+	"identity_source": "IdentitySource",
+	"identity_validation_expression": "IdentityValidationExpression",
+	"name": "Name",
+	"provider_ar_ns": "ProviderARNs",
+	"rest_api_id": "RestApiId",
+	"type": "Type",
+}
 
 func ResourceApiGatewayAuthorizer() *schema.Resource {
 	return &schema.Resource{
@@ -80,22 +95,21 @@ func resourceApiGatewayAuthorizerExists(data *schema.ResourceData, meta interfac
 }
 
 func resourceApiGatewayAuthorizerRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGateway::Authorizer", ResourceApiGatewayAuthorizer(), data, meta)
+	return plugin.ResourceRead(apiGatewayAuthorizerType, ResourceApiGatewayAuthorizer(), data, meta)
 }
 
 func resourceApiGatewayAuthorizerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::Authorizer", ResourceApiGatewayAuthorizer(), data, meta)
+	return plugin.ResourceCreate(apiGatewayAuthorizerType, ResourceApiGatewayAuthorizer(), data, apiGatewayAuthorizerProperties, meta)
 }
 
 func resourceApiGatewayAuthorizerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGateway::Authorizer", ResourceApiGatewayAuthorizer(), data, meta)
+	return plugin.ResourceUpdate(apiGatewayAuthorizerType, ResourceApiGatewayAuthorizer(), data, apiGatewayAuthorizerProperties, meta)
 }
 
 func resourceApiGatewayAuthorizerDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ApiGateway::Authorizer", data, meta)
+	return plugin.ResourceDelete(apiGatewayAuthorizerType, data, meta)
 }
 
 func resourceApiGatewayAuthorizerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ApiGateway::Authorizer", data, meta)
+	return plugin.ResourceCustomizeDiff(apiGatewayAuthorizerType, data, meta)
 }
-

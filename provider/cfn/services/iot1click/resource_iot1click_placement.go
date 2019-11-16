@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,15 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const ioT1ClickPlacementType string = "AWS::IoT1Click::Placement"
+
+var ioT1ClickPlacementProperties map[string]string = map[string]string{
+	"placement_name": "PlacementName",
+	"project_name": "ProjectName",
+	"associated_devices": "AssociatedDevices",
+	"attributes": "Attributes",
+}
 
 func ResourceIoT1ClickPlacement() *schema.Resource {
 	return &schema.Resource{
@@ -54,22 +63,21 @@ func resourceIoT1ClickPlacementExists(data *schema.ResourceData, meta interface{
 }
 
 func resourceIoT1ClickPlacementRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoT1Click::Placement", ResourceIoT1ClickPlacement(), data, meta)
+	return plugin.ResourceRead(ioT1ClickPlacementType, ResourceIoT1ClickPlacement(), data, meta)
 }
 
 func resourceIoT1ClickPlacementCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoT1Click::Placement", ResourceIoT1ClickPlacement(), data, meta)
+	return plugin.ResourceCreate(ioT1ClickPlacementType, ResourceIoT1ClickPlacement(), data, ioT1ClickPlacementProperties, meta)
 }
 
 func resourceIoT1ClickPlacementUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoT1Click::Placement", ResourceIoT1ClickPlacement(), data, meta)
+	return plugin.ResourceUpdate(ioT1ClickPlacementType, ResourceIoT1ClickPlacement(), data, ioT1ClickPlacementProperties, meta)
 }
 
 func resourceIoT1ClickPlacementDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::IoT1Click::Placement", data, meta)
+	return plugin.ResourceDelete(ioT1ClickPlacementType, data, meta)
 }
 
 func resourceIoT1ClickPlacementCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::IoT1Click::Placement", data, meta)
+	return plugin.ResourceCustomizeDiff(ioT1ClickPlacementType, data, meta)
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,40 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const redshiftClusterType string = "AWS::Redshift::Cluster"
+
+var redshiftClusterProperties map[string]string = map[string]string{
+	"allow_version_upgrade": "AllowVersionUpgrade",
+	"automated_snapshot_retention_period": "AutomatedSnapshotRetentionPeriod",
+	"availability_zone": "AvailabilityZone",
+	"cluster_identifier": "ClusterIdentifier",
+	"cluster_parameter_group_name": "ClusterParameterGroupName",
+	"cluster_security_groups": "ClusterSecurityGroups",
+	"cluster_subnet_group_name": "ClusterSubnetGroupName",
+	"cluster_type": "ClusterType",
+	"cluster_version": "ClusterVersion",
+	"db_name": "DBName",
+	"elastic_ip": "ElasticIp",
+	"encrypted": "Encrypted",
+	"hsm_client_certificate_identifier": "HsmClientCertificateIdentifier",
+	"hsm_configuration_identifier": "HsmConfigurationIdentifier",
+	"iam_roles": "IamRoles",
+	"kms_key_id": "KmsKeyId",
+	"logging_properties": "LoggingProperties",
+	"master_user_password": "MasterUserPassword",
+	"master_username": "MasterUsername",
+	"node_type": "NodeType",
+	"number_of_nodes": "NumberOfNodes",
+	"owner_account": "OwnerAccount",
+	"port": "Port",
+	"preferred_maintenance_window": "PreferredMaintenanceWindow",
+	"publicly_accessible": "PubliclyAccessible",
+	"snapshot_cluster_identifier": "SnapshotClusterIdentifier",
+	"snapshot_identifier": "SnapshotIdentifier",
+	"tags": "Tags",
+	"vpc_security_group_ids": "VpcSecurityGroupIds",
+}
 
 func ResourceRedshiftCluster() *schema.Resource {
 	return &schema.Resource{
@@ -162,22 +196,21 @@ func resourceRedshiftClusterExists(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceRedshiftClusterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Redshift::Cluster", ResourceRedshiftCluster(), data, meta)
+	return plugin.ResourceRead(redshiftClusterType, ResourceRedshiftCluster(), data, meta)
 }
 
 func resourceRedshiftClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Redshift::Cluster", ResourceRedshiftCluster(), data, meta)
+	return plugin.ResourceCreate(redshiftClusterType, ResourceRedshiftCluster(), data, redshiftClusterProperties, meta)
 }
 
 func resourceRedshiftClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Redshift::Cluster", ResourceRedshiftCluster(), data, meta)
+	return plugin.ResourceUpdate(redshiftClusterType, ResourceRedshiftCluster(), data, redshiftClusterProperties, meta)
 }
 
 func resourceRedshiftClusterDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Redshift::Cluster", data, meta)
+	return plugin.ResourceDelete(redshiftClusterType, data, meta)
 }
 
 func resourceRedshiftClusterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Redshift::Cluster", data, meta)
+	return plugin.ResourceCustomizeDiff(redshiftClusterType, data, meta)
 }
-

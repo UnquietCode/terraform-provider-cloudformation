@@ -12,6 +12,9 @@ from unquietcode.tools.cfn_provider.golang.code_model import (
 	GoStructLiteral,
 	ReturnExpression,
 	LiteralExpression,
+    AssignmentExpression,
+    ConstantExpression,
+    BlankLines,
 )
 from unquietcode.tools.cfn_provider.golang.code_writer import write_file_to_string
 
@@ -77,7 +80,7 @@ def _generate_attribute_struct(*, package_name, schema_name, attribute):
 	add_field("MaxItems", attribute.type.max_items is not None, attribute.type.max_items)
 	add_field("Set", attribute.type.set_function, attribute.type.set_function)
 	
-	return name, struct
+	return (name, attribute.name), struct
 
 
 HEADER_TEMPLATE = Template(
@@ -105,6 +108,29 @@ def _header_stanza(cfn_version, documentation_link):
 def _import_prefix(i):
 	return f"github.com/unquietcode/terraform-cfn-provider/{i}"
 	
+
+def _property_lookup(entity_name, attribute_structs):
+	property_lookup = {
+		names[0]: LiteralExpression(f'"{names[1]}"')
+		for names,value in attribute_structs
+	}
+	
+	# remove certain things which were added
+	property_lookup.pop("logical_id", None)
+	map_name = f"{entity_name[0].lower()}{entity_name[1:]}Properties"
+    
+	expression = AssignmentExpression(
+		identifier=map_name,
+		type="map[string]string",
+		expression=GoMapLiteral(
+			key_type="string",
+			value_type="string",
+			fields=property_lookup,
+		)
+	)
+	
+	return map_name, expression
+
 
 def generate_resource_model(*, cfn_version, imports, resource):
 	import_lines = [ _import_prefix(i) for i in imports ]
@@ -148,10 +174,22 @@ def generate_resource_model(*, cfn_version, imports, resource):
 	resource_struct.fields["Schema"] = GoMapLiteral(
 		key_type="string",
 		value_type="*schema.Schema",
-		fields={ name:value for name,value in attribute_structs },
+		fields={ names[0]:value for names,value in attribute_structs },
 	)
 	
-	functions = [
+	type_const = f"{resource_name[0].lower()}{resource_name[1:]}Type"
+	property_map_name, property_map = _property_lookup(resource_name, attribute_structs)
+	
+	declarations = [
+        ConstantExpression(
+            identifier=type_const,
+            type="string",
+            expression=LiteralExpression(f'"{resource.cfn_type}"'),
+        ),
+        BlankLines(count=1),
+        
+        property_map,
+		
 		GoFunction(
 			name=f"Resource{resource_name}",
 			parameters=[],
@@ -176,7 +214,7 @@ def generate_resource_model(*, cfn_version, imports, resource):
 				GoParameter(name="meta", type="interface{}"),
 			],
 			return_types=["error"],
-			body=[f'return plugin.ResourceRead("{resource.cfn_type}", Resource{resource_name}(), data, meta)'],
+			body=[f'return plugin.ResourceRead({type_const}, Resource{resource_name}(), data, meta)'],
 		),
 		GoFunction(
 			name=f"resource{resource_name}Create",
@@ -185,7 +223,7 @@ def generate_resource_model(*, cfn_version, imports, resource):
 				GoParameter(name="meta", type="interface{}"),
 			],
 			return_types=["error"],
-			body=[f'return plugin.ResourceCreate("{resource.cfn_type}", Resource{resource_name}(), data, meta)'],
+			body=[f'return plugin.ResourceCreate({type_const}, Resource{resource_name}(), data, {property_map_name}, meta)'],
 		),
 		GoFunction(
 			name=f"resource{resource_name}Update",
@@ -194,7 +232,7 @@ def generate_resource_model(*, cfn_version, imports, resource):
 				GoParameter(name="meta", type="interface{}"),
 			],
 			return_types=["error"],
-			body=[f'return plugin.ResourceUpdate("{resource.cfn_type}", Resource{resource_name}(), data, meta)'],
+			body=[f'return plugin.ResourceUpdate({type_const}, Resource{resource_name}(), data, {property_map_name}, meta)'],
 		),
 		GoFunction(
 			name=f"resource{resource_name}Delete",
@@ -203,7 +241,7 @@ def generate_resource_model(*, cfn_version, imports, resource):
 				GoParameter(name="meta", type="interface{}"),
 			],
 			return_types=["error"],
-			body=[f'return plugin.ResourceDelete("{resource.cfn_type}", data, meta)'],
+			body=[f'return plugin.ResourceDelete({type_const}, data, meta)'],
 		),
 		GoFunction(
 			name=f"resource{resource_name}CustomizeDiff",
@@ -212,7 +250,7 @@ def generate_resource_model(*, cfn_version, imports, resource):
 				GoParameter(name="meta", type="interface{}"),
 			],
 			return_types=["error"],
-			body=[f'return plugin.ResourceCustomizeDiff("{resource.cfn_type}", data, meta)'],
+			body=[f'return plugin.ResourceCustomizeDiff({type_const}, data, meta)'],
 		),
 	]
 	
@@ -220,7 +258,7 @@ def generate_resource_model(*, cfn_version, imports, resource):
 	    header=_header_stanza(cfn_version, resource.documentation_link),
 	    package_name=package_name,
 	    imports=import_lines,
-	    declarations=functions,
+	    declarations=declarations,
 	)	
 	
 	return write_file_to_string(code_file)
@@ -249,9 +287,6 @@ def generate_property_model(*, cfn_version, package_name, property_name, attribu
 		"github.com/hashicorp/terraform-plugin-sdk/helper/schema",
 	])
 	
-	function_name = 'property' if property_name != 'Tag' else 'Property'
-	function_name += property_name
-	
 	attribute_structs = [
 		_generate_attribute_struct(package_name=package_name, schema_name=property_name, attribute=attribute)
 		for attribute in attributes
@@ -264,14 +299,21 @@ def generate_property_model(*, cfn_version, package_name, property_name, attribu
 	resource_struct.fields["Schema"] = GoMapLiteral(
 		key_type="string",
 		value_type="*schema.Schema",
-		fields={ name:value for name,value in attribute_structs },
+		fields={ names[0]:value for names,value in attribute_structs },
 	)
-	
+		
+	function_name = 'property' if property_name != 'Tag' else 'Property'
+	function_name += property_name
+    
 	function_body = PROPERTY_FUNCTION_BODY.substitute(dict(
 		max_recursion=MAX_PROPERTY_RECURSION,
 	))
 	
-	functions = [
+	property_map_name, property_map = _property_lookup(property_name, attribute_structs)
+	
+	declarations = [
+		property_map,
+		
 		GoFunction(
 			name=function_name,
 			parameters=[
@@ -290,7 +332,7 @@ def generate_property_model(*, cfn_version, package_name, property_name, attribu
 	    header=_header_stanza(cfn_version, documentation_link),
 	    package_name=package_name,
 	    imports=import_lines,
-	    declarations=functions,
+	    declarations=declarations,
 	)
 	
 	return write_file_to_string(code_file)

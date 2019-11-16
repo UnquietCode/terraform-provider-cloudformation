@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,19 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const directoryServiceSimpleADType string = "AWS::DirectoryService::SimpleAD"
+
+var directoryServiceSimpleADProperties map[string]string = map[string]string{
+	"create_alias": "CreateAlias",
+	"description": "Description",
+	"enable_sso": "EnableSso",
+	"name": "Name",
+	"password": "Password",
+	"short_name": "ShortName",
+	"size": "Size",
+	"vpc_settings": "VpcSettings",
+}
 
 func ResourceDirectoryServiceSimpleAD() *schema.Resource {
 	return &schema.Resource{
@@ -72,22 +85,21 @@ func resourceDirectoryServiceSimpleADExists(data *schema.ResourceData, meta inte
 }
 
 func resourceDirectoryServiceSimpleADRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::DirectoryService::SimpleAD", ResourceDirectoryServiceSimpleAD(), data, meta)
+	return plugin.ResourceRead(directoryServiceSimpleADType, ResourceDirectoryServiceSimpleAD(), data, meta)
 }
 
 func resourceDirectoryServiceSimpleADCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DirectoryService::SimpleAD", ResourceDirectoryServiceSimpleAD(), data, meta)
+	return plugin.ResourceCreate(directoryServiceSimpleADType, ResourceDirectoryServiceSimpleAD(), data, directoryServiceSimpleADProperties, meta)
 }
 
 func resourceDirectoryServiceSimpleADUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::DirectoryService::SimpleAD", ResourceDirectoryServiceSimpleAD(), data, meta)
+	return plugin.ResourceUpdate(directoryServiceSimpleADType, ResourceDirectoryServiceSimpleAD(), data, directoryServiceSimpleADProperties, meta)
 }
 
 func resourceDirectoryServiceSimpleADDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::DirectoryService::SimpleAD", data, meta)
+	return plugin.ResourceDelete(directoryServiceSimpleADType, data, meta)
 }
 
 func resourceDirectoryServiceSimpleADCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::DirectoryService::SimpleAD", data, meta)
+	return plugin.ResourceCustomizeDiff(directoryServiceSimpleADType, data, meta)
 }
-

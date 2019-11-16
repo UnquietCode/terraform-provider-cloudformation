@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,15 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const apiGatewayBasePathMappingType string = "AWS::ApiGateway::BasePathMapping"
+
+var apiGatewayBasePathMappingProperties map[string]string = map[string]string{
+	"base_path": "BasePath",
+	"domain_name": "DomainName",
+	"rest_api_id": "RestApiId",
+	"stage": "Stage",
+}
 
 func ResourceApiGatewayBasePathMapping() *schema.Resource {
 	return &schema.Resource{
@@ -54,22 +63,21 @@ func resourceApiGatewayBasePathMappingExists(data *schema.ResourceData, meta int
 }
 
 func resourceApiGatewayBasePathMappingRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGateway::BasePathMapping", ResourceApiGatewayBasePathMapping(), data, meta)
+	return plugin.ResourceRead(apiGatewayBasePathMappingType, ResourceApiGatewayBasePathMapping(), data, meta)
 }
 
 func resourceApiGatewayBasePathMappingCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::BasePathMapping", ResourceApiGatewayBasePathMapping(), data, meta)
+	return plugin.ResourceCreate(apiGatewayBasePathMappingType, ResourceApiGatewayBasePathMapping(), data, apiGatewayBasePathMappingProperties, meta)
 }
 
 func resourceApiGatewayBasePathMappingUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGateway::BasePathMapping", ResourceApiGatewayBasePathMapping(), data, meta)
+	return plugin.ResourceUpdate(apiGatewayBasePathMappingType, ResourceApiGatewayBasePathMapping(), data, apiGatewayBasePathMappingProperties, meta)
 }
 
 func resourceApiGatewayBasePathMappingDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ApiGateway::BasePathMapping", data, meta)
+	return plugin.ResourceDelete(apiGatewayBasePathMappingType, data, meta)
 }
 
 func resourceApiGatewayBasePathMappingCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ApiGateway::BasePathMapping", data, meta)
+	return plugin.ResourceCustomizeDiff(apiGatewayBasePathMappingType, data, meta)
 }
-

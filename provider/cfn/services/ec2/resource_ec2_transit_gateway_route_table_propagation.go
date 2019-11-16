@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eC2TransitGatewayRouteTablePropagationType string = "AWS::EC2::TransitGatewayRouteTablePropagation"
+
+var eC2TransitGatewayRouteTablePropagationProperties map[string]string = map[string]string{
+	"transit_gateway_route_table_id": "TransitGatewayRouteTableId",
+	"transit_gateway_attachment_id": "TransitGatewayAttachmentId",
+}
 
 func ResourceEC2TransitGatewayRouteTablePropagation() *schema.Resource {
 	return &schema.Resource{
@@ -46,22 +53,21 @@ func resourceEC2TransitGatewayRouteTablePropagationExists(data *schema.ResourceD
 }
 
 func resourceEC2TransitGatewayRouteTablePropagationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::TransitGatewayRouteTablePropagation", ResourceEC2TransitGatewayRouteTablePropagation(), data, meta)
+	return plugin.ResourceRead(eC2TransitGatewayRouteTablePropagationType, ResourceEC2TransitGatewayRouteTablePropagation(), data, meta)
 }
 
 func resourceEC2TransitGatewayRouteTablePropagationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::TransitGatewayRouteTablePropagation", ResourceEC2TransitGatewayRouteTablePropagation(), data, meta)
+	return plugin.ResourceCreate(eC2TransitGatewayRouteTablePropagationType, ResourceEC2TransitGatewayRouteTablePropagation(), data, eC2TransitGatewayRouteTablePropagationProperties, meta)
 }
 
 func resourceEC2TransitGatewayRouteTablePropagationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::TransitGatewayRouteTablePropagation", ResourceEC2TransitGatewayRouteTablePropagation(), data, meta)
+	return plugin.ResourceUpdate(eC2TransitGatewayRouteTablePropagationType, ResourceEC2TransitGatewayRouteTablePropagation(), data, eC2TransitGatewayRouteTablePropagationProperties, meta)
 }
 
 func resourceEC2TransitGatewayRouteTablePropagationDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EC2::TransitGatewayRouteTablePropagation", data, meta)
+	return plugin.ResourceDelete(eC2TransitGatewayRouteTablePropagationType, data, meta)
 }
 
 func resourceEC2TransitGatewayRouteTablePropagationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EC2::TransitGatewayRouteTablePropagation", data, meta)
+	return plugin.ResourceCustomizeDiff(eC2TransitGatewayRouteTablePropagationType, data, meta)
 }
-

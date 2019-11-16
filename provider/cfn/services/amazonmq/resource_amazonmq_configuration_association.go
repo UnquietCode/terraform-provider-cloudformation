@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const amazonMQConfigurationAssociationType string = "AWS::AmazonMQ::ConfigurationAssociation"
+
+var amazonMQConfigurationAssociationProperties map[string]string = map[string]string{
+	"broker": "Broker",
+	"configuration": "Configuration",
+}
 
 func ResourceAmazonMQConfigurationAssociation() *schema.Resource {
 	return &schema.Resource{
@@ -48,22 +55,21 @@ func resourceAmazonMQConfigurationAssociationExists(data *schema.ResourceData, m
 }
 
 func resourceAmazonMQConfigurationAssociationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AmazonMQ::ConfigurationAssociation", ResourceAmazonMQConfigurationAssociation(), data, meta)
+	return plugin.ResourceRead(amazonMQConfigurationAssociationType, ResourceAmazonMQConfigurationAssociation(), data, meta)
 }
 
 func resourceAmazonMQConfigurationAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AmazonMQ::ConfigurationAssociation", ResourceAmazonMQConfigurationAssociation(), data, meta)
+	return plugin.ResourceCreate(amazonMQConfigurationAssociationType, ResourceAmazonMQConfigurationAssociation(), data, amazonMQConfigurationAssociationProperties, meta)
 }
 
 func resourceAmazonMQConfigurationAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AmazonMQ::ConfigurationAssociation", ResourceAmazonMQConfigurationAssociation(), data, meta)
+	return plugin.ResourceUpdate(amazonMQConfigurationAssociationType, ResourceAmazonMQConfigurationAssociation(), data, amazonMQConfigurationAssociationProperties, meta)
 }
 
 func resourceAmazonMQConfigurationAssociationDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::AmazonMQ::ConfigurationAssociation", data, meta)
+	return plugin.ResourceDelete(amazonMQConfigurationAssociationType, data, meta)
 }
 
 func resourceAmazonMQConfigurationAssociationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::AmazonMQ::ConfigurationAssociation", data, meta)
+	return plugin.ResourceCustomizeDiff(amazonMQConfigurationAssociationType, data, meta)
 }
-

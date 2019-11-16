@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const configConfigurationAggregatorType string = "AWS::Config::ConfigurationAggregator"
+
+var configConfigurationAggregatorProperties map[string]string = map[string]string{
+	"account_aggregation_sources": "AccountAggregationSources",
+	"configuration_aggregator_name": "ConfigurationAggregatorName",
+	"organization_aggregation_source": "OrganizationAggregationSource",
+}
 
 func ResourceConfigConfigurationAggregator() *schema.Resource {
 	return &schema.Resource{
@@ -53,22 +61,21 @@ func resourceConfigConfigurationAggregatorExists(data *schema.ResourceData, meta
 }
 
 func resourceConfigConfigurationAggregatorRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Config::ConfigurationAggregator", ResourceConfigConfigurationAggregator(), data, meta)
+	return plugin.ResourceRead(configConfigurationAggregatorType, ResourceConfigConfigurationAggregator(), data, meta)
 }
 
 func resourceConfigConfigurationAggregatorCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Config::ConfigurationAggregator", ResourceConfigConfigurationAggregator(), data, meta)
+	return plugin.ResourceCreate(configConfigurationAggregatorType, ResourceConfigConfigurationAggregator(), data, configConfigurationAggregatorProperties, meta)
 }
 
 func resourceConfigConfigurationAggregatorUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Config::ConfigurationAggregator", ResourceConfigConfigurationAggregator(), data, meta)
+	return plugin.ResourceUpdate(configConfigurationAggregatorType, ResourceConfigConfigurationAggregator(), data, configConfigurationAggregatorProperties, meta)
 }
 
 func resourceConfigConfigurationAggregatorDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Config::ConfigurationAggregator", data, meta)
+	return plugin.ResourceDelete(configConfigurationAggregatorType, data, meta)
 }
 
 func resourceConfigConfigurationAggregatorCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Config::ConfigurationAggregator", data, meta)
+	return plugin.ResourceCustomizeDiff(configConfigurationAggregatorType, data, meta)
 }
-

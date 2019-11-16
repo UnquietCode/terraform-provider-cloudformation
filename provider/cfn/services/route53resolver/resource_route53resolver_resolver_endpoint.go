@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,16 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const route53ResolverResolverEndpointType string = "AWS::Route53Resolver::ResolverEndpoint"
+
+var route53ResolverResolverEndpointProperties map[string]string = map[string]string{
+	"ip_addresses": "IpAddresses",
+	"direction": "Direction",
+	"security_group_ids": "SecurityGroupIds",
+	"tags": "Tags",
+	"name": "Name",
+}
 
 func ResourceRoute53ResolverResolverEndpoint() *schema.Resource {
 	return &schema.Resource{
@@ -62,22 +72,21 @@ func resourceRoute53ResolverResolverEndpointExists(data *schema.ResourceData, me
 }
 
 func resourceRoute53ResolverResolverEndpointRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Route53Resolver::ResolverEndpoint", ResourceRoute53ResolverResolverEndpoint(), data, meta)
+	return plugin.ResourceRead(route53ResolverResolverEndpointType, ResourceRoute53ResolverResolverEndpoint(), data, meta)
 }
 
 func resourceRoute53ResolverResolverEndpointCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Route53Resolver::ResolverEndpoint", ResourceRoute53ResolverResolverEndpoint(), data, meta)
+	return plugin.ResourceCreate(route53ResolverResolverEndpointType, ResourceRoute53ResolverResolverEndpoint(), data, route53ResolverResolverEndpointProperties, meta)
 }
 
 func resourceRoute53ResolverResolverEndpointUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Route53Resolver::ResolverEndpoint", ResourceRoute53ResolverResolverEndpoint(), data, meta)
+	return plugin.ResourceUpdate(route53ResolverResolverEndpointType, ResourceRoute53ResolverResolverEndpoint(), data, route53ResolverResolverEndpointProperties, meta)
 }
 
 func resourceRoute53ResolverResolverEndpointDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Route53Resolver::ResolverEndpoint", data, meta)
+	return plugin.ResourceDelete(route53ResolverResolverEndpointType, data, meta)
 }
 
 func resourceRoute53ResolverResolverEndpointCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Route53Resolver::ResolverEndpoint", data, meta)
+	return plugin.ResourceCustomizeDiff(route53ResolverResolverEndpointType, data, meta)
 }
-

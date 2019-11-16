@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,15 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const lambdaLayerVersionPermissionType string = "AWS::Lambda::LayerVersionPermission"
+
+var lambdaLayerVersionPermissionProperties map[string]string = map[string]string{
+	"action": "Action",
+	"layer_version_arn": "LayerVersionArn",
+	"organization_id": "OrganizationId",
+	"principal": "Principal",
+}
 
 func ResourceLambdaLayerVersionPermission() *schema.Resource {
 	return &schema.Resource{
@@ -54,22 +63,21 @@ func resourceLambdaLayerVersionPermissionExists(data *schema.ResourceData, meta 
 }
 
 func resourceLambdaLayerVersionPermissionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Lambda::LayerVersionPermission", ResourceLambdaLayerVersionPermission(), data, meta)
+	return plugin.ResourceRead(lambdaLayerVersionPermissionType, ResourceLambdaLayerVersionPermission(), data, meta)
 }
 
 func resourceLambdaLayerVersionPermissionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Lambda::LayerVersionPermission", ResourceLambdaLayerVersionPermission(), data, meta)
+	return plugin.ResourceCreate(lambdaLayerVersionPermissionType, ResourceLambdaLayerVersionPermission(), data, lambdaLayerVersionPermissionProperties, meta)
 }
 
 func resourceLambdaLayerVersionPermissionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Lambda::LayerVersionPermission", ResourceLambdaLayerVersionPermission(), data, meta)
+	return plugin.ResourceUpdate(lambdaLayerVersionPermissionType, ResourceLambdaLayerVersionPermission(), data, lambdaLayerVersionPermissionProperties, meta)
 }
 
 func resourceLambdaLayerVersionPermissionDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Lambda::LayerVersionPermission", data, meta)
+	return plugin.ResourceDelete(lambdaLayerVersionPermissionType, data, meta)
 }
 
 func resourceLambdaLayerVersionPermissionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Lambda::LayerVersionPermission", data, meta)
+	return plugin.ResourceCustomizeDiff(lambdaLayerVersionPermissionType, data, meta)
 }
-

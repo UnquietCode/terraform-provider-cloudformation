@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,20 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const pinpointAPNSChannelType string = "AWS::Pinpoint::APNSChannel"
+
+var pinpointAPNSChannelProperties map[string]string = map[string]string{
+	"bundle_id": "BundleId",
+	"private_key": "PrivateKey",
+	"enabled": "Enabled",
+	"default_authentication_method": "DefaultAuthenticationMethod",
+	"token_key": "TokenKey",
+	"application_id": "ApplicationId",
+	"team_id": "TeamId",
+	"certificate": "Certificate",
+	"token_key_id": "TokenKeyId",
+}
 
 func ResourcePinpointAPNSChannel() *schema.Resource {
 	return &schema.Resource{
@@ -74,22 +88,21 @@ func resourcePinpointAPNSChannelExists(data *schema.ResourceData, meta interface
 }
 
 func resourcePinpointAPNSChannelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::APNSChannel", ResourcePinpointAPNSChannel(), data, meta)
+	return plugin.ResourceRead(pinpointAPNSChannelType, ResourcePinpointAPNSChannel(), data, meta)
 }
 
 func resourcePinpointAPNSChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::APNSChannel", ResourcePinpointAPNSChannel(), data, meta)
+	return plugin.ResourceCreate(pinpointAPNSChannelType, ResourcePinpointAPNSChannel(), data, pinpointAPNSChannelProperties, meta)
 }
 
 func resourcePinpointAPNSChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::APNSChannel", ResourcePinpointAPNSChannel(), data, meta)
+	return plugin.ResourceUpdate(pinpointAPNSChannelType, ResourcePinpointAPNSChannel(), data, pinpointAPNSChannelProperties, meta)
 }
 
 func resourcePinpointAPNSChannelDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Pinpoint::APNSChannel", data, meta)
+	return plugin.ResourceDelete(pinpointAPNSChannelType, data, meta)
 }
 
 func resourcePinpointAPNSChannelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Pinpoint::APNSChannel", data, meta)
+	return plugin.ResourceCustomizeDiff(pinpointAPNSChannelType, data, meta)
 }
-

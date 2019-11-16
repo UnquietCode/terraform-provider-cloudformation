@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const serviceDiscoveryInstanceType string = "AWS::ServiceDiscovery::Instance"
+
+var serviceDiscoveryInstanceProperties map[string]string = map[string]string{
+	"instance_attributes": "InstanceAttributes",
+	"instance_id": "InstanceId",
+	"service_id": "ServiceId",
+}
 
 func ResourceServiceDiscoveryInstance() *schema.Resource {
 	return &schema.Resource{
@@ -50,22 +58,21 @@ func resourceServiceDiscoveryInstanceExists(data *schema.ResourceData, meta inte
 }
 
 func resourceServiceDiscoveryInstanceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ServiceDiscovery::Instance", ResourceServiceDiscoveryInstance(), data, meta)
+	return plugin.ResourceRead(serviceDiscoveryInstanceType, ResourceServiceDiscoveryInstance(), data, meta)
 }
 
 func resourceServiceDiscoveryInstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceDiscovery::Instance", ResourceServiceDiscoveryInstance(), data, meta)
+	return plugin.ResourceCreate(serviceDiscoveryInstanceType, ResourceServiceDiscoveryInstance(), data, serviceDiscoveryInstanceProperties, meta)
 }
 
 func resourceServiceDiscoveryInstanceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ServiceDiscovery::Instance", ResourceServiceDiscoveryInstance(), data, meta)
+	return plugin.ResourceUpdate(serviceDiscoveryInstanceType, ResourceServiceDiscoveryInstance(), data, serviceDiscoveryInstanceProperties, meta)
 }
 
 func resourceServiceDiscoveryInstanceDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ServiceDiscovery::Instance", data, meta)
+	return plugin.ResourceDelete(serviceDiscoveryInstanceType, data, meta)
 }
 
 func resourceServiceDiscoveryInstanceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ServiceDiscovery::Instance", data, meta)
+	return plugin.ResourceCustomizeDiff(serviceDiscoveryInstanceType, data, meta)
 }
-

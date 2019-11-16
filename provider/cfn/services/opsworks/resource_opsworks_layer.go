@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,30 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const opsWorksLayerType string = "AWS::OpsWorks::Layer"
+
+var opsWorksLayerProperties map[string]string = map[string]string{
+	"attributes": "Attributes",
+	"auto_assign_elastic_ips": "AutoAssignElasticIps",
+	"auto_assign_public_ips": "AutoAssignPublicIps",
+	"custom_instance_profile_arn": "CustomInstanceProfileArn",
+	"custom_json": "CustomJson",
+	"custom_recipes": "CustomRecipes",
+	"custom_security_group_ids": "CustomSecurityGroupIds",
+	"enable_auto_healing": "EnableAutoHealing",
+	"install_updates_on_boot": "InstallUpdatesOnBoot",
+	"lifecycle_event_configuration": "LifecycleEventConfiguration",
+	"load_based_auto_scaling": "LoadBasedAutoScaling",
+	"name": "Name",
+	"packages": "Packages",
+	"shortname": "Shortname",
+	"stack_id": "StackId",
+	"tags": "Tags",
+	"type": "Type",
+	"use_ebs_optimized_instances": "UseEbsOptimizedInstances",
+	"volume_configurations": "VolumeConfigurations",
+}
 
 func ResourceOpsWorksLayer() *schema.Resource {
 	return &schema.Resource{
@@ -126,22 +150,21 @@ func resourceOpsWorksLayerExists(data *schema.ResourceData, meta interface{}) (b
 }
 
 func resourceOpsWorksLayerRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::OpsWorks::Layer", ResourceOpsWorksLayer(), data, meta)
+	return plugin.ResourceRead(opsWorksLayerType, ResourceOpsWorksLayer(), data, meta)
 }
 
 func resourceOpsWorksLayerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::OpsWorks::Layer", ResourceOpsWorksLayer(), data, meta)
+	return plugin.ResourceCreate(opsWorksLayerType, ResourceOpsWorksLayer(), data, opsWorksLayerProperties, meta)
 }
 
 func resourceOpsWorksLayerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::OpsWorks::Layer", ResourceOpsWorksLayer(), data, meta)
+	return plugin.ResourceUpdate(opsWorksLayerType, ResourceOpsWorksLayer(), data, opsWorksLayerProperties, meta)
 }
 
 func resourceOpsWorksLayerDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::OpsWorks::Layer", data, meta)
+	return plugin.ResourceDelete(opsWorksLayerType, data, meta)
 }
 
 func resourceOpsWorksLayerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::OpsWorks::Layer", data, meta)
+	return plugin.ResourceCustomizeDiff(opsWorksLayerType, data, meta)
 }
-

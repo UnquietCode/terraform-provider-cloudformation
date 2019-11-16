@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,17 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eC2SecurityGroupType string = "AWS::EC2::SecurityGroup"
+
+var eC2SecurityGroupProperties map[string]string = map[string]string{
+	"group_description": "GroupDescription",
+	"group_name": "GroupName",
+	"security_group_egress": "SecurityGroupEgress",
+	"security_group_ingress": "SecurityGroupIngress",
+	"tags": "Tags",
+	"vpc_id": "VpcId",
+}
 
 func ResourceEC2SecurityGroup() *schema.Resource {
 	return &schema.Resource{
@@ -66,22 +77,21 @@ func resourceEC2SecurityGroupExists(data *schema.ResourceData, meta interface{})
 }
 
 func resourceEC2SecurityGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::SecurityGroup", ResourceEC2SecurityGroup(), data, meta)
+	return plugin.ResourceRead(eC2SecurityGroupType, ResourceEC2SecurityGroup(), data, meta)
 }
 
 func resourceEC2SecurityGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::SecurityGroup", ResourceEC2SecurityGroup(), data, meta)
+	return plugin.ResourceCreate(eC2SecurityGroupType, ResourceEC2SecurityGroup(), data, eC2SecurityGroupProperties, meta)
 }
 
 func resourceEC2SecurityGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::SecurityGroup", ResourceEC2SecurityGroup(), data, meta)
+	return plugin.ResourceUpdate(eC2SecurityGroupType, ResourceEC2SecurityGroup(), data, eC2SecurityGroupProperties, meta)
 }
 
 func resourceEC2SecurityGroupDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EC2::SecurityGroup", data, meta)
+	return plugin.ResourceDelete(eC2SecurityGroupType, data, meta)
 }
 
 func resourceEC2SecurityGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EC2::SecurityGroup", data, meta)
+	return plugin.ResourceCustomizeDiff(eC2SecurityGroupType, data, meta)
 }
-

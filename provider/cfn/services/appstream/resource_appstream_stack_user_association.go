@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,15 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const appStreamStackUserAssociationType string = "AWS::AppStream::StackUserAssociation"
+
+var appStreamStackUserAssociationProperties map[string]string = map[string]string{
+	"send_email_notification": "SendEmailNotification",
+	"user_name": "UserName",
+	"stack_name": "StackName",
+	"authentication_type": "AuthenticationType",
+}
 
 func ResourceAppStreamStackUserAssociation() *schema.Resource {
 	return &schema.Resource{
@@ -54,22 +63,21 @@ func resourceAppStreamStackUserAssociationExists(data *schema.ResourceData, meta
 }
 
 func resourceAppStreamStackUserAssociationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppStream::StackUserAssociation", ResourceAppStreamStackUserAssociation(), data, meta)
+	return plugin.ResourceRead(appStreamStackUserAssociationType, ResourceAppStreamStackUserAssociation(), data, meta)
 }
 
 func resourceAppStreamStackUserAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppStream::StackUserAssociation", ResourceAppStreamStackUserAssociation(), data, meta)
+	return plugin.ResourceCreate(appStreamStackUserAssociationType, ResourceAppStreamStackUserAssociation(), data, appStreamStackUserAssociationProperties, meta)
 }
 
 func resourceAppStreamStackUserAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppStream::StackUserAssociation", ResourceAppStreamStackUserAssociation(), data, meta)
+	return plugin.ResourceUpdate(appStreamStackUserAssociationType, ResourceAppStreamStackUserAssociation(), data, appStreamStackUserAssociationProperties, meta)
 }
 
 func resourceAppStreamStackUserAssociationDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::AppStream::StackUserAssociation", data, meta)
+	return plugin.ResourceDelete(appStreamStackUserAssociationType, data, meta)
 }
 
 func resourceAppStreamStackUserAssociationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::AppStream::StackUserAssociation", data, meta)
+	return plugin.ResourceCustomizeDiff(appStreamStackUserAssociationType, data, meta)
 }
-

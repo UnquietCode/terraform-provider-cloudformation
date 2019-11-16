@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,18 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var deliveryStreamSplunkDestinationConfigurationProperties map[string]string = map[string]string{
+	"cloud_watch_logging_options": "CloudWatchLoggingOptions",
+	"hec_acknowledgment_timeout_in_seconds": "HECAcknowledgmentTimeoutInSeconds",
+	"hec_endpoint": "HECEndpoint",
+	"hec_endpoint_type": "HECEndpointType",
+	"hec_token": "HECToken",
+	"processing_configuration": "ProcessingConfiguration",
+	"retry_options": "RetryOptions",
+	"s3_backup_mode": "S3BackupMode",
+	"s3_configuration": "S3Configuration",
+}
 
 func propertyDeliveryStreamSplunkDestinationConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -75,4 +87,3 @@ func propertyDeliveryStreamSplunkDestinationConfiguration(extras...string) *sche
 		},
 	}
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,16 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var backupPlanBackupRuleResourceTypeProperties map[string]string = map[string]string{
+	"completion_window_minutes": "CompletionWindowMinutes",
+	"schedule_expression": "ScheduleExpression",
+	"recovery_point_tags": "RecoveryPointTags",
+	"lifecycle": "Lifecycle",
+	"target_backup_vault": "TargetBackupVault",
+	"start_window_minutes": "StartWindowMinutes",
+	"rule_name": "RuleName",
+}
 
 func propertyBackupPlanBackupRuleResourceType(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -61,4 +71,3 @@ func propertyBackupPlanBackupRuleResourceType(extras...string) *schema.Resource 
 		},
 	}
 }
-

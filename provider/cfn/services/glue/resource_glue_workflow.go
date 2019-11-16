@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,15 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const glueWorkflowType string = "AWS::Glue::Workflow"
+
+var glueWorkflowProperties map[string]string = map[string]string{
+	"description": "Description",
+	"default_run_properties": "DefaultRunProperties",
+	"tags": "Tags",
+	"name": "Name",
+}
 
 func ResourceGlueWorkflow() *schema.Resource {
 	return &schema.Resource{
@@ -54,22 +63,21 @@ func resourceGlueWorkflowExists(data *schema.ResourceData, meta interface{}) (bo
 }
 
 func resourceGlueWorkflowRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Glue::Workflow", ResourceGlueWorkflow(), data, meta)
+	return plugin.ResourceRead(glueWorkflowType, ResourceGlueWorkflow(), data, meta)
 }
 
 func resourceGlueWorkflowCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::Workflow", ResourceGlueWorkflow(), data, meta)
+	return plugin.ResourceCreate(glueWorkflowType, ResourceGlueWorkflow(), data, glueWorkflowProperties, meta)
 }
 
 func resourceGlueWorkflowUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Glue::Workflow", ResourceGlueWorkflow(), data, meta)
+	return plugin.ResourceUpdate(glueWorkflowType, ResourceGlueWorkflow(), data, glueWorkflowProperties, meta)
 }
 
 func resourceGlueWorkflowDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Glue::Workflow", data, meta)
+	return plugin.ResourceDelete(glueWorkflowType, data, meta)
 }
 
 func resourceGlueWorkflowCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Glue::Workflow", data, meta)
+	return plugin.ResourceCustomizeDiff(glueWorkflowType, data, meta)
 }
-

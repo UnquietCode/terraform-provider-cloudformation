@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,17 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var projectEnvironmentProperties map[string]string = map[string]string{
+	"type": "Type",
+	"environment_variables": "EnvironmentVariables",
+	"privileged_mode": "PrivilegedMode",
+	"image_pull_credentials_type": "ImagePullCredentialsType",
+	"image": "Image",
+	"registry_credential": "RegistryCredential",
+	"compute_type": "ComputeType",
+	"certificate": "Certificate",
+}
 
 func propertyProjectEnvironment(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -66,4 +77,3 @@ func propertyProjectEnvironment(extras...string) *schema.Resource {
 		},
 	}
 }
-

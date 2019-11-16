@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const wAFRegionalSizeConstraintSetType string = "AWS::WAFRegional::SizeConstraintSet"
+
+var wAFRegionalSizeConstraintSetProperties map[string]string = map[string]string{
+	"size_constraints": "SizeConstraints",
+	"name": "Name",
+}
 
 func ResourceWAFRegionalSizeConstraintSet() *schema.Resource {
 	return &schema.Resource{
@@ -47,22 +54,21 @@ func resourceWAFRegionalSizeConstraintSetExists(data *schema.ResourceData, meta 
 }
 
 func resourceWAFRegionalSizeConstraintSetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::WAFRegional::SizeConstraintSet", ResourceWAFRegionalSizeConstraintSet(), data, meta)
+	return plugin.ResourceRead(wAFRegionalSizeConstraintSetType, ResourceWAFRegionalSizeConstraintSet(), data, meta)
 }
 
 func resourceWAFRegionalSizeConstraintSetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::WAFRegional::SizeConstraintSet", ResourceWAFRegionalSizeConstraintSet(), data, meta)
+	return plugin.ResourceCreate(wAFRegionalSizeConstraintSetType, ResourceWAFRegionalSizeConstraintSet(), data, wAFRegionalSizeConstraintSetProperties, meta)
 }
 
 func resourceWAFRegionalSizeConstraintSetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::WAFRegional::SizeConstraintSet", ResourceWAFRegionalSizeConstraintSet(), data, meta)
+	return plugin.ResourceUpdate(wAFRegionalSizeConstraintSetType, ResourceWAFRegionalSizeConstraintSet(), data, wAFRegionalSizeConstraintSetProperties, meta)
 }
 
 func resourceWAFRegionalSizeConstraintSetDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::WAFRegional::SizeConstraintSet", data, meta)
+	return plugin.ResourceDelete(wAFRegionalSizeConstraintSetType, data, meta)
 }
 
 func resourceWAFRegionalSizeConstraintSetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::WAFRegional::SizeConstraintSet", data, meta)
+	return plugin.ResourceCustomizeDiff(wAFRegionalSizeConstraintSetType, data, meta)
 }
-

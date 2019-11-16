@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,20 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var deliveryStreamElasticsearchDestinationConfigurationProperties map[string]string = map[string]string{
+	"buffering_hints": "BufferingHints",
+	"cloud_watch_logging_options": "CloudWatchLoggingOptions",
+	"domain_arn": "DomainARN",
+	"index_name": "IndexName",
+	"index_rotation_period": "IndexRotationPeriod",
+	"processing_configuration": "ProcessingConfiguration",
+	"retry_options": "RetryOptions",
+	"role_arn": "RoleARN",
+	"s3_backup_mode": "S3BackupMode",
+	"s3_configuration": "S3Configuration",
+	"type_name": "TypeName",
+}
 
 func propertyDeliveryStreamElasticsearchDestinationConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -85,4 +99,3 @@ func propertyDeliveryStreamElasticsearchDestinationConfiguration(extras...string
 		},
 	}
 }
-

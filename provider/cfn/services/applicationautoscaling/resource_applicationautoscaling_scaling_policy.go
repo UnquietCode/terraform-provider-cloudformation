@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,19 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const applicationAutoScalingScalingPolicyType string = "AWS::ApplicationAutoScaling::ScalingPolicy"
+
+var applicationAutoScalingScalingPolicyProperties map[string]string = map[string]string{
+	"policy_name": "PolicyName",
+	"policy_type": "PolicyType",
+	"resource_id": "ResourceId",
+	"scalable_dimension": "ScalableDimension",
+	"scaling_target_id": "ScalingTargetId",
+	"service_namespace": "ServiceNamespace",
+	"step_scaling_policy_configuration": "StepScalingPolicyConfiguration",
+	"target_tracking_scaling_policy_configuration": "TargetTrackingScalingPolicyConfiguration",
+}
 
 func ResourceApplicationAutoScalingScalingPolicy() *schema.Resource {
 	return &schema.Resource{
@@ -74,22 +87,21 @@ func resourceApplicationAutoScalingScalingPolicyExists(data *schema.ResourceData
 }
 
 func resourceApplicationAutoScalingScalingPolicyRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApplicationAutoScaling::ScalingPolicy", ResourceApplicationAutoScalingScalingPolicy(), data, meta)
+	return plugin.ResourceRead(applicationAutoScalingScalingPolicyType, ResourceApplicationAutoScalingScalingPolicy(), data, meta)
 }
 
 func resourceApplicationAutoScalingScalingPolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApplicationAutoScaling::ScalingPolicy", ResourceApplicationAutoScalingScalingPolicy(), data, meta)
+	return plugin.ResourceCreate(applicationAutoScalingScalingPolicyType, ResourceApplicationAutoScalingScalingPolicy(), data, applicationAutoScalingScalingPolicyProperties, meta)
 }
 
 func resourceApplicationAutoScalingScalingPolicyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApplicationAutoScaling::ScalingPolicy", ResourceApplicationAutoScalingScalingPolicy(), data, meta)
+	return plugin.ResourceUpdate(applicationAutoScalingScalingPolicyType, ResourceApplicationAutoScalingScalingPolicy(), data, applicationAutoScalingScalingPolicyProperties, meta)
 }
 
 func resourceApplicationAutoScalingScalingPolicyDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ApplicationAutoScaling::ScalingPolicy", data, meta)
+	return plugin.ResourceDelete(applicationAutoScalingScalingPolicyType, data, meta)
 }
 
 func resourceApplicationAutoScalingScalingPolicyCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ApplicationAutoScaling::ScalingPolicy", data, meta)
+	return plugin.ResourceCustomizeDiff(applicationAutoScalingScalingPolicyType, data, meta)
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,19 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const autoScalingLifecycleHookType string = "AWS::AutoScaling::LifecycleHook"
+
+var autoScalingLifecycleHookProperties map[string]string = map[string]string{
+	"auto_scaling_group_name": "AutoScalingGroupName",
+	"default_result": "DefaultResult",
+	"heartbeat_timeout": "HeartbeatTimeout",
+	"lifecycle_hook_name": "LifecycleHookName",
+	"lifecycle_transition": "LifecycleTransition",
+	"notification_metadata": "NotificationMetadata",
+	"notification_target_arn": "NotificationTargetARN",
+	"role_arn": "RoleARN",
+}
 
 func ResourceAutoScalingLifecycleHook() *schema.Resource {
 	return &schema.Resource{
@@ -70,22 +83,21 @@ func resourceAutoScalingLifecycleHookExists(data *schema.ResourceData, meta inte
 }
 
 func resourceAutoScalingLifecycleHookRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AutoScaling::LifecycleHook", ResourceAutoScalingLifecycleHook(), data, meta)
+	return plugin.ResourceRead(autoScalingLifecycleHookType, ResourceAutoScalingLifecycleHook(), data, meta)
 }
 
 func resourceAutoScalingLifecycleHookCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AutoScaling::LifecycleHook", ResourceAutoScalingLifecycleHook(), data, meta)
+	return plugin.ResourceCreate(autoScalingLifecycleHookType, ResourceAutoScalingLifecycleHook(), data, autoScalingLifecycleHookProperties, meta)
 }
 
 func resourceAutoScalingLifecycleHookUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AutoScaling::LifecycleHook", ResourceAutoScalingLifecycleHook(), data, meta)
+	return plugin.ResourceUpdate(autoScalingLifecycleHookType, ResourceAutoScalingLifecycleHook(), data, autoScalingLifecycleHookProperties, meta)
 }
 
 func resourceAutoScalingLifecycleHookDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::AutoScaling::LifecycleHook", data, meta)
+	return plugin.ResourceDelete(autoScalingLifecycleHookType, data, meta)
 }
 
 func resourceAutoScalingLifecycleHookCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::AutoScaling::LifecycleHook", data, meta)
+	return plugin.ResourceCustomizeDiff(autoScalingLifecycleHookType, data, meta)
 }
-

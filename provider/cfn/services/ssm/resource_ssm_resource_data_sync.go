@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,17 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const sSMResourceDataSyncType string = "AWS::SSM::ResourceDataSync"
+
+var sSMResourceDataSyncProperties map[string]string = map[string]string{
+	"kms_key_arn": "KMSKeyArn",
+	"bucket_name": "BucketName",
+	"bucket_region": "BucketRegion",
+	"sync_format": "SyncFormat",
+	"sync_name": "SyncName",
+	"bucket_prefix": "BucketPrefix",
+}
 
 func ResourceSSMResourceDataSync() *schema.Resource {
 	return &schema.Resource{
@@ -62,22 +73,21 @@ func resourceSSMResourceDataSyncExists(data *schema.ResourceData, meta interface
 }
 
 func resourceSSMResourceDataSyncRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SSM::ResourceDataSync", ResourceSSMResourceDataSync(), data, meta)
+	return plugin.ResourceRead(sSMResourceDataSyncType, ResourceSSMResourceDataSync(), data, meta)
 }
 
 func resourceSSMResourceDataSyncCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SSM::ResourceDataSync", ResourceSSMResourceDataSync(), data, meta)
+	return plugin.ResourceCreate(sSMResourceDataSyncType, ResourceSSMResourceDataSync(), data, sSMResourceDataSyncProperties, meta)
 }
 
 func resourceSSMResourceDataSyncUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SSM::ResourceDataSync", ResourceSSMResourceDataSync(), data, meta)
+	return plugin.ResourceUpdate(sSMResourceDataSyncType, ResourceSSMResourceDataSync(), data, sSMResourceDataSyncProperties, meta)
 }
 
 func resourceSSMResourceDataSyncDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::SSM::ResourceDataSync", data, meta)
+	return plugin.ResourceDelete(sSMResourceDataSyncType, data, meta)
 }
 
 func resourceSSMResourceDataSyncCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::SSM::ResourceDataSync", data, meta)
+	return plugin.ResourceCustomizeDiff(sSMResourceDataSyncType, data, meta)
 }
-

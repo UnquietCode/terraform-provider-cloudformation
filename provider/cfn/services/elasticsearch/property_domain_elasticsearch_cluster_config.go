@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,16 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var domainElasticsearchClusterConfigProperties map[string]string = map[string]string{
+	"dedicated_master_count": "DedicatedMasterCount",
+	"dedicated_master_enabled": "DedicatedMasterEnabled",
+	"dedicated_master_type": "DedicatedMasterType",
+	"instance_count": "InstanceCount",
+	"instance_type": "InstanceType",
+	"zone_awareness_config": "ZoneAwarenessConfig",
+	"zone_awareness_enabled": "ZoneAwarenessEnabled",
+}
 
 func propertyDomainElasticsearchClusterConfig(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -61,4 +71,3 @@ func propertyDomainElasticsearchClusterConfig(extras...string) *schema.Resource 
 		},
 	}
 }
-

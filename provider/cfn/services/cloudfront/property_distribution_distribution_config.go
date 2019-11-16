@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,24 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var distributionDistributionConfigProperties map[string]string = map[string]string{
+	"logging": "Logging",
+	"comment": "Comment",
+	"default_root_object": "DefaultRootObject",
+	"origins": "Origins",
+	"viewer_certificate": "ViewerCertificate",
+	"price_class": "PriceClass",
+	"default_cache_behavior": "DefaultCacheBehavior",
+	"custom_error_responses": "CustomErrorResponses",
+	"enabled": "Enabled",
+	"aliases": "Aliases",
+	"ipv6_enabled": "IPV6Enabled",
+	"web_acl_id": "WebACLId",
+	"http_version": "HttpVersion",
+	"restrictions": "Restrictions",
+	"cache_behaviors": "CacheBehaviors",
+}
 
 func propertyDistributionDistributionConfig(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -103,4 +121,3 @@ func propertyDistributionDistributionConfig(extras...string) *schema.Resource {
 		},
 	}
 }
-

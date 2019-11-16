@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,19 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const sSMAssociationType string = "AWS::SSM::Association"
+
+var sSMAssociationProperties map[string]string = map[string]string{
+	"association_name": "AssociationName",
+	"document_version": "DocumentVersion",
+	"instance_id": "InstanceId",
+	"name": "Name",
+	"output_location": "OutputLocation",
+	"parameters": "Parameters",
+	"schedule_expression": "ScheduleExpression",
+	"targets": "Targets",
+}
 
 func ResourceSSMAssociation() *schema.Resource {
 	return &schema.Resource{
@@ -74,22 +87,21 @@ func resourceSSMAssociationExists(data *schema.ResourceData, meta interface{}) (
 }
 
 func resourceSSMAssociationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SSM::Association", ResourceSSMAssociation(), data, meta)
+	return plugin.ResourceRead(sSMAssociationType, ResourceSSMAssociation(), data, meta)
 }
 
 func resourceSSMAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SSM::Association", ResourceSSMAssociation(), data, meta)
+	return plugin.ResourceCreate(sSMAssociationType, ResourceSSMAssociation(), data, sSMAssociationProperties, meta)
 }
 
 func resourceSSMAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SSM::Association", ResourceSSMAssociation(), data, meta)
+	return plugin.ResourceUpdate(sSMAssociationType, ResourceSSMAssociation(), data, sSMAssociationProperties, meta)
 }
 
 func resourceSSMAssociationDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::SSM::Association", data, meta)
+	return plugin.ResourceDelete(sSMAssociationType, data, meta)
 }
 
 func resourceSSMAssociationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::SSM::Association", data, meta)
+	return plugin.ResourceCustomizeDiff(sSMAssociationType, data, meta)
 }
-

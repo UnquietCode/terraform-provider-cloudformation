@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,18 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eC2SubnetType string = "AWS::EC2::Subnet"
+
+var eC2SubnetProperties map[string]string = map[string]string{
+	"assign_ipv6_address_on_creation": "AssignIpv6AddressOnCreation",
+	"availability_zone": "AvailabilityZone",
+	"cidr_block": "CidrBlock",
+	"ipv6_cidr_block": "Ipv6CidrBlock",
+	"map_public_ip_on_launch": "MapPublicIpOnLaunch",
+	"tags": "Tags",
+	"vpc_id": "VpcId",
+}
 
 func ResourceEC2Subnet() *schema.Resource {
 	return &schema.Resource{
@@ -68,22 +80,21 @@ func resourceEC2SubnetExists(data *schema.ResourceData, meta interface{}) (bool,
 }
 
 func resourceEC2SubnetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::Subnet", ResourceEC2Subnet(), data, meta)
+	return plugin.ResourceRead(eC2SubnetType, ResourceEC2Subnet(), data, meta)
 }
 
 func resourceEC2SubnetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::Subnet", ResourceEC2Subnet(), data, meta)
+	return plugin.ResourceCreate(eC2SubnetType, ResourceEC2Subnet(), data, eC2SubnetProperties, meta)
 }
 
 func resourceEC2SubnetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::Subnet", ResourceEC2Subnet(), data, meta)
+	return plugin.ResourceUpdate(eC2SubnetType, ResourceEC2Subnet(), data, eC2SubnetProperties, meta)
 }
 
 func resourceEC2SubnetDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EC2::Subnet", data, meta)
+	return plugin.ResourceDelete(eC2SubnetType, data, meta)
 }
 
 func resourceEC2SubnetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EC2::Subnet", data, meta)
+	return plugin.ResourceCustomizeDiff(eC2SubnetType, data, meta)
 }
-

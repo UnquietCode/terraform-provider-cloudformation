@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,18 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const docDBDBInstanceType string = "AWS::DocDB::DBInstance"
+
+var docDBDBInstanceProperties map[string]string = map[string]string{
+	"db_instance_class": "DBInstanceClass",
+	"db_cluster_identifier": "DBClusterIdentifier",
+	"availability_zone": "AvailabilityZone",
+	"preferred_maintenance_window": "PreferredMaintenanceWindow",
+	"auto_minor_version_upgrade": "AutoMinorVersionUpgrade",
+	"db_instance_identifier": "DBInstanceIdentifier",
+	"tags": "Tags",
+}
 
 func ResourceDocDBDBInstance() *schema.Resource {
 	return &schema.Resource{
@@ -68,22 +80,21 @@ func resourceDocDBDBInstanceExists(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceDocDBDBInstanceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::DocDB::DBInstance", ResourceDocDBDBInstance(), data, meta)
+	return plugin.ResourceRead(docDBDBInstanceType, ResourceDocDBDBInstance(), data, meta)
 }
 
 func resourceDocDBDBInstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DocDB::DBInstance", ResourceDocDBDBInstance(), data, meta)
+	return plugin.ResourceCreate(docDBDBInstanceType, ResourceDocDBDBInstance(), data, docDBDBInstanceProperties, meta)
 }
 
 func resourceDocDBDBInstanceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::DocDB::DBInstance", ResourceDocDBDBInstance(), data, meta)
+	return plugin.ResourceUpdate(docDBDBInstanceType, ResourceDocDBDBInstance(), data, docDBDBInstanceProperties, meta)
 }
 
 func resourceDocDBDBInstanceDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::DocDB::DBInstance", data, meta)
+	return plugin.ResourceDelete(docDBDBInstanceType, data, meta)
 }
 
 func resourceDocDBDBInstanceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::DocDB::DBInstance", data, meta)
+	return plugin.ResourceCustomizeDiff(docDBDBInstanceType, data, meta)
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,15 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const appMeshVirtualRouterType string = "AWS::AppMesh::VirtualRouter"
+
+var appMeshVirtualRouterProperties map[string]string = map[string]string{
+	"mesh_name": "MeshName",
+	"virtual_router_name": "VirtualRouterName",
+	"spec": "Spec",
+	"tags": "Tags",
+}
 
 func ResourceAppMeshVirtualRouter() *schema.Resource {
 	return &schema.Resource{
@@ -58,22 +67,21 @@ func resourceAppMeshVirtualRouterExists(data *schema.ResourceData, meta interfac
 }
 
 func resourceAppMeshVirtualRouterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppMesh::VirtualRouter", ResourceAppMeshVirtualRouter(), data, meta)
+	return plugin.ResourceRead(appMeshVirtualRouterType, ResourceAppMeshVirtualRouter(), data, meta)
 }
 
 func resourceAppMeshVirtualRouterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppMesh::VirtualRouter", ResourceAppMeshVirtualRouter(), data, meta)
+	return plugin.ResourceCreate(appMeshVirtualRouterType, ResourceAppMeshVirtualRouter(), data, appMeshVirtualRouterProperties, meta)
 }
 
 func resourceAppMeshVirtualRouterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppMesh::VirtualRouter", ResourceAppMeshVirtualRouter(), data, meta)
+	return plugin.ResourceUpdate(appMeshVirtualRouterType, ResourceAppMeshVirtualRouter(), data, appMeshVirtualRouterProperties, meta)
 }
 
 func resourceAppMeshVirtualRouterDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::AppMesh::VirtualRouter", data, meta)
+	return plugin.ResourceDelete(appMeshVirtualRouterType, data, meta)
 }
 
 func resourceAppMeshVirtualRouterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::AppMesh::VirtualRouter", data, meta)
+	return plugin.ResourceCustomizeDiff(appMeshVirtualRouterType, data, meta)
 }
-

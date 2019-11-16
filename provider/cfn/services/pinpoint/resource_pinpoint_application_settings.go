@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,16 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const pinpointApplicationSettingsType string = "AWS::Pinpoint::ApplicationSettings"
+
+var pinpointApplicationSettingsProperties map[string]string = map[string]string{
+	"quiet_time": "QuietTime",
+	"limits": "Limits",
+	"application_id": "ApplicationId",
+	"campaign_hook": "CampaignHook",
+	"cloud_watch_metrics_enabled": "CloudWatchMetricsEnabled",
+}
 
 func ResourcePinpointApplicationSettings() *schema.Resource {
 	return &schema.Resource{
@@ -64,22 +74,21 @@ func resourcePinpointApplicationSettingsExists(data *schema.ResourceData, meta i
 }
 
 func resourcePinpointApplicationSettingsRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::ApplicationSettings", ResourcePinpointApplicationSettings(), data, meta)
+	return plugin.ResourceRead(pinpointApplicationSettingsType, ResourcePinpointApplicationSettings(), data, meta)
 }
 
 func resourcePinpointApplicationSettingsCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::ApplicationSettings", ResourcePinpointApplicationSettings(), data, meta)
+	return plugin.ResourceCreate(pinpointApplicationSettingsType, ResourcePinpointApplicationSettings(), data, pinpointApplicationSettingsProperties, meta)
 }
 
 func resourcePinpointApplicationSettingsUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::ApplicationSettings", ResourcePinpointApplicationSettings(), data, meta)
+	return plugin.ResourceUpdate(pinpointApplicationSettingsType, ResourcePinpointApplicationSettings(), data, pinpointApplicationSettingsProperties, meta)
 }
 
 func resourcePinpointApplicationSettingsDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Pinpoint::ApplicationSettings", data, meta)
+	return plugin.ResourceDelete(pinpointApplicationSettingsType, data, meta)
 }
 
 func resourcePinpointApplicationSettingsCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Pinpoint::ApplicationSettings", data, meta)
+	return plugin.ResourceCustomizeDiff(pinpointApplicationSettingsType, data, meta)
 }
-

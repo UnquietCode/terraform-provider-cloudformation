@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,28 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const docDBDBClusterType string = "AWS::DocDB::DBCluster"
+
+var docDBDBClusterProperties map[string]string = map[string]string{
+	"storage_encrypted": "StorageEncrypted",
+	"engine_version": "EngineVersion",
+	"kms_key_id": "KmsKeyId",
+	"availability_zones": "AvailabilityZones",
+	"snapshot_identifier": "SnapshotIdentifier",
+	"port": "Port",
+	"db_cluster_identifier": "DBClusterIdentifier",
+	"preferred_maintenance_window": "PreferredMaintenanceWindow",
+	"db_subnet_group_name": "DBSubnetGroupName",
+	"preferred_backup_window": "PreferredBackupWindow",
+	"master_user_password": "MasterUserPassword",
+	"vpc_security_group_ids": "VpcSecurityGroupIds",
+	"master_username": "MasterUsername",
+	"db_cluster_parameter_group_name": "DBClusterParameterGroupName",
+	"backup_retention_period": "BackupRetentionPeriod",
+	"tags": "Tags",
+	"enable_cloudwatch_logs_exports": "EnableCloudwatchLogsExports",
+}
 
 func ResourceDocDBDBCluster() *schema.Resource {
 	return &schema.Resource{
@@ -111,22 +133,21 @@ func resourceDocDBDBClusterExists(data *schema.ResourceData, meta interface{}) (
 }
 
 func resourceDocDBDBClusterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::DocDB::DBCluster", ResourceDocDBDBCluster(), data, meta)
+	return plugin.ResourceRead(docDBDBClusterType, ResourceDocDBDBCluster(), data, meta)
 }
 
 func resourceDocDBDBClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DocDB::DBCluster", ResourceDocDBDBCluster(), data, meta)
+	return plugin.ResourceCreate(docDBDBClusterType, ResourceDocDBDBCluster(), data, docDBDBClusterProperties, meta)
 }
 
 func resourceDocDBDBClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::DocDB::DBCluster", ResourceDocDBDBCluster(), data, meta)
+	return plugin.ResourceUpdate(docDBDBClusterType, ResourceDocDBDBCluster(), data, docDBDBClusterProperties, meta)
 }
 
 func resourceDocDBDBClusterDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::DocDB::DBCluster", data, meta)
+	return plugin.ResourceDelete(docDBDBClusterType, data, meta)
 }
 
 func resourceDocDBDBClusterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::DocDB::DBCluster", data, meta)
+	return plugin.ResourceCustomizeDiff(docDBDBClusterType, data, meta)
 }
-

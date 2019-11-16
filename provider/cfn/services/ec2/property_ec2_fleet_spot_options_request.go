@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,12 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var eC2FleetSpotOptionsRequestProperties map[string]string = map[string]string{
+	"allocation_strategy": "AllocationStrategy",
+	"instance_interruption_behavior": "InstanceInterruptionBehavior",
+	"instance_pools_to_use_count": "InstancePoolsToUseCount",
+}
 
 func propertyEC2FleetSpotOptionsRequest(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -43,4 +49,3 @@ func propertyEC2FleetSpotOptionsRequest(extras...string) *schema.Resource {
 		},
 	}
 }
-

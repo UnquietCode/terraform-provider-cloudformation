@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const sageMakerNotebookInstanceLifecycleConfigType string = "AWS::SageMaker::NotebookInstanceLifecycleConfig"
+
+var sageMakerNotebookInstanceLifecycleConfigProperties map[string]string = map[string]string{
+	"on_start": "OnStart",
+	"notebook_instance_lifecycle_config_name": "NotebookInstanceLifecycleConfigName",
+	"on_create": "OnCreate",
+}
 
 func ResourceSageMakerNotebookInstanceLifecycleConfig() *schema.Resource {
 	return &schema.Resource{
@@ -52,22 +60,21 @@ func resourceSageMakerNotebookInstanceLifecycleConfigExists(data *schema.Resourc
 }
 
 func resourceSageMakerNotebookInstanceLifecycleConfigRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SageMaker::NotebookInstanceLifecycleConfig", ResourceSageMakerNotebookInstanceLifecycleConfig(), data, meta)
+	return plugin.ResourceRead(sageMakerNotebookInstanceLifecycleConfigType, ResourceSageMakerNotebookInstanceLifecycleConfig(), data, meta)
 }
 
 func resourceSageMakerNotebookInstanceLifecycleConfigCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SageMaker::NotebookInstanceLifecycleConfig", ResourceSageMakerNotebookInstanceLifecycleConfig(), data, meta)
+	return plugin.ResourceCreate(sageMakerNotebookInstanceLifecycleConfigType, ResourceSageMakerNotebookInstanceLifecycleConfig(), data, sageMakerNotebookInstanceLifecycleConfigProperties, meta)
 }
 
 func resourceSageMakerNotebookInstanceLifecycleConfigUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SageMaker::NotebookInstanceLifecycleConfig", ResourceSageMakerNotebookInstanceLifecycleConfig(), data, meta)
+	return plugin.ResourceUpdate(sageMakerNotebookInstanceLifecycleConfigType, ResourceSageMakerNotebookInstanceLifecycleConfig(), data, sageMakerNotebookInstanceLifecycleConfigProperties, meta)
 }
 
 func resourceSageMakerNotebookInstanceLifecycleConfigDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::SageMaker::NotebookInstanceLifecycleConfig", data, meta)
+	return plugin.ResourceDelete(sageMakerNotebookInstanceLifecycleConfigType, data, meta)
 }
 
 func resourceSageMakerNotebookInstanceLifecycleConfigCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::SageMaker::NotebookInstanceLifecycleConfig", data, meta)
+	return plugin.ResourceCustomizeDiff(sageMakerNotebookInstanceLifecycleConfigType, data, meta)
 }
-

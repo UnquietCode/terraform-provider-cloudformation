@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,17 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const amazonMQConfigurationType string = "AWS::AmazonMQ::Configuration"
+
+var amazonMQConfigurationProperties map[string]string = map[string]string{
+	"engine_version": "EngineVersion",
+	"description": "Description",
+	"engine_type": "EngineType",
+	"data": "Data",
+	"tags": "Tags",
+	"name": "Name",
+}
 
 func ResourceAmazonMQConfiguration() *schema.Resource {
 	return &schema.Resource{
@@ -63,22 +74,21 @@ func resourceAmazonMQConfigurationExists(data *schema.ResourceData, meta interfa
 }
 
 func resourceAmazonMQConfigurationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AmazonMQ::Configuration", ResourceAmazonMQConfiguration(), data, meta)
+	return plugin.ResourceRead(amazonMQConfigurationType, ResourceAmazonMQConfiguration(), data, meta)
 }
 
 func resourceAmazonMQConfigurationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AmazonMQ::Configuration", ResourceAmazonMQConfiguration(), data, meta)
+	return plugin.ResourceCreate(amazonMQConfigurationType, ResourceAmazonMQConfiguration(), data, amazonMQConfigurationProperties, meta)
 }
 
 func resourceAmazonMQConfigurationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AmazonMQ::Configuration", ResourceAmazonMQConfiguration(), data, meta)
+	return plugin.ResourceUpdate(amazonMQConfigurationType, ResourceAmazonMQConfiguration(), data, amazonMQConfigurationProperties, meta)
 }
 
 func resourceAmazonMQConfigurationDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::AmazonMQ::Configuration", data, meta)
+	return plugin.ResourceDelete(amazonMQConfigurationType, data, meta)
 }
 
 func resourceAmazonMQConfigurationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::AmazonMQ::Configuration", data, meta)
+	return plugin.ResourceCustomizeDiff(amazonMQConfigurationType, data, meta)
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,26 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const cognitoUserPoolClientType string = "AWS::Cognito::UserPoolClient"
+
+var cognitoUserPoolClientProperties map[string]string = map[string]string{
+	"analytics_configuration": "AnalyticsConfiguration",
+	"generate_secret": "GenerateSecret",
+	"callback_ur_ls": "CallbackURLs",
+	"allowed_o_auth_scopes": "AllowedOAuthScopes",
+	"read_attributes": "ReadAttributes",
+	"allowed_o_auth_flows_user_pool_client": "AllowedOAuthFlowsUserPoolClient",
+	"default_redirect_uri": "DefaultRedirectURI",
+	"supported_identity_providers": "SupportedIdentityProviders",
+	"client_name": "ClientName",
+	"user_pool_id": "UserPoolId",
+	"allowed_o_auth_flows": "AllowedOAuthFlows",
+	"explicit_auth_flows": "ExplicitAuthFlows",
+	"logout_ur_ls": "LogoutURLs",
+	"refresh_token_validity": "RefreshTokenValidity",
+	"write_attributes": "WriteAttributes",
+}
 
 func ResourceCognitoUserPoolClient() *schema.Resource {
 	return &schema.Resource{
@@ -108,22 +128,21 @@ func resourceCognitoUserPoolClientExists(data *schema.ResourceData, meta interfa
 }
 
 func resourceCognitoUserPoolClientRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Cognito::UserPoolClient", ResourceCognitoUserPoolClient(), data, meta)
+	return plugin.ResourceRead(cognitoUserPoolClientType, ResourceCognitoUserPoolClient(), data, meta)
 }
 
 func resourceCognitoUserPoolClientCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Cognito::UserPoolClient", ResourceCognitoUserPoolClient(), data, meta)
+	return plugin.ResourceCreate(cognitoUserPoolClientType, ResourceCognitoUserPoolClient(), data, cognitoUserPoolClientProperties, meta)
 }
 
 func resourceCognitoUserPoolClientUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Cognito::UserPoolClient", ResourceCognitoUserPoolClient(), data, meta)
+	return plugin.ResourceUpdate(cognitoUserPoolClientType, ResourceCognitoUserPoolClient(), data, cognitoUserPoolClientProperties, meta)
 }
 
 func resourceCognitoUserPoolClientDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Cognito::UserPoolClient", data, meta)
+	return plugin.ResourceDelete(cognitoUserPoolClientType, data, meta)
 }
 
 func resourceCognitoUserPoolClientCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Cognito::UserPoolClient", data, meta)
+	return plugin.ResourceCustomizeDiff(cognitoUserPoolClientType, data, meta)
 }
-

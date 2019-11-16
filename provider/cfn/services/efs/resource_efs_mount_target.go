@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,15 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eFSMountTargetType string = "AWS::EFS::MountTarget"
+
+var eFSMountTargetProperties map[string]string = map[string]string{
+	"file_system_id": "FileSystemId",
+	"ip_address": "IpAddress",
+	"security_groups": "SecurityGroups",
+	"subnet_id": "SubnetId",
+}
 
 func ResourceEFSMountTarget() *schema.Resource {
 	return &schema.Resource{
@@ -56,22 +65,21 @@ func resourceEFSMountTargetExists(data *schema.ResourceData, meta interface{}) (
 }
 
 func resourceEFSMountTargetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EFS::MountTarget", ResourceEFSMountTarget(), data, meta)
+	return plugin.ResourceRead(eFSMountTargetType, ResourceEFSMountTarget(), data, meta)
 }
 
 func resourceEFSMountTargetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EFS::MountTarget", ResourceEFSMountTarget(), data, meta)
+	return plugin.ResourceCreate(eFSMountTargetType, ResourceEFSMountTarget(), data, eFSMountTargetProperties, meta)
 }
 
 func resourceEFSMountTargetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EFS::MountTarget", ResourceEFSMountTarget(), data, meta)
+	return plugin.ResourceUpdate(eFSMountTargetType, ResourceEFSMountTarget(), data, eFSMountTargetProperties, meta)
 }
 
 func resourceEFSMountTargetDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EFS::MountTarget", data, meta)
+	return plugin.ResourceDelete(eFSMountTargetType, data, meta)
 }
 
 func resourceEFSMountTargetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EFS::MountTarget", data, meta)
+	return plugin.ResourceCustomizeDiff(eFSMountTargetType, data, meta)
 }
-

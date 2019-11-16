@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,26 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const codeDeployDeploymentGroupType string = "AWS::CodeDeploy::DeploymentGroup"
+
+var codeDeployDeploymentGroupProperties map[string]string = map[string]string{
+	"alarm_configuration": "AlarmConfiguration",
+	"application_name": "ApplicationName",
+	"auto_rollback_configuration": "AutoRollbackConfiguration",
+	"auto_scaling_groups": "AutoScalingGroups",
+	"deployment": "Deployment",
+	"deployment_config_name": "DeploymentConfigName",
+	"deployment_group_name": "DeploymentGroupName",
+	"deployment_style": "DeploymentStyle",
+	"ec2_tag_filters": "Ec2TagFilters",
+	"ec2_tag_set": "Ec2TagSet",
+	"load_balancer_info": "LoadBalancerInfo",
+	"on_premises_instance_tag_filters": "OnPremisesInstanceTagFilters",
+	"on_premises_tag_set": "OnPremisesTagSet",
+	"service_role_arn": "ServiceRoleArn",
+	"trigger_configurations": "TriggerConfigurations",
+}
 
 func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 	return &schema.Resource{
@@ -117,22 +137,21 @@ func resourceCodeDeployDeploymentGroupExists(data *schema.ResourceData, meta int
 }
 
 func resourceCodeDeployDeploymentGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CodeDeploy::DeploymentGroup", ResourceCodeDeployDeploymentGroup(), data, meta)
+	return plugin.ResourceRead(codeDeployDeploymentGroupType, ResourceCodeDeployDeploymentGroup(), data, meta)
 }
 
 func resourceCodeDeployDeploymentGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CodeDeploy::DeploymentGroup", ResourceCodeDeployDeploymentGroup(), data, meta)
+	return plugin.ResourceCreate(codeDeployDeploymentGroupType, ResourceCodeDeployDeploymentGroup(), data, codeDeployDeploymentGroupProperties, meta)
 }
 
 func resourceCodeDeployDeploymentGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CodeDeploy::DeploymentGroup", ResourceCodeDeployDeploymentGroup(), data, meta)
+	return plugin.ResourceUpdate(codeDeployDeploymentGroupType, ResourceCodeDeployDeploymentGroup(), data, codeDeployDeploymentGroupProperties, meta)
 }
 
 func resourceCodeDeployDeploymentGroupDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::CodeDeploy::DeploymentGroup", data, meta)
+	return plugin.ResourceDelete(codeDeployDeploymentGroupType, data, meta)
 }
 
 func resourceCodeDeployDeploymentGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::CodeDeploy::DeploymentGroup", data, meta)
+	return plugin.ResourceCustomizeDiff(codeDeployDeploymentGroupType, data, meta)
 }
-

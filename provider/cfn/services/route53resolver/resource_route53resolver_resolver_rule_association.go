@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const route53ResolverResolverRuleAssociationType string = "AWS::Route53Resolver::ResolverRuleAssociation"
+
+var route53ResolverResolverRuleAssociationProperties map[string]string = map[string]string{
+	"vpc_id": "VPCId",
+	"resolver_rule_id": "ResolverRuleId",
+	"name": "Name",
+}
 
 func ResourceRoute53ResolverResolverRuleAssociation() *schema.Resource {
 	return &schema.Resource{
@@ -50,22 +58,21 @@ func resourceRoute53ResolverResolverRuleAssociationExists(data *schema.ResourceD
 }
 
 func resourceRoute53ResolverResolverRuleAssociationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Route53Resolver::ResolverRuleAssociation", ResourceRoute53ResolverResolverRuleAssociation(), data, meta)
+	return plugin.ResourceRead(route53ResolverResolverRuleAssociationType, ResourceRoute53ResolverResolverRuleAssociation(), data, meta)
 }
 
 func resourceRoute53ResolverResolverRuleAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Route53Resolver::ResolverRuleAssociation", ResourceRoute53ResolverResolverRuleAssociation(), data, meta)
+	return plugin.ResourceCreate(route53ResolverResolverRuleAssociationType, ResourceRoute53ResolverResolverRuleAssociation(), data, route53ResolverResolverRuleAssociationProperties, meta)
 }
 
 func resourceRoute53ResolverResolverRuleAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Route53Resolver::ResolverRuleAssociation", ResourceRoute53ResolverResolverRuleAssociation(), data, meta)
+	return plugin.ResourceUpdate(route53ResolverResolverRuleAssociationType, ResourceRoute53ResolverResolverRuleAssociation(), data, route53ResolverResolverRuleAssociationProperties, meta)
 }
 
 func resourceRoute53ResolverResolverRuleAssociationDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Route53Resolver::ResolverRuleAssociation", data, meta)
+	return plugin.ResourceDelete(route53ResolverResolverRuleAssociationType, data, meta)
 }
 
 func resourceRoute53ResolverResolverRuleAssociationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Route53Resolver::ResolverRuleAssociation", data, meta)
+	return plugin.ResourceCustomizeDiff(route53ResolverResolverRuleAssociationType, data, meta)
 }
-

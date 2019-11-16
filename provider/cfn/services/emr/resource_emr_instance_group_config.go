@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,21 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eMRInstanceGroupConfigType string = "AWS::EMR::InstanceGroupConfig"
+
+var eMRInstanceGroupConfigProperties map[string]string = map[string]string{
+	"auto_scaling_policy": "AutoScalingPolicy",
+	"bid_price": "BidPrice",
+	"configurations": "Configurations",
+	"ebs_configuration": "EbsConfiguration",
+	"instance_count": "InstanceCount",
+	"instance_role": "InstanceRole",
+	"instance_type": "InstanceType",
+	"job_flow_id": "JobFlowId",
+	"market": "Market",
+	"name": "Name",
+}
 
 func ResourceEMRInstanceGroupConfig() *schema.Resource {
 	return &schema.Resource{
@@ -83,22 +98,21 @@ func resourceEMRInstanceGroupConfigExists(data *schema.ResourceData, meta interf
 }
 
 func resourceEMRInstanceGroupConfigRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EMR::InstanceGroupConfig", ResourceEMRInstanceGroupConfig(), data, meta)
+	return plugin.ResourceRead(eMRInstanceGroupConfigType, ResourceEMRInstanceGroupConfig(), data, meta)
 }
 
 func resourceEMRInstanceGroupConfigCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EMR::InstanceGroupConfig", ResourceEMRInstanceGroupConfig(), data, meta)
+	return plugin.ResourceCreate(eMRInstanceGroupConfigType, ResourceEMRInstanceGroupConfig(), data, eMRInstanceGroupConfigProperties, meta)
 }
 
 func resourceEMRInstanceGroupConfigUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EMR::InstanceGroupConfig", ResourceEMRInstanceGroupConfig(), data, meta)
+	return plugin.ResourceUpdate(eMRInstanceGroupConfigType, ResourceEMRInstanceGroupConfig(), data, eMRInstanceGroupConfigProperties, meta)
 }
 
 func resourceEMRInstanceGroupConfigDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EMR::InstanceGroupConfig", data, meta)
+	return plugin.ResourceDelete(eMRInstanceGroupConfigType, data, meta)
 }
 
 func resourceEMRInstanceGroupConfigCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EMR::InstanceGroupConfig", data, meta)
+	return plugin.ResourceCustomizeDiff(eMRInstanceGroupConfigType, data, meta)
 }
-

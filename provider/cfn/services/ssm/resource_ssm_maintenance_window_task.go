@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,24 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const sSMMaintenanceWindowTaskType string = "AWS::SSM::MaintenanceWindowTask"
+
+var sSMMaintenanceWindowTaskProperties map[string]string = map[string]string{
+	"max_errors": "MaxErrors",
+	"description": "Description",
+	"service_role_arn": "ServiceRoleArn",
+	"priority": "Priority",
+	"max_concurrency": "MaxConcurrency",
+	"targets": "Targets",
+	"name": "Name",
+	"task_arn": "TaskArn",
+	"task_invocation_parameters": "TaskInvocationParameters",
+	"window_id": "WindowId",
+	"task_parameters": "TaskParameters",
+	"task_type": "TaskType",
+	"logging_info": "LoggingInfo",
+}
 
 func ResourceSSMMaintenanceWindowTask() *schema.Resource {
 	return &schema.Resource{
@@ -95,22 +113,21 @@ func resourceSSMMaintenanceWindowTaskExists(data *schema.ResourceData, meta inte
 }
 
 func resourceSSMMaintenanceWindowTaskRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SSM::MaintenanceWindowTask", ResourceSSMMaintenanceWindowTask(), data, meta)
+	return plugin.ResourceRead(sSMMaintenanceWindowTaskType, ResourceSSMMaintenanceWindowTask(), data, meta)
 }
 
 func resourceSSMMaintenanceWindowTaskCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SSM::MaintenanceWindowTask", ResourceSSMMaintenanceWindowTask(), data, meta)
+	return plugin.ResourceCreate(sSMMaintenanceWindowTaskType, ResourceSSMMaintenanceWindowTask(), data, sSMMaintenanceWindowTaskProperties, meta)
 }
 
 func resourceSSMMaintenanceWindowTaskUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SSM::MaintenanceWindowTask", ResourceSSMMaintenanceWindowTask(), data, meta)
+	return plugin.ResourceUpdate(sSMMaintenanceWindowTaskType, ResourceSSMMaintenanceWindowTask(), data, sSMMaintenanceWindowTaskProperties, meta)
 }
 
 func resourceSSMMaintenanceWindowTaskDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::SSM::MaintenanceWindowTask", data, meta)
+	return plugin.ResourceDelete(sSMMaintenanceWindowTaskType, data, meta)
 }
 
 func resourceSSMMaintenanceWindowTaskCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::SSM::MaintenanceWindowTask", data, meta)
+	return plugin.ResourceCustomizeDiff(sSMMaintenanceWindowTaskType, data, meta)
 }
-

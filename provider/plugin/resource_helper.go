@@ -10,9 +10,9 @@ import (
 
 
 type TemplateEntry struct {
-   logicalId string
-	 cfnType string
-	 hash string
+  LogicalId string `json:"id"`
+  CfnType string `json:"type"`
+  Hash string `json:"hash"`
 }
 
 
@@ -77,13 +77,7 @@ func handleExistingResouce(meta ProviderMetadata, entry TemplateEntry) error {
 	}
 	
 	// append to the file
-	var data map[string]interface{} = map[string]interface{}{
-	 "id": entry.logicalId,
-	 "type": entry.cfnType,
-	 "hash": entry.hash,
- 	}
-	
-	entryJson, err := mapToJson(data, false)
+	entryJson, err := mapToJson(entry, false)
 	
 	if err != nil {
 		return err
@@ -119,7 +113,7 @@ func ResourceExists(resourceData *schema.ResourceData, meta interface{}) (bool, 
 
 func ResourceRead(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
 	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
-	var logicalId string = resourceData.Get("logical_id").(string)
+	var logicalId string = resourceData.Id()//("logical_id").(string)
 	
 	data, hash, err := readFile(logicalId, providerMeta)
 	
@@ -133,53 +127,60 @@ func ResourceRead(resourceType string, resourceSchema *schema.Resource, resource
 		resourceData.SetId("")
 		return nil
 	}
-	
+    
+  // file has changed
+  // if resourceData.Id() != hash {
+  // 	resourceData.SetId("")
+  //   return nil
+  // }
+  // 
 	for name, value := range data {
 		resourceData.Set(name, value)
 	}
 	
-	resourceData.SetId(hash)
+	// resourceData.SetId(hash)
 	// handleExistingResouce(providerMeta, logicalId, hash)
+	// incrementResourceReadCounter(providerMeta)
 	incrementResourceCounter(providerMeta)
 	
   return nil
 }
 
-func ResourceCreate(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
+func ResourceCreate(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, propertyNames map[string]string, meta interface{}) error {
 	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
 	var logicalId string = resourceData.Get("logical_id").(string)
 	
-	var data map[string]interface{} = convertResourceToMap("", resourceSchema, resourceData, normalGetter)
-	hashcode, err := writeFile(logicalId, data, meta.(ProviderMetadata))
+	var data map[string]interface{} = convertResourceToMap("", resourceSchema, resourceData, propertyNames, normalGetter)
+	_, err := writeFile(logicalId, data, meta.(ProviderMetadata))
 	
 	if err != nil {
 		return err
 	}
 	
-	resourceData.SetId(hashcode)
+	resourceData.SetId(logicalId)
 	incrementResourceCounter(providerMeta)
 	
   return nil
 }
 
 
-func ResourceUpdate(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
+func ResourceUpdate(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, propertyNames map[string]string, meta interface{}) error {
 	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
-	var logicalId string = resourceData.Get("logical_id").(string)
+	var logicalId string = resourceData.Id()//("logical_id").(string)
 	data, _, err := readFile(logicalId, providerMeta)
 	
 	if err != nil {
 		return err
 	}
 	
-	convertAndMergeResourceToMap("", resourceSchema, resourceData, data, changedOnlyGetter)
-	hashcode, err := writeFile(logicalId, data, meta.(ProviderMetadata))
+	convertAndMergeResourceToMap("", resourceSchema, resourceData, data, propertyNames, changedOnlyGetter)
+	_, err = writeFile(logicalId, data, meta.(ProviderMetadata))
 	
 	if err != nil {
 		return err
 	}
 	
-	resourceData.SetId(hashcode)
+	// resourceData.SetId(hashcode)
 	incrementResourceCounter(providerMeta)
 
   return nil
@@ -215,13 +216,14 @@ func ResourceCustomizeDiff(resourceType string, resourceDiff *schema.ResourceDif
 	}
 	
 	var entry TemplateEntry = TemplateEntry{
-		cfnType: resourceType,
-		logicalId: logicalId,
-		hash: "---",
+		CfnType: resourceType,
+		LogicalId: logicalId,
+		Hash: "---",
 	}
 	
 	handleExistingResouce(providerMeta, entry)
 	(*providerMeta.diffed)[logicalId] = true
+  // decrementResourceReadCounter(providerMeta)
 	
 	// log.Printf("customizeResourceDiff %s +++++++++++++++++++++++++++++++++++++++++++++++++", logicalId)
 	

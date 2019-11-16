@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const cognitoUserPoolDomainType string = "AWS::Cognito::UserPoolDomain"
+
+var cognitoUserPoolDomainProperties map[string]string = map[string]string{
+	"user_pool_id": "UserPoolId",
+	"custom_domain_config": "CustomDomainConfig",
+	"domain": "Domain",
+}
 
 func ResourceCognitoUserPoolDomain() *schema.Resource {
 	return &schema.Resource{
@@ -52,22 +60,21 @@ func resourceCognitoUserPoolDomainExists(data *schema.ResourceData, meta interfa
 }
 
 func resourceCognitoUserPoolDomainRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Cognito::UserPoolDomain", ResourceCognitoUserPoolDomain(), data, meta)
+	return plugin.ResourceRead(cognitoUserPoolDomainType, ResourceCognitoUserPoolDomain(), data, meta)
 }
 
 func resourceCognitoUserPoolDomainCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Cognito::UserPoolDomain", ResourceCognitoUserPoolDomain(), data, meta)
+	return plugin.ResourceCreate(cognitoUserPoolDomainType, ResourceCognitoUserPoolDomain(), data, cognitoUserPoolDomainProperties, meta)
 }
 
 func resourceCognitoUserPoolDomainUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Cognito::UserPoolDomain", ResourceCognitoUserPoolDomain(), data, meta)
+	return plugin.ResourceUpdate(cognitoUserPoolDomainType, ResourceCognitoUserPoolDomain(), data, cognitoUserPoolDomainProperties, meta)
 }
 
 func resourceCognitoUserPoolDomainDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Cognito::UserPoolDomain", data, meta)
+	return plugin.ResourceDelete(cognitoUserPoolDomainType, data, meta)
 }
 
 func resourceCognitoUserPoolDomainCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Cognito::UserPoolDomain", data, meta)
+	return plugin.ResourceCustomizeDiff(cognitoUserPoolDomainType, data, meta)
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const pinpointVoiceChannelType string = "AWS::Pinpoint::VoiceChannel"
+
+var pinpointVoiceChannelProperties map[string]string = map[string]string{
+	"enabled": "Enabled",
+	"application_id": "ApplicationId",
+}
 
 func ResourcePinpointVoiceChannel() *schema.Resource {
 	return &schema.Resource{
@@ -46,22 +53,21 @@ func resourcePinpointVoiceChannelExists(data *schema.ResourceData, meta interfac
 }
 
 func resourcePinpointVoiceChannelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::VoiceChannel", ResourcePinpointVoiceChannel(), data, meta)
+	return plugin.ResourceRead(pinpointVoiceChannelType, ResourcePinpointVoiceChannel(), data, meta)
 }
 
 func resourcePinpointVoiceChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::VoiceChannel", ResourcePinpointVoiceChannel(), data, meta)
+	return plugin.ResourceCreate(pinpointVoiceChannelType, ResourcePinpointVoiceChannel(), data, pinpointVoiceChannelProperties, meta)
 }
 
 func resourcePinpointVoiceChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::VoiceChannel", ResourcePinpointVoiceChannel(), data, meta)
+	return plugin.ResourceUpdate(pinpointVoiceChannelType, ResourcePinpointVoiceChannel(), data, pinpointVoiceChannelProperties, meta)
 }
 
 func resourcePinpointVoiceChannelDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Pinpoint::VoiceChannel", data, meta)
+	return plugin.ResourceDelete(pinpointVoiceChannelType, data, meta)
 }
 
 func resourcePinpointVoiceChannelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Pinpoint::VoiceChannel", data, meta)
+	return plugin.ResourceCustomizeDiff(pinpointVoiceChannelType, data, meta)
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,15 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var applicationInputProperties map[string]string = map[string]string{
+	"name_prefix": "NamePrefix",
+	"input_schema": "InputSchema",
+	"kinesis_streams_input": "KinesisStreamsInput",
+	"kinesis_firehose_input": "KinesisFirehoseInput",
+	"input_processing_configuration": "InputProcessingConfiguration",
+	"input_parallelism": "InputParallelism",
+}
 
 func propertyApplicationInput(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -65,4 +74,3 @@ func propertyApplicationInput(extras...string) *schema.Resource {
 		},
 	}
 }
-

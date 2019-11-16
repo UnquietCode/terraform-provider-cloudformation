@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var resourceDefinitionResourceDataContainerProperties map[string]string = map[string]string{
+	"secrets_manager_secret_resource_data": "SecretsManagerSecretResourceData",
+	"sage_maker_machine_learning_model_resource_data": "SageMakerMachineLearningModelResourceData",
+	"local_volume_resource_data": "LocalVolumeResourceData",
+	"local_device_resource_data": "LocalDeviceResourceData",
+	"s3_machine_learning_model_resource_data": "S3MachineLearningModelResourceData",
+}
 
 func propertyResourceDefinitionResourceDataContainer(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -61,4 +69,3 @@ func propertyResourceDefinitionResourceDataContainer(extras...string) *schema.Re
 		},
 	}
 }
-

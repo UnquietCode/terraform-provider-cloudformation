@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,17 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const elasticLoadBalancingV2ListenerType string = "AWS::ElasticLoadBalancingV2::Listener"
+
+var elasticLoadBalancingV2ListenerProperties map[string]string = map[string]string{
+	"certificates": "Certificates",
+	"default_actions": "DefaultActions",
+	"load_balancer_arn": "LoadBalancerArn",
+	"port": "Port",
+	"protocol": "Protocol",
+	"ssl_policy": "SslPolicy",
+}
 
 func ResourceElasticLoadBalancingV2Listener() *schema.Resource {
 	return &schema.Resource{
@@ -64,22 +75,21 @@ func resourceElasticLoadBalancingV2ListenerExists(data *schema.ResourceData, met
 }
 
 func resourceElasticLoadBalancingV2ListenerRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ElasticLoadBalancingV2::Listener", ResourceElasticLoadBalancingV2Listener(), data, meta)
+	return plugin.ResourceRead(elasticLoadBalancingV2ListenerType, ResourceElasticLoadBalancingV2Listener(), data, meta)
 }
 
 func resourceElasticLoadBalancingV2ListenerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElasticLoadBalancingV2::Listener", ResourceElasticLoadBalancingV2Listener(), data, meta)
+	return plugin.ResourceCreate(elasticLoadBalancingV2ListenerType, ResourceElasticLoadBalancingV2Listener(), data, elasticLoadBalancingV2ListenerProperties, meta)
 }
 
 func resourceElasticLoadBalancingV2ListenerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ElasticLoadBalancingV2::Listener", ResourceElasticLoadBalancingV2Listener(), data, meta)
+	return plugin.ResourceUpdate(elasticLoadBalancingV2ListenerType, ResourceElasticLoadBalancingV2Listener(), data, elasticLoadBalancingV2ListenerProperties, meta)
 }
 
 func resourceElasticLoadBalancingV2ListenerDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ElasticLoadBalancingV2::Listener", data, meta)
+	return plugin.ResourceDelete(elasticLoadBalancingV2ListenerType, data, meta)
 }
 
 func resourceElasticLoadBalancingV2ListenerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ElasticLoadBalancingV2::Listener", data, meta)
+	return plugin.ResourceCustomizeDiff(elasticLoadBalancingV2ListenerType, data, meta)
 }
-

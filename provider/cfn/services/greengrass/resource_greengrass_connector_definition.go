@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const greengrassConnectorDefinitionType string = "AWS::Greengrass::ConnectorDefinition"
+
+var greengrassConnectorDefinitionProperties map[string]string = map[string]string{
+	"initial_version": "InitialVersion",
+	"tags": "Tags",
+	"name": "Name",
+}
 
 func ResourceGreengrassConnectorDefinition() *schema.Resource {
 	return &schema.Resource{
@@ -52,22 +60,21 @@ func resourceGreengrassConnectorDefinitionExists(data *schema.ResourceData, meta
 }
 
 func resourceGreengrassConnectorDefinitionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Greengrass::ConnectorDefinition", ResourceGreengrassConnectorDefinition(), data, meta)
+	return plugin.ResourceRead(greengrassConnectorDefinitionType, ResourceGreengrassConnectorDefinition(), data, meta)
 }
 
 func resourceGreengrassConnectorDefinitionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Greengrass::ConnectorDefinition", ResourceGreengrassConnectorDefinition(), data, meta)
+	return plugin.ResourceCreate(greengrassConnectorDefinitionType, ResourceGreengrassConnectorDefinition(), data, greengrassConnectorDefinitionProperties, meta)
 }
 
 func resourceGreengrassConnectorDefinitionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Greengrass::ConnectorDefinition", ResourceGreengrassConnectorDefinition(), data, meta)
+	return plugin.ResourceUpdate(greengrassConnectorDefinitionType, ResourceGreengrassConnectorDefinition(), data, greengrassConnectorDefinitionProperties, meta)
 }
 
 func resourceGreengrassConnectorDefinitionDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Greengrass::ConnectorDefinition", data, meta)
+	return plugin.ResourceDelete(greengrassConnectorDefinitionType, data, meta)
 }
 
 func resourceGreengrassConnectorDefinitionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Greengrass::ConnectorDefinition", data, meta)
+	return plugin.ResourceCustomizeDiff(greengrassConnectorDefinitionType, data, meta)
 }
-

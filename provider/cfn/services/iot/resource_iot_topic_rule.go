@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const ioTTopicRuleType string = "AWS::IoT::TopicRule"
+
+var ioTTopicRuleProperties map[string]string = map[string]string{
+	"rule_name": "RuleName",
+	"topic_rule_payload": "TopicRulePayload",
+}
 
 func ResourceIoTTopicRule() *schema.Resource {
 	return &schema.Resource{
@@ -48,22 +55,21 @@ func resourceIoTTopicRuleExists(data *schema.ResourceData, meta interface{}) (bo
 }
 
 func resourceIoTTopicRuleRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoT::TopicRule", ResourceIoTTopicRule(), data, meta)
+	return plugin.ResourceRead(ioTTopicRuleType, ResourceIoTTopicRule(), data, meta)
 }
 
 func resourceIoTTopicRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoT::TopicRule", ResourceIoTTopicRule(), data, meta)
+	return plugin.ResourceCreate(ioTTopicRuleType, ResourceIoTTopicRule(), data, ioTTopicRuleProperties, meta)
 }
 
 func resourceIoTTopicRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoT::TopicRule", ResourceIoTTopicRule(), data, meta)
+	return plugin.ResourceUpdate(ioTTopicRuleType, ResourceIoTTopicRule(), data, ioTTopicRuleProperties, meta)
 }
 
 func resourceIoTTopicRuleDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::IoT::TopicRule", data, meta)
+	return plugin.ResourceDelete(ioTTopicRuleType, data, meta)
 }
 
 func resourceIoTTopicRuleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::IoT::TopicRule", data, meta)
+	return plugin.ResourceCustomizeDiff(ioTTopicRuleType, data, meta)
 }
-

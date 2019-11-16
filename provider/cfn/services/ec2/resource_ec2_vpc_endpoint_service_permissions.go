@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eC2VPCEndpointServicePermissionsType string = "AWS::EC2::VPCEndpointServicePermissions"
+
+var eC2VPCEndpointServicePermissionsProperties map[string]string = map[string]string{
+	"allowed_principals": "AllowedPrincipals",
+	"service_id": "ServiceId",
+}
 
 func ResourceEC2VPCEndpointServicePermissions() *schema.Resource {
 	return &schema.Resource{
@@ -47,22 +54,21 @@ func resourceEC2VPCEndpointServicePermissionsExists(data *schema.ResourceData, m
 }
 
 func resourceEC2VPCEndpointServicePermissionsRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::VPCEndpointServicePermissions", ResourceEC2VPCEndpointServicePermissions(), data, meta)
+	return plugin.ResourceRead(eC2VPCEndpointServicePermissionsType, ResourceEC2VPCEndpointServicePermissions(), data, meta)
 }
 
 func resourceEC2VPCEndpointServicePermissionsCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::VPCEndpointServicePermissions", ResourceEC2VPCEndpointServicePermissions(), data, meta)
+	return plugin.ResourceCreate(eC2VPCEndpointServicePermissionsType, ResourceEC2VPCEndpointServicePermissions(), data, eC2VPCEndpointServicePermissionsProperties, meta)
 }
 
 func resourceEC2VPCEndpointServicePermissionsUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::VPCEndpointServicePermissions", ResourceEC2VPCEndpointServicePermissions(), data, meta)
+	return plugin.ResourceUpdate(eC2VPCEndpointServicePermissionsType, ResourceEC2VPCEndpointServicePermissions(), data, eC2VPCEndpointServicePermissionsProperties, meta)
 }
 
 func resourceEC2VPCEndpointServicePermissionsDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EC2::VPCEndpointServicePermissions", data, meta)
+	return plugin.ResourceDelete(eC2VPCEndpointServicePermissionsType, data, meta)
 }
 
 func resourceEC2VPCEndpointServicePermissionsCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EC2::VPCEndpointServicePermissions", data, meta)
+	return plugin.ResourceCustomizeDiff(eC2VPCEndpointServicePermissionsType, data, meta)
 }
-

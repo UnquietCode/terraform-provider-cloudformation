@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,12 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var applicationReferenceDataSourceReferenceDataSourceProperties map[string]string = map[string]string{
+	"reference_schema": "ReferenceSchema",
+	"table_name": "TableName",
+	"s3_reference_data_source": "S3ReferenceDataSource",
+}
 
 func propertyApplicationReferenceDataSourceReferenceDataSource(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -47,4 +53,3 @@ func propertyApplicationReferenceDataSourceReferenceDataSource(extras...string) 
 		},
 	}
 }
-

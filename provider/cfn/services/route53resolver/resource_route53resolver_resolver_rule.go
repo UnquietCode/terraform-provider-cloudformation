@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,17 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const route53ResolverResolverRuleType string = "AWS::Route53Resolver::ResolverRule"
+
+var route53ResolverResolverRuleProperties map[string]string = map[string]string{
+	"resolver_endpoint_id": "ResolverEndpointId",
+	"domain_name": "DomainName",
+	"rule_type": "RuleType",
+	"target_ips": "TargetIps",
+	"tags": "Tags",
+	"name": "Name",
+}
 
 func ResourceRoute53ResolverResolverRule() *schema.Resource {
 	return &schema.Resource{
@@ -65,22 +76,21 @@ func resourceRoute53ResolverResolverRuleExists(data *schema.ResourceData, meta i
 }
 
 func resourceRoute53ResolverResolverRuleRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Route53Resolver::ResolverRule", ResourceRoute53ResolverResolverRule(), data, meta)
+	return plugin.ResourceRead(route53ResolverResolverRuleType, ResourceRoute53ResolverResolverRule(), data, meta)
 }
 
 func resourceRoute53ResolverResolverRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Route53Resolver::ResolverRule", ResourceRoute53ResolverResolverRule(), data, meta)
+	return plugin.ResourceCreate(route53ResolverResolverRuleType, ResourceRoute53ResolverResolverRule(), data, route53ResolverResolverRuleProperties, meta)
 }
 
 func resourceRoute53ResolverResolverRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Route53Resolver::ResolverRule", ResourceRoute53ResolverResolverRule(), data, meta)
+	return plugin.ResourceUpdate(route53ResolverResolverRuleType, ResourceRoute53ResolverResolverRule(), data, route53ResolverResolverRuleProperties, meta)
 }
 
 func resourceRoute53ResolverResolverRuleDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Route53Resolver::ResolverRule", data, meta)
+	return plugin.ResourceDelete(route53ResolverResolverRuleType, data, meta)
 }
 
 func resourceRoute53ResolverResolverRuleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Route53Resolver::ResolverRule", data, meta)
+	return plugin.ResourceCustomizeDiff(route53ResolverResolverRuleType, data, meta)
 }
-

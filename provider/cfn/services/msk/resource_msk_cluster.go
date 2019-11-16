@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,20 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const mSKClusterType string = "AWS::MSK::Cluster"
+
+var mSKClusterProperties map[string]string = map[string]string{
+	"broker_node_group_info": "BrokerNodeGroupInfo",
+	"enhanced_monitoring": "EnhancedMonitoring",
+	"kafka_version": "KafkaVersion",
+	"number_of_broker_nodes": "NumberOfBrokerNodes",
+	"encryption_info": "EncryptionInfo",
+	"cluster_name": "ClusterName",
+	"client_authentication": "ClientAuthentication",
+	"tags": "Tags",
+	"configuration_info": "ConfigurationInfo",
+}
 
 func ResourceMSKCluster() *schema.Resource {
 	return &schema.Resource{
@@ -82,22 +96,21 @@ func resourceMSKClusterExists(data *schema.ResourceData, meta interface{}) (bool
 }
 
 func resourceMSKClusterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::MSK::Cluster", ResourceMSKCluster(), data, meta)
+	return plugin.ResourceRead(mSKClusterType, ResourceMSKCluster(), data, meta)
 }
 
 func resourceMSKClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::MSK::Cluster", ResourceMSKCluster(), data, meta)
+	return plugin.ResourceCreate(mSKClusterType, ResourceMSKCluster(), data, mSKClusterProperties, meta)
 }
 
 func resourceMSKClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::MSK::Cluster", ResourceMSKCluster(), data, meta)
+	return plugin.ResourceUpdate(mSKClusterType, ResourceMSKCluster(), data, mSKClusterProperties, meta)
 }
 
 func resourceMSKClusterDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::MSK::Cluster", data, meta)
+	return plugin.ResourceDelete(mSKClusterType, data, meta)
 }
 
 func resourceMSKClusterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::MSK::Cluster", data, meta)
+	return plugin.ResourceCustomizeDiff(mSKClusterType, data, meta)
 }
-

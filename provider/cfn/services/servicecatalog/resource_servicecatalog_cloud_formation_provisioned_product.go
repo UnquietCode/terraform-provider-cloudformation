@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,22 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const serviceCatalogCloudFormationProvisionedProductType string = "AWS::ServiceCatalog::CloudFormationProvisionedProduct"
+
+var serviceCatalogCloudFormationProvisionedProductProperties map[string]string = map[string]string{
+	"path_id": "PathId",
+	"provisioning_parameters": "ProvisioningParameters",
+	"provisioning_preferences": "ProvisioningPreferences",
+	"product_name": "ProductName",
+	"provisioning_artifact_name": "ProvisioningArtifactName",
+	"notification_arns": "NotificationArns",
+	"accept_language": "AcceptLanguage",
+	"product_id": "ProductId",
+	"tags": "Tags",
+	"provisioned_product_name": "ProvisionedProductName",
+	"provisioning_artifact_id": "ProvisioningArtifactId",
+}
 
 func ResourceServiceCatalogCloudFormationProvisionedProduct() *schema.Resource {
 	return &schema.Resource{
@@ -88,22 +104,21 @@ func resourceServiceCatalogCloudFormationProvisionedProductExists(data *schema.R
 }
 
 func resourceServiceCatalogCloudFormationProvisionedProductRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ServiceCatalog::CloudFormationProvisionedProduct", ResourceServiceCatalogCloudFormationProvisionedProduct(), data, meta)
+	return plugin.ResourceRead(serviceCatalogCloudFormationProvisionedProductType, ResourceServiceCatalogCloudFormationProvisionedProduct(), data, meta)
 }
 
 func resourceServiceCatalogCloudFormationProvisionedProductCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::CloudFormationProvisionedProduct", ResourceServiceCatalogCloudFormationProvisionedProduct(), data, meta)
+	return plugin.ResourceCreate(serviceCatalogCloudFormationProvisionedProductType, ResourceServiceCatalogCloudFormationProvisionedProduct(), data, serviceCatalogCloudFormationProvisionedProductProperties, meta)
 }
 
 func resourceServiceCatalogCloudFormationProvisionedProductUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ServiceCatalog::CloudFormationProvisionedProduct", ResourceServiceCatalogCloudFormationProvisionedProduct(), data, meta)
+	return plugin.ResourceUpdate(serviceCatalogCloudFormationProvisionedProductType, ResourceServiceCatalogCloudFormationProvisionedProduct(), data, serviceCatalogCloudFormationProvisionedProductProperties, meta)
 }
 
 func resourceServiceCatalogCloudFormationProvisionedProductDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ServiceCatalog::CloudFormationProvisionedProduct", data, meta)
+	return plugin.ResourceDelete(serviceCatalogCloudFormationProvisionedProductType, data, meta)
 }
 
 func resourceServiceCatalogCloudFormationProvisionedProductCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ServiceCatalog::CloudFormationProvisionedProduct", data, meta)
+	return plugin.ResourceCustomizeDiff(serviceCatalogCloudFormationProvisionedProductType, data, meta)
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,18 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const autoScalingScheduledActionType string = "AWS::AutoScaling::ScheduledAction"
+
+var autoScalingScheduledActionProperties map[string]string = map[string]string{
+	"auto_scaling_group_name": "AutoScalingGroupName",
+	"desired_capacity": "DesiredCapacity",
+	"end_time": "EndTime",
+	"max_size": "MaxSize",
+	"min_size": "MinSize",
+	"recurrence": "Recurrence",
+	"start_time": "StartTime",
+}
 
 func ResourceAutoScalingScheduledAction() *schema.Resource {
 	return &schema.Resource{
@@ -66,22 +78,21 @@ func resourceAutoScalingScheduledActionExists(data *schema.ResourceData, meta in
 }
 
 func resourceAutoScalingScheduledActionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AutoScaling::ScheduledAction", ResourceAutoScalingScheduledAction(), data, meta)
+	return plugin.ResourceRead(autoScalingScheduledActionType, ResourceAutoScalingScheduledAction(), data, meta)
 }
 
 func resourceAutoScalingScheduledActionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AutoScaling::ScheduledAction", ResourceAutoScalingScheduledAction(), data, meta)
+	return plugin.ResourceCreate(autoScalingScheduledActionType, ResourceAutoScalingScheduledAction(), data, autoScalingScheduledActionProperties, meta)
 }
 
 func resourceAutoScalingScheduledActionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AutoScaling::ScheduledAction", ResourceAutoScalingScheduledAction(), data, meta)
+	return plugin.ResourceUpdate(autoScalingScheduledActionType, ResourceAutoScalingScheduledAction(), data, autoScalingScheduledActionProperties, meta)
 }
 
 func resourceAutoScalingScheduledActionDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::AutoScaling::ScheduledAction", data, meta)
+	return plugin.ResourceDelete(autoScalingScheduledActionType, data, meta)
 }
 
 func resourceAutoScalingScheduledActionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::AutoScaling::ScheduledAction", data, meta)
+	return plugin.ResourceCustomizeDiff(autoScalingScheduledActionType, data, meta)
 }
-

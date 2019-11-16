@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,25 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eCSTaskDefinitionType string = "AWS::ECS::TaskDefinition"
+
+var eCSTaskDefinitionProperties map[string]string = map[string]string{
+	"container_definitions": "ContainerDefinitions",
+	"cpu": "Cpu",
+	"execution_role_arn": "ExecutionRoleArn",
+	"family": "Family",
+	"ipc_mode": "IpcMode",
+	"memory": "Memory",
+	"network_mode": "NetworkMode",
+	"pid_mode": "PidMode",
+	"placement_constraints": "PlacementConstraints",
+	"proxy_configuration": "ProxyConfiguration",
+	"requires_compatibilities": "RequiresCompatibilities",
+	"tags": "Tags",
+	"task_role_arn": "TaskRoleArn",
+	"volumes": "Volumes",
+}
 
 func ResourceECSTaskDefinition() *schema.Resource {
 	return &schema.Resource{
@@ -103,22 +122,21 @@ func resourceECSTaskDefinitionExists(data *schema.ResourceData, meta interface{}
 }
 
 func resourceECSTaskDefinitionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ECS::TaskDefinition", ResourceECSTaskDefinition(), data, meta)
+	return plugin.ResourceRead(eCSTaskDefinitionType, ResourceECSTaskDefinition(), data, meta)
 }
 
 func resourceECSTaskDefinitionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ECS::TaskDefinition", ResourceECSTaskDefinition(), data, meta)
+	return plugin.ResourceCreate(eCSTaskDefinitionType, ResourceECSTaskDefinition(), data, eCSTaskDefinitionProperties, meta)
 }
 
 func resourceECSTaskDefinitionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ECS::TaskDefinition", ResourceECSTaskDefinition(), data, meta)
+	return plugin.ResourceUpdate(eCSTaskDefinitionType, ResourceECSTaskDefinition(), data, eCSTaskDefinitionProperties, meta)
 }
 
 func resourceECSTaskDefinitionDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ECS::TaskDefinition", data, meta)
+	return plugin.ResourceDelete(eCSTaskDefinitionType, data, meta)
 }
 
 func resourceECSTaskDefinitionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ECS::TaskDefinition", data, meta)
+	return plugin.ResourceCustomizeDiff(eCSTaskDefinitionType, data, meta)
 }
-

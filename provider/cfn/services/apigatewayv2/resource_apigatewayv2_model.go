@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,16 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const apiGatewayV2ModelType string = "AWS::ApiGatewayV2::Model"
+
+var apiGatewayV2ModelProperties map[string]string = map[string]string{
+	"description": "Description",
+	"content_type": "ContentType",
+	"schema": "Schema",
+	"api_id": "ApiId",
+	"name": "Name",
+}
 
 func ResourceApiGatewayV2Model() *schema.Resource {
 	return &schema.Resource{
@@ -58,22 +68,21 @@ func resourceApiGatewayV2ModelExists(data *schema.ResourceData, meta interface{}
 }
 
 func resourceApiGatewayV2ModelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGatewayV2::Model", ResourceApiGatewayV2Model(), data, meta)
+	return plugin.ResourceRead(apiGatewayV2ModelType, ResourceApiGatewayV2Model(), data, meta)
 }
 
 func resourceApiGatewayV2ModelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGatewayV2::Model", ResourceApiGatewayV2Model(), data, meta)
+	return plugin.ResourceCreate(apiGatewayV2ModelType, ResourceApiGatewayV2Model(), data, apiGatewayV2ModelProperties, meta)
 }
 
 func resourceApiGatewayV2ModelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGatewayV2::Model", ResourceApiGatewayV2Model(), data, meta)
+	return plugin.ResourceUpdate(apiGatewayV2ModelType, ResourceApiGatewayV2Model(), data, apiGatewayV2ModelProperties, meta)
 }
 
 func resourceApiGatewayV2ModelDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ApiGatewayV2::Model", data, meta)
+	return plugin.ResourceDelete(apiGatewayV2ModelType, data, meta)
 }
 
 func resourceApiGatewayV2ModelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ApiGatewayV2::Model", data, meta)
+	return plugin.ResourceCustomizeDiff(apiGatewayV2ModelType, data, meta)
 }
-

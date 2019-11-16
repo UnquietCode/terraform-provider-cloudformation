@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,21 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eC2TrafficMirrorFilterRuleType string = "AWS::EC2::TrafficMirrorFilterRule"
+
+var eC2TrafficMirrorFilterRuleProperties map[string]string = map[string]string{
+	"destination_port_range": "DestinationPortRange",
+	"description": "Description",
+	"source_port_range": "SourcePortRange",
+	"rule_action": "RuleAction",
+	"source_cidr_block": "SourceCidrBlock",
+	"rule_number": "RuleNumber",
+	"destination_cidr_block": "DestinationCidrBlock",
+	"traffic_mirror_filter_id": "TrafficMirrorFilterId",
+	"traffic_direction": "TrafficDirection",
+	"protocol": "Protocol",
+}
 
 func ResourceEC2TrafficMirrorFilterRule() *schema.Resource {
 	return &schema.Resource{
@@ -82,22 +97,21 @@ func resourceEC2TrafficMirrorFilterRuleExists(data *schema.ResourceData, meta in
 }
 
 func resourceEC2TrafficMirrorFilterRuleRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::TrafficMirrorFilterRule", ResourceEC2TrafficMirrorFilterRule(), data, meta)
+	return plugin.ResourceRead(eC2TrafficMirrorFilterRuleType, ResourceEC2TrafficMirrorFilterRule(), data, meta)
 }
 
 func resourceEC2TrafficMirrorFilterRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::TrafficMirrorFilterRule", ResourceEC2TrafficMirrorFilterRule(), data, meta)
+	return plugin.ResourceCreate(eC2TrafficMirrorFilterRuleType, ResourceEC2TrafficMirrorFilterRule(), data, eC2TrafficMirrorFilterRuleProperties, meta)
 }
 
 func resourceEC2TrafficMirrorFilterRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::TrafficMirrorFilterRule", ResourceEC2TrafficMirrorFilterRule(), data, meta)
+	return plugin.ResourceUpdate(eC2TrafficMirrorFilterRuleType, ResourceEC2TrafficMirrorFilterRule(), data, eC2TrafficMirrorFilterRuleProperties, meta)
 }
 
 func resourceEC2TrafficMirrorFilterRuleDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EC2::TrafficMirrorFilterRule", data, meta)
+	return plugin.ResourceDelete(eC2TrafficMirrorFilterRuleType, data, meta)
 }
 
 func resourceEC2TrafficMirrorFilterRuleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EC2::TrafficMirrorFilterRule", data, meta)
+	return plugin.ResourceCustomizeDiff(eC2TrafficMirrorFilterRuleType, data, meta)
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,18 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eMRInstanceFleetConfigType string = "AWS::EMR::InstanceFleetConfig"
+
+var eMRInstanceFleetConfigProperties map[string]string = map[string]string{
+	"cluster_id": "ClusterId",
+	"instance_fleet_type": "InstanceFleetType",
+	"instance_type_configs": "InstanceTypeConfigs",
+	"launch_specifications": "LaunchSpecifications",
+	"name": "Name",
+	"target_on_demand_capacity": "TargetOnDemandCapacity",
+	"target_spot_capacity": "TargetSpotCapacity",
+}
 
 func ResourceEMRInstanceFleetConfig() *schema.Resource {
 	return &schema.Resource{
@@ -69,22 +81,21 @@ func resourceEMRInstanceFleetConfigExists(data *schema.ResourceData, meta interf
 }
 
 func resourceEMRInstanceFleetConfigRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EMR::InstanceFleetConfig", ResourceEMRInstanceFleetConfig(), data, meta)
+	return plugin.ResourceRead(eMRInstanceFleetConfigType, ResourceEMRInstanceFleetConfig(), data, meta)
 }
 
 func resourceEMRInstanceFleetConfigCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EMR::InstanceFleetConfig", ResourceEMRInstanceFleetConfig(), data, meta)
+	return plugin.ResourceCreate(eMRInstanceFleetConfigType, ResourceEMRInstanceFleetConfig(), data, eMRInstanceFleetConfigProperties, meta)
 }
 
 func resourceEMRInstanceFleetConfigUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EMR::InstanceFleetConfig", ResourceEMRInstanceFleetConfig(), data, meta)
+	return plugin.ResourceUpdate(eMRInstanceFleetConfigType, ResourceEMRInstanceFleetConfig(), data, eMRInstanceFleetConfigProperties, meta)
 }
 
 func resourceEMRInstanceFleetConfigDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EMR::InstanceFleetConfig", data, meta)
+	return plugin.ResourceDelete(eMRInstanceFleetConfigType, data, meta)
 }
 
 func resourceEMRInstanceFleetConfigCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EMR::InstanceFleetConfig", data, meta)
+	return plugin.ResourceCustomizeDiff(eMRInstanceFleetConfigType, data, meta)
 }
-

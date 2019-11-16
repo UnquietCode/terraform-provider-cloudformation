@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,25 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var healthCheckHealthCheckConfigProperties map[string]string = map[string]string{
+	"alarm_identifier": "AlarmIdentifier",
+	"child_health_checks": "ChildHealthChecks",
+	"enable_sni": "EnableSNI",
+	"failure_threshold": "FailureThreshold",
+	"fully_qualified_domain_name": "FullyQualifiedDomainName",
+	"health_threshold": "HealthThreshold",
+	"ip_address": "IPAddress",
+	"insufficient_data_health_status": "InsufficientDataHealthStatus",
+	"inverted": "Inverted",
+	"measure_latency": "MeasureLatency",
+	"port": "Port",
+	"regions": "Regions",
+	"request_interval": "RequestInterval",
+	"resource_path": "ResourcePath",
+	"search_string": "SearchString",
+	"type": "Type",
+}
 
 func propertyHealthCheckHealthCheckConfig(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -101,4 +120,3 @@ func propertyHealthCheckHealthCheckConfig(extras...string) *schema.Resource {
 		},
 	}
 }
-

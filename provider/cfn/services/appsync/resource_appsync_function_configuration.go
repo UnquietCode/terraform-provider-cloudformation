@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,20 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const appSyncFunctionConfigurationType string = "AWS::AppSync::FunctionConfiguration"
+
+var appSyncFunctionConfigurationProperties map[string]string = map[string]string{
+	"response_mapping_template_s3_location": "ResponseMappingTemplateS3Location",
+	"description": "Description",
+	"data_source_name": "DataSourceName",
+	"request_mapping_template": "RequestMappingTemplate",
+	"response_mapping_template": "ResponseMappingTemplate",
+	"function_version": "FunctionVersion",
+	"request_mapping_template_s3_location": "RequestMappingTemplateS3Location",
+	"api_id": "ApiId",
+	"name": "Name",
+}
 
 func ResourceAppSyncFunctionConfiguration() *schema.Resource {
 	return &schema.Resource{
@@ -74,22 +88,21 @@ func resourceAppSyncFunctionConfigurationExists(data *schema.ResourceData, meta 
 }
 
 func resourceAppSyncFunctionConfigurationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppSync::FunctionConfiguration", ResourceAppSyncFunctionConfiguration(), data, meta)
+	return plugin.ResourceRead(appSyncFunctionConfigurationType, ResourceAppSyncFunctionConfiguration(), data, meta)
 }
 
 func resourceAppSyncFunctionConfigurationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppSync::FunctionConfiguration", ResourceAppSyncFunctionConfiguration(), data, meta)
+	return plugin.ResourceCreate(appSyncFunctionConfigurationType, ResourceAppSyncFunctionConfiguration(), data, appSyncFunctionConfigurationProperties, meta)
 }
 
 func resourceAppSyncFunctionConfigurationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppSync::FunctionConfiguration", ResourceAppSyncFunctionConfiguration(), data, meta)
+	return plugin.ResourceUpdate(appSyncFunctionConfigurationType, ResourceAppSyncFunctionConfiguration(), data, appSyncFunctionConfigurationProperties, meta)
 }
 
 func resourceAppSyncFunctionConfigurationDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::AppSync::FunctionConfiguration", data, meta)
+	return plugin.ResourceDelete(appSyncFunctionConfigurationType, data, meta)
 }
 
 func resourceAppSyncFunctionConfigurationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::AppSync::FunctionConfiguration", data, meta)
+	return plugin.ResourceCustomizeDiff(appSyncFunctionConfigurationType, data, meta)
 }
-

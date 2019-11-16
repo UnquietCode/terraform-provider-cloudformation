@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const serviceCatalogTagOptionAssociationType string = "AWS::ServiceCatalog::TagOptionAssociation"
+
+var serviceCatalogTagOptionAssociationProperties map[string]string = map[string]string{
+	"tag_option_id": "TagOptionId",
+	"resource_id": "ResourceId",
+}
 
 func ResourceServiceCatalogTagOptionAssociation() *schema.Resource {
 	return &schema.Resource{
@@ -46,22 +53,21 @@ func resourceServiceCatalogTagOptionAssociationExists(data *schema.ResourceData,
 }
 
 func resourceServiceCatalogTagOptionAssociationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ServiceCatalog::TagOptionAssociation", ResourceServiceCatalogTagOptionAssociation(), data, meta)
+	return plugin.ResourceRead(serviceCatalogTagOptionAssociationType, ResourceServiceCatalogTagOptionAssociation(), data, meta)
 }
 
 func resourceServiceCatalogTagOptionAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::TagOptionAssociation", ResourceServiceCatalogTagOptionAssociation(), data, meta)
+	return plugin.ResourceCreate(serviceCatalogTagOptionAssociationType, ResourceServiceCatalogTagOptionAssociation(), data, serviceCatalogTagOptionAssociationProperties, meta)
 }
 
 func resourceServiceCatalogTagOptionAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ServiceCatalog::TagOptionAssociation", ResourceServiceCatalogTagOptionAssociation(), data, meta)
+	return plugin.ResourceUpdate(serviceCatalogTagOptionAssociationType, ResourceServiceCatalogTagOptionAssociation(), data, serviceCatalogTagOptionAssociationProperties, meta)
 }
 
 func resourceServiceCatalogTagOptionAssociationDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ServiceCatalog::TagOptionAssociation", data, meta)
+	return plugin.ResourceDelete(serviceCatalogTagOptionAssociationType, data, meta)
 }
 
 func resourceServiceCatalogTagOptionAssociationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ServiceCatalog::TagOptionAssociation", data, meta)
+	return plugin.ResourceCustomizeDiff(serviceCatalogTagOptionAssociationType, data, meta)
 }
-

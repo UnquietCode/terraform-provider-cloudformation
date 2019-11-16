@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const inspectorAssessmentTargetType string = "AWS::Inspector::AssessmentTarget"
+
+var inspectorAssessmentTargetProperties map[string]string = map[string]string{
+	"assessment_target_name": "AssessmentTargetName",
+	"resource_group_arn": "ResourceGroupArn",
+}
 
 func ResourceInspectorAssessmentTarget() *schema.Resource {
 	return &schema.Resource{
@@ -46,22 +53,21 @@ func resourceInspectorAssessmentTargetExists(data *schema.ResourceData, meta int
 }
 
 func resourceInspectorAssessmentTargetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Inspector::AssessmentTarget", ResourceInspectorAssessmentTarget(), data, meta)
+	return plugin.ResourceRead(inspectorAssessmentTargetType, ResourceInspectorAssessmentTarget(), data, meta)
 }
 
 func resourceInspectorAssessmentTargetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Inspector::AssessmentTarget", ResourceInspectorAssessmentTarget(), data, meta)
+	return plugin.ResourceCreate(inspectorAssessmentTargetType, ResourceInspectorAssessmentTarget(), data, inspectorAssessmentTargetProperties, meta)
 }
 
 func resourceInspectorAssessmentTargetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Inspector::AssessmentTarget", ResourceInspectorAssessmentTarget(), data, meta)
+	return plugin.ResourceUpdate(inspectorAssessmentTargetType, ResourceInspectorAssessmentTarget(), data, inspectorAssessmentTargetProperties, meta)
 }
 
 func resourceInspectorAssessmentTargetDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Inspector::AssessmentTarget", data, meta)
+	return plugin.ResourceDelete(inspectorAssessmentTargetType, data, meta)
 }
 
 func resourceInspectorAssessmentTargetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Inspector::AssessmentTarget", data, meta)
+	return plugin.ResourceCustomizeDiff(inspectorAssessmentTargetType, data, meta)
 }
-

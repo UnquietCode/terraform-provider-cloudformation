@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,33 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const autoScalingAutoScalingGroupType string = "AWS::AutoScaling::AutoScalingGroup"
+
+var autoScalingAutoScalingGroupProperties map[string]string = map[string]string{
+	"auto_scaling_group_name": "AutoScalingGroupName",
+	"availability_zones": "AvailabilityZones",
+	"cooldown": "Cooldown",
+	"desired_capacity": "DesiredCapacity",
+	"health_check_grace_period": "HealthCheckGracePeriod",
+	"health_check_type": "HealthCheckType",
+	"instance_id": "InstanceId",
+	"launch_configuration_name": "LaunchConfigurationName",
+	"launch_template": "LaunchTemplate",
+	"lifecycle_hook_specification_list": "LifecycleHookSpecificationList",
+	"load_balancer_names": "LoadBalancerNames",
+	"max_size": "MaxSize",
+	"metrics_collection": "MetricsCollection",
+	"min_size": "MinSize",
+	"mixed_instances_policy": "MixedInstancesPolicy",
+	"notification_configurations": "NotificationConfigurations",
+	"placement_group": "PlacementGroup",
+	"service_linked_role_arn": "ServiceLinkedRoleARN",
+	"tags": "Tags",
+	"target_group_ar_ns": "TargetGroupARNs",
+	"termination_policies": "TerminationPolicies",
+	"vpc_zone_identifier": "VPCZoneIdentifier",
+}
 
 func ResourceAutoScalingAutoScalingGroup() *schema.Resource {
 	return &schema.Resource{
@@ -141,22 +168,21 @@ func resourceAutoScalingAutoScalingGroupExists(data *schema.ResourceData, meta i
 }
 
 func resourceAutoScalingAutoScalingGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AutoScaling::AutoScalingGroup", ResourceAutoScalingAutoScalingGroup(), data, meta)
+	return plugin.ResourceRead(autoScalingAutoScalingGroupType, ResourceAutoScalingAutoScalingGroup(), data, meta)
 }
 
 func resourceAutoScalingAutoScalingGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AutoScaling::AutoScalingGroup", ResourceAutoScalingAutoScalingGroup(), data, meta)
+	return plugin.ResourceCreate(autoScalingAutoScalingGroupType, ResourceAutoScalingAutoScalingGroup(), data, autoScalingAutoScalingGroupProperties, meta)
 }
 
 func resourceAutoScalingAutoScalingGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AutoScaling::AutoScalingGroup", ResourceAutoScalingAutoScalingGroup(), data, meta)
+	return plugin.ResourceUpdate(autoScalingAutoScalingGroupType, ResourceAutoScalingAutoScalingGroup(), data, autoScalingAutoScalingGroupProperties, meta)
 }
 
 func resourceAutoScalingAutoScalingGroupDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::AutoScaling::AutoScalingGroup", data, meta)
+	return plugin.ResourceDelete(autoScalingAutoScalingGroupType, data, meta)
 }
 
 func resourceAutoScalingAutoScalingGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::AutoScaling::AutoScalingGroup", data, meta)
+	return plugin.ResourceCustomizeDiff(autoScalingAutoScalingGroupType, data, meta)
 }
-

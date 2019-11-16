@@ -7,7 +7,7 @@ import (
 	"encoding/json"
 )
 
-func mapToJson(data map[string]interface{}, indent bool) ([]byte, error) {
+func mapToJson(data interface{}, indent bool) ([]byte, error) {
   if indent {
 	  return json.MarshalIndent(data, "", "  ") 
   } else {
@@ -43,7 +43,7 @@ func changedOnlyGetter(key string, data *schema.ResourceData) (interface{}, bool
   return nil, false
 }
 
-func convertValue(prefix string, resourceSchema *schema.Schema, value interface{}, resourceData *schema.ResourceData, getter ResourceGetter) interface{} {
+func convertValue(prefix string, resourceSchema *schema.Schema, value interface{}, resourceData *schema.ResourceData, propertyNames map[string]string, getter ResourceGetter) interface{} {
   switch resourceSchema.Type {
     case schema.TypeBool:
         fallthrough 
@@ -69,9 +69,9 @@ func convertValue(prefix string, resourceSchema *schema.Schema, value interface{
         
           switch elementType := resourceSchema.Elem.(type) { 
             case *schema.Schema:
-              listOut = append(listOut, convertValue(nestedPrefix, elementType, listValue, resourceData, getter))
+              listOut = append(listOut, convertValue(nestedPrefix, elementType, listValue, resourceData, propertyNames, getter))
             case *schema.Resource:
-              listOut = append(listOut, convertResourceToMap(nestedPrefix, elementType, resourceData, getter))
+              listOut = append(listOut, convertResourceToMap(nestedPrefix, elementType, resourceData, propertyNames, getter))
             default:
               panic("invalid element type")
           }
@@ -89,7 +89,7 @@ func convertValue(prefix string, resourceSchema *schema.Schema, value interface{
         
         if mapValue, ok := getter(realKey, resourceData); ok {
           nestedPrefix := realKey + "."
-          mapOut[name] = convertValue(nestedPrefix, resourceSchema.Elem.(*schema.Schema), mapValue, resourceData, getter)
+          mapOut[name] = convertValue(nestedPrefix, resourceSchema.Elem.(*schema.Schema), mapValue, resourceData, propertyNames, getter)
         }
       }
       
@@ -101,19 +101,27 @@ func convertValue(prefix string, resourceSchema *schema.Schema, value interface{
 }
 
 
-func convertAndMergeResourceToMap(prefix string, resource *schema.Resource, resourceData *schema.ResourceData, data map[string]interface{}, getter ResourceGetter) {
+func convertAndMergeResourceToMap(prefix string, resource *schema.Resource, resourceData *schema.ResourceData, data map[string]interface{}, propertyNames map[string]string, getter ResourceGetter) {
   for name, attribute := range resource.Schema {
 		var realKey string = prefix + name
     
 		if value, ok := getter(realKey, resourceData); ok {
       nestedPrefix := realKey + "."
-	  	data[name] = convertValue(nestedPrefix, attribute, value, resourceData, getter)
+      var pName string
+      
+      if _, ok := propertyNames[name]; ok {
+        pName = propertyNames[name]
+      } else {
+        pName = name
+	  	}
+      
+      data[pName] = convertValue(nestedPrefix, attribute, value, resourceData, propertyNames, getter)
 		}
   }
 }
 
-func convertResourceToMap(prefix string, resource *schema.Resource, resourceData *schema.ResourceData, getter ResourceGetter) map[string]interface{} {  
+func convertResourceToMap(prefix string, resource *schema.Resource, resourceData *schema.ResourceData, propertyNames map[string]string, getter ResourceGetter) map[string]interface{} {  
   data := map[string]interface{}{}
-  convertAndMergeResourceToMap(prefix, resource, resourceData, data, getter)
+  convertAndMergeResourceToMap(prefix, resource, resourceData, data, propertyNames, getter)
   return data
 }

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,13 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const cloudFrontStreamingDistributionType string = "AWS::CloudFront::StreamingDistribution"
+
+var cloudFrontStreamingDistributionProperties map[string]string = map[string]string{
+	"streaming_distribution_config": "StreamingDistributionConfig",
+	"tags": "Tags",
+}
 
 func ResourceCloudFrontStreamingDistribution() *schema.Resource {
 	return &schema.Resource{
@@ -50,22 +57,21 @@ func resourceCloudFrontStreamingDistributionExists(data *schema.ResourceData, me
 }
 
 func resourceCloudFrontStreamingDistributionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CloudFront::StreamingDistribution", ResourceCloudFrontStreamingDistribution(), data, meta)
+	return plugin.ResourceRead(cloudFrontStreamingDistributionType, ResourceCloudFrontStreamingDistribution(), data, meta)
 }
 
 func resourceCloudFrontStreamingDistributionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CloudFront::StreamingDistribution", ResourceCloudFrontStreamingDistribution(), data, meta)
+	return plugin.ResourceCreate(cloudFrontStreamingDistributionType, ResourceCloudFrontStreamingDistribution(), data, cloudFrontStreamingDistributionProperties, meta)
 }
 
 func resourceCloudFrontStreamingDistributionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CloudFront::StreamingDistribution", ResourceCloudFrontStreamingDistribution(), data, meta)
+	return plugin.ResourceUpdate(cloudFrontStreamingDistributionType, ResourceCloudFrontStreamingDistribution(), data, cloudFrontStreamingDistributionProperties, meta)
 }
 
 func resourceCloudFrontStreamingDistributionDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::CloudFront::StreamingDistribution", data, meta)
+	return plugin.ResourceDelete(cloudFrontStreamingDistributionType, data, meta)
 }
 
 func resourceCloudFrontStreamingDistributionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::CloudFront::StreamingDistribution", data, meta)
+	return plugin.ResourceCustomizeDiff(cloudFrontStreamingDistributionType, data, meta)
 }
-

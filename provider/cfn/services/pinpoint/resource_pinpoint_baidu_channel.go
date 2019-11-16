@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,15 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const pinpointBaiduChannelType string = "AWS::Pinpoint::BaiduChannel"
+
+var pinpointBaiduChannelProperties map[string]string = map[string]string{
+	"secret_key": "SecretKey",
+	"api_key": "ApiKey",
+	"enabled": "Enabled",
+	"application_id": "ApplicationId",
+}
 
 func ResourcePinpointBaiduChannel() *schema.Resource {
 	return &schema.Resource{
@@ -54,22 +63,21 @@ func resourcePinpointBaiduChannelExists(data *schema.ResourceData, meta interfac
 }
 
 func resourcePinpointBaiduChannelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::BaiduChannel", ResourcePinpointBaiduChannel(), data, meta)
+	return plugin.ResourceRead(pinpointBaiduChannelType, ResourcePinpointBaiduChannel(), data, meta)
 }
 
 func resourcePinpointBaiduChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::BaiduChannel", ResourcePinpointBaiduChannel(), data, meta)
+	return plugin.ResourceCreate(pinpointBaiduChannelType, ResourcePinpointBaiduChannel(), data, pinpointBaiduChannelProperties, meta)
 }
 
 func resourcePinpointBaiduChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::BaiduChannel", ResourcePinpointBaiduChannel(), data, meta)
+	return plugin.ResourceUpdate(pinpointBaiduChannelType, ResourcePinpointBaiduChannel(), data, pinpointBaiduChannelProperties, meta)
 }
 
 func resourcePinpointBaiduChannelDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Pinpoint::BaiduChannel", data, meta)
+	return plugin.ResourceDelete(pinpointBaiduChannelType, data, meta)
 }
 
 func resourcePinpointBaiduChannelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Pinpoint::BaiduChannel", data, meta)
+	return plugin.ResourceCustomizeDiff(pinpointBaiduChannelType, data, meta)
 }
-

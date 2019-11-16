@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,46 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var taskDefinitionContainerDefinitionProperties map[string]string = map[string]string{
+	"command": "Command",
+	"cpu": "Cpu",
+	"depends_on": "DependsOn",
+	"disable_networking": "DisableNetworking",
+	"dns_search_domains": "DnsSearchDomains",
+	"dns_servers": "DnsServers",
+	"docker_labels": "DockerLabels",
+	"docker_security_options": "DockerSecurityOptions",
+	"entry_point": "EntryPoint",
+	"environment": "Environment",
+	"essential": "Essential",
+	"extra_hosts": "ExtraHosts",
+	"health_check": "HealthCheck",
+	"hostname": "Hostname",
+	"image": "Image",
+	"interactive": "Interactive",
+	"links": "Links",
+	"linux_parameters": "LinuxParameters",
+	"log_configuration": "LogConfiguration",
+	"memory": "Memory",
+	"memory_reservation": "MemoryReservation",
+	"mount_points": "MountPoints",
+	"name": "Name",
+	"port_mappings": "PortMappings",
+	"privileged": "Privileged",
+	"pseudo_terminal": "PseudoTerminal",
+	"readonly_root_filesystem": "ReadonlyRootFilesystem",
+	"repository_credentials": "RepositoryCredentials",
+	"resource_requirements": "ResourceRequirements",
+	"secrets": "Secrets",
+	"start_timeout": "StartTimeout",
+	"stop_timeout": "StopTimeout",
+	"system_controls": "SystemControls",
+	"ulimits": "Ulimits",
+	"user": "User",
+	"volumes_from": "VolumesFrom",
+	"working_directory": "WorkingDirectory",
+}
 
 func propertyTaskDefinitionContainerDefinition(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -210,4 +250,3 @@ func propertyTaskDefinitionContainerDefinition(extras...string) *schema.Resource
 		},
 	}
 }
-

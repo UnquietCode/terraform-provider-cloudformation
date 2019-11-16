@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,19 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var secretGenerateSecretStringProperties map[string]string = map[string]string{
+	"exclude_uppercase": "ExcludeUppercase",
+	"require_each_included_type": "RequireEachIncludedType",
+	"include_space": "IncludeSpace",
+	"exclude_characters": "ExcludeCharacters",
+	"generate_string_key": "GenerateStringKey",
+	"password_length": "PasswordLength",
+	"exclude_punctuation": "ExcludePunctuation",
+	"exclude_lowercase": "ExcludeLowercase",
+	"secret_string_template": "SecretStringTemplate",
+	"exclude_numbers": "ExcludeNumbers",
+}
 
 func propertySecretGenerateSecretString(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -71,4 +84,3 @@ func propertySecretGenerateSecretString(extras...string) *schema.Resource {
 		},
 	}
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,19 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var ruleTargetProperties map[string]string = map[string]string{
+	"arn": "Arn",
+	"ecs_parameters": "EcsParameters",
+	"id": "Id",
+	"input": "Input",
+	"input_path": "InputPath",
+	"input_transformer": "InputTransformer",
+	"kinesis_parameters": "KinesisParameters",
+	"role_arn": "RoleArn",
+	"run_command_parameters": "RunCommandParameters",
+	"sqs_parameters": "SqsParameters",
+}
 
 func propertyRuleTarget(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -81,4 +94,3 @@ func propertyRuleTarget(extras...string) *schema.Resource {
 		},
 	}
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const ioTThingsGraphFlowTemplateType string = "AWS::IoTThingsGraph::FlowTemplate"
+
+var ioTThingsGraphFlowTemplateProperties map[string]string = map[string]string{
+	"compatible_namespace_version": "CompatibleNamespaceVersion",
+	"definition": "Definition",
+}
 
 func ResourceIoTThingsGraphFlowTemplate() *schema.Resource {
 	return &schema.Resource{
@@ -48,22 +55,21 @@ func resourceIoTThingsGraphFlowTemplateExists(data *schema.ResourceData, meta in
 }
 
 func resourceIoTThingsGraphFlowTemplateRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoTThingsGraph::FlowTemplate", ResourceIoTThingsGraphFlowTemplate(), data, meta)
+	return plugin.ResourceRead(ioTThingsGraphFlowTemplateType, ResourceIoTThingsGraphFlowTemplate(), data, meta)
 }
 
 func resourceIoTThingsGraphFlowTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoTThingsGraph::FlowTemplate", ResourceIoTThingsGraphFlowTemplate(), data, meta)
+	return plugin.ResourceCreate(ioTThingsGraphFlowTemplateType, ResourceIoTThingsGraphFlowTemplate(), data, ioTThingsGraphFlowTemplateProperties, meta)
 }
 
 func resourceIoTThingsGraphFlowTemplateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoTThingsGraph::FlowTemplate", ResourceIoTThingsGraphFlowTemplate(), data, meta)
+	return plugin.ResourceUpdate(ioTThingsGraphFlowTemplateType, ResourceIoTThingsGraphFlowTemplate(), data, ioTThingsGraphFlowTemplateProperties, meta)
 }
 
 func resourceIoTThingsGraphFlowTemplateDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::IoTThingsGraph::FlowTemplate", data, meta)
+	return plugin.ResourceDelete(ioTThingsGraphFlowTemplateType, data, meta)
 }
 
 func resourceIoTThingsGraphFlowTemplateCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::IoTThingsGraph::FlowTemplate", data, meta)
+	return plugin.ResourceCustomizeDiff(ioTThingsGraphFlowTemplateType, data, meta)
 }
-

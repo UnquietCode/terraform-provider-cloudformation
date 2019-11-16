@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const backupBackupSelectionType string = "AWS::Backup::BackupSelection"
+
+var backupBackupSelectionProperties map[string]string = map[string]string{
+	"backup_selection": "BackupSelection",
+	"backup_plan_id": "BackupPlanId",
+}
 
 func ResourceBackupBackupSelection() *schema.Resource {
 	return &schema.Resource{
@@ -48,22 +55,21 @@ func resourceBackupBackupSelectionExists(data *schema.ResourceData, meta interfa
 }
 
 func resourceBackupBackupSelectionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Backup::BackupSelection", ResourceBackupBackupSelection(), data, meta)
+	return plugin.ResourceRead(backupBackupSelectionType, ResourceBackupBackupSelection(), data, meta)
 }
 
 func resourceBackupBackupSelectionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Backup::BackupSelection", ResourceBackupBackupSelection(), data, meta)
+	return plugin.ResourceCreate(backupBackupSelectionType, ResourceBackupBackupSelection(), data, backupBackupSelectionProperties, meta)
 }
 
 func resourceBackupBackupSelectionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Backup::BackupSelection", ResourceBackupBackupSelection(), data, meta)
+	return plugin.ResourceUpdate(backupBackupSelectionType, ResourceBackupBackupSelection(), data, backupBackupSelectionProperties, meta)
 }
 
 func resourceBackupBackupSelectionDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Backup::BackupSelection", data, meta)
+	return plugin.ResourceDelete(backupBackupSelectionType, data, meta)
 }
 
 func resourceBackupBackupSelectionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Backup::BackupSelection", data, meta)
+	return plugin.ResourceCustomizeDiff(backupBackupSelectionType, data, meta)
 }
-

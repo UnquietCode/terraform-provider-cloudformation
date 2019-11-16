@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,16 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const rDSDBSecurityGroupIngressType string = "AWS::RDS::DBSecurityGroupIngress"
+
+var rDSDBSecurityGroupIngressProperties map[string]string = map[string]string{
+	"cidrip": "CIDRIP",
+	"db_security_group_name": "DBSecurityGroupName",
+	"ec2_security_group_id": "EC2SecurityGroupId",
+	"ec2_security_group_name": "EC2SecurityGroupName",
+	"ec2_security_group_owner_id": "EC2SecurityGroupOwnerId",
+}
 
 func ResourceRDSDBSecurityGroupIngress() *schema.Resource {
 	return &schema.Resource{
@@ -58,22 +68,21 @@ func resourceRDSDBSecurityGroupIngressExists(data *schema.ResourceData, meta int
 }
 
 func resourceRDSDBSecurityGroupIngressRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::RDS::DBSecurityGroupIngress", ResourceRDSDBSecurityGroupIngress(), data, meta)
+	return plugin.ResourceRead(rDSDBSecurityGroupIngressType, ResourceRDSDBSecurityGroupIngress(), data, meta)
 }
 
 func resourceRDSDBSecurityGroupIngressCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RDS::DBSecurityGroupIngress", ResourceRDSDBSecurityGroupIngress(), data, meta)
+	return plugin.ResourceCreate(rDSDBSecurityGroupIngressType, ResourceRDSDBSecurityGroupIngress(), data, rDSDBSecurityGroupIngressProperties, meta)
 }
 
 func resourceRDSDBSecurityGroupIngressUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::RDS::DBSecurityGroupIngress", ResourceRDSDBSecurityGroupIngress(), data, meta)
+	return plugin.ResourceUpdate(rDSDBSecurityGroupIngressType, ResourceRDSDBSecurityGroupIngress(), data, rDSDBSecurityGroupIngressProperties, meta)
 }
 
 func resourceRDSDBSecurityGroupIngressDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::RDS::DBSecurityGroupIngress", data, meta)
+	return plugin.ResourceDelete(rDSDBSecurityGroupIngressType, data, meta)
 }
 
 func resourceRDSDBSecurityGroupIngressCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::RDS::DBSecurityGroupIngress", data, meta)
+	return plugin.ResourceCustomizeDiff(rDSDBSecurityGroupIngressType, data, meta)
 }
-

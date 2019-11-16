@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,17 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const sageMakerModelType string = "AWS::SageMaker::Model"
+
+var sageMakerModelProperties map[string]string = map[string]string{
+	"execution_role_arn": "ExecutionRoleArn",
+	"primary_container": "PrimaryContainer",
+	"model_name": "ModelName",
+	"vpc_config": "VpcConfig",
+	"containers": "Containers",
+	"tags": "Tags",
+}
 
 func ResourceSageMakerModel() *schema.Resource {
 	return &schema.Resource{
@@ -69,22 +80,21 @@ func resourceSageMakerModelExists(data *schema.ResourceData, meta interface{}) (
 }
 
 func resourceSageMakerModelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SageMaker::Model", ResourceSageMakerModel(), data, meta)
+	return plugin.ResourceRead(sageMakerModelType, ResourceSageMakerModel(), data, meta)
 }
 
 func resourceSageMakerModelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SageMaker::Model", ResourceSageMakerModel(), data, meta)
+	return plugin.ResourceCreate(sageMakerModelType, ResourceSageMakerModel(), data, sageMakerModelProperties, meta)
 }
 
 func resourceSageMakerModelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SageMaker::Model", ResourceSageMakerModel(), data, meta)
+	return plugin.ResourceUpdate(sageMakerModelType, ResourceSageMakerModel(), data, sageMakerModelProperties, meta)
 }
 
 func resourceSageMakerModelDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::SageMaker::Model", data, meta)
+	return plugin.ResourceDelete(sageMakerModelType, data, meta)
 }
 
 func resourceSageMakerModelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::SageMaker::Model", data, meta)
+	return plugin.ResourceCustomizeDiff(sageMakerModelType, data, meta)
 }
-

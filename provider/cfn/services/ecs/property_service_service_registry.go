@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var serviceServiceRegistryProperties map[string]string = map[string]string{
+	"container_name": "ContainerName",
+	"container_port": "ContainerPort",
+	"port": "Port",
+	"registry_arn": "RegistryArn",
+}
 
 func propertyServiceServiceRegistry(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -47,4 +54,3 @@ func propertyServiceServiceRegistry(extras...string) *schema.Resource {
 		},
 	}
 }
-

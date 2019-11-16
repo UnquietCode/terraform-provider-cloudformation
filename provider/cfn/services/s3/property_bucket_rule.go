@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,21 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var bucketRuleProperties map[string]string = map[string]string{
+	"abort_incomplete_multipart_upload": "AbortIncompleteMultipartUpload",
+	"expiration_date": "ExpirationDate",
+	"expiration_in_days": "ExpirationInDays",
+	"id": "Id",
+	"noncurrent_version_expiration_in_days": "NoncurrentVersionExpirationInDays",
+	"noncurrent_version_transition": "NoncurrentVersionTransition",
+	"noncurrent_version_transitions": "NoncurrentVersionTransitions",
+	"prefix": "Prefix",
+	"status": "Status",
+	"tag_filters": "TagFilters",
+	"transition": "Transition",
+	"transitions": "Transitions",
+}
 
 func propertyBucketRule(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -88,4 +103,3 @@ func propertyBucketRule(extras...string) *schema.Resource {
 		},
 	}
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const configConfigurationRecorderType string = "AWS::Config::ConfigurationRecorder"
+
+var configConfigurationRecorderProperties map[string]string = map[string]string{
+	"name": "Name",
+	"recording_group": "RecordingGroup",
+	"role_arn": "RoleARN",
+}
 
 func ResourceConfigConfigurationRecorder() *schema.Resource {
 	return &schema.Resource{
@@ -52,22 +60,21 @@ func resourceConfigConfigurationRecorderExists(data *schema.ResourceData, meta i
 }
 
 func resourceConfigConfigurationRecorderRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Config::ConfigurationRecorder", ResourceConfigConfigurationRecorder(), data, meta)
+	return plugin.ResourceRead(configConfigurationRecorderType, ResourceConfigConfigurationRecorder(), data, meta)
 }
 
 func resourceConfigConfigurationRecorderCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Config::ConfigurationRecorder", ResourceConfigConfigurationRecorder(), data, meta)
+	return plugin.ResourceCreate(configConfigurationRecorderType, ResourceConfigConfigurationRecorder(), data, configConfigurationRecorderProperties, meta)
 }
 
 func resourceConfigConfigurationRecorderUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Config::ConfigurationRecorder", ResourceConfigConfigurationRecorder(), data, meta)
+	return plugin.ResourceUpdate(configConfigurationRecorderType, ResourceConfigConfigurationRecorder(), data, configConfigurationRecorderProperties, meta)
 }
 
 func resourceConfigConfigurationRecorderDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Config::ConfigurationRecorder", data, meta)
+	return plugin.ResourceDelete(configConfigurationRecorderType, data, meta)
 }
 
 func resourceConfigConfigurationRecorderCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Config::ConfigurationRecorder", data, meta)
+	return plugin.ResourceCustomizeDiff(configConfigurationRecorderType, data, meta)
 }
-

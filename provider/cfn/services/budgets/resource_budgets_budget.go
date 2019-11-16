@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const budgetsBudgetType string = "AWS::Budgets::Budget"
+
+var budgetsBudgetProperties map[string]string = map[string]string{
+	"notifications_with_subscribers": "NotificationsWithSubscribers",
+	"budget": "Budget",
+}
 
 func ResourceBudgetsBudget() *schema.Resource {
 	return &schema.Resource{
@@ -49,22 +56,21 @@ func resourceBudgetsBudgetExists(data *schema.ResourceData, meta interface{}) (b
 }
 
 func resourceBudgetsBudgetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Budgets::Budget", ResourceBudgetsBudget(), data, meta)
+	return plugin.ResourceRead(budgetsBudgetType, ResourceBudgetsBudget(), data, meta)
 }
 
 func resourceBudgetsBudgetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Budgets::Budget", ResourceBudgetsBudget(), data, meta)
+	return plugin.ResourceCreate(budgetsBudgetType, ResourceBudgetsBudget(), data, budgetsBudgetProperties, meta)
 }
 
 func resourceBudgetsBudgetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Budgets::Budget", ResourceBudgetsBudget(), data, meta)
+	return plugin.ResourceUpdate(budgetsBudgetType, ResourceBudgetsBudget(), data, budgetsBudgetProperties, meta)
 }
 
 func resourceBudgetsBudgetDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Budgets::Budget", data, meta)
+	return plugin.ResourceDelete(budgetsBudgetType, data, meta)
 }
 
 func resourceBudgetsBudgetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Budgets::Budget", data, meta)
+	return plugin.ResourceCustomizeDiff(budgetsBudgetType, data, meta)
 }
-

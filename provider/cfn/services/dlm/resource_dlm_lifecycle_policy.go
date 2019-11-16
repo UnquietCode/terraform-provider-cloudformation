@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,15 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const dLMLifecyclePolicyType string = "AWS::DLM::LifecyclePolicy"
+
+var dLMLifecyclePolicyProperties map[string]string = map[string]string{
+	"execution_role_arn": "ExecutionRoleArn",
+	"description": "Description",
+	"state": "State",
+	"policy_details": "PolicyDetails",
+}
 
 func ResourceDLMLifecyclePolicy() *schema.Resource {
 	return &schema.Resource{
@@ -56,22 +65,21 @@ func resourceDLMLifecyclePolicyExists(data *schema.ResourceData, meta interface{
 }
 
 func resourceDLMLifecyclePolicyRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::DLM::LifecyclePolicy", ResourceDLMLifecyclePolicy(), data, meta)
+	return plugin.ResourceRead(dLMLifecyclePolicyType, ResourceDLMLifecyclePolicy(), data, meta)
 }
 
 func resourceDLMLifecyclePolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DLM::LifecyclePolicy", ResourceDLMLifecyclePolicy(), data, meta)
+	return plugin.ResourceCreate(dLMLifecyclePolicyType, ResourceDLMLifecyclePolicy(), data, dLMLifecyclePolicyProperties, meta)
 }
 
 func resourceDLMLifecyclePolicyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::DLM::LifecyclePolicy", ResourceDLMLifecyclePolicy(), data, meta)
+	return plugin.ResourceUpdate(dLMLifecyclePolicyType, ResourceDLMLifecyclePolicy(), data, dLMLifecyclePolicyProperties, meta)
 }
 
 func resourceDLMLifecyclePolicyDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::DLM::LifecyclePolicy", data, meta)
+	return plugin.ResourceDelete(dLMLifecyclePolicyType, data, meta)
 }
 
 func resourceDLMLifecyclePolicyCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::DLM::LifecyclePolicy", data, meta)
+	return plugin.ResourceCustomizeDiff(dLMLifecyclePolicyType, data, meta)
 }
-

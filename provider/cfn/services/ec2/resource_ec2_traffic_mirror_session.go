@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,19 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eC2TrafficMirrorSessionType string = "AWS::EC2::TrafficMirrorSession"
+
+var eC2TrafficMirrorSessionProperties map[string]string = map[string]string{
+	"traffic_mirror_target_id": "TrafficMirrorTargetId",
+	"description": "Description",
+	"session_number": "SessionNumber",
+	"virtual_network_id": "VirtualNetworkId",
+	"packet_length": "PacketLength",
+	"network_interface_id": "NetworkInterfaceId",
+	"traffic_mirror_filter_id": "TrafficMirrorFilterId",
+	"tags": "Tags",
+}
 
 func ResourceEC2TrafficMirrorSession() *schema.Resource {
 	return &schema.Resource{
@@ -72,22 +85,21 @@ func resourceEC2TrafficMirrorSessionExists(data *schema.ResourceData, meta inter
 }
 
 func resourceEC2TrafficMirrorSessionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::TrafficMirrorSession", ResourceEC2TrafficMirrorSession(), data, meta)
+	return plugin.ResourceRead(eC2TrafficMirrorSessionType, ResourceEC2TrafficMirrorSession(), data, meta)
 }
 
 func resourceEC2TrafficMirrorSessionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::TrafficMirrorSession", ResourceEC2TrafficMirrorSession(), data, meta)
+	return plugin.ResourceCreate(eC2TrafficMirrorSessionType, ResourceEC2TrafficMirrorSession(), data, eC2TrafficMirrorSessionProperties, meta)
 }
 
 func resourceEC2TrafficMirrorSessionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::TrafficMirrorSession", ResourceEC2TrafficMirrorSession(), data, meta)
+	return plugin.ResourceUpdate(eC2TrafficMirrorSessionType, ResourceEC2TrafficMirrorSession(), data, eC2TrafficMirrorSessionProperties, meta)
 }
 
 func resourceEC2TrafficMirrorSessionDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EC2::TrafficMirrorSession", data, meta)
+	return plugin.ResourceDelete(eC2TrafficMirrorSessionType, data, meta)
 }
 
 func resourceEC2TrafficMirrorSessionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EC2::TrafficMirrorSession", data, meta)
+	return plugin.ResourceCustomizeDiff(eC2TrafficMirrorSessionType, data, meta)
 }
-

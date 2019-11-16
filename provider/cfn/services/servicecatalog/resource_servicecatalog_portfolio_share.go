@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const serviceCatalogPortfolioShareType string = "AWS::ServiceCatalog::PortfolioShare"
+
+var serviceCatalogPortfolioShareProperties map[string]string = map[string]string{
+	"account_id": "AccountId",
+	"accept_language": "AcceptLanguage",
+	"portfolio_id": "PortfolioId",
+}
 
 func ResourceServiceCatalogPortfolioShare() *schema.Resource {
 	return &schema.Resource{
@@ -50,22 +58,21 @@ func resourceServiceCatalogPortfolioShareExists(data *schema.ResourceData, meta 
 }
 
 func resourceServiceCatalogPortfolioShareRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ServiceCatalog::PortfolioShare", ResourceServiceCatalogPortfolioShare(), data, meta)
+	return plugin.ResourceRead(serviceCatalogPortfolioShareType, ResourceServiceCatalogPortfolioShare(), data, meta)
 }
 
 func resourceServiceCatalogPortfolioShareCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::PortfolioShare", ResourceServiceCatalogPortfolioShare(), data, meta)
+	return plugin.ResourceCreate(serviceCatalogPortfolioShareType, ResourceServiceCatalogPortfolioShare(), data, serviceCatalogPortfolioShareProperties, meta)
 }
 
 func resourceServiceCatalogPortfolioShareUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ServiceCatalog::PortfolioShare", ResourceServiceCatalogPortfolioShare(), data, meta)
+	return plugin.ResourceUpdate(serviceCatalogPortfolioShareType, ResourceServiceCatalogPortfolioShare(), data, serviceCatalogPortfolioShareProperties, meta)
 }
 
 func resourceServiceCatalogPortfolioShareDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ServiceCatalog::PortfolioShare", data, meta)
+	return plugin.ResourceDelete(serviceCatalogPortfolioShareType, data, meta)
 }
 
 func resourceServiceCatalogPortfolioShareCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ServiceCatalog::PortfolioShare", data, meta)
+	return plugin.ResourceCustomizeDiff(serviceCatalogPortfolioShareType, data, meta)
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const appSyncApiKeyType string = "AWS::AppSync::ApiKey"
+
+var appSyncApiKeyProperties map[string]string = map[string]string{
+	"description": "Description",
+	"expires": "Expires",
+	"api_id": "ApiId",
+}
 
 func ResourceAppSyncApiKey() *schema.Resource {
 	return &schema.Resource{
@@ -50,22 +58,21 @@ func resourceAppSyncApiKeyExists(data *schema.ResourceData, meta interface{}) (b
 }
 
 func resourceAppSyncApiKeyRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppSync::ApiKey", ResourceAppSyncApiKey(), data, meta)
+	return plugin.ResourceRead(appSyncApiKeyType, ResourceAppSyncApiKey(), data, meta)
 }
 
 func resourceAppSyncApiKeyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppSync::ApiKey", ResourceAppSyncApiKey(), data, meta)
+	return plugin.ResourceCreate(appSyncApiKeyType, ResourceAppSyncApiKey(), data, appSyncApiKeyProperties, meta)
 }
 
 func resourceAppSyncApiKeyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppSync::ApiKey", ResourceAppSyncApiKey(), data, meta)
+	return plugin.ResourceUpdate(appSyncApiKeyType, ResourceAppSyncApiKey(), data, appSyncApiKeyProperties, meta)
 }
 
 func resourceAppSyncApiKeyDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::AppSync::ApiKey", data, meta)
+	return plugin.ResourceDelete(appSyncApiKeyType, data, meta)
 }
 
 func resourceAppSyncApiKeyCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::AppSync::ApiKey", data, meta)
+	return plugin.ResourceCustomizeDiff(appSyncApiKeyType, data, meta)
 }
-

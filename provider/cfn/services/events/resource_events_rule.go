@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,18 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eventsRuleType string = "AWS::Events::Rule"
+
+var eventsRuleProperties map[string]string = map[string]string{
+	"description": "Description",
+	"event_pattern": "EventPattern",
+	"name": "Name",
+	"role_arn": "RoleArn",
+	"schedule_expression": "ScheduleExpression",
+	"state": "State",
+	"targets": "Targets",
+}
 
 func ResourceEventsRule() *schema.Resource {
 	return &schema.Resource{
@@ -67,22 +79,21 @@ func resourceEventsRuleExists(data *schema.ResourceData, meta interface{}) (bool
 }
 
 func resourceEventsRuleRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Events::Rule", ResourceEventsRule(), data, meta)
+	return plugin.ResourceRead(eventsRuleType, ResourceEventsRule(), data, meta)
 }
 
 func resourceEventsRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Events::Rule", ResourceEventsRule(), data, meta)
+	return plugin.ResourceCreate(eventsRuleType, ResourceEventsRule(), data, eventsRuleProperties, meta)
 }
 
 func resourceEventsRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Events::Rule", ResourceEventsRule(), data, meta)
+	return plugin.ResourceUpdate(eventsRuleType, ResourceEventsRule(), data, eventsRuleProperties, meta)
 }
 
 func resourceEventsRuleDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Events::Rule", data, meta)
+	return plugin.ResourceDelete(eventsRuleType, data, meta)
 }
 
 func resourceEventsRuleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Events::Rule", data, meta)
+	return plugin.ResourceCustomizeDiff(eventsRuleType, data, meta)
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,16 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const lambdaLayerVersionType string = "AWS::Lambda::LayerVersion"
+
+var lambdaLayerVersionProperties map[string]string = map[string]string{
+	"compatible_runtimes": "CompatibleRuntimes",
+	"license_info": "LicenseInfo",
+	"description": "Description",
+	"layer_name": "LayerName",
+	"content": "Content",
+}
 
 func ResourceLambdaLayerVersion() *schema.Resource {
 	return &schema.Resource{
@@ -61,22 +71,21 @@ func resourceLambdaLayerVersionExists(data *schema.ResourceData, meta interface{
 }
 
 func resourceLambdaLayerVersionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Lambda::LayerVersion", ResourceLambdaLayerVersion(), data, meta)
+	return plugin.ResourceRead(lambdaLayerVersionType, ResourceLambdaLayerVersion(), data, meta)
 }
 
 func resourceLambdaLayerVersionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Lambda::LayerVersion", ResourceLambdaLayerVersion(), data, meta)
+	return plugin.ResourceCreate(lambdaLayerVersionType, ResourceLambdaLayerVersion(), data, lambdaLayerVersionProperties, meta)
 }
 
 func resourceLambdaLayerVersionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Lambda::LayerVersion", ResourceLambdaLayerVersion(), data, meta)
+	return plugin.ResourceUpdate(lambdaLayerVersionType, ResourceLambdaLayerVersion(), data, lambdaLayerVersionProperties, meta)
 }
 
 func resourceLambdaLayerVersionDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Lambda::LayerVersion", data, meta)
+	return plugin.ResourceDelete(lambdaLayerVersionType, data, meta)
 }
 
 func resourceLambdaLayerVersionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Lambda::LayerVersion", data, meta)
+	return plugin.ResourceCustomizeDiff(lambdaLayerVersionType, data, meta)
 }
-

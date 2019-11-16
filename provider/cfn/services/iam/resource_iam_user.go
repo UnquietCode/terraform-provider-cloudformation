@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,18 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const iAMUserType string = "AWS::IAM::User"
+
+var iAMUserProperties map[string]string = map[string]string{
+	"groups": "Groups",
+	"login_profile": "LoginProfile",
+	"managed_policy_arns": "ManagedPolicyArns",
+	"path": "Path",
+	"permissions_boundary": "PermissionsBoundary",
+	"policies": "Policies",
+	"user_name": "UserName",
+}
 
 func ResourceIAMUser() *schema.Resource {
 	return &schema.Resource{
@@ -72,22 +84,21 @@ func resourceIAMUserExists(data *schema.ResourceData, meta interface{}) (bool, e
 }
 
 func resourceIAMUserRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IAM::User", ResourceIAMUser(), data, meta)
+	return plugin.ResourceRead(iAMUserType, ResourceIAMUser(), data, meta)
 }
 
 func resourceIAMUserCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IAM::User", ResourceIAMUser(), data, meta)
+	return plugin.ResourceCreate(iAMUserType, ResourceIAMUser(), data, iAMUserProperties, meta)
 }
 
 func resourceIAMUserUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IAM::User", ResourceIAMUser(), data, meta)
+	return plugin.ResourceUpdate(iAMUserType, ResourceIAMUser(), data, iAMUserProperties, meta)
 }
 
 func resourceIAMUserDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::IAM::User", data, meta)
+	return plugin.ResourceDelete(iAMUserType, data, meta)
 }
 
 func resourceIAMUserCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::IAM::User", data, meta)
+	return plugin.ResourceCustomizeDiff(iAMUserType, data, meta)
 }
-

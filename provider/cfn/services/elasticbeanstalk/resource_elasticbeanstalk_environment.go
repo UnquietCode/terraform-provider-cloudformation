@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,22 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const elasticBeanstalkEnvironmentType string = "AWS::ElasticBeanstalk::Environment"
+
+var elasticBeanstalkEnvironmentProperties map[string]string = map[string]string{
+	"application_name": "ApplicationName",
+	"cname_prefix": "CNAMEPrefix",
+	"description": "Description",
+	"environment_name": "EnvironmentName",
+	"option_settings": "OptionSettings",
+	"platform_arn": "PlatformArn",
+	"solution_stack_name": "SolutionStackName",
+	"tags": "Tags",
+	"template_name": "TemplateName",
+	"tier": "Tier",
+	"version_label": "VersionLabel",
+}
 
 func ResourceElasticBeanstalkEnvironment() *schema.Resource {
 	return &schema.Resource{
@@ -87,22 +103,21 @@ func resourceElasticBeanstalkEnvironmentExists(data *schema.ResourceData, meta i
 }
 
 func resourceElasticBeanstalkEnvironmentRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ElasticBeanstalk::Environment", ResourceElasticBeanstalkEnvironment(), data, meta)
+	return plugin.ResourceRead(elasticBeanstalkEnvironmentType, ResourceElasticBeanstalkEnvironment(), data, meta)
 }
 
 func resourceElasticBeanstalkEnvironmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElasticBeanstalk::Environment", ResourceElasticBeanstalkEnvironment(), data, meta)
+	return plugin.ResourceCreate(elasticBeanstalkEnvironmentType, ResourceElasticBeanstalkEnvironment(), data, elasticBeanstalkEnvironmentProperties, meta)
 }
 
 func resourceElasticBeanstalkEnvironmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ElasticBeanstalk::Environment", ResourceElasticBeanstalkEnvironment(), data, meta)
+	return plugin.ResourceUpdate(elasticBeanstalkEnvironmentType, ResourceElasticBeanstalkEnvironment(), data, elasticBeanstalkEnvironmentProperties, meta)
 }
 
 func resourceElasticBeanstalkEnvironmentDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ElasticBeanstalk::Environment", data, meta)
+	return plugin.ResourceDelete(elasticBeanstalkEnvironmentType, data, meta)
 }
 
 func resourceElasticBeanstalkEnvironmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ElasticBeanstalk::Environment", data, meta)
+	return plugin.ResourceCustomizeDiff(elasticBeanstalkEnvironmentType, data, meta)
 }
-

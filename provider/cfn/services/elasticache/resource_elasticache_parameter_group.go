@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const elastiCacheParameterGroupType string = "AWS::ElastiCache::ParameterGroup"
+
+var elastiCacheParameterGroupProperties map[string]string = map[string]string{
+	"cache_parameter_group_family": "CacheParameterGroupFamily",
+	"description": "Description",
+	"properties": "Properties",
+}
 
 func ResourceElastiCacheParameterGroup() *schema.Resource {
 	return &schema.Resource{
@@ -51,22 +59,21 @@ func resourceElastiCacheParameterGroupExists(data *schema.ResourceData, meta int
 }
 
 func resourceElastiCacheParameterGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ElastiCache::ParameterGroup", ResourceElastiCacheParameterGroup(), data, meta)
+	return plugin.ResourceRead(elastiCacheParameterGroupType, ResourceElastiCacheParameterGroup(), data, meta)
 }
 
 func resourceElastiCacheParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElastiCache::ParameterGroup", ResourceElastiCacheParameterGroup(), data, meta)
+	return plugin.ResourceCreate(elastiCacheParameterGroupType, ResourceElastiCacheParameterGroup(), data, elastiCacheParameterGroupProperties, meta)
 }
 
 func resourceElastiCacheParameterGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ElastiCache::ParameterGroup", ResourceElastiCacheParameterGroup(), data, meta)
+	return plugin.ResourceUpdate(elastiCacheParameterGroupType, ResourceElastiCacheParameterGroup(), data, elastiCacheParameterGroupProperties, meta)
 }
 
 func resourceElastiCacheParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ElastiCache::ParameterGroup", data, meta)
+	return plugin.ResourceDelete(elastiCacheParameterGroupType, data, meta)
 }
 
 func resourceElastiCacheParameterGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ElastiCache::ParameterGroup", data, meta)
+	return plugin.ResourceCustomizeDiff(elastiCacheParameterGroupType, data, meta)
 }
-

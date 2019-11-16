@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,17 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var listenerRuleAuthenticateCognitoConfigProperties map[string]string = map[string]string{
+	"authentication_request_extra_params": "AuthenticationRequestExtraParams",
+	"on_unauthenticated_request": "OnUnauthenticatedRequest",
+	"scope": "Scope",
+	"session_cookie_name": "SessionCookieName",
+	"session_timeout": "SessionTimeout",
+	"user_pool_arn": "UserPoolArn",
+	"user_pool_client_id": "UserPoolClientId",
+	"user_pool_domain": "UserPoolDomain",
+}
 
 func propertyListenerRuleAuthenticateCognitoConfig(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -64,4 +75,3 @@ func propertyListenerRuleAuthenticateCognitoConfig(extras...string) *schema.Reso
 		},
 	}
 }
-

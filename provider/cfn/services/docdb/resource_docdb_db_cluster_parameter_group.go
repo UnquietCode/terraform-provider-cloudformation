@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,16 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const docDBDBClusterParameterGroupType string = "AWS::DocDB::DBClusterParameterGroup"
+
+var docDBDBClusterParameterGroupProperties map[string]string = map[string]string{
+	"description": "Description",
+	"parameters": "Parameters",
+	"family": "Family",
+	"tags": "Tags",
+	"name": "Name",
+}
 
 func ResourceDocDBDBClusterParameterGroup() *schema.Resource {
 	return &schema.Resource{
@@ -60,22 +70,21 @@ func resourceDocDBDBClusterParameterGroupExists(data *schema.ResourceData, meta 
 }
 
 func resourceDocDBDBClusterParameterGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::DocDB::DBClusterParameterGroup", ResourceDocDBDBClusterParameterGroup(), data, meta)
+	return plugin.ResourceRead(docDBDBClusterParameterGroupType, ResourceDocDBDBClusterParameterGroup(), data, meta)
 }
 
 func resourceDocDBDBClusterParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DocDB::DBClusterParameterGroup", ResourceDocDBDBClusterParameterGroup(), data, meta)
+	return plugin.ResourceCreate(docDBDBClusterParameterGroupType, ResourceDocDBDBClusterParameterGroup(), data, docDBDBClusterParameterGroupProperties, meta)
 }
 
 func resourceDocDBDBClusterParameterGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::DocDB::DBClusterParameterGroup", ResourceDocDBDBClusterParameterGroup(), data, meta)
+	return plugin.ResourceUpdate(docDBDBClusterParameterGroupType, ResourceDocDBDBClusterParameterGroup(), data, docDBDBClusterParameterGroupProperties, meta)
 }
 
 func resourceDocDBDBClusterParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::DocDB::DBClusterParameterGroup", data, meta)
+	return plugin.ResourceDelete(docDBDBClusterParameterGroupType, data, meta)
 }
 
 func resourceDocDBDBClusterParameterGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::DocDB::DBClusterParameterGroup", data, meta)
+	return plugin.ResourceCustomizeDiff(docDBDBClusterParameterGroupType, data, meta)
 }
-

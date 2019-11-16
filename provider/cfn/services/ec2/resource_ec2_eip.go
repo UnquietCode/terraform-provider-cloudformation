@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eC2EIPType string = "AWS::EC2::EIP"
+
+var eC2EIPProperties map[string]string = map[string]string{
+	"domain": "Domain",
+	"instance_id": "InstanceId",
+	"public_ipv4_pool": "PublicIpv4Pool",
+}
 
 func ResourceEC2EIP() *schema.Resource {
 	return &schema.Resource{
@@ -50,22 +58,21 @@ func resourceEC2EIPExists(data *schema.ResourceData, meta interface{}) (bool, er
 }
 
 func resourceEC2EIPRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::EIP", ResourceEC2EIP(), data, meta)
+	return plugin.ResourceRead(eC2EIPType, ResourceEC2EIP(), data, meta)
 }
 
 func resourceEC2EIPCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::EIP", ResourceEC2EIP(), data, meta)
+	return plugin.ResourceCreate(eC2EIPType, ResourceEC2EIP(), data, eC2EIPProperties, meta)
 }
 
 func resourceEC2EIPUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::EIP", ResourceEC2EIP(), data, meta)
+	return plugin.ResourceUpdate(eC2EIPType, ResourceEC2EIP(), data, eC2EIPProperties, meta)
 }
 
 func resourceEC2EIPDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EC2::EIP", data, meta)
+	return plugin.ResourceDelete(eC2EIPType, data, meta)
 }
 
 func resourceEC2EIPCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EC2::EIP", data, meta)
+	return plugin.ResourceCustomizeDiff(eC2EIPType, data, meta)
 }
-

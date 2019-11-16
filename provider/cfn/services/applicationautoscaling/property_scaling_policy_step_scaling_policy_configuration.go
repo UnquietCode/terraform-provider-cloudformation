@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var scalingPolicyStepScalingPolicyConfigurationProperties map[string]string = map[string]string{
+	"adjustment_type": "AdjustmentType",
+	"cooldown": "Cooldown",
+	"metric_aggregation_type": "MetricAggregationType",
+	"min_adjustment_magnitude": "MinAdjustmentMagnitude",
+	"step_adjustments": "StepAdjustments",
+}
 
 func propertyScalingPolicyStepScalingPolicyConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -52,4 +60,3 @@ func propertyScalingPolicyStepScalingPolicyConfiguration(extras...string) *schem
 		},
 	}
 }
-

@@ -15,6 +15,7 @@ type ProviderMetadata struct {
    workdir string
 	 mutex *mutex.MutexKV
 	 resourceCounter *int
+   // resourceReadCounter *int
 	 
 	 newIndex *bool
 	 exists *map[string]bool
@@ -24,6 +25,7 @@ type ProviderMetadata struct {
 const EMPTY string = "\xff"
 const LOCK_TEMPLATE_REFERENCE string = "TEMPLATE_REFERENCE"
 const LOCK_RESOURCE_COUNTER string = "RESOURCE_COUNTER"
+// const LOCK_RESOURCE_READ_COUNTER string = "RESOURCE_READ_COUNTER"
 const STATE_WAIT string = "WAIT"
 const STATE_DONE string = "DONE"
 
@@ -98,15 +100,35 @@ func readCounter(meta ProviderMetadata) int {
 	return *meta.resourceCounter
 }
 
+// func incrementResourceReadCounter(meta ProviderMetadata) {
+// 	meta.mutex.Lock(LOCK_RESOURCE_READ_COUNTER)
+// 	*meta.resourceReadCounter += 1
+// 	meta.mutex.Unlock(LOCK_RESOURCE_READ_COUNTER)
+// }
+// 
+// func decrementResourceReadCounter(meta ProviderMetadata) {
+// 	meta.mutex.Lock(LOCK_RESOURCE_READ_COUNTER)
+// 	*meta.resourceReadCounter -= 1
+// 	meta.mutex.Unlock(LOCK_RESOURCE_READ_COUNTER)
+// }
+// 
+// func getResourceReadCounter(meta ProviderMetadata) int {
+// 	meta.mutex.Lock(LOCK_RESOURCE_READ_COUNTER)
+// 	defer meta.mutex.Unlock(LOCK_RESOURCE_READ_COUNTER)
+// 	return *meta.resourceReadCounter
+// }
+
 
 func ProviderConfigure(resourceData *schema.ResourceData) (interface{}, error) {	
 	var counter int = 0
+	// var readCounter int = 0
 	var newIndex bool = true
 	
 	meta := ProviderMetadata{
 		workdir: resourceData.Get("workdir").(string),
 		mutex: mutex.NewMutexKV(),
 		resourceCounter: &counter,
+    // readCounter: &readCounter,
 		
 		newIndex: &newIndex,
 		exists: &map[string]bool{},

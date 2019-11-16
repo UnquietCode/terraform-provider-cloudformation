@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,16 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eC2EIPAssociationType string = "AWS::EC2::EIPAssociation"
+
+var eC2EIPAssociationProperties map[string]string = map[string]string{
+	"allocation_id": "AllocationId",
+	"eip": "EIP",
+	"instance_id": "InstanceId",
+	"network_interface_id": "NetworkInterfaceId",
+	"private_ip_address": "PrivateIpAddress",
+}
 
 func ResourceEC2EIPAssociation() *schema.Resource {
 	return &schema.Resource{
@@ -58,22 +68,21 @@ func resourceEC2EIPAssociationExists(data *schema.ResourceData, meta interface{}
 }
 
 func resourceEC2EIPAssociationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::EIPAssociation", ResourceEC2EIPAssociation(), data, meta)
+	return plugin.ResourceRead(eC2EIPAssociationType, ResourceEC2EIPAssociation(), data, meta)
 }
 
 func resourceEC2EIPAssociationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::EIPAssociation", ResourceEC2EIPAssociation(), data, meta)
+	return plugin.ResourceCreate(eC2EIPAssociationType, ResourceEC2EIPAssociation(), data, eC2EIPAssociationProperties, meta)
 }
 
 func resourceEC2EIPAssociationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::EIPAssociation", ResourceEC2EIPAssociation(), data, meta)
+	return plugin.ResourceUpdate(eC2EIPAssociationType, ResourceEC2EIPAssociation(), data, eC2EIPAssociationProperties, meta)
 }
 
 func resourceEC2EIPAssociationDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EC2::EIPAssociation", data, meta)
+	return plugin.ResourceDelete(eC2EIPAssociationType, data, meta)
 }
 
 func resourceEC2EIPAssociationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EC2::EIPAssociation", data, meta)
+	return plugin.ResourceCustomizeDiff(eC2EIPAssociationType, data, meta)
 }
-

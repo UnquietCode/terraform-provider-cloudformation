@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,29 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const glueJobType string = "AWS::Glue::Job"
+
+var glueJobProperties map[string]string = map[string]string{
+	"connections": "Connections",
+	"max_retries": "MaxRetries",
+	"description": "Description",
+	"timeout": "Timeout",
+	"allocated_capacity": "AllocatedCapacity",
+	"name": "Name",
+	"role": "Role",
+	"default_arguments": "DefaultArguments",
+	"notification_property": "NotificationProperty",
+	"worker_type": "WorkerType",
+	"log_uri": "LogUri",
+	"command": "Command",
+	"glue_version": "GlueVersion",
+	"execution_property": "ExecutionProperty",
+	"security_configuration": "SecurityConfiguration",
+	"number_of_workers": "NumberOfWorkers",
+	"tags": "Tags",
+	"max_capacity": "MaxCapacity",
+}
 
 func ResourceGlueJob() *schema.Resource {
 	return &schema.Resource{
@@ -118,22 +141,21 @@ func resourceGlueJobExists(data *schema.ResourceData, meta interface{}) (bool, e
 }
 
 func resourceGlueJobRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Glue::Job", ResourceGlueJob(), data, meta)
+	return plugin.ResourceRead(glueJobType, ResourceGlueJob(), data, meta)
 }
 
 func resourceGlueJobCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::Job", ResourceGlueJob(), data, meta)
+	return plugin.ResourceCreate(glueJobType, ResourceGlueJob(), data, glueJobProperties, meta)
 }
 
 func resourceGlueJobUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Glue::Job", ResourceGlueJob(), data, meta)
+	return plugin.ResourceUpdate(glueJobType, ResourceGlueJob(), data, glueJobProperties, meta)
 }
 
 func resourceGlueJobDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Glue::Job", data, meta)
+	return plugin.ResourceDelete(glueJobType, data, meta)
 }
 
 func resourceGlueJobCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Glue::Job", data, meta)
+	return plugin.ResourceCustomizeDiff(glueJobType, data, meta)
 }
-

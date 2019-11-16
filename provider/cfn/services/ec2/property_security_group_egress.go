@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,17 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var securityGroupEgressProperties map[string]string = map[string]string{
+	"cidr_ip": "CidrIp",
+	"cidr_ipv6": "CidrIpv6",
+	"description": "Description",
+	"destination_prefix_list_id": "DestinationPrefixListId",
+	"destination_security_group_id": "DestinationSecurityGroupId",
+	"from_port": "FromPort",
+	"ip_protocol": "IpProtocol",
+	"to_port": "ToPort",
+}
 
 func propertySecurityGroupEgress(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -63,4 +74,3 @@ func propertySecurityGroupEgress(extras...string) *schema.Resource {
 		},
 	}
 }
-

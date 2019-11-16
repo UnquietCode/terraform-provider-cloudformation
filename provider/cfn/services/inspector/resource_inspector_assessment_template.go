@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,16 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const inspectorAssessmentTemplateType string = "AWS::Inspector::AssessmentTemplate"
+
+var inspectorAssessmentTemplateProperties map[string]string = map[string]string{
+	"assessment_target_arn": "AssessmentTargetArn",
+	"duration_in_seconds": "DurationInSeconds",
+	"assessment_template_name": "AssessmentTemplateName",
+	"rules_package_arns": "RulesPackageArns",
+	"user_attributes_for_findings": "UserAttributesForFindings",
+}
 
 func ResourceInspectorAssessmentTemplate() *schema.Resource {
 	return &schema.Resource{
@@ -61,22 +71,21 @@ func resourceInspectorAssessmentTemplateExists(data *schema.ResourceData, meta i
 }
 
 func resourceInspectorAssessmentTemplateRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Inspector::AssessmentTemplate", ResourceInspectorAssessmentTemplate(), data, meta)
+	return plugin.ResourceRead(inspectorAssessmentTemplateType, ResourceInspectorAssessmentTemplate(), data, meta)
 }
 
 func resourceInspectorAssessmentTemplateCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Inspector::AssessmentTemplate", ResourceInspectorAssessmentTemplate(), data, meta)
+	return plugin.ResourceCreate(inspectorAssessmentTemplateType, ResourceInspectorAssessmentTemplate(), data, inspectorAssessmentTemplateProperties, meta)
 }
 
 func resourceInspectorAssessmentTemplateUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Inspector::AssessmentTemplate", ResourceInspectorAssessmentTemplate(), data, meta)
+	return plugin.ResourceUpdate(inspectorAssessmentTemplateType, ResourceInspectorAssessmentTemplate(), data, inspectorAssessmentTemplateProperties, meta)
 }
 
 func resourceInspectorAssessmentTemplateDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Inspector::AssessmentTemplate", data, meta)
+	return plugin.ResourceDelete(inspectorAssessmentTemplateType, data, meta)
 }
 
 func resourceInspectorAssessmentTemplateCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Inspector::AssessmentTemplate", data, meta)
+	return plugin.ResourceCustomizeDiff(inspectorAssessmentTemplateType, data, meta)
 }
-

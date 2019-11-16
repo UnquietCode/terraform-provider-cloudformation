@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const greengrassLoggerDefinitionVersionType string = "AWS::Greengrass::LoggerDefinitionVersion"
+
+var greengrassLoggerDefinitionVersionProperties map[string]string = map[string]string{
+	"logger_definition_id": "LoggerDefinitionId",
+	"loggers": "Loggers",
+}
 
 func ResourceGreengrassLoggerDefinitionVersion() *schema.Resource {
 	return &schema.Resource{
@@ -47,22 +54,21 @@ func resourceGreengrassLoggerDefinitionVersionExists(data *schema.ResourceData, 
 }
 
 func resourceGreengrassLoggerDefinitionVersionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Greengrass::LoggerDefinitionVersion", ResourceGreengrassLoggerDefinitionVersion(), data, meta)
+	return plugin.ResourceRead(greengrassLoggerDefinitionVersionType, ResourceGreengrassLoggerDefinitionVersion(), data, meta)
 }
 
 func resourceGreengrassLoggerDefinitionVersionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Greengrass::LoggerDefinitionVersion", ResourceGreengrassLoggerDefinitionVersion(), data, meta)
+	return plugin.ResourceCreate(greengrassLoggerDefinitionVersionType, ResourceGreengrassLoggerDefinitionVersion(), data, greengrassLoggerDefinitionVersionProperties, meta)
 }
 
 func resourceGreengrassLoggerDefinitionVersionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Greengrass::LoggerDefinitionVersion", ResourceGreengrassLoggerDefinitionVersion(), data, meta)
+	return plugin.ResourceUpdate(greengrassLoggerDefinitionVersionType, ResourceGreengrassLoggerDefinitionVersion(), data, greengrassLoggerDefinitionVersionProperties, meta)
 }
 
 func resourceGreengrassLoggerDefinitionVersionDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Greengrass::LoggerDefinitionVersion", data, meta)
+	return plugin.ResourceDelete(greengrassLoggerDefinitionVersionType, data, meta)
 }
 
 func resourceGreengrassLoggerDefinitionVersionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Greengrass::LoggerDefinitionVersion", data, meta)
+	return plugin.ResourceCustomizeDiff(greengrassLoggerDefinitionVersionType, data, meta)
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,16 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const wAFRegionalRateBasedRuleType string = "AWS::WAFRegional::RateBasedRule"
+
+var wAFRegionalRateBasedRuleProperties map[string]string = map[string]string{
+	"metric_name": "MetricName",
+	"rate_limit": "RateLimit",
+	"match_predicates": "MatchPredicates",
+	"rate_key": "RateKey",
+	"name": "Name",
+}
 
 func ResourceWAFRegionalRateBasedRule() *schema.Resource {
 	return &schema.Resource{
@@ -59,22 +69,21 @@ func resourceWAFRegionalRateBasedRuleExists(data *schema.ResourceData, meta inte
 }
 
 func resourceWAFRegionalRateBasedRuleRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::WAFRegional::RateBasedRule", ResourceWAFRegionalRateBasedRule(), data, meta)
+	return plugin.ResourceRead(wAFRegionalRateBasedRuleType, ResourceWAFRegionalRateBasedRule(), data, meta)
 }
 
 func resourceWAFRegionalRateBasedRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::WAFRegional::RateBasedRule", ResourceWAFRegionalRateBasedRule(), data, meta)
+	return plugin.ResourceCreate(wAFRegionalRateBasedRuleType, ResourceWAFRegionalRateBasedRule(), data, wAFRegionalRateBasedRuleProperties, meta)
 }
 
 func resourceWAFRegionalRateBasedRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::WAFRegional::RateBasedRule", ResourceWAFRegionalRateBasedRule(), data, meta)
+	return plugin.ResourceUpdate(wAFRegionalRateBasedRuleType, ResourceWAFRegionalRateBasedRule(), data, wAFRegionalRateBasedRuleProperties, meta)
 }
 
 func resourceWAFRegionalRateBasedRuleDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::WAFRegional::RateBasedRule", data, meta)
+	return plugin.ResourceDelete(wAFRegionalRateBasedRuleType, data, meta)
 }
 
 func resourceWAFRegionalRateBasedRuleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::WAFRegional::RateBasedRule", data, meta)
+	return plugin.ResourceCustomizeDiff(wAFRegionalRateBasedRuleType, data, meta)
 }
-

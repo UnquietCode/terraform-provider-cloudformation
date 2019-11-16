@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,13 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const redshiftClusterSecurityGroupType string = "AWS::Redshift::ClusterSecurityGroup"
+
+var redshiftClusterSecurityGroupProperties map[string]string = map[string]string{
+	"description": "Description",
+	"tags": "Tags",
+}
 
 func ResourceRedshiftClusterSecurityGroup() *schema.Resource {
 	return &schema.Resource{
@@ -48,22 +55,21 @@ func resourceRedshiftClusterSecurityGroupExists(data *schema.ResourceData, meta 
 }
 
 func resourceRedshiftClusterSecurityGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Redshift::ClusterSecurityGroup", ResourceRedshiftClusterSecurityGroup(), data, meta)
+	return plugin.ResourceRead(redshiftClusterSecurityGroupType, ResourceRedshiftClusterSecurityGroup(), data, meta)
 }
 
 func resourceRedshiftClusterSecurityGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Redshift::ClusterSecurityGroup", ResourceRedshiftClusterSecurityGroup(), data, meta)
+	return plugin.ResourceCreate(redshiftClusterSecurityGroupType, ResourceRedshiftClusterSecurityGroup(), data, redshiftClusterSecurityGroupProperties, meta)
 }
 
 func resourceRedshiftClusterSecurityGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Redshift::ClusterSecurityGroup", ResourceRedshiftClusterSecurityGroup(), data, meta)
+	return plugin.ResourceUpdate(redshiftClusterSecurityGroupType, ResourceRedshiftClusterSecurityGroup(), data, redshiftClusterSecurityGroupProperties, meta)
 }
 
 func resourceRedshiftClusterSecurityGroupDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Redshift::ClusterSecurityGroup", data, meta)
+	return plugin.ResourceDelete(redshiftClusterSecurityGroupType, data, meta)
 }
 
 func resourceRedshiftClusterSecurityGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Redshift::ClusterSecurityGroup", data, meta)
+	return plugin.ResourceCustomizeDiff(redshiftClusterSecurityGroupType, data, meta)
 }
-

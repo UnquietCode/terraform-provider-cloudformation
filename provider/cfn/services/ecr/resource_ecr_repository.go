@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,15 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eCRRepositoryType string = "AWS::ECR::Repository"
+
+var eCRRepositoryProperties map[string]string = map[string]string{
+	"lifecycle_policy": "LifecyclePolicy",
+	"repository_name": "RepositoryName",
+	"repository_policy_text": "RepositoryPolicyText",
+	"tags": "Tags",
+}
 
 func ResourceECRRepository() *schema.Resource {
 	return &schema.Resource{
@@ -58,22 +67,21 @@ func resourceECRRepositoryExists(data *schema.ResourceData, meta interface{}) (b
 }
 
 func resourceECRRepositoryRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ECR::Repository", ResourceECRRepository(), data, meta)
+	return plugin.ResourceRead(eCRRepositoryType, ResourceECRRepository(), data, meta)
 }
 
 func resourceECRRepositoryCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ECR::Repository", ResourceECRRepository(), data, meta)
+	return plugin.ResourceCreate(eCRRepositoryType, ResourceECRRepository(), data, eCRRepositoryProperties, meta)
 }
 
 func resourceECRRepositoryUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ECR::Repository", ResourceECRRepository(), data, meta)
+	return plugin.ResourceUpdate(eCRRepositoryType, ResourceECRRepository(), data, eCRRepositoryProperties, meta)
 }
 
 func resourceECRRepositoryDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ECR::Repository", data, meta)
+	return plugin.ResourceDelete(eCRRepositoryType, data, meta)
 }
 
 func resourceECRRepositoryCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ECR::Repository", data, meta)
+	return plugin.ResourceCustomizeDiff(eCRRepositoryType, data, meta)
 }
-

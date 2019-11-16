@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,15 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var userPoolPasswordPolicyProperties map[string]string = map[string]string{
+	"require_numbers": "RequireNumbers",
+	"minimum_length": "MinimumLength",
+	"temporary_password_validity_days": "TemporaryPasswordValidityDays",
+	"require_uppercase": "RequireUppercase",
+	"require_lowercase": "RequireLowercase",
+	"require_symbols": "RequireSymbols",
+}
 
 func propertyUserPoolPasswordPolicy(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -55,4 +64,3 @@ func propertyUserPoolPasswordPolicy(extras...string) *schema.Resource {
 		},
 	}
 }
-

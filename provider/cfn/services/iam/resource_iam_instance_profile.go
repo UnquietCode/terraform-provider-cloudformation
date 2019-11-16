@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const iAMInstanceProfileType string = "AWS::IAM::InstanceProfile"
+
+var iAMInstanceProfileProperties map[string]string = map[string]string{
+	"instance_profile_name": "InstanceProfileName",
+	"path": "Path",
+	"roles": "Roles",
+}
 
 func ResourceIAMInstanceProfile() *schema.Resource {
 	return &schema.Resource{
@@ -51,22 +59,21 @@ func resourceIAMInstanceProfileExists(data *schema.ResourceData, meta interface{
 }
 
 func resourceIAMInstanceProfileRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IAM::InstanceProfile", ResourceIAMInstanceProfile(), data, meta)
+	return plugin.ResourceRead(iAMInstanceProfileType, ResourceIAMInstanceProfile(), data, meta)
 }
 
 func resourceIAMInstanceProfileCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IAM::InstanceProfile", ResourceIAMInstanceProfile(), data, meta)
+	return plugin.ResourceCreate(iAMInstanceProfileType, ResourceIAMInstanceProfile(), data, iAMInstanceProfileProperties, meta)
 }
 
 func resourceIAMInstanceProfileUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IAM::InstanceProfile", ResourceIAMInstanceProfile(), data, meta)
+	return plugin.ResourceUpdate(iAMInstanceProfileType, ResourceIAMInstanceProfile(), data, iAMInstanceProfileProperties, meta)
 }
 
 func resourceIAMInstanceProfileDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::IAM::InstanceProfile", data, meta)
+	return plugin.ResourceDelete(iAMInstanceProfileType, data, meta)
 }
 
 func resourceIAMInstanceProfileCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::IAM::InstanceProfile", data, meta)
+	return plugin.ResourceCustomizeDiff(iAMInstanceProfileType, data, meta)
 }
-

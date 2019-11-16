@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,15 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const appMeshVirtualNodeType string = "AWS::AppMesh::VirtualNode"
+
+var appMeshVirtualNodeProperties map[string]string = map[string]string{
+	"mesh_name": "MeshName",
+	"spec": "Spec",
+	"virtual_node_name": "VirtualNodeName",
+	"tags": "Tags",
+}
 
 func ResourceAppMeshVirtualNode() *schema.Resource {
 	return &schema.Resource{
@@ -58,22 +67,21 @@ func resourceAppMeshVirtualNodeExists(data *schema.ResourceData, meta interface{
 }
 
 func resourceAppMeshVirtualNodeRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppMesh::VirtualNode", ResourceAppMeshVirtualNode(), data, meta)
+	return plugin.ResourceRead(appMeshVirtualNodeType, ResourceAppMeshVirtualNode(), data, meta)
 }
 
 func resourceAppMeshVirtualNodeCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppMesh::VirtualNode", ResourceAppMeshVirtualNode(), data, meta)
+	return plugin.ResourceCreate(appMeshVirtualNodeType, ResourceAppMeshVirtualNode(), data, appMeshVirtualNodeProperties, meta)
 }
 
 func resourceAppMeshVirtualNodeUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppMesh::VirtualNode", ResourceAppMeshVirtualNode(), data, meta)
+	return plugin.ResourceUpdate(appMeshVirtualNodeType, ResourceAppMeshVirtualNode(), data, appMeshVirtualNodeProperties, meta)
 }
 
 func resourceAppMeshVirtualNodeDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::AppMesh::VirtualNode", data, meta)
+	return plugin.ResourceDelete(appMeshVirtualNodeType, data, meta)
 }
 
 func resourceAppMeshVirtualNodeCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::AppMesh::VirtualNode", data, meta)
+	return plugin.ResourceCustomizeDiff(appMeshVirtualNodeType, data, meta)
 }
-

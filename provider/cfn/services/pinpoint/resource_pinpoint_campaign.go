@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,26 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const pinpointCampaignType string = "AWS::Pinpoint::Campaign"
+
+var pinpointCampaignProperties map[string]string = map[string]string{
+	"description": "Description",
+	"segment_id": "SegmentId",
+	"is_paused": "IsPaused",
+	"additional_treatments": "AdditionalTreatments",
+	"name": "Name",
+	"segment_version": "SegmentVersion",
+	"treatment_description": "TreatmentDescription",
+	"message_configuration": "MessageConfiguration",
+	"limits": "Limits",
+	"holdout_percent": "HoldoutPercent",
+	"schedule": "Schedule",
+	"application_id": "ApplicationId",
+	"campaign_hook": "CampaignHook",
+	"tags": "Tags",
+	"treatment_name": "TreatmentName",
+}
 
 func ResourcePinpointCampaign() *schema.Resource {
 	return &schema.Resource{
@@ -107,22 +127,21 @@ func resourcePinpointCampaignExists(data *schema.ResourceData, meta interface{})
 }
 
 func resourcePinpointCampaignRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::Campaign", ResourcePinpointCampaign(), data, meta)
+	return plugin.ResourceRead(pinpointCampaignType, ResourcePinpointCampaign(), data, meta)
 }
 
 func resourcePinpointCampaignCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::Campaign", ResourcePinpointCampaign(), data, meta)
+	return plugin.ResourceCreate(pinpointCampaignType, ResourcePinpointCampaign(), data, pinpointCampaignProperties, meta)
 }
 
 func resourcePinpointCampaignUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::Campaign", ResourcePinpointCampaign(), data, meta)
+	return plugin.ResourceUpdate(pinpointCampaignType, ResourcePinpointCampaign(), data, pinpointCampaignProperties, meta)
 }
 
 func resourcePinpointCampaignDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Pinpoint::Campaign", data, meta)
+	return plugin.ResourceDelete(pinpointCampaignType, data, meta)
 }
 
 func resourcePinpointCampaignCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Pinpoint::Campaign", data, meta)
+	return plugin.ResourceCustomizeDiff(pinpointCampaignType, data, meta)
 }
-

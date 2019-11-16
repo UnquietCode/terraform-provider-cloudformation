@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const pinpointEmailDedicatedIpPoolType string = "AWS::PinpointEmail::DedicatedIpPool"
+
+var pinpointEmailDedicatedIpPoolProperties map[string]string = map[string]string{
+	"pool_name": "PoolName",
+	"tags": "Tags",
+}
 
 func ResourcePinpointEmailDedicatedIpPool() *schema.Resource {
 	return &schema.Resource{
@@ -47,22 +54,21 @@ func resourcePinpointEmailDedicatedIpPoolExists(data *schema.ResourceData, meta 
 }
 
 func resourcePinpointEmailDedicatedIpPoolRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::PinpointEmail::DedicatedIpPool", ResourcePinpointEmailDedicatedIpPool(), data, meta)
+	return plugin.ResourceRead(pinpointEmailDedicatedIpPoolType, ResourcePinpointEmailDedicatedIpPool(), data, meta)
 }
 
 func resourcePinpointEmailDedicatedIpPoolCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::PinpointEmail::DedicatedIpPool", ResourcePinpointEmailDedicatedIpPool(), data, meta)
+	return plugin.ResourceCreate(pinpointEmailDedicatedIpPoolType, ResourcePinpointEmailDedicatedIpPool(), data, pinpointEmailDedicatedIpPoolProperties, meta)
 }
 
 func resourcePinpointEmailDedicatedIpPoolUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::PinpointEmail::DedicatedIpPool", ResourcePinpointEmailDedicatedIpPool(), data, meta)
+	return plugin.ResourceUpdate(pinpointEmailDedicatedIpPoolType, ResourcePinpointEmailDedicatedIpPool(), data, pinpointEmailDedicatedIpPoolProperties, meta)
 }
 
 func resourcePinpointEmailDedicatedIpPoolDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::PinpointEmail::DedicatedIpPool", data, meta)
+	return plugin.ResourceDelete(pinpointEmailDedicatedIpPoolType, data, meta)
 }
 
 func resourcePinpointEmailDedicatedIpPoolCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::PinpointEmail::DedicatedIpPool", data, meta)
+	return plugin.ResourceCustomizeDiff(pinpointEmailDedicatedIpPoolType, data, meta)
 }
-

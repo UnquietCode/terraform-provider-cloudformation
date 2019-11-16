@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,21 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const apiGatewayV2StageType string = "AWS::ApiGatewayV2::Stage"
+
+var apiGatewayV2StageProperties map[string]string = map[string]string{
+	"client_certificate_id": "ClientCertificateId",
+	"deployment_id": "DeploymentId",
+	"description": "Description",
+	"access_log_settings": "AccessLogSettings",
+	"route_settings": "RouteSettings",
+	"stage_name": "StageName",
+	"stage_variables": "StageVariables",
+	"api_id": "ApiId",
+	"default_route_settings": "DefaultRouteSettings",
+	"tags": "Tags",
+}
 
 func ResourceApiGatewayV2Stage() *schema.Resource {
 	return &schema.Resource{
@@ -82,22 +97,21 @@ func resourceApiGatewayV2StageExists(data *schema.ResourceData, meta interface{}
 }
 
 func resourceApiGatewayV2StageRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGatewayV2::Stage", ResourceApiGatewayV2Stage(), data, meta)
+	return plugin.ResourceRead(apiGatewayV2StageType, ResourceApiGatewayV2Stage(), data, meta)
 }
 
 func resourceApiGatewayV2StageCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGatewayV2::Stage", ResourceApiGatewayV2Stage(), data, meta)
+	return plugin.ResourceCreate(apiGatewayV2StageType, ResourceApiGatewayV2Stage(), data, apiGatewayV2StageProperties, meta)
 }
 
 func resourceApiGatewayV2StageUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGatewayV2::Stage", ResourceApiGatewayV2Stage(), data, meta)
+	return plugin.ResourceUpdate(apiGatewayV2StageType, ResourceApiGatewayV2Stage(), data, apiGatewayV2StageProperties, meta)
 }
 
 func resourceApiGatewayV2StageDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ApiGatewayV2::Stage", data, meta)
+	return plugin.ResourceDelete(apiGatewayV2StageType, data, meta)
 }
 
 func resourceApiGatewayV2StageCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ApiGatewayV2::Stage", data, meta)
+	return plugin.ResourceCustomizeDiff(apiGatewayV2StageType, data, meta)
 }
-

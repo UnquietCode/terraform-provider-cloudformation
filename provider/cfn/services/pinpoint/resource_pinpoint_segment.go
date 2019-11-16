@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,16 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const pinpointSegmentType string = "AWS::Pinpoint::Segment"
+
+var pinpointSegmentProperties map[string]string = map[string]string{
+	"segment_groups": "SegmentGroups",
+	"dimensions": "Dimensions",
+	"application_id": "ApplicationId",
+	"tags": "Tags",
+	"name": "Name",
+}
 
 func ResourcePinpointSegment() *schema.Resource {
 	return &schema.Resource{
@@ -62,22 +72,21 @@ func resourcePinpointSegmentExists(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourcePinpointSegmentRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Pinpoint::Segment", ResourcePinpointSegment(), data, meta)
+	return plugin.ResourceRead(pinpointSegmentType, ResourcePinpointSegment(), data, meta)
 }
 
 func resourcePinpointSegmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Pinpoint::Segment", ResourcePinpointSegment(), data, meta)
+	return plugin.ResourceCreate(pinpointSegmentType, ResourcePinpointSegment(), data, pinpointSegmentProperties, meta)
 }
 
 func resourcePinpointSegmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Pinpoint::Segment", ResourcePinpointSegment(), data, meta)
+	return plugin.ResourceUpdate(pinpointSegmentType, ResourcePinpointSegment(), data, pinpointSegmentProperties, meta)
 }
 
 func resourcePinpointSegmentDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Pinpoint::Segment", data, meta)
+	return plugin.ResourceDelete(pinpointSegmentType, data, meta)
 }
 
 func resourcePinpointSegmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Pinpoint::Segment", data, meta)
+	return plugin.ResourceCustomizeDiff(pinpointSegmentType, data, meta)
 }
-

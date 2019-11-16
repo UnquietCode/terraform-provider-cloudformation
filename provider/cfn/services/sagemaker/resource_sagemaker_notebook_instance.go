@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,25 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const sageMakerNotebookInstanceType string = "AWS::SageMaker::NotebookInstance"
+
+var sageMakerNotebookInstanceProperties map[string]string = map[string]string{
+	"kms_key_id": "KmsKeyId",
+	"volume_size_in_gb": "VolumeSizeInGB",
+	"additional_code_repositories": "AdditionalCodeRepositories",
+	"default_code_repository": "DefaultCodeRepository",
+	"direct_internet_access": "DirectInternetAccess",
+	"accelerator_types": "AcceleratorTypes",
+	"subnet_id": "SubnetId",
+	"security_group_ids": "SecurityGroupIds",
+	"role_arn": "RoleArn",
+	"root_access": "RootAccess",
+	"notebook_instance_name": "NotebookInstanceName",
+	"instance_type": "InstanceType",
+	"lifecycle_config_name": "LifecycleConfigName",
+	"tags": "Tags",
+}
 
 func ResourceSageMakerNotebookInstance() *schema.Resource {
 	return &schema.Resource{
@@ -99,22 +118,21 @@ func resourceSageMakerNotebookInstanceExists(data *schema.ResourceData, meta int
 }
 
 func resourceSageMakerNotebookInstanceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SageMaker::NotebookInstance", ResourceSageMakerNotebookInstance(), data, meta)
+	return plugin.ResourceRead(sageMakerNotebookInstanceType, ResourceSageMakerNotebookInstance(), data, meta)
 }
 
 func resourceSageMakerNotebookInstanceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SageMaker::NotebookInstance", ResourceSageMakerNotebookInstance(), data, meta)
+	return plugin.ResourceCreate(sageMakerNotebookInstanceType, ResourceSageMakerNotebookInstance(), data, sageMakerNotebookInstanceProperties, meta)
 }
 
 func resourceSageMakerNotebookInstanceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SageMaker::NotebookInstance", ResourceSageMakerNotebookInstance(), data, meta)
+	return plugin.ResourceUpdate(sageMakerNotebookInstanceType, ResourceSageMakerNotebookInstance(), data, sageMakerNotebookInstanceProperties, meta)
 }
 
 func resourceSageMakerNotebookInstanceDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::SageMaker::NotebookInstance", data, meta)
+	return plugin.ResourceDelete(sageMakerNotebookInstanceType, data, meta)
 }
 
 func resourceSageMakerNotebookInstanceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::SageMaker::NotebookInstance", data, meta)
+	return plugin.ResourceCustomizeDiff(sageMakerNotebookInstanceType, data, meta)
 }
-

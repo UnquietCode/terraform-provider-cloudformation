@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,24 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var recordSetGroupRecordSetProperties map[string]string = map[string]string{
+	"alias_target": "AliasTarget",
+	"comment": "Comment",
+	"failover": "Failover",
+	"geo_location": "GeoLocation",
+	"health_check_id": "HealthCheckId",
+	"hosted_zone_id": "HostedZoneId",
+	"hosted_zone_name": "HostedZoneName",
+	"multi_value_answer": "MultiValueAnswer",
+	"name": "Name",
+	"region": "Region",
+	"resource_records": "ResourceRecords",
+	"set_identifier": "SetIdentifier",
+	"ttl": "TTL",
+	"type": "Type",
+	"weight": "Weight",
+}
 
 func propertyRecordSetGroupRecordSet(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -97,4 +115,3 @@ func propertyRecordSetGroupRecordSet(extras...string) *schema.Resource {
 		},
 	}
 }
-

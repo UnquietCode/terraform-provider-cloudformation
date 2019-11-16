@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,23 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const glueCrawlerType string = "AWS::Glue::Crawler"
+
+var glueCrawlerProperties map[string]string = map[string]string{
+	"role": "Role",
+	"classifiers": "Classifiers",
+	"description": "Description",
+	"schema_change_policy": "SchemaChangePolicy",
+	"configuration": "Configuration",
+	"schedule": "Schedule",
+	"database_name": "DatabaseName",
+	"targets": "Targets",
+	"crawler_security_configuration": "CrawlerSecurityConfiguration",
+	"table_prefix": "TablePrefix",
+	"tags": "Tags",
+	"name": "Name",
+}
 
 func ResourceGlueCrawler() *schema.Resource {
 	return &schema.Resource{
@@ -93,22 +110,21 @@ func resourceGlueCrawlerExists(data *schema.ResourceData, meta interface{}) (boo
 }
 
 func resourceGlueCrawlerRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Glue::Crawler", ResourceGlueCrawler(), data, meta)
+	return plugin.ResourceRead(glueCrawlerType, ResourceGlueCrawler(), data, meta)
 }
 
 func resourceGlueCrawlerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Glue::Crawler", ResourceGlueCrawler(), data, meta)
+	return plugin.ResourceCreate(glueCrawlerType, ResourceGlueCrawler(), data, glueCrawlerProperties, meta)
 }
 
 func resourceGlueCrawlerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Glue::Crawler", ResourceGlueCrawler(), data, meta)
+	return plugin.ResourceUpdate(glueCrawlerType, ResourceGlueCrawler(), data, glueCrawlerProperties, meta)
 }
 
 func resourceGlueCrawlerDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Glue::Crawler", data, meta)
+	return plugin.ResourceDelete(glueCrawlerType, data, meta)
 }
 
 func resourceGlueCrawlerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Glue::Crawler", data, meta)
+	return plugin.ResourceCustomizeDiff(glueCrawlerType, data, meta)
 }
-

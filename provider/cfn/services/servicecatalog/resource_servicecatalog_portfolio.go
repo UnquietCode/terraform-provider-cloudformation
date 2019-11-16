@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,16 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const serviceCatalogPortfolioType string = "AWS::ServiceCatalog::Portfolio"
+
+var serviceCatalogPortfolioProperties map[string]string = map[string]string{
+	"provider_name": "ProviderName",
+	"description": "Description",
+	"display_name": "DisplayName",
+	"accept_language": "AcceptLanguage",
+	"tags": "Tags",
+}
 
 func ResourceServiceCatalogPortfolio() *schema.Resource {
 	return &schema.Resource{
@@ -60,22 +70,21 @@ func resourceServiceCatalogPortfolioExists(data *schema.ResourceData, meta inter
 }
 
 func resourceServiceCatalogPortfolioRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ServiceCatalog::Portfolio", ResourceServiceCatalogPortfolio(), data, meta)
+	return plugin.ResourceRead(serviceCatalogPortfolioType, ResourceServiceCatalogPortfolio(), data, meta)
 }
 
 func resourceServiceCatalogPortfolioCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::Portfolio", ResourceServiceCatalogPortfolio(), data, meta)
+	return plugin.ResourceCreate(serviceCatalogPortfolioType, ResourceServiceCatalogPortfolio(), data, serviceCatalogPortfolioProperties, meta)
 }
 
 func resourceServiceCatalogPortfolioUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ServiceCatalog::Portfolio", ResourceServiceCatalogPortfolio(), data, meta)
+	return plugin.ResourceUpdate(serviceCatalogPortfolioType, ResourceServiceCatalogPortfolio(), data, serviceCatalogPortfolioProperties, meta)
 }
 
 func resourceServiceCatalogPortfolioDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ServiceCatalog::Portfolio", data, meta)
+	return plugin.ResourceDelete(serviceCatalogPortfolioType, data, meta)
 }
 
 func resourceServiceCatalogPortfolioCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ServiceCatalog::Portfolio", data, meta)
+	return plugin.ResourceCustomizeDiff(serviceCatalogPortfolioType, data, meta)
 }
-

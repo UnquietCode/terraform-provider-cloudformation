@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,15 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const ioTEventsInputType string = "AWS::IoTEvents::Input"
+
+var ioTEventsInputProperties map[string]string = map[string]string{
+	"input_definition": "InputDefinition",
+	"input_name": "InputName",
+	"input_description": "InputDescription",
+	"tags": "Tags",
+}
 
 func ResourceIoTEventsInput() *schema.Resource {
 	return &schema.Resource{
@@ -58,22 +67,21 @@ func resourceIoTEventsInputExists(data *schema.ResourceData, meta interface{}) (
 }
 
 func resourceIoTEventsInputRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoTEvents::Input", ResourceIoTEventsInput(), data, meta)
+	return plugin.ResourceRead(ioTEventsInputType, ResourceIoTEventsInput(), data, meta)
 }
 
 func resourceIoTEventsInputCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoTEvents::Input", ResourceIoTEventsInput(), data, meta)
+	return plugin.ResourceCreate(ioTEventsInputType, ResourceIoTEventsInput(), data, ioTEventsInputProperties, meta)
 }
 
 func resourceIoTEventsInputUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoTEvents::Input", ResourceIoTEventsInput(), data, meta)
+	return plugin.ResourceUpdate(ioTEventsInputType, ResourceIoTEventsInput(), data, ioTEventsInputProperties, meta)
 }
 
 func resourceIoTEventsInputDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::IoTEvents::Input", data, meta)
+	return plugin.ResourceDelete(ioTEventsInputType, data, meta)
 }
 
 func resourceIoTEventsInputCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::IoTEvents::Input", data, meta)
+	return plugin.ResourceCustomizeDiff(ioTEventsInputType, data, meta)
 }
-

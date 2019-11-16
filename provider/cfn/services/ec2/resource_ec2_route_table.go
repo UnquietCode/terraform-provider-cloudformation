@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,13 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eC2RouteTableType string = "AWS::EC2::RouteTable"
+
+var eC2RouteTableProperties map[string]string = map[string]string{
+	"tags": "Tags",
+	"vpc_id": "VpcId",
+}
 
 func ResourceEC2RouteTable() *schema.Resource {
 	return &schema.Resource{
@@ -48,22 +55,21 @@ func resourceEC2RouteTableExists(data *schema.ResourceData, meta interface{}) (b
 }
 
 func resourceEC2RouteTableRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::RouteTable", ResourceEC2RouteTable(), data, meta)
+	return plugin.ResourceRead(eC2RouteTableType, ResourceEC2RouteTable(), data, meta)
 }
 
 func resourceEC2RouteTableCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::RouteTable", ResourceEC2RouteTable(), data, meta)
+	return plugin.ResourceCreate(eC2RouteTableType, ResourceEC2RouteTable(), data, eC2RouteTableProperties, meta)
 }
 
 func resourceEC2RouteTableUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::RouteTable", ResourceEC2RouteTable(), data, meta)
+	return plugin.ResourceUpdate(eC2RouteTableType, ResourceEC2RouteTable(), data, eC2RouteTableProperties, meta)
 }
 
 func resourceEC2RouteTableDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EC2::RouteTable", data, meta)
+	return plugin.ResourceDelete(eC2RouteTableType, data, meta)
 }
 
 func resourceEC2RouteTableCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EC2::RouteTable", data, meta)
+	return plugin.ResourceCustomizeDiff(eC2RouteTableType, data, meta)
 }
-

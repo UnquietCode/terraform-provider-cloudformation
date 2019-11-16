@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,15 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const sageMakerEndpointConfigType string = "AWS::SageMaker::EndpointConfig"
+
+var sageMakerEndpointConfigProperties map[string]string = map[string]string{
+	"production_variants": "ProductionVariants",
+	"kms_key_id": "KmsKeyId",
+	"endpoint_config_name": "EndpointConfigName",
+	"tags": "Tags",
+}
 
 func ResourceSageMakerEndpointConfig() *schema.Resource {
 	return &schema.Resource{
@@ -57,22 +66,21 @@ func resourceSageMakerEndpointConfigExists(data *schema.ResourceData, meta inter
 }
 
 func resourceSageMakerEndpointConfigRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SageMaker::EndpointConfig", ResourceSageMakerEndpointConfig(), data, meta)
+	return plugin.ResourceRead(sageMakerEndpointConfigType, ResourceSageMakerEndpointConfig(), data, meta)
 }
 
 func resourceSageMakerEndpointConfigCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SageMaker::EndpointConfig", ResourceSageMakerEndpointConfig(), data, meta)
+	return plugin.ResourceCreate(sageMakerEndpointConfigType, ResourceSageMakerEndpointConfig(), data, sageMakerEndpointConfigProperties, meta)
 }
 
 func resourceSageMakerEndpointConfigUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SageMaker::EndpointConfig", ResourceSageMakerEndpointConfig(), data, meta)
+	return plugin.ResourceUpdate(sageMakerEndpointConfigType, ResourceSageMakerEndpointConfig(), data, sageMakerEndpointConfigProperties, meta)
 }
 
 func resourceSageMakerEndpointConfigDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::SageMaker::EndpointConfig", data, meta)
+	return plugin.ResourceDelete(sageMakerEndpointConfigType, data, meta)
 }
 
 func resourceSageMakerEndpointConfigCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::SageMaker::EndpointConfig", data, meta)
+	return plugin.ResourceCustomizeDiff(sageMakerEndpointConfigType, data, meta)
 }
-

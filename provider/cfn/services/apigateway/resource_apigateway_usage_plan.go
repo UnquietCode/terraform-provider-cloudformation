@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,16 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const apiGatewayUsagePlanType string = "AWS::ApiGateway::UsagePlan"
+
+var apiGatewayUsagePlanProperties map[string]string = map[string]string{
+	"api_stages": "ApiStages",
+	"description": "Description",
+	"quota": "Quota",
+	"throttle": "Throttle",
+	"usage_plan_name": "UsagePlanName",
+}
 
 func ResourceApiGatewayUsagePlan() *schema.Resource {
 	return &schema.Resource{
@@ -63,22 +73,21 @@ func resourceApiGatewayUsagePlanExists(data *schema.ResourceData, meta interface
 }
 
 func resourceApiGatewayUsagePlanRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ApiGateway::UsagePlan", ResourceApiGatewayUsagePlan(), data, meta)
+	return plugin.ResourceRead(apiGatewayUsagePlanType, ResourceApiGatewayUsagePlan(), data, meta)
 }
 
 func resourceApiGatewayUsagePlanCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ApiGateway::UsagePlan", ResourceApiGatewayUsagePlan(), data, meta)
+	return plugin.ResourceCreate(apiGatewayUsagePlanType, ResourceApiGatewayUsagePlan(), data, apiGatewayUsagePlanProperties, meta)
 }
 
 func resourceApiGatewayUsagePlanUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ApiGateway::UsagePlan", ResourceApiGatewayUsagePlan(), data, meta)
+	return plugin.ResourceUpdate(apiGatewayUsagePlanType, ResourceApiGatewayUsagePlan(), data, apiGatewayUsagePlanProperties, meta)
 }
 
 func resourceApiGatewayUsagePlanDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ApiGateway::UsagePlan", data, meta)
+	return plugin.ResourceDelete(apiGatewayUsagePlanType, data, meta)
 }
 
 func resourceApiGatewayUsagePlanCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ApiGateway::UsagePlan", data, meta)
+	return plugin.ResourceCustomizeDiff(apiGatewayUsagePlanType, data, meta)
 }
-

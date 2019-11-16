@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,16 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var cloudFormationProvisionedProductProvisioningPreferencesProperties map[string]string = map[string]string{
+	"stack_set_accounts": "StackSetAccounts",
+	"stack_set_failure_tolerance_count": "StackSetFailureToleranceCount",
+	"stack_set_max_concurrency_percentage": "StackSetMaxConcurrencyPercentage",
+	"stack_set_max_concurrency_count": "StackSetMaxConcurrencyCount",
+	"stack_set_regions": "StackSetRegions",
+	"stack_set_operation_type": "StackSetOperationType",
+	"stack_set_failure_tolerance_percentage": "StackSetFailureTolerancePercentage",
+}
 
 func propertyCloudFormationProvisionedProductProvisioningPreferences(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -61,4 +71,3 @@ func propertyCloudFormationProvisionedProductProvisioningPreferences(extras...st
 		},
 	}
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,15 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const rDSDBParameterGroupType string = "AWS::RDS::DBParameterGroup"
+
+var rDSDBParameterGroupProperties map[string]string = map[string]string{
+	"description": "Description",
+	"family": "Family",
+	"parameters": "Parameters",
+	"tags": "Tags",
+}
 
 func ResourceRDSDBParameterGroup() *schema.Resource {
 	return &schema.Resource{
@@ -57,22 +66,21 @@ func resourceRDSDBParameterGroupExists(data *schema.ResourceData, meta interface
 }
 
 func resourceRDSDBParameterGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::RDS::DBParameterGroup", ResourceRDSDBParameterGroup(), data, meta)
+	return plugin.ResourceRead(rDSDBParameterGroupType, ResourceRDSDBParameterGroup(), data, meta)
 }
 
 func resourceRDSDBParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RDS::DBParameterGroup", ResourceRDSDBParameterGroup(), data, meta)
+	return plugin.ResourceCreate(rDSDBParameterGroupType, ResourceRDSDBParameterGroup(), data, rDSDBParameterGroupProperties, meta)
 }
 
 func resourceRDSDBParameterGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::RDS::DBParameterGroup", ResourceRDSDBParameterGroup(), data, meta)
+	return plugin.ResourceUpdate(rDSDBParameterGroupType, ResourceRDSDBParameterGroup(), data, rDSDBParameterGroupProperties, meta)
 }
 
 func resourceRDSDBParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::RDS::DBParameterGroup", data, meta)
+	return plugin.ResourceDelete(rDSDBParameterGroupType, data, meta)
 }
 
 func resourceRDSDBParameterGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::RDS::DBParameterGroup", data, meta)
+	return plugin.ResourceCustomizeDiff(rDSDBParameterGroupType, data, meta)
 }
-

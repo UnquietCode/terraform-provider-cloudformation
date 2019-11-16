@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const stepFunctionsActivityType string = "AWS::StepFunctions::Activity"
+
+var stepFunctionsActivityProperties map[string]string = map[string]string{
+	"tags": "Tags",
+	"name": "Name",
+}
 
 func ResourceStepFunctionsActivity() *schema.Resource {
 	return &schema.Resource{
@@ -47,22 +54,21 @@ func resourceStepFunctionsActivityExists(data *schema.ResourceData, meta interfa
 }
 
 func resourceStepFunctionsActivityRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::StepFunctions::Activity", ResourceStepFunctionsActivity(), data, meta)
+	return plugin.ResourceRead(stepFunctionsActivityType, ResourceStepFunctionsActivity(), data, meta)
 }
 
 func resourceStepFunctionsActivityCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::StepFunctions::Activity", ResourceStepFunctionsActivity(), data, meta)
+	return plugin.ResourceCreate(stepFunctionsActivityType, ResourceStepFunctionsActivity(), data, stepFunctionsActivityProperties, meta)
 }
 
 func resourceStepFunctionsActivityUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::StepFunctions::Activity", ResourceStepFunctionsActivity(), data, meta)
+	return plugin.ResourceUpdate(stepFunctionsActivityType, ResourceStepFunctionsActivity(), data, stepFunctionsActivityProperties, meta)
 }
 
 func resourceStepFunctionsActivityDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::StepFunctions::Activity", data, meta)
+	return plugin.ResourceDelete(stepFunctionsActivityType, data, meta)
 }
 
 func resourceStepFunctionsActivityCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::StepFunctions::Activity", data, meta)
+	return plugin.ResourceCustomizeDiff(stepFunctionsActivityType, data, meta)
 }
-

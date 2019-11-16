@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const wAFRuleType string = "AWS::WAF::Rule"
+
+var wAFRuleProperties map[string]string = map[string]string{
+	"metric_name": "MetricName",
+	"name": "Name",
+	"predicates": "Predicates",
+}
 
 func ResourceWAFRule() *schema.Resource {
 	return &schema.Resource{
@@ -51,22 +59,21 @@ func resourceWAFRuleExists(data *schema.ResourceData, meta interface{}) (bool, e
 }
 
 func resourceWAFRuleRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::WAF::Rule", ResourceWAFRule(), data, meta)
+	return plugin.ResourceRead(wAFRuleType, ResourceWAFRule(), data, meta)
 }
 
 func resourceWAFRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::WAF::Rule", ResourceWAFRule(), data, meta)
+	return plugin.ResourceCreate(wAFRuleType, ResourceWAFRule(), data, wAFRuleProperties, meta)
 }
 
 func resourceWAFRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::WAF::Rule", ResourceWAFRule(), data, meta)
+	return plugin.ResourceUpdate(wAFRuleType, ResourceWAFRule(), data, wAFRuleProperties, meta)
 }
 
 func resourceWAFRuleDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::WAF::Rule", data, meta)
+	return plugin.ResourceDelete(wAFRuleType, data, meta)
 }
 
 func resourceWAFRuleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::WAF::Rule", data, meta)
+	return plugin.ResourceCustomizeDiff(wAFRuleType, data, meta)
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,15 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eC2TrafficMirrorTargetType string = "AWS::EC2::TrafficMirrorTarget"
+
+var eC2TrafficMirrorTargetProperties map[string]string = map[string]string{
+	"network_load_balancer_arn": "NetworkLoadBalancerArn",
+	"description": "Description",
+	"network_interface_id": "NetworkInterfaceId",
+	"tags": "Tags",
+}
 
 func ResourceEC2TrafficMirrorTarget() *schema.Resource {
 	return &schema.Resource{
@@ -56,22 +65,21 @@ func resourceEC2TrafficMirrorTargetExists(data *schema.ResourceData, meta interf
 }
 
 func resourceEC2TrafficMirrorTargetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::TrafficMirrorTarget", ResourceEC2TrafficMirrorTarget(), data, meta)
+	return plugin.ResourceRead(eC2TrafficMirrorTargetType, ResourceEC2TrafficMirrorTarget(), data, meta)
 }
 
 func resourceEC2TrafficMirrorTargetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::TrafficMirrorTarget", ResourceEC2TrafficMirrorTarget(), data, meta)
+	return plugin.ResourceCreate(eC2TrafficMirrorTargetType, ResourceEC2TrafficMirrorTarget(), data, eC2TrafficMirrorTargetProperties, meta)
 }
 
 func resourceEC2TrafficMirrorTargetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::TrafficMirrorTarget", ResourceEC2TrafficMirrorTarget(), data, meta)
+	return plugin.ResourceUpdate(eC2TrafficMirrorTargetType, ResourceEC2TrafficMirrorTarget(), data, eC2TrafficMirrorTargetProperties, meta)
 }
 
 func resourceEC2TrafficMirrorTargetDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EC2::TrafficMirrorTarget", data, meta)
+	return plugin.ResourceDelete(eC2TrafficMirrorTargetType, data, meta)
 }
 
 func resourceEC2TrafficMirrorTargetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EC2::TrafficMirrorTarget", data, meta)
+	return plugin.ResourceCustomizeDiff(eC2TrafficMirrorTargetType, data, meta)
 }
-

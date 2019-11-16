@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const codeDeployDeploymentConfigType string = "AWS::CodeDeploy::DeploymentConfig"
+
+var codeDeployDeploymentConfigProperties map[string]string = map[string]string{
+	"deployment_config_name": "DeploymentConfigName",
+	"minimum_healthy_hosts": "MinimumHealthyHosts",
+}
 
 func ResourceCodeDeployDeploymentConfig() *schema.Resource {
 	return &schema.Resource{
@@ -48,22 +55,21 @@ func resourceCodeDeployDeploymentConfigExists(data *schema.ResourceData, meta in
 }
 
 func resourceCodeDeployDeploymentConfigRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CodeDeploy::DeploymentConfig", ResourceCodeDeployDeploymentConfig(), data, meta)
+	return plugin.ResourceRead(codeDeployDeploymentConfigType, ResourceCodeDeployDeploymentConfig(), data, meta)
 }
 
 func resourceCodeDeployDeploymentConfigCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CodeDeploy::DeploymentConfig", ResourceCodeDeployDeploymentConfig(), data, meta)
+	return plugin.ResourceCreate(codeDeployDeploymentConfigType, ResourceCodeDeployDeploymentConfig(), data, codeDeployDeploymentConfigProperties, meta)
 }
 
 func resourceCodeDeployDeploymentConfigUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CodeDeploy::DeploymentConfig", ResourceCodeDeployDeploymentConfig(), data, meta)
+	return plugin.ResourceUpdate(codeDeployDeploymentConfigType, ResourceCodeDeployDeploymentConfig(), data, codeDeployDeploymentConfigProperties, meta)
 }
 
 func resourceCodeDeployDeploymentConfigDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::CodeDeploy::DeploymentConfig", data, meta)
+	return plugin.ResourceDelete(codeDeployDeploymentConfigType, data, meta)
 }
 
 func resourceCodeDeployDeploymentConfigCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::CodeDeploy::DeploymentConfig", data, meta)
+	return plugin.ResourceCustomizeDiff(codeDeployDeploymentConfigType, data, meta)
 }
-

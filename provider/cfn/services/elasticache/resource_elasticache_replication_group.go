@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,41 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const elastiCacheReplicationGroupType string = "AWS::ElastiCache::ReplicationGroup"
+
+var elastiCacheReplicationGroupProperties map[string]string = map[string]string{
+	"at_rest_encryption_enabled": "AtRestEncryptionEnabled",
+	"auth_token": "AuthToken",
+	"auto_minor_version_upgrade": "AutoMinorVersionUpgrade",
+	"automatic_failover_enabled": "AutomaticFailoverEnabled",
+	"cache_node_type": "CacheNodeType",
+	"cache_parameter_group_name": "CacheParameterGroupName",
+	"cache_security_group_names": "CacheSecurityGroupNames",
+	"cache_subnet_group_name": "CacheSubnetGroupName",
+	"engine": "Engine",
+	"engine_version": "EngineVersion",
+	"kms_key_id": "KmsKeyId",
+	"node_group_configuration": "NodeGroupConfiguration",
+	"notification_topic_arn": "NotificationTopicArn",
+	"num_cache_clusters": "NumCacheClusters",
+	"num_node_groups": "NumNodeGroups",
+	"port": "Port",
+	"preferred_cache_cluster_a_zs": "PreferredCacheClusterAZs",
+	"preferred_maintenance_window": "PreferredMaintenanceWindow",
+	"primary_cluster_id": "PrimaryClusterId",
+	"replicas_per_node_group": "ReplicasPerNodeGroup",
+	"replication_group_description": "ReplicationGroupDescription",
+	"replication_group_id": "ReplicationGroupId",
+	"security_group_ids": "SecurityGroupIds",
+	"snapshot_arns": "SnapshotArns",
+	"snapshot_name": "SnapshotName",
+	"snapshot_retention_limit": "SnapshotRetentionLimit",
+	"snapshot_window": "SnapshotWindow",
+	"snapshotting_cluster_id": "SnapshottingClusterId",
+	"tags": "Tags",
+	"transit_encryption_enabled": "TransitEncryptionEnabled",
+}
 
 func ResourceElastiCacheReplicationGroup() *schema.Resource {
 	return &schema.Resource{
@@ -169,22 +204,21 @@ func resourceElastiCacheReplicationGroupExists(data *schema.ResourceData, meta i
 }
 
 func resourceElastiCacheReplicationGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ElastiCache::ReplicationGroup", ResourceElastiCacheReplicationGroup(), data, meta)
+	return plugin.ResourceRead(elastiCacheReplicationGroupType, ResourceElastiCacheReplicationGroup(), data, meta)
 }
 
 func resourceElastiCacheReplicationGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElastiCache::ReplicationGroup", ResourceElastiCacheReplicationGroup(), data, meta)
+	return plugin.ResourceCreate(elastiCacheReplicationGroupType, ResourceElastiCacheReplicationGroup(), data, elastiCacheReplicationGroupProperties, meta)
 }
 
 func resourceElastiCacheReplicationGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ElastiCache::ReplicationGroup", ResourceElastiCacheReplicationGroup(), data, meta)
+	return plugin.ResourceUpdate(elastiCacheReplicationGroupType, ResourceElastiCacheReplicationGroup(), data, elastiCacheReplicationGroupProperties, meta)
 }
 
 func resourceElastiCacheReplicationGroupDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ElastiCache::ReplicationGroup", data, meta)
+	return plugin.ResourceDelete(elastiCacheReplicationGroupType, data, meta)
 }
 
 func resourceElastiCacheReplicationGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ElastiCache::ReplicationGroup", data, meta)
+	return plugin.ResourceCustomizeDiff(elastiCacheReplicationGroupType, data, meta)
 }
-

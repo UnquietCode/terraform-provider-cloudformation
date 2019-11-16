@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,32 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const elastiCacheCacheClusterType string = "AWS::ElastiCache::CacheCluster"
+
+var elastiCacheCacheClusterProperties map[string]string = map[string]string{
+	"az_mode": "AZMode",
+	"auto_minor_version_upgrade": "AutoMinorVersionUpgrade",
+	"cache_node_type": "CacheNodeType",
+	"cache_parameter_group_name": "CacheParameterGroupName",
+	"cache_security_group_names": "CacheSecurityGroupNames",
+	"cache_subnet_group_name": "CacheSubnetGroupName",
+	"cluster_name": "ClusterName",
+	"engine": "Engine",
+	"engine_version": "EngineVersion",
+	"notification_topic_arn": "NotificationTopicArn",
+	"num_cache_nodes": "NumCacheNodes",
+	"port": "Port",
+	"preferred_availability_zone": "PreferredAvailabilityZone",
+	"preferred_availability_zones": "PreferredAvailabilityZones",
+	"preferred_maintenance_window": "PreferredMaintenanceWindow",
+	"snapshot_arns": "SnapshotArns",
+	"snapshot_name": "SnapshotName",
+	"snapshot_retention_limit": "SnapshotRetentionLimit",
+	"snapshot_window": "SnapshotWindow",
+	"tags": "Tags",
+	"vpc_security_group_ids": "VpcSecurityGroupIds",
+}
 
 func ResourceElastiCacheCacheCluster() *schema.Resource {
 	return &schema.Resource{
@@ -130,22 +156,21 @@ func resourceElastiCacheCacheClusterExists(data *schema.ResourceData, meta inter
 }
 
 func resourceElastiCacheCacheClusterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ElastiCache::CacheCluster", ResourceElastiCacheCacheCluster(), data, meta)
+	return plugin.ResourceRead(elastiCacheCacheClusterType, ResourceElastiCacheCacheCluster(), data, meta)
 }
 
 func resourceElastiCacheCacheClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElastiCache::CacheCluster", ResourceElastiCacheCacheCluster(), data, meta)
+	return plugin.ResourceCreate(elastiCacheCacheClusterType, ResourceElastiCacheCacheCluster(), data, elastiCacheCacheClusterProperties, meta)
 }
 
 func resourceElastiCacheCacheClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ElastiCache::CacheCluster", ResourceElastiCacheCacheCluster(), data, meta)
+	return plugin.ResourceUpdate(elastiCacheCacheClusterType, ResourceElastiCacheCacheCluster(), data, elastiCacheCacheClusterProperties, meta)
 }
 
 func resourceElastiCacheCacheClusterDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ElastiCache::CacheCluster", data, meta)
+	return plugin.ResourceDelete(elastiCacheCacheClusterType, data, meta)
 }
 
 func resourceElastiCacheCacheClusterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ElastiCache::CacheCluster", data, meta)
+	return plugin.ResourceCustomizeDiff(elastiCacheCacheClusterType, data, meta)
 }
-

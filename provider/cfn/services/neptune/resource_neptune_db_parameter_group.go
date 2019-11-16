@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,16 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const neptuneDBParameterGroupType string = "AWS::Neptune::DBParameterGroup"
+
+var neptuneDBParameterGroupProperties map[string]string = map[string]string{
+	"description": "Description",
+	"parameters": "Parameters",
+	"family": "Family",
+	"tags": "Tags",
+	"name": "Name",
+}
 
 func ResourceNeptuneDBParameterGroup() *schema.Resource {
 	return &schema.Resource{
@@ -60,22 +70,21 @@ func resourceNeptuneDBParameterGroupExists(data *schema.ResourceData, meta inter
 }
 
 func resourceNeptuneDBParameterGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Neptune::DBParameterGroup", ResourceNeptuneDBParameterGroup(), data, meta)
+	return plugin.ResourceRead(neptuneDBParameterGroupType, ResourceNeptuneDBParameterGroup(), data, meta)
 }
 
 func resourceNeptuneDBParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Neptune::DBParameterGroup", ResourceNeptuneDBParameterGroup(), data, meta)
+	return plugin.ResourceCreate(neptuneDBParameterGroupType, ResourceNeptuneDBParameterGroup(), data, neptuneDBParameterGroupProperties, meta)
 }
 
 func resourceNeptuneDBParameterGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Neptune::DBParameterGroup", ResourceNeptuneDBParameterGroup(), data, meta)
+	return plugin.ResourceUpdate(neptuneDBParameterGroupType, ResourceNeptuneDBParameterGroup(), data, neptuneDBParameterGroupProperties, meta)
 }
 
 func resourceNeptuneDBParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Neptune::DBParameterGroup", data, meta)
+	return plugin.ResourceDelete(neptuneDBParameterGroupType, data, meta)
 }
 
 func resourceNeptuneDBParameterGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Neptune::DBParameterGroup", data, meta)
+	return plugin.ResourceCustomizeDiff(neptuneDBParameterGroupType, data, meta)
 }
-

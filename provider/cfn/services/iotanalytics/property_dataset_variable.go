@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var datasetVariableProperties map[string]string = map[string]string{
+	"dataset_content_version_value": "DatasetContentVersionValue",
+	"double_value": "DoubleValue",
+	"output_file_uri_value": "OutputFileUriValue",
+	"variable_name": "VariableName",
+	"string_value": "StringValue",
+}
 
 func propertyDatasetVariable(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -55,4 +63,3 @@ func propertyDatasetVariable(extras...string) *schema.Resource {
 		},
 	}
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,25 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var clusterJobFlowInstancesConfigProperties map[string]string = map[string]string{
+	"additional_master_security_groups": "AdditionalMasterSecurityGroups",
+	"additional_slave_security_groups": "AdditionalSlaveSecurityGroups",
+	"core_instance_fleet": "CoreInstanceFleet",
+	"core_instance_group": "CoreInstanceGroup",
+	"ec2_key_name": "Ec2KeyName",
+	"ec2_subnet_id": "Ec2SubnetId",
+	"ec2_subnet_ids": "Ec2SubnetIds",
+	"emr_managed_master_security_group": "EmrManagedMasterSecurityGroup",
+	"emr_managed_slave_security_group": "EmrManagedSlaveSecurityGroup",
+	"hadoop_version": "HadoopVersion",
+	"keep_job_flow_alive_when_no_steps": "KeepJobFlowAliveWhenNoSteps",
+	"master_instance_fleet": "MasterInstanceFleet",
+	"master_instance_group": "MasterInstanceGroup",
+	"placement": "Placement",
+	"service_access_security_group": "ServiceAccessSecurityGroup",
+	"termination_protected": "TerminationProtected",
+}
 
 func propertyClusterJobFlowInstancesConfig(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -111,4 +130,3 @@ func propertyClusterJobFlowInstancesConfig(extras...string) *schema.Resource {
 		},
 	}
 }
-

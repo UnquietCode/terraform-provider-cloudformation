@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,17 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const configConfigRuleType string = "AWS::Config::ConfigRule"
+
+var configConfigRuleProperties map[string]string = map[string]string{
+	"config_rule_name": "ConfigRuleName",
+	"description": "Description",
+	"input_parameters": "InputParameters",
+	"maximum_execution_frequency": "MaximumExecutionFrequency",
+	"scope": "Scope",
+	"source": "Source",
+}
 
 func ResourceConfigConfigRule() *schema.Resource {
 	return &schema.Resource{
@@ -66,22 +77,21 @@ func resourceConfigConfigRuleExists(data *schema.ResourceData, meta interface{})
 }
 
 func resourceConfigConfigRuleRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Config::ConfigRule", ResourceConfigConfigRule(), data, meta)
+	return plugin.ResourceRead(configConfigRuleType, ResourceConfigConfigRule(), data, meta)
 }
 
 func resourceConfigConfigRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Config::ConfigRule", ResourceConfigConfigRule(), data, meta)
+	return plugin.ResourceCreate(configConfigRuleType, ResourceConfigConfigRule(), data, configConfigRuleProperties, meta)
 }
 
 func resourceConfigConfigRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Config::ConfigRule", ResourceConfigConfigRule(), data, meta)
+	return plugin.ResourceUpdate(configConfigRuleType, ResourceConfigConfigRule(), data, configConfigRuleProperties, meta)
 }
 
 func resourceConfigConfigRuleDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Config::ConfigRule", data, meta)
+	return plugin.ResourceDelete(configConfigRuleType, data, meta)
 }
 
 func resourceConfigConfigRuleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Config::ConfigRule", data, meta)
+	return plugin.ResourceCustomizeDiff(configConfigRuleType, data, meta)
 }
-

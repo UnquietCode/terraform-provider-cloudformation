@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,16 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var bucketInventoryConfigurationProperties map[string]string = map[string]string{
+	"destination": "Destination",
+	"enabled": "Enabled",
+	"id": "Id",
+	"included_object_versions": "IncludedObjectVersions",
+	"optional_fields": "OptionalFields",
+	"prefix": "Prefix",
+	"schedule_frequency": "ScheduleFrequency",
+}
 
 func propertyBucketInventoryConfiguration(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -63,4 +73,3 @@ func propertyBucketInventoryConfiguration(extras...string) *schema.Resource {
 		},
 	}
 }
-

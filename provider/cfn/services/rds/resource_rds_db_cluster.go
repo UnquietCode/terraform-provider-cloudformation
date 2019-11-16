@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,41 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const rDSDBClusterType string = "AWS::RDS::DBCluster"
+
+var rDSDBClusterProperties map[string]string = map[string]string{
+	"associated_roles": "AssociatedRoles",
+	"availability_zones": "AvailabilityZones",
+	"backtrack_window": "BacktrackWindow",
+	"backup_retention_period": "BackupRetentionPeriod",
+	"db_cluster_identifier": "DBClusterIdentifier",
+	"db_cluster_parameter_group_name": "DBClusterParameterGroupName",
+	"db_subnet_group_name": "DBSubnetGroupName",
+	"database_name": "DatabaseName",
+	"deletion_protection": "DeletionProtection",
+	"enable_cloudwatch_logs_exports": "EnableCloudwatchLogsExports",
+	"enable_iam_database_authentication": "EnableIAMDatabaseAuthentication",
+	"engine": "Engine",
+	"engine_mode": "EngineMode",
+	"engine_version": "EngineVersion",
+	"kms_key_id": "KmsKeyId",
+	"master_user_password": "MasterUserPassword",
+	"master_username": "MasterUsername",
+	"port": "Port",
+	"preferred_backup_window": "PreferredBackupWindow",
+	"preferred_maintenance_window": "PreferredMaintenanceWindow",
+	"replication_source_identifier": "ReplicationSourceIdentifier",
+	"restore_type": "RestoreType",
+	"scaling_configuration": "ScalingConfiguration",
+	"snapshot_identifier": "SnapshotIdentifier",
+	"source_db_cluster_identifier": "SourceDBClusterIdentifier",
+	"source_region": "SourceRegion",
+	"storage_encrypted": "StorageEncrypted",
+	"tags": "Tags",
+	"use_latest_restorable_time": "UseLatestRestorableTime",
+	"vpc_security_group_ids": "VpcSecurityGroupIds",
+}
 
 func ResourceRDSDBCluster() *schema.Resource {
 	return &schema.Resource{
@@ -169,22 +204,21 @@ func resourceRDSDBClusterExists(data *schema.ResourceData, meta interface{}) (bo
 }
 
 func resourceRDSDBClusterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::RDS::DBCluster", ResourceRDSDBCluster(), data, meta)
+	return plugin.ResourceRead(rDSDBClusterType, ResourceRDSDBCluster(), data, meta)
 }
 
 func resourceRDSDBClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RDS::DBCluster", ResourceRDSDBCluster(), data, meta)
+	return plugin.ResourceCreate(rDSDBClusterType, ResourceRDSDBCluster(), data, rDSDBClusterProperties, meta)
 }
 
 func resourceRDSDBClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::RDS::DBCluster", ResourceRDSDBCluster(), data, meta)
+	return plugin.ResourceUpdate(rDSDBClusterType, ResourceRDSDBCluster(), data, rDSDBClusterProperties, meta)
 }
 
 func resourceRDSDBClusterDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::RDS::DBCluster", data, meta)
+	return plugin.ResourceDelete(rDSDBClusterType, data, meta)
 }
 
 func resourceRDSDBClusterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::RDS::DBCluster", data, meta)
+	return plugin.ResourceCustomizeDiff(rDSDBClusterType, data, meta)
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const sNSTopicPolicyType string = "AWS::SNS::TopicPolicy"
+
+var sNSTopicPolicyProperties map[string]string = map[string]string{
+	"policy_document": "PolicyDocument",
+	"topics": "Topics",
+}
 
 func ResourceSNSTopicPolicy() *schema.Resource {
 	return &schema.Resource{
@@ -47,22 +54,21 @@ func resourceSNSTopicPolicyExists(data *schema.ResourceData, meta interface{}) (
 }
 
 func resourceSNSTopicPolicyRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::SNS::TopicPolicy", ResourceSNSTopicPolicy(), data, meta)
+	return plugin.ResourceRead(sNSTopicPolicyType, ResourceSNSTopicPolicy(), data, meta)
 }
 
 func resourceSNSTopicPolicyCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::SNS::TopicPolicy", ResourceSNSTopicPolicy(), data, meta)
+	return plugin.ResourceCreate(sNSTopicPolicyType, ResourceSNSTopicPolicy(), data, sNSTopicPolicyProperties, meta)
 }
 
 func resourceSNSTopicPolicyUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::SNS::TopicPolicy", ResourceSNSTopicPolicy(), data, meta)
+	return plugin.ResourceUpdate(sNSTopicPolicyType, ResourceSNSTopicPolicy(), data, sNSTopicPolicyProperties, meta)
 }
 
 func resourceSNSTopicPolicyDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::SNS::TopicPolicy", data, meta)
+	return plugin.ResourceDelete(sNSTopicPolicyType, data, meta)
 }
 
 func resourceSNSTopicPolicyCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::SNS::TopicPolicy", data, meta)
+	return plugin.ResourceCustomizeDiff(sNSTopicPolicyType, data, meta)
 }
-

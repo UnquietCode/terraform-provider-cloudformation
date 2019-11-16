@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,22 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eC2CapacityReservationType string = "AWS::EC2::CapacityReservation"
+
+var eC2CapacityReservationProperties map[string]string = map[string]string{
+	"tenancy": "Tenancy",
+	"end_date_type": "EndDateType",
+	"instance_count": "InstanceCount",
+	"tag_specifications": "TagSpecifications",
+	"availability_zone": "AvailabilityZone",
+	"instance_platform": "InstancePlatform",
+	"instance_type": "InstanceType",
+	"ephemeral_storage": "EphemeralStorage",
+	"instance_match_criteria": "InstanceMatchCriteria",
+	"end_date": "EndDate",
+	"ebs_optimized": "EbsOptimized",
+}
 
 func ResourceEC2CapacityReservation() *schema.Resource {
 	return &schema.Resource{
@@ -83,22 +99,21 @@ func resourceEC2CapacityReservationExists(data *schema.ResourceData, meta interf
 }
 
 func resourceEC2CapacityReservationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::CapacityReservation", ResourceEC2CapacityReservation(), data, meta)
+	return plugin.ResourceRead(eC2CapacityReservationType, ResourceEC2CapacityReservation(), data, meta)
 }
 
 func resourceEC2CapacityReservationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::CapacityReservation", ResourceEC2CapacityReservation(), data, meta)
+	return plugin.ResourceCreate(eC2CapacityReservationType, ResourceEC2CapacityReservation(), data, eC2CapacityReservationProperties, meta)
 }
 
 func resourceEC2CapacityReservationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::CapacityReservation", ResourceEC2CapacityReservation(), data, meta)
+	return plugin.ResourceUpdate(eC2CapacityReservationType, ResourceEC2CapacityReservation(), data, eC2CapacityReservationProperties, meta)
 }
 
 func resourceEC2CapacityReservationDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EC2::CapacityReservation", data, meta)
+	return plugin.ResourceDelete(eC2CapacityReservationType, data, meta)
 }
 
 func resourceEC2CapacityReservationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EC2::CapacityReservation", data, meta)
+	return plugin.ResourceCustomizeDiff(eC2CapacityReservationType, data, meta)
 }
-

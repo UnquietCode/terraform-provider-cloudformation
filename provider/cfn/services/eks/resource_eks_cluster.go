@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,15 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eKSClusterType string = "AWS::EKS::Cluster"
+
+var eKSClusterProperties map[string]string = map[string]string{
+	"version": "Version",
+	"role_arn": "RoleArn",
+	"resources_vpc_config": "ResourcesVpcConfig",
+	"name": "Name",
+}
 
 func ResourceEKSCluster() *schema.Resource {
 	return &schema.Resource{
@@ -56,22 +65,21 @@ func resourceEKSClusterExists(data *schema.ResourceData, meta interface{}) (bool
 }
 
 func resourceEKSClusterRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EKS::Cluster", ResourceEKSCluster(), data, meta)
+	return plugin.ResourceRead(eKSClusterType, ResourceEKSCluster(), data, meta)
 }
 
 func resourceEKSClusterCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EKS::Cluster", ResourceEKSCluster(), data, meta)
+	return plugin.ResourceCreate(eKSClusterType, ResourceEKSCluster(), data, eKSClusterProperties, meta)
 }
 
 func resourceEKSClusterUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EKS::Cluster", ResourceEKSCluster(), data, meta)
+	return plugin.ResourceUpdate(eKSClusterType, ResourceEKSCluster(), data, eKSClusterProperties, meta)
 }
 
 func resourceEKSClusterDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EKS::Cluster", data, meta)
+	return plugin.ResourceDelete(eKSClusterType, data, meta)
 }
 
 func resourceEKSClusterCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EKS::Cluster", data, meta)
+	return plugin.ResourceCustomizeDiff(eKSClusterType, data, meta)
 }
-

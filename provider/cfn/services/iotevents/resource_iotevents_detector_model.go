@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,17 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const ioTEventsDetectorModelType string = "AWS::IoTEvents::DetectorModel"
+
+var ioTEventsDetectorModelProperties map[string]string = map[string]string{
+	"detector_model_definition": "DetectorModelDefinition",
+	"detector_model_name": "DetectorModelName",
+	"detector_model_description": "DetectorModelDescription",
+	"key": "Key",
+	"role_arn": "RoleArn",
+	"tags": "Tags",
+}
 
 func ResourceIoTEventsDetectorModel() *schema.Resource {
 	return &schema.Resource{
@@ -66,22 +77,21 @@ func resourceIoTEventsDetectorModelExists(data *schema.ResourceData, meta interf
 }
 
 func resourceIoTEventsDetectorModelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoTEvents::DetectorModel", ResourceIoTEventsDetectorModel(), data, meta)
+	return plugin.ResourceRead(ioTEventsDetectorModelType, ResourceIoTEventsDetectorModel(), data, meta)
 }
 
 func resourceIoTEventsDetectorModelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoTEvents::DetectorModel", ResourceIoTEventsDetectorModel(), data, meta)
+	return plugin.ResourceCreate(ioTEventsDetectorModelType, ResourceIoTEventsDetectorModel(), data, ioTEventsDetectorModelProperties, meta)
 }
 
 func resourceIoTEventsDetectorModelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoTEvents::DetectorModel", ResourceIoTEventsDetectorModel(), data, meta)
+	return plugin.ResourceUpdate(ioTEventsDetectorModelType, ResourceIoTEventsDetectorModel(), data, ioTEventsDetectorModelProperties, meta)
 }
 
 func resourceIoTEventsDetectorModelDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::IoTEvents::DetectorModel", data, meta)
+	return plugin.ResourceDelete(ioTEventsDetectorModelType, data, meta)
 }
 
 func resourceIoTEventsDetectorModelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::IoTEvents::DetectorModel", data, meta)
+	return plugin.ResourceCustomizeDiff(ioTEventsDetectorModelType, data, meta)
 }
-

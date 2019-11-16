@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,14 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const ioTAnalyticsPipelineType string = "AWS::IoTAnalytics::Pipeline"
+
+var ioTAnalyticsPipelineProperties map[string]string = map[string]string{
+	"pipeline_name": "PipelineName",
+	"tags": "Tags",
+	"pipeline_activities": "PipelineActivities",
+}
 
 func ResourceIoTAnalyticsPipeline() *schema.Resource {
 	return &schema.Resource{
@@ -53,22 +61,21 @@ func resourceIoTAnalyticsPipelineExists(data *schema.ResourceData, meta interfac
 }
 
 func resourceIoTAnalyticsPipelineRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoTAnalytics::Pipeline", ResourceIoTAnalyticsPipeline(), data, meta)
+	return plugin.ResourceRead(ioTAnalyticsPipelineType, ResourceIoTAnalyticsPipeline(), data, meta)
 }
 
 func resourceIoTAnalyticsPipelineCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoTAnalytics::Pipeline", ResourceIoTAnalyticsPipeline(), data, meta)
+	return plugin.ResourceCreate(ioTAnalyticsPipelineType, ResourceIoTAnalyticsPipeline(), data, ioTAnalyticsPipelineProperties, meta)
 }
 
 func resourceIoTAnalyticsPipelineUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoTAnalytics::Pipeline", ResourceIoTAnalyticsPipeline(), data, meta)
+	return plugin.ResourceUpdate(ioTAnalyticsPipelineType, ResourceIoTAnalyticsPipeline(), data, ioTAnalyticsPipelineProperties, meta)
 }
 
 func resourceIoTAnalyticsPipelineDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::IoTAnalytics::Pipeline", data, meta)
+	return plugin.ResourceDelete(ioTAnalyticsPipelineType, data, meta)
 }
 
 func resourceIoTAnalyticsPipelineCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::IoTAnalytics::Pipeline", data, meta)
+	return plugin.ResourceCustomizeDiff(ioTAnalyticsPipelineType, data, meta)
 }
-

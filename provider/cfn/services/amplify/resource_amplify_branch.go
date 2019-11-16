@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,22 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const amplifyBranchType string = "AWS::Amplify::Branch"
+
+var amplifyBranchProperties map[string]string = map[string]string{
+	"description": "Description",
+	"environment_variables": "EnvironmentVariables",
+	"app_id": "AppId",
+	"pull_request_environment_name": "PullRequestEnvironmentName",
+	"enable_pull_request_preview": "EnablePullRequestPreview",
+	"enable_auto_build": "EnableAutoBuild",
+	"build_spec": "BuildSpec",
+	"stage": "Stage",
+	"branch_name": "BranchName",
+	"basic_auth_config": "BasicAuthConfig",
+	"tags": "Tags",
+}
 
 func ResourceAmplifyBranch() *schema.Resource {
 	return &schema.Resource{
@@ -87,22 +103,21 @@ func resourceAmplifyBranchExists(data *schema.ResourceData, meta interface{}) (b
 }
 
 func resourceAmplifyBranchRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Amplify::Branch", ResourceAmplifyBranch(), data, meta)
+	return plugin.ResourceRead(amplifyBranchType, ResourceAmplifyBranch(), data, meta)
 }
 
 func resourceAmplifyBranchCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Amplify::Branch", ResourceAmplifyBranch(), data, meta)
+	return plugin.ResourceCreate(amplifyBranchType, ResourceAmplifyBranch(), data, amplifyBranchProperties, meta)
 }
 
 func resourceAmplifyBranchUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Amplify::Branch", ResourceAmplifyBranch(), data, meta)
+	return plugin.ResourceUpdate(amplifyBranchType, ResourceAmplifyBranch(), data, amplifyBranchProperties, meta)
 }
 
 func resourceAmplifyBranchDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Amplify::Branch", data, meta)
+	return plugin.ResourceDelete(amplifyBranchType, data, meta)
 }
 
 func resourceAmplifyBranchCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Amplify::Branch", data, meta)
+	return plugin.ResourceCustomizeDiff(amplifyBranchType, data, meta)
 }
-

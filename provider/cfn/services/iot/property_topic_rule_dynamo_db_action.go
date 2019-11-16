@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,18 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var topicRuleDynamoDBActionProperties map[string]string = map[string]string{
+	"hash_key_field": "HashKeyField",
+	"hash_key_type": "HashKeyType",
+	"hash_key_value": "HashKeyValue",
+	"payload_field": "PayloadField",
+	"range_key_field": "RangeKeyField",
+	"range_key_type": "RangeKeyType",
+	"range_key_value": "RangeKeyValue",
+	"role_arn": "RoleArn",
+	"table_name": "TableName",
+}
 
 func propertyTopicRuleDynamoDBAction(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -67,4 +79,3 @@ func propertyTopicRuleDynamoDBAction(extras...string) *schema.Resource {
 		},
 	}
 }
-

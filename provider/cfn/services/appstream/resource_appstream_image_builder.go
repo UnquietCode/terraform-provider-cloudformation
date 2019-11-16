@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,22 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const appStreamImageBuilderType string = "AWS::AppStream::ImageBuilder"
+
+var appStreamImageBuilderProperties map[string]string = map[string]string{
+	"image_name": "ImageName",
+	"description": "Description",
+	"vpc_config": "VpcConfig",
+	"enable_default_internet_access": "EnableDefaultInternetAccess",
+	"display_name": "DisplayName",
+	"domain_join_info": "DomainJoinInfo",
+	"appstream_agent_version": "AppstreamAgentVersion",
+	"instance_type": "InstanceType",
+	"tags": "Tags",
+	"name": "Name",
+	"image_arn": "ImageArn",
+}
 
 func ResourceAppStreamImageBuilder() *schema.Resource {
 	return &schema.Resource{
@@ -88,22 +104,21 @@ func resourceAppStreamImageBuilderExists(data *schema.ResourceData, meta interfa
 }
 
 func resourceAppStreamImageBuilderRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppStream::ImageBuilder", ResourceAppStreamImageBuilder(), data, meta)
+	return plugin.ResourceRead(appStreamImageBuilderType, ResourceAppStreamImageBuilder(), data, meta)
 }
 
 func resourceAppStreamImageBuilderCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppStream::ImageBuilder", ResourceAppStreamImageBuilder(), data, meta)
+	return plugin.ResourceCreate(appStreamImageBuilderType, ResourceAppStreamImageBuilder(), data, appStreamImageBuilderProperties, meta)
 }
 
 func resourceAppStreamImageBuilderUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppStream::ImageBuilder", ResourceAppStreamImageBuilder(), data, meta)
+	return plugin.ResourceUpdate(appStreamImageBuilderType, ResourceAppStreamImageBuilder(), data, appStreamImageBuilderProperties, meta)
 }
 
 func resourceAppStreamImageBuilderDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::AppStream::ImageBuilder", data, meta)
+	return plugin.ResourceDelete(appStreamImageBuilderType, data, meta)
 }
 
 func resourceAppStreamImageBuilderCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::AppStream::ImageBuilder", data, meta)
+	return plugin.ResourceCustomizeDiff(appStreamImageBuilderType, data, meta)
 }
-

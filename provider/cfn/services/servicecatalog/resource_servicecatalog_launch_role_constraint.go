@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,16 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const serviceCatalogLaunchRoleConstraintType string = "AWS::ServiceCatalog::LaunchRoleConstraint"
+
+var serviceCatalogLaunchRoleConstraintProperties map[string]string = map[string]string{
+	"description": "Description",
+	"accept_language": "AcceptLanguage",
+	"portfolio_id": "PortfolioId",
+	"product_id": "ProductId",
+	"role_arn": "RoleArn",
+}
 
 func ResourceServiceCatalogLaunchRoleConstraint() *schema.Resource {
 	return &schema.Resource{
@@ -58,22 +68,21 @@ func resourceServiceCatalogLaunchRoleConstraintExists(data *schema.ResourceData,
 }
 
 func resourceServiceCatalogLaunchRoleConstraintRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ServiceCatalog::LaunchRoleConstraint", ResourceServiceCatalogLaunchRoleConstraint(), data, meta)
+	return plugin.ResourceRead(serviceCatalogLaunchRoleConstraintType, ResourceServiceCatalogLaunchRoleConstraint(), data, meta)
 }
 
 func resourceServiceCatalogLaunchRoleConstraintCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::LaunchRoleConstraint", ResourceServiceCatalogLaunchRoleConstraint(), data, meta)
+	return plugin.ResourceCreate(serviceCatalogLaunchRoleConstraintType, ResourceServiceCatalogLaunchRoleConstraint(), data, serviceCatalogLaunchRoleConstraintProperties, meta)
 }
 
 func resourceServiceCatalogLaunchRoleConstraintUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ServiceCatalog::LaunchRoleConstraint", ResourceServiceCatalogLaunchRoleConstraint(), data, meta)
+	return plugin.ResourceUpdate(serviceCatalogLaunchRoleConstraintType, ResourceServiceCatalogLaunchRoleConstraint(), data, serviceCatalogLaunchRoleConstraintProperties, meta)
 }
 
 func resourceServiceCatalogLaunchRoleConstraintDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ServiceCatalog::LaunchRoleConstraint", data, meta)
+	return plugin.ResourceDelete(serviceCatalogLaunchRoleConstraintType, data, meta)
 }
 
 func resourceServiceCatalogLaunchRoleConstraintCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ServiceCatalog::LaunchRoleConstraint", data, meta)
+	return plugin.ResourceCustomizeDiff(serviceCatalogLaunchRoleConstraintType, data, meta)
 }
-

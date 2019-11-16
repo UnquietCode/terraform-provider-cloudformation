@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eC2VPCGatewayAttachmentType string = "AWS::EC2::VPCGatewayAttachment"
+
+var eC2VPCGatewayAttachmentProperties map[string]string = map[string]string{
+	"internet_gateway_id": "InternetGatewayId",
+	"vpc_id": "VpcId",
+	"vpn_gateway_id": "VpnGatewayId",
+}
 
 func ResourceEC2VPCGatewayAttachment() *schema.Resource {
 	return &schema.Resource{
@@ -50,22 +58,21 @@ func resourceEC2VPCGatewayAttachmentExists(data *schema.ResourceData, meta inter
 }
 
 func resourceEC2VPCGatewayAttachmentRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::VPCGatewayAttachment", ResourceEC2VPCGatewayAttachment(), data, meta)
+	return plugin.ResourceRead(eC2VPCGatewayAttachmentType, ResourceEC2VPCGatewayAttachment(), data, meta)
 }
 
 func resourceEC2VPCGatewayAttachmentCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::VPCGatewayAttachment", ResourceEC2VPCGatewayAttachment(), data, meta)
+	return plugin.ResourceCreate(eC2VPCGatewayAttachmentType, ResourceEC2VPCGatewayAttachment(), data, eC2VPCGatewayAttachmentProperties, meta)
 }
 
 func resourceEC2VPCGatewayAttachmentUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::VPCGatewayAttachment", ResourceEC2VPCGatewayAttachment(), data, meta)
+	return plugin.ResourceUpdate(eC2VPCGatewayAttachmentType, ResourceEC2VPCGatewayAttachment(), data, eC2VPCGatewayAttachmentProperties, meta)
 }
 
 func resourceEC2VPCGatewayAttachmentDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EC2::VPCGatewayAttachment", data, meta)
+	return plugin.ResourceDelete(eC2VPCGatewayAttachmentType, data, meta)
 }
 
 func resourceEC2VPCGatewayAttachmentCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EC2::VPCGatewayAttachment", data, meta)
+	return plugin.ResourceCustomizeDiff(eC2VPCGatewayAttachmentType, data, meta)
 }
-

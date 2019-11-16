@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,18 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const codeStarGitHubRepositoryType string = "AWS::CodeStar::GitHubRepository"
+
+var codeStarGitHubRepositoryProperties map[string]string = map[string]string{
+	"enable_issues": "EnableIssues",
+	"repository_name": "RepositoryName",
+	"repository_access_token": "RepositoryAccessToken",
+	"repository_owner": "RepositoryOwner",
+	"is_private": "IsPrivate",
+	"code": "Code",
+	"repository_description": "RepositoryDescription",
+}
 
 func ResourceCodeStarGitHubRepository() *schema.Resource {
 	return &schema.Resource{
@@ -68,22 +80,21 @@ func resourceCodeStarGitHubRepositoryExists(data *schema.ResourceData, meta inte
 }
 
 func resourceCodeStarGitHubRepositoryRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::CodeStar::GitHubRepository", ResourceCodeStarGitHubRepository(), data, meta)
+	return plugin.ResourceRead(codeStarGitHubRepositoryType, ResourceCodeStarGitHubRepository(), data, meta)
 }
 
 func resourceCodeStarGitHubRepositoryCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::CodeStar::GitHubRepository", ResourceCodeStarGitHubRepository(), data, meta)
+	return plugin.ResourceCreate(codeStarGitHubRepositoryType, ResourceCodeStarGitHubRepository(), data, codeStarGitHubRepositoryProperties, meta)
 }
 
 func resourceCodeStarGitHubRepositoryUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::CodeStar::GitHubRepository", ResourceCodeStarGitHubRepository(), data, meta)
+	return plugin.ResourceUpdate(codeStarGitHubRepositoryType, ResourceCodeStarGitHubRepository(), data, codeStarGitHubRepositoryProperties, meta)
 }
 
 func resourceCodeStarGitHubRepositoryDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::CodeStar::GitHubRepository", data, meta)
+	return plugin.ResourceDelete(codeStarGitHubRepositoryType, data, meta)
 }
 
 func resourceCodeStarGitHubRepositoryCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::CodeStar::GitHubRepository", data, meta)
+	return plugin.ResourceCustomizeDiff(codeStarGitHubRepositoryType, data, meta)
 }
-

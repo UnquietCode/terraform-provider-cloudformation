@@ -18,6 +18,11 @@ func ResourceTemplateData() *schema.Resource {
 				Type: schema.TypeString,
 				Optional: true,
 			},
+			"hash": {
+				Type: schema.TypeString,
+				Computed: true,
+        ForceNew: true,
+			},      
 			"output": {
 				Type: schema.TypeString,
 				Computed: true,

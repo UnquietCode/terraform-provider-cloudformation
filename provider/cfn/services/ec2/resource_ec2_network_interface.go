@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,22 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const eC2NetworkInterfaceType string = "AWS::EC2::NetworkInterface"
+
+var eC2NetworkInterfaceProperties map[string]string = map[string]string{
+	"description": "Description",
+	"group_set": "GroupSet",
+	"interface_type": "InterfaceType",
+	"ipv6_address_count": "Ipv6AddressCount",
+	"ipv6_addresses": "Ipv6Addresses",
+	"private_ip_address": "PrivateIpAddress",
+	"private_ip_addresses": "PrivateIpAddresses",
+	"secondary_private_ip_address_count": "SecondaryPrivateIpAddressCount",
+	"source_dest_check": "SourceDestCheck",
+	"subnet_id": "SubnetId",
+	"tags": "Tags",
+}
 
 func ResourceEC2NetworkInterface() *schema.Resource {
 	return &schema.Resource{
@@ -89,22 +105,21 @@ func resourceEC2NetworkInterfaceExists(data *schema.ResourceData, meta interface
 }
 
 func resourceEC2NetworkInterfaceRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::EC2::NetworkInterface", ResourceEC2NetworkInterface(), data, meta)
+	return plugin.ResourceRead(eC2NetworkInterfaceType, ResourceEC2NetworkInterface(), data, meta)
 }
 
 func resourceEC2NetworkInterfaceCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::EC2::NetworkInterface", ResourceEC2NetworkInterface(), data, meta)
+	return plugin.ResourceCreate(eC2NetworkInterfaceType, ResourceEC2NetworkInterface(), data, eC2NetworkInterfaceProperties, meta)
 }
 
 func resourceEC2NetworkInterfaceUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::EC2::NetworkInterface", ResourceEC2NetworkInterface(), data, meta)
+	return plugin.ResourceUpdate(eC2NetworkInterfaceType, ResourceEC2NetworkInterface(), data, eC2NetworkInterfaceProperties, meta)
 }
 
 func resourceEC2NetworkInterfaceDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::EC2::NetworkInterface", data, meta)
+	return plugin.ResourceDelete(eC2NetworkInterfaceType, data, meta)
 }
 
 func resourceEC2NetworkInterfaceCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::EC2::NetworkInterface", data, meta)
+	return plugin.ResourceCustomizeDiff(eC2NetworkInterfaceType, data, meta)
 }
-

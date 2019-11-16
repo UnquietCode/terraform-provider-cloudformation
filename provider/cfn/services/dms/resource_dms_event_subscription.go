@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,18 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const dMSEventSubscriptionType string = "AWS::DMS::EventSubscription"
+
+var dMSEventSubscriptionProperties map[string]string = map[string]string{
+	"source_type": "SourceType",
+	"event_categories": "EventCategories",
+	"enabled": "Enabled",
+	"subscription_name": "SubscriptionName",
+	"sns_topic_arn": "SnsTopicArn",
+	"source_ids": "SourceIds",
+	"tags": "Tags",
+}
 
 func ResourceDMSEventSubscription() *schema.Resource {
 	return &schema.Resource{
@@ -70,22 +82,21 @@ func resourceDMSEventSubscriptionExists(data *schema.ResourceData, meta interfac
 }
 
 func resourceDMSEventSubscriptionRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::DMS::EventSubscription", ResourceDMSEventSubscription(), data, meta)
+	return plugin.ResourceRead(dMSEventSubscriptionType, ResourceDMSEventSubscription(), data, meta)
 }
 
 func resourceDMSEventSubscriptionCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::DMS::EventSubscription", ResourceDMSEventSubscription(), data, meta)
+	return plugin.ResourceCreate(dMSEventSubscriptionType, ResourceDMSEventSubscription(), data, dMSEventSubscriptionProperties, meta)
 }
 
 func resourceDMSEventSubscriptionUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::DMS::EventSubscription", ResourceDMSEventSubscription(), data, meta)
+	return plugin.ResourceUpdate(dMSEventSubscriptionType, ResourceDMSEventSubscription(), data, dMSEventSubscriptionProperties, meta)
 }
 
 func resourceDMSEventSubscriptionDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::DMS::EventSubscription", data, meta)
+	return plugin.ResourceDelete(dMSEventSubscriptionType, data, meta)
 }
 
 func resourceDMSEventSubscriptionCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::DMS::EventSubscription", data, meta)
+	return plugin.ResourceCustomizeDiff(dMSEventSubscriptionType, data, meta)
 }
-

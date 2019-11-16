@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,15 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const qLDBLedgerType string = "AWS::QLDB::Ledger"
+
+var qLDBLedgerProperties map[string]string = map[string]string{
+	"permissions_mode": "PermissionsMode",
+	"deletion_protection": "DeletionProtection",
+	"tags": "Tags",
+	"name": "Name",
+}
 
 func ResourceQLDBLedger() *schema.Resource {
 	return &schema.Resource{
@@ -56,22 +65,21 @@ func resourceQLDBLedgerExists(data *schema.ResourceData, meta interface{}) (bool
 }
 
 func resourceQLDBLedgerRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::QLDB::Ledger", ResourceQLDBLedger(), data, meta)
+	return plugin.ResourceRead(qLDBLedgerType, ResourceQLDBLedger(), data, meta)
 }
 
 func resourceQLDBLedgerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::QLDB::Ledger", ResourceQLDBLedger(), data, meta)
+	return plugin.ResourceCreate(qLDBLedgerType, ResourceQLDBLedger(), data, qLDBLedgerProperties, meta)
 }
 
 func resourceQLDBLedgerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::QLDB::Ledger", ResourceQLDBLedger(), data, meta)
+	return plugin.ResourceUpdate(qLDBLedgerType, ResourceQLDBLedger(), data, qLDBLedgerProperties, meta)
 }
 
 func resourceQLDBLedgerDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::QLDB::Ledger", data, meta)
+	return plugin.ResourceDelete(qLDBLedgerType, data, meta)
 }
 
 func resourceQLDBLedgerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::QLDB::Ledger", data, meta)
+	return plugin.ResourceCustomizeDiff(qLDBLedgerType, data, meta)
 }
-

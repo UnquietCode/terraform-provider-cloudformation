@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,18 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const ioTAnalyticsDatasetType string = "AWS::IoTAnalytics::Dataset"
+
+var ioTAnalyticsDatasetProperties map[string]string = map[string]string{
+	"actions": "Actions",
+	"dataset_name": "DatasetName",
+	"content_delivery_rules": "ContentDeliveryRules",
+	"triggers": "Triggers",
+	"versioning_configuration": "VersioningConfiguration",
+	"retention_period": "RetentionPeriod",
+	"tags": "Tags",
+}
 
 func ResourceIoTAnalyticsDataset() *schema.Resource {
 	return &schema.Resource{
@@ -75,22 +87,21 @@ func resourceIoTAnalyticsDatasetExists(data *schema.ResourceData, meta interface
 }
 
 func resourceIoTAnalyticsDatasetRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoTAnalytics::Dataset", ResourceIoTAnalyticsDataset(), data, meta)
+	return plugin.ResourceRead(ioTAnalyticsDatasetType, ResourceIoTAnalyticsDataset(), data, meta)
 }
 
 func resourceIoTAnalyticsDatasetCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoTAnalytics::Dataset", ResourceIoTAnalyticsDataset(), data, meta)
+	return plugin.ResourceCreate(ioTAnalyticsDatasetType, ResourceIoTAnalyticsDataset(), data, ioTAnalyticsDatasetProperties, meta)
 }
 
 func resourceIoTAnalyticsDatasetUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoTAnalytics::Dataset", ResourceIoTAnalyticsDataset(), data, meta)
+	return plugin.ResourceUpdate(ioTAnalyticsDatasetType, ResourceIoTAnalyticsDataset(), data, ioTAnalyticsDatasetProperties, meta)
 }
 
 func resourceIoTAnalyticsDatasetDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::IoTAnalytics::Dataset", data, meta)
+	return plugin.ResourceDelete(ioTAnalyticsDatasetType, data, meta)
 }
 
 func resourceIoTAnalyticsDatasetCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::IoTAnalytics::Dataset", data, meta)
+	return plugin.ResourceCustomizeDiff(ioTAnalyticsDatasetType, data, meta)
 }
-

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,15 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var endpointConfigProductionVariantProperties map[string]string = map[string]string{
+	"model_name": "ModelName",
+	"variant_name": "VariantName",
+	"initial_instance_count": "InitialInstanceCount",
+	"instance_type": "InstanceType",
+	"accelerator_type": "AcceleratorType",
+	"initial_variant_weight": "InitialVariantWeight",
+}
 
 func propertyEndpointConfigProductionVariant(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -55,4 +64,3 @@ func propertyEndpointConfigProductionVariant(extras...string) *schema.Resource {
 		},
 	}
 }
-

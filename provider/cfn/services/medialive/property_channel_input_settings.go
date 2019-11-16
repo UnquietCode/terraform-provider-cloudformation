@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,18 @@ import (
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
+
+var channelInputSettingsProperties map[string]string = map[string]string{
+	"deblock_filter": "DeblockFilter",
+	"filter_strength": "FilterStrength",
+	"input_filter": "InputFilter",
+	"source_end_behavior": "SourceEndBehavior",
+	"video_selector": "VideoSelector",
+	"audio_selectors": "AudioSelectors",
+	"caption_selectors": "CaptionSelectors",
+	"denoise_filter": "DenoiseFilter",
+	"network_input_settings": "NetworkInputSettings",
+}
 
 func propertyChannelInputSettings(extras...string) *schema.Resource {
 	var count int64 = 0
@@ -73,4 +85,3 @@ func propertyChannelInputSettings(extras...string) *schema.Resource {
 		},
 	}
 }
-

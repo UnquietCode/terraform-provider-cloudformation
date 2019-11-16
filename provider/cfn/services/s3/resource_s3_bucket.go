@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,29 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const s3BucketType string = "AWS::S3::Bucket"
+
+var s3BucketProperties map[string]string = map[string]string{
+	"accelerate_configuration": "AccelerateConfiguration",
+	"access_control": "AccessControl",
+	"analytics_configurations": "AnalyticsConfigurations",
+	"bucket_encryption": "BucketEncryption",
+	"bucket_name": "BucketName",
+	"cors_configuration": "CorsConfiguration",
+	"inventory_configurations": "InventoryConfigurations",
+	"lifecycle_configuration": "LifecycleConfiguration",
+	"logging_configuration": "LoggingConfiguration",
+	"metrics_configurations": "MetricsConfigurations",
+	"notification_configuration": "NotificationConfiguration",
+	"object_lock_configuration": "ObjectLockConfiguration",
+	"object_lock_enabled": "ObjectLockEnabled",
+	"public_access_block_configuration": "PublicAccessBlockConfiguration",
+	"replication_configuration": "ReplicationConfiguration",
+	"tags": "Tags",
+	"versioning_configuration": "VersioningConfiguration",
+	"website_configuration": "WebsiteConfiguration",
+}
 
 func ResourceS3Bucket() *schema.Resource {
 	return &schema.Resource{
@@ -137,22 +160,21 @@ func resourceS3BucketExists(data *schema.ResourceData, meta interface{}) (bool, 
 }
 
 func resourceS3BucketRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::S3::Bucket", ResourceS3Bucket(), data, meta)
+	return plugin.ResourceRead(s3BucketType, ResourceS3Bucket(), data, meta)
 }
 
 func resourceS3BucketCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::S3::Bucket", ResourceS3Bucket(), data, meta)
+	return plugin.ResourceCreate(s3BucketType, ResourceS3Bucket(), data, s3BucketProperties, meta)
 }
 
 func resourceS3BucketUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::S3::Bucket", ResourceS3Bucket(), data, meta)
+	return plugin.ResourceUpdate(s3BucketType, ResourceS3Bucket(), data, s3BucketProperties, meta)
 }
 
 func resourceS3BucketDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::S3::Bucket", data, meta)
+	return plugin.ResourceDelete(s3BucketType, data, meta)
 }
 
 func resourceS3BucketCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::S3::Bucket", data, meta)
+	return plugin.ResourceCustomizeDiff(s3BucketType, data, meta)
 }
-

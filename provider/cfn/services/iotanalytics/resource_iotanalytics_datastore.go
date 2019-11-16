@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,15 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const ioTAnalyticsDatastoreType string = "AWS::IoTAnalytics::Datastore"
+
+var ioTAnalyticsDatastoreProperties map[string]string = map[string]string{
+	"datastore_storage": "DatastoreStorage",
+	"datastore_name": "DatastoreName",
+	"retention_period": "RetentionPeriod",
+	"tags": "Tags",
+}
 
 func ResourceIoTAnalyticsDatastore() *schema.Resource {
 	return &schema.Resource{
@@ -60,22 +69,21 @@ func resourceIoTAnalyticsDatastoreExists(data *schema.ResourceData, meta interfa
 }
 
 func resourceIoTAnalyticsDatastoreRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoTAnalytics::Datastore", ResourceIoTAnalyticsDatastore(), data, meta)
+	return plugin.ResourceRead(ioTAnalyticsDatastoreType, ResourceIoTAnalyticsDatastore(), data, meta)
 }
 
 func resourceIoTAnalyticsDatastoreCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoTAnalytics::Datastore", ResourceIoTAnalyticsDatastore(), data, meta)
+	return plugin.ResourceCreate(ioTAnalyticsDatastoreType, ResourceIoTAnalyticsDatastore(), data, ioTAnalyticsDatastoreProperties, meta)
 }
 
 func resourceIoTAnalyticsDatastoreUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoTAnalytics::Datastore", ResourceIoTAnalyticsDatastore(), data, meta)
+	return plugin.ResourceUpdate(ioTAnalyticsDatastoreType, ResourceIoTAnalyticsDatastore(), data, ioTAnalyticsDatastoreProperties, meta)
 }
 
 func resourceIoTAnalyticsDatastoreDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::IoTAnalytics::Datastore", data, meta)
+	return plugin.ResourceDelete(ioTAnalyticsDatastoreType, data, meta)
 }
 
 func resourceIoTAnalyticsDatastoreCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::IoTAnalytics::Datastore", data, meta)
+	return plugin.ResourceCustomizeDiff(ioTAnalyticsDatastoreType, data, meta)
 }
-

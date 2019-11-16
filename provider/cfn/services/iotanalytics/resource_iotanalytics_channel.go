@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,15 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const ioTAnalyticsChannelType string = "AWS::IoTAnalytics::Channel"
+
+var ioTAnalyticsChannelProperties map[string]string = map[string]string{
+	"channel_name": "ChannelName",
+	"channel_storage": "ChannelStorage",
+	"retention_period": "RetentionPeriod",
+	"tags": "Tags",
+}
 
 func ResourceIoTAnalyticsChannel() *schema.Resource {
 	return &schema.Resource{
@@ -60,22 +69,21 @@ func resourceIoTAnalyticsChannelExists(data *schema.ResourceData, meta interface
 }
 
 func resourceIoTAnalyticsChannelRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::IoTAnalytics::Channel", ResourceIoTAnalyticsChannel(), data, meta)
+	return plugin.ResourceRead(ioTAnalyticsChannelType, ResourceIoTAnalyticsChannel(), data, meta)
 }
 
 func resourceIoTAnalyticsChannelCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::IoTAnalytics::Channel", ResourceIoTAnalyticsChannel(), data, meta)
+	return plugin.ResourceCreate(ioTAnalyticsChannelType, ResourceIoTAnalyticsChannel(), data, ioTAnalyticsChannelProperties, meta)
 }
 
 func resourceIoTAnalyticsChannelUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::IoTAnalytics::Channel", ResourceIoTAnalyticsChannel(), data, meta)
+	return plugin.ResourceUpdate(ioTAnalyticsChannelType, ResourceIoTAnalyticsChannel(), data, ioTAnalyticsChannelProperties, meta)
 }
 
 func resourceIoTAnalyticsChannelDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::IoTAnalytics::Channel", data, meta)
+	return plugin.ResourceDelete(ioTAnalyticsChannelType, data, meta)
 }
 
 func resourceIoTAnalyticsChannelCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::IoTAnalytics::Channel", data, meta)
+	return plugin.ResourceCustomizeDiff(ioTAnalyticsChannelType, data, meta)
 }
-

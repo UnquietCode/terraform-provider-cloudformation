@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const backupBackupPlanType string = "AWS::Backup::BackupPlan"
+
+var backupBackupPlanProperties map[string]string = map[string]string{
+	"backup_plan": "BackupPlan",
+	"backup_plan_tags": "BackupPlanTags",
+}
 
 func ResourceBackupBackupPlan() *schema.Resource {
 	return &schema.Resource{
@@ -48,22 +55,21 @@ func resourceBackupBackupPlanExists(data *schema.ResourceData, meta interface{})
 }
 
 func resourceBackupBackupPlanRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Backup::BackupPlan", ResourceBackupBackupPlan(), data, meta)
+	return plugin.ResourceRead(backupBackupPlanType, ResourceBackupBackupPlan(), data, meta)
 }
 
 func resourceBackupBackupPlanCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Backup::BackupPlan", ResourceBackupBackupPlan(), data, meta)
+	return plugin.ResourceCreate(backupBackupPlanType, ResourceBackupBackupPlan(), data, backupBackupPlanProperties, meta)
 }
 
 func resourceBackupBackupPlanUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Backup::BackupPlan", ResourceBackupBackupPlan(), data, meta)
+	return plugin.ResourceUpdate(backupBackupPlanType, ResourceBackupBackupPlan(), data, backupBackupPlanProperties, meta)
 }
 
 func resourceBackupBackupPlanDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Backup::BackupPlan", data, meta)
+	return plugin.ResourceDelete(backupBackupPlanType, data, meta)
 }
 
 func resourceBackupBackupPlanCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Backup::BackupPlan", data, meta)
+	return plugin.ResourceCustomizeDiff(backupBackupPlanType, data, meta)
 }
-

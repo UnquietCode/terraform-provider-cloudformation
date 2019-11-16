@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,16 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const route53HostedZoneType string = "AWS::Route53::HostedZone"
+
+var route53HostedZoneProperties map[string]string = map[string]string{
+	"hosted_zone_config": "HostedZoneConfig",
+	"hosted_zone_tags": "HostedZoneTags",
+	"name": "Name",
+	"query_logging_config": "QueryLoggingConfig",
+	"vp_cs": "VPCs",
+}
 
 func ResourceRoute53HostedZone() *schema.Resource {
 	return &schema.Resource{
@@ -64,22 +74,21 @@ func resourceRoute53HostedZoneExists(data *schema.ResourceData, meta interface{}
 }
 
 func resourceRoute53HostedZoneRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Route53::HostedZone", ResourceRoute53HostedZone(), data, meta)
+	return plugin.ResourceRead(route53HostedZoneType, ResourceRoute53HostedZone(), data, meta)
 }
 
 func resourceRoute53HostedZoneCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Route53::HostedZone", ResourceRoute53HostedZone(), data, meta)
+	return plugin.ResourceCreate(route53HostedZoneType, ResourceRoute53HostedZone(), data, route53HostedZoneProperties, meta)
 }
 
 func resourceRoute53HostedZoneUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Route53::HostedZone", ResourceRoute53HostedZone(), data, meta)
+	return plugin.ResourceUpdate(route53HostedZoneType, ResourceRoute53HostedZone(), data, route53HostedZoneProperties, meta)
 }
 
 func resourceRoute53HostedZoneDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Route53::HostedZone", data, meta)
+	return plugin.ResourceDelete(route53HostedZoneType, data, meta)
 }
 
 func resourceRoute53HostedZoneCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Route53::HostedZone", data, meta)
+	return plugin.ResourceCustomizeDiff(route53HostedZoneType, data, meta)
 }
-

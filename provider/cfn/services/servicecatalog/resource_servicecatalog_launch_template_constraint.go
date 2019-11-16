@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,16 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const serviceCatalogLaunchTemplateConstraintType string = "AWS::ServiceCatalog::LaunchTemplateConstraint"
+
+var serviceCatalogLaunchTemplateConstraintProperties map[string]string = map[string]string{
+	"description": "Description",
+	"accept_language": "AcceptLanguage",
+	"portfolio_id": "PortfolioId",
+	"product_id": "ProductId",
+	"rules": "Rules",
+}
 
 func ResourceServiceCatalogLaunchTemplateConstraint() *schema.Resource {
 	return &schema.Resource{
@@ -58,22 +68,21 @@ func resourceServiceCatalogLaunchTemplateConstraintExists(data *schema.ResourceD
 }
 
 func resourceServiceCatalogLaunchTemplateConstraintRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ServiceCatalog::LaunchTemplateConstraint", ResourceServiceCatalogLaunchTemplateConstraint(), data, meta)
+	return plugin.ResourceRead(serviceCatalogLaunchTemplateConstraintType, ResourceServiceCatalogLaunchTemplateConstraint(), data, meta)
 }
 
 func resourceServiceCatalogLaunchTemplateConstraintCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ServiceCatalog::LaunchTemplateConstraint", ResourceServiceCatalogLaunchTemplateConstraint(), data, meta)
+	return plugin.ResourceCreate(serviceCatalogLaunchTemplateConstraintType, ResourceServiceCatalogLaunchTemplateConstraint(), data, serviceCatalogLaunchTemplateConstraintProperties, meta)
 }
 
 func resourceServiceCatalogLaunchTemplateConstraintUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ServiceCatalog::LaunchTemplateConstraint", ResourceServiceCatalogLaunchTemplateConstraint(), data, meta)
+	return plugin.ResourceUpdate(serviceCatalogLaunchTemplateConstraintType, ResourceServiceCatalogLaunchTemplateConstraint(), data, serviceCatalogLaunchTemplateConstraintProperties, meta)
 }
 
 func resourceServiceCatalogLaunchTemplateConstraintDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ServiceCatalog::LaunchTemplateConstraint", data, meta)
+	return plugin.ResourceDelete(serviceCatalogLaunchTemplateConstraintType, data, meta)
 }
 
 func resourceServiceCatalogLaunchTemplateConstraintCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ServiceCatalog::LaunchTemplateConstraint", data, meta)
+	return plugin.ResourceCustomizeDiff(serviceCatalogLaunchTemplateConstraintType, data, meta)
 }
-

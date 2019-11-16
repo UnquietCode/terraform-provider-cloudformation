@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,16 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const roboMakerRobotApplicationType string = "AWS::RoboMaker::RobotApplication"
+
+var roboMakerRobotApplicationProperties map[string]string = map[string]string{
+	"current_revision_id": "CurrentRevisionId",
+	"robot_software_suite": "RobotSoftwareSuite",
+	"sources": "Sources",
+	"tags": "Tags",
+	"name": "Name",
+}
 
 func ResourceRoboMakerRobotApplication() *schema.Resource {
 	return &schema.Resource{
@@ -61,22 +71,21 @@ func resourceRoboMakerRobotApplicationExists(data *schema.ResourceData, meta int
 }
 
 func resourceRoboMakerRobotApplicationRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::RoboMaker::RobotApplication", ResourceRoboMakerRobotApplication(), data, meta)
+	return plugin.ResourceRead(roboMakerRobotApplicationType, ResourceRoboMakerRobotApplication(), data, meta)
 }
 
 func resourceRoboMakerRobotApplicationCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::RoboMaker::RobotApplication", ResourceRoboMakerRobotApplication(), data, meta)
+	return plugin.ResourceCreate(roboMakerRobotApplicationType, ResourceRoboMakerRobotApplication(), data, roboMakerRobotApplicationProperties, meta)
 }
 
 func resourceRoboMakerRobotApplicationUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::RoboMaker::RobotApplication", ResourceRoboMakerRobotApplication(), data, meta)
+	return plugin.ResourceUpdate(roboMakerRobotApplicationType, ResourceRoboMakerRobotApplication(), data, roboMakerRobotApplicationProperties, meta)
 }
 
 func resourceRoboMakerRobotApplicationDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::RoboMaker::RobotApplication", data, meta)
+	return plugin.ResourceDelete(roboMakerRobotApplicationType, data, meta)
 }
 
 func resourceRoboMakerRobotApplicationCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::RoboMaker::RobotApplication", data, meta)
+	return plugin.ResourceCustomizeDiff(roboMakerRobotApplicationType, data, meta)
 }
-

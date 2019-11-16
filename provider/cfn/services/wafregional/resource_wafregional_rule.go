@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const wAFRegionalRuleType string = "AWS::WAFRegional::Rule"
+
+var wAFRegionalRuleProperties map[string]string = map[string]string{
+	"metric_name": "MetricName",
+	"predicates": "Predicates",
+	"name": "Name",
+}
 
 func ResourceWAFRegionalRule() *schema.Resource {
 	return &schema.Resource{
@@ -51,22 +59,21 @@ func resourceWAFRegionalRuleExists(data *schema.ResourceData, meta interface{}) 
 }
 
 func resourceWAFRegionalRuleRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::WAFRegional::Rule", ResourceWAFRegionalRule(), data, meta)
+	return plugin.ResourceRead(wAFRegionalRuleType, ResourceWAFRegionalRule(), data, meta)
 }
 
 func resourceWAFRegionalRuleCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::WAFRegional::Rule", ResourceWAFRegionalRule(), data, meta)
+	return plugin.ResourceCreate(wAFRegionalRuleType, ResourceWAFRegionalRule(), data, wAFRegionalRuleProperties, meta)
 }
 
 func resourceWAFRegionalRuleUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::WAFRegional::Rule", ResourceWAFRegionalRule(), data, meta)
+	return plugin.ResourceUpdate(wAFRegionalRuleType, ResourceWAFRegionalRule(), data, wAFRegionalRuleProperties, meta)
 }
 
 func resourceWAFRegionalRuleDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::WAFRegional::Rule", data, meta)
+	return plugin.ResourceDelete(wAFRegionalRuleType, data, meta)
 }
 
 func resourceWAFRegionalRuleCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::WAFRegional::Rule", data, meta)
+	return plugin.ResourceCustomizeDiff(wAFRegionalRuleType, data, meta)
 }
-

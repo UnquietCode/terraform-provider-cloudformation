@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,16 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const appStreamUserType string = "AWS::AppStream::User"
+
+var appStreamUserProperties map[string]string = map[string]string{
+	"user_name": "UserName",
+	"first_name": "FirstName",
+	"message_action": "MessageAction",
+	"last_name": "LastName",
+	"authentication_type": "AuthenticationType",
+}
 
 func ResourceAppStreamUser() *schema.Resource {
 	return &schema.Resource{
@@ -58,22 +68,21 @@ func resourceAppStreamUserExists(data *schema.ResourceData, meta interface{}) (b
 }
 
 func resourceAppStreamUserRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::AppStream::User", ResourceAppStreamUser(), data, meta)
+	return plugin.ResourceRead(appStreamUserType, ResourceAppStreamUser(), data, meta)
 }
 
 func resourceAppStreamUserCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::AppStream::User", ResourceAppStreamUser(), data, meta)
+	return plugin.ResourceCreate(appStreamUserType, ResourceAppStreamUser(), data, appStreamUserProperties, meta)
 }
 
 func resourceAppStreamUserUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::AppStream::User", ResourceAppStreamUser(), data, meta)
+	return plugin.ResourceUpdate(appStreamUserType, ResourceAppStreamUser(), data, appStreamUserProperties, meta)
 }
 
 func resourceAppStreamUserDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::AppStream::User", data, meta)
+	return plugin.ResourceDelete(appStreamUserType, data, meta)
 }
 
 func resourceAppStreamUserCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::AppStream::User", data, meta)
+	return plugin.ResourceCustomizeDiff(appStreamUserType, data, meta)
 }
-

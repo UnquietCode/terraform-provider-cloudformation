@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -13,6 +13,28 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const opsWorksCMServerType string = "AWS::OpsWorksCM::Server"
+
+var opsWorksCMServerProperties map[string]string = map[string]string{
+	"key_pair": "KeyPair",
+	"engine_version": "EngineVersion",
+	"service_role_arn": "ServiceRoleArn",
+	"disable_automated_backup": "DisableAutomatedBackup",
+	"backup_id": "BackupId",
+	"engine_model": "EngineModel",
+	"preferred_maintenance_window": "PreferredMaintenanceWindow",
+	"associate_public_ip_address": "AssociatePublicIpAddress",
+	"instance_profile_arn": "InstanceProfileArn",
+	"preferred_backup_window": "PreferredBackupWindow",
+	"security_group_ids": "SecurityGroupIds",
+	"subnet_ids": "SubnetIds",
+	"server_name": "ServerName",
+	"engine_attributes": "EngineAttributes",
+	"backup_retention_count": "BackupRetentionCount",
+	"instance_type": "InstanceType",
+	"engine": "Engine",
+}
 
 func ResourceOpsWorksCMServer() *schema.Resource {
 	return &schema.Resource{
@@ -109,22 +131,21 @@ func resourceOpsWorksCMServerExists(data *schema.ResourceData, meta interface{})
 }
 
 func resourceOpsWorksCMServerRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::OpsWorksCM::Server", ResourceOpsWorksCMServer(), data, meta)
+	return plugin.ResourceRead(opsWorksCMServerType, ResourceOpsWorksCMServer(), data, meta)
 }
 
 func resourceOpsWorksCMServerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::OpsWorksCM::Server", ResourceOpsWorksCMServer(), data, meta)
+	return plugin.ResourceCreate(opsWorksCMServerType, ResourceOpsWorksCMServer(), data, opsWorksCMServerProperties, meta)
 }
 
 func resourceOpsWorksCMServerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::OpsWorksCM::Server", ResourceOpsWorksCMServer(), data, meta)
+	return plugin.ResourceUpdate(opsWorksCMServerType, ResourceOpsWorksCMServer(), data, opsWorksCMServerProperties, meta)
 }
 
 func resourceOpsWorksCMServerDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::OpsWorksCM::Server", data, meta)
+	return plugin.ResourceDelete(opsWorksCMServerType, data, meta)
 }
 
 func resourceOpsWorksCMServerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::OpsWorksCM::Server", data, meta)
+	return plugin.ResourceCustomizeDiff(opsWorksCMServerType, data, meta)
 }
-

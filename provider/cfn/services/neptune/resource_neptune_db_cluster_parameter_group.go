@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,16 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const neptuneDBClusterParameterGroupType string = "AWS::Neptune::DBClusterParameterGroup"
+
+var neptuneDBClusterParameterGroupProperties map[string]string = map[string]string{
+	"description": "Description",
+	"parameters": "Parameters",
+	"family": "Family",
+	"tags": "Tags",
+	"name": "Name",
+}
 
 func ResourceNeptuneDBClusterParameterGroup() *schema.Resource {
 	return &schema.Resource{
@@ -60,22 +70,21 @@ func resourceNeptuneDBClusterParameterGroupExists(data *schema.ResourceData, met
 }
 
 func resourceNeptuneDBClusterParameterGroupRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::Neptune::DBClusterParameterGroup", ResourceNeptuneDBClusterParameterGroup(), data, meta)
+	return plugin.ResourceRead(neptuneDBClusterParameterGroupType, ResourceNeptuneDBClusterParameterGroup(), data, meta)
 }
 
 func resourceNeptuneDBClusterParameterGroupCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::Neptune::DBClusterParameterGroup", ResourceNeptuneDBClusterParameterGroup(), data, meta)
+	return plugin.ResourceCreate(neptuneDBClusterParameterGroupType, ResourceNeptuneDBClusterParameterGroup(), data, neptuneDBClusterParameterGroupProperties, meta)
 }
 
 func resourceNeptuneDBClusterParameterGroupUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::Neptune::DBClusterParameterGroup", ResourceNeptuneDBClusterParameterGroup(), data, meta)
+	return plugin.ResourceUpdate(neptuneDBClusterParameterGroupType, ResourceNeptuneDBClusterParameterGroup(), data, neptuneDBClusterParameterGroupProperties, meta)
 }
 
 func resourceNeptuneDBClusterParameterGroupDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::Neptune::DBClusterParameterGroup", data, meta)
+	return plugin.ResourceDelete(neptuneDBClusterParameterGroupType, data, meta)
 }
 
 func resourceNeptuneDBClusterParameterGroupCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::Neptune::DBClusterParameterGroup", data, meta)
+	return plugin.ResourceCustomizeDiff(neptuneDBClusterParameterGroupType, data, meta)
 }
-

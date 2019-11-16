@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 15-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -14,6 +14,27 @@ import (
 	"github.com/unquietcode/terraform-cfn-provider/cfn/misc"
 	"github.com/unquietcode/terraform-cfn-provider/plugin"
 )
+
+const elasticLoadBalancingLoadBalancerType string = "AWS::ElasticLoadBalancing::LoadBalancer"
+
+var elasticLoadBalancingLoadBalancerProperties map[string]string = map[string]string{
+	"access_logging_policy": "AccessLoggingPolicy",
+	"app_cookie_stickiness_policy": "AppCookieStickinessPolicy",
+	"availability_zones": "AvailabilityZones",
+	"connection_draining_policy": "ConnectionDrainingPolicy",
+	"connection_settings": "ConnectionSettings",
+	"cross_zone": "CrossZone",
+	"health_check": "HealthCheck",
+	"instances": "Instances",
+	"lb_cookie_stickiness_policy": "LBCookieStickinessPolicy",
+	"listeners": "Listeners",
+	"load_balancer_name": "LoadBalancerName",
+	"policies": "Policies",
+	"scheme": "Scheme",
+	"security_groups": "SecurityGroups",
+	"subnets": "Subnets",
+	"tags": "Tags",
+}
 
 func ResourceElasticLoadBalancingLoadBalancer() *schema.Resource {
 	return &schema.Resource{
@@ -124,22 +145,21 @@ func resourceElasticLoadBalancingLoadBalancerExists(data *schema.ResourceData, m
 }
 
 func resourceElasticLoadBalancingLoadBalancerRead(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceRead("AWS::ElasticLoadBalancing::LoadBalancer", ResourceElasticLoadBalancingLoadBalancer(), data, meta)
+	return plugin.ResourceRead(elasticLoadBalancingLoadBalancerType, ResourceElasticLoadBalancingLoadBalancer(), data, meta)
 }
 
 func resourceElasticLoadBalancingLoadBalancerCreate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceCreate("AWS::ElasticLoadBalancing::LoadBalancer", ResourceElasticLoadBalancingLoadBalancer(), data, meta)
+	return plugin.ResourceCreate(elasticLoadBalancingLoadBalancerType, ResourceElasticLoadBalancingLoadBalancer(), data, elasticLoadBalancingLoadBalancerProperties, meta)
 }
 
 func resourceElasticLoadBalancingLoadBalancerUpdate(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceUpdate("AWS::ElasticLoadBalancing::LoadBalancer", ResourceElasticLoadBalancingLoadBalancer(), data, meta)
+	return plugin.ResourceUpdate(elasticLoadBalancingLoadBalancerType, ResourceElasticLoadBalancingLoadBalancer(), data, elasticLoadBalancingLoadBalancerProperties, meta)
 }
 
 func resourceElasticLoadBalancingLoadBalancerDelete(data *schema.ResourceData, meta interface{}) error {
-	return plugin.ResourceDelete("AWS::ElasticLoadBalancing::LoadBalancer", data, meta)
+	return plugin.ResourceDelete(elasticLoadBalancingLoadBalancerType, data, meta)
 }
 
 func resourceElasticLoadBalancingLoadBalancerCustomizeDiff(data *schema.ResourceDiff, meta interface{}) error {
-	return plugin.ResourceCustomizeDiff("AWS::ElasticLoadBalancing::LoadBalancer", data, meta)
+	return plugin.ResourceCustomizeDiff(elasticLoadBalancingLoadBalancerType, data, meta)
 }
-
