@@ -132,11 +132,7 @@ func ResourceElastiCacheCacheCluster() *schema.Resource {
 				Type: schema.TypeString,
 				Optional: true,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"vpc_security_group_ids": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},

@@ -94,11 +94,7 @@ func ResourceECSTaskDefinition() *schema.Resource {
 				Optional: true,
 				Set: schema.HashString,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"task_role_arn": {
 				Type: schema.TypeString,
 				Optional: true,

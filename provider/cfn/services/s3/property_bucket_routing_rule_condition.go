@@ -31,6 +31,7 @@ func propertyBucketRoutingRuleCondition(extras...string) *schema.Resource {
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
+	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"http_error_code_returned_equals": {

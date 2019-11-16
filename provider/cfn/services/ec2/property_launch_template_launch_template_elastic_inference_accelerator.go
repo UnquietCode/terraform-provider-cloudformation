@@ -30,6 +30,7 @@ func propertyLaunchTemplateLaunchTemplateElasticInferenceAccelerator(extras...st
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
+	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"type": {

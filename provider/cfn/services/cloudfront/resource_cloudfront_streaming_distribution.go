@@ -38,11 +38,7 @@ func ResourceCloudFrontStreamingDistribution() *schema.Resource {
 				Required: true,
 				MaxItems: 1,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Required: true,
-			},
+			"tags": misc.PropertyTags(),
 			"logical_id": {
 				Type: schema.TypeString,
 				Required: true,

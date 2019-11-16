@@ -120,11 +120,7 @@ func ResourceECSService() *schema.Resource {
 				Elem: propertyServiceServiceRegistry(),
 				Optional: true,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"task_definition": {
 				Type: schema.TypeString,
 				Required: true,

@@ -67,11 +67,7 @@ func ResourceEC2Volume() *schema.Resource {
 				Type: schema.TypeString,
 				Optional: true,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"volume_type": {
 				Type: schema.TypeString,
 				Optional: true,

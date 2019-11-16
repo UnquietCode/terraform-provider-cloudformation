@@ -71,11 +71,7 @@ func ResourceFSxFileSystem() *schema.Resource {
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Optional: true,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"windows_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyFileSystemWindowsConfiguration(),

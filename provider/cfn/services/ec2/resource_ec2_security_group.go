@@ -54,11 +54,7 @@ func ResourceEC2SecurityGroup() *schema.Resource {
 				Elem: propertySecurityGroupIngress(),
 				Optional: true,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"vpc_id": {
 				Type: schema.TypeString,
 				Optional: true,

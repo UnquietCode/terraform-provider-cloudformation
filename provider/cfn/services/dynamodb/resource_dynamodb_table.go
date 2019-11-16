@@ -94,11 +94,7 @@ func ResourceDynamoDBTable() *schema.Resource {
 				Type: schema.TypeString,
 				Optional: true,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"time_to_live_specification": {
 				Type: schema.TypeList,
 				Elem: propertyTableTimeToLiveSpecification(),

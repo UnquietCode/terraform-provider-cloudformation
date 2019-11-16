@@ -57,11 +57,7 @@ func ResourceEC2Subnet() *schema.Resource {
 				Type: schema.TypeBool,
 				Optional: true,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"vpc_id": {
 				Type: schema.TypeString,
 				Required: true,

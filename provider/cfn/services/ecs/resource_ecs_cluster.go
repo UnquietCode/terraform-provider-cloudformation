@@ -36,11 +36,7 @@ func ResourceECSCluster() *schema.Resource {
 				Type: schema.TypeString,
 				Optional: true,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"logical_id": {
 				Type: schema.TypeString,
 				Required: true,

@@ -33,6 +33,7 @@ func propertyEC2FleetTargetCapacitySpecificationRequest(extras...string) *schema
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
+	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"default_target_capacity_type": {

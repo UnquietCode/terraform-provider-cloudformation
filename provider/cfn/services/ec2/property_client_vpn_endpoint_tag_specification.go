@@ -32,17 +32,14 @@ func propertyClientVpnEndpointTagSpecification(extras...string) *schema.Resource
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
+	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"resource_type": {
 				Type: schema.TypeString,
 				Required: true,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Required: true,
-			},
+			"tags": misc.PropertyTags(),
 		},
 	}
 }

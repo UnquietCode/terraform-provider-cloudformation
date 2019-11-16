@@ -99,11 +99,7 @@ func ResourceNeptuneDBCluster() *schema.Resource {
 				Type: schema.TypeInt,
 				Optional: true,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"enable_cloudwatch_logs_exports": {
 				Type: schema.TypeList,
 				Elem: &schema.Schema{Type: schema.TypeString},

@@ -31,11 +31,7 @@ func ResourceInspectorResourceGroup() *schema.Resource {
 		CustomizeDiff: resourceInspectorResourceGroupCustomizeDiff,
 		
 		Schema: map[string]*schema.Schema{
-			"resource_group_tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Required: true,
-			},
+			"resource_group_tags": misc.PropertyTags(),
 			"logical_id": {
 				Type: schema.TypeString,
 				Required: true,

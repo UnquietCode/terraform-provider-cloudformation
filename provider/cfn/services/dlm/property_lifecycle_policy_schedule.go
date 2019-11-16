@@ -37,24 +37,17 @@ func propertyLifecyclePolicySchedule(extras...string) *schema.Resource {
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
+	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
-			"tags_to_add": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags_to_add": misc.PropertyTags(),
 			"create_rule": {
 				Type: schema.TypeList,
 				Elem: propertyLifecyclePolicyCreateRule(),
 				Optional: true,
 				MaxItems: 1,
 			},
-			"variable_tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"variable_tags": misc.PropertyTags(),
 			"fast_restore_rule": {
 				Type: schema.TypeList,
 				Elem: propertyLifecyclePolicyFastRestoreRule(),

@@ -128,11 +128,7 @@ func ResourceCodeBuildProject() *schema.Resource {
 				Elem: propertyProjectProjectSourceVersion(),
 				Optional: true,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"timeout_in_minutes": {
 				Type: schema.TypeInt,
 				Optional: true,

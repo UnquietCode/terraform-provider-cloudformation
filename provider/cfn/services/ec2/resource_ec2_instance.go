@@ -204,11 +204,7 @@ func ResourceEC2Instance() *schema.Resource {
 				Type: schema.TypeString,
 				Optional: true,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"tenancy": {
 				Type: schema.TypeString,
 				Optional: true,

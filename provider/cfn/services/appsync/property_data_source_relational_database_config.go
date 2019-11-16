@@ -31,6 +31,7 @@ func propertyDataSourceRelationalDatabaseConfig(extras...string) *schema.Resourc
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
+	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"rds_http_endpoint_config": {

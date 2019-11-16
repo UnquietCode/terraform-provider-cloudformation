@@ -46,11 +46,7 @@ func ResourceCloudFormationStack() *schema.Resource {
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Optional: true,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"template_url": {
 				Type: schema.TypeString,
 				Required: true,

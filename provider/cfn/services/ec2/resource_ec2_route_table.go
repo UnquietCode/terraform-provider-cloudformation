@@ -32,11 +32,7 @@ func ResourceEC2RouteTable() *schema.Resource {
 		CustomizeDiff: resourceEC2RouteTableCustomizeDiff,
 		
 		Schema: map[string]*schema.Schema{
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"vpc_id": {
 				Type: schema.TypeString,
 				Required: true,

@@ -175,11 +175,7 @@ func ResourceRDSDBCluster() *schema.Resource {
 				Type: schema.TypeBool,
 				Optional: true,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"use_latest_restorable_time": {
 				Type: schema.TypeBool,
 				Optional: true,

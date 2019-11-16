@@ -125,11 +125,7 @@ func ResourceEMRCluster() *schema.Resource {
 				Elem: propertyClusterStepConfig(),
 				Optional: true,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"visible_to_all_users": {
 				Type: schema.TypeBool,
 				Optional: true,

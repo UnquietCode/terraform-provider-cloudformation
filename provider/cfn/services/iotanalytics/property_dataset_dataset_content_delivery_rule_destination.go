@@ -31,6 +31,7 @@ func propertyDatasetDatasetContentDeliveryRuleDestination(extras...string) *sche
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
+	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"iot_events_destination_configuration": {

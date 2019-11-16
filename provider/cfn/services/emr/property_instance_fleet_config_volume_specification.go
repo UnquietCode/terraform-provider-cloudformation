@@ -32,6 +32,7 @@ func propertyInstanceFleetConfigVolumeSpecification(extras...string) *schema.Res
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
+	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"iops": {

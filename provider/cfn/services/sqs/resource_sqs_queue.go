@@ -82,11 +82,7 @@ func ResourceSQSQueue() *schema.Resource {
 				Type: schema.TypeMap,
 				Optional: true,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"visibility_timeout": {
 				Type: schema.TypeInt,
 				Optional: true,

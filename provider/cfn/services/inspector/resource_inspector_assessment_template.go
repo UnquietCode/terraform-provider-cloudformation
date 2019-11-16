@@ -52,11 +52,7 @@ func ResourceInspectorAssessmentTemplate() *schema.Resource {
 				Elem: &schema.Schema{Type: schema.TypeString},
 				Required: true,
 			},
-			"user_attributes_for_findings": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"user_attributes_for_findings": misc.PropertyTags(),
 			"logical_id": {
 				Type: schema.TypeString,
 				Required: true,

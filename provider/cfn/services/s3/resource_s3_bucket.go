@@ -129,11 +129,7 @@ func ResourceS3Bucket() *schema.Resource {
 				Optional: true,
 				MaxItems: 1,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"versioning_configuration": {
 				Type: schema.TypeList,
 				Elem: propertyBucketVersioningConfiguration(),

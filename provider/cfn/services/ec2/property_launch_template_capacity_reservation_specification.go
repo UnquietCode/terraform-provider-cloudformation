@@ -31,6 +31,7 @@ func propertyLaunchTemplateCapacityReservationSpecification(extras...string) *sc
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
+	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"capacity_reservation_preference": {

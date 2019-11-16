@@ -31,6 +31,7 @@ func propertyChannelVideoSelectorSettings(extras...string) *schema.Resource {
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
+	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"video_selector_program_id": {

@@ -88,11 +88,7 @@ func ResourceCloudTrailTrail() *schema.Resource {
 				Type: schema.TypeString,
 				Optional: true,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"trail_name": {
 				Type: schema.TypeString,
 				Optional: true,

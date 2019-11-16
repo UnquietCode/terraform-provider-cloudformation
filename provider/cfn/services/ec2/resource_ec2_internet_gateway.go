@@ -31,11 +31,7 @@ func ResourceEC2InternetGateway() *schema.Resource {
 		CustomizeDiff: resourceEC2InternetGatewayCustomizeDiff,
 		
 		Schema: map[string]*schema.Schema{
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"logical_id": {
 				Type: schema.TypeString,
 				Required: true,

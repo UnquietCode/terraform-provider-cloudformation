@@ -32,6 +32,7 @@ func propertyClusterSimpleScalingPolicyConfiguration(extras...string) *schema.Re
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
+	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"adjustment_type": {

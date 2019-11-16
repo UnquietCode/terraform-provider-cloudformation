@@ -68,11 +68,7 @@ func ResourceSSMMaintenanceWindow() *schema.Resource {
 				Type: schema.TypeString,
 				Optional: true,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"name": {
 				Type: schema.TypeString,
 				Required: true,

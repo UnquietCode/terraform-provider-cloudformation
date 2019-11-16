@@ -35,6 +35,7 @@ func propertyLifecyclePolicyPolicyDetails(extras...string) *schema.Resource {
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
+	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"resource_types": {
@@ -57,11 +58,7 @@ func propertyLifecyclePolicyPolicyDetails(extras...string) *schema.Resource {
 				Optional: true,
 				MaxItems: 1,
 			},
-			"target_tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"target_tags": misc.PropertyTags(),
 		},
 	}
 }

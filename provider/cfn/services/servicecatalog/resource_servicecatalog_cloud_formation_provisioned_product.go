@@ -77,11 +77,7 @@ func ResourceServiceCatalogCloudFormationProvisionedProduct() *schema.Resource {
 				Type: schema.TypeString,
 				Optional: true,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"provisioned_product_name": {
 				Type: schema.TypeString,
 				Optional: true,

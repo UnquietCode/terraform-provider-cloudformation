@@ -45,11 +45,7 @@ func ResourceEC2VPNConnection() *schema.Resource {
 				Type: schema.TypeBool,
 				Optional: true,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"transit_gateway_id": {
 				Type: schema.TypeString,
 				Optional: true,

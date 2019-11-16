@@ -108,11 +108,7 @@ func ResourceDMSEndpoint() *schema.Resource {
 				Type: schema.TypeString,
 				Required: true,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"endpoint_identifier": {
 				Type: schema.TypeString,
 				Optional: true,

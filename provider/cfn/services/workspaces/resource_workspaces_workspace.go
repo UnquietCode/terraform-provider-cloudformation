@@ -50,11 +50,7 @@ func ResourceWorkSpacesWorkspace() *schema.Resource {
 				Type: schema.TypeBool,
 				Optional: true,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"user_name": {
 				Type: schema.TypeString,
 				Required: true,

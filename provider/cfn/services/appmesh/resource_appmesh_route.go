@@ -53,11 +53,7 @@ func ResourceAppMeshRoute() *schema.Resource {
 				Required: true,
 				MaxItems: 1,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"logical_id": {
 				Type: schema.TypeString,
 				Required: true,

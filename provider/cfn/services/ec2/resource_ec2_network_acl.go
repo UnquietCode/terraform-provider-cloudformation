@@ -32,11 +32,7 @@ func ResourceEC2NetworkAcl() *schema.Resource {
 		CustomizeDiff: resourceEC2NetworkAclCustomizeDiff,
 		
 		Schema: map[string]*schema.Schema{
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"vpc_id": {
 				Type: schema.TypeString,
 				Required: true,

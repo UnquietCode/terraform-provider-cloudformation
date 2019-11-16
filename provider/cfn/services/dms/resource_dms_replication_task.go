@@ -77,11 +77,7 @@ func ResourceDMSReplicationTask() *schema.Resource {
 				Type: schema.TypeString,
 				Required: true,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"cdc_start_time": {
 				Type: schema.TypeFloat,
 				Optional: true,

@@ -30,6 +30,7 @@ func propertyVirtualServiceVirtualNodeServiceProvider(extras...string) *schema.R
 	if count >= 5 {
 		return &schema.Resource{ Schema: map[string]*schema.Schema{} }
 	}
+	
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"virtual_node_name": {

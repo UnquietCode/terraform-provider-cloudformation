@@ -42,11 +42,7 @@ func ResourceEC2CustomerGateway() *schema.Resource {
 				Type: schema.TypeString,
 				Required: true,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"type": {
 				Type: schema.TypeString,
 				Required: true,

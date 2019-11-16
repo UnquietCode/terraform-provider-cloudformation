@@ -52,11 +52,7 @@ func ResourceEC2VPCPeeringConnection() *schema.Resource {
 				Type: schema.TypeString,
 				Required: true,
 			},
-			"tags": {
-				Type: schema.TypeList,
-				Elem: misc.PropertyTag(),
-				Optional: true,
-			},
+			"tags": misc.PropertyTags(),
 			"vpc_id": {
 				Type: schema.TypeString,
 				Required: true,
