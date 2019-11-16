@@ -2,7 +2,11 @@ import os
 import json
 from itertools import chain
 
-from .template import render_resource_template, render_property_template, render_provider_template
+from unquietcode.tools.cfn_provider.golang.code_generator import (
+    generate_resource_model,
+    generate_property_model,
+    generate_provider_model,
+)
 from unquietcode.tools.cfn_provider.models import ComplexType
 from unquietcode.tools.cfn_provider.utils import snake_caps
 
@@ -51,7 +55,7 @@ def render_provider(provider_data, output_path):
     # we don't need the import for our own package
     imports.discard(package.full_path)
     
-    rendered = render_provider_template(
+    rendered = generate_provider_model(
         cfn_version=provider_data.cfn_version,
         package_name=package.name,
         resources=resources,
@@ -69,7 +73,7 @@ def render_resource(cfn_version, resource, output_path):
     imports.add('plugin')
     imports.discard(resource.package.full_path)  # remove self
     
-    rendered = render_resource_template(
+    rendered = generate_resource_model(
         cfn_version=cfn_version,
         resource=resource,
         imports=imports,
@@ -83,7 +87,7 @@ def render_property(cfn_version, property, output_path):
     imports = _extract_imports(property.attributes.values())
     imports.discard(property.package.full_path)  # remove self
     
-    rendered = render_property_template(
+    rendered = generate_property_model(
         cfn_version=cfn_version,
         package_name=property.package.name,
         property_name=property.name,

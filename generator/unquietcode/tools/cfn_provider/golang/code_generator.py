@@ -106,7 +106,7 @@ def _import_prefix(i):
 	return f"github.com/unquietcode/terraform-cfn-provider/{i}"
 	
 
-def render_resource_template(*, cfn_version, imports, resource):
+def generate_resource_model(*, cfn_version, imports, resource):
 	import_lines = [ _import_prefix(i) for i in imports ]
 	import_lines.extend([
 		"github.com/hashicorp/terraform-plugin-sdk/helper/schema",
@@ -242,7 +242,7 @@ if count >= ${max_recursion} {
 """[1:])
 
 
-def render_property_template(*, cfn_version, package_name, property_name, attributes, imports, documentation_link):
+def generate_property_model(*, cfn_version, package_name, property_name, attributes, imports, documentation_link):
 	import_lines = [ _import_prefix(i) for i in imports ]
 	import_lines.extend([
 		"strconv",
@@ -312,7 +312,7 @@ def _datasources_line(datasource):
 	return name, LiteralExpression(expression=value)
 	
 
-def render_provider_template(*, cfn_version, package_name, imports, datasources, resources):
+def generate_provider_model(*, cfn_version, package_name, imports, datasources, resources):
 	import_lines = [ _import_prefix(i) for i in imports ]
 	import_lines.extend([
 		"github.com/hashicorp/terraform-plugin-sdk/helper/schema",
