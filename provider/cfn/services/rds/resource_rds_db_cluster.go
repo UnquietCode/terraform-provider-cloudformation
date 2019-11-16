@@ -154,7 +154,7 @@ func ResourceRDSDBCluster() *schema.Resource {
 				Optional: true,
 			},
 			"scaling_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDBClusterScalingConfiguration(),
 				Optional: true,
 				MaxItems: 1,

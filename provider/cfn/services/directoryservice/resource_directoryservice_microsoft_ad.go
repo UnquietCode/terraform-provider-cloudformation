@@ -61,7 +61,7 @@ func ResourceDirectoryServiceMicrosoftAD() *schema.Resource {
 				Optional: true,
 			},
 			"vpc_settings": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyMicrosoftADVpcSettings(),
 				Required: true,
 				MaxItems: 1,

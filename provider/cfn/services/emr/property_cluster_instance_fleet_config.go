@@ -43,7 +43,7 @@ func propertyClusterInstanceFleetConfig(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"launch_specifications": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterInstanceFleetProvisioningSpecifications(),
 				Optional: true,
 				MaxItems: 1,

@@ -56,7 +56,7 @@ func ResourceApiGatewayRestApi() *schema.Resource {
 				Optional: true,
 			},
 			"body_s3_location": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRestApiS3Location(),
 				Optional: true,
 				MaxItems: 1,
@@ -70,7 +70,7 @@ func ResourceApiGatewayRestApi() *schema.Resource {
 				Optional: true,
 			},
 			"endpoint_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRestApiEndpointConfiguration(),
 				Optional: true,
 				MaxItems: 1,

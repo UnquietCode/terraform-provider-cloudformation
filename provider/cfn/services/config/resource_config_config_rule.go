@@ -52,13 +52,13 @@ func ResourceConfigConfigRule() *schema.Resource {
 				Optional: true,
 			},
 			"scope": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyConfigRuleScope(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"source": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyConfigRuleSource(),
 				Required: true,
 				MaxItems: 1,

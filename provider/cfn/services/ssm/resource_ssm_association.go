@@ -54,7 +54,7 @@ func ResourceSSMAssociation() *schema.Resource {
 				Required: true,
 			},
 			"output_location": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyAssociationInstanceAssociationOutputLocation(),
 				Optional: true,
 				MaxItems: 1,

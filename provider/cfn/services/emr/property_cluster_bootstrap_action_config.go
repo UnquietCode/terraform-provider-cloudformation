@@ -39,7 +39,7 @@ func propertyClusterBootstrapActionConfig(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"script_bootstrap_action": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterScriptBootstrapActionConfig(),
 				Required: true,
 				MaxItems: 1,

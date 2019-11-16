@@ -40,13 +40,13 @@ func propertyDatasetAction(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"container_action": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDatasetContainerAction(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"query_action": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDatasetQueryAction(),
 				Optional: true,
 				MaxItems: 1,

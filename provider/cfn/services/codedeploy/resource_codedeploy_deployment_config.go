@@ -36,7 +36,7 @@ func ResourceCodeDeployDeploymentConfig() *schema.Resource {
 				Optional: true,
 			},
 			"minimum_healthy_hosts": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeploymentConfigMinimumHealthyHosts(),
 				Optional: true,
 				MaxItems: 1,

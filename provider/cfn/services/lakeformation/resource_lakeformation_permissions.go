@@ -34,13 +34,13 @@ func ResourceLakeFormationPermissions() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"data_lake_principal": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyPermissionsDataLakePrincipal(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"resource": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyPermissionsResource(),
 				Required: true,
 				MaxItems: 1,

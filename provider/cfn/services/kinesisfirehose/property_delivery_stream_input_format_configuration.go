@@ -34,7 +34,7 @@ func propertyDeliveryStreamInputFormatConfiguration(extras...string) *schema.Res
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"deserializer": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamDeserializer(),
 				Required: true,
 				MaxItems: 1,

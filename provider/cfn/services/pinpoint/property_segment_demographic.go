@@ -39,37 +39,37 @@ func propertySegmentDemographic(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"app_version": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySegmentSetDimension(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"device_type": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySegmentSetDimension(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"platform": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySegmentSetDimension(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"channel": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySegmentSetDimension(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"model": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySegmentSetDimension(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"make": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySegmentSetDimension(),
 				Optional: true,
 				MaxItems: 1,

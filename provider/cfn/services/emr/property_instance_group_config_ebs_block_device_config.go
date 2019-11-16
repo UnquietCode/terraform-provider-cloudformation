@@ -35,7 +35,7 @@ func propertyInstanceGroupConfigEbsBlockDeviceConfig(extras...string) *schema.Re
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"volume_specification": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyInstanceGroupConfigVolumeSpecification(),
 				Required: true,
 				MaxItems: 1,

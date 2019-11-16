@@ -67,25 +67,25 @@ func ResourceDynamoDBTable() *schema.Resource {
 				Optional: true,
 			},
 			"point_in_time_recovery_specification": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTablePointInTimeRecoverySpecification(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"provisioned_throughput": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTableProvisionedThroughput(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"sse_specification": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTableSSESpecification(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"stream_specification": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTableStreamSpecification(),
 				Optional: true,
 				MaxItems: 1,
@@ -96,7 +96,7 @@ func ResourceDynamoDBTable() *schema.Resource {
 			},
 			"tags": misc.PropertyTags(),
 			"time_to_live_specification": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTableTimeToLiveSpecification(),
 				Optional: true,
 				MaxItems: 1,

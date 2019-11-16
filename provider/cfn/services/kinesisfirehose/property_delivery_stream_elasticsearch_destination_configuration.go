@@ -44,13 +44,13 @@ func propertyDeliveryStreamElasticsearchDestinationConfiguration(extras...string
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"buffering_hints": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamElasticsearchBufferingHints(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"cloud_watch_logging_options": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamCloudWatchLoggingOptions(),
 				Optional: true,
 				MaxItems: 1,
@@ -68,13 +68,13 @@ func propertyDeliveryStreamElasticsearchDestinationConfiguration(extras...string
 				Required: true,
 			},
 			"processing_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamProcessingConfiguration(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"retry_options": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamElasticsearchRetryOptions(),
 				Required: true,
 				MaxItems: 1,
@@ -88,7 +88,7 @@ func propertyDeliveryStreamElasticsearchDestinationConfiguration(extras...string
 				Required: true,
 			},
 			"s3_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamS3DestinationConfiguration(),
 				Required: true,
 				MaxItems: 1,

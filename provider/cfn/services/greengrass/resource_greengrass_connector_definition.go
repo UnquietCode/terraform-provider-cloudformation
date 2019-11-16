@@ -33,7 +33,7 @@ func ResourceGreengrassConnectorDefinition() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"initial_version": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyConnectorDefinitionConnectorDefinitionVersion(),
 				Optional: true,
 				MaxItems: 1,

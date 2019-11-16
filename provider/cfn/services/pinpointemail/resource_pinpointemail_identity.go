@@ -52,7 +52,7 @@ func ResourcePinpointEmailIdentity() *schema.Resource {
 				Required: true,
 			},
 			"mail_from_attributes": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyIdentityMailFromAttributes(),
 				Optional: true,
 				MaxItems: 1,

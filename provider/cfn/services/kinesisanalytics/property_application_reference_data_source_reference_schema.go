@@ -45,7 +45,7 @@ func propertyApplicationReferenceDataSourceReferenceSchema(extras...string) *sch
 				Required: true,
 			},
 			"record_format": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationReferenceDataSourceRecordFormat(),
 				Required: true,
 				MaxItems: 1,

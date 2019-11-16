@@ -35,7 +35,7 @@ func ResourceIoTEventsInput() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"input_definition": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyInputInputDefinition(),
 				Optional: true,
 				MaxItems: 1,

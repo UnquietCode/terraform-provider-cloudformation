@@ -40,7 +40,7 @@ func propertyFileSystemWindowsConfiguration(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"self_managed_active_directory_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyFileSystemSelfManagedActiveDirectoryConfiguration(),
 				Optional: true,
 				MaxItems: 1,

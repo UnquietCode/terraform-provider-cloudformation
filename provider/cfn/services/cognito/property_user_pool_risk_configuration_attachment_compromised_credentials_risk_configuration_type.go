@@ -35,7 +35,7 @@ func propertyUserPoolRiskConfigurationAttachmentCompromisedCredentialsRiskConfig
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"actions": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolRiskConfigurationAttachmentCompromisedCredentialsActionsType(),
 				Required: true,
 				MaxItems: 1,

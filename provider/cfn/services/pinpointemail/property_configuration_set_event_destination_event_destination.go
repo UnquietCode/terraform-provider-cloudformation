@@ -39,13 +39,13 @@ func propertyConfigurationSetEventDestinationEventDestination(extras...string) *
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"sns_destination": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyConfigurationSetEventDestinationSnsDestination(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"cloud_watch_destination": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyConfigurationSetEventDestinationCloudWatchDestination(),
 				Optional: true,
 				MaxItems: 1,
@@ -60,13 +60,13 @@ func propertyConfigurationSetEventDestinationEventDestination(extras...string) *
 				Required: true,
 			},
 			"pinpoint_destination": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyConfigurationSetEventDestinationPinpointDestination(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"kinesis_firehose_destination": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyConfigurationSetEventDestinationKinesisFirehoseDestination(),
 				Optional: true,
 				MaxItems: 1,

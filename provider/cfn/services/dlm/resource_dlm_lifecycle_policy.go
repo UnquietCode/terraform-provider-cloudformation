@@ -46,7 +46,7 @@ func ResourceDLMLifecyclePolicy() *schema.Resource {
 				Optional: true,
 			},
 			"policy_details": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLifecyclePolicyPolicyDetails(),
 				Optional: true,
 				MaxItems: 1,

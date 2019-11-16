@@ -39,7 +39,7 @@ func propertyMLTransformTransformParameters(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"find_matches_parameters": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyMLTransformFindMatchesParameters(),
 				Optional: true,
 				MaxItems: 1,

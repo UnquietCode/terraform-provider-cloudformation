@@ -64,7 +64,7 @@ func ResourceWorkSpacesWorkspace() *schema.Resource {
 				Optional: true,
 			},
 			"workspace_properties": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyWorkspaceWorkspaceProperties(),
 				Optional: true,
 				MaxItems: 1,

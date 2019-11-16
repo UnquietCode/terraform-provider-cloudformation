@@ -33,7 +33,7 @@ func ResourceGreengrassSubscriptionDefinition() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"initial_version": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySubscriptionDefinitionSubscriptionDefinitionVersion(),
 				Optional: true,
 				MaxItems: 1,

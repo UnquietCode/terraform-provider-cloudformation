@@ -58,7 +58,7 @@ func propertyChannelInputSettings(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"video_selector": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyChannelVideoSelector(),
 				Optional: true,
 				MaxItems: 1,
@@ -78,7 +78,7 @@ func propertyChannelInputSettings(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"network_input_settings": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyChannelNetworkInputSettings(),
 				Optional: true,
 				MaxItems: 1,

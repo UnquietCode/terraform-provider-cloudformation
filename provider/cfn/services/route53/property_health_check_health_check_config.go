@@ -49,7 +49,7 @@ func propertyHealthCheckHealthCheckConfig(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"alarm_identifier": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyHealthCheckAlarmIdentifier(),
 				Optional: true,
 				MaxItems: 1,

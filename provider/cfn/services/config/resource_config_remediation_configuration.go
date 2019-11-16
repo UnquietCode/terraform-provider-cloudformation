@@ -44,7 +44,7 @@ func ResourceConfigRemediationConfiguration() *schema.Resource {
 				Optional: true,
 			},
 			"execution_controls": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRemediationConfigurationExecutionControls(),
 				Optional: true,
 				MaxItems: 1,

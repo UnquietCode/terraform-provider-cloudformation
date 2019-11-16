@@ -33,7 +33,7 @@ func ResourceGreengrassDeviceDefinition() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"initial_version": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeviceDefinitionDeviceDefinitionVersion(),
 				Optional: true,
 				MaxItems: 1,

@@ -47,7 +47,7 @@ func propertyMemberNetworkConfiguration(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"voting_policy": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyMemberVotingPolicy(),
 				Required: true,
 				MaxItems: 1,
@@ -61,7 +61,7 @@ func propertyMemberNetworkConfiguration(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"network_framework_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyMemberNetworkFrameworkConfiguration(),
 				Optional: true,
 				MaxItems: 1,

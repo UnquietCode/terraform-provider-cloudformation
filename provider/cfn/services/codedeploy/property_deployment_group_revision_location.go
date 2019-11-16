@@ -36,7 +36,7 @@ func propertyDeploymentGroupRevisionLocation(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"git_hub_location": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeploymentGroupGitHubLocation(),
 				Optional: true,
 				MaxItems: 1,
@@ -46,7 +46,7 @@ func propertyDeploymentGroupRevisionLocation(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"s3_location": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeploymentGroupS3Location(),
 				Optional: true,
 				MaxItems: 1,

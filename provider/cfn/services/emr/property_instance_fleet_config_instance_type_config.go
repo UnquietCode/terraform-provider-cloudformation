@@ -52,7 +52,7 @@ func propertyInstanceFleetConfigInstanceTypeConfig(extras...string) *schema.Reso
 				Optional: true,
 			},
 			"ebs_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyInstanceFleetConfigEbsConfiguration(),
 				Optional: true,
 				MaxItems: 1,

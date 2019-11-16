@@ -41,7 +41,7 @@ func propertyLaunchConfigurationBlockDeviceMapping(extras...string) *schema.Reso
 				Required: true,
 			},
 			"ebs": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLaunchConfigurationBlockDevice(),
 				Optional: true,
 				MaxItems: 1,

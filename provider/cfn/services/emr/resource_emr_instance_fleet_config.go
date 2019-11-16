@@ -50,7 +50,7 @@ func ResourceEMRInstanceFleetConfig() *schema.Resource {
 				Optional: true,
 			},
 			"launch_specifications": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyInstanceFleetConfigInstanceFleetProvisioningSpecifications(),
 				Optional: true,
 				MaxItems: 1,

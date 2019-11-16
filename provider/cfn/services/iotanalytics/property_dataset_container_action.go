@@ -50,7 +50,7 @@ func propertyDatasetContainerAction(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"resource_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDatasetResourceConfiguration(),
 				Required: true,
 				MaxItems: 1,

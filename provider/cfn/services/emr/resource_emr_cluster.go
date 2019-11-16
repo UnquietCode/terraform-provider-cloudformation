@@ -81,7 +81,7 @@ func ResourceEMRCluster() *schema.Resource {
 				Optional: true,
 			},
 			"instances": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterJobFlowInstancesConfig(),
 				Required: true,
 				MaxItems: 1,
@@ -91,7 +91,7 @@ func ResourceEMRCluster() *schema.Resource {
 				Required: true,
 			},
 			"kerberos_attributes": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterKerberosAttributes(),
 				Optional: true,
 				MaxItems: 1,

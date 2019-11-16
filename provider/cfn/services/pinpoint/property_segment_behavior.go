@@ -34,7 +34,7 @@ func propertySegmentBehavior(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"recency": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySegmentRecency(),
 				Optional: true,
 				MaxItems: 1,

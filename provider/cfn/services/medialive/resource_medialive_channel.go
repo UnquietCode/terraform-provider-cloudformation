@@ -44,7 +44,7 @@ func ResourceMediaLiveChannel() *schema.Resource {
 				Optional: true,
 			},
 			"input_specification": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyChannelInputSpecification(),
 				Optional: true,
 				MaxItems: 1,

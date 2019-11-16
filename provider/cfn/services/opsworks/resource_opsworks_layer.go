@@ -71,7 +71,7 @@ func ResourceOpsWorksLayer() *schema.Resource {
 				Optional: true,
 			},
 			"custom_recipes": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLayerRecipes(),
 				Optional: true,
 				MaxItems: 1,
@@ -90,13 +90,13 @@ func ResourceOpsWorksLayer() *schema.Resource {
 				Optional: true,
 			},
 			"lifecycle_event_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLayerLifecycleEventConfiguration(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"load_based_auto_scaling": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLayerLoadBasedAutoScaling(),
 				Optional: true,
 				MaxItems: 1,

@@ -52,7 +52,7 @@ func ResourceLambdaLayerVersion() *schema.Resource {
 				Optional: true,
 			},
 			"content": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLayerVersionContent(),
 				Required: true,
 				MaxItems: 1,

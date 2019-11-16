@@ -34,7 +34,7 @@ func propertyUserPoolPolicies(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"password_policy": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolPasswordPolicy(),
 				Optional: true,
 				MaxItems: 1,

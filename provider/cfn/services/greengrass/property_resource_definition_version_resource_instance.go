@@ -36,7 +36,7 @@ func propertyResourceDefinitionVersionResourceInstance(extras...string) *schema.
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"resource_data_container": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyResourceDefinitionVersionResourceDataContainer(),
 				Required: true,
 				MaxItems: 1,

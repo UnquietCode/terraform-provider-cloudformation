@@ -54,7 +54,7 @@ func propertyByteMatchSetByteMatchTuple(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"field_to_match": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyByteMatchSetFieldToMatch(),
 				Required: true,
 				MaxItems: 1,

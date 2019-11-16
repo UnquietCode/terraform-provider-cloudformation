@@ -47,7 +47,7 @@ func propertyRuleTarget(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"ecs_parameters": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRuleEcsParameters(),
 				Optional: true,
 				MaxItems: 1,
@@ -65,13 +65,13 @@ func propertyRuleTarget(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"input_transformer": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRuleInputTransformer(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"kinesis_parameters": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRuleKinesisParameters(),
 				Optional: true,
 				MaxItems: 1,
@@ -81,13 +81,13 @@ func propertyRuleTarget(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"run_command_parameters": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRuleRunCommandParameters(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"sqs_parameters": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRuleSqsParameters(),
 				Optional: true,
 				MaxItems: 1,

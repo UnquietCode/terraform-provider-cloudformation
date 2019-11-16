@@ -40,7 +40,7 @@ func propertyFunctionDefinitionVersionFunction(extras...string) *schema.Resource
 				Required: true,
 			},
 			"function_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyFunctionDefinitionVersionFunctionConfiguration(),
 				Required: true,
 				MaxItems: 1,

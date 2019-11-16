@@ -45,7 +45,7 @@ func ResourceApiGatewayStage() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"access_log_setting": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyStageAccessLogSetting(),
 				Optional: true,
 				MaxItems: 1,
@@ -59,7 +59,7 @@ func ResourceApiGatewayStage() *schema.Resource {
 				Optional: true,
 			},
 			"canary_setting": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyStageCanarySetting(),
 				Optional: true,
 				MaxItems: 1,

@@ -45,7 +45,7 @@ func propertyTableLocalSecondaryIndex(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"projection": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTableProjection(),
 				Required: true,
 				MaxItems: 1,

@@ -37,13 +37,13 @@ func ResourcePinpointPushTemplate() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"gcm": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyPushTemplateAndroidPushNotificationTemplate(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"baidu": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyPushTemplateAndroidPushNotificationTemplate(),
 				Optional: true,
 				MaxItems: 1,
@@ -53,19 +53,19 @@ func ResourcePinpointPushTemplate() *schema.Resource {
 				Required: true,
 			},
 			"adm": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyPushTemplateAndroidPushNotificationTemplate(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"apns": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyPushTemplateAPNSPushNotificationTemplate(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"default": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyPushTemplateDefaultPushNotificationTemplate(),
 				Optional: true,
 				MaxItems: 1,

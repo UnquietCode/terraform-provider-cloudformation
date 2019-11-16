@@ -42,7 +42,7 @@ func ResourceEKSCluster() *schema.Resource {
 				Required: true,
 			},
 			"resources_vpc_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterResourcesVpcConfig(),
 				Required: true,
 				MaxItems: 1,

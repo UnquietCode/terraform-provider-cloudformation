@@ -44,13 +44,13 @@ func ResourceApiGatewayUsagePlan() *schema.Resource {
 				Optional: true,
 			},
 			"quota": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUsagePlanQuotaSettings(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"throttle": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUsagePlanThrottleSettings(),
 				Optional: true,
 				MaxItems: 1,

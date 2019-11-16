@@ -35,13 +35,13 @@ func propertyUserPoolRiskConfigurationAttachmentAccountTakeoverRiskConfiguration
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"actions": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolRiskConfigurationAttachmentAccountTakeoverActionsType(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"notify_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolRiskConfigurationAttachmentNotifyConfigurationType(),
 				Optional: true,
 				MaxItems: 1,

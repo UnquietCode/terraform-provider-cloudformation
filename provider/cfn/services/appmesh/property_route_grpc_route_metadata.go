@@ -44,7 +44,7 @@ func propertyRouteGrpcRouteMetadata(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"match": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRouteGrpcRouteMetadataMatchMethod(),
 				Optional: true,
 				MaxItems: 1,

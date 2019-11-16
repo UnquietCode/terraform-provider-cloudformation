@@ -36,7 +36,7 @@ func propertyWebACLRule(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"action": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyWebACLAction(),
 				Required: true,
 				MaxItems: 1,

@@ -31,7 +31,7 @@ func ResourceEC2SpotFleet() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"spot_fleet_request_config_data": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySpotFleetSpotFleetRequestConfigData(),
 				Required: true,
 				MaxItems: 1,

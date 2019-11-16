@@ -39,7 +39,7 @@ func propertyClusterScalingAction(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"simple_scaling_policy_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterSimpleScalingPolicyConfiguration(),
 				Required: true,
 				MaxItems: 1,

@@ -35,13 +35,13 @@ func propertyAutoScalingGroupMixedInstancesPolicy(extras...string) *schema.Resou
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"instances_distribution": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyAutoScalingGroupInstancesDistribution(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"launch_template": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyAutoScalingGroupLaunchTemplate(),
 				Required: true,
 				MaxItems: 1,

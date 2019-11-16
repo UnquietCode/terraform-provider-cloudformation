@@ -36,19 +36,19 @@ func propertyRouteGrpcRoute(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"action": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRouteGrpcRouteAction(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"retry_policy": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRouteGrpcRetryPolicy(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"match": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRouteGrpcRouteMatch(),
 				Required: true,
 				MaxItems: 1,

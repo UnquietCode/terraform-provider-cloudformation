@@ -42,20 +42,20 @@ func propertyLifecyclePolicySchedule(extras...string) *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"tags_to_add": misc.PropertyTags(),
 			"create_rule": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLifecyclePolicyCreateRule(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"variable_tags": misc.PropertyTags(),
 			"fast_restore_rule": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLifecyclePolicyFastRestoreRule(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"retain_rule": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLifecyclePolicyRetainRule(),
 				Optional: true,
 				MaxItems: 1,

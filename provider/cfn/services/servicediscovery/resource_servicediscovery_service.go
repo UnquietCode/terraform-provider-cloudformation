@@ -40,13 +40,13 @@ func ResourceServiceDiscoveryService() *schema.Resource {
 				Optional: true,
 			},
 			"health_check_custom_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyServiceHealthCheckCustomConfig(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"dns_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyServiceDnsConfig(),
 				Optional: true,
 				MaxItems: 1,
@@ -56,7 +56,7 @@ func ResourceServiceDiscoveryService() *schema.Resource {
 				Optional: true,
 			},
 			"health_check_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyServiceHealthCheckConfig(),
 				Optional: true,
 				MaxItems: 1,

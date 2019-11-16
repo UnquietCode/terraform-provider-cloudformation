@@ -39,7 +39,7 @@ func propertyFilterFindingCriteria(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"item_type": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyFilterCondition(),
 				Optional: true,
 				MaxItems: 1,

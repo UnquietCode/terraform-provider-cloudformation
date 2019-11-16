@@ -52,7 +52,7 @@ func propertyUserPoolSchemaAttribute(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"string_attribute_constraints": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolStringAttributeConstraints(),
 				Optional: true,
 				MaxItems: 1,
@@ -62,7 +62,7 @@ func propertyUserPoolSchemaAttribute(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"number_attribute_constraints": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolNumberAttributeConstraints(),
 				Optional: true,
 				MaxItems: 1,

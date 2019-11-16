@@ -34,7 +34,7 @@ func propertyRouteTcpRoute(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"action": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRouteTcpRouteAction(),
 				Required: true,
 				MaxItems: 1,

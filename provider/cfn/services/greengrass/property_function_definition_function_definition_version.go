@@ -35,7 +35,7 @@ func propertyFunctionDefinitionFunctionDefinitionVersion(extras...string) *schem
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"default_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyFunctionDefinitionDefaultConfig(),
 				Optional: true,
 				MaxItems: 1,

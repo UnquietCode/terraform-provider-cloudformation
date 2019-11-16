@@ -33,7 +33,7 @@ func ResourceGlueTable() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"table_input": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTableTableInput(),
 				Required: true,
 				MaxItems: 1,

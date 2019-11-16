@@ -34,7 +34,7 @@ func propertyVirtualRouterVirtualRouterListener(extras...string) *schema.Resourc
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"port_mapping": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyVirtualRouterPortMapping(),
 				Required: true,
 				MaxItems: 1,

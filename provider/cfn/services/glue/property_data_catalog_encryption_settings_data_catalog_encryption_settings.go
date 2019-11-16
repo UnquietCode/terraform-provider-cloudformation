@@ -35,13 +35,13 @@ func propertyDataCatalogEncryptionSettingsDataCatalogEncryptionSettings(extras..
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"connection_password_encryption": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDataCatalogEncryptionSettingsConnectionPasswordEncryption(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"encryption_at_rest": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDataCatalogEncryptionSettingsEncryptionAtRest(),
 				Optional: true,
 				MaxItems: 1,

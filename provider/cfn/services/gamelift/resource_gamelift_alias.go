@@ -41,7 +41,7 @@ func ResourceGameLiftAlias() *schema.Resource {
 				Required: true,
 			},
 			"routing_strategy": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyAliasRoutingStrategy(),
 				Required: true,
 				MaxItems: 1,

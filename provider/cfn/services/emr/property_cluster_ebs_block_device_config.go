@@ -35,7 +35,7 @@ func propertyClusterEbsBlockDeviceConfig(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"volume_specification": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterVolumeSpecification(),
 				Required: true,
 				MaxItems: 1,

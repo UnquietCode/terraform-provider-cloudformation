@@ -45,7 +45,7 @@ func propertyBucketRule(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"abort_incomplete_multipart_upload": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketAbortIncompleteMultipartUpload(),
 				Optional: true,
 				MaxItems: 1,
@@ -67,7 +67,7 @@ func propertyBucketRule(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"noncurrent_version_transition": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketNoncurrentVersionTransition(),
 				Optional: true,
 				MaxItems: 1,
@@ -91,7 +91,7 @@ func propertyBucketRule(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"transition": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketTransition(),
 				Optional: true,
 				MaxItems: 1,

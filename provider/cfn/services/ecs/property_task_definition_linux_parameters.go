@@ -38,7 +38,7 @@ func propertyTaskDefinitionLinuxParameters(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"capabilities": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTaskDefinitionKernelCapabilities(),
 				Optional: true,
 				MaxItems: 1,

@@ -37,19 +37,19 @@ func ResourceAppSyncGraphQLApi() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"open_id_connect_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyGraphQLApiOpenIDConnectConfig(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"user_pool_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyGraphQLApiUserPoolConfig(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"tags": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyGraphQLApiTags(),
 				Optional: true,
 				MaxItems: 1,
@@ -63,13 +63,13 @@ func ResourceAppSyncGraphQLApi() *schema.Resource {
 				Required: true,
 			},
 			"log_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyGraphQLApiLogConfig(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"additional_authentication_providers": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyGraphQLApiAdditionalAuthenticationProviders(),
 				Optional: true,
 				MaxItems: 1,

@@ -34,7 +34,7 @@ func propertyServiceNetworkConfiguration(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"awsvpc_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyServiceAwsVpcConfiguration(),
 				Optional: true,
 				MaxItems: 1,

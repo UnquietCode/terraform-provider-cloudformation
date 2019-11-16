@@ -46,7 +46,7 @@ func ResourceGluePartition() *schema.Resource {
 				Required: true,
 			},
 			"partition_input": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyPartitionPartitionInput(),
 				Required: true,
 				MaxItems: 1,

@@ -34,7 +34,7 @@ func propertyRemediationConfigurationExecutionControls(extras...string) *schema.
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"ssm_controls": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRemediationConfigurationSsmControls(),
 				Optional: true,
 				MaxItems: 1,

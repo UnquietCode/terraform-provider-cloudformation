@@ -38,7 +38,7 @@ func ResourceWAFRegionalWebACL() *schema.Resource {
 				Required: true,
 			},
 			"default_action": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyWebACLAction(),
 				Required: true,
 				MaxItems: 1,

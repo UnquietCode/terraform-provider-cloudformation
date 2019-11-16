@@ -37,7 +37,7 @@ func propertyDistributionForwardedValues(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"cookies": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDistributionCookies(),
 				Optional: true,
 				MaxItems: 1,

@@ -40,7 +40,7 @@ func propertyClusterStepConfig(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"hadoop_jar_step": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterHadoopJarStepConfig(),
 				Required: true,
 				MaxItems: 1,

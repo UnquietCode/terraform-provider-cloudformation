@@ -58,7 +58,7 @@ func propertyPartitionStorageDescriptor(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"skewed_info": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyPartitionSkewedInfo(),
 				Optional: true,
 				MaxItems: 1,
@@ -81,7 +81,7 @@ func propertyPartitionStorageDescriptor(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"serde_info": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyPartitionSerdeInfo(),
 				Optional: true,
 				MaxItems: 1,

@@ -66,7 +66,7 @@ func ResourceDirectoryServiceSimpleAD() *schema.Resource {
 				Required: true,
 			},
 			"vpc_settings": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySimpleADVpcSettings(),
 				Required: true,
 				MaxItems: 1,

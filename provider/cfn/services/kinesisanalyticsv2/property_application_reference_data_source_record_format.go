@@ -35,7 +35,7 @@ func propertyApplicationReferenceDataSourceRecordFormat(extras...string) *schema
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"mapping_parameters": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationReferenceDataSourceMappingParameters(),
 				Optional: true,
 				MaxItems: 1,

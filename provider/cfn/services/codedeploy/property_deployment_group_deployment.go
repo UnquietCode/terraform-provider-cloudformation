@@ -44,7 +44,7 @@ func propertyDeploymentGroupDeployment(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"revision": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeploymentGroupRevisionLocation(),
 				Required: true,
 				MaxItems: 1,

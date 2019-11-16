@@ -35,13 +35,13 @@ func propertyClusterEncryptionInfo(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"encryption_at_rest": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterEncryptionAtRest(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"encryption_in_transit": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterEncryptionInTransit(),
 				Optional: true,
 				MaxItems: 1,

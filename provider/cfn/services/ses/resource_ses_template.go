@@ -31,7 +31,7 @@ func ResourceSESTemplate() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"template": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTemplateTemplate(),
 				Optional: true,
 				MaxItems: 1,

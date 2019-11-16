@@ -35,13 +35,13 @@ func propertySpotFleetLoadBalancersConfig(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"classic_load_balancers_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySpotFleetClassicLoadBalancersConfig(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"target_groups_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySpotFleetTargetGroupsConfig(),
 				Optional: true,
 				MaxItems: 1,

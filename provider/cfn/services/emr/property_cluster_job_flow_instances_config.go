@@ -61,13 +61,13 @@ func propertyClusterJobFlowInstancesConfig(extras...string) *schema.Resource {
 				Set: schema.HashString,
 			},
 			"core_instance_fleet": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterInstanceFleetConfig(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"core_instance_group": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterInstanceGroupConfig(),
 				Optional: true,
 				MaxItems: 1,
@@ -103,19 +103,19 @@ func propertyClusterJobFlowInstancesConfig(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"master_instance_fleet": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterInstanceFleetConfig(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"master_instance_group": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterInstanceGroupConfig(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"placement": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterPlacementType(),
 				Optional: true,
 				MaxItems: 1,

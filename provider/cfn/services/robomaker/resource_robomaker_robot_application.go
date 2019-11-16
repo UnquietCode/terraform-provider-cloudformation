@@ -39,7 +39,7 @@ func ResourceRoboMakerRobotApplication() *schema.Resource {
 				Optional: true,
 			},
 			"robot_software_suite": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRobotApplicationRobotSoftwareSuite(),
 				Required: true,
 				MaxItems: 1,

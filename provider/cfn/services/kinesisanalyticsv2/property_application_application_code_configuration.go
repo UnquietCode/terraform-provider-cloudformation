@@ -39,7 +39,7 @@ func propertyApplicationApplicationCodeConfiguration(extras...string) *schema.Re
 				Required: true,
 			},
 			"code_content": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationCodeContent(),
 				Required: true,
 				MaxItems: 1,

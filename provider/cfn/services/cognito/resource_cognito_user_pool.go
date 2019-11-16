@@ -54,13 +54,13 @@ func ResourceCognitoUserPool() *schema.Resource {
 				Optional: true,
 			},
 			"policies": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolPolicies(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"verification_message_template": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolVerificationMessageTemplate(),
 				Optional: true,
 				MaxItems: 1,
@@ -75,7 +75,7 @@ func ResourceCognitoUserPool() *schema.Resource {
 				Optional: true,
 			},
 			"admin_create_user_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolAdminCreateUserConfig(),
 				Optional: true,
 				MaxItems: 1,
@@ -93,19 +93,19 @@ func ResourceCognitoUserPool() *schema.Resource {
 				Optional: true,
 			},
 			"user_pool_add_ons": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolUserPoolAddOns(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"email_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolEmailConfiguration(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"sms_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolSmsConfiguration(),
 				Optional: true,
 				MaxItems: 1,
@@ -125,7 +125,7 @@ func ResourceCognitoUserPool() *schema.Resource {
 				Optional: true,
 			},
 			"lambda_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolLambdaConfig(),
 				Optional: true,
 				MaxItems: 1,
@@ -141,7 +141,7 @@ func ResourceCognitoUserPool() *schema.Resource {
 				Optional: true,
 			},
 			"device_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolDeviceConfiguration(),
 				Optional: true,
 				MaxItems: 1,

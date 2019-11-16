@@ -36,7 +36,7 @@ func propertyClientVpnEndpointClientAuthenticationRequest(extras...string) *sche
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"mutual_authentication": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClientVpnEndpointCertificateAuthenticationRequest(),
 				Optional: true,
 				MaxItems: 1,
@@ -46,7 +46,7 @@ func propertyClientVpnEndpointClientAuthenticationRequest(extras...string) *sche
 				Required: true,
 			},
 			"active_directory": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClientVpnEndpointDirectoryServiceAuthenticationRequest(),
 				Optional: true,
 				MaxItems: 1,

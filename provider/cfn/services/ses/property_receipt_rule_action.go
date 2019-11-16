@@ -40,43 +40,43 @@ func propertyReceiptRuleAction(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"bounce_action": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyReceiptRuleBounceAction(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"s3_action": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyReceiptRuleS3Action(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"stop_action": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyReceiptRuleStopAction(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"sns_action": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyReceiptRuleSNSAction(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"workmail_action": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyReceiptRuleWorkmailAction(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"add_header_action": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyReceiptRuleAddHeaderAction(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"lambda_action": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyReceiptRuleLambdaAction(),
 				Optional: true,
 				MaxItems: 1,

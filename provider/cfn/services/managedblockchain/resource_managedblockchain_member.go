@@ -34,13 +34,13 @@ func ResourceManagedBlockchainMember() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"member_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyMemberMemberConfiguration(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"network_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyMemberNetworkConfiguration(),
 				Optional: true,
 				MaxItems: 1,

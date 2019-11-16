@@ -35,7 +35,7 @@ func ResourceCognitoUserPoolRiskConfigurationAttachment() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"compromised_credentials_risk_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolRiskConfigurationAttachmentCompromisedCredentialsRiskConfigurationType(),
 				Optional: true,
 				MaxItems: 1,
@@ -49,13 +49,13 @@ func ResourceCognitoUserPoolRiskConfigurationAttachment() *schema.Resource {
 				Required: true,
 			},
 			"account_takeover_risk_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolRiskConfigurationAttachmentAccountTakeoverRiskConfigurationType(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"risk_exception_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolRiskConfigurationAttachmentRiskExceptionConfigurationType(),
 				Optional: true,
 				MaxItems: 1,

@@ -41,7 +41,7 @@ func propertyFunctionDefinitionVersionEnvironment(extras...string) *schema.Resou
 				Optional: true,
 			},
 			"execution": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyFunctionDefinitionVersionExecution(),
 				Optional: true,
 				MaxItems: 1,

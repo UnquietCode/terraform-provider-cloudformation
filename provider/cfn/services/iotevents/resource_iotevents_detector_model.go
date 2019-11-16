@@ -37,7 +37,7 @@ func ResourceIoTEventsDetectorModel() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"detector_model_definition": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDetectorModelDetectorModelDefinition(),
 				Optional: true,
 				MaxItems: 1,

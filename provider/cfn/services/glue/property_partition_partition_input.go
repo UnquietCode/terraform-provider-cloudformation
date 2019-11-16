@@ -40,7 +40,7 @@ func propertyPartitionPartitionInput(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"storage_descriptor": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyPartitionStorageDescriptor(),
 				Optional: true,
 				MaxItems: 1,

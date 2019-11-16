@@ -85,7 +85,7 @@ func ResourceAutoScalingAutoScalingGroup() *schema.Resource {
 				Optional: true,
 			},
 			"launch_template": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyAutoScalingGroupLaunchTemplateSpecification(),
 				Optional: true,
 				MaxItems: 1,
@@ -114,7 +114,7 @@ func ResourceAutoScalingAutoScalingGroup() *schema.Resource {
 				Required: true,
 			},
 			"mixed_instances_policy": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyAutoScalingGroupMixedInstancesPolicy(),
 				Optional: true,
 				MaxItems: 1,

@@ -39,7 +39,7 @@ func propertyChannelNetworkInputSettings(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"hls_input_settings": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyChannelHlsInputSettings(),
 				Optional: true,
 				MaxItems: 1,

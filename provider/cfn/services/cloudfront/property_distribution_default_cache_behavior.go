@@ -90,7 +90,7 @@ func propertyDistributionDefaultCacheBehavior(extras...string) *schema.Resource 
 				Optional: true,
 			},
 			"forwarded_values": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDistributionForwardedValues(),
 				Required: true,
 				MaxItems: 1,

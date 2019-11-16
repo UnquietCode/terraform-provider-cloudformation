@@ -39,7 +39,7 @@ func propertyBucketObjectLockConfiguration(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"rule": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketObjectLockRule(),
 				Optional: true,
 				MaxItems: 1,

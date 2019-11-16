@@ -36,7 +36,7 @@ func ResourceIoTTopicRule() *schema.Resource {
 				Optional: true,
 			},
 			"topic_rule_payload": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTopicRuleTopicRulePayload(),
 				Required: true,
 				MaxItems: 1,

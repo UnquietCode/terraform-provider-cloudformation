@@ -34,7 +34,7 @@ func propertyInstanceGroupConfigScalingTrigger(extras...string) *schema.Resource
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"cloud_watch_alarm_definition": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyInstanceGroupConfigCloudWatchAlarmDefinition(),
 				Required: true,
 				MaxItems: 1,

@@ -48,7 +48,7 @@ func propertyDistributionDistributionConfig(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"logging": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDistributionLogging(),
 				Optional: true,
 				MaxItems: 1,
@@ -67,7 +67,7 @@ func propertyDistributionDistributionConfig(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"viewer_certificate": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDistributionViewerCertificate(),
 				Optional: true,
 				MaxItems: 1,
@@ -77,7 +77,7 @@ func propertyDistributionDistributionConfig(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"default_cache_behavior": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDistributionDefaultCacheBehavior(),
 				Optional: true,
 				MaxItems: 1,
@@ -109,7 +109,7 @@ func propertyDistributionDistributionConfig(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"restrictions": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDistributionRestrictions(),
 				Optional: true,
 				MaxItems: 1,

@@ -49,13 +49,13 @@ func propertyDeliveryStreamExtendedS3DestinationConfiguration(extras...string) *
 				Required: true,
 			},
 			"buffering_hints": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamBufferingHints(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"cloud_watch_logging_options": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamCloudWatchLoggingOptions(),
 				Optional: true,
 				MaxItems: 1,
@@ -65,13 +65,13 @@ func propertyDeliveryStreamExtendedS3DestinationConfiguration(extras...string) *
 				Required: true,
 			},
 			"data_format_conversion_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamDataFormatConversionConfiguration(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"encryption_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamEncryptionConfiguration(),
 				Optional: true,
 				MaxItems: 1,
@@ -85,7 +85,7 @@ func propertyDeliveryStreamExtendedS3DestinationConfiguration(extras...string) *
 				Optional: true,
 			},
 			"processing_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamProcessingConfiguration(),
 				Optional: true,
 				MaxItems: 1,
@@ -95,7 +95,7 @@ func propertyDeliveryStreamExtendedS3DestinationConfiguration(extras...string) *
 				Required: true,
 			},
 			"s3_backup_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamS3DestinationConfiguration(),
 				Optional: true,
 				MaxItems: 1,

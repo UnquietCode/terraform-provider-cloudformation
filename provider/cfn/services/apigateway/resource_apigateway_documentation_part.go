@@ -33,7 +33,7 @@ func ResourceApiGatewayDocumentationPart() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"location": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDocumentationPartLocation(),
 				Required: true,
 				MaxItems: 1,

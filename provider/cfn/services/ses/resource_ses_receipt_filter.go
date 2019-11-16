@@ -31,7 +31,7 @@ func ResourceSESReceiptFilter() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"filter": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyReceiptFilterFilter(),
 				Required: true,
 				MaxItems: 1,

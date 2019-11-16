@@ -42,7 +42,7 @@ func propertyScalableTargetScheduledAction(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"scalable_target_action": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyScalableTargetScalableTargetAction(),
 				Optional: true,
 				MaxItems: 1,

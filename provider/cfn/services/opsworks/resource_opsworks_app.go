@@ -42,7 +42,7 @@ func ResourceOpsWorksApp() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"app_source": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyAppSource(),
 				Optional: true,
 				MaxItems: 1,
@@ -84,7 +84,7 @@ func ResourceOpsWorksApp() *schema.Resource {
 				Optional: true,
 			},
 			"ssl_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyAppSslConfiguration(),
 				Optional: true,
 				MaxItems: 1,

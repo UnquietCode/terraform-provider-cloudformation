@@ -35,13 +35,13 @@ func propertyDeliveryStreamSerializer(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"orc_ser_de": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamOrcSerDe(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"parquet_ser_de": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamParquetSerDe(),
 				Optional: true,
 				MaxItems: 1,

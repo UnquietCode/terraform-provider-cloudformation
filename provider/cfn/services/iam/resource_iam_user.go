@@ -42,7 +42,7 @@ func ResourceIAMUser() *schema.Resource {
 				Optional: true,
 			},
 			"login_profile": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserLoginProfile(),
 				Optional: true,
 				MaxItems: 1,

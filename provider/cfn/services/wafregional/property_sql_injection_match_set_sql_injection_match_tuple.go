@@ -39,7 +39,7 @@ func propertySqlInjectionMatchSetSqlInjectionMatchTuple(extras...string) *schema
 				Required: true,
 			},
 			"field_to_match": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySqlInjectionMatchSetFieldToMatch(),
 				Required: true,
 				MaxItems: 1,

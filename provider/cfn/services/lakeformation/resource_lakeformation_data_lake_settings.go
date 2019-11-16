@@ -31,7 +31,7 @@ func ResourceLakeFormationDataLakeSettings() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"admins": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDataLakeSettingsAdmins(),
 				Optional: true,
 				MaxItems: 1,

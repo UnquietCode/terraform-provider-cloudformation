@@ -39,7 +39,7 @@ func propertyUserPoolRiskConfigurationAttachmentNotifyConfigurationType(extras..
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"block_email": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolRiskConfigurationAttachmentNotifyEmailType(),
 				Optional: true,
 				MaxItems: 1,
@@ -53,7 +53,7 @@ func propertyUserPoolRiskConfigurationAttachmentNotifyConfigurationType(extras..
 				Required: true,
 			},
 			"no_action_email": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolRiskConfigurationAttachmentNotifyEmailType(),
 				Optional: true,
 				MaxItems: 1,
@@ -63,7 +63,7 @@ func propertyUserPoolRiskConfigurationAttachmentNotifyConfigurationType(extras..
 				Optional: true,
 			},
 			"mfa_email": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolRiskConfigurationAttachmentNotifyEmailType(),
 				Optional: true,
 				MaxItems: 1,

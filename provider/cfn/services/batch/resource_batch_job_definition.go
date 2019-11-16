@@ -45,19 +45,19 @@ func ResourceBatchJobDefinition() *schema.Resource {
 				Optional: true,
 			},
 			"node_properties": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyJobDefinitionNodeProperties(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"timeout": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyJobDefinitionTimeout(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"container_properties": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyJobDefinitionContainerProperties(),
 				Optional: true,
 				MaxItems: 1,
@@ -67,7 +67,7 @@ func ResourceBatchJobDefinition() *schema.Resource {
 				Optional: true,
 			},
 			"retry_strategy": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyJobDefinitionRetryStrategy(),
 				Optional: true,
 				MaxItems: 1,

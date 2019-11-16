@@ -48,7 +48,7 @@ func ResourceAppSyncResolver() *schema.Resource {
 				Required: true,
 			},
 			"pipeline_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyResolverPipelineConfig(),
 				Optional: true,
 				MaxItems: 1,

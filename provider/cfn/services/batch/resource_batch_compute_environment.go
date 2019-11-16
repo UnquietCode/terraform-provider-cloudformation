@@ -47,7 +47,7 @@ func ResourceBatchComputeEnvironment() *schema.Resource {
 				Optional: true,
 			},
 			"compute_resources": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyComputeEnvironmentComputeResources(),
 				Optional: true,
 				MaxItems: 1,

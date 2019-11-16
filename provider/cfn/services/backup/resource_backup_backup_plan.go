@@ -32,7 +32,7 @@ func ResourceBackupBackupPlan() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"backup_plan": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBackupPlanBackupPlanResourceType(),
 				Required: true,
 				MaxItems: 1,

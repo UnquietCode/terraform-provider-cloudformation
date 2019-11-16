@@ -127,7 +127,7 @@ func ResourceOpsWorksInstance() *schema.Resource {
 				Optional: true,
 			},
 			"time_based_auto_scaling": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyInstanceTimeBasedAutoScaling(),
 				Optional: true,
 				MaxItems: 1,

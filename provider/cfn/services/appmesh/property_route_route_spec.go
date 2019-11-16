@@ -38,7 +38,7 @@ func propertyRouteRouteSpec(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"http_route": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRouteHttpRoute(),
 				Optional: true,
 				MaxItems: 1,
@@ -48,19 +48,19 @@ func propertyRouteRouteSpec(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"http2_route": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRouteHttpRoute(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"grpc_route": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRouteGrpcRoute(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"tcp_route": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRouteTcpRoute(),
 				Optional: true,
 				MaxItems: 1,

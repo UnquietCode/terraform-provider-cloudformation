@@ -52,7 +52,7 @@ func propertyClusterInstanceTypeConfig(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"ebs_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterEbsConfiguration(),
 				Optional: true,
 				MaxItems: 1,

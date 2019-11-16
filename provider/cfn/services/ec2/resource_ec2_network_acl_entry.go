@@ -47,7 +47,7 @@ func ResourceEC2NetworkAclEntry() *schema.Resource {
 				Optional: true,
 			},
 			"icmp": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyNetworkAclEntryIcmp(),
 				Optional: true,
 				MaxItems: 1,
@@ -61,7 +61,7 @@ func ResourceEC2NetworkAclEntry() *schema.Resource {
 				Required: true,
 			},
 			"port_range": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyNetworkAclEntryPortRange(),
 				Optional: true,
 				MaxItems: 1,

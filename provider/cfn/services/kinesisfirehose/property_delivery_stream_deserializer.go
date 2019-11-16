@@ -35,13 +35,13 @@ func propertyDeliveryStreamDeserializer(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"hive_json_ser_de": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamHiveJsonSerDe(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"open_x_json_ser_de": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamOpenXJsonSerDe(),
 				Optional: true,
 				MaxItems: 1,

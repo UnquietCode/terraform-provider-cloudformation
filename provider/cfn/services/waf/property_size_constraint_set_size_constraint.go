@@ -41,7 +41,7 @@ func propertySizeConstraintSetSizeConstraint(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"field_to_match": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySizeConstraintSetFieldToMatch(),
 				Required: true,
 				MaxItems: 1,

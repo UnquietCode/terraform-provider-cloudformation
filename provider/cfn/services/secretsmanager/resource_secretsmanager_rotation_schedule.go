@@ -41,7 +41,7 @@ func ResourceSecretsManagerRotationSchedule() *schema.Resource {
 				Optional: true,
 			},
 			"rotation_rules": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRotationScheduleRotationRules(),
 				Optional: true,
 				MaxItems: 1,

@@ -40,7 +40,7 @@ func propertyCampaignEventDimensions(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"event_type": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCampaignSetDimension(),
 				Optional: true,
 				MaxItems: 1,

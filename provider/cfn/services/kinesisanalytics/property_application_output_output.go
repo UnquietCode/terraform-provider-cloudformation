@@ -38,25 +38,25 @@ func propertyApplicationOutputOutput(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"destination_schema": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationOutputDestinationSchema(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"lambda_output": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationOutputLambdaOutput(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"kinesis_firehose_output": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationOutputKinesisFirehoseOutput(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"kinesis_streams_output": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationOutputKinesisStreamsOutput(),
 				Optional: true,
 				MaxItems: 1,

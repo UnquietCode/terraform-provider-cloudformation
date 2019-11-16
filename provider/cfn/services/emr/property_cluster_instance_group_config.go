@@ -41,7 +41,7 @@ func propertyClusterInstanceGroupConfig(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"auto_scaling_policy": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterAutoScalingPolicy(),
 				Optional: true,
 				MaxItems: 1,
@@ -56,7 +56,7 @@ func propertyClusterInstanceGroupConfig(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"ebs_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterEbsConfiguration(),
 				Optional: true,
 				MaxItems: 1,

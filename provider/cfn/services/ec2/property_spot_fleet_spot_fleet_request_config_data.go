@@ -73,7 +73,7 @@ func propertySpotFleetSpotFleetRequestConfigData(extras...string) *schema.Resour
 				Optional: true,
 			},
 			"load_balancers_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySpotFleetLoadBalancersConfig(),
 				Optional: true,
 				MaxItems: 1,

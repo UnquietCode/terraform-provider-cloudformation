@@ -42,7 +42,7 @@ func propertyDeliveryStreamSplunkDestinationConfiguration(extras...string) *sche
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"cloud_watch_logging_options": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamCloudWatchLoggingOptions(),
 				Optional: true,
 				MaxItems: 1,
@@ -64,13 +64,13 @@ func propertyDeliveryStreamSplunkDestinationConfiguration(extras...string) *sche
 				Required: true,
 			},
 			"processing_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamProcessingConfiguration(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"retry_options": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamSplunkRetryOptions(),
 				Optional: true,
 				MaxItems: 1,
@@ -80,7 +80,7 @@ func propertyDeliveryStreamSplunkDestinationConfiguration(extras...string) *sche
 				Optional: true,
 			},
 			"s3_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamS3DestinationConfiguration(),
 				Required: true,
 				MaxItems: 1,

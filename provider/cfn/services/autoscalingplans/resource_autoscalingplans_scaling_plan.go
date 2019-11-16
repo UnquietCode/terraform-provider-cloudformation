@@ -32,7 +32,7 @@ func ResourceAutoScalingPlansScalingPlan() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"application_source": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyScalingPlanApplicationSource(),
 				Required: true,
 				MaxItems: 1,

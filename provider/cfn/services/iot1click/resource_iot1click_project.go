@@ -37,7 +37,7 @@ func ResourceIoT1ClickProject() *schema.Resource {
 				Optional: true,
 			},
 			"placement_template": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyProjectPlacementTemplate(),
 				Required: true,
 				MaxItems: 1,

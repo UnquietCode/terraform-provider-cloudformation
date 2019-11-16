@@ -54,7 +54,7 @@ func propertyRouteHeaderMatchMethod(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"range": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRouteMatchRange(),
 				Optional: true,
 				MaxItems: 1,

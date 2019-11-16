@@ -35,13 +35,13 @@ func propertyChannelChannelStorage(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"customer_managed_s3": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyChannelCustomerManagedS3(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"service_managed_s3": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyChannelServiceManagedS3(),
 				Optional: true,
 				MaxItems: 1,

@@ -36,7 +36,7 @@ func propertyApplicationReferenceDataSourceReferenceDataSource(extras...string) 
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"reference_schema": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationReferenceDataSourceReferenceSchema(),
 				Required: true,
 				MaxItems: 1,
@@ -46,7 +46,7 @@ func propertyApplicationReferenceDataSourceReferenceDataSource(extras...string) 
 				Optional: true,
 			},
 			"s3_reference_data_source": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationReferenceDataSourceS3ReferenceDataSource(),
 				Optional: true,
 				MaxItems: 1,

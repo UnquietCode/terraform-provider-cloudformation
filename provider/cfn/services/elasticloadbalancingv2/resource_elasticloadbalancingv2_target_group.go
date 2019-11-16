@@ -76,7 +76,7 @@ func ResourceElasticLoadBalancingV2TargetGroup() *schema.Resource {
 				Optional: true,
 			},
 			"matcher": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTargetGroupMatcher(),
 				Optional: true,
 				MaxItems: 1,

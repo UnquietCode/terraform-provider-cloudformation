@@ -36,7 +36,7 @@ func ResourceKinesisAnalyticsApplicationOutput() *schema.Resource {
 				Required: true,
 			},
 			"output": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationOutputOutput(),
 				Required: true,
 				MaxItems: 1,

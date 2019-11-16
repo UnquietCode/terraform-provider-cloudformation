@@ -48,7 +48,7 @@ func propertyDistributionOrigin(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"s3_origin_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDistributionS3OriginConfig(),
 				Optional: true,
 				MaxItems: 1,
@@ -62,7 +62,7 @@ func propertyDistributionOrigin(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"custom_origin_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDistributionCustomOriginConfig(),
 				Optional: true,
 				MaxItems: 1,

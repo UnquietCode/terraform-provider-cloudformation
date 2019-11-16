@@ -45,7 +45,7 @@ func propertyIdentityPoolRoleAttachmentRoleMapping(extras...string) *schema.Reso
 				Optional: true,
 			},
 			"rules_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyIdentityPoolRoleAttachmentRulesConfigurationType(),
 				Optional: true,
 				MaxItems: 1,

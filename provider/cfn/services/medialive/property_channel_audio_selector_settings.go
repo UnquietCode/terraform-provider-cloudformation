@@ -35,13 +35,13 @@ func propertyChannelAudioSelectorSettings(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"audio_pid_selection": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyChannelAudioPidSelection(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"audio_language_selection": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyChannelAudioLanguageSelection(),
 				Optional: true,
 				MaxItems: 1,

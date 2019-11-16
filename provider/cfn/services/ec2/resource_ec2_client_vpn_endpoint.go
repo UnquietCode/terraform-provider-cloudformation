@@ -43,7 +43,7 @@ func ResourceEC2ClientVpnEndpoint() *schema.Resource {
 				Required: true,
 			},
 			"connection_log_options": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClientVpnEndpointConnectionLogOptions(),
 				Required: true,
 				MaxItems: 1,

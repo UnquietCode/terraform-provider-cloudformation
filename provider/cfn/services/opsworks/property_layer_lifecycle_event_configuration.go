@@ -34,7 +34,7 @@ func propertyLayerLifecycleEventConfiguration(extras...string) *schema.Resource 
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"shutdown_event_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLayerShutdownEventConfiguration(),
 				Optional: true,
 				MaxItems: 1,

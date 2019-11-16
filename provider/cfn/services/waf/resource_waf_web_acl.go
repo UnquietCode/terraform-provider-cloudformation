@@ -34,7 +34,7 @@ func ResourceWAFWebACL() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"default_action": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyWebACLWafAction(),
 				Required: true,
 				MaxItems: 1,

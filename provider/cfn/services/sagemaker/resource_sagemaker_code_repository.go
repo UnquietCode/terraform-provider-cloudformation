@@ -36,7 +36,7 @@ func ResourceSageMakerCodeRepository() *schema.Resource {
 				Optional: true,
 			},
 			"git_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCodeRepositoryGitConfig(),
 				Required: true,
 				MaxItems: 1,

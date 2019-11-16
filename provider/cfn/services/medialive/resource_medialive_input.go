@@ -48,7 +48,7 @@ func ResourceMediaLiveInput() *schema.Resource {
 				Optional: true,
 			},
 			"vpc": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyInputInputVpcRequest(),
 				Optional: true,
 				MaxItems: 1,

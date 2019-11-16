@@ -35,7 +35,7 @@ func ResourceIoTAnalyticsDatastore() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"datastore_storage": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDatastoreDatastoreStorage(),
 				Optional: true,
 				MaxItems: 1,
@@ -45,7 +45,7 @@ func ResourceIoTAnalyticsDatastore() *schema.Resource {
 				Optional: true,
 			},
 			"retention_period": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDatastoreRetentionPeriod(),
 				Optional: true,
 				MaxItems: 1,

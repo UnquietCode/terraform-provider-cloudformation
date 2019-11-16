@@ -34,7 +34,7 @@ func propertyGitHubRepositoryCode(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"s3": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyGitHubRepositoryS3(),
 				Required: true,
 				MaxItems: 1,

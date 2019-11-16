@@ -80,13 +80,13 @@ func propertyScalingPlanScalingInstruction(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"customized_load_metric_specification": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyScalingPlanCustomizedLoadMetricSpecification(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"predefined_load_metric_specification": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyScalingPlanPredefinedLoadMetricSpecification(),
 				Optional: true,
 				MaxItems: 1,

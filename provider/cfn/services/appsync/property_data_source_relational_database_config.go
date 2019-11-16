@@ -35,7 +35,7 @@ func propertyDataSourceRelationalDatabaseConfig(extras...string) *schema.Resourc
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"rds_http_endpoint_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDataSourceRdsHttpEndpointConfig(),
 				Optional: true,
 				MaxItems: 1,

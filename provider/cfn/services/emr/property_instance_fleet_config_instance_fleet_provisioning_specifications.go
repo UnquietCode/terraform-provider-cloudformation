@@ -34,7 +34,7 @@ func propertyInstanceFleetConfigInstanceFleetProvisioningSpecifications(extras..
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"spot_specification": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyInstanceFleetConfigSpotProvisioningSpecification(),
 				Required: true,
 				MaxItems: 1,

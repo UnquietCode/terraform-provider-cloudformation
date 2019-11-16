@@ -40,19 +40,19 @@ func propertyListenerRuleAction(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"authenticate_cognito_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyListenerRuleAuthenticateCognitoConfig(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"authenticate_oidc_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyListenerRuleAuthenticateOidcConfig(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"fixed_response_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyListenerRuleFixedResponseConfig(),
 				Optional: true,
 				MaxItems: 1,
@@ -62,7 +62,7 @@ func propertyListenerRuleAction(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"redirect_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyListenerRuleRedirectConfig(),
 				Optional: true,
 				MaxItems: 1,

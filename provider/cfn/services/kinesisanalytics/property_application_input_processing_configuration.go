@@ -34,7 +34,7 @@ func propertyApplicationInputProcessingConfiguration(extras...string) *schema.Re
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"input_lambda_processor": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationInputLambdaProcessor(),
 				Optional: true,
 				MaxItems: 1,

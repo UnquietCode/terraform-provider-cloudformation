@@ -37,7 +37,7 @@ func propertyAlarmMetricStat(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"metric": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyAlarmMetric(),
 				Required: true,
 				MaxItems: 1,

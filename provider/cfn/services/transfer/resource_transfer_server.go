@@ -41,7 +41,7 @@ func ResourceTransferServer() *schema.Resource {
 				Optional: true,
 			},
 			"identity_provider_details": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyServerIdentityProviderDetails(),
 				Optional: true,
 				MaxItems: 1,
@@ -51,7 +51,7 @@ func ResourceTransferServer() *schema.Resource {
 				Optional: true,
 			},
 			"endpoint_details": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyServerEndpointDetails(),
 				Optional: true,
 				MaxItems: 1,

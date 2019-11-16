@@ -47,13 +47,13 @@ func ResourceLambdaFunction() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"code": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyFunctionCode(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"dead_letter_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyFunctionDeadLetterConfig(),
 				Optional: true,
 				MaxItems: 1,
@@ -63,7 +63,7 @@ func ResourceLambdaFunction() *schema.Resource {
 				Optional: true,
 			},
 			"environment": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyFunctionEnvironment(),
 				Optional: true,
 				MaxItems: 1,
@@ -108,13 +108,13 @@ func ResourceLambdaFunction() *schema.Resource {
 				Optional: true,
 			},
 			"tracing_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyFunctionTracingConfig(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"vpc_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyFunctionVpcConfig(),
 				Optional: true,
 				MaxItems: 1,

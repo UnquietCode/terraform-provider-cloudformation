@@ -41,13 +41,13 @@ func propertyBudgetBudgetData(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"budget_limit": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBudgetSpend(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"time_period": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBudgetTimePeriod(),
 				Optional: true,
 				MaxItems: 1,
@@ -69,7 +69,7 @@ func propertyBudgetBudgetData(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"cost_types": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBudgetCostTypes(),
 				Optional: true,
 				MaxItems: 1,

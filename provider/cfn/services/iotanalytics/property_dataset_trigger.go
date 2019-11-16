@@ -35,13 +35,13 @@ func propertyDatasetTrigger(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"schedule": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDatasetSchedule(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"triggering_dataset": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDatasetTriggeringDataset(),
 				Optional: true,
 				MaxItems: 1,

@@ -36,19 +36,19 @@ func propertyApplicationFlinkApplicationConfiguration(extras...string) *schema.R
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"checkpoint_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationCheckpointConfiguration(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"parallelism_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationParallelismConfiguration(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"monitoring_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationMonitoringConfiguration(),
 				Optional: true,
 				MaxItems: 1,

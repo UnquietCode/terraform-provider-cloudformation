@@ -67,7 +67,7 @@ func ResourceApplicationAutoScalingScalableTarget() *schema.Resource {
 				Required: true,
 			},
 			"suspended_state": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyScalableTargetSuspendedState(),
 				Optional: true,
 				MaxItems: 1,

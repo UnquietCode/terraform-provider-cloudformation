@@ -127,7 +127,7 @@ func ResourceRedshiftCluster() *schema.Resource {
 				Optional: true,
 			},
 			"logging_properties": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterLoggingProperties(),
 				Optional: true,
 				MaxItems: 1,

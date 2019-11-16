@@ -38,7 +38,7 @@ func ResourceCodePipelineWebhook() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"authentication_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyWebhookWebhookAuthConfiguration(),
 				Required: true,
 				MaxItems: 1,

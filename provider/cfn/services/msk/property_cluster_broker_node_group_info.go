@@ -48,7 +48,7 @@ func propertyClusterBrokerNodeGroupInfo(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"storage_info": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterStorageInfo(),
 				Optional: true,
 				MaxItems: 1,

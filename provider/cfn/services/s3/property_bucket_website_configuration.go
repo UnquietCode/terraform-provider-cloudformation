@@ -45,7 +45,7 @@ func propertyBucketWebsiteConfiguration(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"redirect_all_requests_to": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketRedirectAllRequestsTo(),
 				Optional: true,
 				MaxItems: 1,

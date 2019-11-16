@@ -38,7 +38,7 @@ func ResourceAppStreamDirectoryConfig() *schema.Resource {
 				Required: true,
 			},
 			"service_account_credentials": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDirectoryConfigServiceAccountCredentials(),
 				Required: true,
 				MaxItems: 1,

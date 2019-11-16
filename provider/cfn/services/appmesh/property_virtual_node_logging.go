@@ -34,7 +34,7 @@ func propertyVirtualNodeLogging(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"access_log": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyVirtualNodeAccessLog(),
 				Optional: true,
 				MaxItems: 1,

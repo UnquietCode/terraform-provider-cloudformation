@@ -37,7 +37,7 @@ func ResourceBudgetsBudget() *schema.Resource {
 				Optional: true,
 			},
 			"budget": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBudgetBudgetData(),
 				Required: true,
 				MaxItems: 1,

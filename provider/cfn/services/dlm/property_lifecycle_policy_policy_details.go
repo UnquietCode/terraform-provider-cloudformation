@@ -53,7 +53,7 @@ func propertyLifecyclePolicyPolicyDetails(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"parameters": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLifecyclePolicyParameters(),
 				Optional: true,
 				MaxItems: 1,

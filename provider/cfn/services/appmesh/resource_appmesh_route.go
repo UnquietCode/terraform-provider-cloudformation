@@ -48,7 +48,7 @@ func ResourceAppMeshRoute() *schema.Resource {
 				Required: true,
 			},
 			"spec": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRouteRouteSpec(),
 				Required: true,
 				MaxItems: 1,

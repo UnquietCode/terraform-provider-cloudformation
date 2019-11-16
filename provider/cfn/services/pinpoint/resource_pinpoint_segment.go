@@ -35,13 +35,13 @@ func ResourcePinpointSegment() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"segment_groups": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySegmentGroups(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"dimensions": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySegmentSegmentDimensions(),
 				Optional: true,
 				MaxItems: 1,

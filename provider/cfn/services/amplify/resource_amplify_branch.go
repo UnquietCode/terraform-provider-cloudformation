@@ -79,7 +79,7 @@ func ResourceAmplifyBranch() *schema.Resource {
 				Required: true,
 			},
 			"basic_auth_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBranchBasicAuthConfig(),
 				Optional: true,
 				MaxItems: 1,

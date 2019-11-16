@@ -36,19 +36,19 @@ func propertySecurityConfigurationEncryptionConfiguration(extras...string) *sche
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"s3_encryptions": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySecurityConfigurationS3Encryptions(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"cloud_watch_encryption": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySecurityConfigurationCloudWatchEncryption(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"job_bookmarks_encryption": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySecurityConfigurationJobBookmarksEncryption(),
 				Optional: true,
 				MaxItems: 1,

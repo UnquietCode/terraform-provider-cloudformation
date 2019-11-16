@@ -35,13 +35,13 @@ func propertyChannelVideoSelectorSettings(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"video_selector_program_id": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyChannelVideoSelectorProgramId(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"video_selector_pid": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyChannelVideoSelectorPid(),
 				Optional: true,
 				MaxItems: 1,

@@ -34,7 +34,7 @@ func propertyMeshMeshSpec(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"egress_filter": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyMeshEgressFilter(),
 				Optional: true,
 				MaxItems: 1,

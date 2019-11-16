@@ -132,7 +132,7 @@ func propertyTaskDefinitionContainerDefinition(extras...string) *schema.Resource
 				Optional: true,
 			},
 			"health_check": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTaskDefinitionHealthCheck(),
 				Optional: true,
 				MaxItems: 1,
@@ -156,13 +156,13 @@ func propertyTaskDefinitionContainerDefinition(extras...string) *schema.Resource
 				Set: schema.HashString,
 			},
 			"linux_parameters": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTaskDefinitionLinuxParameters(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"log_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTaskDefinitionLogConfiguration(),
 				Optional: true,
 				MaxItems: 1,
@@ -202,7 +202,7 @@ func propertyTaskDefinitionContainerDefinition(extras...string) *schema.Resource
 				Optional: true,
 			},
 			"repository_credentials": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTaskDefinitionRepositoryCredentials(),
 				Optional: true,
 				MaxItems: 1,

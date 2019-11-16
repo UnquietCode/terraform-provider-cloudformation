@@ -59,7 +59,7 @@ func propertySpotFleetSpotFleetLaunchSpecification(extras...string) *schema.Reso
 				Optional: true,
 			},
 			"iam_instance_profile": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySpotFleetIamInstanceProfileSpecification(),
 				Optional: true,
 				MaxItems: 1,
@@ -81,7 +81,7 @@ func propertySpotFleetSpotFleetLaunchSpecification(extras...string) *schema.Reso
 				Optional: true,
 			},
 			"monitoring": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySpotFleetSpotFleetMonitoring(),
 				Optional: true,
 				MaxItems: 1,
@@ -92,7 +92,7 @@ func propertySpotFleetSpotFleetLaunchSpecification(extras...string) *schema.Reso
 				Optional: true,
 			},
 			"placement": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySpotFleetSpotPlacement(),
 				Optional: true,
 				MaxItems: 1,

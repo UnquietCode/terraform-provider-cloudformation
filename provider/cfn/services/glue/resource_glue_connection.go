@@ -32,7 +32,7 @@ func ResourceGlueConnection() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"connection_input": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyConnectionConnectionInput(),
 				Required: true,
 				MaxItems: 1,

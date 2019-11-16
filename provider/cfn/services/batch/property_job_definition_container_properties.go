@@ -60,7 +60,7 @@ func propertyJobDefinitionContainerProperties(extras...string) *schema.Resource 
 				Optional: true,
 			},
 			"linux_parameters": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyJobDefinitionLinuxParameters(),
 				Optional: true,
 				MaxItems: 1,

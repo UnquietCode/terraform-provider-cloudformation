@@ -40,7 +40,7 @@ func propertyBucketInventoryConfiguration(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"destination": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketDestination(),
 				Required: true,
 				MaxItems: 1,

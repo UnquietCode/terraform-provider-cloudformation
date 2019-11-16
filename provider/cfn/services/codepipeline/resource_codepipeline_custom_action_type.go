@@ -46,13 +46,13 @@ func ResourceCodePipelineCustomActionType() *schema.Resource {
 				Optional: true,
 			},
 			"input_artifact_details": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCustomActionTypeArtifactDetails(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"output_artifact_details": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCustomActionTypeArtifactDetails(),
 				Required: true,
 				MaxItems: 1,
@@ -62,7 +62,7 @@ func ResourceCodePipelineCustomActionType() *schema.Resource {
 				Required: true,
 			},
 			"settings": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCustomActionTypeSettings(),
 				Optional: true,
 				MaxItems: 1,

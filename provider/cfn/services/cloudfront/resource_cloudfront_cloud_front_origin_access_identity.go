@@ -31,7 +31,7 @@ func ResourceCloudFrontCloudFrontOriginAccessIdentity() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"cloud_front_origin_access_identity_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCloudFrontOriginAccessIdentityCloudFrontOriginAccessIdentityConfig(),
 				Required: true,
 				MaxItems: 1,

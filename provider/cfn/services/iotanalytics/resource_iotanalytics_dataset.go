@@ -57,13 +57,13 @@ func ResourceIoTAnalyticsDataset() *schema.Resource {
 				Optional: true,
 			},
 			"versioning_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDatasetVersioningConfiguration(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"retention_period": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDatasetRetentionPeriod(),
 				Optional: true,
 				MaxItems: 1,

@@ -77,7 +77,7 @@ func propertyLaunchTemplateLaunchTemplateData(extras...string) *schema.Resource 
 				Optional: true,
 			},
 			"iam_instance_profile": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLaunchTemplateIamInstanceProfile(),
 				Optional: true,
 				MaxItems: 1,
@@ -101,7 +101,7 @@ func propertyLaunchTemplateLaunchTemplateData(extras...string) *schema.Resource 
 				Optional: true,
 			},
 			"placement": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLaunchTemplatePlacement(),
 				Optional: true,
 				MaxItems: 1,
@@ -120,13 +120,13 @@ func propertyLaunchTemplateLaunchTemplateData(extras...string) *schema.Resource 
 				Optional: true,
 			},
 			"monitoring": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLaunchTemplateMonitoring(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"hibernation_options": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLaunchTemplateHibernationOptions(),
 				Optional: true,
 				MaxItems: 1,
@@ -141,7 +141,7 @@ func propertyLaunchTemplateLaunchTemplateData(extras...string) *schema.Resource 
 				Optional: true,
 			},
 			"cpu_options": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLaunchTemplateCpuOptions(),
 				Optional: true,
 				MaxItems: 1,
@@ -160,7 +160,7 @@ func propertyLaunchTemplateLaunchTemplateData(extras...string) *schema.Resource 
 				Optional: true,
 			},
 			"instance_market_options": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLaunchTemplateInstanceMarketOptions(),
 				Optional: true,
 				MaxItems: 1,
@@ -170,13 +170,13 @@ func propertyLaunchTemplateLaunchTemplateData(extras...string) *schema.Resource 
 				Optional: true,
 			},
 			"capacity_reservation_specification": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLaunchTemplateCapacityReservationSpecification(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"credit_specification": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLaunchTemplateCreditSpecification(),
 				Optional: true,
 				MaxItems: 1,

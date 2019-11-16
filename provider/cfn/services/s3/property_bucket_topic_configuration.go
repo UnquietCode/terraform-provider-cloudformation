@@ -40,7 +40,7 @@ func propertyBucketTopicConfiguration(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"filter": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketNotificationFilter(),
 				Optional: true,
 				MaxItems: 1,

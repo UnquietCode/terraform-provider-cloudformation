@@ -35,7 +35,7 @@ func propertyAutoScalingGroupLaunchTemplate(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"launch_template_specification": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyAutoScalingGroupLaunchTemplateSpecification(),
 				Required: true,
 				MaxItems: 1,

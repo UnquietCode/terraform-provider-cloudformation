@@ -47,7 +47,7 @@ func ResourceBackupBackupVault() *schema.Resource {
 				Optional: true,
 			},
 			"notifications": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBackupVaultNotificationObjectType(),
 				Optional: true,
 				MaxItems: 1,

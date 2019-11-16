@@ -37,7 +37,7 @@ func ResourceSESReceiptRule() *schema.Resource {
 				Optional: true,
 			},
 			"rule": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyReceiptRuleRule(),
 				Required: true,
 				MaxItems: 1,

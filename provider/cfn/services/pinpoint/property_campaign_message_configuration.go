@@ -40,43 +40,43 @@ func propertyCampaignMessageConfiguration(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"apns_message": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCampaignMessage(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"baidu_message": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCampaignMessage(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"default_message": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCampaignMessage(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"email_message": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCampaignCampaignEmailMessage(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"gcm_message": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCampaignMessage(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"sms_message": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCampaignCampaignSmsMessage(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"adm_message": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCampaignMessage(),
 				Optional: true,
 				MaxItems: 1,

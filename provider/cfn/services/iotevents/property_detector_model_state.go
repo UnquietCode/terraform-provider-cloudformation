@@ -37,13 +37,13 @@ func propertyDetectorModelState(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"on_input": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDetectorModelOnInput(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"on_exit": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDetectorModelOnExit(),
 				Optional: true,
 				MaxItems: 1,
@@ -53,7 +53,7 @@ func propertyDetectorModelState(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"on_enter": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDetectorModelOnEnter(),
 				Optional: true,
 				MaxItems: 1,

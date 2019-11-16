@@ -40,7 +40,7 @@ func propertyBudgetNotificationWithSubscribers(extras...string) *schema.Resource
 				Required: true,
 			},
 			"notification": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBudgetNotification(),
 				Required: true,
 				MaxItems: 1,

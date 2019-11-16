@@ -34,7 +34,7 @@ func propertyFunctionDefinitionVersionDefaultConfig(extras...string) *schema.Res
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"execution": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyFunctionDefinitionVersionExecution(),
 				Required: true,
 				MaxItems: 1,

@@ -39,7 +39,7 @@ func propertyFunctionDefinitionVersionExecution(extras...string) *schema.Resourc
 				Optional: true,
 			},
 			"run_as": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyFunctionDefinitionVersionRunAs(),
 				Optional: true,
 				MaxItems: 1,

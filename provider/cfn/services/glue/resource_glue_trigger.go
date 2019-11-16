@@ -72,7 +72,7 @@ func ResourceGlueTrigger() *schema.Resource {
 				Optional: true,
 			},
 			"predicate": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTriggerPredicate(),
 				Optional: true,
 				MaxItems: 1,

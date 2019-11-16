@@ -32,7 +32,7 @@ func ResourceGlueDataCatalogEncryptionSettings() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"data_catalog_encryption_settings": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDataCatalogEncryptionSettingsDataCatalogEncryptionSettings(),
 				Required: true,
 				MaxItems: 1,

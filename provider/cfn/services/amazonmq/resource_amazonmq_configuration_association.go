@@ -36,7 +36,7 @@ func ResourceAmazonMQConfigurationAssociation() *schema.Resource {
 				Required: true,
 			},
 			"configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyConfigurationAssociationConfigurationId(),
 				Required: true,
 				MaxItems: 1,

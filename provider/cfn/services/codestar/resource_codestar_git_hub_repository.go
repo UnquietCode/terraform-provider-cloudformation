@@ -57,7 +57,7 @@ func ResourceCodeStarGitHubRepository() *schema.Resource {
 				Optional: true,
 			},
 			"code": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyGitHubRepositoryCode(),
 				Optional: true,
 				MaxItems: 1,

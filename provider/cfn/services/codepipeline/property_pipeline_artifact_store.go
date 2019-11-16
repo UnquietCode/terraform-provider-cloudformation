@@ -36,7 +36,7 @@ func propertyPipelineArtifactStore(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"encryption_key": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyPipelineEncryptionKey(),
 				Optional: true,
 				MaxItems: 1,

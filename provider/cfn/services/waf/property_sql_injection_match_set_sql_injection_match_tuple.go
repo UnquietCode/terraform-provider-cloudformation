@@ -35,7 +35,7 @@ func propertySqlInjectionMatchSetSqlInjectionMatchTuple(extras...string) *schema
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"field_to_match": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySqlInjectionMatchSetFieldToMatch(),
 				Required: true,
 				MaxItems: 1,

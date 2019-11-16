@@ -32,7 +32,7 @@ func ResourceRoute53HealthCheck() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"health_check_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyHealthCheckHealthCheckConfig(),
 				Required: true,
 				MaxItems: 1,

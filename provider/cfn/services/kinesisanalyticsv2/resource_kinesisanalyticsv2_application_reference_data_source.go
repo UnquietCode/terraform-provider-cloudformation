@@ -36,7 +36,7 @@ func ResourceKinesisAnalyticsV2ApplicationReferenceDataSource() *schema.Resource
 				Required: true,
 			},
 			"reference_data_source": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationReferenceDataSourceReferenceDataSource(),
 				Required: true,
 				MaxItems: 1,

@@ -60,13 +60,13 @@ func ResourceGlueMLTransform() *schema.Resource {
 				Optional: true,
 			},
 			"transform_parameters": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyMLTransformTransformParameters(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"input_record_tables": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyMLTransformInputRecordTables(),
 				Required: true,
 				MaxItems: 1,

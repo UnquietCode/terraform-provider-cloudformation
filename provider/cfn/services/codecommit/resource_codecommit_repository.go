@@ -45,7 +45,7 @@ func ResourceCodeCommitRepository() *schema.Resource {
 				Optional: true,
 			},
 			"code": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRepositoryCode(),
 				Optional: true,
 				MaxItems: 1,

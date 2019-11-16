@@ -38,7 +38,7 @@ func ResourceEMRStep() *schema.Resource {
 				Required: true,
 			},
 			"hadoop_jar_step": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyStepHadoopJarStepConfig(),
 				Required: true,
 				MaxItems: 1,

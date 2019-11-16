@@ -42,13 +42,13 @@ func propertyCampaignWriteTreatmentResource(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"message_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCampaignMessageConfiguration(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"schedule": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCampaignSchedule(),
 				Optional: true,
 				MaxItems: 1,

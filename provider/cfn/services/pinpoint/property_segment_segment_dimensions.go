@@ -39,7 +39,7 @@ func propertySegmentSegmentDimensions(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"demographic": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySegmentDemographic(),
 				Optional: true,
 				MaxItems: 1,
@@ -53,7 +53,7 @@ func propertySegmentSegmentDimensions(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"behavior": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySegmentBehavior(),
 				Optional: true,
 				MaxItems: 1,
@@ -63,7 +63,7 @@ func propertySegmentSegmentDimensions(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"location": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySegmentLocation(),
 				Optional: true,
 				MaxItems: 1,

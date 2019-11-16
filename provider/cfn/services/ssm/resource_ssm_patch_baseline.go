@@ -52,7 +52,7 @@ func ResourceSSMPatchBaseline() *schema.Resource {
 				Optional: true,
 			},
 			"approval_rules": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyPatchBaselineRuleGroup(),
 				Optional: true,
 				MaxItems: 1,
@@ -94,7 +94,7 @@ func ResourceSSMPatchBaseline() *schema.Resource {
 				Optional: true,
 			},
 			"global_filters": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyPatchBaselinePatchFilterGroup(),
 				Optional: true,
 				MaxItems: 1,

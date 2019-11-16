@@ -76,7 +76,7 @@ func ResourceElasticBeanstalkEnvironment() *schema.Resource {
 				Optional: true,
 			},
 			"tier": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyEnvironmentTier(),
 				Optional: true,
 				MaxItems: 1,

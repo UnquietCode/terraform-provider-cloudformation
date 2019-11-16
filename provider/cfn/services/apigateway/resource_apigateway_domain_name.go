@@ -42,7 +42,7 @@ func ResourceApiGatewayDomainName() *schema.Resource {
 				Required: true,
 			},
 			"endpoint_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDomainNameEndpointConfiguration(),
 				Optional: true,
 				MaxItems: 1,

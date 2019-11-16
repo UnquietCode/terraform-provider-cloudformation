@@ -41,7 +41,7 @@ func ResourceElasticBeanstalkApplication() *schema.Resource {
 				Optional: true,
 			},
 			"resource_lifecycle_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationApplicationResourceLifecycleConfig(),
 				Optional: true,
 				MaxItems: 1,

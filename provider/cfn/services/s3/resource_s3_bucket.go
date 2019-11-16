@@ -49,7 +49,7 @@ func ResourceS3Bucket() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"accelerate_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketAccelerateConfiguration(),
 				Optional: true,
 				MaxItems: 1,
@@ -64,7 +64,7 @@ func ResourceS3Bucket() *schema.Resource {
 				Optional: true,
 			},
 			"bucket_encryption": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketBucketEncryption(),
 				Optional: true,
 				MaxItems: 1,
@@ -74,7 +74,7 @@ func ResourceS3Bucket() *schema.Resource {
 				Optional: true,
 			},
 			"cors_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketCorsConfiguration(),
 				Optional: true,
 				MaxItems: 1,
@@ -85,13 +85,13 @@ func ResourceS3Bucket() *schema.Resource {
 				Optional: true,
 			},
 			"lifecycle_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketLifecycleConfiguration(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"logging_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketLoggingConfiguration(),
 				Optional: true,
 				MaxItems: 1,
@@ -102,13 +102,13 @@ func ResourceS3Bucket() *schema.Resource {
 				Optional: true,
 			},
 			"notification_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketNotificationConfiguration(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"object_lock_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketObjectLockConfiguration(),
 				Optional: true,
 				MaxItems: 1,
@@ -118,26 +118,26 @@ func ResourceS3Bucket() *schema.Resource {
 				Optional: true,
 			},
 			"public_access_block_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketPublicAccessBlockConfiguration(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"replication_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketReplicationConfiguration(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"tags": misc.PropertyTags(),
 			"versioning_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketVersioningConfiguration(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"website_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketWebsiteConfiguration(),
 				Optional: true,
 				MaxItems: 1,

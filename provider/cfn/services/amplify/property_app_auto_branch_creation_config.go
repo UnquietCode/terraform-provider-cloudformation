@@ -76,7 +76,7 @@ func propertyAppAutoBranchCreationConfig(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"basic_auth_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyAppBasicAuthConfig(),
 				Optional: true,
 				MaxItems: 1,

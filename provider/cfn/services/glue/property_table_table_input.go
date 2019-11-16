@@ -67,7 +67,7 @@ func propertyTableTableInput(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"storage_descriptor": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTableStorageDescriptor(),
 				Optional: true,
 				MaxItems: 1,

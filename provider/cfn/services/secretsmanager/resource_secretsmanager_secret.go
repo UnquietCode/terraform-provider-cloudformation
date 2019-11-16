@@ -49,7 +49,7 @@ func ResourceSecretsManagerSecret() *schema.Resource {
 				Optional: true,
 			},
 			"generate_secret_string": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySecretGenerateSecretString(),
 				Optional: true,
 				MaxItems: 1,

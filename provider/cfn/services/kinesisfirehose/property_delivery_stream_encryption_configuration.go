@@ -35,7 +35,7 @@ func propertyDeliveryStreamEncryptionConfiguration(extras...string) *schema.Reso
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"kms_encryption_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamKMSEncryptionConfig(),
 				Optional: true,
 				MaxItems: 1,

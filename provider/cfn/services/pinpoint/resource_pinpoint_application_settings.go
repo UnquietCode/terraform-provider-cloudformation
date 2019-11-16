@@ -35,13 +35,13 @@ func ResourcePinpointApplicationSettings() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"quiet_time": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationSettingsQuietTime(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"limits": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationSettingsLimits(),
 				Optional: true,
 				MaxItems: 1,
@@ -51,7 +51,7 @@ func ResourcePinpointApplicationSettings() *schema.Resource {
 				Required: true,
 			},
 			"campaign_hook": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationSettingsCampaignHook(),
 				Optional: true,
 				MaxItems: 1,

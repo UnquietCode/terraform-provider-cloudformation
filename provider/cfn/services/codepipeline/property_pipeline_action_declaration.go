@@ -41,7 +41,7 @@ func propertyPipelineActionDeclaration(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"action_type_id": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyPipelineActionTypeId(),
 				Required: true,
 				MaxItems: 1,

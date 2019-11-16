@@ -65,7 +65,7 @@ func ResourceOpsWorksStack() *schema.Resource {
 				Optional: true,
 			},
 			"chef_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyStackChefConfiguration(),
 				Optional: true,
 				MaxItems: 1,
@@ -81,13 +81,13 @@ func ResourceOpsWorksStack() *schema.Resource {
 				Optional: true,
 			},
 			"configuration_manager": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyStackStackConfigurationManager(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"custom_cookbooks_source": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyStackSource(),
 				Optional: true,
 				MaxItems: 1,

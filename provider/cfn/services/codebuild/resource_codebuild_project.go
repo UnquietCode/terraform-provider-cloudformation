@@ -54,7 +54,7 @@ func ResourceCodeBuildProject() *schema.Resource {
 				Optional: true,
 			},
 			"vpc_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyProjectVpcConfig(),
 				Optional: true,
 				MaxItems: 1,
@@ -73,7 +73,7 @@ func ResourceCodeBuildProject() *schema.Resource {
 				Optional: true,
 			},
 			"triggers": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyProjectProjectTriggers(),
 				Optional: true,
 				MaxItems: 1,
@@ -84,7 +84,7 @@ func ResourceCodeBuildProject() *schema.Resource {
 				Optional: true,
 			},
 			"source": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyProjectSource(),
 				Required: true,
 				MaxItems: 1,
@@ -94,7 +94,7 @@ func ResourceCodeBuildProject() *schema.Resource {
 				Optional: true,
 			},
 			"artifacts": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyProjectArtifacts(),
 				Required: true,
 				MaxItems: 1,
@@ -104,7 +104,7 @@ func ResourceCodeBuildProject() *schema.Resource {
 				Optional: true,
 			},
 			"logs_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyProjectLogsConfig(),
 				Optional: true,
 				MaxItems: 1,
@@ -118,7 +118,7 @@ func ResourceCodeBuildProject() *schema.Resource {
 				Optional: true,
 			},
 			"environment": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyProjectEnvironment(),
 				Required: true,
 				MaxItems: 1,
@@ -134,7 +134,7 @@ func ResourceCodeBuildProject() *schema.Resource {
 				Optional: true,
 			},
 			"cache": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyProjectProjectCache(),
 				Optional: true,
 				MaxItems: 1,

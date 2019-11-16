@@ -45,7 +45,7 @@ func propertyBucketAnalyticsConfiguration(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"storage_class_analysis": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketStorageClassAnalysis(),
 				Required: true,
 				MaxItems: 1,

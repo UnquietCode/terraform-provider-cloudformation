@@ -62,7 +62,7 @@ func ResourceElasticBeanstalkConfigurationTemplate() *schema.Resource {
 				Optional: true,
 			},
 			"source_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyConfigurationTemplateSourceConfiguration(),
 				Optional: true,
 				MaxItems: 1,

@@ -36,7 +36,7 @@ func propertyLayerLoadBasedAutoScaling(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"down_scaling": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLayerAutoScalingThresholds(),
 				Optional: true,
 				MaxItems: 1,
@@ -46,7 +46,7 @@ func propertyLayerLoadBasedAutoScaling(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"up_scaling": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLayerAutoScalingThresholds(),
 				Optional: true,
 				MaxItems: 1,

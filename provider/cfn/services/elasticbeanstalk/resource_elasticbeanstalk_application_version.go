@@ -41,7 +41,7 @@ func ResourceElasticBeanstalkApplicationVersion() *schema.Resource {
 				Optional: true,
 			},
 			"source_bundle": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationVersionSourceBundle(),
 				Required: true,
 				MaxItems: 1,

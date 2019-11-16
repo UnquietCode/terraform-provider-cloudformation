@@ -83,13 +83,13 @@ func ResourceEC2Instance() *schema.Resource {
 				Optional: true,
 			},
 			"cpu_options": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyInstanceCpuOptions(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"credit_specification": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyInstanceCreditSpecification(),
 				Optional: true,
 				MaxItems: 1,
@@ -150,7 +150,7 @@ func ResourceEC2Instance() *schema.Resource {
 				Optional: true,
 			},
 			"launch_template": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyInstanceLaunchTemplateSpecification(),
 				Optional: true,
 				MaxItems: 1,

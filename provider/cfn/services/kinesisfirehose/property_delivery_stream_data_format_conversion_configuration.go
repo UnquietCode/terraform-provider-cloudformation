@@ -41,19 +41,19 @@ func propertyDeliveryStreamDataFormatConversionConfiguration(extras...string) *s
 				Required: true,
 			},
 			"input_format_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamInputFormatConfiguration(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"output_format_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamOutputFormatConfiguration(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"schema_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamSchemaConfiguration(),
 				Required: true,
 				MaxItems: 1,

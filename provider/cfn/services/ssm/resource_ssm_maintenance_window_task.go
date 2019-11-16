@@ -76,7 +76,7 @@ func ResourceSSMMaintenanceWindowTask() *schema.Resource {
 				Required: true,
 			},
 			"task_invocation_parameters": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyMaintenanceWindowTaskTaskInvocationParameters(),
 				Optional: true,
 				MaxItems: 1,
@@ -94,7 +94,7 @@ func ResourceSSMMaintenanceWindowTask() *schema.Resource {
 				Required: true,
 			},
 			"logging_info": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyMaintenanceWindowTaskLoggingInfo(),
 				Optional: true,
 				MaxItems: 1,

@@ -38,7 +38,7 @@ func propertyBucketReplicationDestination(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"access_control_translation": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketAccessControlTranslation(),
 				Optional: true,
 				MaxItems: 1,
@@ -52,7 +52,7 @@ func propertyBucketReplicationDestination(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"encryption_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketEncryptionConfiguration(),
 				Optional: true,
 				MaxItems: 1,

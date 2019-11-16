@@ -53,7 +53,7 @@ func propertyDeploymentStageDescription(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"access_log_setting": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeploymentAccessLogSetting(),
 				Optional: true,
 				MaxItems: 1,
@@ -79,7 +79,7 @@ func propertyDeploymentStageDescription(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"canary_setting": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeploymentCanarySetting(),
 				Optional: true,
 				MaxItems: 1,

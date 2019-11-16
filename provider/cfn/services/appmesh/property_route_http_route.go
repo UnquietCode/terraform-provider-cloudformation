@@ -36,19 +36,19 @@ func propertyRouteHttpRoute(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"action": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRouteHttpRouteAction(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"retry_policy": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRouteHttpRetryPolicy(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"match": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRouteHttpRouteMatch(),
 				Required: true,
 				MaxItems: 1,

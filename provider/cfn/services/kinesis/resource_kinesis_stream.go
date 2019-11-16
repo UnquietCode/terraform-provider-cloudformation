@@ -48,7 +48,7 @@ func ResourceKinesisStream() *schema.Resource {
 				Required: true,
 			},
 			"stream_encryption": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyStreamStreamEncryption(),
 				Optional: true,
 				MaxItems: 1,

@@ -35,13 +35,13 @@ func propertyBucketRoutingRule(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"redirect_rule": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketRedirectRule(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"routing_rule_condition": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketRoutingRuleCondition(),
 				Optional: true,
 				MaxItems: 1,

@@ -62,7 +62,7 @@ func propertyProjectEnvironment(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"registry_credential": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyProjectRegistryCredential(),
 				Optional: true,
 				MaxItems: 1,

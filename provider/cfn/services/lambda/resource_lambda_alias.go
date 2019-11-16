@@ -51,7 +51,7 @@ func ResourceLambdaAlias() *schema.Resource {
 				Required: true,
 			},
 			"routing_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyAliasAliasRoutingConfiguration(),
 				Optional: true,
 				MaxItems: 1,

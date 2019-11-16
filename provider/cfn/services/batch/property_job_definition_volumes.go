@@ -35,7 +35,7 @@ func propertyJobDefinitionVolumes(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"host": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyJobDefinitionVolumesHost(),
 				Optional: true,
 				MaxItems: 1,

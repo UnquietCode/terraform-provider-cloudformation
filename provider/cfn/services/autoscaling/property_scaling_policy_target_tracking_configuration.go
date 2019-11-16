@@ -37,7 +37,7 @@ func propertyScalingPolicyTargetTrackingConfiguration(extras...string) *schema.R
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"customized_metric_specification": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyScalingPolicyCustomizedMetricSpecification(),
 				Optional: true,
 				MaxItems: 1,
@@ -47,7 +47,7 @@ func propertyScalingPolicyTargetTrackingConfiguration(extras...string) *schema.R
 				Optional: true,
 			},
 			"predefined_metric_specification": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyScalingPolicyPredefinedMetricSpecification(),
 				Optional: true,
 				MaxItems: 1,

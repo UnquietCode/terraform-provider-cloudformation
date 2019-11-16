@@ -66,7 +66,7 @@ func propertyMaintenanceWindowTaskMaintenanceWindowRunCommandParameters(extras..
 				Optional: true,
 			},
 			"notification_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyMaintenanceWindowTaskNotificationConfig(),
 				Optional: true,
 				MaxItems: 1,

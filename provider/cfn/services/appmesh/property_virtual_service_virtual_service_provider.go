@@ -35,13 +35,13 @@ func propertyVirtualServiceVirtualServiceProvider(extras...string) *schema.Resou
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"virtual_node": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyVirtualServiceVirtualNodeServiceProvider(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"virtual_router": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyVirtualServiceVirtualRouterServiceProvider(),
 				Optional: true,
 				MaxItems: 1,

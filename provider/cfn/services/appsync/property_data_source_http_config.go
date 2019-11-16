@@ -39,7 +39,7 @@ func propertyDataSourceHttpConfig(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"authorization_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDataSourceAuthorizationConfig(),
 				Optional: true,
 				MaxItems: 1,

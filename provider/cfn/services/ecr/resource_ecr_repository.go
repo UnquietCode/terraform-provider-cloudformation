@@ -35,7 +35,7 @@ func ResourceECRRepository() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"lifecycle_policy": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRepositoryLifecyclePolicy(),
 				Optional: true,
 				MaxItems: 1,

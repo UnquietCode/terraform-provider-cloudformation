@@ -52,7 +52,7 @@ func ResourceFSxFileSystem() *schema.Resource {
 				Required: true,
 			},
 			"lustre_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyFileSystemLustreConfiguration(),
 				Optional: true,
 				MaxItems: 1,
@@ -73,7 +73,7 @@ func ResourceFSxFileSystem() *schema.Resource {
 			},
 			"tags": misc.PropertyTags(),
 			"windows_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyFileSystemWindowsConfiguration(),
 				Optional: true,
 				MaxItems: 1,

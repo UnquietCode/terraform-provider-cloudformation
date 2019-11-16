@@ -38,7 +38,7 @@ func propertyDatasetVariable(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"dataset_content_version_value": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDatasetDatasetContentVersionValue(),
 				Optional: true,
 				MaxItems: 1,
@@ -48,7 +48,7 @@ func propertyDatasetVariable(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"output_file_uri_value": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDatasetOutputFileUriValue(),
 				Optional: true,
 				MaxItems: 1,

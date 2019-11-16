@@ -34,7 +34,7 @@ func propertyDeliveryStreamOutputFormatConfiguration(extras...string) *schema.Re
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"serializer": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamSerializer(),
 				Required: true,
 				MaxItems: 1,

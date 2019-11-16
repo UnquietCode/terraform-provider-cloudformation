@@ -52,19 +52,19 @@ func ResourceAppSyncDataSource() *schema.Resource {
 				Optional: true,
 			},
 			"http_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDataSourceHttpConfig(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"relational_database_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDataSourceRelationalDatabaseConfig(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"lambda_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDataSourceLambdaConfig(),
 				Optional: true,
 				MaxItems: 1,
@@ -78,13 +78,13 @@ func ResourceAppSyncDataSource() *schema.Resource {
 				Required: true,
 			},
 			"dynamo_db_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDataSourceDynamoDBConfig(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"elasticsearch_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDataSourceElasticsearchConfig(),
 				Optional: true,
 				MaxItems: 1,

@@ -36,7 +36,7 @@ func ResourceSESConfigurationSetEventDestination() *schema.Resource {
 				Required: true,
 			},
 			"event_destination": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyConfigurationSetEventDestinationEventDestination(),
 				Required: true,
 				MaxItems: 1,

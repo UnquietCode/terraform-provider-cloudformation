@@ -48,7 +48,7 @@ func propertyRecordSetGroupRecordSet(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"alias_target": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRecordSetGroupAliasTarget(),
 				Optional: true,
 				MaxItems: 1,
@@ -62,7 +62,7 @@ func propertyRecordSetGroupRecordSet(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"geo_location": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRecordSetGroupGeoLocation(),
 				Optional: true,
 				MaxItems: 1,

@@ -38,31 +38,31 @@ func propertyApplicationApplicationConfiguration(extras...string) *schema.Resour
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"application_code_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationApplicationCodeConfiguration(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"environment_properties": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationEnvironmentProperties(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"flink_application_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationFlinkApplicationConfiguration(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"sql_application_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationSqlApplicationConfiguration(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"application_snapshot_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationApplicationSnapshotConfiguration(),
 				Optional: true,
 				MaxItems: 1,

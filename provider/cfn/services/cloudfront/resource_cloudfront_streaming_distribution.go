@@ -33,7 +33,7 @@ func ResourceCloudFrontStreamingDistribution() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"streaming_distribution_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyStreamingDistributionStreamingDistributionConfig(),
 				Required: true,
 				MaxItems: 1,

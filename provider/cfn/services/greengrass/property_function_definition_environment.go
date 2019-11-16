@@ -41,7 +41,7 @@ func propertyFunctionDefinitionEnvironment(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"execution": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyFunctionDefinitionExecution(),
 				Optional: true,
 				MaxItems: 1,

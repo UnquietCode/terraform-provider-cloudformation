@@ -39,7 +39,7 @@ func ResourceMSKCluster() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"broker_node_group_info": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterBrokerNodeGroupInfo(),
 				Required: true,
 				MaxItems: 1,
@@ -57,7 +57,7 @@ func ResourceMSKCluster() *schema.Resource {
 				Required: true,
 			},
 			"encryption_info": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterEncryptionInfo(),
 				Optional: true,
 				MaxItems: 1,
@@ -67,7 +67,7 @@ func ResourceMSKCluster() *schema.Resource {
 				Required: true,
 			},
 			"client_authentication": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterClientAuthentication(),
 				Optional: true,
 				MaxItems: 1,
@@ -77,7 +77,7 @@ func ResourceMSKCluster() *schema.Resource {
 				Optional: true,
 			},
 			"configuration_info": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterConfigurationInfo(),
 				Optional: true,
 				MaxItems: 1,

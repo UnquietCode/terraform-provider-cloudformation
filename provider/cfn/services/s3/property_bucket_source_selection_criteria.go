@@ -34,7 +34,7 @@ func propertyBucketSourceSelectionCriteria(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"sse_kms_encrypted_objects": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketSseKmsEncryptedObjects(),
 				Required: true,
 				MaxItems: 1,

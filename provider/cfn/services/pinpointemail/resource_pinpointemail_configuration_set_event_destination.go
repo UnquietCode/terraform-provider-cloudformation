@@ -41,7 +41,7 @@ func ResourcePinpointEmailConfigurationSetEventDestination() *schema.Resource {
 				Required: true,
 			},
 			"event_destination": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyConfigurationSetEventDestinationEventDestination(),
 				Optional: true,
 				MaxItems: 1,

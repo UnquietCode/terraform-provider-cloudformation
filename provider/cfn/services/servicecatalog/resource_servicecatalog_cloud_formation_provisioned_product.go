@@ -51,7 +51,7 @@ func ResourceServiceCatalogCloudFormationProvisionedProduct() *schema.Resource {
 				Optional: true,
 			},
 			"provisioning_preferences": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCloudFormationProvisionedProductProvisioningPreferences(),
 				Optional: true,
 				MaxItems: 1,

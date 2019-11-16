@@ -39,7 +39,7 @@ func propertyTriggerAction(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"notification_property": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTriggerNotificationProperty(),
 				Optional: true,
 				MaxItems: 1,

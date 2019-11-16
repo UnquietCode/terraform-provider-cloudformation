@@ -32,7 +32,7 @@ func ResourceGlueDatabase() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"database_input": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDatabaseDatabaseInput(),
 				Required: true,
 				MaxItems: 1,

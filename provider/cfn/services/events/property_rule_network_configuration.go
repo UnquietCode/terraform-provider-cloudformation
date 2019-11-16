@@ -34,7 +34,7 @@ func propertyRuleNetworkConfiguration(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"aws_vpc_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRuleAwsVpcConfiguration(),
 				Optional: true,
 				MaxItems: 1,

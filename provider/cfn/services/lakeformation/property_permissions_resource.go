@@ -35,13 +35,13 @@ func propertyPermissionsResource(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"table_resource": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyPermissionsTableResource(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"database_resource": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyPermissionsDatabaseResource(),
 				Optional: true,
 				MaxItems: 1,

@@ -37,7 +37,7 @@ func propertyInstanceGroupConfigScalingRule(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"action": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyInstanceGroupConfigScalingAction(),
 				Required: true,
 				MaxItems: 1,
@@ -51,7 +51,7 @@ func propertyInstanceGroupConfigScalingRule(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"trigger": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyInstanceGroupConfigScalingTrigger(),
 				Required: true,
 				MaxItems: 1,

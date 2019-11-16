@@ -40,7 +40,7 @@ func propertyApplicationCodeContent(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"s3_content_location": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationS3ContentLocation(),
 				Optional: true,
 				MaxItems: 1,

@@ -33,7 +33,7 @@ func ResourceCloudFrontDistribution() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"distribution_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDistributionDistributionConfig(),
 				Required: true,
 				MaxItems: 1,

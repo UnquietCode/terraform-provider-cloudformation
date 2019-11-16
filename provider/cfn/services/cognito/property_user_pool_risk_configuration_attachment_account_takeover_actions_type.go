@@ -36,19 +36,19 @@ func propertyUserPoolRiskConfigurationAttachmentAccountTakeoverActionsType(extra
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"high_action": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolRiskConfigurationAttachmentAccountTakeoverActionType(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"low_action": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolRiskConfigurationAttachmentAccountTakeoverActionType(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"medium_action": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolRiskConfigurationAttachmentAccountTakeoverActionType(),
 				Optional: true,
 				MaxItems: 1,

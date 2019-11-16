@@ -37,7 +37,7 @@ func ResourceGameLiftBuild() *schema.Resource {
 				Optional: true,
 			},
 			"storage_location": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBuildS3Location(),
 				Optional: true,
 				MaxItems: 1,

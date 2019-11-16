@@ -40,7 +40,7 @@ func propertyMemberMemberConfiguration(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"member_framework_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyMemberMemberFrameworkConfiguration(),
 				Optional: true,
 				MaxItems: 1,

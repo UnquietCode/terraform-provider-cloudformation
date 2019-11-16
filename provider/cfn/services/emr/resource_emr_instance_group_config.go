@@ -40,7 +40,7 @@ func ResourceEMRInstanceGroupConfig() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"auto_scaling_policy": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyInstanceGroupConfigAutoScalingPolicy(),
 				Optional: true,
 				MaxItems: 1,
@@ -55,7 +55,7 @@ func ResourceEMRInstanceGroupConfig() *schema.Resource {
 				Optional: true,
 			},
 			"ebs_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyInstanceGroupConfigEbsConfiguration(),
 				Optional: true,
 				MaxItems: 1,

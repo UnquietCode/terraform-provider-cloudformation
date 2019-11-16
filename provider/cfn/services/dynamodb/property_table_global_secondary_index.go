@@ -46,13 +46,13 @@ func propertyTableGlobalSecondaryIndex(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"projection": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTableProjection(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"provisioned_throughput": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTableProvisionedThroughput(),
 				Optional: true,
 				MaxItems: 1,

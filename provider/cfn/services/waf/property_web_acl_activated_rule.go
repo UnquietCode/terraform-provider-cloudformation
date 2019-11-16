@@ -36,7 +36,7 @@ func propertyWebACLActivatedRule(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"action": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyWebACLWafAction(),
 				Optional: true,
 				MaxItems: 1,

@@ -35,7 +35,7 @@ func propertyChannelAudioSelector(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"selector_settings": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyChannelAudioSelectorSettings(),
 				Optional: true,
 				MaxItems: 1,

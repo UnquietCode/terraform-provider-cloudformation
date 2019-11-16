@@ -35,7 +35,7 @@ func ResourceConfigDeliveryChannel() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"config_snapshot_delivery_properties": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryChannelConfigSnapshotDeliveryProperties(),
 				Optional: true,
 				MaxItems: 1,

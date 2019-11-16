@@ -37,7 +37,7 @@ func ResourceConfigConfigurationRecorder() *schema.Resource {
 				Optional: true,
 			},
 			"recording_group": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyConfigurationRecorderRecordingGroup(),
 				Optional: true,
 				MaxItems: 1,

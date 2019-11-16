@@ -50,7 +50,7 @@ func propertyAlarmMetricDataQuery(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"metric_stat": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyAlarmMetricStat(),
 				Optional: true,
 				MaxItems: 1,

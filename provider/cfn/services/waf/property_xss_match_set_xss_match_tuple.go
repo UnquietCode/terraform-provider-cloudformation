@@ -35,7 +35,7 @@ func propertyXssMatchSetXssMatchTuple(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"field_to_match": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyXssMatchSetFieldToMatch(),
 				Required: true,
 				MaxItems: 1,

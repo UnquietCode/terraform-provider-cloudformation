@@ -39,7 +39,7 @@ func ResourceEventsEventBusPolicy() *schema.Resource {
 				Optional: true,
 			},
 			"condition": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyEventBusPolicyCondition(),
 				Optional: true,
 				MaxItems: 1,

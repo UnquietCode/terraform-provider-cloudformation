@@ -61,13 +61,13 @@ func ResourceDMSEndpoint() *schema.Resource {
 				Optional: true,
 			},
 			"elasticsearch_settings": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyEndpointElasticsearchSettings(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"s3_settings": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyEndpointS3Settings(),
 				Optional: true,
 				MaxItems: 1,
@@ -77,13 +77,13 @@ func ResourceDMSEndpoint() *schema.Resource {
 				Required: true,
 			},
 			"dynamo_db_settings": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyEndpointDynamoDbSettings(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"kinesis_settings": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyEndpointKinesisSettings(),
 				Optional: true,
 				MaxItems: 1,
@@ -122,7 +122,7 @@ func ResourceDMSEndpoint() *schema.Resource {
 				Optional: true,
 			},
 			"mongo_db_settings": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyEndpointMongoDbSettings(),
 				Optional: true,
 				MaxItems: 1,

@@ -52,7 +52,7 @@ func propertyBackupPlanBackupRuleResourceType(extras...string) *schema.Resource 
 				Optional: true,
 			},
 			"lifecycle": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBackupPlanLifecycleResourceType(),
 				Optional: true,
 				MaxItems: 1,

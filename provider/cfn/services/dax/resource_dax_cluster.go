@@ -43,7 +43,7 @@ func ResourceDAXCluster() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"sse_specification": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterSSESpecification(),
 				Optional: true,
 				MaxItems: 1,

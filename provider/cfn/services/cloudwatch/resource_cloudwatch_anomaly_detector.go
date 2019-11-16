@@ -43,7 +43,7 @@ func ResourceCloudWatchAnomalyDetector() *schema.Resource {
 				Required: true,
 			},
 			"configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyAnomalyDetectorConfiguration(),
 				Optional: true,
 				MaxItems: 1,

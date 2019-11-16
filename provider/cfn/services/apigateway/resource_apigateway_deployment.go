@@ -35,7 +35,7 @@ func ResourceApiGatewayDeployment() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"deployment_canary_settings": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeploymentDeploymentCanarySettings(),
 				Optional: true,
 				MaxItems: 1,
@@ -49,7 +49,7 @@ func ResourceApiGatewayDeployment() *schema.Resource {
 				Required: true,
 			},
 			"stage_description": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeploymentStageDescription(),
 				Optional: true,
 				MaxItems: 1,

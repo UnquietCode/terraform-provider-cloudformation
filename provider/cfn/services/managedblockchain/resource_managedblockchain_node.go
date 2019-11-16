@@ -41,7 +41,7 @@ func ResourceManagedBlockchainNode() *schema.Resource {
 				Required: true,
 			},
 			"node_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyNodeNodeConfiguration(),
 				Required: true,
 				MaxItems: 1,

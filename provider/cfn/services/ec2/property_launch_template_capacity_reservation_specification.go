@@ -35,13 +35,13 @@ func propertyLaunchTemplateCapacityReservationSpecification(extras...string) *sc
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"capacity_reservation_preference": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLaunchTemplateCapacityReservationPreference(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"capacity_reservation_target": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLaunchTemplateCapacityReservationTarget(),
 				Optional: true,
 				MaxItems: 1,

@@ -35,7 +35,7 @@ func propertyPipelineArtifactStoreMap(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"artifact_store": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyPipelineArtifactStore(),
 				Required: true,
 				MaxItems: 1,

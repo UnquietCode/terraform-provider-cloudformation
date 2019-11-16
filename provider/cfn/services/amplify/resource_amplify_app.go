@@ -43,7 +43,7 @@ func ResourceAmplifyApp() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"auto_branch_creation_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyAppAutoBranchCreationConfig(),
 				Optional: true,
 				MaxItems: 1,
@@ -79,7 +79,7 @@ func ResourceAmplifyApp() *schema.Resource {
 				Optional: true,
 			},
 			"basic_auth_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyAppBasicAuthConfig(),
 				Optional: true,
 				MaxItems: 1,

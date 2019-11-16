@@ -36,13 +36,13 @@ func propertyGraphQLApiAdditionalAuthenticationProvider(extras...string) *schema
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"open_id_connect_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyGraphQLApiOpenIDConnectConfig(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"user_pool_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyGraphQLApiCognitoUserPoolConfig(),
 				Optional: true,
 				MaxItems: 1,

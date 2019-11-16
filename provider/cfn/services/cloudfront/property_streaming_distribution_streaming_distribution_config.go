@@ -40,7 +40,7 @@ func propertyStreamingDistributionStreamingDistributionConfig(extras...string) *
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"logging": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyStreamingDistributionLogging(),
 				Optional: true,
 				MaxItems: 1,
@@ -54,7 +54,7 @@ func propertyStreamingDistributionStreamingDistributionConfig(extras...string) *
 				Optional: true,
 			},
 			"s3_origin": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyStreamingDistributionS3Origin(),
 				Required: true,
 				MaxItems: 1,
@@ -69,7 +69,7 @@ func propertyStreamingDistributionStreamingDistributionConfig(extras...string) *
 				Optional: true,
 			},
 			"trusted_signers": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyStreamingDistributionTrustedSigners(),
 				Required: true,
 				MaxItems: 1,

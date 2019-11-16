@@ -34,7 +34,7 @@ func propertyBucketNotificationFilter(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"s3_key": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketS3KeyFilter(),
 				Required: true,
 				MaxItems: 1,

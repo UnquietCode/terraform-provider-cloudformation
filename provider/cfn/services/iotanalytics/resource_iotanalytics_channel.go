@@ -39,13 +39,13 @@ func ResourceIoTAnalyticsChannel() *schema.Resource {
 				Optional: true,
 			},
 			"channel_storage": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyChannelChannelStorage(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"retention_period": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyChannelRetentionPeriod(),
 				Optional: true,
 				MaxItems: 1,

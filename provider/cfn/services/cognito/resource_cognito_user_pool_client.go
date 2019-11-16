@@ -45,7 +45,7 @@ func ResourceCognitoUserPoolClient() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"analytics_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolClientAnalyticsConfiguration(),
 				Optional: true,
 				MaxItems: 1,

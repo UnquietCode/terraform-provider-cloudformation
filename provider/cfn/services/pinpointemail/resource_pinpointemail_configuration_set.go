@@ -36,25 +36,25 @@ func ResourcePinpointEmailConfigurationSet() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"sending_options": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyConfigurationSetSendingOptions(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"tracking_options": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyConfigurationSetTrackingOptions(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"reputation_options": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyConfigurationSetReputationOptions(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"delivery_options": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyConfigurationSetDeliveryOptions(),
 				Optional: true,
 				MaxItems: 1,

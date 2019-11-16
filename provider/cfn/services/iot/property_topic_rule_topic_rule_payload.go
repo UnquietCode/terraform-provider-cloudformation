@@ -52,7 +52,7 @@ func propertyTopicRuleTopicRulePayload(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"error_action": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTopicRuleAction(),
 				Optional: true,
 				MaxItems: 1,

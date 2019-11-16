@@ -39,7 +39,7 @@ func propertySegmentGPSPoint(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"coordinates": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySegmentCoordinates(),
 				Required: true,
 				MaxItems: 1,

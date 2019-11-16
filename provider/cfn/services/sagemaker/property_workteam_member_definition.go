@@ -34,7 +34,7 @@ func propertyWorkteamMemberDefinition(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"cognito_member_definition": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyWorkteamCognitoMemberDefinition(),
 				Required: true,
 				MaxItems: 1,

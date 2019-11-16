@@ -74,13 +74,13 @@ func ResourcePinpointCampaign() *schema.Resource {
 				Optional: true,
 			},
 			"message_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCampaignMessageConfiguration(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"limits": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCampaignLimits(),
 				Optional: true,
 				MaxItems: 1,
@@ -90,7 +90,7 @@ func ResourcePinpointCampaign() *schema.Resource {
 				Optional: true,
 			},
 			"schedule": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCampaignSchedule(),
 				Required: true,
 				MaxItems: 1,
@@ -100,7 +100,7 @@ func ResourcePinpointCampaign() *schema.Resource {
 				Required: true,
 			},
 			"campaign_hook": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCampaignCampaignHook(),
 				Optional: true,
 				MaxItems: 1,

@@ -35,7 +35,7 @@ func propertyEC2FleetFleetLaunchTemplateConfigRequest(extras...string) *schema.R
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"launch_template_specification": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyEC2FleetFleetLaunchTemplateSpecificationRequest(),
 				Optional: true,
 				MaxItems: 1,

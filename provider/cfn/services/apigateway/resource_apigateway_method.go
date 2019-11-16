@@ -65,7 +65,7 @@ func ResourceApiGatewayMethod() *schema.Resource {
 				Required: true,
 			},
 			"integration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyMethodIntegration(),
 				Optional: true,
 				MaxItems: 1,

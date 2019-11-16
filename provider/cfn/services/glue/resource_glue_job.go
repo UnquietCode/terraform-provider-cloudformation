@@ -48,7 +48,7 @@ func ResourceGlueJob() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"connections": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyJobConnectionsList(),
 				Optional: true,
 				MaxItems: 1,
@@ -82,7 +82,7 @@ func ResourceGlueJob() *schema.Resource {
 				Optional: true,
 			},
 			"notification_property": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyJobNotificationProperty(),
 				Optional: true,
 				MaxItems: 1,
@@ -96,7 +96,7 @@ func ResourceGlueJob() *schema.Resource {
 				Optional: true,
 			},
 			"command": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyJobJobCommand(),
 				Required: true,
 				MaxItems: 1,
@@ -106,7 +106,7 @@ func ResourceGlueJob() *schema.Resource {
 				Optional: true,
 			},
 			"execution_property": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyJobExecutionProperty(),
 				Optional: true,
 				MaxItems: 1,

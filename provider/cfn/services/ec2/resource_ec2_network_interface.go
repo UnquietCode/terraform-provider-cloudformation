@@ -60,7 +60,7 @@ func ResourceEC2NetworkInterface() *schema.Resource {
 				Optional: true,
 			},
 			"ipv6_addresses": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyNetworkInterfaceInstanceIpv6Address(),
 				Optional: true,
 				MaxItems: 1,

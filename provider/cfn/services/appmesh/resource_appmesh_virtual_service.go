@@ -43,7 +43,7 @@ func ResourceAppMeshVirtualService() *schema.Resource {
 				Required: true,
 			},
 			"spec": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyVirtualServiceVirtualServiceSpec(),
 				Required: true,
 				MaxItems: 1,

@@ -35,13 +35,13 @@ func propertyDatasetDatasetContentDeliveryRuleDestination(extras...string) *sche
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"iot_events_destination_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDatasetIotEventsDestinationConfiguration(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"s3_destination_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDatasetS3DestinationConfiguration(),
 				Optional: true,
 				MaxItems: 1,

@@ -36,7 +36,7 @@ func ResourceEC2LaunchTemplate() *schema.Resource {
 				Optional: true,
 			},
 			"launch_template_data": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLaunchTemplateLaunchTemplateData(),
 				Optional: true,
 				MaxItems: 1,

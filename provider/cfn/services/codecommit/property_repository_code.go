@@ -34,7 +34,7 @@ func propertyRepositoryCode(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"s3": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRepositoryS3(),
 				Required: true,
 				MaxItems: 1,

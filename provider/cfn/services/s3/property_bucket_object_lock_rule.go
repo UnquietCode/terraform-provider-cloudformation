@@ -34,7 +34,7 @@ func propertyBucketObjectLockRule(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"default_retention": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketDefaultRetention(),
 				Optional: true,
 				MaxItems: 1,

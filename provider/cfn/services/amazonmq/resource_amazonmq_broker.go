@@ -54,13 +54,13 @@ func ResourceAmazonMQBroker() *schema.Resource {
 				Required: true,
 			},
 			"configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBrokerConfigurationId(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"maintenance_window_start_time": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBrokerMaintenanceWindow(),
 				Optional: true,
 				MaxItems: 1,
@@ -79,7 +79,7 @@ func ResourceAmazonMQBroker() *schema.Resource {
 				Required: true,
 			},
 			"logs": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBrokerLogList(),
 				Optional: true,
 				MaxItems: 1,
@@ -106,7 +106,7 @@ func ResourceAmazonMQBroker() *schema.Resource {
 				Required: true,
 			},
 			"encryption_options": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBrokerEncryptionOptions(),
 				Optional: true,
 				MaxItems: 1,

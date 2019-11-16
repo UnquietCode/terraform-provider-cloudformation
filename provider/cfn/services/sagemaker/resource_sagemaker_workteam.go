@@ -40,7 +40,7 @@ func ResourceSageMakerWorkteam() *schema.Resource {
 				Optional: true,
 			},
 			"notification_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyWorkteamNotificationConfiguration(),
 				Optional: true,
 				MaxItems: 1,

@@ -35,13 +35,13 @@ func propertyVirtualNodeServiceDiscovery(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"dns": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyVirtualNodeDnsServiceDiscovery(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"aws_cloud_map": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyVirtualNodeAwsCloudMapServiceDiscovery(),
 				Optional: true,
 				MaxItems: 1,

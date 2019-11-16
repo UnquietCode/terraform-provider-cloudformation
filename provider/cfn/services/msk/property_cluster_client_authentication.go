@@ -34,7 +34,7 @@ func propertyClusterClientAuthentication(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"tls": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterTls(),
 				Optional: true,
 				MaxItems: 1,

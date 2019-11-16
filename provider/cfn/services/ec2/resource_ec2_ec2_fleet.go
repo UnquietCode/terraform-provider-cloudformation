@@ -41,13 +41,13 @@ func ResourceEC2EC2Fleet() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"target_capacity_specification": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyEC2FleetTargetCapacitySpecificationRequest(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"on_demand_options": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyEC2FleetOnDemandOptionsRequest(),
 				Optional: true,
 				MaxItems: 1,
@@ -66,7 +66,7 @@ func ResourceEC2EC2Fleet() *schema.Resource {
 				Optional: true,
 			},
 			"spot_options": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyEC2FleetSpotOptionsRequest(),
 				Optional: true,
 				MaxItems: 1,

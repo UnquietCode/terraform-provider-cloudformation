@@ -44,7 +44,7 @@ func propertyRouteHttpRouteHeader(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"match": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRouteHeaderMatchMethod(),
 				Optional: true,
 				MaxItems: 1,

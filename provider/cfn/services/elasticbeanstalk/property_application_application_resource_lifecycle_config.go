@@ -39,7 +39,7 @@ func propertyApplicationApplicationResourceLifecycleConfig(extras...string) *sch
 				Optional: true,
 			},
 			"version_lifecycle_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationApplicationVersionLifecycleConfig(),
 				Optional: true,
 				MaxItems: 1,

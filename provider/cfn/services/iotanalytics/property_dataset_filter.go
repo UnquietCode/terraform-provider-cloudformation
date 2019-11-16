@@ -34,7 +34,7 @@ func propertyDatasetFilter(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"delta_time": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDatasetDeltaTime(),
 				Optional: true,
 				MaxItems: 1,

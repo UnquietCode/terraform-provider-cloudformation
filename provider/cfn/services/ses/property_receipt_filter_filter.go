@@ -35,7 +35,7 @@ func propertyReceiptFilterFilter(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"ip_filter": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyReceiptFilterIpFilter(),
 				Required: true,
 				MaxItems: 1,

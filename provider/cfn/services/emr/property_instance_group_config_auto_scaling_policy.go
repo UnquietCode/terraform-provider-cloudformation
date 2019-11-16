@@ -35,7 +35,7 @@ func propertyInstanceGroupConfigAutoScalingPolicy(extras...string) *schema.Resou
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"constraints": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyInstanceGroupConfigScalingConstraints(),
 				Required: true,
 				MaxItems: 1,

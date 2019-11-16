@@ -33,7 +33,7 @@ func ResourceGreengrassFunctionDefinitionVersion() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"default_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyFunctionDefinitionVersionDefaultConfig(),
 				Optional: true,
 				MaxItems: 1,

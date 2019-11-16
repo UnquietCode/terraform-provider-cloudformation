@@ -40,7 +40,7 @@ func ResourceEC2TrafficMirrorFilterRule() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"destination_port_range": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTrafficMirrorFilterRuleTrafficMirrorPortRange(),
 				Optional: true,
 				MaxItems: 1,
@@ -50,7 +50,7 @@ func ResourceEC2TrafficMirrorFilterRule() *schema.Resource {
 				Optional: true,
 			},
 			"source_port_range": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTrafficMirrorFilterRuleTrafficMirrorPortRange(),
 				Optional: true,
 				MaxItems: 1,

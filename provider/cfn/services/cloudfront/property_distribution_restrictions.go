@@ -34,7 +34,7 @@ func propertyDistributionRestrictions(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"geo_restriction": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDistributionGeoRestriction(),
 				Required: true,
 				MaxItems: 1,

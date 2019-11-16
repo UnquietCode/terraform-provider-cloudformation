@@ -36,13 +36,13 @@ func propertyTaskDefinitionVolume(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"docker_volume_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTaskDefinitionDockerVolumeConfiguration(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"host": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTaskDefinitionHostVolumeProperties(),
 				Optional: true,
 				MaxItems: 1,

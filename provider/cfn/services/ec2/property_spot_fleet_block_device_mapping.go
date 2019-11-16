@@ -41,7 +41,7 @@ func propertySpotFleetBlockDeviceMapping(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"ebs": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySpotFleetEbsBlockDevice(),
 				Optional: true,
 				MaxItems: 1,

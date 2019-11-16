@@ -41,7 +41,7 @@ func ResourceSageMakerModel() *schema.Resource {
 				Required: true,
 			},
 			"primary_container": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyModelContainerDefinition(),
 				Optional: true,
 				MaxItems: 1,
@@ -51,7 +51,7 @@ func ResourceSageMakerModel() *schema.Resource {
 				Optional: true,
 			},
 			"vpc_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyModelVpcConfig(),
 				Optional: true,
 				MaxItems: 1,

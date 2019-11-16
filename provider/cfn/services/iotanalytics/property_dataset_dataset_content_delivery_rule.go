@@ -35,7 +35,7 @@ func propertyDatasetDatasetContentDeliveryRule(extras...string) *schema.Resource
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"destination": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDatasetDatasetContentDeliveryRuleDestination(),
 				Required: true,
 				MaxItems: 1,

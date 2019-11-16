@@ -39,37 +39,37 @@ func propertyChannelCaptionSelectorSettings(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"dvb_sub_source_settings": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyChannelDvbSubSourceSettings(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"scte27_source_settings": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyChannelScte27SourceSettings(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"arib_source_settings": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyChannelAribSourceSettings(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"embedded_source_settings": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyChannelEmbeddedSourceSettings(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"scte20_source_settings": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyChannelScte20SourceSettings(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"teletext_source_settings": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyChannelTeletextSourceSettings(),
 				Optional: true,
 				MaxItems: 1,

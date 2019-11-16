@@ -44,7 +44,7 @@ func propertyChannelInputAttachment(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"input_settings": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyChannelInputSettings(),
 				Optional: true,
 				MaxItems: 1,

@@ -34,7 +34,7 @@ func propertyClusterInstanceFleetProvisioningSpecifications(extras...string) *sc
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"spot_specification": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterSpotProvisioningSpecification(),
 				Required: true,
 				MaxItems: 1,

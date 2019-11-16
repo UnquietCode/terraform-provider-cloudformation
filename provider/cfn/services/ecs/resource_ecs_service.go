@@ -53,7 +53,7 @@ func ResourceECSService() *schema.Resource {
 				Optional: true,
 			},
 			"deployment_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyServiceDeploymentConfiguration(),
 				Optional: true,
 				MaxItems: 1,
@@ -80,7 +80,7 @@ func ResourceECSService() *schema.Resource {
 				Optional: true,
 			},
 			"network_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyServiceNetworkConfiguration(),
 				Optional: true,
 				MaxItems: 1,

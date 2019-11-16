@@ -34,7 +34,7 @@ func propertyBucketStorageClassAnalysis(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"data_export": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketDataExport(),
 				Optional: true,
 				MaxItems: 1,

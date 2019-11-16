@@ -45,7 +45,7 @@ func ResourceRoute53RecordSet() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"alias_target": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRecordSetAliasTarget(),
 				Optional: true,
 				MaxItems: 1,
@@ -59,7 +59,7 @@ func ResourceRoute53RecordSet() *schema.Resource {
 				Optional: true,
 			},
 			"geo_location": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRecordSetGeoLocation(),
 				Optional: true,
 				MaxItems: 1,

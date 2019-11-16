@@ -35,7 +35,7 @@ func propertyTopicRuleDynamoDBv2Action(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"put_item": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTopicRulePutItemInput(),
 				Optional: true,
 				MaxItems: 1,

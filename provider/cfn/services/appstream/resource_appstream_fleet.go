@@ -50,13 +50,13 @@ func ResourceAppStreamFleet() *schema.Resource {
 				Optional: true,
 			},
 			"compute_capacity": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyFleetComputeCapacity(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"vpc_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyFleetVpcConfig(),
 				Optional: true,
 				MaxItems: 1,
@@ -70,7 +70,7 @@ func ResourceAppStreamFleet() *schema.Resource {
 				Optional: true,
 			},
 			"domain_join_info": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyFleetDomainJoinInfo(),
 				Optional: true,
 				MaxItems: 1,

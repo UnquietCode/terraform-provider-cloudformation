@@ -42,7 +42,7 @@ func propertyRouteGrpcRetryPolicy(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"per_retry_timeout": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRouteDuration(),
 				Required: true,
 				MaxItems: 1,

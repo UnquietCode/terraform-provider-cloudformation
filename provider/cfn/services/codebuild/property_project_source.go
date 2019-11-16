@@ -50,7 +50,7 @@ func propertyProjectSource(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"auth": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyProjectSourceAuth(),
 				Optional: true,
 				MaxItems: 1,
@@ -68,7 +68,7 @@ func propertyProjectSource(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"git_submodules_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyProjectGitSubmodulesConfig(),
 				Optional: true,
 				MaxItems: 1,

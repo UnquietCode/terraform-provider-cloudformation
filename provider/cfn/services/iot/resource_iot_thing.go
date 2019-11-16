@@ -32,7 +32,7 @@ func ResourceIoTThing() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"attribute_payload": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyThingAttributePayload(),
 				Optional: true,
 				MaxItems: 1,

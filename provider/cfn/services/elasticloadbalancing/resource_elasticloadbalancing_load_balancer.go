@@ -47,7 +47,7 @@ func ResourceElasticLoadBalancingLoadBalancer() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"access_logging_policy": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLoadBalancerAccessLoggingPolicy(),
 				Optional: true,
 				MaxItems: 1,
@@ -64,13 +64,13 @@ func ResourceElasticLoadBalancingLoadBalancer() *schema.Resource {
 				Set: schema.HashString,
 			},
 			"connection_draining_policy": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLoadBalancerConnectionDrainingPolicy(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"connection_settings": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLoadBalancerConnectionSettings(),
 				Optional: true,
 				MaxItems: 1,
@@ -80,7 +80,7 @@ func ResourceElasticLoadBalancingLoadBalancer() *schema.Resource {
 				Optional: true,
 			},
 			"health_check": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLoadBalancerHealthCheck(),
 				Optional: true,
 				MaxItems: 1,

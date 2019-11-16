@@ -35,13 +35,13 @@ func propertyApplicationApplicationVersionLifecycleConfig(extras...string) *sche
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"max_age_rule": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationMaxAgeRule(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"max_count_rule": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationMaxCountRule(),
 				Optional: true,
 				MaxItems: 1,

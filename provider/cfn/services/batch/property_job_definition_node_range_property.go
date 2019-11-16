@@ -35,7 +35,7 @@ func propertyJobDefinitionNodeRangeProperty(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"container": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyJobDefinitionContainerProperties(),
 				Optional: true,
 				MaxItems: 1,

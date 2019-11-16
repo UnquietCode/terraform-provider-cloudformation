@@ -40,7 +40,7 @@ func propertyChannelCaptionSelector(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"selector_settings": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyChannelCaptionSelectorSettings(),
 				Optional: true,
 				MaxItems: 1,

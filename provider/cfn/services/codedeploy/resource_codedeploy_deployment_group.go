@@ -45,7 +45,7 @@ func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"alarm_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeploymentGroupAlarmConfiguration(),
 				Optional: true,
 				MaxItems: 1,
@@ -55,7 +55,7 @@ func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 				Required: true,
 			},
 			"auto_rollback_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeploymentGroupAutoRollbackConfiguration(),
 				Optional: true,
 				MaxItems: 1,
@@ -67,7 +67,7 @@ func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 				Set: schema.HashString,
 			},
 			"deployment": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeploymentGroupDeployment(),
 				Optional: true,
 				MaxItems: 1,
@@ -81,7 +81,7 @@ func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 				Optional: true,
 			},
 			"deployment_style": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeploymentGroupDeploymentStyle(),
 				Optional: true,
 				MaxItems: 1,
@@ -92,13 +92,13 @@ func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 				Optional: true,
 			},
 			"ec2_tag_set": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeploymentGroupEC2TagSet(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"load_balancer_info": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeploymentGroupLoadBalancerInfo(),
 				Optional: true,
 				MaxItems: 1,
@@ -109,7 +109,7 @@ func ResourceCodeDeployDeploymentGroup() *schema.Resource {
 				Optional: true,
 			},
 			"on_premises_tag_set": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeploymentGroupOnPremisesTagSet(),
 				Optional: true,
 				MaxItems: 1,

@@ -37,7 +37,7 @@ func propertyVirtualNodeVirtualNodeSpec(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"logging": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyVirtualNodeLogging(),
 				Optional: true,
 				MaxItems: 1,
@@ -53,7 +53,7 @@ func propertyVirtualNodeVirtualNodeSpec(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"service_discovery": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyVirtualNodeServiceDiscovery(),
 				Optional: true,
 				MaxItems: 1,

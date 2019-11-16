@@ -38,31 +38,31 @@ func propertyResourceDefinitionVersionResourceDataContainer(extras...string) *sc
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"secrets_manager_secret_resource_data": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyResourceDefinitionVersionSecretsManagerSecretResourceData(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"sage_maker_machine_learning_model_resource_data": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyResourceDefinitionVersionSageMakerMachineLearningModelResourceData(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"local_volume_resource_data": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyResourceDefinitionVersionLocalVolumeResourceData(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"local_device_resource_data": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyResourceDefinitionVersionLocalDeviceResourceData(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"s3_machine_learning_model_resource_data": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyResourceDefinitionVersionS3MachineLearningModelResourceData(),
 				Optional: true,
 				MaxItems: 1,

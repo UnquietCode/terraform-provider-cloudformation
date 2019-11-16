@@ -55,7 +55,7 @@ func ResourceGlueCrawler() *schema.Resource {
 				Optional: true,
 			},
 			"schema_change_policy": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCrawlerSchemaChangePolicy(),
 				Optional: true,
 				MaxItems: 1,
@@ -65,7 +65,7 @@ func ResourceGlueCrawler() *schema.Resource {
 				Optional: true,
 			},
 			"schedule": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCrawlerSchedule(),
 				Optional: true,
 				MaxItems: 1,
@@ -75,7 +75,7 @@ func ResourceGlueCrawler() *schema.Resource {
 				Optional: true,
 			},
 			"targets": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCrawlerTargets(),
 				Required: true,
 				MaxItems: 1,

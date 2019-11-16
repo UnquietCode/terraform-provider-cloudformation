@@ -36,7 +36,7 @@ func ResourceIoTThingsGraphFlowTemplate() *schema.Resource {
 				Optional: true,
 			},
 			"definition": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyFlowTemplateDefinitionDocument(),
 				Required: true,
 				MaxItems: 1,

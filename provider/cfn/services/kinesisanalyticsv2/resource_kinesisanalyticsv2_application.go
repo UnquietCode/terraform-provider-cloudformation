@@ -43,7 +43,7 @@ func ResourceKinesisAnalyticsV2Application() *schema.Resource {
 				Required: true,
 			},
 			"application_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationApplicationConfiguration(),
 				Optional: true,
 				MaxItems: 1,

@@ -34,7 +34,7 @@ func propertyBucketServerSideEncryptionRule(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"server_side_encryption_by_default": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketServerSideEncryptionByDefault(),
 				Optional: true,
 				MaxItems: 1,

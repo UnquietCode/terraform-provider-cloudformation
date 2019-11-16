@@ -77,7 +77,7 @@ func ResourceAutoScalingScalingPolicy() *schema.Resource {
 				Optional: true,
 			},
 			"target_tracking_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyScalingPolicyTargetTrackingConfiguration(),
 				Optional: true,
 				MaxItems: 1,

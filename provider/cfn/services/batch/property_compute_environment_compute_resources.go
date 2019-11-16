@@ -83,7 +83,7 @@ func propertyComputeEnvironmentComputeResources(extras...string) *schema.Resourc
 				Required: true,
 			},
 			"launch_template": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyComputeEnvironmentLaunchTemplateSpecification(),
 				Optional: true,
 				MaxItems: 1,

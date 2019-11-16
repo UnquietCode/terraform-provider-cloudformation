@@ -43,7 +43,7 @@ func ResourceAppMeshVirtualRouter() *schema.Resource {
 				Required: true,
 			},
 			"spec": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyVirtualRouterVirtualRouterSpec(),
 				Required: true,
 				MaxItems: 1,

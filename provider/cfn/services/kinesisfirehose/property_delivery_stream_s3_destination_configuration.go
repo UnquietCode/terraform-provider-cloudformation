@@ -45,13 +45,13 @@ func propertyDeliveryStreamS3DestinationConfiguration(extras...string) *schema.R
 				Required: true,
 			},
 			"buffering_hints": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamBufferingHints(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"cloud_watch_logging_options": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamCloudWatchLoggingOptions(),
 				Optional: true,
 				MaxItems: 1,
@@ -61,7 +61,7 @@ func propertyDeliveryStreamS3DestinationConfiguration(extras...string) *schema.R
 				Required: true,
 			},
 			"encryption_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDeliveryStreamEncryptionConfiguration(),
 				Optional: true,
 				MaxItems: 1,

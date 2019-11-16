@@ -48,7 +48,7 @@ func propertyScalingPlanTargetTrackingConfiguration(extras...string) *schema.Res
 				Required: true,
 			},
 			"predefined_scaling_metric_specification": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyScalingPlanPredefinedScalingMetricSpecification(),
 				Optional: true,
 				MaxItems: 1,
@@ -66,7 +66,7 @@ func propertyScalingPlanTargetTrackingConfiguration(extras...string) *schema.Res
 				Optional: true,
 			},
 			"customized_scaling_metric_specification": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyScalingPlanCustomizedScalingMetricSpecification(),
 				Optional: true,
 				MaxItems: 1,

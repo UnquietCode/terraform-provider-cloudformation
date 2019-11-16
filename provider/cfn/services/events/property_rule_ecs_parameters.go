@@ -47,7 +47,7 @@ func propertyRuleEcsParameters(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"network_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRuleNetworkConfiguration(),
 				Optional: true,
 				MaxItems: 1,

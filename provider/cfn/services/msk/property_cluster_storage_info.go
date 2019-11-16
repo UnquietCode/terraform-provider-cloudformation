@@ -34,7 +34,7 @@ func propertyClusterStorageInfo(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"ebs_storage_info": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterEBSStorageInfo(),
 				Optional: true,
 				MaxItems: 1,

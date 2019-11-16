@@ -45,7 +45,7 @@ func propertyApplicationInputSchema(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"record_format": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationRecordFormat(),
 				Required: true,
 				MaxItems: 1,

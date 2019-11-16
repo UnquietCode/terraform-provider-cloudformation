@@ -41,7 +41,7 @@ func propertyInstanceBlockDeviceMapping(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"ebs": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyInstanceEbsBlockDevice(),
 				Optional: true,
 				MaxItems: 1,

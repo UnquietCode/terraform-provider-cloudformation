@@ -35,7 +35,7 @@ func ResourceRoute53HostedZone() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"hosted_zone_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyHostedZoneHostedZoneConfig(),
 				Optional: true,
 				MaxItems: 1,
@@ -50,7 +50,7 @@ func ResourceRoute53HostedZone() *schema.Resource {
 				Required: true,
 			},
 			"query_logging_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyHostedZoneQueryLoggingConfig(),
 				Optional: true,
 				MaxItems: 1,

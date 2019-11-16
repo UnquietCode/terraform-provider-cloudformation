@@ -36,7 +36,7 @@ func ResourceKinesisAnalyticsV2ApplicationCloudWatchLoggingOption() *schema.Reso
 				Required: true,
 			},
 			"cloud_watch_logging_option": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationCloudWatchLoggingOptionCloudWatchLoggingOption(),
 				Required: true,
 				MaxItems: 1,

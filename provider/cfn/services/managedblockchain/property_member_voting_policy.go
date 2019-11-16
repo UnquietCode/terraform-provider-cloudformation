@@ -34,7 +34,7 @@ func propertyMemberVotingPolicy(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"approval_threshold_policy": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyMemberApprovalThresholdPolicy(),
 				Optional: true,
 				MaxItems: 1,

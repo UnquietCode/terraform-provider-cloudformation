@@ -48,7 +48,7 @@ func ResourceGuardDutyFilter() *schema.Resource {
 				Required: true,
 			},
 			"finding_criteria": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyFilterFindingCriteria(),
 				Required: true,
 				MaxItems: 1,

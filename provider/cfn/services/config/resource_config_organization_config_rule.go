@@ -34,7 +34,7 @@ func ResourceConfigOrganizationConfigRule() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"organization_managed_rule_metadata": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyOrganizationConfigRuleOrganizationManagedRuleMetadata(),
 				Optional: true,
 				MaxItems: 1,
@@ -44,7 +44,7 @@ func ResourceConfigOrganizationConfigRule() *schema.Resource {
 				Required: true,
 			},
 			"organization_custom_rule_metadata": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyOrganizationConfigRuleOrganizationCustomRuleMetadata(),
 				Optional: true,
 				MaxItems: 1,

@@ -62,13 +62,13 @@ func ResourceApplicationAutoScalingScalingPolicy() *schema.Resource {
 				Optional: true,
 			},
 			"step_scaling_policy_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyScalingPolicyStepScalingPolicyConfiguration(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"target_tracking_scaling_policy_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyScalingPolicyTargetTrackingScalingPolicyConfiguration(),
 				Optional: true,
 				MaxItems: 1,

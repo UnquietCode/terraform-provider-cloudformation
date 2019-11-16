@@ -35,7 +35,7 @@ func propertyClusterAutoScalingPolicy(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"constraints": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClusterScalingConstraints(),
 				Required: true,
 				MaxItems: 1,

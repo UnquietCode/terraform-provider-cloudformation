@@ -34,7 +34,7 @@ func propertyMemberMemberFrameworkConfiguration(extras...string) *schema.Resourc
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"member_fabric_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyMemberMemberFabricConfiguration(),
 				Optional: true,
 				MaxItems: 1,

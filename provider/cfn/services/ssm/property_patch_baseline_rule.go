@@ -41,7 +41,7 @@ func propertyPatchBaselineRule(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"patch_filter_group": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyPatchBaselinePatchFilterGroup(),
 				Optional: true,
 				MaxItems: 1,

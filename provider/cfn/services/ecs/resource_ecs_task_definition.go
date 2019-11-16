@@ -83,7 +83,7 @@ func ResourceECSTaskDefinition() *schema.Resource {
 				Optional: true,
 			},
 			"proxy_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyTaskDefinitionProxyConfiguration(),
 				Optional: true,
 				MaxItems: 1,

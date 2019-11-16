@@ -52,7 +52,7 @@ func ResourceApiGatewayV2Stage() *schema.Resource {
 				Optional: true,
 			},
 			"access_log_settings": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyStageAccessLogSettings(),
 				Optional: true,
 				MaxItems: 1,
@@ -74,7 +74,7 @@ func ResourceApiGatewayV2Stage() *schema.Resource {
 				Required: true,
 			},
 			"default_route_settings": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyStageRouteSettings(),
 				Optional: true,
 				MaxItems: 1,

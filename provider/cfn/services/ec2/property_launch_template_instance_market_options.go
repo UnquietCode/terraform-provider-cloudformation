@@ -35,7 +35,7 @@ func propertyLaunchTemplateInstanceMarketOptions(extras...string) *schema.Resour
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"spot_options": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLaunchTemplateSpotOptions(),
 				Optional: true,
 				MaxItems: 1,

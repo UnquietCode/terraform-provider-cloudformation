@@ -52,7 +52,7 @@ func propertyConnectionConnectionInput(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"physical_connection_requirements": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyConnectionPhysicalConnectionRequirements(),
 				Optional: true,
 				MaxItems: 1,

@@ -39,7 +39,7 @@ func propertyCampaignCampaignEventFilter(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"dimensions": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCampaignEventDimensions(),
 				Optional: true,
 				MaxItems: 1,

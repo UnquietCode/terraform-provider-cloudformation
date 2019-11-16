@@ -44,7 +44,7 @@ func propertyResourceDefinitionVersionLocalVolumeResourceData(extras...string) *
 				Required: true,
 			},
 			"group_owner_setting": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyResourceDefinitionVersionGroupOwnerSetting(),
 				Optional: true,
 				MaxItems: 1,

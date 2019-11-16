@@ -34,25 +34,25 @@ func ResourceGlueClassifier() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"xml_classifier": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClassifierXMLClassifier(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"json_classifier": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClassifierJsonClassifier(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"csv_classifier": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClassifierCsvClassifier(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"grok_classifier": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyClassifierGrokClassifier(),
 				Optional: true,
 				MaxItems: 1,

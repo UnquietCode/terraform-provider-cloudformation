@@ -35,7 +35,7 @@ func propertyDataSourceAuthorizationConfig(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"aws_iam_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDataSourceAwsIamConfig(),
 				Optional: true,
 				MaxItems: 1,

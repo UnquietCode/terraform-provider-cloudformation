@@ -38,7 +38,7 @@ func ResourceAppMeshMesh() *schema.Resource {
 				Required: true,
 			},
 			"spec": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyMeshMeshSpec(),
 				Optional: true,
 				MaxItems: 1,

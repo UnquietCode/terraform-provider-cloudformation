@@ -39,7 +39,7 @@ func ResourceAppMeshVirtualNode() *schema.Resource {
 				Required: true,
 			},
 			"spec": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyVirtualNodeVirtualNodeSpec(),
 				Required: true,
 				MaxItems: 1,

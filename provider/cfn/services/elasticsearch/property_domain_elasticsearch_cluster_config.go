@@ -60,7 +60,7 @@ func propertyDomainElasticsearchClusterConfig(extras...string) *schema.Resource 
 				Optional: true,
 			},
 			"zone_awareness_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDomainZoneAwarenessConfig(),
 				Optional: true,
 				MaxItems: 1,

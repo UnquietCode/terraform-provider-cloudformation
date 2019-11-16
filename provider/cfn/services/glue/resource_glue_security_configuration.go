@@ -32,7 +32,7 @@ func ResourceGlueSecurityConfiguration() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"encryption_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySecurityConfigurationEncryptionConfiguration(),
 				Required: true,
 				MaxItems: 1,

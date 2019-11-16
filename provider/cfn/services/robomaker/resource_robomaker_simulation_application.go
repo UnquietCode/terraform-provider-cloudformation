@@ -37,13 +37,13 @@ func ResourceRoboMakerSimulationApplication() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"rendering_engine": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySimulationApplicationRenderingEngine(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"simulation_software_suite": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySimulationApplicationSimulationSoftwareSuite(),
 				Required: true,
 				MaxItems: 1,
@@ -53,7 +53,7 @@ func ResourceRoboMakerSimulationApplication() *schema.Resource {
 				Optional: true,
 			},
 			"robot_software_suite": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySimulationApplicationRobotSoftwareSuite(),
 				Required: true,
 				MaxItems: 1,

@@ -42,7 +42,7 @@ func ResourceAppStreamStack() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"application_settings": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyStackApplicationSettings(),
 				Optional: true,
 				MaxItems: 1,

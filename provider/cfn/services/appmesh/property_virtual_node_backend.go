@@ -34,7 +34,7 @@ func propertyVirtualNodeBackend(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"virtual_service": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyVirtualNodeVirtualServiceBackend(),
 				Optional: true,
 				MaxItems: 1,

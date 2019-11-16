@@ -36,7 +36,7 @@ func propertyUserPoolAdminCreateUserConfig(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"invite_message_template": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolInviteMessageTemplate(),
 				Optional: true,
 				MaxItems: 1,

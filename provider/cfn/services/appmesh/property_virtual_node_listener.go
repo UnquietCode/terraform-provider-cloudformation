@@ -35,13 +35,13 @@ func propertyVirtualNodeListener(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"health_check": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyVirtualNodeHealthCheck(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"port_mapping": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyVirtualNodePortMapping(),
 				Required: true,
 				MaxItems: 1,

@@ -35,13 +35,13 @@ func propertyRemediationConfigurationRemediationParameterValue(extras...string) 
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"resource_value": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRemediationConfigurationResourceValue(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"static_value": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyRemediationConfigurationStaticValue(),
 				Optional: true,
 				MaxItems: 1,

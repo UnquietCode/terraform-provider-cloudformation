@@ -44,7 +44,7 @@ func propertyCampaignSchedule(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"quiet_time": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCampaignQuietTime(),
 				Optional: true,
 				MaxItems: 1,
@@ -62,7 +62,7 @@ func propertyCampaignSchedule(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"event_filter": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyCampaignCampaignEventFilter(),
 				Optional: true,
 				MaxItems: 1,

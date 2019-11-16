@@ -35,13 +35,13 @@ func propertySegmentLocation(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"gps_point": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySegmentGPSPoint(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"country": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertySegmentSetDimension(),
 				Optional: true,
 				MaxItems: 1,

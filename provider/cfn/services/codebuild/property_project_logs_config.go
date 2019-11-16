@@ -35,13 +35,13 @@ func propertyProjectLogsConfig(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"cloud_watch_logs": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyProjectCloudWatchLogsConfig(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"s3_logs": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyProjectS3LogsConfig(),
 				Optional: true,
 				MaxItems: 1,

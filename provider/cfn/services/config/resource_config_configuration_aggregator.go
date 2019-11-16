@@ -42,7 +42,7 @@ func ResourceConfigConfigurationAggregator() *schema.Resource {
 				Required: true,
 			},
 			"organization_aggregation_source": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyConfigurationAggregatorOrganizationAggregationSource(),
 				Optional: true,
 				MaxItems: 1,

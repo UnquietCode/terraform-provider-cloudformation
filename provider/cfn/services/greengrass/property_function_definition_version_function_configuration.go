@@ -60,7 +60,7 @@ func propertyFunctionDefinitionVersionFunctionConfiguration(extras...string) *sc
 				Optional: true,
 			},
 			"environment": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyFunctionDefinitionVersionEnvironment(),
 				Optional: true,
 				MaxItems: 1,

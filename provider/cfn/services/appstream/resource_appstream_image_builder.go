@@ -50,7 +50,7 @@ func ResourceAppStreamImageBuilder() *schema.Resource {
 				Optional: true,
 			},
 			"vpc_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyImageBuilderVpcConfig(),
 				Optional: true,
 				MaxItems: 1,
@@ -64,7 +64,7 @@ func ResourceAppStreamImageBuilder() *schema.Resource {
 				Optional: true,
 			},
 			"domain_join_info": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyImageBuilderDomainJoinInfo(),
 				Optional: true,
 				MaxItems: 1,

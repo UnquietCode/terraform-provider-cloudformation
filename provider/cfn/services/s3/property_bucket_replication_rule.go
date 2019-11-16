@@ -38,7 +38,7 @@ func propertyBucketReplicationRule(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"destination": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketReplicationDestination(),
 				Required: true,
 				MaxItems: 1,
@@ -52,7 +52,7 @@ func propertyBucketReplicationRule(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"source_selection_criteria": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBucketSourceSelectionCriteria(),
 				Optional: true,
 				MaxItems: 1,

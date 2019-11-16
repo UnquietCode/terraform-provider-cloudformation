@@ -34,7 +34,7 @@ func propertyAssociationInstanceAssociationOutputLocation(extras...string) *sche
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"s3_location": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyAssociationS3OutputLocation(),
 				Optional: true,
 				MaxItems: 1,

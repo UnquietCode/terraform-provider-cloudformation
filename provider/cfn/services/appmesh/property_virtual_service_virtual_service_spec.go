@@ -34,7 +34,7 @@ func propertyVirtualServiceVirtualServiceSpec(extras...string) *schema.Resource 
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"the_provider": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyVirtualServiceVirtualServiceProvider(),
 				Optional: true,
 				MaxItems: 1,

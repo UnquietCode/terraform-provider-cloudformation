@@ -37,25 +37,25 @@ func propertyMaintenanceWindowTaskTaskInvocationParameters(extras...string) *sch
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"maintenance_window_run_command_parameters": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyMaintenanceWindowTaskMaintenanceWindowRunCommandParameters(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"maintenance_window_automation_parameters": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyMaintenanceWindowTaskMaintenanceWindowAutomationParameters(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"maintenance_window_step_functions_parameters": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyMaintenanceWindowTaskMaintenanceWindowStepFunctionsParameters(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"maintenance_window_lambda_parameters": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyMaintenanceWindowTaskMaintenanceWindowLambdaParameters(),
 				Optional: true,
 				MaxItems: 1,

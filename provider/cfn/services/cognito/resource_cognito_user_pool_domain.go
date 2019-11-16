@@ -37,7 +37,7 @@ func ResourceCognitoUserPoolDomain() *schema.Resource {
 				Required: true,
 			},
 			"custom_domain_config": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyUserPoolDomainCustomDomainConfigType(),
 				Optional: true,
 				MaxItems: 1,

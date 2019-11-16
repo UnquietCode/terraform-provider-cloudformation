@@ -35,13 +35,13 @@ func propertyApplicationReferenceDataSourceMappingParameters(extras...string) *s
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"json_mapping_parameters": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationReferenceDataSourceJSONMappingParameters(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"csv_mapping_parameters": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyApplicationReferenceDataSourceCSVMappingParameters(),
 				Optional: true,
 				MaxItems: 1,

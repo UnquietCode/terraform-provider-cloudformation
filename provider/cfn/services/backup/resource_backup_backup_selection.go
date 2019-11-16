@@ -32,7 +32,7 @@ func ResourceBackupBackupSelection() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"backup_selection": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyBackupSelectionBackupSelectionResourceType(),
 				Required: true,
 				MaxItems: 1,

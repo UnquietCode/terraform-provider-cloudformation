@@ -40,7 +40,7 @@ func ResourceCognitoIdentityPool() *schema.Resource {
 		
 		Schema: map[string]*schema.Schema{
 			"push_sync": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyIdentityPoolPushSync(),
 				Optional: true,
 				MaxItems: 1,
@@ -59,7 +59,7 @@ func ResourceCognitoIdentityPool() *schema.Resource {
 				Optional: true,
 			},
 			"cognito_streams": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyIdentityPoolCognitoStreams(),
 				Optional: true,
 				MaxItems: 1,

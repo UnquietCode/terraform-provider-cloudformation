@@ -37,7 +37,7 @@ func propertyLaunchTemplateBlockDeviceMapping(extras...string) *schema.Resource 
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"ebs": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyLaunchTemplateEbs(),
 				Optional: true,
 				MaxItems: 1,

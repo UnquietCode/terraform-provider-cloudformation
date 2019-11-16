@@ -37,7 +37,7 @@ func propertyDatasetS3DestinationConfiguration(extras...string) *schema.Resource
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"glue_configuration": {
-				Type: schema.TypeList,
+				Type: schema.TypeSet,
 				Elem: propertyDatasetGlueConfiguration(),
 				Optional: true,
 				MaxItems: 1,
