@@ -135,11 +135,13 @@ func ResourceRead(resourceType string, resourceSchema *schema.Resource, resource
   //   return nil
   // }
   // 
-	for name, value := range data {
-		resourceData.Set(name, value)
-	}
+	// for name, value := range data {
+		// resourceData.Set(name, value)
+	// }
   
-  log.Printf("")
+  mergeMapToResource("", resourceData, data)
+  
+  // log.Printf("-------------------------- %s", data)
 	
 	// resourceData.SetId(hash)
 	// handleExistingResouce(providerMeta, logicalId, hash)
@@ -159,34 +161,17 @@ func ResourceCreate(resourceType string, resourceSchema *schema.Resource, resour
 	if err != nil {
 		return err
 	}
-	
+  
 	resourceData.SetId(logicalId)
 	incrementResourceCounter(providerMeta)
 	
+  log.Printf("")
   return nil
 }
 
 
 func ResourceUpdate(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
-	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
-	var logicalId string = resourceData.Id()//("logical_id").(string)
-	data, _, err := readFile(logicalId, providerMeta)
-	
-	if err != nil {
-		return err
-	}
-	
-	convertAndMergeResourceToMap("", resourceSchema, resourceData, data, changedOnlyGetter)
-	_, err = writeFile(logicalId, data, meta.(ProviderMetadata))
-	
-	if err != nil {
-		return err
-	}
-	
-	// resourceData.SetId(hashcode)
-	incrementResourceCounter(providerMeta)
-
-  return nil
+	return ResourceCreate(resourceType, resourceSchema, resourceData, meta)
 }
 
 

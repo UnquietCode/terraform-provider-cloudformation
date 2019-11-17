@@ -20,7 +20,7 @@ def handle_resource_property(resource_name, property_name, property_data, schema
         type=attribute_type,
         required=property_data['Required'],
         computed=False,#computed,
-        will_replace=False, #property_data['UpdateType'] == 'Immutable',
+        will_replace=None,#False, #property_data['UpdateType'] == 'Immutable',
         documentation_link=property_data['Documentation'],
     )
 

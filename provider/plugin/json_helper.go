@@ -3,12 +3,14 @@ package plugin
 
 import (
   "fmt"
-  _ "log"
+  "log"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"encoding/json"
 )
 
 func mapToJson(data interface{}, indent bool) ([]byte, error) {
+  log.Printf("")
+  
   if indent {
 	  return json.MarshalIndent(data, "", "  ") 
   } else {
@@ -60,13 +62,13 @@ func convertValue(prefix string, resourceSchema *schema.Schema, value interface{
       var listIn []interface{} = setIn.List()
       var listOut []interface{} = make([]interface{}, 0, len(listIn))
 
-      for _, listValue := range listIn {
-        hashId := setIn.F(listValue)
+      for _, oValue := range listIn {
+        hashId := setIn.F(oValue)
         realKey := fmt.Sprintf("%s%d", prefix, hashId)
         
         if listValue, ok := getter(realKey, resourceData); ok {  
           nestedPrefix := realKey + "."
-        
+          
           switch elementType := resourceSchema.Elem.(type) { 
             case *schema.Schema:
               listOut = append(listOut, convertValue(nestedPrefix, elementType, listValue, resourceData, getter))
@@ -109,7 +111,7 @@ func convertValue(prefix string, resourceSchema *schema.Schema, value interface{
     
     case schema.TypeMap:
       var mapIn map[string]interface{} = value.(map[string]interface{})
-      var mapOut map[string]interface{} = make(map[string]interface{})
+      var mapOut map[string]interface{} = map[string]interface{}{}
       
       for name, _ := range mapIn {
         realKey := prefix + name
@@ -127,20 +129,63 @@ func convertValue(prefix string, resourceSchema *schema.Schema, value interface{
   }
 }
 
+func mergeJsonMaps(mapA map[string]interface{}, mapB map[string]interface{}) {  
+  for nameB, valueB := range mapB {
 
-func convertAndMergeResourceToMap(prefix string, resource *schema.Resource, resourceData *schema.ResourceData, data map[string]interface{}, getter ResourceGetter) {
-  for name, attribute := range resource.Schema {
-		var realKey string = prefix + name
+    // if key is present in A
+    if valueA, ok := mapA[nameB]; ok {
+      
+      // if it is a map, merge
+      if vMap, ok := valueB.(map[string]interface{}); ok {
+        mergeJsonMaps(valueA.(map[string]interface{}), vMap)
+        continue
+      }
     
-		if value, ok := getter(realKey, resourceData); ok {
-      nestedPrefix := realKey + "."
-      data[name] = convertValue(nestedPrefix, attribute, value, resourceData, getter)
-		}
+    // else, clobber
+    } else {
+      mapA[nameB] = valueB
+    }
   }
 }
+
+
+func convertAndMergeResourceToMap(prefix string, resource *schema.Resource, resourceData *schema.ResourceData, data map[string]interface{}, getter ResourceGetter) {
+  newData := map[string]interface{}{}
+  
+  for name, attribute := range resource.Schema {
+    var realKey string = prefix + name
+    
+    if value, ok := getter(realKey, resourceData); ok {
+      nestedPrefix := realKey + "."
+      newData[name] = convertValue(nestedPrefix, attribute, value, resourceData, getter)
+    }
+  }
+
+  mergeJsonMaps(data, newData)
+}
+
 
 func convertResourceToMap(prefix string, resource *schema.Resource, resourceData *schema.ResourceData, getter ResourceGetter) map[string]interface{} {  
   data := map[string]interface{}{}
   convertAndMergeResourceToMap(prefix, resource, resourceData, data, getter)
   return data
+}
+
+
+func mergeMapToResource(prefix string, resourceData *schema.ResourceData, data interface{}) {
+  if vMap, ok := data.(map[string]interface{}); ok {
+    for name, value := range vMap {
+      realKey := prefix + name
+      nestedPrefix := realKey + "."
+      mergeMapToResource(nestedPrefix, resourceData, value)
+    }
+  } else if vList, ok := data.([]interface{}); ok {
+    for idx, value := range vList {
+      realKey := fmt.Sprintf("%s%d", prefix, idx)
+      nestedPrefix := realKey + "."
+      mergeMapToResource(nestedPrefix, resourceData, value)
+    }
+  } else {
+    resourceData.Set(prefix[0:len(prefix)-1], data)
+  }
 }
