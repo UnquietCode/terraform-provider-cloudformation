@@ -1,254 +1,132 @@
 package plugin
 
 import (
-	"errors"
-	"log"
 	"os"
 	"fmt"
-  "strings"
 	"sort"
-	"time"
-	"bufio"
+	"encoding/json"
 	"strconv"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/hashcode"
-	"github.com/hashicorp/terraform-plugin-sdk/helper/resource"
 )
 
-const RENDERED_TEMPLATE_NAME string = "template.rendered"
 
-
-func deSnake(input map[string]interface{}) map[string]interface{} {
-  var output map[string]interface{} = map[string]interface{}{}
+func buildTemplateReference(meta ProviderMetadata) (map[string]string, string, error) {
+	var path string = fmt.Sprintf("%s/%s.json", meta.workdir, TEMPLATE_INDEX_FILE)
+	exists, err := fileExists(path)
   
-  for k,v := range(input) {
-    var newString string = ""
-    
-    for _, part := range strings.Split(k, "_") {
-      newString += strings.ToUpper(part[0:1])
-      newString += part[1:]
-    }
-    
-    if vMap, ok := v.(map[string]interface{}); ok {
-      output[newString] = deSnake(vMap)
-    } else if vList, ok := v.([]interface{}); ok {
-      var newList []interface{} = make([]interface{}, len(vList))
-      
-      for i, elem := range vList {
-        if eMap, ok := elem.(map[string]interface{}); ok {
-          newList[i] = deSnake(eMap)
-        } else {
-          newList[i] = elem
-        }
-      }
-      
-      output[newString] = newList
-    } else {
-      output[newString] = v
-    }
+  if err != nil {
+    return nil, EMPTY, err
   }
   
-  return output
-}
-
-
-func readResources(meta ProviderMetadata) (map[string]TemplateEntry, error) {
-	var path string = fmt.Sprintf("%s/%s", meta.workdir, TEMPLATE_DATA_FILE)
+  if !exists {
+    return map[string]string{}, EMPTY, nil
+  }
+    
   file, err := os.Open(path)
   
 	if err != nil {
-      return nil, err
+      return nil, EMPTY, err
   }
   defer file.Close()
 
-  var lines []string
-  scanner := bufio.NewScanner(file)
-  
-	for scanner.Scan() {
-    lines = append(lines, scanner.Text())
+  // read the file
+	rawData, _, err := readAndHashFile(path)
+	
+	if err != nil {
+    return nil, EMPTY, err
   }
-	
-	err = scanner.Err()
-	
-	if err != nil {
-		return nil, err
-	}
-	
-	var mapD map[string]TemplateEntry = map[string]TemplateEntry{}
-	
-	// TODO sorting?
-	// lines = sort.Strings(lines)
-	
-	for _, line := range lines {
-		entryData, err := jsonToMap([]byte(line))
-		
-		if err != nil {
-			return nil, err
-		}
+  
+  // convert to data
+	var data map[string]interface{} = map[string]interface{}{}
 
-    // todo can unmarshall directly to struct
-		var entry TemplateEntry = TemplateEntry{
-			LogicalId: entryData["id"].(string),
-			CfnType: entryData["type"].(string),
-			Hash: entryData["hash"].(string),
-		}
-		
-		mapD[entry.LogicalId] = entry
-	}
-	
-  return mapD, scanner.Err()
-}
-
-
-func buildTemplateReference(meta interface{}) ([]TemplateEntry, string, error) {
-	var resourceHashes map[string]TemplateEntry
-	var err error
-
-	resourceHashes, err = readResources(meta.(ProviderMetadata))
-	
-	if err != nil {
-		return nil, EMPTY, err
-	}
-	
+  if err := json.Unmarshal(rawData, &data); err != nil {
+    return nil, EMPTY, err
+  }  
+  
+  // build sorted list of keys
+  var resources map[string]string = map[string]string{}
+  
+  if _, ok := data["resources"]; ok {
+    for k,v := range data["resources"].(map[string]interface{}) {
+      resources[k] = v.(string)
+    }    
+  }
+  
 	var keys []string
-	
-	for key, _ := range resourceHashes {
+  
+	for key, _ := range resources {
     keys = append(keys, key)
 	}
 	
 	sort.Strings(keys)
 	
-	var entries []TemplateEntry
 	var bigHash string = ""
 	
 	for _, key := range keys {
-		entry := resourceHashes[key]
-		bigHash += entry.Hash
-		entries = append(entries, entry)
+		bigHash += resources[key]
 	}
 	
 	bigHash = strconv.Itoa(hashcode.String(bigHash))
-	return entries, bigHash, nil
+	return resources, bigHash, nil
 }
 
 
 func TemplateRead(resourceData *schema.ResourceData, meta interface{}) error {
-	var path string = fmt.Sprintf("%s/%s.json", meta.(ProviderMetadata).workdir, RENDERED_TEMPLATE_NAME)
-	exists, err := fileExists(path);
-	// log.Printf("--------------------------------tempalte read")
-    
+	var providerMeta ProviderMetadata = meta.(ProviderMetadata)    
+	var path string = fmt.Sprintf("%s/%s.json", providerMeta.workdir, RENDERED_TEMPLATE_FILE)
+	exists, err := fileExists(path)  
+  
 	if err != nil {
 		return err
 	}
-	
+  
 	if !exists {
 		resourceData.SetId("")
-	} else {
-    
-    // exists but not the same?
-    _, hashcode, err := readAndHashFile(path)
-    
-    if err != nil {
-      return err
-    }
-    
-    resourceData.Set("hash", hashcode)
-    
-    // 
-    // if hashcode != resourceData.Id() {
-	  //   resourceData.SetId("")
-    // }
-    // 
-    
-    
-    // narrow file by id / file hash
-    
-    
-	   // _, bigHash, err := buildTemplateReference(meta)
-		
-		// if err != nil {
-			// return err
-		// }
-		// log.Printf("---------------------__ %s", bigHash)
-		// resourceData.SetId(bigHash)
-    
-    // resourceData.Set("hash", bigHash)
-    // if resourceData.GetId().(string) != bigHash {
-    // }
+    return nil
 	}
-	
+  
 	return nil
 }
 
 
 func TemplateCreate(resourceData *schema.ResourceData, meta interface{}) error {
-	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
-	refs, _, err := buildTemplateReference(meta)
-	var refCount int = len(refs)
+	var providerMeta ProviderMetadata = meta.(ProviderMetadata)  
+	resourceHashes, _, err := buildTemplateReference(providerMeta)
 	
-	if err != nil {
+  if err != nil {
 		return err
 	}
-	
-	createStateConf := &resource.StateChangeConf{
-    Pending: []string{
-      STATE_WAIT,
-    },
-    Target: []string{
-      STATE_DONE,
-    },
-    Refresh: func() (interface{}, string, error) {
-			var counter int = readCounter(providerMeta)
-			log.Printf("waiting for template refs to converge %d %d", refCount, counter)
-			
-      if counter == refCount {
-				return STATE_DONE, STATE_DONE, nil
-			}
-			
-      if counter >= refCount {
-				return nil, EMPTY, errors.New("too many refs")
-			}
-
-			return nil, STATE_WAIT, nil
-    },
-		Timeout: 10 * time.Minute,
-		// Delay: 1 * time.Second,
-  }
-	
-	_, err = createStateConf.WaitForState()
-	
-	if err != nil {
-		return err
-	}
-	
+  
 	var templateData map[string]interface{} = map[string]interface{}{}
 	var resources = map[string]interface{}{}
 	templateData["Resources"] = resources
-	
-	for _, entry := range refs {
-		properties, _, err := readFile(entry.LogicalId, providerMeta)
-		
+  
+	for name, _ := range resourceHashes {
+		properties, _, err := readResource(name, providerMeta)
+  
 		if err != nil {
 			return err
 		}
-		
+  
 		data := map[string]interface{}{}
-		data["Type"] = entry.CfnType
-    
-		resources[entry.LogicalId] = data
+		// data["Type"] = entry.CfnType
+		data["Type"] = "COMING SOON"
+  
+		resources[name] = data
     delete(properties, "logical_id")
-    
+  
     data["Properties"] = deSnake(properties)
 	}
-	
-	hc, err := writeFile(RENDERED_TEMPLATE_NAME, templateData, providerMeta)
-	
+  
+	var path string = fmt.Sprintf("%s/%s.json", providerMeta.workdir, RENDERED_TEMPLATE_FILE)
+	hash, err := writeFile(path, templateData)
+  
 	if err != nil {
 		return err
 	}
-	
-	resourceData.SetId("template.rendered")
-  resourceData.Set("hash", hc)
+  
+	resourceData.SetId(hash)  
 	return nil
 }
 
@@ -263,106 +141,24 @@ func TemplateUpdate(resourceData *schema.ResourceData, meta interface{}) error {
 
 
 func TemplateDelete(resourceData *schema.ResourceData, meta interface{}) error {
-	err := removeFile(RENDERED_TEMPLATE_NAME, meta.(ProviderMetadata))
-	
+	err := removeFile(RENDERED_TEMPLATE_FILE, meta.(ProviderMetadata))
+  
 	if err != nil {
 		return err
 	}
-	
+  
 	resourceData.SetId("")
   return nil
 }
 
 func TemplateCustomizeDiff(resourceDiff *schema.ResourceDiff, meta interface{}) error {
-	// var providerMeta ProviderMetadata = meta.(ProviderMetadata)
-	// refs, bigHash, err := buildTemplateReference(meta)
-	// var refCount int = len(refs)
-  // 
-	// if err != nil {
-	// 	return err
-	// }
-	
-	// createStateConf := &resource.StateChangeConf{
-  //   Pending: []string{
-  //     STATE_WAIT,
-  //   },
-  //   Target: []string{
-  //     STATE_DONE,
-  //   },
-  //   Refresh: func() (interface{}, string, error) {
-	// 		var counter int = len(*providerMeta.diffed) //readCounter(providerMeta)
-	// 		log.Printf("waiting for template refs to converge %d %d", refCount, counter)
-  // 
-  //     if counter == refCount {
-	// 			return STATE_DONE, STATE_DONE, nil
-	// 		}
-  // 
-  //     if counter >= refCount {
-	// 			return nil, EMPTY, errors.New("too many refs")
-	// 		}
-  // 
-	// 		return nil, STATE_WAIT, nil
-  //   },
-	// 	Timeout: 10 * time.Minute,
-	// 	// Delay: 1 * time.Second,
-  // }
-	
-	// _, err = createStateConf.WaitForState()
-  // 
-	// if err != nil {
-	// 	return err
-	// }
-  // 
-  // resourceDiff.SetNew("hash", bigHash)
-  // wait for the index to be rebuilt and then compare if it is different
+	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
+	_, bigHash, err := buildTemplateReference(providerMeta)
   
-	
-  // resourceDiff.SetNewComputed("hash")  // basically means always update
-
+  if err != nil {
+    return err
+  }
   
-  
-  // resourceDiff.SetNewComputed("hash")  // basically means always update
-  
-  // counter = getResourceReadCounter()
-  // 
-  // while counter != 0 {
-  // 
-  // }
-	// readStateConf := &resource.StateChangeConf{
- //    Pending: []string{
- //      STATE_WAIT,
- //    },
- //    Target: []string{
- //      STATE_DONE,
- //    },
- //    Refresh: func() (interface{}, string, error) {
-	// 		var counter int = getResourceReadCounter(providerMeta)
-	// 		// log.Printf("waiting for template refs to converge %d %d", refCount, counter)
- // 
- //      if counter >= len(*providerMeta.diffed) {
-	// 			return STATE_DONE, STATE_DONE, nil
-	// 		}
- // 
-	// 		return nil, STATE_WAIT, nil
- //    },
-	// 	Timeout: 10 * time.Minute,
-	// 	// Delay: 1 * time.Second,
- //  }  
- // 
- // resourceDiff.SetNew("hash", bigHash)
- // log.Printf("---------------------__ %s", bigHash)
- // resourceData.SetId(bigHash)
-  
-  
-	// meta.(ProviderMetadata).mutex.Lock(LOCK_TEMPLATE_REFERENCE)
-	// defer meta.(ProviderMetadata).mutex.Unlock(LOCK_TEMPLATE_REFERENCE)
- //  _,  bigHash, err := buildTemplateReference(meta)
- //  log.Printf("reading template ------------------------- %s", bigHash)
- // 
- // if err != nil {
- //   return err
- // }
- // resourceDiff.SetNewComputed("id")
-  
+  resourceDiff.SetNew("hash", bigHash)
 	return nil
 }

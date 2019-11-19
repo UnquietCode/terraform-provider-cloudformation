@@ -10,16 +10,13 @@ import (
 )
 
 
-type TemplateEntry struct {
-  LogicalId string `json:"id"`
-  CfnType string `json:"type"`
-  Hash string `json:"hash"`
-}
 
-
-func readFile(id string, meta ProviderMetadata) (map[string]interface{}, string, error) {
-	var path string = fmt.Sprintf("%s/%s.json", meta.workdir, id)
-	exists, err := fileExists(path);
+func readResource(id string, meta ProviderMetadata) (map[string]interface{}, string, error) {
+	meta.mutex.Lock(LOCK_RESOURCE_READ_WRITE)
+	defer meta.mutex.Unlock(LOCK_RESOURCE_READ_WRITE)
+	
+  var path string = fmt.Sprintf("%s/%s.json", meta.workdir, id)
+	exists, err := fileExists(path)
 	
 	if err != nil {
 		return nil, EMPTY, err
@@ -47,76 +44,138 @@ func readFile(id string, meta ProviderMetadata) (map[string]interface{}, string,
 }
 
 
-func handleExistingResouce(meta ProviderMetadata, entry TemplateEntry) error {
-	meta.mutex.Lock(LOCK_TEMPLATE_REFERENCE)
-	defer meta.mutex.Unlock(LOCK_TEMPLATE_REFERENCE)
-	
+func writeResource(logicalId string, data map[string]interface{}, meta ProviderMetadata) (string, error) {
+	meta.mutex.Lock(LOCK_RESOURCE_READ_WRITE)
+	defer meta.mutex.Unlock(LOCK_RESOURCE_READ_WRITE)
+    
+  // write the resource file
+  var path string = fmt.Sprintf("%s/%s.json", meta.workdir, logicalId)  
+  hash, err := writeFile(path, data)
+  
+  if err != nil {
+    return EMPTY, err
+  }
+  
+  // update the index file
+  readAndWriteFile(TEMPLATE_INDEX_FILE, meta, func(indexData map[string]interface{}) bool {
+    if _, ok := indexData["resources"]; !ok {
+      indexData["resources"] = map[string]interface{}{}
+    }
+    indexData["resources"].(map[string]interface{})[logicalId] = hash
+    log.Printf("----------------------- %s", indexData)
+    return true
+  })
+  
+  return hash, nil
+}
+
+func removeResource(logicalId string, meta ProviderMetadata) error {
+	meta.mutex.Lock(LOCK_RESOURCE_READ_WRITE)
+	defer meta.mutex.Unlock(LOCK_RESOURCE_READ_WRITE)
+    
+  // remove the resource file
+  var err error = removeFile(logicalId, meta)
+  
+  if err != nil {
+    return err
+  }
+  
+  // update the index file
+  _, _, err = readAndWriteFile(TEMPLATE_INDEX_FILE, meta, func(data map[string]interface{}) bool {
+    if _, ok := data["resources"]; ok {
+      resources := data["resources"].(map[string]interface{})
+      
+      if _, ok := resources["logicalId"]; ok {
+        delete(resources, "logicalId")
+        return true
+      } else {
+        return false
+      }
+    } else {
+      return false
+    }
+  })
+  
+  if err != nil {
+    return err
+  }
+  
+  return nil
+}
+
+
+type DataModifier func(data map[string]interface{}) bool
+
+
+func readAndWriteFile(fileName string, meta ProviderMetadata, modifier DataModifier) (string, string, error) {	
+  var path string = fmt.Sprintf("%s/%s.json", meta.workdir, fileName)
 	var file *os.File = nil
-	var path string = fmt.Sprintf("%s/%s", meta.workdir, TEMPLATE_DATA_FILE)
+  var created bool = false
 	
-	// if this is the first run, create the file (or overwrite it)
-	if (*meta.newIndex == true) {
+  // check for existence
+  exists, err := fileExists(path)
+  
+  if err != nil {
+    return EMPTY, EMPTY, err
+  }
+  
+  if !exists {
 		f, err := os.Create(path)
 		
 		if err != nil {
-			return err
+      return EMPTY, EMPTY, err
 		}
 		
 		file = f
-		*meta.newIndex = false
-	}
-	
+    created = true
+  }
+  
 	// open the file if it wasn't created
 	if file == nil {
 		f, err := os.OpenFile(path, os.O_APPEND|os.O_WRONLY, 0600)
 		
 		if err != nil {
-			return err
+	    return EMPTY, EMPTY, err
 		}
 		
 		file = f
-	}
+  }
+  
+	// turn the data into schema data
+  var data map[string]interface{} = map[string]interface{}{}
+  var oldHash string
+  
+  if !created {
 	
-	// append to the file
-	entryJson, err := mapToJson(entry, false)
-	
-	if err != nil {
-		return err
-	}
-	
-	file.Write(entryJson)
-	file.WriteString("\n")
-	file.Close()
-	
-	// append to list
-	// *meta.existingResources = append(*meta.existingResources, id)	
-	return nil
+  	// try to read the file
+  	rawData, oldHashh, err := readAndHashFile(path)
+  	oldHash = oldHashh
+    
+  	if err != nil {
+      return EMPTY, EMPTY, err
+  	}
+    if err := json.Unmarshal(rawData, &data); err != nil {
+      return EMPTY, EMPTY, err
+    }
+  }
+  
+  // alter the file
+  modifier(data)
+  
+  // write the results
+  newHash, err := writeFile(path, data)
+  
+	return oldHash, newHash, nil
 }
+
 
 // --------------------------	------------------------------------------------
 
-func ResourceExists(resourceData *schema.ResourceData, meta interface{}) (bool, error) {
-	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
-	var logicalId string = resourceData.Get("logical_id").(string)
-	var path string = fmt.Sprintf("%s/%s.json", providerMeta.workdir, logicalId)
-
-	exists, err := fileExists(path);	
-
-	if err != nil {
-		return false, err
-	}
-	
-	(*providerMeta.exists)[logicalId] = exists
-	
-  return exists, nil
-}
-
-
 func ResourceRead(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
 	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
-	var logicalId string = resourceData.Id()//("logical_id").(string)
+	var logicalId string = resourceData.Get("logical_id").(string)
 	
-	data, hash, err := readFile(logicalId, providerMeta)
+	data, hash, err := readResource(logicalId, providerMeta)
 	
 	if err != nil {
 		return err
@@ -124,48 +183,33 @@ func ResourceRead(resourceType string, resourceSchema *schema.Resource, resource
 	
 	// doesn't exist
 	if data == nil && hash == EMPTY {
-		// handleExistingResouce(providerMeta, logicalId, "")
 		resourceData.SetId("")
 		return nil
 	}
     
   // file has changed
-  // if resourceData.Id() != hash {
-  // 	resourceData.SetId("")
-  //   return nil
-  // }
-  // 
-	// for name, value := range data {
-		// resourceData.Set(name, value)
-	// }
-  
-  mergeMapToResource("", resourceData, data)
-  
-  // log.Printf("-------------------------- %s", data)
-	
-	// resourceData.SetId(hash)
-	// handleExistingResouce(providerMeta, logicalId, hash)
-	// incrementResourceReadCounter(providerMeta)
-	incrementResourceCounter(providerMeta)
-	
+  if resourceData.Id() != hash {
+  	resourceData.SetId("")
+    return nil
+  }
+
+  mergeMapToResource("", resourceData, data)  
   return nil
 }
+
 
 func ResourceCreate(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
 	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
 	var logicalId string = resourceData.Get("logical_id").(string)
 	
 	var data map[string]interface{} = convertResourceToMap("", resourceSchema, resourceData, normalGetter)
-	_, err := writeFile(logicalId, data, meta.(ProviderMetadata))
+	hash, err := writeResource(logicalId, data, providerMeta)
 	
 	if err != nil {
 		return err
 	}
   
-	resourceData.SetId(logicalId)
-	incrementResourceCounter(providerMeta)
-	
-  log.Printf("")
+	resourceData.SetId(hash)
   return nil
 }
 
@@ -178,15 +222,13 @@ func ResourceUpdate(resourceType string, resourceSchema *schema.Resource, resour
 func ResourceDelete(resourceType string, resourceData *schema.ResourceData, meta interface{}) error {
 	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
 	var logicalId string = resourceData.Get("logical_id").(string)
-	err := removeFile(logicalId, meta.(ProviderMetadata))
+	err := removeResource(logicalId, providerMeta)
 	
 	if err != nil {
 		return err
 	}
 	
-	resourceData.SetId("")
-	incrementResourceCounter(providerMeta)
-	
+	resourceData.SetId("")	
   return nil
 }
 
@@ -202,25 +244,6 @@ func ResourceCustomizeDiff(resourceType string, resourceDiff *schema.ResourceDif
 	if _, ok := (*providerMeta.diffed)[logicalId]; ok {
     return errors.New("diffed, duplicate logical id "+logicalId)
 	}
-	
-	var entry TemplateEntry = TemplateEntry{
-		CfnType: resourceType,
-		LogicalId: logicalId,
-		Hash: "---",
-	}
-	
-	handleExistingResouce(providerMeta, entry)
-	(*providerMeta.diffed)[logicalId] = true
-  // decrementResourceReadCounter(providerMeta)
-	
-	// log.Printf("customizeResourceDiff %s +++++++++++++++++++++++++++++++++++++++++++++++++", logicalId)
-	
-	// if id, ok := resourceDiff.GetOk("id"); ok {
-	// 	handleExistingResouce(meta.(ProviderMetadata), logical_id.(string), id.(string))
-	// } else {
-	// 	handleExistingResouce(meta.(ProviderMetadata), logical_id.(string), "")
-	// 
-	// }
 	
 	return nil
 }

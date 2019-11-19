@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"encoding/json"
 	"crypto/md5"
+  "strings"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	mutex "github.com/hashicorp/terraform-plugin-sdk/helper/mutexkv"
 )
@@ -14,26 +15,71 @@ import (
 type ProviderMetadata struct {
    workdir string
 	 mutex *mutex.MutexKV
-	 resourceCounter *int
-   // resourceReadCounter *int
+	 // resourceCounter *int
+   // readCounter *int
 	 
-	 newIndex *bool
+	 // newIndex *map[string]bool
 	 exists *map[string]bool
 	 diffed *map[string]bool
+   
+   // templateReading *bool
 }
 
 const EMPTY string = "\xff"
+const LOCK_RESOURCE_READ_WRITE string = "RESOURCE_READ_WRITE"
 
-const TEMPLATE_DATA_FILE string = "template.data.jsonish"
+const TEMPLATE_INDEX_FILE string = "template.data.json"
+const RENDERED_TEMPLATE_FILE string = "template.rendered"
 
-const LOCK_TEMPLATE_REFERENCE string = "TEMPLATE_REFERENCE"
-const LOCK_RESOURCE_COUNTER string = "RESOURCE_COUNTER"
+// 
+// const LOCK_TEMPLATE_REFERENCE string = "TEMPLATE_REFERENCE"
+// const LOCK_TEMPLATE_EXISTENCE string = "TEMPLATE_EXISTENCE"
+// const LOCK_RESOURCE_COUNTER string = "RESOURCE_COUNTER"
 // const LOCK_RESOURCE_READ_COUNTER string = "RESOURCE_READ_COUNTER"
-const STATE_WAIT string = "WAIT"
-const STATE_DONE string = "DONE"
+// 
+// const STATE_WAIT string = "WAIT"
+// const STATE_DONE string = "DONE"
 
 
-func fileExists(path string) (bool, error) {
+
+
+
+func deSnake(input map[string]interface{}) map[string]interface{} {
+  var output map[string]interface{} = map[string]interface{}{}
+  
+  for k,v := range(input) {
+    var newString string = ""
+    
+    for _, part := range strings.Split(k, "_") {
+      newString += strings.ToUpper(part[0:1])
+      newString += part[1:]
+    }
+    
+    if vMap, ok := v.(map[string]interface{}); ok {
+      output[newString] = deSnake(vMap)
+    } else if vList, ok := v.([]interface{}); ok {
+      var newList []interface{} = make([]interface{}, len(vList))
+      
+      for i, elem := range vList {
+        if eMap, ok := elem.(map[string]interface{}); ok {
+          newList[i] = deSnake(eMap)
+        } else {
+          newList[i] = elem
+        }
+      }
+      
+      output[newString] = newList
+    } else {
+      output[newString] = v
+    }
+  }
+  
+  return output
+}
+
+
+
+func fileExists(path string) (bool, error) {  
 	_, err := os.Stat(path)
 	
 	if err != nil {
@@ -45,6 +91,8 @@ func fileExists(path string) (bool, error) {
   
 	return true, nil
 }
+
+// func writeMarker(
 
 
 func readAndHashFile(path string) ([]byte, string, error) {
@@ -71,9 +119,7 @@ func removeFile(name string, meta ProviderMetadata) error {
 }
 
 
-func writeFile(name string, data map[string]interface{}, meta ProviderMetadata) (string, error) {
-	var path string = fmt.Sprintf("%s/%s.json", meta.workdir, name)
-
+func writeFile(path string, data map[string]interface{}) (string, error) {  
 	file, _ := os.Create(path)
 	defer file.Close()
 	
@@ -90,52 +136,26 @@ func writeFile(name string, data map[string]interface{}, meta ProviderMetadata) 
 }
 
 
-func incrementResourceCounter(meta ProviderMetadata) {
-	meta.mutex.Lock(LOCK_RESOURCE_COUNTER)
-	*meta.resourceCounter += 1
-	meta.mutex.Unlock(LOCK_RESOURCE_COUNTER)
-}
-
-
-func readCounter(meta ProviderMetadata) int {
-	meta.mutex.Lock(LOCK_RESOURCE_COUNTER)
-	defer meta.mutex.Unlock(LOCK_RESOURCE_COUNTER)
-	return *meta.resourceCounter
-}
-
-// func incrementResourceReadCounter(meta ProviderMetadata) {
-// 	meta.mutex.Lock(LOCK_RESOURCE_READ_COUNTER)
-// 	*meta.resourceReadCounter += 1
-// 	meta.mutex.Unlock(LOCK_RESOURCE_READ_COUNTER)
-// }
-// 
-// func decrementResourceReadCounter(meta ProviderMetadata) {
-// 	meta.mutex.Lock(LOCK_RESOURCE_READ_COUNTER)
-// 	*meta.resourceReadCounter -= 1
-// 	meta.mutex.Unlock(LOCK_RESOURCE_READ_COUNTER)
-// }
-// 
-// func getResourceReadCounter(meta ProviderMetadata) int {
-// 	meta.mutex.Lock(LOCK_RESOURCE_READ_COUNTER)
-// 	defer meta.mutex.Unlock(LOCK_RESOURCE_READ_COUNTER)
-// 	return *meta.resourceReadCounter
-// }
-
-
 func ProviderConfigure(resourceData *schema.ResourceData) (interface{}, error) {	
-	var counter int = 0
+	// var counter int = 0
 	// var readCounter int = 0
-	var newIndex bool = true
+	// var newIndex bool = true
+  // var templateReading bool = false
 	
 	meta := ProviderMetadata{
 		workdir: resourceData.Get("workdir").(string),
 		mutex: mutex.NewMutexKV(),
-		resourceCounter: &counter,
+		// resourceCounter: &counter,
     // readCounter: &readCounter,
 		
-		newIndex: &newIndex,
+		// newIndex: &map[string]bool{
+      // TEMPLATE_DATA_FILE: true,
+      // TEMPLATE_EXISTENCE_FILE: true,
+    // },
 		exists: &map[string]bool{},
 		diffed: &map[string]bool{},
+    // 
+    // templateReading: &templateReading,
   }
 	
 	return meta, nil

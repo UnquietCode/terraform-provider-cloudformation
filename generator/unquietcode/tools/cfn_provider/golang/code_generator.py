@@ -166,7 +166,7 @@ def generate_resource_model(*, cfn_version, imports, resource):
 	resource_struct = GoStructLiteral(
 		type="&schema.Resource",
 		fields={
-			"Exists": f"resource{resource_name}Exists",
+			# "Exists": f"resource{resource_name}Exists",
 			"Read": f"resource{resource_name}Read",
 			"Create": f"resource{resource_name}Create",
 			"Update": f"resource{resource_name}Update",
@@ -205,15 +205,15 @@ def generate_resource_model(*, cfn_version, imports, resource):
 		    ],
 			body=[ReturnExpression(resource_struct)],
 		),
-		GoFunction(
-			name=f"resource{resource_name}Exists",
-			parameters=[
-				GoParameter(name="data", type="*schema.ResourceData"),
-				GoParameter(name="meta", type="interface{}"),
-			],
-			return_types=["bool", "error"],
-			body=["return plugin.ResourceExists(data, meta)"],
-		),
+		# GoFunction(
+		# 	name=f"resource{resource_name}Exists",
+		# 	parameters=[
+		# 		GoParameter(name="data", type="*schema.ResourceData"),
+		# 		GoParameter(name="meta", type="interface{}"),
+		# 	],
+		# 	return_types=["bool", "error"],
+		# 	body=["return plugin.ResourceExists(data, meta)"],
+		# ),
 		GoFunction(
 			name=f"resource{resource_name}Read",
 			parameters=[
