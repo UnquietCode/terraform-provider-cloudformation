@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -19,7 +19,6 @@ const eCSServiceType string = "AWS::ECS::Service"
 
 func ResourceECSService() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceECSServiceExists,
 		Read: resourceECSServiceRead,
 		Create: resourceECSServiceCreate,
 		Update: resourceECSServiceUpdate,
@@ -111,10 +110,6 @@ func ResourceECSService() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceECSServiceExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceECSServiceRead(data *schema.ResourceData, meta interface{}) error {

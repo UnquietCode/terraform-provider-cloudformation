@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const apiGatewayDomainNameType string = "AWS::ApiGateway::DomainName"
 
 func ResourceApiGatewayDomainName() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceApiGatewayDomainNameExists,
 		Read: resourceApiGatewayDomainNameRead,
 		Create: resourceApiGatewayDomainNameCreate,
 		Update: resourceApiGatewayDomainNameUpdate,
@@ -51,10 +50,6 @@ func ResourceApiGatewayDomainName() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceApiGatewayDomainNameExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceApiGatewayDomainNameRead(data *schema.ResourceData, meta interface{}) error {

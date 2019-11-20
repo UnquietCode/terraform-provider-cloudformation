@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -19,7 +19,6 @@ const eCSClusterType string = "AWS::ECS::Cluster"
 
 func ResourceECSCluster() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceECSClusterExists,
 		Read: resourceECSClusterRead,
 		Create: resourceECSClusterCreate,
 		Update: resourceECSClusterUpdate,
@@ -39,10 +38,6 @@ func ResourceECSCluster() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceECSClusterExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceECSClusterRead(data *schema.ResourceData, meta interface{}) error {

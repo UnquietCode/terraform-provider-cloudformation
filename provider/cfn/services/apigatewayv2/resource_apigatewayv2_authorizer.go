@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const apiGatewayV2AuthorizerType string = "AWS::ApiGatewayV2::Authorizer"
 
 func ResourceApiGatewayV2Authorizer() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceApiGatewayV2AuthorizerExists,
 		Read: resourceApiGatewayV2AuthorizerRead,
 		Create: resourceApiGatewayV2AuthorizerCreate,
 		Update: resourceApiGatewayV2AuthorizerUpdate,
@@ -66,10 +65,6 @@ func ResourceApiGatewayV2Authorizer() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceApiGatewayV2AuthorizerExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceApiGatewayV2AuthorizerRead(data *schema.ResourceData, meta interface{}) error {

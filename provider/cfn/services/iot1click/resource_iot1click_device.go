@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const ioT1ClickDeviceType string = "AWS::IoT1Click::Device"
 
 func ResourceIoT1ClickDevice() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceIoT1ClickDeviceExists,
 		Read: resourceIoT1ClickDeviceRead,
 		Create: resourceIoT1ClickDeviceCreate,
 		Update: resourceIoT1ClickDeviceUpdate,
@@ -41,10 +40,6 @@ func ResourceIoT1ClickDevice() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceIoT1ClickDeviceExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceIoT1ClickDeviceRead(data *schema.ResourceData, meta interface{}) error {

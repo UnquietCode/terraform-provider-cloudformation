@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -19,7 +19,6 @@ const rDSDBParameterGroupType string = "AWS::RDS::DBParameterGroup"
 
 func ResourceRDSDBParameterGroup() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceRDSDBParameterGroupExists,
 		Read: resourceRDSDBParameterGroupRead,
 		Create: resourceRDSDBParameterGroupCreate,
 		Update: resourceRDSDBParameterGroupUpdate,
@@ -48,10 +47,6 @@ func ResourceRDSDBParameterGroup() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceRDSDBParameterGroupExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceRDSDBParameterGroupRead(data *schema.ResourceData, meta interface{}) error {

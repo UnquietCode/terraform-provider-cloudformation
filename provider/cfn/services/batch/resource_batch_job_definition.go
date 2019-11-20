@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const batchJobDefinitionType string = "AWS::Batch::JobDefinition"
 
 func ResourceBatchJobDefinition() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceBatchJobDefinitionExists,
 		Read: resourceBatchJobDefinitionRead,
 		Create: resourceBatchJobDefinitionCreate,
 		Update: resourceBatchJobDefinitionUpdate,
@@ -69,10 +68,6 @@ func ResourceBatchJobDefinition() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceBatchJobDefinitionExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceBatchJobDefinitionRead(data *schema.ResourceData, meta interface{}) error {

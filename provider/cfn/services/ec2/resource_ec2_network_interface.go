@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -19,7 +19,6 @@ const eC2NetworkInterfaceType string = "AWS::EC2::NetworkInterface"
 
 func ResourceEC2NetworkInterface() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceEC2NetworkInterfaceExists,
 		Read: resourceEC2NetworkInterfaceRead,
 		Create: resourceEC2NetworkInterfaceCreate,
 		Update: resourceEC2NetworkInterfaceUpdate,
@@ -80,10 +79,6 @@ func ResourceEC2NetworkInterface() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceEC2NetworkInterfaceExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2NetworkInterfaceRead(data *schema.ResourceData, meta interface{}) error {

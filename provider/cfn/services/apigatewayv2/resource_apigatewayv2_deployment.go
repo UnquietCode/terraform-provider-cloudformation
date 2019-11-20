@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const apiGatewayV2DeploymentType string = "AWS::ApiGatewayV2::Deployment"
 
 func ResourceApiGatewayV2Deployment() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceApiGatewayV2DeploymentExists,
 		Read: resourceApiGatewayV2DeploymentRead,
 		Create: resourceApiGatewayV2DeploymentCreate,
 		Update: resourceApiGatewayV2DeploymentUpdate,
@@ -45,10 +44,6 @@ func ResourceApiGatewayV2Deployment() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceApiGatewayV2DeploymentExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceApiGatewayV2DeploymentRead(data *schema.ResourceData, meta interface{}) error {

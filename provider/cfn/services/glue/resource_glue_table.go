@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const glueTableType string = "AWS::Glue::Table"
 
 func ResourceGlueTable() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceGlueTableExists,
 		Read: resourceGlueTableRead,
 		Create: resourceGlueTableCreate,
 		Update: resourceGlueTableUpdate,
@@ -47,10 +46,6 @@ func ResourceGlueTable() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceGlueTableExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceGlueTableRead(data *schema.ResourceData, meta interface{}) error {

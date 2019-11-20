@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -19,7 +19,6 @@ const appMeshMeshType string = "AWS::AppMesh::Mesh"
 
 func ResourceAppMeshMesh() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceAppMeshMeshExists,
 		Read: resourceAppMeshMeshRead,
 		Create: resourceAppMeshMeshCreate,
 		Update: resourceAppMeshMeshUpdate,
@@ -45,10 +44,6 @@ func ResourceAppMeshMesh() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceAppMeshMeshExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceAppMeshMeshRead(data *schema.ResourceData, meta interface{}) error {

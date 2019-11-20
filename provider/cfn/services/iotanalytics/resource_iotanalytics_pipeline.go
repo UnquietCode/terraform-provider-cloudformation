@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -19,7 +19,6 @@ const ioTAnalyticsPipelineType string = "AWS::IoTAnalytics::Pipeline"
 
 func ResourceIoTAnalyticsPipeline() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceIoTAnalyticsPipelineExists,
 		Read: resourceIoTAnalyticsPipelineRead,
 		Create: resourceIoTAnalyticsPipelineCreate,
 		Update: resourceIoTAnalyticsPipelineUpdate,
@@ -44,10 +43,6 @@ func ResourceIoTAnalyticsPipeline() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceIoTAnalyticsPipelineExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceIoTAnalyticsPipelineRead(data *schema.ResourceData, meta interface{}) error {

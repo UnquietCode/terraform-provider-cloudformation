@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const eC2HostType string = "AWS::EC2::Host"
 
 func ResourceEC2Host() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceEC2HostExists,
 		Read: resourceEC2HostRead,
 		Create: resourceEC2HostCreate,
 		Update: resourceEC2HostUpdate,
@@ -49,10 +48,6 @@ func ResourceEC2Host() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceEC2HostExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2HostRead(data *schema.ResourceData, meta interface{}) error {

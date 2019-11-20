@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const apiGatewayV2ApiMappingType string = "AWS::ApiGatewayV2::ApiMapping"
 
 func ResourceApiGatewayV2ApiMapping() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceApiGatewayV2ApiMappingExists,
 		Read: resourceApiGatewayV2ApiMappingRead,
 		Create: resourceApiGatewayV2ApiMappingCreate,
 		Update: resourceApiGatewayV2ApiMappingUpdate,
@@ -49,10 +48,6 @@ func ResourceApiGatewayV2ApiMapping() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceApiGatewayV2ApiMappingExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceApiGatewayV2ApiMappingRead(data *schema.ResourceData, meta interface{}) error {

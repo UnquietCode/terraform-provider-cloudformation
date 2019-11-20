@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const configOrganizationConfigRuleType string = "AWS::Config::OrganizationConfig
 
 func ResourceConfigOrganizationConfigRule() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceConfigOrganizationConfigRuleExists,
 		Read: resourceConfigOrganizationConfigRuleRead,
 		Create: resourceConfigOrganizationConfigRuleCreate,
 		Update: resourceConfigOrganizationConfigRuleUpdate,
@@ -54,10 +53,6 @@ func ResourceConfigOrganizationConfigRule() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceConfigOrganizationConfigRuleExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceConfigOrganizationConfigRuleRead(data *schema.ResourceData, meta interface{}) error {

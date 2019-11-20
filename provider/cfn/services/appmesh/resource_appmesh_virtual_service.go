@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -19,7 +19,6 @@ const appMeshVirtualServiceType string = "AWS::AppMesh::VirtualService"
 
 func ResourceAppMeshVirtualService() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceAppMeshVirtualServiceExists,
 		Read: resourceAppMeshVirtualServiceRead,
 		Create: resourceAppMeshVirtualServiceCreate,
 		Update: resourceAppMeshVirtualServiceUpdate,
@@ -49,10 +48,6 @@ func ResourceAppMeshVirtualService() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceAppMeshVirtualServiceExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceAppMeshVirtualServiceRead(data *schema.ResourceData, meta interface{}) error {

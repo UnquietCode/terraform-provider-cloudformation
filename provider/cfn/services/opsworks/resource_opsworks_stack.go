@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -19,7 +19,6 @@ const opsWorksStackType string = "AWS::OpsWorks::Stack"
 
 func ResourceOpsWorksStack() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceOpsWorksStackExists,
 		Read: resourceOpsWorksStackRead,
 		Create: resourceOpsWorksStackCreate,
 		Update: resourceOpsWorksStackUpdate,
@@ -142,10 +141,6 @@ func ResourceOpsWorksStack() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceOpsWorksStackExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceOpsWorksStackRead(data *schema.ResourceData, meta interface{}) error {

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const cognitoUserPoolIdentityProviderType string = "AWS::Cognito::UserPoolIdenti
 
 func ResourceCognitoUserPoolIdentityProvider() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceCognitoUserPoolIdentityProviderExists,
 		Read: resourceCognitoUserPoolIdentityProviderRead,
 		Create: resourceCognitoUserPoolIdentityProviderCreate,
 		Update: resourceCognitoUserPoolIdentityProviderUpdate,
@@ -58,10 +57,6 @@ func ResourceCognitoUserPoolIdentityProvider() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceCognitoUserPoolIdentityProviderExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCognitoUserPoolIdentityProviderRead(data *schema.ResourceData, meta interface{}) error {

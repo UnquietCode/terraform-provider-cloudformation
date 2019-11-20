@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const glueCrawlerType string = "AWS::Glue::Crawler"
 
 func ResourceGlueCrawler() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceGlueCrawlerExists,
 		Read: resourceGlueCrawlerRead,
 		Create: resourceGlueCrawlerCreate,
 		Update: resourceGlueCrawlerUpdate,
@@ -88,10 +87,6 @@ func ResourceGlueCrawler() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceGlueCrawlerExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceGlueCrawlerRead(data *schema.ResourceData, meta interface{}) error {

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const serviceCatalogPortfolioPrincipalAssociationType string = "AWS::ServiceCata
 
 func ResourceServiceCatalogPortfolioPrincipalAssociation() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceServiceCatalogPortfolioPrincipalAssociationExists,
 		Read: resourceServiceCatalogPortfolioPrincipalAssociationRead,
 		Create: resourceServiceCatalogPortfolioPrincipalAssociationCreate,
 		Update: resourceServiceCatalogPortfolioPrincipalAssociationUpdate,
@@ -49,10 +48,6 @@ func ResourceServiceCatalogPortfolioPrincipalAssociation() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceServiceCatalogPortfolioPrincipalAssociationExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceServiceCatalogPortfolioPrincipalAssociationRead(data *schema.ResourceData, meta interface{}) error {

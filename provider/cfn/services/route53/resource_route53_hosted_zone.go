@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const route53HostedZoneType string = "AWS::Route53::HostedZone"
 
 func ResourceRoute53HostedZone() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceRoute53HostedZoneExists,
 		Read: resourceRoute53HostedZoneRead,
 		Create: resourceRoute53HostedZoneCreate,
 		Update: resourceRoute53HostedZoneUpdate,
@@ -59,10 +58,6 @@ func ResourceRoute53HostedZone() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceRoute53HostedZoneExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceRoute53HostedZoneRead(data *schema.ResourceData, meta interface{}) error {

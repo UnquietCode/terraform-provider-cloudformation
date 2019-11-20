@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -19,7 +19,6 @@ const docDBDBClusterParameterGroupType string = "AWS::DocDB::DBClusterParameterG
 
 func ResourceDocDBDBClusterParameterGroup() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceDocDBDBClusterParameterGroupExists,
 		Read: resourceDocDBDBClusterParameterGroupRead,
 		Create: resourceDocDBDBClusterParameterGroupCreate,
 		Update: resourceDocDBDBClusterParameterGroupUpdate,
@@ -51,10 +50,6 @@ func ResourceDocDBDBClusterParameterGroup() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceDocDBDBClusterParameterGroupExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceDocDBDBClusterParameterGroupRead(data *schema.ResourceData, meta interface{}) error {

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const pinpointSMSChannelType string = "AWS::Pinpoint::SMSChannel"
 
 func ResourcePinpointSMSChannel() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourcePinpointSMSChannelExists,
 		Read: resourcePinpointSMSChannelRead,
 		Create: resourcePinpointSMSChannelCreate,
 		Update: resourcePinpointSMSChannelUpdate,
@@ -49,10 +48,6 @@ func ResourcePinpointSMSChannel() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourcePinpointSMSChannelExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourcePinpointSMSChannelRead(data *schema.ResourceData, meta interface{}) error {

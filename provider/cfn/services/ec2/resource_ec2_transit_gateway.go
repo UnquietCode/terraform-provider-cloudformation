@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -19,7 +19,6 @@ const eC2TransitGatewayType string = "AWS::EC2::TransitGateway"
 
 func ResourceEC2TransitGateway() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceEC2TransitGatewayExists,
 		Read: resourceEC2TransitGatewayRead,
 		Create: resourceEC2TransitGatewayCreate,
 		Update: resourceEC2TransitGatewayUpdate,
@@ -63,10 +62,6 @@ func ResourceEC2TransitGateway() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceEC2TransitGatewayExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2TransitGatewayRead(data *schema.ResourceData, meta interface{}) error {

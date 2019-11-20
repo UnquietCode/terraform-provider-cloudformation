@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -19,7 +19,6 @@ const eC2SubnetType string = "AWS::EC2::Subnet"
 
 func ResourceEC2Subnet() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceEC2SubnetExists,
 		Read: resourceEC2SubnetRead,
 		Create: resourceEC2SubnetCreate,
 		Update: resourceEC2SubnetUpdate,
@@ -59,10 +58,6 @@ func ResourceEC2Subnet() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceEC2SubnetExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2SubnetRead(data *schema.ResourceData, meta interface{}) error {

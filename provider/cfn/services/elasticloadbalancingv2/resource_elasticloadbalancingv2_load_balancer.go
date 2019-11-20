@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -19,7 +19,6 @@ const elasticLoadBalancingV2LoadBalancerType string = "AWS::ElasticLoadBalancing
 
 func ResourceElasticLoadBalancingV2LoadBalancer() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceElasticLoadBalancingV2LoadBalancerExists,
 		Read: resourceElasticLoadBalancingV2LoadBalancerRead,
 		Create: resourceElasticLoadBalancingV2LoadBalancerCreate,
 		Update: resourceElasticLoadBalancingV2LoadBalancerUpdate,
@@ -73,10 +72,6 @@ func ResourceElasticLoadBalancingV2LoadBalancer() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceElasticLoadBalancingV2LoadBalancerExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceElasticLoadBalancingV2LoadBalancerRead(data *schema.ResourceData, meta interface{}) error {

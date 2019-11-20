@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const pinpointEmailConfigurationSetEventDestinationType string = "AWS::PinpointE
 
 func ResourcePinpointEmailConfigurationSetEventDestination() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourcePinpointEmailConfigurationSetEventDestinationExists,
 		Read: resourcePinpointEmailConfigurationSetEventDestinationRead,
 		Create: resourcePinpointEmailConfigurationSetEventDestinationCreate,
 		Update: resourcePinpointEmailConfigurationSetEventDestinationUpdate,
@@ -47,10 +46,6 @@ func ResourcePinpointEmailConfigurationSetEventDestination() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourcePinpointEmailConfigurationSetEventDestinationExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourcePinpointEmailConfigurationSetEventDestinationRead(data *schema.ResourceData, meta interface{}) error {

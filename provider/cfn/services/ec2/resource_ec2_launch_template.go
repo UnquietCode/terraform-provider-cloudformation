@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const eC2LaunchTemplateType string = "AWS::EC2::LaunchTemplate"
 
 func ResourceEC2LaunchTemplate() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceEC2LaunchTemplateExists,
 		Read: resourceEC2LaunchTemplateRead,
 		Create: resourceEC2LaunchTemplateCreate,
 		Update: resourceEC2LaunchTemplateUpdate,
@@ -43,10 +42,6 @@ func ResourceEC2LaunchTemplate() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceEC2LaunchTemplateExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2LaunchTemplateRead(data *schema.ResourceData, meta interface{}) error {

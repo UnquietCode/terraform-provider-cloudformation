@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const eC2VPCEndpointServicePermissionsType string = "AWS::EC2::VPCEndpointServic
 
 func ResourceEC2VPCEndpointServicePermissions() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceEC2VPCEndpointServicePermissionsExists,
 		Read: resourceEC2VPCEndpointServicePermissionsRead,
 		Create: resourceEC2VPCEndpointServicePermissionsCreate,
 		Update: resourceEC2VPCEndpointServicePermissionsUpdate,
@@ -42,10 +41,6 @@ func ResourceEC2VPCEndpointServicePermissions() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceEC2VPCEndpointServicePermissionsExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2VPCEndpointServicePermissionsRead(data *schema.ResourceData, meta interface{}) error {

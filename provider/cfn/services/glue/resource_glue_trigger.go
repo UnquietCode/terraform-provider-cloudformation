@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const glueTriggerType string = "AWS::Glue::Trigger"
 
 func ResourceGlueTrigger() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceGlueTriggerExists,
 		Read: resourceGlueTriggerRead,
 		Create: resourceGlueTriggerCreate,
 		Update: resourceGlueTriggerUpdate,
@@ -72,10 +71,6 @@ func ResourceGlueTrigger() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceGlueTriggerExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceGlueTriggerRead(data *schema.ResourceData, meta interface{}) error {

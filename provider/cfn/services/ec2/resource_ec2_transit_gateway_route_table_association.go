@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const eC2TransitGatewayRouteTableAssociationType string = "AWS::EC2::TransitGate
 
 func ResourceEC2TransitGatewayRouteTableAssociation() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceEC2TransitGatewayRouteTableAssociationExists,
 		Read: resourceEC2TransitGatewayRouteTableAssociationRead,
 		Create: resourceEC2TransitGatewayRouteTableAssociationCreate,
 		Update: resourceEC2TransitGatewayRouteTableAssociationUpdate,
@@ -41,10 +40,6 @@ func ResourceEC2TransitGatewayRouteTableAssociation() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceEC2TransitGatewayRouteTableAssociationExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2TransitGatewayRouteTableAssociationRead(data *schema.ResourceData, meta interface{}) error {

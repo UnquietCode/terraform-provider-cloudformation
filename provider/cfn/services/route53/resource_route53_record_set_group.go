@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const route53RecordSetGroupType string = "AWS::Route53::RecordSetGroup"
 
 func ResourceRoute53RecordSetGroup() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceRoute53RecordSetGroupExists,
 		Read: resourceRoute53RecordSetGroupRead,
 		Create: resourceRoute53RecordSetGroupCreate,
 		Update: resourceRoute53RecordSetGroupUpdate,
@@ -50,10 +49,6 @@ func ResourceRoute53RecordSetGroup() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceRoute53RecordSetGroupExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceRoute53RecordSetGroupRead(data *schema.ResourceData, meta interface{}) error {

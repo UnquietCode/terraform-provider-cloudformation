@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const codePipelinePipelineType string = "AWS::CodePipeline::Pipeline"
 
 func ResourceCodePipelinePipeline() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceCodePipelinePipelineExists,
 		Read: resourceCodePipelinePipelineRead,
 		Create: resourceCodePipelinePipelineCreate,
 		Update: resourceCodePipelinePipelineUpdate,
@@ -66,10 +65,6 @@ func ResourceCodePipelinePipeline() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceCodePipelinePipelineExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceCodePipelinePipelineRead(data *schema.ResourceData, meta interface{}) error {

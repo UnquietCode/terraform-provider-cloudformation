@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const autoScalingLaunchConfigurationType string = "AWS::AutoScaling::LaunchConfi
 
 func ResourceAutoScalingLaunchConfiguration() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceAutoScalingLaunchConfigurationExists,
 		Read: resourceAutoScalingLaunchConfigurationRead,
 		Create: resourceAutoScalingLaunchConfigurationCreate,
 		Update: resourceAutoScalingLaunchConfigurationUpdate,
@@ -110,10 +109,6 @@ func ResourceAutoScalingLaunchConfiguration() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceAutoScalingLaunchConfigurationExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceAutoScalingLaunchConfigurationRead(data *schema.ResourceData, meta interface{}) error {

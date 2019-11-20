@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const eC2SubnetCidrBlockType string = "AWS::EC2::SubnetCidrBlock"
 
 func ResourceEC2SubnetCidrBlock() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceEC2SubnetCidrBlockExists,
 		Read: resourceEC2SubnetCidrBlockRead,
 		Create: resourceEC2SubnetCidrBlockCreate,
 		Update: resourceEC2SubnetCidrBlockUpdate,
@@ -41,10 +40,6 @@ func ResourceEC2SubnetCidrBlock() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceEC2SubnetCidrBlockExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2SubnetCidrBlockRead(data *schema.ResourceData, meta interface{}) error {

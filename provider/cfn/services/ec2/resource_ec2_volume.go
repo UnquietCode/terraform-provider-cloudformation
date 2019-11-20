@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -19,7 +19,6 @@ const eC2VolumeType string = "AWS::EC2::Volume"
 
 func ResourceEC2Volume() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceEC2VolumeExists,
 		Read: resourceEC2VolumeRead,
 		Create: resourceEC2VolumeCreate,
 		Update: resourceEC2VolumeUpdate,
@@ -67,10 +66,6 @@ func ResourceEC2Volume() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceEC2VolumeExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2VolumeRead(data *schema.ResourceData, meta interface{}) error {

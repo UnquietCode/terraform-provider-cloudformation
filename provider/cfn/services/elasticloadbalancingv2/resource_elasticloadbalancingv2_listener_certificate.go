@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const elasticLoadBalancingV2ListenerCertificateType string = "AWS::ElasticLoadBa
 
 func ResourceElasticLoadBalancingV2ListenerCertificate() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceElasticLoadBalancingV2ListenerCertificateExists,
 		Read: resourceElasticLoadBalancingV2ListenerCertificateRead,
 		Create: resourceElasticLoadBalancingV2ListenerCertificateCreate,
 		Update: resourceElasticLoadBalancingV2ListenerCertificateUpdate,
@@ -42,10 +41,6 @@ func ResourceElasticLoadBalancingV2ListenerCertificate() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceElasticLoadBalancingV2ListenerCertificateExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceElasticLoadBalancingV2ListenerCertificateRead(data *schema.ResourceData, meta interface{}) error {

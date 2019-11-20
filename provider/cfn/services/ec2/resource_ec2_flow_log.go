@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const eC2FlowLogType string = "AWS::EC2::FlowLog"
 
 func ResourceEC2FlowLog() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceEC2FlowLogExists,
 		Read: resourceEC2FlowLogRead,
 		Create: resourceEC2FlowLogCreate,
 		Update: resourceEC2FlowLogUpdate,
@@ -61,10 +60,6 @@ func ResourceEC2FlowLog() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceEC2FlowLogExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2FlowLogRead(data *schema.ResourceData, meta interface{}) error {

@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-11-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 18-11-2019, using version 0.0 of the cfn terraform provider,
 // and version 7.2.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -18,7 +18,6 @@ const eC2VPCCidrBlockType string = "AWS::EC2::VPCCidrBlock"
 
 func ResourceEC2VPCCidrBlock() *schema.Resource {
 	return &schema.Resource{
-		Exists: resourceEC2VPCCidrBlockExists,
 		Read: resourceEC2VPCCidrBlockRead,
 		Create: resourceEC2VPCCidrBlockCreate,
 		Update: resourceEC2VPCCidrBlockUpdate,
@@ -45,10 +44,6 @@ func ResourceEC2VPCCidrBlock() *schema.Resource {
 			},
 		},
 	}
-}
-
-func resourceEC2VPCCidrBlockExists(data *schema.ResourceData, meta interface{}) (bool, error) {
-	return plugin.ResourceExists(data, meta)
 }
 
 func resourceEC2VPCCidrBlockRead(data *schema.ResourceData, meta interface{}) error {
