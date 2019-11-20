@@ -4,8 +4,8 @@ package plugin
 import (
 	"os"
 	"io/ioutil"
+  "log"
 	"fmt"
-	"encoding/json"
 	"crypto/md5"
   "strings"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
@@ -18,7 +18,7 @@ type ProviderMetadata struct {
 	 // resourceCounter *int
    // readCounter *int
 	 
-	 // newIndex *map[string]bool
+	 newIndex *map[string]bool
 	 exists *map[string]bool
 	 diffed *map[string]bool
    
@@ -27,8 +27,10 @@ type ProviderMetadata struct {
 
 const EMPTY string = "\xff"
 const LOCK_RESOURCE_READ_WRITE string = "RESOURCE_READ_WRITE"
+const LOCK_RESOURCE_READ_COUNT string = "RESOURCE_READ_COUNT"
 
-const TEMPLATE_INDEX_FILE string = "template.data.json"
+const TEMPLATE_INDEX_FILE string = "template.data"
+const TEMPLATE_COUNTER_FILE string = "template.counts"
 const RENDERED_TEMPLATE_FILE string = "template.rendered"
 
 // 
@@ -37,11 +39,116 @@ const RENDERED_TEMPLATE_FILE string = "template.rendered"
 // const LOCK_RESOURCE_COUNTER string = "RESOURCE_COUNTER"
 // const LOCK_RESOURCE_READ_COUNTER string = "RESOURCE_READ_COUNTER"
 // 
-// const STATE_WAIT string = "WAIT"
-// const STATE_DONE string = "DONE"
+const STATE_WAIT string = "WAIT"
+const STATE_DONE string = "DONE"
+
+type ChangeType = string
+
+const (
+  Unchanged ChangeType = "unchanged"
+  Changed ChangeType = "changed"
+  Maybe ChangeType = "maybe"
+  Added ChangeType = "added"
+  Deleted ChangeType = "deleted"
+)
+
+func allWithout(item string, items...string) []string {
+  newArray := []string{}
+  
+  for _, x := range items {
+    if x != item {
+      newArray = append(newArray, x)
+    }
+  }
+  
+  return newArray
+}
+
+func ensureArraysCT(mapData map[ChangeType][]string, keys...ChangeType) {
+  for _, key := range keys {
+    if _, ok := mapData[key]; !ok {
+      mapData[key] = []string{}
+    }
+  }
+}
+
+func ensureArrays(mapData map[string]interface{}, keys...string) {
+  for _, key := range keys {
+    if _, ok := mapData[key]; !ok {
+      mapData[key] = []interface{}{}
+    }
+  }
+}
+
+func addString(item string, addArray []interface{}) []interface{} {
+  var alreadyExists bool = false
+  
+  for _, v := range addArray {
+    if v.(string) == item {
+      alreadyExists = true
+      break
+    }
+  }
+  
+  if !alreadyExists {
+    addArray = append(addArray, item)
+  }
+  
+  return addArray
+}
+
+func removeString(item string, removeArray []interface{}) []interface{} {
+  var newRemoved []interface{} = []interface{}{}
+  
+  for _, v := range removeArray {
+    if v.(string) != item {
+      newRemoved = append(newRemoved, v.(string))
+    }
+  }
+  
+  return newRemoved
+}
+
+func arrayContains(array []string, item string) bool {
+  for _, v := range array {
+    if v == item {
+      return true
+    }
+  }
+  return false
+}
 
 
 
+// func addAndRemoveString(item string, addArray *[]interface{}, removeArrays...*[]interface{}) {
+// 
+//   // add
+//   var alreadyExists bool = false
+// 
+//   for _, v := range *addArray {
+//     if v.(string) == item {
+//       alreadyExists = true
+//       break
+//     }
+//   }
+// 
+//   if !alreadyExists {
+//     addArray := append(*addArray, item)
+//   }
+// 
+//   // remove
+//   for _, removeArray := range removeArrays {
+//     var newRemoved []interface{} = make([]interface{}, 0, len(*removeArray))
+// 
+//     for _, v := range *removeArray {
+//       if v.(string) != item {
+//         newRemoved = append(newRemoved, v.(string))
+//       }
+//     }
+// 
+//     *removeArray = newRemoved
+//   }
+// }
 
 
 func deSnake(input map[string]interface{}) map[string]interface{} {
@@ -123,7 +230,7 @@ func writeFile(path string, data map[string]interface{}) (string, error) {
 	file, _ := os.Create(path)
 	defer file.Close()
 	
-	rawData, err := json.MarshalIndent(data, "", "  ")
+	rawData, err := mapToJson(data, true)
 	
 	if err != nil {
 		return "", err
@@ -141,6 +248,7 @@ func ProviderConfigure(resourceData *schema.ResourceData) (interface{}, error) {
 	// var readCounter int = 0
 	// var newIndex bool = true
   // var templateReading bool = false
+  log.Printf("-------------------------------RECONFIGURE")
 	
 	meta := ProviderMetadata{
 		workdir: resourceData.Get("workdir").(string),
@@ -148,10 +256,11 @@ func ProviderConfigure(resourceData *schema.ResourceData) (interface{}, error) {
 		// resourceCounter: &counter,
     // readCounter: &readCounter,
 		
-		// newIndex: &map[string]bool{
+		newIndex: &map[string]bool{
+      TEMPLATE_COUNTER_FILE: true,
       // TEMPLATE_DATA_FILE: true,
       // TEMPLATE_EXISTENCE_FILE: true,
-    // },
+    },
 		exists: &map[string]bool{},
 		diffed: &map[string]bool{},
     // 

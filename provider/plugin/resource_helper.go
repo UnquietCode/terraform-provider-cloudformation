@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"encoding/json"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	// "crypto/md5"
 )
 
 
@@ -57,13 +58,11 @@ func writeResource(logicalId string, data map[string]interface{}, meta ProviderM
   }
   
   // update the index file
-  readAndWriteFile(TEMPLATE_INDEX_FILE, meta, func(indexData map[string]interface{}) bool {
+  readAndWriteFile(TEMPLATE_INDEX_FILE, meta, func(indexData map[string]interface{}) {
     if _, ok := indexData["resources"]; !ok {
       indexData["resources"] = map[string]interface{}{}
     }
     indexData["resources"].(map[string]interface{})[logicalId] = hash
-    log.Printf("----------------------- %s", indexData)
-    return true
   })
   
   return hash, nil
@@ -81,18 +80,13 @@ func removeResource(logicalId string, meta ProviderMetadata) error {
   }
   
   // update the index file
-  _, _, err = readAndWriteFile(TEMPLATE_INDEX_FILE, meta, func(data map[string]interface{}) bool {
+  _, _, err = readAndWriteFile(TEMPLATE_INDEX_FILE, meta, func(data map[string]interface{}) {
     if _, ok := data["resources"]; ok {
       resources := data["resources"].(map[string]interface{})
       
       if _, ok := resources["logicalId"]; ok {
         delete(resources, "logicalId")
-        return true
-      } else {
-        return false
       }
-    } else {
-      return false
     }
   })
   
@@ -104,7 +98,7 @@ func removeResource(logicalId string, meta ProviderMetadata) error {
 }
 
 
-type DataModifier func(data map[string]interface{}) bool
+type DataModifier func(data map[string]interface{})
 
 
 func readAndWriteFile(fileName string, meta ProviderMetadata, modifier DataModifier) (string, string, error) {	
@@ -169,6 +163,40 @@ func readAndWriteFile(fileName string, meta ProviderMetadata, modifier DataModif
 }
 
 
+func markResourceAsRead(logicalId string, changeType ChangeType, replaceIndex bool, meta ProviderMetadata) error {
+  log.Printf("------------------ read ------- %s", logicalId)
+  
+	meta.mutex.Lock(LOCK_RESOURCE_READ_COUNT)
+	defer meta.mutex.Unlock(LOCK_RESOURCE_READ_COUNT)
+
+  var err error
+  
+  if replaceIndex {
+    if (*meta.newIndex)[TEMPLATE_COUNTER_FILE] == true {
+      removeFile(TEMPLATE_COUNTER_FILE, meta)
+      (*meta.newIndex)[TEMPLATE_COUNTER_FILE] = false
+    }
+  }
+  
+  _, _, err = readAndWriteFile(TEMPLATE_COUNTER_FILE, meta, func(indexData map[string]interface{}) {
+    ensureArrays(indexData, Changed, Unchanged, Maybe)
+    
+    var addTo string = changeType
+    // var removes = allWithout(changeType, Changed, Unchanged, Maybe)
+    
+    indexData[addTo] = addString(logicalId, indexData[addTo].([]interface{}))
+    // indexData[removes[0]] = removeString(logicalId, indexData[removes[0]].([]interface{}))
+    // indexData[removes[1]] = removeString(logicalId, indexData[removes[1]].([]interface{}))
+  })
+  
+  if err != nil {
+    return err
+  }
+  
+  return nil
+}
+
+
 // --------------------------	------------------------------------------------
 
 func ResourceRead(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
@@ -193,7 +221,12 @@ func ResourceRead(resourceType string, resourceSchema *schema.Resource, resource
     return nil
   }
 
-  mergeMapToResource("", resourceData, data)  
+  log.Printf("------------------ reading %s as id ------- %s", logicalId, resourceData.Id())
+  // log.Printf("------------------ %s", resourceData)
+  
+  mergeMapToResource("", resourceData, data)
+  markResourceAsRead(logicalId, Maybe, true, providerMeta)
+  
   return nil
 }
 
@@ -244,6 +277,18 @@ func ResourceCustomizeDiff(resourceType string, resourceDiff *schema.ResourceDif
 	if _, ok := (*providerMeta.diffed)[logicalId]; ok {
     return errors.New("diffed, duplicate logical id "+logicalId)
 	}
+  
+  changes := resourceDiff.GetChangedKeysPrefix("")
+  log.Printf("--------------------- diffing, %s %s", logicalId, changes)
+  
+  var changeType ChangeType
+  
+  if len(changes) > 0 {
+    changeType = Changed
+  } else {
+    changeType = Unchanged
+  }
+  markResourceAsRead(logicalId, changeType, false, providerMeta)
 	
 	return nil
 }
