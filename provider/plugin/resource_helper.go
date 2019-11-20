@@ -40,12 +40,12 @@ func readResource(id string, meta ProviderMetadata) (map[string]interface{}, str
   if err := json.Unmarshal(rawData, &data); err != nil {
     return nil, EMPTY, err
   }
-	
+  
 	return data, hashcode, nil
 }
 
 
-func writeResource(logicalId string, data map[string]interface{}, meta ProviderMetadata) (string, error) {
+func writeResource(resourceType string, logicalId string, data map[string]interface{}, meta ProviderMetadata) (string, error) {
 	meta.mutex.Lock(LOCK_RESOURCE_READ_WRITE)
 	defer meta.mutex.Unlock(LOCK_RESOURCE_READ_WRITE)
     
@@ -62,7 +62,10 @@ func writeResource(logicalId string, data map[string]interface{}, meta ProviderM
     if _, ok := indexData["resources"]; !ok {
       indexData["resources"] = map[string]interface{}{}
     }
-    indexData["resources"].(map[string]interface{})[logicalId] = hash
+    indexData["resources"].(map[string]interface{})[logicalId] = TemplateEntry{
+      CfnType: resourceType,
+      Hash: hash,
+    }
   })
   
   return hash, nil
@@ -236,7 +239,7 @@ func ResourceCreate(resourceType string, resourceSchema *schema.Resource, resour
 	var logicalId string = resourceData.Get("logical_id").(string)
 	
 	var data map[string]interface{} = convertResourceToMap("", resourceSchema, resourceData, normalGetter)
-	hash, err := writeResource(logicalId, data, providerMeta)
+	hash, err := writeResource(resourceType, logicalId, data, providerMeta)
 	
 	if err != nil {
 		return err

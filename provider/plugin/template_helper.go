@@ -15,7 +15,7 @@ import (
 )
 
 
-func buildTemplateReference(meta ProviderMetadata) (map[string]string, string, error) {
+func buildTemplateReference(meta ProviderMetadata) (map[string]TemplateEntry, string, error) {
 	var path string = fmt.Sprintf("%s/%s.json", meta.workdir, TEMPLATE_INDEX_FILE)
 	exists, err := fileExists(path)
   
@@ -24,7 +24,7 @@ func buildTemplateReference(meta ProviderMetadata) (map[string]string, string, e
   }
   
   if !exists {
-    return map[string]string{}, EMPTY, nil
+    return map[string]TemplateEntry{}, EMPTY, nil
   }
     
   file, err := os.Open(path)
@@ -49,11 +49,14 @@ func buildTemplateReference(meta ProviderMetadata) (map[string]string, string, e
   }  
   
   // build sorted list of keys
-  var resources map[string]string = map[string]string{}
+  var resources map[string]TemplateEntry = map[string]TemplateEntry{}
   
   if _, ok := data["resources"]; ok {
     for k,v := range data["resources"].(map[string]interface{}) {
-      resources[k] = v.(string)
+      resources[k] = TemplateEntry{
+        CfnType: v.(map[string]interface{})["type"].(string),
+        Hash: v.(map[string]interface{})["hash"].(string),
+      }
     }    
   }
   
@@ -68,7 +71,7 @@ func buildTemplateReference(meta ProviderMetadata) (map[string]string, string, e
 	var bigHash string = ""
 	
 	for _, key := range keys {
-		bigHash += resources[key]
+		bigHash += resources[key].Hash
 	}
 	
 	bigHash = strconv.Itoa(hashcode.String(bigHash))
@@ -324,7 +327,7 @@ func TemplateCreate(resourceData *schema.ResourceData, meta interface{}) error {
 	var resources = map[string]interface{}{}
 	templateData["Resources"] = resources
   
-	for name, _ := range resourceHashes {
+	for name, entry := range resourceHashes {
 		properties, _, err := readResource(name, providerMeta)
   
 		if err != nil {
@@ -336,8 +339,7 @@ func TemplateCreate(resourceData *schema.ResourceData, meta interface{}) error {
     }
   
 		data := map[string]interface{}{}
-		// data["Type"] = entry.CfnType
-		data["Type"] = "COMING SOON"
+		data["Type"] = entry.CfnType
   
 		resources[name] = data
     delete(properties, "logical_id")

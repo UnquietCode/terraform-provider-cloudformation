@@ -52,6 +52,12 @@ const (
   Deleted ChangeType = "deleted"
 )
 
+type TemplateEntry struct {
+  CfnType string `json:"type"`
+  Hash string `json:"hash"`
+}
+
+
 func allWithout(item string, items...string) []string {
   newArray := []string{}
   
