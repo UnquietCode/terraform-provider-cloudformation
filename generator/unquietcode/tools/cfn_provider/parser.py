@@ -1,5 +1,5 @@
-from unquietcode.tools.cfn_provider.models import ResourceAttribute, Property, Resource, Package, Provider
-from unquietcode.tools.cfn_provider.type_support import translate_cfn_type, simple_primitive, regex_validator
+from unquietcode.tools.cfn_provider.models import ResourceAttribute, Property, Resource, Package, Provider, GetAttr
+from unquietcode.tools.cfn_provider.type_support import translate_cfn_type, simple_primitive, regex_validator, complex_type
 
 RESERVED_PROPERTY_ATTRIBUTES = {'count', 'provider'}
 RESERVED_RESOURCE_ATTRIBUTES = {'id', 'cfn'}
@@ -28,11 +28,15 @@ def handle_resource_property(resource_name, property_name, property_data, schema
 def handle_resource_attribute(resource_name, documentation_link, attribute_name, attribute_data):
     attribute_type = translate_cfn_type(resource_name, attribute_data, {})
     
+    # kill validations
+    attribute_type.validator_function = None
+    
     if attribute_name.lower() in RESERVED_RESOURCE_ATTRIBUTES:
         attribute_name = f"The{attribute_name}"
     
     # replace nested with flat for now
     attribute_name = attribute_name.replace('.', '')
+    attribute_name = f"Get{attribute_name}"
     
     return ResourceAttribute(
         name=attribute_name,
@@ -103,16 +107,44 @@ def handle_resource(*, service, package, resource_name, cfn_type, resource_data)
     
     # resource attributes
     # resource_attributes = resource_data.get("Attributes", {})
-    # attributes = {}
+    # get_attrs = {}
     # 
     # for attribute_name, attribute_data in resource_attributes.items():
     #     attribute = handle_resource_attribute(
     #         resource_name=resource_name,
-    #         documentation_link=attribute_data.get('Documentation'),
+    #         documentation_link=None,
     #         attribute_name=attribute_name,
     #         attribute_data=attribute_data,
     #     )
+    #     get_attrs[attribute.name] = attribute
     #     attributes[attribute.name] = attribute
+    # 
+    # # TODO this needs to be scoped to a list of exceptions
+    # if f"{service}.{resource_name}" in { "CertificateManager.Certificate" }:
+    #     attributes['get_arn'] = ResourceAttribute(
+    #         name='get_arn',
+    #         cfn_name=None,
+    #         type=simple_primitive("String"),
+    #         required=None,
+    #         computed=True,
+    #         will_replace=None,
+    #         documentation_link=None,
+    #     )
+    # 
+    # if get_attrs:
+    #     get_attr = GetAttr(attributes=get_attrs, resource_name=resource_name)
+    #     package.getattrs.append(get_attr)
+    #     get_attr.package = package
+    # 
+    #     attributes['attr'] = ResourceAttribute(
+    #         name='attr',
+    #         cfn_name=None,
+    #         type=complex_type(get_attr),
+    #         required=None,
+    #         computed=True,
+    #         will_replace=None,
+    #         documentation_link=None,
+    #     )
     
     resource = Resource(
         name=f"{service}{resource_name}",

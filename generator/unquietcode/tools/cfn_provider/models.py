@@ -17,6 +17,7 @@ class Package:
     resources: dict = field(default_factory=lambda: defaultdict(lambda: DataDict()))
     datasources: dict = field(default_factory=lambda: defaultdict(lambda: DataDict()))
     properties: dict = field(default_factory=lambda: {})
+    getattrs: List = field(default_factory=lambda: [])
     subpackages: dict = field(default_factory=lambda: {})
 
     @property
@@ -95,7 +96,7 @@ class AttributeType:
     element_type: str
     min_items: int
     max_items: int
-    set_function: str
+    set_function: str = None
     validator_function: Validator = None
     
     def as_dict(self):
@@ -139,6 +140,15 @@ class Property(ComplexType):
     namespace: str = ""
     attributes: dict = field(default_factory=lambda: {})
 
+    def as_dict(self):
+        return asdict(self)
+
+
+@dataclass
+class GetAttr(ComplexType):
+    resource_name: str = ""
+    attributes: dict = field(default_factory=lambda: {})
+    
     def as_dict(self):
         return asdict(self)
 

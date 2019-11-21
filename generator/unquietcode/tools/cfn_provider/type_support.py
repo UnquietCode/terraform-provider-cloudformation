@@ -43,7 +43,17 @@ def simple_primitive(cf_type, validator=None) -> AttributeType:
     )
 
 
-    
+def complex_type(type) -> AttributeType:
+    return AttributeType(
+        type=TF_Type.Set,
+        element_type=type,
+        min_items=None,
+        max_items=None,
+        set_function=None,
+        validator_function=None,
+    )
+
+
 def translate_cfn_type(resource_name, property_data, schema_properties) -> AttributeType:
     type = None
     elem_type = None

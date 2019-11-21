@@ -2,7 +2,7 @@ import re
 from datetime import date
 from string import Template
 
-from unquietcode.tools.cfn_provider.models import ComplexType, TF_Type
+from unquietcode.tools.cfn_provider.models import Property, TF_Type, GetAttr
 from unquietcode.tools.cfn_provider.utils import snake_caps
 from unquietcode.tools.cfn_provider.golang.code_model import (
     SourceFile,
@@ -29,8 +29,9 @@ PROJECT_URL = "https://github.com/UnquietCode/terraform-provider-cloudformation"
 def _generate_attribute_struct(*, package_name, schema_name, attribute):
     attribute_type = attribute.type.type
     name = snake_caps(attribute.name)
+    is_gett_attr = False
     
-    if isinstance(attribute_type, ComplexType):
+    if isinstance(attribute_type, Property):
         at_property_prefix = 'property'
         at_name = attribute_type.name
         
@@ -44,7 +45,7 @@ def _generate_attribute_struct(*, package_name, schema_name, attribute):
             print("recursion")
         
         attribute_type = f'{at_property_prefix}{at_name}()'
-
+    
     attribute_elem = attribute.type.element_type
     
     if attribute_elem is not None and not isinstance(attribute_elem, str):
@@ -56,18 +57,23 @@ def _generate_attribute_struct(*, package_name, schema_name, attribute):
         else:
             if attribute_elem.name == schema_name:
                 recursive = True
-    
-        ae_property_prefix = 'property'
-        ae_name = attribute_elem.name
         
-        if attribute_elem.package.full_path == 'cfn/misc':
-            ae_property_prefix = 'Property'
+        if isinstance(attribute_elem, GetAttr):
+            attribute_elem = f'attributes{attribute_elem.resource_name}()'
+            is_gett_attr = True
+        
+        else:
+            ae_property_prefix = 'property'
+            ae_name = attribute_elem.name
             
-            if ae_name == 'Tag':
-                return (name, attribute.name), LiteralExpression("misc.PropertyTags()")
-        
-        call = '()' if recursive is not True else '(strconv.Itoa(int(count + 1)))'
-        attribute_elem = f'{package_prefix}{ae_property_prefix}{ae_name}{call}'
+            if attribute_elem.package.full_path == 'cfn/misc':
+                ae_property_prefix = 'Property'
+                
+                if ae_name == 'Tag':
+                    return (name, attribute.name), LiteralExpression("misc.PropertyTags()")
+            
+            call = '()' if recursive is not True else '(strconv.Itoa(int(count + 1)))'
+            attribute_elem = f'{package_prefix}{ae_property_prefix}{ae_name}{call}'
         
     struct = GoStructLiteral(
         type="",
@@ -89,7 +95,11 @@ def _generate_attribute_struct(*, package_name, schema_name, attribute):
     add_field("ForceNew", attribute.will_replace is True, "true")
     add_field("MaxItems", attribute.type.max_items is not None, attribute.type.max_items)
     add_field("Set", attribute.type.set_function, attribute.type.set_function)
+    add_field("Computed", attribute.computed is True, "true")
     add_field("ValidateFunc", attribute.type.validator_function, lambda: attribute.type.validator_function.invocation)
+        
+    if is_gett_attr is True:
+        add_field("StateFunc", True, 'func(v interface{}) string { return "" }')
     
     return (name, attribute.name), struct
 
@@ -349,6 +359,53 @@ def generate_property_model(*, cfn_version, package_name, property_name, attribu
             ],
             return_types=["*schema.Resource"],
             body=[function_body, ReturnExpression(resource_struct)],
+        )
+    ]
+    
+    code_file = SourceFile(
+        header=_header_stanza(cfn_version, documentation_link),
+        package_name=package_name,
+        imports=import_lines,
+        declarations=declarations,
+    )
+    
+    return write_file_to_string(code_file)
+
+
+def generate_getattr_model(*, cfn_version, package_name, get_attr, documentation_link):
+    import_lines = [
+        "github.com/hashicorp/terraform-plugin-sdk/helper/schema",
+    ]
+    
+    for name, attribute in get_attr.attributes.items():
+        if attribute.type.validator_function:
+            import_lines.extend(attribute.type.validator_function.imports)    
+    
+    import_lines = list(set(import_lines))
+    
+    attribute_structs = [
+        _generate_attribute_struct(package_name=package_name, schema_name=None, attribute=attribute)
+        for attribute in get_attr.attributes.values()
+    ]
+    
+    resource_struct = GoStructLiteral(
+        type="&schema.Resource",
+    )
+    
+    resource_struct.fields["Schema"] = GoMapLiteral(
+        key_type="string",
+        value_type="*schema.Schema",
+        fields={ names[0]:value for names,value in attribute_structs },
+    )
+        
+    function_name = f'attributes{get_attr.resource_name}'
+        
+    declarations = [
+        GoFunction(
+            name=function_name,
+            parameters=[],
+            return_types=["*schema.Resource"],
+            body=[ReturnExpression(resource_struct)],
         )
     ]
     

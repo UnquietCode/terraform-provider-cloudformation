@@ -6,6 +6,7 @@ from unquietcode.tools.cfn_provider.golang.code_generator import (
     generate_resource_model,
     generate_property_model,
     generate_provider_model,
+    generate_getattr_model,
 )
 from unquietcode.tools.cfn_provider.models import ComplexType
 from unquietcode.tools.cfn_provider.utils import snake_caps
@@ -45,7 +46,6 @@ def render_provider(provider_data, output_path):
         
         resources.extend(p.resources.values())
         datasources.extend(p.datasources.values())
-        
         packages.extend(p.subpackages.values())
     
     resources = sorted(resources, key=lambda _: (_.package.full_path, _.name))
@@ -98,7 +98,19 @@ def render_property(cfn_version, property, output_path):
 
     with open(output_path, 'w+') as file_:
         file_.write(rendered)
-    
+
+
+def render_getattr(cfn_version, package, get_attr, output_path):
+    rendered = generate_getattr_model(
+        cfn_version=cfn_version,
+        package_name=package.name,
+        get_attr=get_attr,
+        documentation_link='https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resources-section-structure.html',
+    )
+
+    with open(output_path, 'w+') as file_:
+        file_.write(rendered)
+
 
 def _handle_deferred_types(package, type):
     
@@ -159,6 +171,12 @@ def render_package(cfn_version, package, output_path):
         file_name = f"property_{snake_caps(property.name)}.go"
         file_path = f"{created_directory}/{file_name}"
         render_property(cfn_version, property, file_path)
+    
+    # render getattrs
+    for get_attr in package.getattrs:
+        file_name = f"attributes_{snake_caps(get_attr.resource_name)}.go"
+        file_path = f"{created_directory}/{file_name}"        
+        render_getattr(cfn_version, package, get_attr, file_path)
     
     # render resources
     for resource in package.resources.values():
