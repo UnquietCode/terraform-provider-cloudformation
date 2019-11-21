@@ -185,11 +185,21 @@ func markResourceAsRead(logicalId string, changeType ChangeType, replaceIndex bo
     ensureArrays(indexData, Changed, Unchanged, Maybe)
     
     var addTo string = changeType
-    // var removes = allWithout(changeType, Changed, Unchanged, Maybe)
-    
     indexData[addTo] = addString(logicalId, indexData[addTo].([]interface{}))
-    // indexData[removes[0]] = removeString(logicalId, indexData[removes[0]].([]interface{}))
-    // indexData[removes[1]] = removeString(logicalId, indexData[removes[1]].([]interface{}))
+      
+    for _, maybe := range indexData[Maybe].([]interface{}) {
+      
+      // remove changed from maybe
+      if arrayContainsItem(indexData[Changed], maybe) {
+        indexData[Maybe] = removeFromChangesArray(maybe, indexData[Maybe])
+        continue
+      }
+      
+      // remove unchanged from maybe
+      if arrayContainsItem(indexData[Unchanged], maybe) {
+        indexData[Maybe] = removeFromChangesArray(maybe, indexData[Maybe])
+      }      
+    }    
   })
   
   if err != nil {

@@ -79,7 +79,7 @@ func buildTemplateReference(meta ProviderMetadata) (map[string]TemplateEntry, st
 }
 
 
-func readCounts(waitForIndex bool, meta ProviderMetadata) (map[ChangeType][]string, error) {
+func readCounts(meta ProviderMetadata) (map[ChangeType][]string, error) {
 	meta.mutex.Lock(LOCK_RESOURCE_READ_COUNT)
 	defer meta.mutex.Unlock(LOCK_RESOURCE_READ_COUNT)
   
@@ -94,17 +94,7 @@ func readCounts(waitForIndex bool, meta ProviderMetadata) (map[ChangeType][]stri
   if !exists {
 		return nil, nil
   }
-
-  // TODO this would loop on an empty template presumably
-  // if waitForIndex {
-  //   if (*meta.newIndex)[TEMPLATE_COUNTER_FILE] == true {
-  //       log.Printf("--------------------------------------- here 2")
-  //     return nil, nil
-  //   }
-  // }
-  
-  log.Printf("--------------------------------------- here 3")
-  
+    
 	// turn the data into schema data
   var data map[string]interface{} = map[string]interface{}{}
 	
@@ -132,6 +122,20 @@ func readCounts(waitForIndex bool, meta ProviderMetadata) (map[ChangeType][]stri
 }
 
 
+func extractDeletes(indexData map[ChangeType][]string) []string {
+  for _, maybe := range indexData[Maybe] {
+
+    // maybe - changed - unchanged = deletes
+    if !arrayContainsString(indexData[Changed], maybe) && !arrayContainsString(indexData[Unchanged], maybe) {
+      indexData[Maybe] = removeFromStringArray(maybe, indexData[Maybe])
+      indexData[Deleted] = append(indexData[Deleted], maybe)
+    }
+  }
+  
+  return indexData[Deleted]
+}
+
+
 func waitForChangesNew(meta ProviderMetadata) (bool, error) {  
   createStateConf := &resource.StateChangeConf{
     Pending: []string{
@@ -142,37 +146,24 @@ func waitForChangesNew(meta ProviderMetadata) (bool, error) {
     },
     Refresh: func() (interface{}, string, error) {
       refs, _, err := buildTemplateReference(meta)
+      if err != nil { return nil, EMPTY, err }
       
-      if err != nil {
-        return nil, EMPTY, err
+      countLists, err := readCounts(meta)
+      if err != nil { return nil, EMPTY, err }
+  
+      // wait for list to create
+      if countLists == nil {
+        return nil, STATE_WAIT, nil
       }
       
-      refCount := len(refs)            
-      
-      countLists, err := readCounts(false, meta)
+      refCount := len(refs)
+      deletes := extractDeletes(countLists) // has to go first!
       changed := countLists[Changed]
       unchanged := countLists[Unchanged]
       maybeChanged := countLists[Maybe]
       
-      deletes := []string{}
-      
-      for _, maybe := range maybeChanged {
-        if !arrayContains(changed, maybe) && !arrayContains(unchanged, maybe) {
-          deletes = append(deletes, maybe)
-        }
-      }
-      
-      log.Printf("waiting for template refs to converge %s %s %d", changed, unchanged, refCount)
-      
-      if err != nil {
-        return nil, EMPTY, err
-      }
-      
-      if changed == nil {
-        return nil, STATE_WAIT, nil
-      }
-      
-      counts := len(changed) + len(unchanged) + len(deletes) //+ len(maybeChanged)
+      counts := len(changed) + len(unchanged) + len(deletes) + len(maybeChanged)
+      log.Printf("waiting for template refs to converge on create (%d / %d) %s", refCount, counts, countLists)
 
       if counts == refCount {
         return (len(changed) + len(deletes)) > 0, STATE_DONE, nil
@@ -185,10 +176,10 @@ func waitForChangesNew(meta ProviderMetadata) (bool, error) {
   }
 
   isChanged, err := createStateConf.WaitForState()
+  
   if err != nil {
     return false, err
   }
-  log.Printf("-------------------------------------- changed? %s", isChanged.(bool))
   
   return isChanged.(bool), nil
 }
@@ -215,44 +206,38 @@ func waitForChanges(deleterable bool, meta ProviderMetadata) (bool, error) {
       STATE_DONE,
     },
     Refresh: func() (interface{}, string, error) {    
-      countLists, err := readCounts(true, meta)
-      changed := countLists[Changed]
-      unchanged := countLists[Unchanged]
-      maybeChanged := countLists[Maybe]
+      countLists, err := readCounts(meta)
+      if err != nil { return nil, EMPTY, err }
       
-      // maybe - changed - unchanged = deletes
-      deletes := []string{}
-      
-      for _, maybe := range maybeChanged {
-        if !arrayContains(changed, maybe) && !arrayContains(unchanged, maybe) {
-          deletes = append(deletes, maybe)
-        }
-      }
-      
-      log.Printf("waiting for template refs to converge (not new) %s %d", countLists, refCount)
-      log.Printf("deletes %s", deletes)
-      
-      if err != nil {
-        return nil, EMPTY, err
-      }
-      
-      if changed == nil {
+      // wait for list to create
+      if countLists == nil {
         return nil, STATE_WAIT, nil
       }
       
-      if len(changed) > 0 {
-        return true, STATE_DONE, nil
+      var counts int = 0
+      var changes int = 0
+      
+      if deleterable {
+        deletes := extractDeletes(countLists) // has to go first!
+        changed := countLists[Changed]
+        unchanged := countLists[Unchanged]
+
+        counts += len(changed) + len(unchanged) + len(deletes)
+        changes += len(changed) + len(deletes)
+      } else {
+        maybeChanged := countLists[Maybe]
+        changed := countLists[Changed]
+        unchanged := countLists[Unchanged]        
+        
+        counts += len(maybeChanged) + len(changed) + len(unchanged)
+        changes += len(changed)
       }
       
-      counts := len(changed) + len(unchanged)
-      changes := len(changed)
+      log.Printf("waiting for template refs to converge (%d / %d) %s", refCount, counts, countLists)
 
-      if deleterable {
-        counts += len(deletes)
-        changes += len(deletes)
-      } else {
-        counts += len(maybeChanged)
-      }
+      if changes > 0 {
+        return true, STATE_DONE, nil
+      }      
       
       if counts == refCount {
         return changes > 0, STATE_DONE, nil
@@ -269,10 +254,10 @@ func waitForChanges(deleterable bool, meta ProviderMetadata) (bool, error) {
   }
 
   isChanged, err := createStateConf.WaitForState()
+  
   if err != nil {
     return false, err
   }
-  log.Printf("-------------------------------------- changed? %s", isChanged.(bool))
   
   return isChanged.(bool), nil
 }
@@ -292,7 +277,8 @@ func TemplateRead(resourceData *schema.ResourceData, meta interface{}) error {
 	}
   
   // check if the file hash is the same
-	_, hash, err := readAndHashFile(path)
+	data, hash, err := readAndHashFile(path)
+  resourceData.Set("output", string(data))
 
   if resourceData.Id() != hash {
 		resourceData.SetId("")
@@ -348,23 +334,21 @@ func TemplateCreate(resourceData *schema.ResourceData, meta interface{}) error {
 	}
   
 	var path string = fmt.Sprintf("%s/%s.json", providerMeta.workdir, RENDERED_TEMPLATE_FILE)
-	hash, err := writeFile(path, templateData)
+	hash, content, err := writeFilePlusContent(path, templateData)
   
 	if err != nil {
 		return err
 	}
   
 	resourceData.SetId(hash)  
-	return nil
+  resourceData.Set("output", content)
+	
+  return nil
 }
 
 
 func TemplateUpdate(resourceData *schema.ResourceData, meta interface{}) error {
-
-  // should never happen since customized diff
-  panic("not updatable")
-  
-  return nil
+  return TemplateCreate(resourceData, meta)
 }
 
 
@@ -380,13 +364,11 @@ func TemplateDelete(resourceData *schema.ResourceData, meta interface{}) error {
 }
 
 func TemplateCustomizeDiff(resourceDiff *schema.ResourceDiff, meta interface{}) error {
-  // log.Printf("------------------------ here")
   isChanged, err := waitForChanges(true, meta.(ProviderMetadata))
 	if err != nil { return err }
   
   if isChanged {
     resourceDiff.SetNewComputed("hash")
-    // resourceData.Set("hash", "0")
   }  
   
 	return nil

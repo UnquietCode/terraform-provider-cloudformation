@@ -32,6 +32,7 @@ func ResourceTemplateData() *schema.Resource {
 			"output": {
 				Type: schema.TypeString,
 				Computed: true,
+        Sensitive: true,
 			},
 		},
 	}

@@ -42,15 +42,6 @@ const RENDERED_TEMPLATE_FILE string = "template.rendered"
 const STATE_WAIT string = "WAIT"
 const STATE_DONE string = "DONE"
 
-type ChangeType = string
-
-const (
-  Unchanged ChangeType = "unchanged"
-  Changed ChangeType = "changed"
-  Maybe ChangeType = "maybe"
-  Added ChangeType = "added"
-  Deleted ChangeType = "deleted"
-)
 
 type TemplateEntry struct {
   CfnType string `json:"type"`
@@ -115,7 +106,7 @@ func removeString(item string, removeArray []interface{}) []interface{} {
   return newRemoved
 }
 
-func arrayContains(array []string, item string) bool {
+func arrayContainsString(array []string, item string) bool {
   for _, v := range array {
     if v == item {
       return true
@@ -124,6 +115,15 @@ func arrayContains(array []string, item string) bool {
   return false
 }
 
+
+func arrayContainsItem(array interface{}, item interface{}) bool {
+  for _, v := range array.([]interface{}) {
+    if v == item {
+      return true
+    }
+  }
+  return false
+}
 
 
 // func addAndRemoveString(item string, addArray *[]interface{}, removeArrays...*[]interface{}) {
@@ -233,19 +233,25 @@ func removeFile(name string, meta ProviderMetadata) error {
 
 
 func writeFile(path string, data map[string]interface{}) (string, error) {  
+	hash, _, err := writeFilePlusContent(path, data)
+  return hash, err 
+}
+
+
+func writeFilePlusContent(path string, data map[string]interface{}) (string, string, error) {  
 	file, _ := os.Create(path)
 	defer file.Close()
 	
 	rawData, err := mapToJson(data, true)
 	
 	if err != nil {
-		return "", err
+		return "", "", err
 	}
 	
  	file.Write(rawData)
 	
 	var hashcode string = fmt.Sprintf("%x", md5.Sum(rawData))
-	return hashcode, nil
+	return hashcode, string(rawData), nil
 }
 
 
