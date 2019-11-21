@@ -1,5 +1,5 @@
 from unquietcode.tools.cfn_provider.models import ResourceAttribute, Property, Resource, Package, Provider
-from unquietcode.tools.cfn_provider.type_support import translate_cfn_type, simple_primitive
+from unquietcode.tools.cfn_provider.type_support import translate_cfn_type, simple_primitive, regex_validator
 
 RESERVED_PROPERTY_ATTRIBUTES = {'count', 'provider'}
 RESERVED_RESOURCE_ATTRIBUTES = {'id', 'cfn'}
@@ -89,10 +89,12 @@ def handle_resource(*, service, package, resource_name, cfn_type, resource_data)
     if 'LogicalId' in attributes:
         raise Exception('attribute name collision')
 
+    id_type = simple_primitive("String", validator=regex_validator("[A-Za-z][A-Za-z0-9]+"))
+
     attributes['LogicalId'] = ResourceAttribute(
         name='LogicalId',
         cfn_name=None,
-        type=simple_primitive("String"),
+        type=id_type,
         required=True,
         computed=False,
         will_replace=True,

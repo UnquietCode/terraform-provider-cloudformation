@@ -1,4 +1,4 @@
-from unquietcode.tools.cfn_provider.models import AttributeType, CF_Type, TF_Type
+from unquietcode.tools.cfn_provider.models import AttributeType, CF_Type, TF_Type, Validator
 
 
 MISC_TYPES = {"Tag"}
@@ -12,7 +12,7 @@ TYPE_CONVERSION_MAP = {
     CF_Type.Double:    TF_Type.Float,
     CF_Type.Boolean:   TF_Type.Bool,
     CF_Type.Timestamp: TF_Type.String,
-    CF_Type.Json:      TF_Type.Map,
+    CF_Type.Json:      TF_Type.String,
     
     # collection types
     CF_Type.Map:    TF_Type.Map,
@@ -20,14 +20,17 @@ TYPE_CONVERSION_MAP = {
 }
 
 
-# def translate_cfn_property_type(property_name, property_data, schema_properties):
-#     return property_name, None
+def regex_validator(regex: str) -> Validator:
+    return Validator(
+        invocation=f'validation.StringMatch(regexp.MustCompile(`{regex}`), "must match pattern {regex}")',
+        imports=[
+            "regexp",
+            "github.com/hashicorp/terraform-plugin-sdk/helper/validation",
+        ]
+    )
 
-# 
-# def translate_cfn_resource_type(property_data, schema_properties) -> AttributeType:
 
-
-def simple_primitive(cf_type) -> AttributeType:
+def simple_primitive(cf_type, validator=None) -> AttributeType:
     type = TYPE_CONVERSION_MAP[CF_Type[cf_type]]
     
     return AttributeType(
@@ -36,6 +39,7 @@ def simple_primitive(cf_type) -> AttributeType:
         min_items=None,
         max_items=None,
         set_function=None,
+        validator_function=validator,
     )
 
 
@@ -46,12 +50,21 @@ def translate_cfn_type(resource_name, property_data, schema_properties) -> Attri
     max_items = None
     min_items = None
     set_function = None
+    validator_function = None
     
     prop_ptype = property_data.get('PrimitiveType')
 
     # is a primitive type
     if prop_ptype is not None:
-        type = TYPE_CONVERSION_MAP[CF_Type[prop_ptype]]
+        cf_type = CF_Type[prop_ptype]
+        type = TYPE_CONVERSION_MAP[cf_type]
+        
+        # if it is JSON type, add validation
+        if cf_type == CF_Type.Json:
+            validator_function = Validator(
+                invocation="validation.ValidateJsonString",
+                imports=["github.com/hashicorp/terraform-plugin-sdk/helper/validation"],
+            )
 
     # is a non-primitive type
     else:
@@ -107,6 +120,7 @@ def translate_cfn_type(resource_name, property_data, schema_properties) -> Attri
         min_items=min_items,
         max_items=max_items,
         set_function=set_function,
+        validator_function=validator_function,
     )
 
 

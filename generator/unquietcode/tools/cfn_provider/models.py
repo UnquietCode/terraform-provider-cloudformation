@@ -1,3 +1,4 @@
+from typing import List
 from enum import Enum, auto, unique
 from collections import defaultdict
 from dataclasses import dataclass, asdict, field
@@ -80,6 +81,14 @@ class TF_Type(Enum):
     def __str__(self):
         return self.value
 
+
+
+@dataclass
+class Validator:
+    invocation: str
+    imports: List[str] = field(default_factory=lambda: [])
+
+
 @dataclass
 class AttributeType:
     type: str
@@ -87,6 +96,7 @@ class AttributeType:
     min_items: int
     max_items: int
     set_function: str
+    validator_function: Validator = None
     
     def as_dict(self):
         return asdict(self)
