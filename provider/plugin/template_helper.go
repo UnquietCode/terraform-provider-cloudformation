@@ -65,7 +65,6 @@ func readCounts(meta ProviderMetadata) (map[ChangeType][]string, error) {
 
 
 func waitForChanges(meta ProviderMetadata) (bool, error) {  
-  
   createStateConf := &resource.StateChangeConf{
     Pending: []string{
       STATE_WAIT,
@@ -89,9 +88,9 @@ func waitForChanges(meta ProviderMetadata) (bool, error) {
       updated := countLists[Updated]
       changed := countLists[Changed]
       unchanged := countLists[Unchanged]
-      maybe := countLists[Maybe]
+      // maybe := countLists[Maybe]
       
-      var counts int = len(maybe) + len(changed) + len(unchanged)
+      var counts int = len(changed) + len(unchanged)
       var changes int = len(updated) + len(deletes)
       
       log.Printf("waiting for template refs to converge (%d / %d) %s", refs, counts, countLists)
@@ -155,16 +154,7 @@ func TemplateDelete(resourceData *schema.ResourceData, meta interface{}) error {
 
 
 func TemplateCustomizeDiff(resourceDiff *schema.ResourceDiff, meta interface{}) error {
-  countLists, err := readCounts(meta.(ProviderMetadata))
-  if err != nil { return err }
-  
-  changed := countLists[Changed]
-  maybe := countLists[Maybe]
-  isChanged := len(maybe) + len(changed) > 0
-  
-  if isChanged {
-    resourceDiff.SetNewComputed("output")
-  }
-  
-	return nil
+  // is there some way to compute this early?
+	resourceDiff.SetNewComputed("output")
+  return nil
 }
