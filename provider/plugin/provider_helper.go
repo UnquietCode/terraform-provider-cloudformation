@@ -4,8 +4,8 @@ package plugin
 import (
 	"os"
 	"io/ioutil"
-  "log"
 	"fmt"
+  "time"
 	"crypto/md5"
   "strings"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
@@ -15,14 +15,9 @@ import (
 type ProviderMetadata struct {
    workdir string
 	 mutex *mutex.MutexKV
-	 // resourceCounter *int
-   // readCounter *int
-	 
 	 newIndex *map[string]bool
 	 exists *map[string]bool
 	 diffed *map[string]bool
-   
-   // templateReading *bool
 }
 
 const EMPTY string = "\xff"
@@ -33,12 +28,6 @@ const TEMPLATE_INDEX_FILE string = "template.data"
 const TEMPLATE_COUNTER_FILE string = "template.counts"
 const RENDERED_TEMPLATE_FILE string = "template.rendered"
 
-// 
-// const LOCK_TEMPLATE_REFERENCE string = "TEMPLATE_REFERENCE"
-// const LOCK_TEMPLATE_EXISTENCE string = "TEMPLATE_EXISTENCE"
-// const LOCK_RESOURCE_COUNTER string = "RESOURCE_COUNTER"
-// const LOCK_RESOURCE_READ_COUNTER string = "RESOURCE_READ_COUNTER"
-// 
 const STATE_WAIT string = "WAIT"
 const STATE_DONE string = "DONE"
 
@@ -126,35 +115,27 @@ func arrayContainsItem(array interface{}, item interface{}) bool {
 }
 
 
-// func addAndRemoveString(item string, addArray *[]interface{}, removeArrays...*[]interface{}) {
-// 
-//   // add
-//   var alreadyExists bool = false
-// 
-//   for _, v := range *addArray {
-//     if v.(string) == item {
-//       alreadyExists = true
-//       break
-//     }
-//   }
-// 
-//   if !alreadyExists {
-//     addArray := append(*addArray, item)
-//   }
-// 
-//   // remove
-//   for _, removeArray := range removeArrays {
-//     var newRemoved []interface{} = make([]interface{}, 0, len(*removeArray))
-// 
-//     for _, v := range *removeArray {
-//       if v.(string) != item {
-//         newRemoved = append(newRemoved, v.(string))
-//       }
-//     }
-// 
-//     *removeArray = newRemoved
-//   }
-// }
+func replaceFunctionCalls(input interface{}) interface{} {
+  if value, ok := input.(string); ok {
+    if strings.HasPrefix(value, "!GetAtt") {
+      property := strings.TrimSpace(value[7:])
+      parts := strings.Split(property, ".")
+      
+      return map[string]interface{}{
+        "Fn::GetAtt": []string{parts[0], parts[1]},
+      }
+    }
+    
+    if strings.HasPrefix(value, "!Ref") {
+      id := strings.TrimSpace(value[4:])
+      
+      return map[string]interface{}{
+        "Ref": id,
+      }
+    }
+  }
+  return input
+}
 
 
 func deSnake(input map[string]interface{}) map[string]interface{} {
@@ -177,13 +158,13 @@ func deSnake(input map[string]interface{}) map[string]interface{} {
         if eMap, ok := elem.(map[string]interface{}); ok {
           newList[i] = deSnake(eMap)
         } else {
-          newList[i] = elem
+          newList[i] = replaceFunctionCalls(elem)
         }
       }
       
       output[newString] = newList
     } else {
-      output[newString] = v
+      output[newString] = replaceFunctionCalls(v)
     }
   }
   
@@ -237,6 +218,37 @@ func writeFile(path string, data map[string]interface{}) (string, error) {
   return hash, err 
 }
 
+func writeEmptyFile(path string) (error) {  
+	file, err := os.Create(path)
+  defer file.Close()
+  
+  if err != nil {
+    return err
+  }
+  
+  return nil
+}
+
+func waitForEmptyFile(path string) error {
+  for {
+    exists, err := fileExists(path)
+    if err != nil { return err }
+    
+    if !exists {
+      time.Sleep(1 * time.Second)
+      continue
+    }
+    
+    rawData, err := ioutil.ReadFile(path)
+    if err != nil { return err }
+    
+    if string(rawData) == "" {
+      break
+    }
+    time.Sleep(1 * time.Second)
+  }
+  return nil
+}
 
 func writeFilePlusContent(path string, data map[string]interface{}) (string, string, error) {  
 	file, _ := os.Create(path)
@@ -256,27 +268,15 @@ func writeFilePlusContent(path string, data map[string]interface{}) (string, str
 
 
 func ProviderConfigure(resourceData *schema.ResourceData) (interface{}, error) {	
-	// var counter int = 0
-	// var readCounter int = 0
-	// var newIndex bool = true
-  // var templateReading bool = false
-  log.Printf("-------------------------------RECONFIGURE")
-	
 	meta := ProviderMetadata{
 		workdir: resourceData.Get("workdir").(string),
 		mutex: mutex.NewMutexKV(),
-		// resourceCounter: &counter,
-    // readCounter: &readCounter,
-		
 		newIndex: &map[string]bool{
       TEMPLATE_COUNTER_FILE: true,
-      // TEMPLATE_DATA_FILE: true,
-      // TEMPLATE_EXISTENCE_FILE: true,
+      TEMPLATE_INDEX_FILE: true,
     },
 		exists: &map[string]bool{},
 		diffed: &map[string]bool{},
-    // 
-    // templateReading: &templateReading,
   }
 	
 	return meta, nil

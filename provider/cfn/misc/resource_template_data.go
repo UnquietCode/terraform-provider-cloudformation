@@ -17,18 +17,7 @@ func ResourceTemplateData() *schema.Resource {
 			"description": {
 				Type: schema.TypeString,
 				Optional: true,
-			},
-      // "resources": {
-			// 	Type: schema.TypeList,
-      //   Elem: &schema.Schema{Type: schema.TypeString},
-      //   Required: true,
-      //   ForceNew: true,        
-      // },
-			"hash": {
-				Type: schema.TypeString,
-				Computed: true,
-        ForceNew: true,
-			},      
+			},  
 			"output": {
 				Type: schema.TypeString,
 				Computed: true,

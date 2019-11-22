@@ -7,88 +7,75 @@ import (
 	"fmt"
 	"encoding/json"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-	// "crypto/md5"
 )
 
 
-
-func readResource(id string, meta ProviderMetadata) (map[string]interface{}, string, error) {
+func countResources(meta ProviderMetadata) (int, error) {
 	meta.mutex.Lock(LOCK_RESOURCE_READ_WRITE)
 	defer meta.mutex.Unlock(LOCK_RESOURCE_READ_WRITE)
-	
-  var path string = fmt.Sprintf("%s/%s.json", meta.workdir, id)
-	exists, err := fileExists(path)
-	
-	if err != nil {
-		return nil, EMPTY, err
-	}
-	
-	if !exists {
-		return nil, EMPTY, nil
-	}
-	
-	// try to read the file
-	rawData, hashcode, err := readAndHashFile(path)
-	
-	if err != nil {
-		return nil, EMPTY, err
-	}
-	
-	// turn the data into schema data
-	var data map[string]interface{}
+  
+  var path string = fmt.Sprintf("%s/%s.json", meta.workdir, RENDERED_TEMPLATE_FILE)
 
-  if err := json.Unmarshal(rawData, &data); err != nil {
-    return nil, EMPTY, err
+  exists, err := fileExists(path)
+  if err != nil { return -1, err }
+  
+  if !exists {
+    return -1, nil
+  }
+
+	rawData, _, err := readAndHashFile(path)
+	if err != nil { return -1, err }
+
+  if string(rawData) == "" {
+    return -1, nil
   }
   
-	return data, hashcode, nil
-}
+  var data map[string]interface{} = map[string]interface{}{}
 
+  if err := json.Unmarshal(rawData, &data); err != nil {
+    return -1, err
+  }
+    
+  if _, ok := data["Resources"]; !ok {
+    return -1, nil
+  }
+  
+  count := len(data["Resources"].(map[string]interface{}))
+  return count, nil
+}
 
 func writeResource(resourceType string, logicalId string, data map[string]interface{}, meta ProviderMetadata) (string, error) {
 	meta.mutex.Lock(LOCK_RESOURCE_READ_WRITE)
 	defer meta.mutex.Unlock(LOCK_RESOURCE_READ_WRITE)
+  
+  readAndWriteFile(RENDERED_TEMPLATE_FILE, meta, func(indexData map[string]interface{}) {
+    if _, ok := indexData["Resources"]; !ok {
+      indexData["Resources"] = map[string]interface{}{}
+    }
     
-  // write the resource file
-  var path string = fmt.Sprintf("%s/%s.json", meta.workdir, logicalId)  
-  hash, err := writeFile(path, data)
+    resourceData := map[string]interface{}{}
+		resourceData["Type"] = resourceType
   
-  if err != nil {
-    return EMPTY, err
-  }
-  
-  // update the index file
-  readAndWriteFile(TEMPLATE_INDEX_FILE, meta, func(indexData map[string]interface{}) {
-    if _, ok := indexData["resources"]; !ok {
-      indexData["resources"] = map[string]interface{}{}
-    }
-    indexData["resources"].(map[string]interface{})[logicalId] = TemplateEntry{
-      CfnType: resourceType,
-      Hash: hash,
-    }
+    properties := deSnake(data)
+    delete(properties, "logical_id")
+    resourceData["Properties"] = properties
+    
+    indexData["Resources"].(map[string]interface{})[logicalId] = resourceData
   })
   
-  return hash, nil
+  return "", nil
 }
 
 func removeResource(logicalId string, meta ProviderMetadata) error {
 	meta.mutex.Lock(LOCK_RESOURCE_READ_WRITE)
 	defer meta.mutex.Unlock(LOCK_RESOURCE_READ_WRITE)
-    
-  // remove the resource file
-  var err error = removeFile(logicalId, meta)
   
-  if err != nil {
-    return err
-  }
-  
-  // update the index file
-  _, _, err = readAndWriteFile(TEMPLATE_INDEX_FILE, meta, func(data map[string]interface{}) {
-    if _, ok := data["resources"]; ok {
-      resources := data["resources"].(map[string]interface{})
+  _, _, err := readAndWriteFile(RENDERED_TEMPLATE_FILE, meta, func(data map[string]interface{}) {
+    if _, ok := data["Resources"]; ok {
+      resources := data["Resources"].(map[string]interface{})
       
-      if _, ok := resources["logicalId"]; ok {
-        delete(resources, "logicalId")
+      if _, ok := resources[logicalId]; ok {
+        delete(resources, logicalId)
       }
     }
   })
@@ -108,7 +95,8 @@ func readAndWriteFile(fileName string, meta ProviderMetadata, modifier DataModif
   var path string = fmt.Sprintf("%s/%s.json", meta.workdir, fileName)
 	var file *os.File = nil
   var created bool = false
-	
+  log.Printf("")	
+  
   // check for existence
   exists, err := fileExists(path)
   
@@ -151,8 +139,11 @@ func readAndWriteFile(fileName string, meta ProviderMetadata, modifier DataModif
   	if err != nil {
       return EMPTY, EMPTY, err
   	}
-    if err := json.Unmarshal(rawData, &data); err != nil {
-      return EMPTY, EMPTY, err
+    
+    if string(rawData) != "" {
+      if err := json.Unmarshal(rawData, &data); err != nil {
+        return EMPTY, EMPTY, err
+      }
     }
   }
   
@@ -167,39 +158,40 @@ func readAndWriteFile(fileName string, meta ProviderMetadata, modifier DataModif
 
 
 func markResourceAsRead(logicalId string, changeType ChangeType, replaceIndex bool, meta ProviderMetadata) error {
-  log.Printf("------------------ read ------- %s", logicalId)
-  
-	meta.mutex.Lock(LOCK_RESOURCE_READ_COUNT)
-	defer meta.mutex.Unlock(LOCK_RESOURCE_READ_COUNT)
+  meta.mutex.Lock(LOCK_RESOURCE_READ_COUNT)
+  defer meta.mutex.Unlock(LOCK_RESOURCE_READ_COUNT)
 
   var err error
   
   if replaceIndex {
+    var path string = fmt.Sprintf("%s/%s.json", meta.workdir, TEMPLATE_COUNTER_FILE)
+    
     if (*meta.newIndex)[TEMPLATE_COUNTER_FILE] == true {
-      removeFile(TEMPLATE_COUNTER_FILE, meta)
+      err = waitForEmptyFile(path)
+      if err != nil { return err }
       (*meta.newIndex)[TEMPLATE_COUNTER_FILE] = false
-    }
+    }    
   }
   
   _, _, err = readAndWriteFile(TEMPLATE_COUNTER_FILE, meta, func(indexData map[string]interface{}) {
-    ensureArrays(indexData, Changed, Unchanged, Maybe)
+    ensureArrays(indexData, Unchanged, Changed, Maybe, Deleted, Updated)
     
     var addTo string = changeType
     indexData[addTo] = addString(logicalId, indexData[addTo].([]interface{}))
-      
+    
     for _, maybe := range indexData[Maybe].([]interface{}) {
-      
+    
       // remove changed from maybe
       if arrayContainsItem(indexData[Changed], maybe) {
         indexData[Maybe] = removeFromChangesArray(maybe, indexData[Maybe])
         continue
       }
-      
+    
       // remove unchanged from maybe
       if arrayContainsItem(indexData[Unchanged], maybe) {
         indexData[Maybe] = removeFromChangesArray(maybe, indexData[Maybe])
-      }      
-    }    
+      }
+    }
   })
   
   if err != nil {
@@ -210,36 +202,14 @@ func markResourceAsRead(logicalId string, changeType ChangeType, replaceIndex bo
 }
 
 
+
 // --------------------------	------------------------------------------------
 
 func ResourceRead(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
 	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
 	var logicalId string = resourceData.Get("logical_id").(string)
-	
-	data, hash, err := readResource(logicalId, providerMeta)
-	
-	if err != nil {
-		return err
-	}
-	
-	// doesn't exist
-	if data == nil && hash == EMPTY {
-		resourceData.SetId("")
-		return nil
-	}
-    
-  // file has changed
-  if resourceData.Id() != hash {
-  	resourceData.SetId("")
-    return nil
-  }
-
-  log.Printf("------------------ reading %s as id ------- %s", logicalId, resourceData.Id())
-  // log.Printf("------------------ %s", resourceData)
   
-  mergeMapToResource("", resourceData, data)
   markResourceAsRead(logicalId, Maybe, true, providerMeta)
-  
   return nil
 }
 
@@ -249,18 +219,21 @@ func ResourceCreate(resourceType string, resourceSchema *schema.Resource, resour
 	var logicalId string = resourceData.Get("logical_id").(string)
 	
 	var data map[string]interface{} = convertResourceToMap("", resourceSchema, resourceData, normalGetter)
-	hash, err := writeResource(resourceType, logicalId, data, providerMeta)
+	_, err := writeResource(resourceType, logicalId, data, providerMeta)
 	
 	if err != nil {
 		return err
 	}
   
-	resourceData.SetId(hash)
+	resourceData.SetId(logicalId)
+  markResourceAsRead(logicalId, Updated, false, providerMeta)
+  
   return nil
 }
 
 
 func ResourceUpdate(resourceType string, resourceSchema *schema.Resource, resourceData *schema.ResourceData, meta interface{}) error {
+  
 	return ResourceCreate(resourceType, resourceSchema, resourceData, meta)
 }
 
@@ -273,10 +246,26 @@ func ResourceDelete(resourceType string, resourceData *schema.ResourceData, meta
 	if err != nil {
 		return err
 	}
+  markResourceAsRead(logicalId, Deleted, false, providerMeta)
 	
 	resourceData.SetId("")	
   return nil
 }
+// 
+// 
+// -func ResourceExists(resourceData *schema.ResourceData, meta interface{}) (bool, error) {
+// -	var providerMeta ProviderMetadata = meta.(ProviderMetadata)
+// -	var logicalId string = resourceData.Get("logical_id").(string)
+// -	exists, err := fileExists(path);	
+// -
+// -	if err != nil {
+// -		return false, err
+// -	}
+// -	
+// -	(*providerMeta.exists)[logicalId] = exists
+// -	
+// -  return exists, nil
+// -}
 
 
 func ResourceCustomizeDiff(resourceType string, resourceDiff *schema.ResourceDiff, meta interface{}) error {
@@ -290,10 +279,10 @@ func ResourceCustomizeDiff(resourceType string, resourceDiff *schema.ResourceDif
 	if _, ok := (*providerMeta.diffed)[logicalId]; ok {
     return errors.New("diffed, duplicate logical id "+logicalId)
 	}
-  
+ 
   changes := resourceDiff.GetChangedKeysPrefix("")
-  log.Printf("--------------------- diffing, %s %s", logicalId, changes)
-  
+  // log.Printf("--------------------- diffing, %s %s", logicalId, changes)
+  // 
   var changeType ChangeType
   
   if len(changes) > 0 {
@@ -301,7 +290,9 @@ func ResourceCustomizeDiff(resourceType string, resourceDiff *schema.ResourceDif
   } else {
     changeType = Unchanged
   }
+  
   markResourceAsRead(logicalId, changeType, false, providerMeta)
-	
+  (*providerMeta.diffed)[logicalId] = true
+
 	return nil
 }

@@ -8,7 +8,8 @@ const (
   Unchanged ChangeType = "unchanged"
   Changed ChangeType = "changed"
   Maybe ChangeType = "maybe"
-  Added ChangeType = "added"
+  // Added ChangeType = "added"
+  Updated ChangeType = "updated"
   Deleted ChangeType = "deleted"
 )
 
