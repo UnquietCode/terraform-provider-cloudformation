@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotevents-detectormodel-action.html
@@ -30,61 +30,61 @@ func propertyDetectorModelAction(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"iot_events": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyDetectorModelIotEvents(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"reset_timer": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyDetectorModelResetTimer(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"sqs": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyDetectorModelSqs(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"firehose": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyDetectorModelFirehose(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"sns": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyDetectorModelSns(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"iot_topic_publish": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyDetectorModelIotTopicPublish(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"set_timer": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyDetectorModelSetTimer(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"clear_timer": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyDetectorModelClearTimer(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"lambda": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyDetectorModelLambda(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"set_variable": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyDetectorModelSetVariable(),
 				Optional: true,
 				MaxItems: 1,

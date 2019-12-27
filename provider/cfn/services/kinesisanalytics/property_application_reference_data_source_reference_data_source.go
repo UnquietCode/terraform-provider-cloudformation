@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalytics-applicationreferencedatasource-referencedatasource.html
@@ -30,7 +30,7 @@ func propertyApplicationReferenceDataSourceReferenceDataSource(extras...string) 
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"reference_schema": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyApplicationReferenceDataSourceReferenceSchema(),
 				Required: true,
 				MaxItems: 1,
@@ -40,7 +40,7 @@ func propertyApplicationReferenceDataSourceReferenceDataSource(extras...string) 
 				Optional: true,
 			},
 			"s3_reference_data_source": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyApplicationReferenceDataSourceS3ReferenceDataSource(),
 				Optional: true,
 				MaxItems: 1,

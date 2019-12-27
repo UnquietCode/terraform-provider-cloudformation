@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-topicrule-action.html
@@ -30,85 +30,85 @@ func propertyTopicRuleAction(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"cloudwatch_alarm": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyTopicRuleCloudwatchAlarmAction(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"cloudwatch_metric": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyTopicRuleCloudwatchMetricAction(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"dynamo_db": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyTopicRuleDynamoDBAction(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"dynamo_d_bv2": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyTopicRuleDynamoDBv2Action(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"elasticsearch": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyTopicRuleElasticsearchAction(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"firehose": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyTopicRuleFirehoseAction(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"iot_analytics": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyTopicRuleIotAnalyticsAction(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"kinesis": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyTopicRuleKinesisAction(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"lambda": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyTopicRuleLambdaAction(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"republish": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyTopicRuleRepublishAction(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"s3": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyTopicRuleS3Action(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"sns": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyTopicRuleSnsAction(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"sqs": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyTopicRuleSqsAction(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"step_functions": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyTopicRuleStepFunctionsAction(),
 				Optional: true,
 				MaxItems: 1,

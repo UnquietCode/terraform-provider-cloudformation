@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-taskdefinition-containerdefinitions.html
@@ -91,8 +91,14 @@ func propertyTaskDefinitionContainerDefinition(extras...string) *schema.Resource
 				Elem: propertyTaskDefinitionHostEntry(),
 				Optional: true,
 			},
+			"firelens_configuration": {
+				Type: schema.TypeList,
+				Elem: propertyTaskDefinitionFirelensConfiguration(),
+				Optional: true,
+				MaxItems: 1,
+			},
 			"health_check": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyTaskDefinitionHealthCheck(),
 				Optional: true,
 				MaxItems: 1,
@@ -116,13 +122,13 @@ func propertyTaskDefinitionContainerDefinition(extras...string) *schema.Resource
 				Set: schema.HashString,
 			},
 			"linux_parameters": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyTaskDefinitionLinuxParameters(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"log_configuration": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyTaskDefinitionLogConfiguration(),
 				Optional: true,
 				MaxItems: 1,
@@ -162,7 +168,7 @@ func propertyTaskDefinitionContainerDefinition(extras...string) *schema.Resource
 				Optional: true,
 			},
 			"repository_credentials": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyTaskDefinitionRepositoryCredentials(),
 				Optional: true,
 				MaxItems: 1,

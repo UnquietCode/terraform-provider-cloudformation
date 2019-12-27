@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-autoscalingplans-scalingplan-targettrackingconfiguration.html
@@ -38,7 +38,7 @@ func propertyScalingPlanTargetTrackingConfiguration(extras...string) *schema.Res
 				Required: true,
 			},
 			"predefined_scaling_metric_specification": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyScalingPlanPredefinedScalingMetricSpecification(),
 				Optional: true,
 				MaxItems: 1,
@@ -56,7 +56,7 @@ func propertyScalingPlanTargetTrackingConfiguration(extras...string) *schema.Res
 				Optional: true,
 			},
 			"customized_scaling_metric_specification": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyScalingPlanCustomizedScalingMetricSpecification(),
 				Optional: true,
 				MaxItems: 1,

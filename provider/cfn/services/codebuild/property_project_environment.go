@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-environment.html
@@ -51,7 +51,7 @@ func propertyProjectEnvironment(extras...string) *schema.Resource {
 				Required: true,
 			},
 			"registry_credential": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyProjectRegistryCredential(),
 				Optional: true,
 				MaxItems: 1,

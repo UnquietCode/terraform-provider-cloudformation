@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apigateway-deployment-stagedescription.html
@@ -31,7 +31,7 @@ func propertyDeploymentStageDescription(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"access_log_setting": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyDeploymentAccessLogSetting(),
 				Optional: true,
 				MaxItems: 1,
@@ -57,7 +57,7 @@ func propertyDeploymentStageDescription(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"canary_setting": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyDeploymentCanarySetting(),
 				Optional: true,
 				MaxItems: 1,

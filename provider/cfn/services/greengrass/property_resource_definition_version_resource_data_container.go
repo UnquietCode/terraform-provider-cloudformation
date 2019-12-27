@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-greengrass-resourcedefinitionversion-resourcedatacontainer.html
@@ -30,31 +30,31 @@ func propertyResourceDefinitionVersionResourceDataContainer(extras...string) *sc
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"secrets_manager_secret_resource_data": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyResourceDefinitionVersionSecretsManagerSecretResourceData(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"sage_maker_machine_learning_model_resource_data": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyResourceDefinitionVersionSageMakerMachineLearningModelResourceData(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"local_volume_resource_data": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyResourceDefinitionVersionLocalVolumeResourceData(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"local_device_resource_data": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyResourceDefinitionVersionLocalDeviceResourceData(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"s3_machine_learning_model_resource_data": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyResourceDefinitionVersionS3MachineLearningModelResourceData(),
 				Optional: true,
 				MaxItems: 1,

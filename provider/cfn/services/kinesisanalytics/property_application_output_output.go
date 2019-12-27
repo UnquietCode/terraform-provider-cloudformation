@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalytics-applicationoutput-output.html
@@ -30,25 +30,25 @@ func propertyApplicationOutputOutput(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"destination_schema": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyApplicationOutputDestinationSchema(),
 				Required: true,
 				MaxItems: 1,
 			},
 			"lambda_output": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyApplicationOutputLambdaOutput(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"kinesis_firehose_output": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyApplicationOutputKinesisFirehoseOutput(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"kinesis_streams_output": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyApplicationOutputKinesisStreamsOutput(),
 				Optional: true,
 				MaxItems: 1,

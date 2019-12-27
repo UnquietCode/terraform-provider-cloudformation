@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplatedata.html
@@ -49,7 +49,7 @@ func propertyLaunchTemplateLaunchTemplateData(extras...string) *schema.Resource 
 				Optional: true,
 			},
 			"iam_instance_profile": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyLaunchTemplateIamInstanceProfile(),
 				Optional: true,
 				MaxItems: 1,
@@ -73,7 +73,7 @@ func propertyLaunchTemplateLaunchTemplateData(extras...string) *schema.Resource 
 				Optional: true,
 			},
 			"placement": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyLaunchTemplatePlacement(),
 				Optional: true,
 				MaxItems: 1,
@@ -92,13 +92,13 @@ func propertyLaunchTemplateLaunchTemplateData(extras...string) *schema.Resource 
 				Optional: true,
 			},
 			"monitoring": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyLaunchTemplateMonitoring(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"hibernation_options": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyLaunchTemplateHibernationOptions(),
 				Optional: true,
 				MaxItems: 1,
@@ -113,7 +113,7 @@ func propertyLaunchTemplateLaunchTemplateData(extras...string) *schema.Resource 
 				Optional: true,
 			},
 			"cpu_options": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyLaunchTemplateCpuOptions(),
 				Optional: true,
 				MaxItems: 1,
@@ -132,7 +132,7 @@ func propertyLaunchTemplateLaunchTemplateData(extras...string) *schema.Resource 
 				Optional: true,
 			},
 			"instance_market_options": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyLaunchTemplateInstanceMarketOptions(),
 				Optional: true,
 				MaxItems: 1,
@@ -142,13 +142,13 @@ func propertyLaunchTemplateLaunchTemplateData(extras...string) *schema.Resource 
 				Optional: true,
 			},
 			"capacity_reservation_specification": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyLaunchTemplateCapacityReservationSpecification(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"credit_specification": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyLaunchTemplateCreditSpecification(),
 				Optional: true,
 				MaxItems: 1,

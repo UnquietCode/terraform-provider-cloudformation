@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotanalytics-channel-channelstorage.html
@@ -30,13 +30,13 @@ func propertyChannelChannelStorage(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"customer_managed_s3": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyChannelCustomerManagedS3(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"service_managed_s3": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyChannelServiceManagedS3(),
 				Optional: true,
 				MaxItems: 1,

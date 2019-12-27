@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-streamingdistribution-streamingdistributionconfig.html
@@ -30,7 +30,7 @@ func propertyStreamingDistributionStreamingDistributionConfig(extras...string) *
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"logging": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyStreamingDistributionLogging(),
 				Optional: true,
 				MaxItems: 1,
@@ -44,7 +44,7 @@ func propertyStreamingDistributionStreamingDistributionConfig(extras...string) *
 				Optional: true,
 			},
 			"s3_origin": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyStreamingDistributionS3Origin(),
 				Required: true,
 				MaxItems: 1,
@@ -59,7 +59,7 @@ func propertyStreamingDistributionStreamingDistributionConfig(extras...string) *
 				Optional: true,
 			},
 			"trusted_signers": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyStreamingDistributionTrustedSigners(),
 				Required: true,
 				MaxItems: 1,

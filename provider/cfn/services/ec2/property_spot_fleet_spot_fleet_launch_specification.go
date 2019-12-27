@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-spotfleet-spotfleetrequestconfigdata-launchspecifications.html
@@ -39,7 +39,7 @@ func propertySpotFleetSpotFleetLaunchSpecification(extras...string) *schema.Reso
 				Optional: true,
 			},
 			"iam_instance_profile": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertySpotFleetIamInstanceProfileSpecification(),
 				Optional: true,
 				MaxItems: 1,
@@ -61,7 +61,7 @@ func propertySpotFleetSpotFleetLaunchSpecification(extras...string) *schema.Reso
 				Optional: true,
 			},
 			"monitoring": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertySpotFleetSpotFleetMonitoring(),
 				Optional: true,
 				MaxItems: 1,
@@ -72,7 +72,7 @@ func propertySpotFleetSpotFleetLaunchSpecification(extras...string) *schema.Reso
 				Optional: true,
 			},
 			"placement": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertySpotFleetSpotPlacement(),
 				Optional: true,
 				MaxItems: 1,

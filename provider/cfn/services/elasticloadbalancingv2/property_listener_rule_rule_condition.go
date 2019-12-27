@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticloadbalancingv2-listenerrule-conditions.html
@@ -34,37 +34,37 @@ func propertyListenerRuleRuleCondition(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"host_header_config": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyListenerRuleHostHeaderConfig(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"http_header_config": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyListenerRuleHttpHeaderConfig(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"http_request_method_config": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyListenerRuleHttpRequestMethodConfig(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"path_pattern_config": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyListenerRulePathPatternConfig(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"query_string_config": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyListenerRuleQueryStringConfig(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"source_ip_config": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyListenerRuleSourceIpConfig(),
 				Optional: true,
 				MaxItems: 1,

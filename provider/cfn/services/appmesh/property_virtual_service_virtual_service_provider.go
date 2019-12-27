@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appmesh-virtualservice-virtualserviceprovider.html
@@ -30,13 +30,13 @@ func propertyVirtualServiceVirtualServiceProvider(extras...string) *schema.Resou
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"virtual_node": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyVirtualServiceVirtualNodeServiceProvider(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"virtual_router": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyVirtualServiceVirtualRouterServiceProvider(),
 				Optional: true,
 				MaxItems: 1,

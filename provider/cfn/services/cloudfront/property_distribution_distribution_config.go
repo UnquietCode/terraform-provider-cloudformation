@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-distributionconfig.html
@@ -30,7 +30,7 @@ func propertyDistributionDistributionConfig(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"logging": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyDistributionLogging(),
 				Optional: true,
 				MaxItems: 1,
@@ -49,7 +49,7 @@ func propertyDistributionDistributionConfig(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"viewer_certificate": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyDistributionViewerCertificate(),
 				Optional: true,
 				MaxItems: 1,
@@ -59,7 +59,7 @@ func propertyDistributionDistributionConfig(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"default_cache_behavior": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyDistributionDefaultCacheBehavior(),
 				Optional: true,
 				MaxItems: 1,
@@ -91,7 +91,7 @@ func propertyDistributionDistributionConfig(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"restrictions": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyDistributionRestrictions(),
 				Optional: true,
 				MaxItems: 1,

@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-captionselectorsettings.html
@@ -30,37 +30,37 @@ func propertyChannelCaptionSelectorSettings(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"dvb_sub_source_settings": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyChannelDvbSubSourceSettings(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"scte27_source_settings": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyChannelScte27SourceSettings(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"arib_source_settings": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyChannelAribSourceSettings(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"embedded_source_settings": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyChannelEmbeddedSourceSettings(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"scte20_source_settings": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyChannelScte20SourceSettings(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"teletext_source_settings": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyChannelTeletextSourceSettings(),
 				Optional: true,
 				MaxItems: 1,

@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iotanalytics-pipeline-activity.html
@@ -30,61 +30,61 @@ func propertyPipelineActivity(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"select_attributes": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyPipelineSelectAttributes(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"datastore": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyPipelineDatastore(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"filter": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyPipelineFilter(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"add_attributes": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyPipelineAddAttributes(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"channel": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyPipelineChannel(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"device_shadow_enrich": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyPipelineDeviceShadowEnrich(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"math": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyPipelineMath(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"lambda": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyPipelineLambda(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"device_registry_enrich": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyPipelineDeviceRegistryEnrich(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"remove_attributes": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyPipelineRemoveAttributes(),
 				Optional: true,
 				MaxItems: 1,

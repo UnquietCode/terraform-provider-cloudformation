@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ses-receiptrule-action.html
@@ -30,43 +30,43 @@ func propertyReceiptRuleAction(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"bounce_action": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyReceiptRuleBounceAction(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"s3_action": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyReceiptRuleS3Action(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"stop_action": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyReceiptRuleStopAction(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"sns_action": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyReceiptRuleSNSAction(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"workmail_action": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyReceiptRuleWorkmailAction(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"add_header_action": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyReceiptRuleAddHeaderAction(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"lambda_action": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyReceiptRuleLambdaAction(),
 				Optional: true,
 				MaxItems: 1,

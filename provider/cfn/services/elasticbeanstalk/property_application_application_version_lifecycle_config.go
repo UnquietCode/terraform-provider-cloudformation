@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticbeanstalk-application-applicationversionlifecycleconfig.html
@@ -30,13 +30,13 @@ func propertyApplicationApplicationVersionLifecycleConfig(extras...string) *sche
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"max_age_rule": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyApplicationMaxAgeRule(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"max_count_rule": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyApplicationMaxCountRule(),
 				Optional: true,
 				MaxItems: 1,

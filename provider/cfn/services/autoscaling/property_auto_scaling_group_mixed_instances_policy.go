@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-as-group-mixedinstancespolicy.html
@@ -30,13 +30,13 @@ func propertyAutoScalingGroupMixedInstancesPolicy(extras...string) *schema.Resou
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"instances_distribution": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyAutoScalingGroupInstancesDistribution(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"launch_template": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyAutoScalingGroupLaunchTemplate(),
 				Required: true,
 				MaxItems: 1,

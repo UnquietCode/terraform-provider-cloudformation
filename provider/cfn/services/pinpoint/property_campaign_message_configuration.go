@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpoint-campaign-messageconfiguration.html
@@ -30,43 +30,43 @@ func propertyCampaignMessageConfiguration(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"apns_message": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyCampaignMessage(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"baidu_message": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyCampaignMessage(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"default_message": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyCampaignMessage(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"email_message": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyCampaignCampaignEmailMessage(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"gcm_message": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyCampaignMessage(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"sms_message": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyCampaignCampaignSmsMessage(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"adm_message": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyCampaignMessage(),
 				Optional: true,
 				MaxItems: 1,

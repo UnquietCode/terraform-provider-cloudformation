@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appsync-datasource-dynamodbconfig.html
@@ -36,6 +36,16 @@ func propertyDataSourceDynamoDBConfig(extras...string) *schema.Resource {
 			"aws_region": {
 				Type: schema.TypeString,
 				Required: true,
+			},
+			"versioned": {
+				Type: schema.TypeBool,
+				Optional: true,
+			},
+			"delta_sync_config": {
+				Type: schema.TypeList,
+				Elem: propertyDataSourceDeltaSyncConfig(),
+				Optional: true,
+				MaxItems: 1,
 			},
 			"use_caller_credentials": {
 				Type: schema.TypeBool,

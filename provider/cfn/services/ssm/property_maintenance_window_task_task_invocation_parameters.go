@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssm-maintenancewindowtask-taskinvocationparameters.html
@@ -30,25 +30,25 @@ func propertyMaintenanceWindowTaskTaskInvocationParameters(extras...string) *sch
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"maintenance_window_run_command_parameters": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyMaintenanceWindowTaskMaintenanceWindowRunCommandParameters(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"maintenance_window_automation_parameters": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyMaintenanceWindowTaskMaintenanceWindowAutomationParameters(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"maintenance_window_step_functions_parameters": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyMaintenanceWindowTaskMaintenanceWindowStepFunctionsParameters(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"maintenance_window_lambda_parameters": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyMaintenanceWindowTaskMaintenanceWindowLambdaParameters(),
 				Optional: true,
 				MaxItems: 1,

@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-applicationconfiguration.html
@@ -30,31 +30,31 @@ func propertyApplicationApplicationConfiguration(extras...string) *schema.Resour
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"application_code_configuration": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyApplicationApplicationCodeConfiguration(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"environment_properties": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyApplicationEnvironmentProperties(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"flink_application_configuration": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyApplicationFlinkApplicationConfiguration(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"sql_application_configuration": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyApplicationSqlApplicationConfiguration(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"application_snapshot_configuration": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyApplicationApplicationSnapshotConfiguration(),
 				Optional: true,
 				MaxItems: 1,

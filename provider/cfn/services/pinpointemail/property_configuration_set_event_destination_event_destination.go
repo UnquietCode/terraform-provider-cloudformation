@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pinpointemail-configurationseteventdestination-eventdestination.html
@@ -30,13 +30,13 @@ func propertyConfigurationSetEventDestinationEventDestination(extras...string) *
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"sns_destination": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyConfigurationSetEventDestinationSnsDestination(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"cloud_watch_destination": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyConfigurationSetEventDestinationCloudWatchDestination(),
 				Optional: true,
 				MaxItems: 1,
@@ -51,13 +51,13 @@ func propertyConfigurationSetEventDestinationEventDestination(extras...string) *
 				Required: true,
 			},
 			"pinpoint_destination": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyConfigurationSetEventDestinationPinpointDestination(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"kinesis_firehose_destination": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyConfigurationSetEventDestinationKinesisFirehoseDestination(),
 				Optional: true,
 				MaxItems: 1,

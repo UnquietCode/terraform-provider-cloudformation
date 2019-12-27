@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cognito-userpoolriskconfigurationattachment-accounttakeoveractionstype.html
@@ -30,19 +30,19 @@ func propertyUserPoolRiskConfigurationAttachmentAccountTakeoverActionsType(extra
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"high_action": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyUserPoolRiskConfigurationAttachmentAccountTakeoverActionType(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"low_action": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyUserPoolRiskConfigurationAttachmentAccountTakeoverActionType(),
 				Optional: true,
 				MaxItems: 1,
 			},
 			"medium_action": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyUserPoolRiskConfigurationAttachmentAccountTakeoverActionType(),
 				Optional: true,
 				MaxItems: 1,

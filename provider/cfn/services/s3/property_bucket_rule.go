@@ -1,8 +1,8 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 20-11-2019, using version 0.0 of the cfn terraform provider,
-// and version 7.2.0 of the CloudFormation resource specification.
+// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
 //   http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-lifecycleconfig-rule.html
@@ -30,7 +30,7 @@ func propertyBucketRule(extras...string) *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
 			"abort_incomplete_multipart_upload": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyBucketAbortIncompleteMultipartUpload(),
 				Optional: true,
 				MaxItems: 1,
@@ -52,7 +52,7 @@ func propertyBucketRule(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"noncurrent_version_transition": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyBucketNoncurrentVersionTransition(),
 				Optional: true,
 				MaxItems: 1,
@@ -76,7 +76,7 @@ func propertyBucketRule(extras...string) *schema.Resource {
 				Optional: true,
 			},
 			"transition": {
-				Type: schema.TypeSet,
+				Type: schema.TypeList,
 				Elem: propertyBucketTransition(),
 				Optional: true,
 				MaxItems: 1,
