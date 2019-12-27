@@ -2,11 +2,6 @@ package plugin
 
 
 import (
-	"os"
-	"io/ioutil"
-	"fmt"
-  "time"
-	"crypto/md5"
   "strings"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	mutex "github.com/hashicorp/terraform-plugin-sdk/helper/mutexkv"
@@ -50,13 +45,6 @@ func allWithout(item string, items...string) []string {
   return newArray
 }
 
-func ensureArraysCT(mapData map[ChangeType][]string, keys...ChangeType) {
-  for _, key := range keys {
-    if _, ok := mapData[key]; !ok {
-      mapData[key] = []string{}
-    }
-  }
-}
 
 func ensureArrays(mapData map[string]interface{}, keys...string) {
   for _, key := range keys {
@@ -171,100 +159,6 @@ func deSnake(input map[string]interface{}) map[string]interface{} {
   return output
 }
 
-
-
-func fileExists(path string) (bool, error) {  
-	_, err := os.Stat(path)
-	
-	if err != nil {
-		if os.IsNotExist(err) {
-	      return false, nil
-	  }
-		return false, err
-	}
-  
-	return true, nil
-}
-
-// func writeMarker(
-
-
-func readAndHashFile(path string) ([]byte, string, error) {
-	rawData, err := ioutil.ReadFile(path)
-	
-	if err != nil {
-		return nil, EMPTY, err
-	}
-
-	var hashcode string = fmt.Sprintf("%x", md5.Sum(rawData))
-	return rawData, hashcode, nil
-}
-
-
-func removeFile(name string, meta ProviderMetadata) error {
-	var path string = fmt.Sprintf("%s/%s.json", meta.workdir, name)
-	err := os.Remove(path)
-	
-	if err != nil {
-		return err
-	}
-	
-	return nil
-}
-
-
-func writeFile(path string, data map[string]interface{}) (string, error) {  
-	hash, _, err := writeFilePlusContent(path, data)
-  return hash, err 
-}
-
-func writeEmptyFile(path string) (error) {  
-	file, err := os.Create(path)
-  defer file.Close()
-  
-  if err != nil {
-    return err
-  }
-  
-  return nil
-}
-
-func waitForEmptyFile(path string) error {
-  for {
-    exists, err := fileExists(path)
-    if err != nil { return err }
-    
-    if !exists {
-      time.Sleep(1 * time.Second)
-      continue
-    }
-    
-    rawData, err := ioutil.ReadFile(path)
-    if err != nil { return err }
-    
-    if string(rawData) == "" {
-      break
-    }
-    time.Sleep(1 * time.Second)
-  }
-  return nil
-}
-
-func writeFilePlusContent(path string, data map[string]interface{}) (string, string, error) {  
-	file, _ := os.Create(path)
-	defer file.Close()
-	
-	rawData, err := mapToJson(data, true)
-	
-	if err != nil {
-		return "", "", err
-	}
-	
- 	file.Write(rawData)
-	
-	var hashcode string = fmt.Sprintf("%x", md5.Sum(rawData))
-	return hashcode, string(rawData), nil
-}
 
 
 func ProviderConfigure(resourceData *schema.ResourceData) (interface{}, error) {	
