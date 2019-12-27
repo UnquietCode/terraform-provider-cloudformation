@@ -1,7 +1,7 @@
 // This file is generated, and any modifications will be lost when the
 // file is next recreated.
 //
-// Generated on 16-12-2019, using version 0.0 of the cfn terraform provider,
+// Generated on 26-12-2019, using version 0.0 of the cfn terraform provider,
 // and version 10.1.0 of the CloudFormation resource specification.
 //
 // For more information, visit:
@@ -124,11 +124,6 @@ func Provider() terraform.ResourceProvider {
 		ConfigureFunc: plugin.ProviderConfigure,
 		
 		Schema: map[string]*schema.Schema{
-			"workdir": {
-				Type: schema.TypeString,
-				Required: true,
-				Description: "working directory on the filesystem",
-			},
 		},
 		
 		ResourcesMap: map[string]*schema.Resource{

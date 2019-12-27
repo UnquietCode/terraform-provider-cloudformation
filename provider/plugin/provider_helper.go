@@ -4,103 +4,11 @@ package plugin
 import (
   "strings"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-	mutex "github.com/hashicorp/terraform-plugin-sdk/helper/mutexkv"
 )
 
-type ProviderMetadata struct {
-   workdir string
-	 mutex *mutex.MutexKV
-	 newIndex *map[string]bool
-	 exists *map[string]bool
-	 diffed *map[string]bool
-}
+type ProviderMetadata struct {}
 
 const EMPTY string = "\xff"
-const LOCK_RESOURCE_READ_WRITE string = "RESOURCE_READ_WRITE"
-const LOCK_RESOURCE_READ_COUNT string = "RESOURCE_READ_COUNT"
-
-const TEMPLATE_INDEX_FILE string = "template.data"
-const TEMPLATE_COUNTER_FILE string = "template.counts"
-const RENDERED_TEMPLATE_FILE string = "template.rendered"
-
-const STATE_WAIT string = "WAIT"
-const STATE_DONE string = "DONE"
-
-
-type TemplateEntry struct {
-  CfnType string `json:"type"`
-  Hash string `json:"hash"`
-}
-
-
-func allWithout(item string, items...string) []string {
-  newArray := []string{}
-  
-  for _, x := range items {
-    if x != item {
-      newArray = append(newArray, x)
-    }
-  }
-  
-  return newArray
-}
-
-
-func ensureArrays(mapData map[string]interface{}, keys...string) {
-  for _, key := range keys {
-    if _, ok := mapData[key]; !ok {
-      mapData[key] = []interface{}{}
-    }
-  }
-}
-
-func addString(item string, addArray []interface{}) []interface{} {
-  var alreadyExists bool = false
-  
-  for _, v := range addArray {
-    if v.(string) == item {
-      alreadyExists = true
-      break
-    }
-  }
-  
-  if !alreadyExists {
-    addArray = append(addArray, item)
-  }
-  
-  return addArray
-}
-
-func removeString(item string, removeArray []interface{}) []interface{} {
-  var newRemoved []interface{} = []interface{}{}
-  
-  for _, v := range removeArray {
-    if v.(string) != item {
-      newRemoved = append(newRemoved, v.(string))
-    }
-  }
-  
-  return newRemoved
-}
-
-func arrayContainsString(array []string, item string) bool {
-  for _, v := range array {
-    if v == item {
-      return true
-    }
-  }
-  return false
-}
-
-
-func arrayContainsItem(array interface{}, item interface{}) bool {
-  for _, v := range array.([]interface{}) {
-    if v == item {
-      return true
-    }
-  }
-  return false
-}
 
 
 func replaceFunctionCalls(input interface{}) interface{} {
@@ -162,16 +70,7 @@ func deSnake(input map[string]interface{}) map[string]interface{} {
 
 
 func ProviderConfigure(resourceData *schema.ResourceData) (interface{}, error) {	
-	meta := ProviderMetadata{
-		workdir: resourceData.Get("workdir").(string),
-		mutex: mutex.NewMutexKV(),
-		newIndex: &map[string]bool{
-      TEMPLATE_COUNTER_FILE: true,
-      TEMPLATE_INDEX_FILE: true,
-    },
-		exists: &map[string]bool{},
-		diffed: &map[string]bool{},
-  }
+	meta := ProviderMetadata{}
 	
 	return meta, nil
 }

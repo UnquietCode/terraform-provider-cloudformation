@@ -39,12 +39,12 @@ func normalGetter(key string, data *schema.ResourceData) (interface{}, bool) {
   return nil, false
 }
 
-func changedOnlyGetter(key string, data *schema.ResourceData) (interface{}, bool) {
-  if ok := data.HasChange(key); ok {
-    return data.Get(key), true
-  }
-  return nil, false
-}
+// func changedOnlyGetter(key string, data *schema.ResourceData) (interface{}, bool) {
+//   if ok := data.HasChange(key); ok {
+//     return data.Get(key), true
+//   }
+//   return nil, false
+// }
 
 func convertValue(prefix string, resourceSchema *schema.Schema, value interface{}, resourceData *schema.ResourceData, getter ResourceGetter) interface{} {
   switch resourceSchema.Type {
@@ -169,23 +169,4 @@ func convertResourceToMap(prefix string, resource *schema.Resource, resourceData
   data := map[string]interface{}{}
   convertAndMergeResourceToMap(prefix, resource, resourceData, data, getter)
   return data
-}
-
-
-func mergeMapToResource(prefix string, resourceData *schema.ResourceData, data interface{}) {
-  if vMap, ok := data.(map[string]interface{}); ok {
-    for name, value := range vMap {
-      realKey := prefix + name
-      nestedPrefix := realKey + "."
-      mergeMapToResource(nestedPrefix, resourceData, value)
-    }
-  } else if vList, ok := data.([]interface{}); ok {
-    for idx, value := range vList {
-      realKey := fmt.Sprintf("%s%d", prefix, idx)
-      nestedPrefix := realKey + "."
-      mergeMapToResource(nestedPrefix, resourceData, value)
-    }
-  } else {
-    resourceData.Set(prefix[0:len(prefix)-1], data)
-  }
 }
