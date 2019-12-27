@@ -153,6 +153,91 @@ def _property_lookup(entity_name, attribute_structs):
     return map_name, expression
 
 
+def generate_datasource_model(*, cfn_version, imports, resource):
+    resource_name = resource.name
+    package_name = resource.package.name
+    attributes = resource.attributes.values()
+
+    import_lines = [ _import_prefix(i) for i in imports ]
+    import_lines.extend([
+        "github.com/hashicorp/terraform-plugin-sdk/helper/schema",
+    ])
+    
+    for attribute in attributes:
+        if attribute.type.validator_function:
+            import_lines.extend(attribute.type.validator_function.imports)
+    
+    import_lines = list(set(import_lines))
+    
+    attribute_structs = [
+        _generate_attribute_struct(package_name=package_name, schema_name=None, attribute=attribute)
+        for attribute in attributes
+    ]
+    
+    resource_struct = GoStructLiteral(
+        type="&schema.Resource",
+        fields={
+            "Read": f"datasource{resource_name}Read",
+        }
+    )
+    
+    resource_struct.fields["Schema"] = GoMapLiteral(
+        key_type="string",
+        value_type="*schema.Schema",
+        fields={ names[0]:value for names,value in attribute_structs },
+    )
+    
+    type_const = f"{resource_name[0].lower()}{resource_name[1:]}Type"
+    # property_map_name, property_map = _property_lookup(resource_name, attribute_structs)
+    
+    declarations = [
+        ConstantExpression(
+            identifier=type_const,
+            type="string",
+            expression=LiteralExpression(f'"{resource.cfn_type}"'),
+        ),
+        BlankLines(count=1),
+        
+        # property_map,
+        
+        GoFunction(
+            name=f"Datasource{resource_name}",
+            parameters=[],
+            return_types=[
+                "*schema.Resource"
+            ],
+            body=[ReturnExpression(resource_struct)],
+        ),
+        # GoFunction(
+        #     name=f"resource{resource_name}Exists",
+        #     parameters=[
+        #         GoParameter(name="data", type="*schema.ResourceData"),
+        #         GoParameter(name="meta", type="interface{}"),
+        #     ],
+        #     return_types=["bool", "error"],
+        #     body=["return plugin.ResourceExists(data, meta)"],
+        # ),
+        GoFunction(
+            name=f"datasource{resource_name}Read",
+            parameters=[
+                GoParameter(name="data", type="*schema.ResourceData"),
+                GoParameter(name="meta", type="interface{}"),
+            ],
+            return_types=["error"],
+            body=[f'return plugin.ResourceRead({type_const}, Datasource{resource_name}(), data, meta)'],
+        ),
+    ]
+    
+    code_file = SourceFile(
+        header=_header_stanza(cfn_version, resource.documentation_link),
+        package_name=package_name,
+        imports=import_lines,
+        declarations=declarations,
+    )    
+    
+    return write_file_to_string(code_file)
+
+
 def generate_resource_model(*, cfn_version, imports, resource):
     resource_name = resource.name
     package_name = resource.package.name
@@ -430,8 +515,8 @@ def _resource_line(resource):
 def _datasources_line(datasource):
     d = datasource
     
-    name = f'cfn_{r.service_name.lower()}_{snake_caps(r.name[len(r.service_name):])}'
-    value = f'{d.package.name}.Datasource{d.name}(),'
+    name = f'cfn_{d.service_name.lower()}_{snake_caps(d.name[len(d.service_name):])}'
+    value = f'{d.package.name}.Datasource{d.name}()'
     return name, LiteralExpression(expression=value)
     
 
@@ -446,10 +531,10 @@ def generate_provider_model(*, cfn_version, package_name, imports, datasources, 
     
     resource_fields = [ _resource_line(_) for _ in resources ]
     resource_fields = { _[0]:_[1] for _ in resource_fields }
-    resource_fields["cfn_template_data"] =  LiteralExpression(expression="misc.ResourceTemplateData()")
 
     datasource_fields = [ _datasources_line(_) for _ in datasources ]
     datasource_fields = { _[0]:_[1] for _ in datasource_fields }
+    datasource_fields["cfn_template_data"] =  LiteralExpression(expression="misc.DatasourceTemplateData()")
     
     provider_struct = GoStructLiteral(
         type="&schema.Provider",
@@ -458,16 +543,7 @@ def generate_provider_model(*, cfn_version, package_name, imports, datasources, 
             "Schema": GoMapLiteral(
                 key_type="string",
                 value_type="*schema.Schema",
-                fields={
-                    "workdir": GoStructLiteral(
-                        type="",
-                        fields={
-                            "Type": "schema.TypeString",
-                            "Required": "true",
-                            "Description": '"working directory on the filesystem"',
-                        }
-                    )
-                }
+                fields={},
             ),
             "ResourcesMap": GoMapLiteral(
                 key_type="string",

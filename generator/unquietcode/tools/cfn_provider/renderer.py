@@ -4,6 +4,7 @@ from itertools import chain
 
 from unquietcode.tools.cfn_provider.golang.code_generator import (
     generate_resource_model,
+    generate_datasource_model,
     generate_property_model,
     generate_provider_model,
     generate_getattr_model,
@@ -74,6 +75,22 @@ def render_resource(cfn_version, resource, output_path):
     imports.discard(resource.package.full_path)  # remove self
     
     rendered = generate_resource_model(
+        cfn_version=cfn_version,
+        resource=resource,
+        imports=imports,
+    )
+
+    with open(output_path, 'w+') as file_:
+        file_.write(rendered)
+
+
+def render_datasource(cfn_version, resource, output_path):
+    imports = _extract_imports(resource.attributes.values())
+    # imports.add('cfn')  # ensure top level package is imported
+    imports.add('plugin')
+    imports.discard(resource.package.full_path)  # remove self
+    
+    rendered = generate_datasource_model(
         cfn_version=cfn_version,
         resource=resource,
         imports=imports,
@@ -166,6 +183,12 @@ def render_package(cfn_version, package, output_path):
             attributes=resource.attributes,
         )
     
+    for datasource in package.datasources.values():
+        _patch_deferred_types(
+            package=package,
+            attributes=datasource.attributes,
+        )
+    
     # render properties
     for property in package.properties.values():
         file_name = f"property_{snake_caps(property.name)}.go"
@@ -183,8 +206,11 @@ def render_package(cfn_version, package, output_path):
         file_name = f"resource_{resource.service_name.lower()}_{snake_caps(resource.resource_name)}.go"
         file_path = f"{created_directory}/{file_name}"
         render_resource(cfn_version, resource, file_path)
-    
-    # print(json.dumps(package.as_dict(), indent=2))
+
+    for datasource in package.datasources.values():
+        file_name = f"datasource_{datasource.service_name.lower()}_{snake_caps(datasource.resource_name)}.go"
+        file_path = f"{created_directory}/{file_name}"
+        render_datasource(cfn_version, datasource, file_path)
     
     # traverse and render subpackages
     sorted_subpackages = sorted(package.subpackages.values(), key=lambda _: _.name)

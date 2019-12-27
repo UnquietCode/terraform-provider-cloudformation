@@ -104,6 +104,19 @@ def handle_resource(*, service, package, resource_name, cfn_type, resource_data)
         will_replace=True,
         documentation_link='https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resources-section-structure.html',
     )
+
+    if 'json' in [_.lower() for _ in attributes.keys()]:
+        raise Exception('attribute name collision')
+
+    attributes['json'] = ResourceAttribute(
+        name='json',
+        cfn_name=None,
+        type=simple_primitive("String"),
+        required=None,
+        computed=True,
+        will_replace=None,
+        documentation_link='',
+    )    
     
     # resource attributes
     # resource_attributes = resource_data.get("Attributes", {})
@@ -238,7 +251,7 @@ def handle_provider(data) -> Provider:
             cfn_type=resource_name,
             resource_data=resource_data,
         )
-        package.resources[resource_object.name] = resource_object
+        package.datasources[resource_object.name] = resource_object
     
     # metadata
     cfn_version = data['ResourceSpecificationVersion']

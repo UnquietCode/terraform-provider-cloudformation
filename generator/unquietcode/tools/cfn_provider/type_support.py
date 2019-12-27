@@ -107,7 +107,7 @@ def translate_cfn_type(resource_name, property_data, schema_properties) -> Attri
 
         # is some other complex type
         else:
-            type = TF_Type.Set
+            type = TF_Type.List
             elem_type = translate_cfn_complex_type(resource_name, prop_type, schema_properties)
             max_items = 1
             
